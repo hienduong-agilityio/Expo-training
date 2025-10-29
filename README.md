@@ -260,6 +260,18 @@ STRAPI_URL=https://your-production-api.com
 | `yarn lint`          | Run ESLint code linting         | N/A                     |
 | `yarn eslint:fix`    | Fix ESLint errors automatically | N/A                     |
 
+### Custom Fonts
+
+When you add or update custom fonts in the `src/assets/fonts/` directory, you need to link them to your native projects. After adding new font files, run the following command:
+
+```sh
+npx react-native-asset
+```
+
+This command will automatically configure the fonts for both Android and iOS platforms. You only need to run this command when you add new fonts or update existing ones.
+
+> **Note:** After running this command, you may need to rebuild your app for the changes to take effect.
+
 ## Step 1: Start Metro
 
 First, you will need to run **Metro**, the JavaScript build tool for React Native.

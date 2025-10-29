@@ -4,7 +4,6 @@
   "exclude": ["**/node_modules", "**/Pods"],
   "compilerOptions": {
     "baseUrl": ".",
-    "ignoreDeprecations": "6.0",
     "paths": {
       "@app/*": ["src/*"]
     }
