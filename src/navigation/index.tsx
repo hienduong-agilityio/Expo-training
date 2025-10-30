@@ -1,6 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 
-import { AppStackNavigation } from './AppStackNavigation';
+// Navigation
+import { AppStackNavigation } from '@app/navigation/AppStackNavigation';
 
 export const Navigation = () => {
   return (

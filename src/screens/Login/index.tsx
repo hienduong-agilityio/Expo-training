@@ -51,7 +51,6 @@ export const LoginScreen = ({ navigation }: LoginScreenProps) => {
     </View>
   );
 };
-
 // Todo: Remove this after testing
 const styles = StyleSheet.create({
   container: {

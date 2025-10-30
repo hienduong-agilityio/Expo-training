@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-
 import { DevSettings, StatusBar, useColorScheme } from 'react-native';
-
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { Navigation } from './src/navigation';
+
+// Navigation
+import { Navigation } from '@app/navigation';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -20,6 +20,7 @@ const App = () => {
 
   if (showStorybook) {
     const StorybookUI = require('./.storybook').default;
+
     return <StorybookUI />;
   }
 
@@ -27,7 +28,6 @@ const App = () => {
     <SafeAreaProvider>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <Navigation />
-      {/* <AppContent /> */}
     </SafeAreaProvider>
   );
 };

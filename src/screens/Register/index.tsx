@@ -22,7 +22,6 @@ export const RegisterScreen = ({ navigation }: RegisterScreenProps) => {
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
