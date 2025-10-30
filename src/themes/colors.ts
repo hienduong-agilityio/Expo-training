@@ -47,7 +47,7 @@ export const colors = {
   sale: '#FF6768',
   blue: '#3D4DA6', // Facebook Blue
   neutralTag: '#BBBBBB',
-  grayLight: '#F2F2F2',
+  grayLight: '#F9F9F9',
   gray: '#CACACA',
   grayDark: '#626262',
   black: '#000000',
