@@ -1,0 +1,245 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextField matches snapshot for basic field 1`] = `
+<View
+  style={
+    {
+      "marginBottom": 20,
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "flexDirection": "row",
+        },
+        {
+          "borderColor": "#E0E0E0",
+          "height": 44,
+        },
+        false,
+        false,
+        undefined,
+      ]
+    }
+  >
+    <TextInput
+      onBlur={[Function]}
+      onFocus={[Function]}
+      placeholder="Enter text"
+      placeholderTextColor="#575757"
+      secureTextEntry={false}
+      style={
+        [
+          {
+            "flex": 1,
+            "fontWeight": "400",
+            "includeFontPadding": false,
+            "paddingVertical": 10,
+            "textAlignVertical": "center",
+          },
+          {
+            "fontSize": 14,
+            "paddingHorizontal": 16,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`TextField matches snapshot with icons and password field 1`] = `
+<View
+  style={
+    {
+      "marginBottom": 20,
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "flexDirection": "row",
+        },
+        {
+          "borderColor": "#E0E0E0",
+          "height": 44,
+        },
+        false,
+        false,
+        undefined,
+      ]
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "paddingLeft": 12,
+          "paddingRight": 8,
+        }
+      }
+    >
+      <Text>
+        🔒
+      </Text>
+    </View>
+    <TextInput
+      onBlur={[Function]}
+      onFocus={[Function]}
+      placeholder="Password"
+      placeholderTextColor="#575757"
+      secureTextEntry={true}
+      style={
+        [
+          {
+            "flex": 1,
+            "fontWeight": "400",
+            "includeFontPadding": false,
+            "paddingVertical": 10,
+            "textAlignVertical": "center",
+          },
+          {
+            "fontSize": 14,
+            "paddingHorizontal": 16,
+          },
+          undefined,
+        ]
+      }
+    />
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "opacity": 1,
+          "paddingLeft": 8,
+          "paddingRight": 12,
+        }
+      }
+    >
+      <Text>
+        🙈
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`TextField matches snapshot with label and error 1`] = `
+<View
+  style={
+    {
+      "marginBottom": 20,
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": "#FFFFFF",
+        "fontSize": 14,
+        "fontWeight": "500",
+        "marginBottom": 5,
+      }
+    }
+  >
+    Email
+  </Text>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "flexDirection": "row",
+        },
+        {
+          "borderColor": "#EB3030",
+          "height": 44,
+        },
+        false,
+        false,
+        {
+          "borderColor": "#EB3030",
+        },
+      ]
+    }
+  >
+    <TextInput
+      onBlur={[Function]}
+      onFocus={[Function]}
+      placeholder="Enter email"
+      placeholderTextColor="#575757"
+      secureTextEntry={false}
+      style={
+        [
+          {
+            "flex": 1,
+            "fontWeight": "400",
+            "includeFontPadding": false,
+            "paddingVertical": 10,
+            "textAlignVertical": "center",
+          },
+          {
+            "fontSize": 14,
+            "paddingHorizontal": 16,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+  <Text
+    style={
+      {
+        "color": "#EB3030",
+        "fontSize": 13,
+        "fontWeight": "400",
+        "marginTop": 5,
+      }
+    }
+  >
+    Invalid email
+  </Text>
+</View>
+`;

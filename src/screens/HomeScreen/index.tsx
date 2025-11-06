@@ -1,7 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
 
 // Components
-import { View, Button, Text } from 'react-native';
+import { View, Text } from 'react-native';
+import { Button } from '@app/components/common/Button';
 
 // Constants
 import { SCREENS } from '@app/constants';
@@ -13,6 +14,9 @@ import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 // Styles
 import { styles } from './index.style';
 
+// Enums
+import { BUTTON_COLORS, BUTTON_VARIANTS } from '@app/enums';
+
 export const HomeScreen = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<AppStackParamList>>();
@@ -22,19 +26,31 @@ export const HomeScreen = () => {
       <Text style={styles.title}>HomeScreen (demo)</Text>
 
       <Button
-        title="Go to Wishlist tab"
+        label="Go to Wishlist tabsssss"
+        size={'lg'}
+        variant={BUTTON_VARIANTS.SOLID}
+        color={BUTTON_COLORS.PRIMARY}
         onPress={() => navigation.navigate(SCREENS.WISHLIST)}
       />
       <Button
-        title="Go to Cart tab"
+        label="Go to Cart tabs"
+        size={'lg'}
+        variant={BUTTON_VARIANTS.SOLID}
+        color={BUTTON_COLORS.PRIMARY}
         onPress={() => navigation.navigate(SCREENS.CART)}
       />
       <Button
-        title="Go to Search tab"
+        label="Go to Search tabs"
+        size={'lg'}
+        variant={BUTTON_VARIANTS.SOLID}
+        color={BUTTON_COLORS.PRIMARY}
         onPress={() => navigation.navigate(SCREENS.SEARCH)}
       />
       <Button
-        title="Go to Settings tab"
+        label="Go to Settings tabs"
+        size={'lg'}
+        variant={BUTTON_VARIANTS.SOLID}
+        color={BUTTON_COLORS.PRIMARY}
         onPress={() => navigation.navigate(SCREENS.SETTINGS)}
       />
     </View>

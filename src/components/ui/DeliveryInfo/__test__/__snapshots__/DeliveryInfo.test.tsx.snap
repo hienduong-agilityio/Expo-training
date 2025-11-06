@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DeliveryInfo Snapshots matches snapshot for default delivery time 1`] = `
+<View
+  style={
+    {
+      "backgroundColor": "#FFCCD5",
+      "borderRadius": 8,
+      "paddingHorizontal": 27,
+      "paddingVertical": 11,
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": "#000000",
+        "fontFamily": "Montserrat-SemiBold",
+        "fontSize": 14,
+        "marginBottom": 5,
+      }
+    }
+  >
+    Delivery in
+  </Text>
+  <Text
+    style={
+      {
+        "color": "#000000",
+        "fontFamily": "Poppins-Regular",
+        "fontSize": 20,
+        "fontWeight": "800",
+      }
+    }
+  >
+    1 within Hour
+  </Text>
+</View>
+`;

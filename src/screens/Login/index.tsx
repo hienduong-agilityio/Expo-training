@@ -3,7 +3,7 @@ import Config from 'react-native-config';
 import { StyleSheet, Text, View } from 'react-native';
 
 // Components
-import { Button } from '@app/components';
+import { Button } from '@app/components/common/Button';
 
 // Constants
 import { SCREENS } from '@app/constants';

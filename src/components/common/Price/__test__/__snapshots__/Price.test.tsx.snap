@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Price renders component with snapshot 1`] = `
+<Text
+  style={
+    {
+      "color": "#1C1B1F",
+      "fontSize": 14,
+    }
+  }
+>
+  $ 29.99
+</Text>
+`;
