@@ -22,7 +22,7 @@ export const CartScreen = () => {
       <Text style={styles.title}>CartScreen</Text>
 
       <Button
-        title="Go Home"
+        title="Go Homes"
         onPress={() => navigation.navigate(SCREENS.HOME)}
       />
       <Button

@@ -4,11 +4,27 @@ export const borderRadius = {
   base: 8,
   lg: 10,
   xl: 12,
+  '2xl': 16,
+  '3xl': 20,
   full: 50,
 } as const;
 
+export const iconSize = {
+  sm: 16,
+  md: 20,
+  lg: 24,
+  xl: 28,
+  '2xl': 32,
+  '3xl': 36,
+  '4xl': 40,
+  '5xl': 44,
+  '6xl': 48,
+};
+
 export const spacing = {
   '0': 0,
+  '0.5': 2,
+  '0.75': 3,
   '1': 4,
   '1.25': 5,
   '2': 8,
@@ -42,6 +58,9 @@ export const spacing = {
   '13.5': 54,
   '14': 56,
   '14.5': 58,
+  '15': 60,
+  '22.5': 90,
+  '30': 120,
 } as const;
 
 export type SpacingKey = keyof typeof spacing;

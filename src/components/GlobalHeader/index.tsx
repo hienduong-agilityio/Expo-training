@@ -31,7 +31,11 @@ export const GlobalHeader = ({
 
       <View style={styles.headerTop}>
         {showMenu ? (
-          <TouchableOpacity style={styles.menuButton} onPress={onMenuPress}>
+          <TouchableOpacity
+            style={styles.menuButton}
+            onPress={onMenuPress}
+            accessibilityRole="button"
+            accessibilityLabel="Menu">
             <MenuIcon color={colors.black} />
           </TouchableOpacity>
         ) : (
@@ -45,7 +49,9 @@ export const GlobalHeader = ({
         {showProfile ? (
           <TouchableOpacity
             style={styles.profileButton}
-            onPress={onProfilePress}>
+            onPress={onProfilePress}
+            accessibilityRole="button"
+            accessibilityLabel="Profile">
             <ProfileIcon color={colors.black} />
           </TouchableOpacity>
         ) : (

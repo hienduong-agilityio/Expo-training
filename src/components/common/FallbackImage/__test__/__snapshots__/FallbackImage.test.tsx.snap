@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FallbackImage renders with null source 1`] = `
+<Image
+  onError={[Function]}
+  source={
+    {
+      "uri": "",
+    }
+  }
+/>
+`;
+
+exports[`FallbackImage renders with valid source 1`] = `
+<Image
+  onError={[Function]}
+  source={
+    {
+      "uri": "https://picsum.photos/300/400",
+    }
+  }
+/>
+`;
