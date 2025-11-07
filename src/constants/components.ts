@@ -1,10 +1,26 @@
 import React from 'react';
 
 // Icons
-import { SplashOrder, SplashPayment, SplashWelcome } from '@app/icons';
+import {
+  SplashOrder,
+  SplashPayment,
+  SplashWelcome,
+  SuccessIcon,
+  ErrorIcon,
+  WarningIcon,
+  InfoIcon,
+} from '@app/icons';
+
+// Themes
+import { colors } from '@app/themes';
 
 // Types
-import type { IOnboardingItem, ICategory } from '@app/interfaces';
+import type {
+  IOnboardingItem,
+  ICategory,
+  IconProps,
+  TStatus,
+} from '@app/interfaces';
 
 export const HIT_SLOP = {
   top: 10,
@@ -91,3 +107,20 @@ export const CATEGORIES: readonly ICategory[] = [
       'https://whimsical-benefit-a69d430573.media.strapiapp.com/a887b1c19788b096f7c8072f32e60f40a541ba70_d28709bb50.webp',
   },
 ] as const;
+
+export const TOAST_COLOR_BY_STATUS: Record<TStatus, string> = {
+  success: colors.success,
+  error: colors.error,
+  warning: colors.warning,
+  info: colors.info,
+};
+
+export const TOAST_ICON_BY_STATUS: Record<
+  TStatus,
+  (props: IconProps) => React.ReactNode
+> = {
+  success: props => React.createElement(SuccessIcon, props),
+  error: props => React.createElement(ErrorIcon, props),
+  warning: props => React.createElement(WarningIcon, props),
+  info: props => React.createElement(InfoIcon, props),
+};

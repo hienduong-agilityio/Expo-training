@@ -30,7 +30,7 @@ export const LoadingButton = ({
   ...buttonProps
 }: ILoadingButtonProps) => {
   const sizeMetrics = getSizeMetrics(size);
-  const { labelStyle } = getButtonStyles(variant, color, selected);
+  const { labelStyle } = getButtonStyles(variant);
 
   const isDisabled = disabled || loading;
 
