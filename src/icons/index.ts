@@ -31,6 +31,12 @@ export { default as StylishLogo } from './StylishLogo';
 export { default as UserIcon } from './UserIcon';
 export { default as VisaIcon } from './VisaIcon';
 
+// Status Icons
+export { default as SuccessIcon } from './SuccessIcon';
+export { default as ErrorIcon } from './ErrorIcon';
+export { default as WarningIcon } from './WarningIcon';
+export { default as InfoIcon } from './InfoIcon';
+
 // Splash Icons
 export { default as SplashOrder } from './SplashOrder';
 export { default as SplashPayment } from './SplashPayment';

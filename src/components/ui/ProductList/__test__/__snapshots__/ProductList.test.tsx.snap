@@ -1,0 +1,230 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductList Rendering matches snapshot 1`] = `
+<RCTScrollView
+  ItemSeparatorComponent={[Function]}
+  accessibilityLabel="Product list"
+  accessibilityRole="list"
+  contentContainerStyle={
+    [
+      {
+        "paddingHorizontal": 216,
+        "paddingVertical": 216,
+      },
+      {},
+    ]
+  }
+  data={
+    [
+      {
+        "brand": "Winter Co.",
+        "currency": "INR",
+        "description": "Autumn And Winter Casual cotton-padded jacket",
+        "id": "1",
+        "imageSource": {
+          "uri": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop",
+        },
+        "name": "Black Winter Jacket",
+        "price": 499,
+        "rating": 5,
+        "reviewCount": 6890,
+      },
+      {
+        "brand": "Cotton Co.",
+        "currency": "INR",
+        "description": "Mens Starry Sky Printed Shirt 100% Cotton Fabric",
+        "id": "2",
+        "imageSource": {
+          "uri": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=300&h=400&fit=crop",
+        },
+        "name": "Mens Starry Sky Printed Shirt",
+        "price": 399,
+        "rating": 5,
+        "reviewCount": 152344,
+      },
+      {
+        "brand": "Fashion Co.",
+        "currency": "INR",
+        "description": "Solid Black Dress for Women, Sexy Chain Shorts",
+        "id": "3",
+        "imageSource": {
+          "uri": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300&h=400&fit=crop",
+        },
+        "name": "Black Dress",
+        "price": 2000,
+        "rating": 5,
+        "reviewCount": 523456,
+      },
+    ]
+  }
+  estimatedItemSize={200}
+  getItem={[Function]}
+  getItemCount={[Function]}
+  horizontal={false}
+  initialNumToRender={12}
+  keyExtractor={[Function]}
+  listRef={
+    {
+      "current": null,
+    }
+  }
+  maxToRenderPerBatch={8}
+  onContentSizeChange={[Function]}
+  onEndReachedThreshold={0.4}
+  onLayout={[Function]}
+  onMomentumScrollBegin={[Function]}
+  onMomentumScrollEnd={[Function]}
+  onScroll={[Function]}
+  onScrollBeginDrag={[Function]}
+  onScrollEndDrag={[Function]}
+  removeClippedSubviews={true}
+  renderItem={[Function]}
+  scrollEventThrottle={0.0001}
+  showsHorizontalScrollIndicator={false}
+  showsVerticalScrollIndicator={false}
+  stickyHeaderIndices={[]}
+  updateCellsBatchingPeriod={50}
+  viewabilityConfigCallbackPairs={[]}
+  windowSize={5}
+>
+  <View>
+    <View
+      onFocusCapture={[Function]}
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        style={
+          {
+            "flexDirection": "row",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {},
+              undefined,
+              null,
+            ]
+          }
+        >
+          <View
+            brand="Winter Co."
+            currency="INR"
+            description="Autumn And Winter Casual cotton-padded jacket"
+            id="1"
+            imageSource={
+              {
+                "uri": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop",
+              }
+            }
+            onPress={[Function]}
+            price={499}
+            rating={5}
+            reviewCount={6890}
+            style={
+              {
+                "width": "100%",
+              }
+            }
+          >
+            <Text>
+              Black Winter Jacket
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            [
+              {},
+              undefined,
+              null,
+            ]
+          }
+        >
+          <View
+            brand="Cotton Co."
+            currency="INR"
+            description="Mens Starry Sky Printed Shirt 100% Cotton Fabric"
+            id="2"
+            imageSource={
+              {
+                "uri": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=300&h=400&fit=crop",
+              }
+            }
+            onPress={[Function]}
+            price={399}
+            rating={5}
+            reviewCount={152344}
+            style={
+              {
+                "width": "100%",
+              }
+            }
+          >
+            <Text>
+              Mens Starry Sky Printed Shirt
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "height": 16,
+          }
+        }
+      />
+    </View>
+    <View
+      onFocusCapture={[Function]}
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        style={
+          {
+            "flexDirection": "row",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {},
+              undefined,
+              null,
+            ]
+          }
+        >
+          <View
+            brand="Fashion Co."
+            currency="INR"
+            description="Solid Black Dress for Women, Sexy Chain Shorts"
+            id="3"
+            imageSource={
+              {
+                "uri": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300&h=400&fit=crop",
+              }
+            }
+            onPress={[Function]}
+            price={2000}
+            rating={5}
+            reviewCount={523456}
+            style={
+              {
+                "width": "100%",
+              }
+            }
+          >
+            <Text>
+              Black Dress
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</RCTScrollView>
+`;

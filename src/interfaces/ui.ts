@@ -9,6 +9,8 @@ import type {
   ImageProps,
   ImageSourcePropType,
   PressableProps,
+  StyleProp,
+  TextStyle,
   ViewStyle,
 } from 'react-native';
 import type { IProduct } from '@app/interfaces/product';
@@ -56,4 +58,22 @@ export interface IOnboardingItem {
   icon: ReactNode;
   title: string;
   description: string;
+}
+
+export type TStatus = 'success' | 'error' | 'warning' | 'info';
+export type TPosition = 'top' | 'bottom';
+
+export interface INotFoundProps {
+  icon?: ReactNode;
+  title?: string;
+  description?: string;
+  retryLabel?: string;
+  styleOverrides?: {
+    container?: StyleProp<ViewStyle>;
+    icon?: StyleProp<ViewStyle>;
+    title?: StyleProp<TextStyle>;
+    description?: StyleProp<TextStyle>;
+    button?: StyleProp<ViewStyle>;
+  };
+  onRetry?: () => void;
 }
