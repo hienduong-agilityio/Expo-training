@@ -4,8 +4,8 @@ import Svg, { Rect, Defs, Pattern, Use, Image } from 'react-native-svg';
 import type { IconProps } from '@app/interfaces';
 
 const GoogleIcon = ({ size = 24, ...props }: IconProps) => (
-  <Svg width={size} height={size} viewBox="0 0 30 35" fill="none" {...props}>
-    <Rect width={size} height={size} fill="url(#pattern0_1_18623)" />
+  <Svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...props}>
+    <Rect width={24} height={24} fill="url(#pattern0_1_18623)" />
     <Defs>
       <Pattern
         id="pattern0_1_18623"
