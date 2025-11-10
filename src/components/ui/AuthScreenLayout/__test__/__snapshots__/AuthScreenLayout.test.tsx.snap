@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AuthScreenLayout /> renders title and children 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    [
+      {
+        "backgroundColor": "#FFFFFF",
+        "flex": 1,
+      },
+      {
+        "paddingBottom": 0,
+      },
+    ]
+  }
+>
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "flexGrow": 1,
+        "marginBottom": 40,
+        "marginTop": 40,
+        "paddingHorizontal": 16,
+      }
+    }
+    showsVerticalScrollIndicator={false}
+  >
+    <View>
+      <View
+        style={
+          {
+            "marginBottom": 40,
+          }
+        }
+      >
+        <Text
+          style={
+            {
+              "color": "#1C1B1F",
+              "fontSize": 34,
+              "fontWeight": "700",
+            }
+          }
+        >
+          Welcome
+        </Text>
+      </View>
+      <View
+        style={
+          {
+            "gap": 20,
+          }
+        }
+      >
+        <View>
+          <Text>
+            Child A
+          </Text>
+        </View>
+        <View>
+          <Text>
+            Child B
+          </Text>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;
