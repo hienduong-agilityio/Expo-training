@@ -4,5 +4,10 @@ export const SOCIAL_PROVIDER = {
   FACEBOOK: 'facebook',
 } as const;
 
+export const AUTH_ENDPOINTS = {
+  SIGN_UP: '/auth/local/register',
+  LOGIN: '/auth/local',
+} as const;
+
 export type SocialProvider =
   (typeof SOCIAL_PROVIDER)[keyof typeof SOCIAL_PROVIDER];

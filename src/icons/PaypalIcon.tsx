@@ -4,7 +4,7 @@ import Svg, { Rect, Defs, Pattern, Use, Image } from 'react-native-svg';
 import type { IconProps } from '@app/interfaces';
 
 const PaypalIcon = ({ size = 24, ...props }: IconProps) => (
-  <Svg width={size} height={size} viewBox="0 0 64 10" fill="none" {...props}>
+  <Svg width={size} height={size} viewBox="0 0 64 24" fill="none" {...props}>
     <Rect width={64} height={24} fill="url(#pattern0_1_17715)" />
     <Defs>
       <Pattern

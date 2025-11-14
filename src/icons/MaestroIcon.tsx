@@ -5,7 +5,12 @@ import type { IconProps } from '@app/interfaces';
 
 const MaestroIcon = ({ size = 20, ...props }: IconProps) => (
   <Svg width={size} height={size} viewBox="0 0 35 30" fill="none" {...props}>
-    <Rect width={size} height={size} fill="url(#pattern0_1_17718)" />
+    {/**
+     * Use the intrinsic viewBox dimensions for the Rect so the logo remains
+     * centered when the parent gives a square size. The Svg will letterbox
+     * and center the 35x30 content inside the square via preserveAspectRatio.
+     */}
+    <Rect width={35} height={30} fill="url(#pattern0_1_17718)" />
     <Defs>
       <Pattern
         id="pattern0_1_17718"

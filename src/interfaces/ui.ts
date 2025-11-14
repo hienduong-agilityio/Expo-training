@@ -1,8 +1,7 @@
 import { ReactNode } from 'react';
 
 // Enums
-import { BUTTON_VARIANTS } from '@app/enums';
-import { BUTTON_COLORS } from '@app/enums';
+import { BUTTON_VARIANTS, BUTTON_COLORS } from '@app/enums';
 
 // Types
 import type {

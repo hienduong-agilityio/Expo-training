@@ -1,9 +1,16 @@
 import { useEffect, useState } from 'react';
 import { DevSettings, StatusBar, useColorScheme } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { QueryClientProvider } from '@tanstack/react-query';
 
 // Navigation
 import { Navigation } from '@app/navigation';
+
+// Contexts
+import { queryClient } from '@app/contexts/query';
+
+// Components
+import { ToastContainer } from '@app/components/ToastContainer';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -25,10 +32,13 @@ const App = () => {
   }
 
   return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <Navigation />
-    </SafeAreaProvider>
+    <QueryClientProvider client={queryClient}>
+      <SafeAreaProvider>
+        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+        <Navigation />
+        <ToastContainer />
+      </SafeAreaProvider>
+    </QueryClientProvider>
   );
 };
 

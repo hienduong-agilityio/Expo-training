@@ -7,7 +7,7 @@ export const authStyles = StyleSheet.create({
   // Layout styles
   screen: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: colors.white,
   },
   scrollContent: {
     flexGrow: 1,
@@ -56,7 +56,7 @@ export const authStyles = StyleSheet.create({
   },
   agreementText: {
     fontSize: 14,
-    color: colors.textSecondary,
+    color: colors.black,
     fontWeight: '400',
     textAlign: 'left',
     lineHeight: 20,

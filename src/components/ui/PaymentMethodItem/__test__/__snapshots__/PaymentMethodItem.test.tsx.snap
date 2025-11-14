@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PaymentMethodItem /> renders icon and label, matches snapshot 1`] = `
+<View
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#F5F5F5",
+      "borderColor": "#F83758",
+      "borderRadius": 12,
+      "borderWidth": 2,
+      "flexDirection": "row",
+      "minHeight": 56,
+      "opacity": 1,
+      "paddingHorizontal": 20,
+      "paddingVertical": 16,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "height": 48,
+        "justifyContent": "center",
+        "width": 48,
+      }
+    }
+  >
+    <View
+      accessibilityLabel="visa-icon"
+    />
+  </View>
+  <Text
+    style={
+      {
+        "color": "#575757",
+        "fontSize": 16,
+        "letterSpacing": 0.4,
+        "marginLeft": "auto",
+      }
+    }
+  >
+    ********2109
+  </Text>
+</View>
+`;

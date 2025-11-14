@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 // Components
-import { GlobalHeader } from '@app/components/GlobalHeader/index';
+import { GlobalHeader } from '@app/components/GlobalHeader';
 
 // Screens
 import { HomeScreen } from '@app/screens/HomeScreen';
@@ -11,13 +11,13 @@ import { SearchScreen } from '@app/screens/SearchScreen';
 import { SettingsScreen } from '@app/screens/SettingsScreen';
 
 // Constants
-import { SCREENS } from '@app/constants';
+import { PRIVATE_SCREENS } from '@app/constants';
 
 // Types
-import type { AppStackParamList } from '@app/interfaces';
+import type { PrivateStackParamList } from '@app/interfaces';
 import type { NativeStackHeaderProps } from '@react-navigation/native-stack';
 
-const Stack = createNativeStackNavigator<AppStackParamList>();
+const Stack = createNativeStackNavigator<PrivateStackParamList>();
 
 const MainHeader = ({ navigation }: NativeStackHeaderProps) => {
   const showMenu = true;
@@ -30,58 +30,46 @@ const MainHeader = ({ navigation }: NativeStackHeaderProps) => {
       onMenuPress={() => {}}
       onProfilePress={() => {
         if (!showProfile) return;
-
-        navigation.navigate(SCREENS.SETTINGS);
+        navigation.navigate(PRIVATE_SCREENS.SETTINGS);
       }}
     />
   );
 };
 
-export const AppStackNavigation = () => {
+export const PrivateStackNavigation = () => {
   return (
     <Stack.Navigator
+      initialRouteName={PRIVATE_SCREENS.HOME}
       screenOptions={{
         headerShown: true,
         header: MainHeader,
       }}>
       <Stack.Screen
-        name={SCREENS.HOME}
+        name={PRIVATE_SCREENS.HOME}
         component={HomeScreen}
-        options={{
-          title: 'Home',
-        }}
+        options={{ title: PRIVATE_SCREENS.HOME }}
       />
-
       <Stack.Screen
-        name={SCREENS.WISHLIST}
+        name={PRIVATE_SCREENS.WISHLIST}
         component={WishlistScreen}
-        options={{
-          title: 'Wishlist',
-        }}
+        options={{ title: PRIVATE_SCREENS.WISHLIST }}
       />
-
       <Stack.Screen
-        name={SCREENS.CART}
+        name={PRIVATE_SCREENS.CART}
         component={CartScreen}
-        options={{
-          title: 'Cart',
-        }}
+        options={{ title: PRIVATE_SCREENS.CART }}
       />
 
       <Stack.Screen
-        name={SCREENS.SEARCH}
+        name={PRIVATE_SCREENS.SEARCH}
         component={SearchScreen}
-        options={{
-          title: 'Search',
-        }}
+        options={{ title: PRIVATE_SCREENS.SEARCH }}
       />
 
       <Stack.Screen
-        name={SCREENS.SETTINGS}
+        name={PRIVATE_SCREENS.SETTINGS}
         component={SettingsScreen}
-        options={{
-          title: 'Settings',
-        }}
+        options={{ title: PRIVATE_SCREENS.SETTINGS }}
       />
     </Stack.Navigator>
   );

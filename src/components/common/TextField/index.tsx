@@ -68,9 +68,9 @@ export const TextField = memo<TextFieldProps>(function TextField({
       return (
         <TouchableOpacity
           style={styles.rightIcon}
-          onPress={() => onRightPress?.() || setShowPassword(!showPassword)}
+          onPress={() => (onRightPress ? onRightPress() : setShowPassword(!showPassword))}
           activeOpacity={0.7}>
-          <Text>{showPassword ? '👁️' : '🙈'}</Text>
+          {rightIcon}
         </TouchableOpacity>
       );
     }

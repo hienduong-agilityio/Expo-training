@@ -1,10 +1,10 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 
 // Components
-import {
-  SocialAuthButtons,
-  SocialProvider,
-} from '@app/components/ui/SocialAuthButtons';
+import { SocialAuthButtons } from '@app/components/ui/SocialAuthButtons';
+
+// Types
+import type { SocialProvider } from '@app/constants';
 
 // Styles
 import { styles } from './index.style';

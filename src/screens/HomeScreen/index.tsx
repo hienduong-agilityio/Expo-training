@@ -5,10 +5,10 @@ import { View, Text } from 'react-native';
 import { Button } from '@app/components/common/Button';
 
 // Constants
-import { SCREENS } from '@app/constants';
+import { PRIVATE_SCREENS } from '@app/constants';
 
 // Types
-import type { AppStackParamList } from '@app/interfaces';
+import type { PrivateStackParamList } from '@app/interfaces';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 // Styles
@@ -19,7 +19,7 @@ import { BUTTON_COLORS, BUTTON_VARIANTS } from '@app/enums';
 
 export const HomeScreen = () => {
   const navigation =
-    useNavigation<NativeStackNavigationProp<AppStackParamList>>();
+    useNavigation<NativeStackNavigationProp<PrivateStackParamList>>();
 
   return (
     <View style={styles.container}>
@@ -30,28 +30,28 @@ export const HomeScreen = () => {
         size={'lg'}
         variant={BUTTON_VARIANTS.SOLID}
         color={BUTTON_COLORS.PRIMARY}
-        onPress={() => navigation.navigate(SCREENS.WISHLIST)}
+        onPress={() => navigation.navigate(PRIVATE_SCREENS.WISHLIST)}
       />
       <Button
         label="Go to Cart tabs"
         size={'lg'}
         variant={BUTTON_VARIANTS.SOLID}
         color={BUTTON_COLORS.PRIMARY}
-        onPress={() => navigation.navigate(SCREENS.CART)}
+        onPress={() => navigation.navigate(PRIVATE_SCREENS.CART)}
       />
       <Button
         label="Go to Search tabs"
         size={'lg'}
         variant={BUTTON_VARIANTS.SOLID}
         color={BUTTON_COLORS.PRIMARY}
-        onPress={() => navigation.navigate(SCREENS.SEARCH)}
+        onPress={() => navigation.navigate(PRIVATE_SCREENS.SEARCH)}
       />
       <Button
         label="Go to Settings tabs"
         size={'lg'}
         variant={BUTTON_VARIANTS.SOLID}
         color={BUTTON_COLORS.PRIMARY}
-        onPress={() => navigation.navigate(SCREENS.SETTINGS)}
+        onPress={() => navigation.navigate(PRIVATE_SCREENS.SETTINGS)}
       />
     </View>
   );
