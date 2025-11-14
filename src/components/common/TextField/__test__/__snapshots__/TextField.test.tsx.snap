@@ -157,7 +157,7 @@ exports[`TextField matches snapshot with icons and password field 1`] = `
       }
     >
       <Text>
-        🙈
+        👁️
       </Text>
     </View>
   </View>

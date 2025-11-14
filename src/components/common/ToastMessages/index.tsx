@@ -5,7 +5,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { styles } from './index.style';
 
 // Constants
-import { TOAST_COLOR_BY_STATUS, TOAST_ICON_BY_STATUS } from '@app/constants';
+import { POSITION, STATUS, TOAST_COLOR_BY_STATUS, TOAST_ICON_BY_STATUS } from '@app/constants';
 
 // Types
 import type { TStatus, TPosition } from '@app/interfaces';
@@ -23,14 +23,14 @@ export interface IToastMessagesProps {
 export const ToastMessages = ({
   visible,
   message,
-  position = 'top',
-  type = 'error',
+  position = POSITION.TOP,
+  type = STATUS.ERROR,
   onClose,
   customStyle,
 }: IToastMessagesProps) => {
   if (!visible) return null;
 
-  const isBottom = position === 'bottom';
+  const isBottom = position === POSITION.BOTTOM;
   const variantColor = TOAST_COLOR_BY_STATUS[type];
 
   return (

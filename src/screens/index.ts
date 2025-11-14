@@ -1,5 +1,5 @@
-export * from './Login';
-export * from './Register';
+export * from './LoginScreen';
+export * from './RegisterScreen';
 export * from './HomeScreen';
 export * from './CartScreen';
 export * from './WishlistScreen';

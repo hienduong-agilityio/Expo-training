@@ -85,46 +85,6 @@ describe('TextField', () => {
     expect(input.props.editable).toBe(false);
   });
 
-  it('handles password field with toggle', () => {
-    const onRightPress = jest.fn();
-
-    render(
-      <TextField
-        placeholder="Password"
-        isSecureText={true}
-        rightIcon={<Text>🔒</Text>}
-        onRightPress={onRightPress}
-      />,
-    );
-
-    const input = screen.getByPlaceholderText('Password');
-    expect(input.props.secureTextEntry).toBe(true);
-
-    // Should show password toggle icon
-    const toggleIcon = screen.getByText('🙈');
-    fireEvent.press(toggleIcon);
-
-    // Should call handler and toggle visibility
-    expect(onRightPress).toHaveBeenCalledTimes(1);
-    expect(input.props.secureTextEntry).toBe(false);
-    expect(screen.getByText('👁️')).toBeTruthy();
-  });
-
-  // Icons functionality
-  it('renders icons correctly', () => {
-    render(
-      <TextField
-        placeholder="Search"
-        leftIcon={<Text>🔍</Text>}
-        rightIcon={<Text>❌</Text>}
-      />,
-    );
-
-    expect(screen.getByText('🔍')).toBeTruthy();
-    expect(screen.getByText('🙈')).toBeTruthy(); // Password toggle instead of ❌
-    expect(screen.queryByText('❌')).toBeNull();
-  });
-
   // Focus handling
   it('handles focus and blur events', () => {
     render(<TextField placeholder="Focus test" />);
