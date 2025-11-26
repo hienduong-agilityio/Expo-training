@@ -24,17 +24,6 @@ export const FilterButtons = ({
 }: IFilterButtonsProps) => {
   return (
     <View style={styles.filterButtons}>
-      {showFilter && (
-        <TouchableOpacity
-          style={styles.filterButton}
-          onPress={onFilterPress}
-          accessibilityRole="button"
-          accessibilityLabel="Filter results">
-          <FilterIcon width={16} height={16} color="#666" />
-          <Text style={styles.filterButtonText}>{UI_BUTTON_LABELS.FILTER}</Text>
-        </TouchableOpacity>
-      )}
-
       {showSort && (
         <TouchableOpacity
           style={styles.filterButton}
@@ -43,6 +32,17 @@ export const FilterButtons = ({
           accessibilityLabel="Sort results">
           <Text style={styles.filterButtonText}>{UI_BUTTON_LABELS.SORT}</Text>
           <SortIcon width={16} height={16} color="#666" />
+        </TouchableOpacity>
+      )}
+
+      {showFilter && (
+        <TouchableOpacity
+          style={styles.filterButton}
+          onPress={onFilterPress}
+          accessibilityRole="button"
+          accessibilityLabel="Filter results">
+          <Text style={styles.filterButtonText}>{UI_BUTTON_LABELS.FILTER}</Text>
+          <FilterIcon width={16} height={16} color="#666" />
         </TouchableOpacity>
       )}
     </View>

@@ -12,11 +12,13 @@ export const styles = StyleSheet.create({
     minHeight: spacing['14'],
     backgroundColor: colors.surfaceVariant,
     borderRadius: borderRadius.xl,
-    borderWidth: 0,
+    borderWidth: 1,
+    borderColor: colors.border,
   },
   selected: {
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: colors.primary,
+    backgroundColor: colors.primaryLight,
   },
   left: {
     justifyContent: 'center',

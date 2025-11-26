@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
+import { Text } from 'react-native';
 
 // Components
 import { Button } from '@app/components/common/Button';
@@ -207,6 +208,43 @@ describe('Button', () => {
       const button = screen.getByRole('button');
       expect(button).toBeTruthy();
       expect(screen.getByText('Accessible Button')).toBeTruthy();
+    });
+  });
+
+  describe('Button Content', () => {
+    it('renders children when provided', () => {
+      const { toJSON } = renderButton({
+        children: <Text>Custom Content</Text>,
+      });
+
+      expect(screen.getByText('Custom Content')).toBeTruthy();
+      expect(toJSON()).toMatchSnapshot();
+    });
+
+    it('renders label when children is not provided', () => {
+      renderButton({ label: 'Button Label' });
+
+      expect(screen.getByText('Button Label')).toBeTruthy();
+    });
+
+    it('renders label when children is null', () => {
+      renderButton({ label: 'Button Label', children: null });
+
+      expect(screen.getByText('Button Label')).toBeTruthy();
+    });
+  });
+
+  describe('Button Press States', () => {
+    it('applies pressed style for solid button', () => {
+      const { toJSON } = renderButton({
+        label: 'Solid Button',
+        variant: BUTTON_VARIANTS.SOLID,
+      });
+
+      const button = screen.getByRole('button');
+      fireEvent(button, 'pressIn');
+
+      expect(toJSON()).toMatchSnapshot();
     });
   });
 });

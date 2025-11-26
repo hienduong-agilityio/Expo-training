@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     left: spacing['4'],
     right: spacing['4'],
-    top: spacing['10'],
+    top: spacing['15'],
     paddingHorizontal: spacing['4'],
     paddingVertical: spacing['4'],
     borderRadius: borderRadius.base,

@@ -9,6 +9,9 @@ import { EyeOpenIcon, LayersIcon, SortIcon, FilterIcon } from '@app/icons';
 // Types
 import type { IProduct } from '@app/interfaces';
 
+// Themes
+import { colors } from '@app/themes';
+
 // Styles
 import { styles } from './index.style';
 
@@ -31,13 +34,13 @@ export const SimilarProducts = ({
       <View style={styles.header}>
         <View style={styles.headerLeft}>
           <TouchableOpacity style={styles.actionButton} onPress={onViewSimilar}>
-            <EyeOpenIcon width={16} height={16} color="#333" />
+            <EyeOpenIcon width={16} height={16} color={colors.text} />
             <Text style={styles.actionButtonText}>View Similar</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.actionButton}
             onPress={onAddToCompare}>
-            <LayersIcon width={16} height={16} color="#333" />
+            <LayersIcon width={16} height={16} color={colors.text} />
             <Text style={styles.actionButtonText}>Add to Compare</Text>
           </TouchableOpacity>
         </View>
@@ -52,11 +55,11 @@ export const SimilarProducts = ({
       {/* Filter Buttons */}
       <View style={styles.filterContainer}>
         <TouchableOpacity style={styles.filterButton}>
-          <SortIcon width={14} height={14} color="#333" />
+          <SortIcon width={14} height={14} color={colors.text} />
           <Text style={styles.filterButtonText}>Sort</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.filterButton}>
-          <FilterIcon width={14} height={14} color="#333" />
+          <FilterIcon width={14} height={14} color={colors.text} />
           <Text style={styles.filterButtonText}>Filter</Text>
         </TouchableOpacity>
       </View>
@@ -70,17 +73,8 @@ export const SimilarProducts = ({
         {products.map(product => (
           <ProductCard
             key={product.id}
-            id={product.id}
-            name={product.name}
-            description={product.description}
-            brand={product.brand}
-            price={product.price}
-            currency={product.currency}
-            rating={product.rating ?? 0}
-            reviewCount={product.reviewCount}
-            imageSource={product.imageSource}
-            onPress={onProductPress}
-            style={styles.productCard}
+            {...product}
+            onPress={() => onProductPress(product.id)}
           />
         ))}
       </ScrollView>

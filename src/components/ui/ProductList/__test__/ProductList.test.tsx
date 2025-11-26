@@ -3,7 +3,7 @@ import { createRef } from 'react';
 import { FlatList } from 'react-native';
 
 // Components
-import { ProductList } from '../index';
+import { GridProductList, IGridProductListProps } from '../GridProductList';
 
 // Types
 import type { IProductCardProps } from '@app/interfaces';
@@ -24,18 +24,23 @@ jest.mock('../../ProductCard', () => ({
   },
 }));
 
-describe('ProductList', () => {
+describe('GridProductList', () => {
   const mockProducts = MOCK_PRODUCTS.slice(0, 3);
   const defaultProps = {
     listRef: createRef<FlatList<IProductCardProps>>(),
-    products: mockProducts as IProductCardProps[],
-    estimatedItemSize: 200,
+    products: mockProducts,
     gap: 16,
-    contentPadding: 216,
+    contentPadding: 16,
+    numColumns: 2,
   };
 
   const renderComponent = (overrides = {}) =>
-    render(<ProductList {...defaultProps} {...overrides} />);
+    render(
+      <GridProductList
+        {...(defaultProps as unknown as IGridProductListProps)}
+        {...overrides}
+      />,
+    );
 
   describe('Rendering', () => {
     it('matches snapshot', () => {

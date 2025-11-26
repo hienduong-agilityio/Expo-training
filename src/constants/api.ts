@@ -12,3 +12,11 @@ export const HTTP_METHODS = {
   PATCH: 'PATCH',
   DELETE: 'DELETE',
 } as const;
+
+export const CART_ENDPOINTS = {
+  ROOT: '/carts',
+} as const;
+
+export const WISHLIST_ENDPOINTS = {
+  ROOT: '/wishlists',
+} as const;

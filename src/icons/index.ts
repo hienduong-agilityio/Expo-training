@@ -30,6 +30,7 @@ export { default as SortIcon } from './SortIcon';
 export { default as StylishLogo } from './StylishLogo';
 export { default as UserIcon } from './UserIcon';
 export { default as VisaIcon } from './VisaIcon';
+export { default as CheckMarkIcon } from './CheckMarkIcon';
 
 // Status Icons
 export { default as SuccessIcon } from './SuccessIcon';

@@ -11,38 +11,45 @@ import { RightArrowIcon } from '@app/icons';
 import { colors } from '@app/themes';
 
 // Styles
-import { styles } from './index.style';
+import { styles, getHeaderStyle } from './index.style';
 
 // Types
 import type { IconProps } from '@app/interfaces';
 import type { ComponentType } from 'react';
 import type { ICustomStyles } from '@app/interfaces/style';
+import type { HeaderStyle } from '@app/interfaces/ui';
 
-interface IPromoBannerProps {
+export interface IPromoBannerProps {
   title: string;
+  subtitle?: string;
   label?: string;
   Icon?: ComponentType<IconProps>;
   actionLabel?: string;
   showActionArrow?: boolean;
+  headerStyle?: HeaderStyle;
   customStyle?: ICustomStyles;
   onPressViewAll?: () => void;
 }
 
 export const PromoBanner = ({
   title,
+  subtitle,
   label,
   Icon,
   actionLabel,
   onPressViewAll,
   customStyle,
   showActionArrow = true,
+  headerStyle = 'deal',
 }: IPromoBannerProps) => {
+  const headerStyles = getHeaderStyle(headerStyle);
+
   const rightContent = onPressViewAll && (
     <TouchableOpacity
-      style={[styles.actionButton, customStyle?.actionButton]}
+      style={[headerStyles.actionButton, customStyle?.actionButton]}
       onPress={onPressViewAll}>
       <View style={styles.actionContent}>
-        <Text style={[styles.actionText, customStyle?.actionText]}>
+        <Text style={[headerStyles.actionText, customStyle?.actionText]}>
           {actionLabel ?? MESSAGES.VIEW_ALL}
         </Text>
         {showActionArrow && <RightArrowIcon size={14} color={colors.white} />}
@@ -51,15 +58,21 @@ export const PromoBanner = ({
   );
 
   return (
-    <View style={[styles.container, customStyle?.container]}>
+    <View style={[headerStyles.container, customStyle?.container]}>
       <View style={styles.titleContainer}>
-        <Text style={[styles.title, customStyle?.title]}>{title}</Text>
+        <Text style={[headerStyles.title, customStyle?.title]}>{title}</Text>
+
+        {subtitle && (
+          <Text style={[headerStyles.subtitle, customStyle?.subtitle]}>
+            {subtitle}
+          </Text>
+        )}
 
         {(label || Icon) && (
           <View style={[styles.labelContainer, customStyle?.labelContainer]}>
-            {Icon && <Icon />}
+            {Icon && <Icon size={14} color={colors.white} />}
             {label && (
-              <Text style={[styles.labelText, customStyle?.labelText]}>
+              <Text style={[headerStyles.labelText, customStyle?.labelText]}>
                 {label}
               </Text>
             )}

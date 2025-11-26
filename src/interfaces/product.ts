@@ -1,32 +1,22 @@
 import { CurrencyCode } from '@app/helpers';
+import { ApiProduct } from '@app/interfaces/api';
 
-export interface IProduct {
+export interface IProduct extends Omit<ApiProduct, 'id'> {
   id: string;
   name: string;
-  description?: string;
-  brand?: string;
-  price: number;
   currency?: CurrencyCode;
   rating?: number;
+  description?: string;
   reviewCount?: number;
   imageSource?: { uri: string };
 }
 
-export interface IProductDetailsProps {
-  id: string;
-  name: string;
-  description: string;
-  brand?: string;
-  price: number;
+export interface IProductDetailsProps extends IProduct {
   originalPrice?: number;
   discountPercent?: number;
-  currency?: string;
-  rating: number;
-  reviewCount: number;
-  images: string[];
   sizes: IProductSize[];
-  details: string;
   features: IProductFeature[];
+  details?: string;
   onShowMoreDetails: () => void;
 }
 

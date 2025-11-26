@@ -5,11 +5,11 @@ import { colors, spacing, borderRadius, typography } from '@app/themes';
 
 export const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: spacing['3'],
-    paddingVertical: spacing['2'],
+    paddingHorizontal: spacing['4'],
+    paddingVertical: spacing['3'],
     backgroundColor: colors.white,
   },
-  title: {
+  label: {
     fontSize: typography.fontSizes.md,
     fontWeight: typography.fontWeights.semiBold,
     color: colors.text,

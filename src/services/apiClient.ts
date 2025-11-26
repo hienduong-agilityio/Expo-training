@@ -71,14 +71,11 @@ export async function apiRequest<TResponse, TBody = unknown>(
       message?: string;
     };
 
-    const apiError: ApiError =
-      responseError.error ?? {
-        status: httpResponse.status,
-        message:
-          responseError.message ??
-          httpResponse.statusText ??
-          'Request failed',
-      };
+    const apiError: ApiError = responseError?.error ?? {
+      status: httpResponse.status,
+      message:
+        responseError?.message ?? httpResponse.statusText ?? 'Request failed',
+    };
 
     throw apiError;
   }

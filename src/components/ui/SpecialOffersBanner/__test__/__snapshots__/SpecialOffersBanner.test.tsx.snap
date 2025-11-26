@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SpecialOffersBanner renders correctly with banner data 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#FFFFFF",
+      "borderRadius": 10,
+      "elevation": 2,
+      "flexDirection": "row",
+      "marginHorizontal": 24,
+      "marginVertical": 24,
+      "padding": 24,
+      "shadowColor": "#000000",
+      "shadowOffset": {
+        "height": 1,
+        "width": 0,
+      },
+      "shadowOpacity": 0.1,
+      "shadowRadius": 2,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "backgroundColor": "#F5F5F5",
+        "borderRadius": 40,
+        "height": 80,
+        "marginRight": 24,
+        "overflow": "hidden",
+        "width": 80,
+      }
+    }
+  >
+    <Image
+      resizeMode="cover"
+      source={
+        {
+          "uri": "https://whimsical-benefit-a69d430573.media.strapiapp.com/Converted_Image_7ecf9d50b0.webp",
+        }
+      }
+      style={
+        {
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />
+  </View>
+  <View
+    style={
+      {
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "marginBottom": 2,
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "color": "#1C1B1F",
+            "fontSize": 16,
+            "fontWeight": "700",
+          }
+        }
+      >
+        Special Offers
+      </Text>
+      <Text
+        style={
+          {
+            "fontSize": 16,
+            "marginLeft": 2,
+          }
+        }
+      >
+        😱
+      </Text>
+    </View>
+    <Text
+      style={
+        {
+          "color": "#575757",
+          "fontSize": 13,
+          "lineHeight": 20,
+        }
+      }
+    >
+      We make sure you get the offer you need at best prices.
+    </Text>
+  </View>
+</View>
+`;

@@ -19,6 +19,15 @@ export const iconSize = {
   '4xl': 40,
   '5xl': 44,
   '6xl': 48,
+  '7xl': 52,
+  '8xl': 56,
+  '9xl': 60,
+  '10xl': 64,
+  '11xl': 68,
+  '12xl': 72,
+  '13xl': 76,
+  '14xl': 80,
+  '15xl': 84,
 };
 
 export const spacing = {

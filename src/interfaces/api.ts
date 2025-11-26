@@ -39,3 +39,77 @@ export interface StrapiList<T> {
   }>;
   meta: StrapiPaginationMeta;
 }
+
+export interface ApiProduct {
+  documentId?: string;
+  id: number;
+  title: string;
+  slug: string;
+  description?: string;
+  shortDescription?: string;
+  price: number;
+  salePrice?: number;
+  deals: ApiDeal[];
+  discountPercent?: number;
+  trendings: ApiTrending[];
+  ratingAvg?: number;
+  ratingCount?: number;
+  images?: ApiMedia[];
+  brand?: ApiBrand;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt?: string;
+}
+
+export interface ApiMedia {
+  id: number;
+  name: string;
+  url: string;
+  formats?: {
+    thumbnail?: { url: string };
+    small?: { url: string };
+    medium?: { url: string };
+    large?: { url: string };
+  };
+}
+
+export interface ApiBrand {
+  id: number;
+  name: string;
+  slug: string;
+}
+
+export interface ApiDeal {
+  id: number;
+  documentId?: string;
+  title: string;
+  slug: string;
+  startsAt: string;
+  endsAt: string;
+  products?: ApiProduct[];
+}
+
+export interface ApiTrending {
+  id: number;
+  documentId?: string;
+  name: string;
+  slug: string;
+  lastDate?: string;
+  products?: ApiProduct[];
+}
+
+export interface ApiCategory {
+  id: number;
+  documentId?: string;
+  name: string;
+  slug: string;
+  attributes?: {
+    slug?: string;
+  };
+}
+
+export type ApiProductWithCategories = ApiProduct & {
+  categories?: ApiCategory[];
+  category?: ApiCategory;
+  categorySlug?: string;
+};

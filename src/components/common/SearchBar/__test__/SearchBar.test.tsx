@@ -70,4 +70,32 @@ describe('SearchBar', () => {
 
     expect(screen.queryByLabelText('Voice search')).toBeFalsy();
   });
+
+  it('handles undefined onSubmitEditing', () => {
+    renderSearchBar({ onSubmitEditing: undefined });
+
+    const input = screen.getByPlaceholderText(defaultPlaceholder);
+    fireEvent(input, 'submitEditing', {
+      nativeEvent: { text: 'test' },
+    });
+
+    // Should not throw error
+    expect(input).toBeTruthy();
+  });
+
+  it('handles undefined onMicrophonePress', () => {
+    renderSearchBar({ onMicrophonePress: undefined, showMicrophone: true });
+
+    const microphoneButton = screen.getByLabelText('Voice search');
+    fireEvent.press(microphoneButton);
+
+    // Should not throw error
+    expect(microphoneButton).toBeTruthy();
+  });
+
+  it('renders microphone by default', () => {
+    renderSearchBar();
+
+    expect(screen.getByLabelText('Voice search')).toBeTruthy();
+  });
 });

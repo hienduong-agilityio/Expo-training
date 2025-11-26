@@ -35,4 +35,46 @@ describe('FallbackImage', () => {
 
     fireEvent(image, 'error', { nativeEvent: {} });
   });
+
+  it('uses fallback when source is null', () => {
+    const { toJSON } = render(<FallbackImage source={undefined} />);
+
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('uses fallback when source is undefined', () => {
+    const { toJSON } = render(<FallbackImage source={undefined} />);
+
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('switches to fallback when image error occurs', () => {
+    const { toJSON, rerender } = render(
+      <FallbackImage
+        source={MOCK_IMAGE_SOURCES.valid}
+        testID="fallback-image"
+      />,
+    );
+
+    const image = screen.getByTestId('fallback-image');
+    fireEvent(image, 'error', { nativeEvent: {} });
+
+    rerender(
+      <FallbackImage
+        source={MOCK_IMAGE_SOURCES.valid}
+        testID="fallback-image"
+      />,
+    );
+
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('uses custom fallback source', () => {
+    const customFallback = { uri: 'https://example.com/custom-fallback.jpg' };
+    const { toJSON } = render(
+      <FallbackImage source={undefined} fallbackSource={customFallback} />,
+    );
+
+    expect(toJSON()).toMatchSnapshot();
+  });
 });

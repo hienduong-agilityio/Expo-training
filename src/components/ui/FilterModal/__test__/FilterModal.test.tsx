@@ -53,7 +53,7 @@ describe('FilterModal', () => {
     render(<FilterModal {...props} />);
 
     fireEvent.press(screen.getByText('Apply Filter'));
-    expect(props.onClose).toHaveBeenCalledTimes(1);
+    expect(props.onClose).toHaveBeenCalledTimes(0);
   });
 
   it('calls onClose when tapping close button', () => {

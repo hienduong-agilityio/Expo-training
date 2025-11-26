@@ -13,9 +13,15 @@ import type {
   ViewStyle,
 } from 'react-native';
 import type { IProduct } from '@app/interfaces/product';
+import type { ComponentType } from 'react';
+import type { IconProps } from '@app/interfaces';
+import type { DEAL_INFO } from '@app/constants/product';
+import type { ICustomStyles } from '@app/interfaces/style';
 
 // Helpers
 import { ComponentSize } from '@app/helpers/ui';
+
+export type HeaderStyle = 'deal' | 'trending';
 
 export interface IButtonProps extends Omit<PressableProps, 'children'> {
   label?: string;
@@ -75,4 +81,38 @@ export interface INotFoundProps {
     button?: StyleProp<ViewStyle>;
   };
   onRetry?: () => void;
+}
+
+export type DealInfoType = typeof DEAL_INFO;
+
+export interface IIconConfig {
+  Icon?: ComponentType<IconProps>;
+  iconText?: string;
+  dealInfo?: DealInfoType;
+  iconContainerStyle?: ViewStyle;
+}
+
+export interface IContentConfig {
+  products: IProductCardProps[];
+  loading: boolean;
+  error: Error | null;
+  onItemPress?: (id: string) => void;
+}
+
+export interface IProductSectionProps
+  extends IPromoBannerProps,
+    IContentConfig {
+  containerStyle?: ViewStyle;
+}
+
+export interface IPromoBannerProps {
+  title: string;
+  subtitle?: string;
+  label?: string;
+  Icon?: ComponentType<IconProps>;
+  actionLabel?: string;
+  showActionArrow?: boolean;
+  headerStyle?: HeaderStyle;
+  customStyle?: ICustomStyles;
+  onPressViewAll?: () => void;
 }

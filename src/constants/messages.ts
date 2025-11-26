@@ -10,10 +10,13 @@ export const BUTTON_LABELS = {
   LOGIN: 'Login',
   LOGGING_IN: 'Logging in...',
   REGISTER: 'Register',
+  REGISTERING: 'Registering...',
   CREATING_ACCOUNT: 'Creating account',
   FORGOT_PASSWORD: 'Forgot Password?',
   VERIFY_EMAIL: 'Verify Email',
   SIGN_OUT: 'Sign out',
+  CHECKOUT: 'Checkout',
+  GO_TO_CART: 'Go to Cart',
 } as const;
 
 export const TEXTFIELD_MESSAGES = {
@@ -50,6 +53,12 @@ export const TOAST_MESSAGES = {
   ACCOUNT_CREATED: 'Account created successfully. Please log in.',
   LOGIN_FAILED: 'Login failed.',
   REQUEST_FAILED: 'Request failed. Please try again.',
+  REMOVED_FROM_WISHLIST: 'Removed from wishlist',
+  ADDED_TO_WISHLIST: 'Added to wishlist',
+  PAYMENT_SUCCESS: 'Payment done successfully.',
+  PAYMENT_FAILED: 'Payment failed. Please try again.',
+  REMOVED_FROM_CART: 'Item removed from cart',
+  ADD_TO_CART_FAILED: 'Failed to add item to cart. Please try again.',
 } as const;
 
 export const VALIDATION_MESSAGES = {
@@ -75,4 +84,23 @@ export const STATUS = {
 export const POSITION = {
   TOP: 'top',
   BOTTOM: 'bottom',
+} as const;
+
+export const LOADING_MESSAGES = {
+  CHECKOUT: 'Loading checkout...',
+  CART: 'Loading cart...',
+} as const;
+
+export const CART_MESSAGES = {
+  EMPTY: 'Your cart is empty',
+  EMPTY_DESCRIPTION: 'Add some products to get started',
+  SHOPPING_CART: 'Shopping Cart',
+  TOTAL: 'Total:',
+} as const;
+
+export const CHECKOUT_MESSAGES = {
+  ORDER: 'Order',
+  SHIPPING: 'Shipping',
+  TOTAL: 'Total',
+  PAYMENT: 'Payment',
 } as const;

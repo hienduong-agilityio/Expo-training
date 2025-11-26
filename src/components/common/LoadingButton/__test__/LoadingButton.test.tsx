@@ -106,5 +106,43 @@ describe('LoadingButton', () => {
       expect(screen.getByText('Processing...')).toBeTruthy();
       expect(screen.queryByText('Submit')).toBeFalsy();
     });
+
+    it('shows label when not loading', () => {
+      render(<LoadingButton label="Submit" onPress={() => {}} />);
+
+      expect(screen.getByText('Submit')).toBeTruthy();
+      expect(screen.queryByText('Loading...')).toBeFalsy();
+    });
+
+    it('is disabled when loading is true', () => {
+      render(<LoadingButton label="Submit" loading onPress={() => {}} />);
+
+      const button = screen.getByRole('button');
+      expect(button.props.accessibilityState?.disabled).toBe(true);
+      expect(button.props.accessibilityState?.busy).toBe(true);
+    });
+
+    it('is disabled when disabled is true', () => {
+      render(<LoadingButton label="Submit" disabled onPress={() => {}} />);
+
+      const button = screen.getByRole('button');
+      expect(button.props.accessibilityState?.disabled).toBe(true);
+    });
+
+    it('is disabled when both loading and disabled are true', () => {
+      render(
+        <LoadingButton label="Submit" loading disabled onPress={() => {}} />,
+      );
+
+      const button = screen.getByRole('button');
+      expect(button.props.accessibilityState?.disabled).toBe(true);
+      expect(button.props.accessibilityState?.busy).toBe(true);
+    });
+
+    it('shows default loading label when loadingLabel is not provided', () => {
+      render(<LoadingButton label="Submit" loading onPress={() => {}} />);
+
+      expect(screen.getByText('Loading...')).toBeTruthy();
+    });
   });
 });
