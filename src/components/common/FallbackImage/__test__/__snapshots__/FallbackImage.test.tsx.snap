@@ -21,3 +21,48 @@ exports[`FallbackImage renders with valid source 1`] = `
   }
 />
 `;
+
+exports[`FallbackImage switches to fallback when image error occurs 1`] = `
+<Image
+  onError={[Function]}
+  source={
+    {
+      "uri": "https://whimsical-benefit-a69d430573.media.strapiapp.com/default_fallback_image_ce6f43d139.png",
+    }
+  }
+  testID="fallback-image"
+/>
+`;
+
+exports[`FallbackImage uses custom fallback source 1`] = `
+<Image
+  onError={[Function]}
+  source={
+    {
+      "uri": "https://example.com/custom-fallback.jpg",
+    }
+  }
+/>
+`;
+
+exports[`FallbackImage uses fallback when source is null 1`] = `
+<Image
+  onError={[Function]}
+  source={
+    {
+      "uri": "https://whimsical-benefit-a69d430573.media.strapiapp.com/default_fallback_image_ce6f43d139.png",
+    }
+  }
+/>
+`;
+
+exports[`FallbackImage uses fallback when source is undefined 1`] = `
+<Image
+  onError={[Function]}
+  source={
+    {
+      "uri": "https://whimsical-benefit-a69d430573.media.strapiapp.com/default_fallback_image_ce6f43d139.png",
+    }
+  }
+/>
+`;

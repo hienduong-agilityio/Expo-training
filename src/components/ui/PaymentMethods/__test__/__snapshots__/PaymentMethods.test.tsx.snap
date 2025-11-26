@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<PaymentMethods /> renders title, options and continue button 1`] = `
+exports[`<PaymentMethods /> handles undefined onContinue gracefully 1`] = `
 <View
   style={
     {
@@ -60,10 +60,10 @@ exports[`<PaymentMethods /> renders title, options and continue button 1`] = `
       style={
         {
           "alignItems": "center",
-          "backgroundColor": "#F5F5F5",
+          "backgroundColor": "#FFCCD5",
           "borderColor": "#F83758",
           "borderRadius": 12,
-          "borderWidth": 2,
+          "borderWidth": 1,
           "flexDirection": "row",
           "minHeight": 56,
           "opacity": 1,
@@ -133,8 +133,9 @@ exports[`<PaymentMethods /> renders title, options and continue button 1`] = `
         {
           "alignItems": "center",
           "backgroundColor": "#F5F5F5",
+          "borderColor": "#E0E0E0",
           "borderRadius": 12,
-          "borderWidth": 0,
+          "borderWidth": 1,
           "flexDirection": "row",
           "minHeight": 56,
           "opacity": 1,
@@ -204,8 +205,9 @@ exports[`<PaymentMethods /> renders title, options and continue button 1`] = `
         {
           "alignItems": "center",
           "backgroundColor": "#F5F5F5",
+          "borderColor": "#E0E0E0",
           "borderRadius": 12,
-          "borderWidth": 0,
+          "borderWidth": 1,
           "flexDirection": "row",
           "minHeight": 56,
           "opacity": 1,
@@ -275,8 +277,1188 @@ exports[`<PaymentMethods /> renders title, options and continue button 1`] = `
         {
           "alignItems": "center",
           "backgroundColor": "#F5F5F5",
+          "borderColor": "#E0E0E0",
           "borderRadius": 12,
-          "borderWidth": 0,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "minHeight": 56,
+          "opacity": 1,
+          "paddingHorizontal": 20,
+          "paddingVertical": 16,
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "height": 48,
+            "justifyContent": "center",
+            "width": 48,
+          }
+        }
+      >
+        <View
+          accessibilityLabel="apple-icon"
+        />
+      </View>
+      <Text
+        style={
+          {
+            "color": "#575757",
+            "fontSize": 16,
+            "letterSpacing": 0.4,
+            "marginLeft": "auto",
+          }
+        }
+      >
+        ************2109
+      </Text>
+    </View>
+  </View>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderRadius": 10,
+          "justifyContent": "center",
+        },
+        {
+          "height": 52,
+          "paddingHorizontal": 20,
+        },
+        {
+          "backgroundColor": "#F83758",
+          "borderColor": "#E0E0E0",
+          "borderWidth": 1,
+        },
+        false,
+        {
+          "alignSelf": "stretch",
+        },
+        undefined,
+      ]
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        [
+          {
+            "fontWeight": "500",
+          },
+          {
+            "fontSize": 15,
+          },
+          {
+            "color": "#FFFFFF",
+          },
+        ]
+      }
+    >
+      Continue
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`<PaymentMethods /> handles undefined onSelect gracefully 1`] = `
+<View
+  style={
+    {
+      "gap": 20,
+    }
+  }
+>
+  <Text
+    accessibilityRole="header"
+    style={
+      {
+        "color": "#1C1B1F",
+        "fontSize": 20,
+        "fontWeight": "600",
+      }
+    }
+  >
+    Payment
+  </Text>
+  <View
+    style={
+      {
+        "gap": 16,
+      }
+    }
+  >
+    <View
+      accessibilityLabel="payment-option-visa"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#FFCCD5",
+          "borderColor": "#F83758",
+          "borderRadius": 12,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "minHeight": 56,
+          "opacity": 1,
+          "paddingHorizontal": 20,
+          "paddingVertical": 16,
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "height": 48,
+            "justifyContent": "center",
+            "width": 48,
+          }
+        }
+      >
+        <View
+          accessibilityLabel="visa-icon"
+        />
+      </View>
+      <Text
+        style={
+          {
+            "color": "#575757",
+            "fontSize": 16,
+            "letterSpacing": 0.4,
+            "marginLeft": "auto",
+          }
+        }
+      >
+        ************2109
+      </Text>
+    </View>
+    <View
+      accessibilityLabel="payment-option-paypal"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#F5F5F5",
+          "borderColor": "#E0E0E0",
+          "borderRadius": 12,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "minHeight": 56,
+          "opacity": 1,
+          "paddingHorizontal": 20,
+          "paddingVertical": 16,
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "height": 48,
+            "justifyContent": "center",
+            "width": 48,
+          }
+        }
+      >
+        <View
+          accessibilityLabel="paypal-icon"
+        />
+      </View>
+      <Text
+        style={
+          {
+            "color": "#575757",
+            "fontSize": 16,
+            "letterSpacing": 0.4,
+            "marginLeft": "auto",
+          }
+        }
+      >
+        ************2109
+      </Text>
+    </View>
+    <View
+      accessibilityLabel="payment-option-maestro"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#F5F5F5",
+          "borderColor": "#E0E0E0",
+          "borderRadius": 12,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "minHeight": 56,
+          "opacity": 1,
+          "paddingHorizontal": 20,
+          "paddingVertical": 16,
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "height": 48,
+            "justifyContent": "center",
+            "width": 48,
+          }
+        }
+      >
+        <View
+          accessibilityLabel="maestro-icon"
+        />
+      </View>
+      <Text
+        style={
+          {
+            "color": "#575757",
+            "fontSize": 16,
+            "letterSpacing": 0.4,
+            "marginLeft": "auto",
+          }
+        }
+      >
+        ************2109
+      </Text>
+    </View>
+    <View
+      accessibilityLabel="payment-option-apple"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#F5F5F5",
+          "borderColor": "#E0E0E0",
+          "borderRadius": 12,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "minHeight": 56,
+          "opacity": 1,
+          "paddingHorizontal": 20,
+          "paddingVertical": 16,
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "height": 48,
+            "justifyContent": "center",
+            "width": 48,
+          }
+        }
+      >
+        <View
+          accessibilityLabel="apple-icon"
+        />
+      </View>
+      <Text
+        style={
+          {
+            "color": "#575757",
+            "fontSize": 16,
+            "letterSpacing": 0.4,
+            "marginLeft": "auto",
+          }
+        }
+      >
+        ************2109
+      </Text>
+    </View>
+  </View>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderRadius": 10,
+          "justifyContent": "center",
+        },
+        {
+          "height": 52,
+          "paddingHorizontal": 20,
+        },
+        {
+          "backgroundColor": "#F83758",
+          "borderColor": "#E0E0E0",
+          "borderWidth": 1,
+        },
+        false,
+        {
+          "alignSelf": "stretch",
+        },
+        undefined,
+      ]
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        [
+          {
+            "fontWeight": "500",
+          },
+          {
+            "fontSize": 15,
+          },
+          {
+            "color": "#FFFFFF",
+          },
+        ]
+      }
+    >
+      Continue
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`<PaymentMethods /> renders title, options and continue button 1`] = `
+<View
+  style={
+    {
+      "gap": 20,
+    }
+  }
+>
+  <Text
+    accessibilityRole="header"
+    style={
+      {
+        "color": "#1C1B1F",
+        "fontSize": 20,
+        "fontWeight": "600",
+      }
+    }
+  >
+    Payment
+  </Text>
+  <View
+    style={
+      {
+        "gap": 16,
+      }
+    }
+  >
+    <View
+      accessibilityLabel="payment-option-visa"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#FFCCD5",
+          "borderColor": "#F83758",
+          "borderRadius": 12,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "minHeight": 56,
+          "opacity": 1,
+          "paddingHorizontal": 20,
+          "paddingVertical": 16,
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "height": 48,
+            "justifyContent": "center",
+            "width": 48,
+          }
+        }
+      >
+        <View
+          accessibilityLabel="visa-icon"
+        />
+      </View>
+      <Text
+        style={
+          {
+            "color": "#575757",
+            "fontSize": 16,
+            "letterSpacing": 0.4,
+            "marginLeft": "auto",
+          }
+        }
+      >
+        ************2109
+      </Text>
+    </View>
+    <View
+      accessibilityLabel="payment-option-paypal"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#F5F5F5",
+          "borderColor": "#E0E0E0",
+          "borderRadius": 12,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "minHeight": 56,
+          "opacity": 1,
+          "paddingHorizontal": 20,
+          "paddingVertical": 16,
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "height": 48,
+            "justifyContent": "center",
+            "width": 48,
+          }
+        }
+      >
+        <View
+          accessibilityLabel="paypal-icon"
+        />
+      </View>
+      <Text
+        style={
+          {
+            "color": "#575757",
+            "fontSize": 16,
+            "letterSpacing": 0.4,
+            "marginLeft": "auto",
+          }
+        }
+      >
+        ************2109
+      </Text>
+    </View>
+    <View
+      accessibilityLabel="payment-option-maestro"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#F5F5F5",
+          "borderColor": "#E0E0E0",
+          "borderRadius": 12,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "minHeight": 56,
+          "opacity": 1,
+          "paddingHorizontal": 20,
+          "paddingVertical": 16,
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "height": 48,
+            "justifyContent": "center",
+            "width": 48,
+          }
+        }
+      >
+        <View
+          accessibilityLabel="maestro-icon"
+        />
+      </View>
+      <Text
+        style={
+          {
+            "color": "#575757",
+            "fontSize": 16,
+            "letterSpacing": 0.4,
+            "marginLeft": "auto",
+          }
+        }
+      >
+        ************2109
+      </Text>
+    </View>
+    <View
+      accessibilityLabel="payment-option-apple"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#F5F5F5",
+          "borderColor": "#E0E0E0",
+          "borderRadius": 12,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "minHeight": 56,
+          "opacity": 1,
+          "paddingHorizontal": 20,
+          "paddingVertical": 16,
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "height": 48,
+            "justifyContent": "center",
+            "width": 48,
+          }
+        }
+      >
+        <View
+          accessibilityLabel="apple-icon"
+        />
+      </View>
+      <Text
+        style={
+          {
+            "color": "#575757",
+            "fontSize": 16,
+            "letterSpacing": 0.4,
+            "marginLeft": "auto",
+          }
+        }
+      >
+        ************2109
+      </Text>
+    </View>
+  </View>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderRadius": 10,
+          "justifyContent": "center",
+        },
+        {
+          "height": 52,
+          "paddingHorizontal": 20,
+        },
+        {
+          "backgroundColor": "#F83758",
+          "borderColor": "#E0E0E0",
+          "borderWidth": 1,
+        },
+        false,
+        {
+          "alignSelf": "stretch",
+        },
+        undefined,
+      ]
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        [
+          {
+            "fontWeight": "500",
+          },
+          {
+            "fontSize": 15,
+          },
+          {
+            "color": "#FFFFFF",
+          },
+        ]
+      }
+    >
+      Continue
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`<PaymentMethods /> renders with no selected option 1`] = `
+<View
+  style={
+    {
+      "gap": 20,
+    }
+  }
+>
+  <Text
+    accessibilityRole="header"
+    style={
+      {
+        "color": "#1C1B1F",
+        "fontSize": 20,
+        "fontWeight": "600",
+      }
+    }
+  >
+    Payment
+  </Text>
+  <View
+    style={
+      {
+        "gap": 16,
+      }
+    }
+  >
+    <View
+      accessibilityLabel="payment-option-visa"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#F5F5F5",
+          "borderColor": "#E0E0E0",
+          "borderRadius": 12,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "minHeight": 56,
+          "opacity": 1,
+          "paddingHorizontal": 20,
+          "paddingVertical": 16,
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "height": 48,
+            "justifyContent": "center",
+            "width": 48,
+          }
+        }
+      >
+        <View
+          accessibilityLabel="visa-icon"
+        />
+      </View>
+      <Text
+        style={
+          {
+            "color": "#575757",
+            "fontSize": 16,
+            "letterSpacing": 0.4,
+            "marginLeft": "auto",
+          }
+        }
+      >
+        ************2109
+      </Text>
+    </View>
+    <View
+      accessibilityLabel="payment-option-paypal"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#F5F5F5",
+          "borderColor": "#E0E0E0",
+          "borderRadius": 12,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "minHeight": 56,
+          "opacity": 1,
+          "paddingHorizontal": 20,
+          "paddingVertical": 16,
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "height": 48,
+            "justifyContent": "center",
+            "width": 48,
+          }
+        }
+      >
+        <View
+          accessibilityLabel="paypal-icon"
+        />
+      </View>
+      <Text
+        style={
+          {
+            "color": "#575757",
+            "fontSize": 16,
+            "letterSpacing": 0.4,
+            "marginLeft": "auto",
+          }
+        }
+      >
+        ************2109
+      </Text>
+    </View>
+    <View
+      accessibilityLabel="payment-option-maestro"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#F5F5F5",
+          "borderColor": "#E0E0E0",
+          "borderRadius": 12,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "minHeight": 56,
+          "opacity": 1,
+          "paddingHorizontal": 20,
+          "paddingVertical": 16,
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "height": 48,
+            "justifyContent": "center",
+            "width": 48,
+          }
+        }
+      >
+        <View
+          accessibilityLabel="maestro-icon"
+        />
+      </View>
+      <Text
+        style={
+          {
+            "color": "#575757",
+            "fontSize": 16,
+            "letterSpacing": 0.4,
+            "marginLeft": "auto",
+          }
+        }
+      >
+        ************2109
+      </Text>
+    </View>
+    <View
+      accessibilityLabel="payment-option-apple"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#F5F5F5",
+          "borderColor": "#E0E0E0",
+          "borderRadius": 12,
+          "borderWidth": 1,
           "flexDirection": "row",
           "minHeight": 56,
           "opacity": 1,

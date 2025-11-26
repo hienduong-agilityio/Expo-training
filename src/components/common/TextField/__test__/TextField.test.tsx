@@ -96,4 +96,144 @@ describe('TextField', () => {
 
     expect(input).toBeTruthy();
   });
+
+  it('renders without label', () => {
+    const { toJSON } = render(<TextField placeholder="No label" />);
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('renders without left icon', () => {
+    const { toJSON } = render(
+      <TextField placeholder="No left icon" rightIcon={<Text>👁️</Text>} />,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('renders without right icon', () => {
+    const { toJSON } = render(
+      <TextField placeholder="No right icon" leftIcon={<Text>🔒</Text>} />,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('renders with right icon and onRightPress', () => {
+    const onRightPress = jest.fn();
+    const { toJSON } = render(
+      <TextField
+        placeholder="Test"
+        rightIcon={<Text>👁️</Text>}
+        onRightPress={onRightPress}
+      />,
+    );
+
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('renders password field with right icon', () => {
+    const { toJSON } = render(
+      <TextField
+        placeholder="Password"
+        rightIcon={<Text>👁️</Text>}
+        isSecureText={true}
+      />,
+    );
+
+    const input = screen.getByPlaceholderText('Password');
+    expect(input.props.secureTextEntry).toBe(true);
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('renders with different sizes', () => {
+    const sizes = ['sm', 'md', 'lg'] as const;
+
+    sizes.forEach(size => {
+      const { toJSON } = render(
+        <TextField placeholder={`Size ${size}`} size={size} />,
+      );
+      expect(toJSON()).toMatchSnapshot(`size-${size}`);
+    });
+  });
+
+  it('renders with FILLED variant', () => {
+    const { toJSON } = render(
+      <TextField
+        placeholder="Filled variant"
+        variant={TEXTFIELD_VARIANTS.FILLED}
+      />,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('shows border color changes on focus', () => {
+    const { toJSON } = render(<TextField placeholder="Focus test" />);
+
+    const input = screen.getByPlaceholderText('Focus test');
+    fireEvent(input, 'focus');
+
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('shows error border color', () => {
+    const { toJSON } = render(
+      <TextField placeholder="Error test" error="Error message" />,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('shows primary border color on focus when no error', () => {
+    const { toJSON } = render(<TextField placeholder="Focus test" />);
+
+    const input = screen.getByPlaceholderText('Focus test');
+    fireEvent(input, 'focus');
+
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('shows default border color when not focused and no error', () => {
+    const { toJSON } = render(<TextField placeholder="Default test" />);
+
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('handles secureTextEntry with showPassword state', () => {
+    const { toJSON } = render(
+      <TextField
+        placeholder="Password"
+        isSecureText={true}
+        rightIcon={<Text>👁️</Text>}
+      />,
+    );
+
+    const input = screen.getByPlaceholderText('Password');
+    expect(input.props.secureTextEntry).toBe(true);
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('handles secureTextEntry when isSecureText is false', () => {
+    const { toJSON } = render(
+      <TextField placeholder="Text" isSecureText={false} />,
+    );
+
+    const input = screen.getByPlaceholderText('Text');
+    expect(input.props.secureTextEntry).toBeFalsy();
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('renders error text when error is provided', () => {
+    render(<TextField placeholder="Test" error="Error message" />);
+
+    expect(screen.getByText('Error message')).toBeTruthy();
+  });
+
+  it('does not render error text when error is not provided', () => {
+    render(<TextField placeholder="Test" />);
+
+    expect(screen.queryByText(/Error/)).toBeNull();
+  });
+
+  it('renders with OUTLINED variant by default', () => {
+    const { toJSON } = render(<TextField placeholder="Test" />);
+
+    expect(toJSON()).toMatchSnapshot();
+  });
 });

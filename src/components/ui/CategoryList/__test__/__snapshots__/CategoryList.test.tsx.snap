@@ -1,0 +1,176 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CategoryList renders correctly with categories 1`] = `
+<View>
+  <RCTScrollView
+    horizontal={true}
+    showsHorizontalScrollIndicator={false}
+  >
+    <View>
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "marginRight": 24,
+            "opacity": 1,
+          }
+        }
+      >
+        <View
+          style={
+            {
+              "borderColor": "#F0F0F0",
+              "borderRadius": 50,
+              "borderWidth": 2,
+              "height": 52,
+              "marginBottom": 8,
+              "overflow": "hidden",
+              "width": 52,
+            }
+          }
+        >
+          <Image
+            source={
+              {
+                "uri": "https://example.com/electronics.jpg",
+              }
+            }
+            style={
+              {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </View>
+        <Text
+          style={
+            {
+              "color": "#000000",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "textAlign": "center",
+            }
+          }
+        >
+          Electronics
+        </Text>
+      </View>
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "marginRight": 24,
+            "opacity": 1,
+          }
+        }
+      >
+        <View
+          style={
+            {
+              "borderColor": "#F0F0F0",
+              "borderRadius": 50,
+              "borderWidth": 2,
+              "height": 52,
+              "marginBottom": 8,
+              "overflow": "hidden",
+              "width": 52,
+            }
+          }
+        >
+          <Image
+            source={
+              {
+                "uri": "https://example.com/clothing.jpg",
+              }
+            }
+            style={
+              {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </View>
+        <Text
+          style={
+            {
+              "color": "#000000",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "textAlign": "center",
+            }
+          }
+        >
+          Clothing
+        </Text>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;
+
+exports[`CategoryList renders empty list when categories array is empty 1`] = `
+<View>
+  <RCTScrollView
+    horizontal={true}
+    showsHorizontalScrollIndicator={false}
+  >
+    <View />
+  </RCTScrollView>
+</View>
+`;

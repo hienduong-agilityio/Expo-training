@@ -8,10 +8,11 @@ import { styles } from './index.style';
 
 interface IFilterModalProps {
   visible: boolean;
-  categories: ICategory[];
+  categories: readonly ICategory[] | ICategory[];
   selectedCategory: string | null;
   onClose: () => void;
   onCategorySelect: (categoryId: string | null) => void;
+  onApply?: () => void;
 }
 
 export const FilterModal = ({
@@ -20,28 +21,28 @@ export const FilterModal = ({
   selectedCategory,
   onClose,
   onCategorySelect,
+  onApply,
 }: IFilterModalProps) => {
-  const handleCategoryPress = (categoryId: string | null) => {
-    onCategorySelect(categoryId);
+  const handleClearFilter = () => {
+    onCategorySelect(null);
   };
 
   const handleApplyFilter = () => {
-    onClose();
+    onApply?.();
   };
 
-  const handleClearFilter = () => {
-    onCategorySelect(null);
+  const handleCategorySelect = (categoryId: string) => {
+    onCategorySelect(categoryId);
   };
 
   return (
     <Modal
       visible={visible}
       animationType="slide"
-      transparent={true}
+      transparent
       onRequestClose={onClose}>
       <View style={styles.overlay}>
         <View style={styles.container}>
-          {/* Header */}
           <View style={styles.header}>
             <Text style={styles.title}>Filter Products</Text>
             <TouchableOpacity onPress={onClose} style={styles.closeButton}>
@@ -49,7 +50,6 @@ export const FilterModal = ({
             </TouchableOpacity>
           </View>
 
-          {/* Category Filter */}
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Category</Text>
             <ScrollView style={styles.categoriesContainer}>
@@ -58,7 +58,7 @@ export const FilterModal = ({
                   styles.categoryItem,
                   !selectedCategory && styles.categoryItemActive,
                 ]}
-                onPress={() => handleCategoryPress(null)}>
+                onPress={handleClearFilter}>
                 <Text
                   style={[
                     styles.categoryText,
@@ -75,7 +75,7 @@ export const FilterModal = ({
                     selectedCategory === category.id &&
                       styles.categoryItemActive,
                   ]}
-                  onPress={() => handleCategoryPress(category.id)}>
+                  onPress={() => handleCategorySelect(category.id)}>
                   <Text
                     style={[
                       styles.categoryText,
@@ -89,7 +89,6 @@ export const FilterModal = ({
             </ScrollView>
           </View>
 
-          {/* Actions */}
           <View style={styles.actions}>
             <TouchableOpacity
               style={styles.clearButton}

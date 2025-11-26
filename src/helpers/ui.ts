@@ -119,6 +119,7 @@ export function getButtonStyles(variant: BUTTON_VARIANTS): ButtonStyleConfig {
     default:
       return {
         containerStyle: {
+          backgroundColor: 'transparent',
           borderColor: colors.border,
           borderWidth: 1,
         },

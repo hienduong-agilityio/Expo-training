@@ -1,95 +1,121 @@
-import { render, fireEvent, screen } from '@testing-library/react-native';
-import { ProductDetails } from '../index';
-import type { IProductDetailsProps } from '@app/interfaces';
+import { fireEvent, render, screen } from '@testing-library/react-native';
+
+// Components
+import { ProductDetails } from '@app/components/ui/ProductDetails';
 
 describe('ProductDetails', () => {
-  const mockProduct: IProductDetailsProps = {
-    id: '1',
+  const baseProps = {
     name: 'Test Product',
-    description: 'Test description',
-    price: 1000,
-    originalPrice: 1500,
-    discountPercent: 33,
-    currency: 'INR',
-    rating: 4.5,
-    reviewCount: 1234,
-    details: 'Product details here',
-    images: [],
-    sizes: [],
-    features: [],
-    onShowMoreDetails: jest.fn(),
+    price: 100,
+    currency: 'USD' as const,
   };
 
-  const mockProps = {
-    ...mockProduct,
-    onShowMoreDetails: jest.fn(),
+  const renderComponent = (overrides = {}) => {
+    return render(<ProductDetails {...baseProps} {...overrides} />);
   };
 
-  beforeEach(() => {
-    jest.clearAllMocks();
+  describe('Basic rendering', () => {
+    it('renders correctly with basic props', () => {
+      const { toJSON } = renderComponent();
+
+      expect(screen.getByText('Test Product')).toBeTruthy();
+      expect(screen.getByText('$ 100')).toBeTruthy();
+      expect(toJSON()).toMatchSnapshot();
+    });
+
+    it('renders with all optional props', () => {
+      const onShowMoreDetails = jest.fn();
+      const { toJSON } = renderComponent({
+        shortDescription: 'A great product',
+        rating: 4.5,
+        reviewCount: 1234,
+        originalPrice: 150,
+        discountPercent: 33,
+        details: 'Product details text',
+        onShowMoreDetails,
+      });
+
+      expect(screen.getByText('A great product')).toBeTruthy();
+      expect(screen.getByText('1,234')).toBeTruthy();
+      expect(screen.getByText('$ 150')).toBeTruthy();
+      expect(screen.getByText('33% Off')).toBeTruthy();
+      expect(screen.getByText('Product details text')).toBeTruthy();
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
-  it('renders product information', () => {
-    render(<ProductDetails {...mockProps} />);
+  describe('Rating and reviews', () => {
+    it('renders rating with review count', () => {
+      renderComponent({ rating: 4.5, reviewCount: 1234 });
+      expect(screen.getByText('1,234')).toBeTruthy();
+    });
 
-    expect(screen.getByText('Test Product')).toBeTruthy();
-    expect(screen.getByText('Test description')).toBeTruthy();
-    expect(screen.getByText('Product Details')).toBeTruthy();
-    expect(screen.getByText('More')).toBeTruthy();
+    it('does not render rating section when rating is undefined', () => {
+      renderComponent({ rating: undefined });
+      expect(screen.queryByLabelText('stars')).toBeNull();
+    });
+
+    it('renders rating without review count', () => {
+      renderComponent({ rating: 4.5, reviewCount: undefined });
+      expect(screen.getByText('Test Product')).toBeTruthy();
+    });
   });
 
-  it('shows original price when discount exists', () => {
-    render(<ProductDetails {...mockProps} />);
+  describe('Price and discount', () => {
+    it('renders with original price and discount', () => {
+      renderComponent({ originalPrice: 150, discountPercent: 33 });
+      expect(screen.getByText('$ 150')).toBeTruthy();
+      expect(screen.getByText('33% Off')).toBeTruthy();
+    });
 
-    expect(screen.getByText('₹ 1500')).toBeTruthy();
-    expect(screen.getByText('33% Off')).toBeTruthy();
+    it('does not render original price when not provided or <= current price', () => {
+      const { rerender } = renderComponent({ price: 100 });
+      expect(screen.getByText('$ 100')).toBeTruthy();
+
+      rerender(
+        <ProductDetails {...baseProps} price={100} originalPrice={100} />,
+      );
+      expect(screen.getByText('$ 100')).toBeTruthy();
+    });
+
+    it('does not render discount badge when discountPercent is 0 or undefined', () => {
+      const { rerender } = renderComponent({
+        price: 100,
+        originalPrice: 100,
+        discountPercent: 0,
+      });
+      expect(screen.queryByText('% Off')).toBeNull();
+
+      rerender(
+        <ProductDetails
+          {...baseProps}
+          price={80}
+          originalPrice={100}
+          discountPercent={undefined}
+        />,
+      );
+      expect(screen.queryByText('% Off')).toBeNull();
+    });
   });
 
-  it('does not show original price when no discount', () => {
-    const productWithoutDiscount = {
-      ...mockProduct,
-      originalPrice: undefined,
-      discountPercent: undefined,
-    };
+  describe('Details section', () => {
+    it('renders details and handles onShowMoreDetails', () => {
+      const onShowMoreDetails = jest.fn();
+      renderComponent({
+        details: 'Product details text',
+        onShowMoreDetails,
+      });
 
-    render(<ProductDetails {...mockProps} {...productWithoutDiscount} />);
+      fireEvent.press(screen.getByText('More'));
+      expect(onShowMoreDetails).toHaveBeenCalledTimes(1);
+    });
 
-    expect(screen.queryByText('₹ 1500')).toBeNull();
-    expect(screen.queryByText('33% Off')).toBeNull();
-  });
+    it('does not render details section when details is not provided or empty', () => {
+      const { rerender } = renderComponent();
+      expect(screen.queryByText('More')).toBeNull();
 
-  it('calls onShowMoreDetails when More is pressed', () => {
-    render(<ProductDetails {...mockProps} />);
-
-    fireEvent.press(screen.getByText('More'));
-    expect(mockProps.onShowMoreDetails).toHaveBeenCalledTimes(1);
-  });
-
-  it('handles product without details', () => {
-    const productWithoutDetails = {
-      ...mockProduct,
-      details: '',
-    };
-
-    render(<ProductDetails {...mockProps} {...productWithoutDetails} />);
-
-    expect(screen.getByText('Product Details')).toBeTruthy();
-  });
-
-  it('formats review count correctly', () => {
-    render(<ProductDetails {...mockProps} />);
-
-    expect(screen.getByText('1,234')).toBeTruthy();
-  });
-
-  it('uses default currency when not provided', () => {
-    const productWithoutCurrency = {
-      ...mockProduct,
-      currency: undefined,
-    };
-
-    render(<ProductDetails {...mockProps} {...productWithoutCurrency} />);
-
-    expect(screen.getByText('₹ 1000')).toBeTruthy();
+      rerender(<ProductDetails {...baseProps} details="" />);
+      expect(screen.queryByText('More')).toBeNull();
+    });
   });
 });

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProductCard Snapshots matches snapshots for different states: complete product data 1`] = `
+exports[`ProductCard Snapshots matches snapshot for different states: complete-product 1`] = `
 <View
   accessibilityLabel="Product: Black Winter Jacket, Price: 499 INR, Rating: 5 stars"
   accessibilityRole="button"
@@ -257,7 +257,7 @@ exports[`ProductCard Snapshots matches snapshots for different states: complete 
 </View>
 `;
 
-exports[`ProductCard Snapshots matches snapshots for different states: with wishlist functionality 1`] = `
+exports[`ProductCard Snapshots matches snapshot for different states: with-wishlist 1`] = `
 <View
   accessibilityLabel="Product: Black Winter Jacket, Price: 499 INR, Rating: 5 stars"
   accessibilityRole="button"
@@ -339,7 +339,6 @@ exports[`ProductCard Snapshots matches snapshots for different states: with wish
       }
     />
     <View
-      accessibilityLabel="Remove from wishlist"
       accessibilityRole="button"
       accessibilityState={
         {
@@ -391,7 +390,6 @@ exports[`ProductCard Snapshots matches snapshots for different states: with wish
           false,
         ]
       }
-      testID="wishlist-btn"
     >
       <RNSVGSvgView
         align="xMidYMid"

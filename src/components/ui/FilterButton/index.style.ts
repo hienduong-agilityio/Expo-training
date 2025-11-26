@@ -6,13 +6,13 @@ import { borderRadius, colors, spacing, typography } from '@app/themes';
 export const styles = StyleSheet.create({
   filterButtons: {
     flexDirection: 'row',
-    gap: spacing['1.25'],
+    gap: spacing['4'],
   },
 
   filterButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: colors.background,
+    backgroundColor: colors.white,
     borderRadius: borderRadius.sm,
     paddingHorizontal: spacing['2'],
     paddingVertical: spacing['1.25'],

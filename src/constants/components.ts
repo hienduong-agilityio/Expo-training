@@ -57,7 +57,6 @@ export const UI_BUTTON_LABELS = {
   LOGIN: 'Login',
   REGISTER: 'Register',
   CREATE_ACCOUNT: 'Create Account',
-  SIGN_UP: 'Sign Up',
   SIGN_OUT: 'Sign Out',
   SKIP: 'Skip',
   CANCEL: 'Cancel',

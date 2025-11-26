@@ -1,88 +1,111 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import {
   View,
   type ListRenderItemInfo,
   type FlatListProps,
   FlatList,
+  Dimensions,
+  StyleSheet,
 } from 'react-native';
 
+// Components
 import { ProductCard } from '@app/components/ui/ProductCard';
-import type { IProductCardProps } from '@app/interfaces';
+
+// Styles
 import { styles } from './index.style';
+
+// Types
+import type { IProductCardProps } from '@app/interfaces';
 import type { ICustomStyles } from '@app/interfaces/style';
 
 type FlatListModifiedProps = Omit<
   FlatListProps<IProductCardProps>,
-  'data' | 'renderItem' | 'keyExtractor'
+  'data' | 'renderItem' | 'keyExtractor' | 'numColumns' | 'horizontal'
 >;
 
-export interface IProductListProps extends FlatListModifiedProps {
+export interface IGridProductListProps extends FlatListModifiedProps {
   products: IProductCardProps[];
+  numColumns?: number;
   gap?: number;
   contentPadding?: number;
-  itemWidth?: number;
-  snap?: boolean;
   onItemPress?: (id: string) => void;
+  onWishlistToggle?: (id: string) => void;
   keyExtractor?: (item: IProductCardProps, index: number) => string;
   customStyle?: ICustomStyles;
 }
 
-export const ProductList = ({
+export const GridProductList = ({
   products = [],
-  horizontal = false,
   numColumns = 2,
   gap = 12,
   contentPadding = 12,
-  itemWidth = 160,
-  snap = false,
   onItemPress = () => {},
+  onWishlistToggle,
   keyExtractor = (item: IProductCardProps, index: number) =>
     item.id ?? String(item.name ?? index),
   contentContainerStyle = {},
   customStyle,
   ...rest
-}: IProductListProps) => {
+}: IGridProductListProps) => {
+  const screenWidth = useMemo(() => Dimensions.get('window').width, []);
+
+  const itemWidth = useMemo(() => {
+    const totalPadding = contentPadding * 2;
+    const totalGap = gap * (numColumns - 1);
+
+    return (screenWidth - totalPadding - totalGap) / numColumns;
+  }, [screenWidth, contentPadding, gap, numColumns]);
+
+  const itemContainerStyle = useMemo(
+    () => ({
+      width: itemWidth,
+      marginRight: gap,
+      marginBottom: gap,
+    }),
+    [itemWidth, gap],
+  );
+
+  const columnWrapperStyle = useMemo(
+    () => ({
+      marginRight: -gap,
+    }),
+    [gap],
+  );
+
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<IProductCardProps>) => (
       <View
         style={[
           styles.itemContainer,
           customStyle?.itemContainer,
-          horizontal && itemWidth ? { width: itemWidth } : null,
+          itemContainerStyle,
         ]}>
         <ProductCard
           {...item}
           onPress={onItemPress}
-          style={styles.productCard}
+          onWishlistToggle={onWishlistToggle}
+          style={StyleSheet.flatten([
+            styles.productCard,
+            styles.productCardGrid,
+          ])}
         />
       </View>
     ),
-    [horizontal, itemWidth, onItemPress, customStyle?.itemContainer],
+    [
+      itemContainerStyle,
+      onItemPress,
+      onWishlistToggle,
+      customStyle?.itemContainer,
+    ],
   );
-
-  const DefaultSeparator = useCallback(
-    () => <View style={horizontal ? { width: gap } : { height: gap }} />,
-    [horizontal, gap],
-  );
-
-  const getItemLayout =
-    horizontal && itemWidth
-      ? (_: unknown, index: number) => ({
-          length: itemWidth,
-          offset: index * (itemWidth + gap),
-          index,
-        })
-      : undefined;
 
   return (
     <FlatList
       data={products}
       renderItem={renderItem}
       keyExtractor={keyExtractor}
-      horizontal={horizontal}
-      numColumns={horizontal ? 1 : numColumns}
-      ItemSeparatorComponent={DefaultSeparator}
-      getItemLayout={getItemLayout}
+      numColumns={numColumns}
+      columnWrapperStyle={columnWrapperStyle}
       contentContainerStyle={[
         {
           paddingHorizontal: contentPadding,
@@ -90,24 +113,15 @@ export const ProductList = ({
         },
         contentContainerStyle,
       ]}
-      showsHorizontalScrollIndicator={false}
       showsVerticalScrollIndicator={false}
       removeClippedSubviews
-      initialNumToRender={horizontal ? 10 : 12}
+      initialNumToRender={12}
       windowSize={5}
       maxToRenderPerBatch={8}
       updateCellsBatchingPeriod={50}
       onEndReachedThreshold={0.4}
       accessibilityRole="list"
-      accessibilityLabel="Product list"
-      {...(horizontal && snap && itemWidth
-        ? {
-            decelerationRate: 'fast' as const,
-            disableIntervalMomentum: true,
-            snapToAlignment: 'start' as const,
-            snapToInterval: itemWidth + gap,
-          }
-        : null)}
+      accessibilityLabel="Grid product list"
       {...rest}
     />
   );

@@ -5,7 +5,7 @@ exports[`<FilterButtons /> hides Filter when showFilter=false 1`] = `
   style={
     {
       "flexDirection": "row",
-      "gap": 5,
+      "gap": 16,
     }
   }
 >
@@ -42,7 +42,7 @@ exports[`<FilterButtons /> hides Filter when showFilter=false 1`] = `
     style={
       {
         "alignItems": "center",
-        "backgroundColor": "#F9F9F9",
+        "backgroundColor": "#FFFFFF",
         "borderColor": "#E0E0E0",
         "borderRadius": 4,
         "borderWidth": 1,
@@ -74,7 +74,7 @@ exports[`<FilterButtons /> hides Sort when showSort=false 1`] = `
   style={
     {
       "flexDirection": "row",
-      "gap": 5,
+      "gap": 16,
     }
   }
 >
@@ -111,7 +111,7 @@ exports[`<FilterButtons /> hides Sort when showSort=false 1`] = `
     style={
       {
         "alignItems": "center",
-        "backgroundColor": "#F9F9F9",
+        "backgroundColor": "#FFFFFF",
         "borderColor": "#E0E0E0",
         "borderRadius": 4,
         "borderWidth": 1,

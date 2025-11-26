@@ -5,7 +5,7 @@ exports[`LoadingButton Rendering renders loading button with custom loading labe
   accessibilityRole="button"
   accessibilityState={
     {
-      "busy": undefined,
+      "busy": true,
       "checked": undefined,
       "disabled": true,
       "expanded": undefined,
@@ -22,7 +22,6 @@ exports[`LoadingButton Rendering renders loading button with custom loading labe
   }
   accessible={true}
   collapsable={false}
-  color="primary"
   focusable={true}
   onBlur={[Function]}
   onClick={[Function]}
@@ -41,8 +40,8 @@ exports[`LoadingButton Rendering renders loading button with custom loading labe
         "justifyContent": "center",
       },
       {
-        "height": 52,
-        "paddingHorizontal": 20,
+        "height": 44,
+        "paddingHorizontal": 16,
       },
       {
         "backgroundColor": "#F83758",
@@ -69,18 +68,17 @@ exports[`LoadingButton Rendering renders loading button with custom loading labe
     <ActivityIndicator
       color="#FFFFFF"
       size="small"
+      testID="loading-indicator"
     />
     <Text
       numberOfLines={1}
       style={
         [
           {
-            "alignItems": "center",
-            "borderRadius": 10,
-            "justifyContent": "center",
+            "fontWeight": "500",
           },
           {
-            "fontSize": 15,
+            "fontSize": 14,
           },
           {
             "color": "#FFFFFF",
@@ -102,7 +100,7 @@ exports[`LoadingButton Rendering renders loading button with default label 1`] =
   accessibilityRole="button"
   accessibilityState={
     {
-      "busy": undefined,
+      "busy": false,
       "checked": undefined,
       "disabled": false,
       "expanded": undefined,
@@ -119,7 +117,6 @@ exports[`LoadingButton Rendering renders loading button with default label 1`] =
   }
   accessible={true}
   collapsable={false}
-  color="primary"
   focusable={true}
   onBlur={[Function]}
   onClick={[Function]}
@@ -138,8 +135,8 @@ exports[`LoadingButton Rendering renders loading button with default label 1`] =
         "justifyContent": "center",
       },
       {
-        "height": 52,
-        "paddingHorizontal": 20,
+        "height": 44,
+        "paddingHorizontal": 16,
       },
       {
         "backgroundColor": "#F83758",
@@ -160,7 +157,7 @@ exports[`LoadingButton Rendering renders loading button with default label 1`] =
           "fontWeight": "500",
         },
         {
-          "fontSize": 15,
+          "fontSize": 14,
         },
         {
           "color": "#FFFFFF",
@@ -178,7 +175,7 @@ exports[`LoadingButton States renders different sizes 1`] = `
   accessibilityRole="button"
   accessibilityState={
     {
-      "busy": undefined,
+      "busy": false,
       "checked": undefined,
       "disabled": false,
       "expanded": undefined,
@@ -195,7 +192,6 @@ exports[`LoadingButton States renders different sizes 1`] = `
   }
   accessible={true}
   collapsable={false}
-  color="primary"
   focusable={true}
   onBlur={[Function]}
   onClick={[Function]}
@@ -254,7 +250,7 @@ exports[`LoadingButton States renders different sizes 2`] = `
   accessibilityRole="button"
   accessibilityState={
     {
-      "busy": undefined,
+      "busy": false,
       "checked": undefined,
       "disabled": false,
       "expanded": undefined,
@@ -271,7 +267,6 @@ exports[`LoadingButton States renders different sizes 2`] = `
   }
   accessible={true}
   collapsable={false}
-  color="primary"
   focusable={true}
   onBlur={[Function]}
   onClick={[Function]}
@@ -330,7 +325,7 @@ exports[`LoadingButton States renders different sizes 3`] = `
   accessibilityRole="button"
   accessibilityState={
     {
-      "busy": undefined,
+      "busy": false,
       "checked": undefined,
       "disabled": false,
       "expanded": undefined,
@@ -347,7 +342,6 @@ exports[`LoadingButton States renders different sizes 3`] = `
   }
   accessible={true}
   collapsable={false}
-  color="primary"
   focusable={true}
   onBlur={[Function]}
   onClick={[Function]}
@@ -406,7 +400,7 @@ exports[`LoadingButton States renders disabled state 1`] = `
   accessibilityRole="button"
   accessibilityState={
     {
-      "busy": undefined,
+      "busy": false,
       "checked": undefined,
       "disabled": true,
       "expanded": undefined,
@@ -423,7 +417,6 @@ exports[`LoadingButton States renders disabled state 1`] = `
   }
   accessible={true}
   collapsable={false}
-  color="primary"
   focusable={true}
   onBlur={[Function]}
   onClick={[Function]}
@@ -442,8 +435,8 @@ exports[`LoadingButton States renders disabled state 1`] = `
         "justifyContent": "center",
       },
       {
-        "height": 52,
-        "paddingHorizontal": 20,
+        "height": 44,
+        "paddingHorizontal": 16,
       },
       {
         "backgroundColor": "#F83758",
@@ -466,7 +459,7 @@ exports[`LoadingButton States renders disabled state 1`] = `
           "fontWeight": "500",
         },
         {
-          "fontSize": 15,
+          "fontSize": 14,
         },
         {
           "color": "#FFFFFF",
@@ -484,7 +477,7 @@ exports[`LoadingButton States renders full width button 1`] = `
   accessibilityRole="button"
   accessibilityState={
     {
-      "busy": undefined,
+      "busy": false,
       "checked": undefined,
       "disabled": false,
       "expanded": undefined,
@@ -501,7 +494,6 @@ exports[`LoadingButton States renders full width button 1`] = `
   }
   accessible={true}
   collapsable={false}
-  color="primary"
   focusable={true}
   onBlur={[Function]}
   onClick={[Function]}
@@ -520,8 +512,8 @@ exports[`LoadingButton States renders full width button 1`] = `
         "justifyContent": "center",
       },
       {
-        "height": 52,
-        "paddingHorizontal": 20,
+        "height": 44,
+        "paddingHorizontal": 16,
       },
       {
         "backgroundColor": "#F83758",
@@ -544,7 +536,7 @@ exports[`LoadingButton States renders full width button 1`] = `
           "fontWeight": "500",
         },
         {
-          "fontSize": 15,
+          "fontSize": 14,
         },
         {
           "color": "#FFFFFF",

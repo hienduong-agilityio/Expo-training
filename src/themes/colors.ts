@@ -1,4 +1,6 @@
 export const colors = {
+  transparent: 'transparent',
+
   // Brand
   primary: '#F83758',
   primaryDark: '#DE5753',

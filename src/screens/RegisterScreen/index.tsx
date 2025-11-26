@@ -1,9 +1,6 @@
-import { useCallback } from 'react';
-import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // Components
-import { Button } from '@app/components/common/Button';
 import { AuthTextField } from '@app/components/ui/AuthTextField';
 import { AuthFooter } from '@app/components/ui/AuthFooter';
 import { AuthScreenLayout } from '@app/components/ui/AuthScreenLayout';
@@ -15,70 +12,139 @@ import { UserIcon, PassIcon } from '@app/icons';
 import {
   AUTH_FORM_MESSAGES,
   BUTTON_LABELS,
+  NAVIGATION_DELAYS,
+  POSITION,
   PUBLIC_SCREENS,
+  STATUS,
+  TOAST_MESSAGES,
 } from '@app/constants';
 
-// Interfaces
-import { PublicStackScreenProps } from '@app/interfaces';
+// Types
+import type { PublicStackScreenProps } from '@app/interfaces';
 
 // Styles
 import { authStyles } from '@app/styles';
 
-// Enums
+// Hooks
+import { useForm } from '@app/hooks/useForm';
+import { useAuthActions } from '@app/hooks/useAuthActions';
+
+// Stores
+import { toastStore } from '@app/stores/toastStore';
+
+// Helpers
+import { getApiErrorMessage } from '@app/helpers/errorMessage';
+import { validateRegister } from '@app/helpers/validation';
+
+// Schemas
+import { RegisterFormValues } from '@app/schemas/auth';
+import { LoadingButton } from '@app/components/common/LoadingButton';
 
 type RegisterScreenProps = PublicStackScreenProps<
   typeof PUBLIC_SCREENS.REGISTER
 >;
 
 export const RegisterScreen = ({ navigation }: RegisterScreenProps) => {
-  const handleLogin = useCallback(() => {
-    navigation.navigate(PUBLIC_SCREENS.LOGIN);
-  }, [navigation]);
+  const { values, fieldErrors, handleChange, resetForm, setFieldError } =
+    useForm({
+      initialValues: {
+        username: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+      },
+    });
+  const { showToast } = toastStore();
+  const { register, isSubmitting } = useAuthActions();
+
+  const navigateToLogin = () => navigation.navigate(PUBLIC_SCREENS.LOGIN);
+
+  const handleSubmit = async () => {
+    if (isSubmitting) return;
+
+    const validationResult = validateRegister(values as RegisterFormValues);
+
+    if (!validationResult.ok) {
+      Object.entries(validationResult.errors).forEach(([field, error]) => {
+        if (error) setFieldError(field, error);
+      });
+
+      return;
+    }
+
+    try {
+      await register(validationResult.payload);
+
+      showToast({
+        type: STATUS.SUCCESS,
+        message: TOAST_MESSAGES.REGISTER_SUCCESS,
+        position: POSITION.TOP,
+      });
+
+      resetForm();
+      setTimeout(navigateToLogin, NAVIGATION_DELAYS.AFTER_REGISTER);
+    } catch (error) {
+      showToast({
+        type: STATUS.ERROR,
+        message: getApiErrorMessage(error, TOAST_MESSAGES.REQUEST_FAILED),
+        position: POSITION.TOP,
+      });
+    }
+  };
 
   return (
     <SafeAreaView style={authStyles.screen}>
       <AuthScreenLayout title={AUTH_FORM_MESSAGES.CREATE_ACCOUNT}>
         <AuthTextField
-          placeholder={AUTH_FORM_MESSAGES.USERNAME_OR_EMAIL}
-          onChangeText={() => {}}
+          placeholder={AUTH_FORM_MESSAGES.USERNAME}
+          value={values.username}
+          onChangeText={text => handleChange('username', text)}
+          leftIcon={<UserIcon width={20} height={20} />}
+          autoCapitalize="none"
+          autoCorrect={false}
+          error={fieldErrors.username}
+        />
+        <AuthTextField
+          placeholder={AUTH_FORM_MESSAGES.EMAIL}
+          value={values.email}
+          onChangeText={text => handleChange('email', text)}
           leftIcon={<UserIcon width={20} height={20} />}
           keyboardType="email-address"
           autoCapitalize="none"
           autoCorrect={false}
+          error={fieldErrors.email}
         />
-
         <AuthTextField
           placeholder={AUTH_FORM_MESSAGES.PASSWORD}
-          onChangeText={() => {}}
+          value={values.password}
+          onChangeText={text => handleChange('password', text)}
           leftIcon={<PassIcon width={20} height={20} />}
           isPassword
+          error={fieldErrors.password}
         />
-
         <AuthTextField
           placeholder={AUTH_FORM_MESSAGES.CONFIRM_PASSWORD}
-          onChangeText={() => {}}
+          value={values.confirmPassword}
+          onChangeText={text => handleChange('confirmPassword', text)}
           leftIcon={<PassIcon width={20} height={20} />}
           isPassword
+          error={fieldErrors.confirmPassword}
         />
 
-        <View style={authStyles.agreementContainer}>
-          <Text style={authStyles.agreementText}>
-            {AUTH_FORM_MESSAGES.BY_CLICKING_REGISTER}
-          </Text>
-        </View>
-
-        <Button
+        <LoadingButton
           fullWidth
           size="lg"
-          disabled={false}
           label={BUTTON_LABELS.REGISTER}
+          disabled={isSubmitting}
+          loadingLabel={BUTTON_LABELS.REGISTERING}
+          loading={isSubmitting}
+          onPress={handleSubmit}
         />
 
         <AuthFooter
           helperText={AUTH_FORM_MESSAGES.DONT_HAVE_AN_ACCOUNT}
           helperActionLabel={BUTTON_LABELS.LOGIN}
-          onHelperActionPress={handleLogin}
-          onSocialSelect={() => {}}
+          onHelperActionPress={navigateToLogin}
         />
       </AuthScreenLayout>
     </SafeAreaView>

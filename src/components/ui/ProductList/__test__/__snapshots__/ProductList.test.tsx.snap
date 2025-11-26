@@ -1,15 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProductList Rendering matches snapshot 1`] = `
+exports[`GridProductList Rendering matches snapshot 1`] = `
 <RCTScrollView
-  ItemSeparatorComponent={[Function]}
-  accessibilityLabel="Product list"
+  accessibilityLabel="Grid product list"
   accessibilityRole="list"
   contentContainerStyle={
     [
       {
-        "paddingHorizontal": 216,
-        "paddingVertical": 216,
+        "paddingHorizontal": 16,
+        "paddingVertical": 16,
       },
       {},
     ]
@@ -28,6 +27,38 @@ exports[`ProductList Rendering matches snapshot 1`] = `
         "price": 499,
         "rating": 5,
         "reviewCount": 6890,
+        "sizes": [
+          {
+            "available": true,
+            "id": "1",
+            "size": "XS",
+          },
+          {
+            "available": true,
+            "id": "2",
+            "size": "S",
+          },
+          {
+            "available": true,
+            "id": "3",
+            "size": "M",
+          },
+          {
+            "available": true,
+            "id": "4",
+            "size": "L",
+          },
+          {
+            "available": true,
+            "id": "5",
+            "size": "XL",
+          },
+          {
+            "available": false,
+            "id": "6",
+            "size": "XXL",
+          },
+        ],
       },
       {
         "brand": "Cotton Co.",
@@ -41,6 +72,38 @@ exports[`ProductList Rendering matches snapshot 1`] = `
         "price": 399,
         "rating": 5,
         "reviewCount": 152344,
+        "sizes": [
+          {
+            "available": true,
+            "id": "1",
+            "size": "XS",
+          },
+          {
+            "available": true,
+            "id": "2",
+            "size": "S",
+          },
+          {
+            "available": true,
+            "id": "3",
+            "size": "M",
+          },
+          {
+            "available": true,
+            "id": "4",
+            "size": "L",
+          },
+          {
+            "available": true,
+            "id": "5",
+            "size": "XL",
+          },
+          {
+            "available": false,
+            "id": "6",
+            "size": "XXL",
+          },
+        ],
       },
       {
         "brand": "Fashion Co.",
@@ -54,13 +117,43 @@ exports[`ProductList Rendering matches snapshot 1`] = `
         "price": 2000,
         "rating": 5,
         "reviewCount": 523456,
+        "sizes": [
+          {
+            "available": true,
+            "id": "1",
+            "size": "XS",
+          },
+          {
+            "available": true,
+            "id": "2",
+            "size": "S",
+          },
+          {
+            "available": true,
+            "id": "3",
+            "size": "M",
+          },
+          {
+            "available": true,
+            "id": "4",
+            "size": "L",
+          },
+          {
+            "available": true,
+            "id": "5",
+            "size": "XL",
+          },
+          {
+            "available": false,
+            "id": "6",
+            "size": "XXL",
+          },
+        ],
       },
     ]
   }
-  estimatedItemSize={200}
   getItem={[Function]}
   getItemCount={[Function]}
-  horizontal={false}
   initialNumToRender={12}
   keyExtractor={[Function]}
   listRef={
@@ -80,7 +173,6 @@ exports[`ProductList Rendering matches snapshot 1`] = `
   removeClippedSubviews={true}
   renderItem={[Function]}
   scrollEventThrottle={0.0001}
-  showsHorizontalScrollIndicator={false}
   showsVerticalScrollIndicator={false}
   stickyHeaderIndices={[]}
   updateCellsBatchingPeriod={50}
@@ -95,9 +187,14 @@ exports[`ProductList Rendering matches snapshot 1`] = `
     >
       <View
         style={
-          {
-            "flexDirection": "row",
-          }
+          [
+            {
+              "flexDirection": "row",
+            },
+            {
+              "marginRight": -16,
+            },
+          ]
         }
       >
         <View
@@ -105,7 +202,11 @@ exports[`ProductList Rendering matches snapshot 1`] = `
             [
               {},
               undefined,
-              null,
+              {
+                "marginBottom": 16,
+                "marginRight": 16,
+                "width": 351,
+              },
             ]
           }
         >
@@ -123,8 +224,43 @@ exports[`ProductList Rendering matches snapshot 1`] = `
             price={499}
             rating={5}
             reviewCount={6890}
+            sizes={
+              [
+                {
+                  "available": true,
+                  "id": "1",
+                  "size": "XS",
+                },
+                {
+                  "available": true,
+                  "id": "2",
+                  "size": "S",
+                },
+                {
+                  "available": true,
+                  "id": "3",
+                  "size": "M",
+                },
+                {
+                  "available": true,
+                  "id": "4",
+                  "size": "L",
+                },
+                {
+                  "available": true,
+                  "id": "5",
+                  "size": "XL",
+                },
+                {
+                  "available": false,
+                  "id": "6",
+                  "size": "XXL",
+                },
+              ]
+            }
             style={
               {
+                "marginVertical": 0,
                 "width": "100%",
               }
             }
@@ -139,7 +275,11 @@ exports[`ProductList Rendering matches snapshot 1`] = `
             [
               {},
               undefined,
-              null,
+              {
+                "marginBottom": 16,
+                "marginRight": 16,
+                "width": 351,
+              },
             ]
           }
         >
@@ -157,8 +297,43 @@ exports[`ProductList Rendering matches snapshot 1`] = `
             price={399}
             rating={5}
             reviewCount={152344}
+            sizes={
+              [
+                {
+                  "available": true,
+                  "id": "1",
+                  "size": "XS",
+                },
+                {
+                  "available": true,
+                  "id": "2",
+                  "size": "S",
+                },
+                {
+                  "available": true,
+                  "id": "3",
+                  "size": "M",
+                },
+                {
+                  "available": true,
+                  "id": "4",
+                  "size": "L",
+                },
+                {
+                  "available": true,
+                  "id": "5",
+                  "size": "XL",
+                },
+                {
+                  "available": false,
+                  "id": "6",
+                  "size": "XXL",
+                },
+              ]
+            }
             style={
               {
+                "marginVertical": 0,
                 "width": "100%",
               }
             }
@@ -169,13 +344,6 @@ exports[`ProductList Rendering matches snapshot 1`] = `
           </View>
         </View>
       </View>
-      <View
-        style={
-          {
-            "height": 16,
-          }
-        }
-      />
     </View>
     <View
       onFocusCapture={[Function]}
@@ -184,9 +352,14 @@ exports[`ProductList Rendering matches snapshot 1`] = `
     >
       <View
         style={
-          {
-            "flexDirection": "row",
-          }
+          [
+            {
+              "flexDirection": "row",
+            },
+            {
+              "marginRight": -16,
+            },
+          ]
         }
       >
         <View
@@ -194,7 +367,11 @@ exports[`ProductList Rendering matches snapshot 1`] = `
             [
               {},
               undefined,
-              null,
+              {
+                "marginBottom": 16,
+                "marginRight": 16,
+                "width": 351,
+              },
             ]
           }
         >
@@ -212,8 +389,43 @@ exports[`ProductList Rendering matches snapshot 1`] = `
             price={2000}
             rating={5}
             reviewCount={523456}
+            sizes={
+              [
+                {
+                  "available": true,
+                  "id": "1",
+                  "size": "XS",
+                },
+                {
+                  "available": true,
+                  "id": "2",
+                  "size": "S",
+                },
+                {
+                  "available": true,
+                  "id": "3",
+                  "size": "M",
+                },
+                {
+                  "available": true,
+                  "id": "4",
+                  "size": "L",
+                },
+                {
+                  "available": true,
+                  "id": "5",
+                  "size": "XL",
+                },
+                {
+                  "available": false,
+                  "id": "6",
+                  "size": "XXL",
+                },
+              ]
+            }
             style={
               {
+                "marginVertical": 0,
                 "width": "100%",
               }
             }

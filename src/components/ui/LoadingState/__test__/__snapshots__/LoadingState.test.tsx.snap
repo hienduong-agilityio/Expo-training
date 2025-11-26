@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoadingState renders correctly with default message 1`] = `
+<View
+  style={
+    [
+      {
+        "alignItems": "center",
+        "flex": 1,
+        "justifyContent": "center",
+        "padding": 16,
+      },
+      undefined,
+    ]
+  }
+>
+  <ActivityIndicator
+    color="#F83758"
+    size="large"
+  />
+  <Text
+    style={
+      {
+        "color": "#575757",
+        "fontSize": 15,
+        "marginTop": 16,
+        "textAlign": "center",
+      }
+    }
+  >
+    Loading...
+  </Text>
+</View>
+`;
+
+exports[`LoadingState renders without message when message is empty 1`] = `
+<View
+  style={
+    [
+      {
+        "alignItems": "center",
+        "flex": 1,
+        "justifyContent": "center",
+        "padding": 16,
+      },
+      undefined,
+    ]
+  }
+>
+  <ActivityIndicator
+    color="#F83758"
+    size="large"
+  />
+</View>
+`;

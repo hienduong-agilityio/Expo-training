@@ -18,6 +18,7 @@ interface ICartItemProps extends IProduct {
   quantity: number;
   onIncrease?: () => void;
   onDecrease?: () => void;
+  onRemove?: () => void;
 }
 
 export const CartItem = ({
@@ -27,6 +28,7 @@ export const CartItem = ({
   quantity,
   onIncrease,
   onDecrease,
+  onRemove,
 }: ICartItemProps) => {
   return (
     <View style={styles.card} accessibilityLabel="Cart item">
@@ -71,6 +73,7 @@ export const CartItem = ({
           <Button
             variant={BUTTON_VARIANTS.GHOST}
             style={styles.removeBtn}
+            onPress={onRemove}
             accessibilityRole="button"
             accessibilityLabel="Remove item">
             <Text style={styles.removeText}>Remove</Text>

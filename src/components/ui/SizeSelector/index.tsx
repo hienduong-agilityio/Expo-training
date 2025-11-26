@@ -25,11 +25,7 @@ export const SizeSelector = ({
 
   return (
     <View style={styles.container} accessibilityLabel="Size selector">
-      <Text
-        style={styles.title}
-        accessibilityLabel={`Current selection: ${selectedSize}`}>
-        {selectedSize}
-      </Text>
+      <Text style={styles.label}>Size: {selectedSize || 'Select size'}</Text>
 
       <View style={styles.sizesContainer}>
         {sizes.map(size => {

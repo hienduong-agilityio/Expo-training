@@ -42,9 +42,57 @@ describe('ToastMessages', () => {
   });
 
   it('positions at bottom when position="bottom"', () => {
-    renderComponent({ ...baseProps, position: 'bottom' });
+    const { toJSON } = renderComponent({ ...baseProps, position: 'bottom' });
 
     expect(screen.getByLabelText('Toast message')).toBeTruthy();
     expect(screen.getByText('Test toast message')).toBeTruthy();
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('positions at top by default', () => {
+    const { toJSON } = renderComponent({ ...baseProps });
+
+    expect(screen.getByLabelText('Toast message')).toBeTruthy();
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('renders with different status types', () => {
+    const statusTypes = ['error', 'success', 'info', 'warning'] as const;
+
+    statusTypes.forEach(status => {
+      const { toJSON } = renderComponent({ ...baseProps, type: status });
+      expect(screen.getByText('Test toast message')).toBeTruthy();
+      expect(toJSON()).toMatchSnapshot(`status-${status}`);
+    });
+  });
+
+  it('handles undefined onClose', () => {
+    renderComponent({ ...baseProps, onClose: undefined });
+
+    const closeButton = screen.getByLabelText('Close toast');
+    fireEvent.press(closeButton);
+
+    // Should not throw error
+    expect(closeButton).toBeTruthy();
+  });
+
+  it('renders with custom styles', () => {
+    const customStyle = {
+      container: { backgroundColor: 'red' },
+      accentBar: { height: 5 },
+      iconContainer: { padding: 10 },
+      messageContainer: { padding: 5 },
+      message: { fontSize: 14 },
+      actionsContainer: { padding: 5 },
+      closeButton: { width: 30 },
+      closeText: { fontSize: 12 },
+    };
+
+    const { toJSON } = renderComponent({
+      ...baseProps,
+      customStyle,
+    });
+
+    expect(toJSON()).toMatchSnapshot();
   });
 });

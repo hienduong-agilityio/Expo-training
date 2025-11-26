@@ -32,13 +32,8 @@ describe('SimilarProducts', () => {
     );
 
   describe('Rendering', () => {
-    it('matches snapshot', () => {
+    it('renders all UI elements correctly', () => {
       const { toJSON } = renderComponent();
-      expect(toJSON()).toMatchSnapshot();
-    });
-
-    it('renders all UI elements', () => {
-      renderComponent();
 
       expect(screen.getByText('View Similar')).toBeTruthy();
       expect(screen.getByText('Add to Compare')).toBeTruthy();
@@ -46,15 +41,23 @@ describe('SimilarProducts', () => {
       expect(screen.getByText('3+ Items')).toBeTruthy();
       expect(screen.getByText('Sort')).toBeTruthy();
       expect(screen.getByText('Filter')).toBeTruthy();
+      expect(toJSON()).toMatchSnapshot();
     });
 
-    it('displays correct item count', () => {
-      renderComponent({ products: MOCK_PRODUCTS.slice(0, 5) });
+    it('displays correct item count for different product counts', () => {
+      const { rerender } = renderComponent({
+        products: MOCK_PRODUCTS.slice(0, 5),
+      });
       expect(screen.getByText('5+ Items')).toBeTruthy();
-    });
 
-    it('handles empty products array', () => {
-      renderComponent({ products: [] });
+      rerender(
+        <SimilarProducts
+          products={[]}
+          onViewSimilar={mockCallbacks.onViewSimilar}
+          onAddToCompare={mockCallbacks.onAddToCompare}
+          onProductPress={mockCallbacks.onProductPress}
+        />,
+      );
       expect(screen.getByText('0+ Items')).toBeTruthy();
     });
   });

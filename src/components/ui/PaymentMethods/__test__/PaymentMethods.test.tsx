@@ -58,4 +58,45 @@ describe('<PaymentMethods />', () => {
     expect(onSelect).toHaveBeenCalledWith('paypal');
     expect(onContinue).toHaveBeenCalledTimes(1);
   });
+
+  it('handles undefined onSelect gracefully', () => {
+    const { toJSON } = render(
+      <PaymentMethods
+        {...{ ...baseProps, options: [...baseProps.options] }}
+        onSelect={undefined}
+      />,
+    );
+
+    const paymentOption = screen.getByLabelText('payment-option-visa');
+    fireEvent.press(paymentOption);
+
+    // Should not throw error
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('handles undefined onContinue gracefully', () => {
+    const { toJSON } = render(
+      <PaymentMethods
+        {...{ ...baseProps, options: [...baseProps.options] }}
+        onContinue={undefined}
+      />,
+    );
+
+    const continueButton = screen.getByText('Continue');
+    fireEvent.press(continueButton);
+
+    // Should not throw error
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('renders with no selected option', () => {
+    const { toJSON } = render(
+      <PaymentMethods
+        {...{ ...baseProps, options: [...baseProps.options] }}
+        selectedId={undefined}
+      />,
+    );
+
+    expect(toJSON()).toMatchSnapshot();
+  });
 });

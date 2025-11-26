@@ -9,10 +9,16 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   productName: {
-    fontSize: typography.fontSizes['3xl'],
+    fontSize: typography.fontSizes['2xl'],
     fontWeight: typography.fontWeights.bold,
     color: colors.text,
     marginBottom: spacing['1'],
+  },
+  subtitle: {
+    fontSize: typography.fontSizes.sm,
+    color: colors.textSecondary,
+    marginBottom: spacing['2'],
+    lineHeight: 18,
   },
   description: {
     fontSize: typography.fontSizes.md,
@@ -34,17 +40,18 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: spacing['3'],
+    flexWrap: 'wrap',
+    gap: spacing['1'],
   },
-  originalPrice: {
+  originalPriceContainer: {
+    marginRight: spacing['1'],
+  },
+  originalPriceText: {
     fontSize: typography.fontSizes.md,
     color: colors.textSecondary,
     textDecorationLine: 'line-through',
-    marginRight: spacing['1'],
   },
-  currentPrice: {
-    fontSize: typography.fontSizes['3xl'],
-    fontWeight: typography.fontWeights.bold,
-    color: colors.text,
+  currentPriceContainer: {
     marginRight: spacing['1'],
   },
   discountBadge: {
@@ -60,12 +67,6 @@ export const styles = StyleSheet.create({
   },
   detailsContainer: {
     marginTop: spacing['2'],
-  },
-  detailsTitle: {
-    fontSize: typography.fontSizes.lg,
-    fontWeight: typography.fontWeights.bold,
-    color: colors.text,
-    marginBottom: spacing['1'],
   },
   detailsText: {
     fontSize: typography.fontSizes.sm,

@@ -18,6 +18,7 @@ export const MOCK_PRODUCTS = [
     price: 499,
     currency: 'INR' as const,
     rating: 5.0,
+    sizes: MOCK_SIZES,
     reviewCount: 6890,
     imageSource: {
       uri: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop',
@@ -31,6 +32,7 @@ export const MOCK_PRODUCTS = [
     price: 399,
     currency: 'INR' as const,
     rating: 5.0,
+    sizes: MOCK_SIZES,
     reviewCount: 152344,
     imageSource: {
       uri: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=300&h=400&fit=crop',
@@ -44,6 +46,7 @@ export const MOCK_PRODUCTS = [
     price: 2000,
     currency: 'INR' as const,
     rating: 5.0,
+    sizes: MOCK_SIZES,
     reviewCount: 523456,
     imageSource: {
       uri: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300&h=400&fit=crop',
@@ -57,6 +60,7 @@ export const MOCK_PRODUCTS = [
     price: 1900,
     currency: 'INR' as const,
     rating: 5.0,
+    sizes: MOCK_SIZES,
     reviewCount: 45678,
     imageSource: {
       uri: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=300&h=400&fit=crop',
@@ -70,6 +74,7 @@ export const MOCK_PRODUCTS = [
     price: 1990,
     currency: 'INR' as const,
     rating: 5.0,
+    sizes: MOCK_SIZES,
     reviewCount: 335566,
     imageSource: {
       uri: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300&h=400&fit=crop',
@@ -83,6 +88,7 @@ export const MOCK_PRODUCTS = [
     price: 999,
     currency: 'INR' as const,
     rating: 2.0,
+    sizes: MOCK_SIZES,
     reviewCount: 27344,
     imageSource: {
       uri: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300&h=400&fit=crop',
@@ -96,6 +102,7 @@ export const MOCK_PRODUCTS = [
     price: 4999,
     currency: 'INR' as const,
     rating: 5.0,
+    sizes: MOCK_SIZES,
     reviewCount: 1023456,
     imageSource: {
       uri: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=300&h=400&fit=crop',
@@ -109,6 +116,7 @@ export const MOCK_PRODUCTS = [
     price: 3499,
     currency: 'INR' as const,
     rating: 5.0,
+    sizes: MOCK_SIZES,
     reviewCount: 344567,
     imageSource: {
       uri: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300&h=400&fit=crop',
@@ -122,6 +130,7 @@ export const MOCK_PRODUCTS = [
     price: 1999,
     currency: 'INR' as const,
     rating: 5.0,
+    sizes: MOCK_SIZES,
     reviewCount: 835566,
     imageSource: {},
   },
@@ -133,6 +142,7 @@ export const MOCK_PRODUCTS = [
     price: 2999,
     currency: 'INR' as const,
     rating: 5.0,
+    sizes: MOCK_SIZES,
     reviewCount: 223569,
     imageSource: {
       uri: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop',
@@ -146,6 +156,7 @@ export const MOCK_PRODUCTS = [
     price: 26999,
     currency: 'INR' as const,
     rating: 5.0,
+    sizes: MOCK_SIZES,
     reviewCount: 67456,
     imageSource: {
       uri: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=300&h=400&fit=crop',
@@ -159,6 +170,7 @@ export const MOCK_PRODUCTS = [
     price: 999,
     currency: 'INR' as const,
     rating: 5.0,
+    sizes: MOCK_SIZES,
     reviewCount: 1345678,
     imageSource: {
       uri: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=300&h=400&fit=crop',

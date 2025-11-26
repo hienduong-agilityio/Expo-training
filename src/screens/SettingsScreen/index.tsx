@@ -1,42 +1,54 @@
-import { useNavigation } from '@react-navigation/native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { View, Text } from 'react-native';
+import { Button } from '@app/components/common/Button';
 
-// Components
-import { View, Text, Button } from 'react-native';
-
-// Types
-import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import type { AppStackParamList } from '@app/interfaces';
+// Stores
+import { authStore } from '@app/stores/authStore';
+import { toastStore } from '@app/stores/toastStore';
 
 // Constants
-import { SCREENS } from '@app/constants';
+import {
+  BUTTON_LABELS,
+  POSITION,
+  STATUS,
+  TOAST_MESSAGES,
+} from '@app/constants';
 
 // Styles
 import { styles } from './index.style';
 
+// Hooks
+import { useAuthActions } from '@app/hooks/useAuthActions';
+
 export const SettingsScreen = () => {
-  const navigation =
-    useNavigation<NativeStackNavigationProp<AppStackParamList>>();
+  const { user } = authStore();
+  const { logout } = useAuthActions();
+  const { showToast } = toastStore();
+
+  const handleSignOut = async () => {
+    try {
+      await logout();
+
+      showToast({
+        type: STATUS.SUCCESS,
+        message: TOAST_MESSAGES.SIGNED_OUT,
+        position: POSITION.TOP,
+      });
+    } catch (error) {
+      showToast({
+        type: STATUS.ERROR,
+        message: TOAST_MESSAGES.REQUEST_FAILED,
+        position: POSITION.TOP,
+      });
+    }
+  };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>SettingsScreen</Text>
-
-      <Button
-        title="Go Home"
-        onPress={() => navigation.navigate(SCREENS.HOME)}
-      />
-      <Button
-        title="Go Wishlist"
-        onPress={() => navigation.navigate(SCREENS.WISHLIST)}
-      />
-      <Button
-        title="Go Cart"
-        onPress={() => navigation.navigate(SCREENS.CART)}
-      />
-      <Button
-        title="Go Search"
-        onPress={() => navigation.navigate(SCREENS.SEARCH)}
-      />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.content}>
+        <Text style={styles.text}>User: {user?.email ?? '—'}</Text>
+        <Button label={BUTTON_LABELS.SIGN_OUT} onPress={handleSignOut} />
+      </View>
+    </SafeAreaView>
   );
 };

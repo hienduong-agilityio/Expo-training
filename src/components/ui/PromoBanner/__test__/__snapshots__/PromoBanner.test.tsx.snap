@@ -6,12 +6,13 @@ exports[`<PromoBanner /> matches snapshot (Blue) 1`] = `
     [
       {
         "alignItems": "center",
-        "borderRadius": 16,
+        "backgroundColor": "#4392F9",
+        "borderRadius": 6,
         "flexDirection": "row",
         "justifyContent": "space-between",
         "marginBottom": 16,
-        "paddingHorizontal": 20,
-        "paddingVertical": 16,
+        "paddingHorizontal": 16,
+        "paddingVertical": 12,
       },
       {
         "backgroundColor": "#4392F9",
@@ -31,9 +32,9 @@ exports[`<PromoBanner /> matches snapshot (Blue) 1`] = `
         [
           {
             "color": "#FFFFFF",
-            "fontSize": 24,
+            "fontSize": 16,
             "fontWeight": "700",
-            "marginBottom": 4,
+            "marginBottom": 2,
           },
           undefined,
         ]
@@ -49,6 +50,7 @@ exports[`<PromoBanner /> matches snapshot (Blue) 1`] = `
             "alignSelf": "flex-start",
             "borderRadius": 6,
             "flexDirection": "row",
+            "marginTop": 2,
           },
           undefined,
         ]
@@ -62,9 +64,9 @@ exports[`<PromoBanner /> matches snapshot (Blue) 1`] = `
           [
             {
               "color": "#FFFFFF",
-              "fontSize": 17,
+              "fontSize": 12,
               "fontWeight": "500",
-              "marginLeft": 4,
+              "marginLeft": 2,
             },
             undefined,
           ]
@@ -104,13 +106,13 @@ exports[`<PromoBanner /> matches snapshot (Blue) 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       {
-        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundColor": "transparent",
         "borderColor": "#FFFFFF",
-        "borderRadius": 16,
+        "borderRadius": 4,
         "borderWidth": 2,
         "opacity": 1,
-        "paddingHorizontal": 20,
-        "paddingVertical": 8,
+        "paddingHorizontal": 8,
+        "paddingVertical": 4,
       }
     }
   >
@@ -119,6 +121,7 @@ exports[`<PromoBanner /> matches snapshot (Blue) 1`] = `
         {
           "alignItems": "center",
           "flexDirection": "row",
+          "gap": 4,
         }
       }
     >
@@ -127,8 +130,8 @@ exports[`<PromoBanner /> matches snapshot (Blue) 1`] = `
           [
             {
               "color": "#FFFFFF",
-              "fontSize": 17,
-              "fontWeight": "600",
+              "fontSize": 13,
+              "fontWeight": "500",
             },
             undefined,
           ]

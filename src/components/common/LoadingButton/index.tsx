@@ -1,13 +1,9 @@
-import { useMemo } from 'react';
-
 // Components
 import { ActivityIndicator, Text, View } from 'react-native';
-
-// Components
 import { Button } from '@app/components/common/Button';
 
 // Enums
-import { BUTTON_COLORS, BUTTON_VARIANTS } from '@app/enums';
+import { BUTTON_VARIANTS } from '@app/enums';
 
 // Helpers
 import { getButtonStyles, getSizeMetrics } from '@app/helpers/ui';
@@ -23,10 +19,10 @@ export const LoadingButton = ({
   loadingLabel = 'Loading...',
   loading = false,
   disabled = false,
-  size = 'lg',
+  size = 'md',
   variant = BUTTON_VARIANTS.SOLID,
-  color = BUTTON_COLORS.PRIMARY,
-  selected,
+  fullWidth,
+  onPress,
   ...buttonProps
 }: ILoadingButtonProps) => {
   const sizeMetrics = getSizeMetrics(size);
@@ -34,13 +30,17 @@ export const LoadingButton = ({
 
   const isDisabled = disabled || loading;
 
-  const loadingContent = useMemo(
-    () => (
+  const loadingContent = () => {
+    return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator size="small" color={labelStyle.color} />
+        <ActivityIndicator
+          size="small"
+          color={labelStyle.color}
+          testID="loading-indicator"
+        />
         <Text
           style={[
-            styles.base,
+            styles.label,
             { fontSize: sizeMetrics.fontSize },
             labelStyle,
             styles.loadingText,
@@ -49,20 +49,19 @@ export const LoadingButton = ({
           {loadingLabel}
         </Text>
       </View>
-    ),
-    [labelStyle, sizeMetrics.fontSize, loadingLabel],
-  );
+    );
+  };
 
   return (
     <Button
       {...buttonProps}
-      label={loading ? undefined : label}
-      children={loading ? loadingContent : undefined}
+      {...(loading ? { children: loadingContent() } : { label })}
       disabled={isDisabled}
       size={size}
       variant={variant}
-      color={color}
-      selected={selected}
+      fullWidth={fullWidth}
+      onPress={onPress}
+      accessibilityState={{ disabled: isDisabled, busy: loading }}
     />
   );
 };

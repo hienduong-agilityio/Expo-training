@@ -5,7 +5,9 @@ import { Price } from '@app/components/common/Price';
 
 // Types
 import type { IProductDetailsProps } from '@app/interfaces';
-import type { CurrencyCode } from '@app/helpers';
+
+// Helpers
+import { formatCurrencyUnit } from '@app/helpers';
 
 // Styles
 import { styles } from './index.style';
@@ -15,43 +17,48 @@ import { StarsRating } from '@app/components/ui/StarsRating';
 
 export const ProductDetails = ({
   name,
-  description,
   price,
   originalPrice,
+  currency = 'USD',
+  shortDescription,
   discountPercent,
-  currency = 'INR',
   rating,
   reviewCount,
   details,
   onShowMoreDetails,
 }: IProductDetailsProps) => {
-  const currencyCode = (currency || 'INR') as CurrencyCode;
-
   return (
     <View style={styles.container}>
       {/* Product Name */}
       <Text style={styles.productName}>{name}</Text>
 
-      {/* Description */}
-      <Text style={styles.description}>{description}</Text>
+      {shortDescription && (
+        <Text style={styles.subtitle}>{shortDescription}</Text>
+      )}
 
       {/* Rating */}
-      <View style={styles.ratingContainer}>
-        <StarsRating rating={rating} />
-        <Text style={styles.reviewCount}>{reviewCount.toLocaleString()}</Text>
-      </View>
+      {rating !== undefined && (
+        <View style={styles.ratingContainer}>
+          <StarsRating rating={rating || 0} />
+          {reviewCount !== undefined && (
+            <Text style={styles.reviewCount}>
+              {reviewCount.toLocaleString()}
+            </Text>
+          )}
+        </View>
+      )}
 
       {/* Price */}
       <View style={styles.priceContainer}>
         {originalPrice && originalPrice > price && (
-          <View style={styles.originalPrice}>
-            <Price value={originalPrice} currency={currencyCode} />
-          </View>
+          <Text style={styles.originalPriceText}>
+            {formatCurrencyUnit(originalPrice, currency)}
+          </Text>
         )}
-        <View style={styles.currentPrice}>
-          <Price value={price} currency={currencyCode} />
+        <View style={styles.currentPriceContainer}>
+          <Price value={price} currency={currency} />
         </View>
-        {discountPercent && (
+        {discountPercent !== undefined && discountPercent > 0 && (
           <View style={styles.discountBadge}>
             <Text style={styles.discountText}>{discountPercent}% Off</Text>
           </View>
@@ -59,15 +66,16 @@ export const ProductDetails = ({
       </View>
 
       {/* Product Details */}
-      <View style={styles.detailsContainer}>
-        <Text style={styles.detailsTitle}>Product Details</Text>
-        <Text style={styles.detailsText} numberOfLines={4}>
-          {details}
-        </Text>
-        <TouchableOpacity onPress={onShowMoreDetails}>
-          <Text style={styles.moreText}>More</Text>
-        </TouchableOpacity>
-      </View>
+      {details && (
+        <View style={styles.detailsContainer}>
+          <Text style={styles.detailsText} numberOfLines={4}>
+            {details}
+          </Text>
+          <TouchableOpacity onPress={onShowMoreDetails}>
+            <Text style={styles.moreText}>More</Text>
+          </TouchableOpacity>
+        </View>
+      )}
     </View>
   );
 };

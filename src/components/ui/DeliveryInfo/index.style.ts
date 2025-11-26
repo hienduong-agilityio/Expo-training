@@ -12,9 +12,11 @@ import {
 export const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.primaryLight,
-    paddingHorizontal: spacing['6.75'],
-    paddingVertical: spacing['2.75'],
+    paddingHorizontal: spacing['4'],
+    paddingVertical: spacing['3'],
     borderRadius: borderRadius.base,
+    marginHorizontal: spacing['4'],
+    marginVertical: spacing['2'],
   },
   deliveryText: {
     fontFamily: fontFaces.montserrat.semiBold,

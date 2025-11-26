@@ -8,6 +8,10 @@ export const styles = StyleSheet.create({
   loadingContainer: { paddingVertical: 16, alignItems: 'center' },
   itemContainer: {},
   productCard: { width: '100%' },
+  productCardGrid: {
+    width: '100%',
+    marginVertical: 0,
+  },
   emptyWrap: { minHeight: 200, alignItems: 'center', justifyContent: 'center' },
   emptyText: { fontSize: 16, color: colors.textMuted, textAlign: 'center' },
 });

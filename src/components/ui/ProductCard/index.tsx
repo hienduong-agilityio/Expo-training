@@ -28,10 +28,10 @@ export const ProductCard = ({
   rating = 0,
   reviewCount,
   imageSource,
-  isWishlisted = false,
   style,
   onPress,
   onWishlistToggle,
+  isWishlisted = false,
 }: IProductCardProps) => {
   // Handle press event
   const handlePress = useCallback(() => {
@@ -71,7 +71,6 @@ export const ProductCard = ({
           accessibilityLabel={`${name} product image`}
         />
 
-        {/* Wishlist Button */}
         {onWishlistToggle && (
           <Pressable
             style={({ pressed }) => [
@@ -79,15 +78,12 @@ export const ProductCard = ({
               pressed && styles.wishlistPressed,
             ]}
             onPress={handleWishlistToggle}
-            accessibilityRole="button"
-            accessibilityLabel={
-              isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'
-            }
-            testID="wishlist-btn">
+            accessibilityRole="button">
             <HeartIcon
               width={20}
               height={20}
-              color={isWishlisted ? colors.primary : colors.textSecondary}
+              color={isWishlisted ? colors.primary : colors.text}
+              filled={isWishlisted}
             />
           </Pressable>
         )}
