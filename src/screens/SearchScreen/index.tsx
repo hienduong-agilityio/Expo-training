@@ -1,5 +1,5 @@
 import { useCallback, useState, useMemo, useEffect } from 'react';
-import { useNavigation, useFocusEffect } from '@react-navigation/native';
+import { useFocusEffect } from '@react-navigation/native';
 import { View, Text } from 'react-native';
 
 // Components
@@ -22,30 +22,32 @@ import { useDebounce } from '@app/hooks/useDebounce';
 import { searchStore } from '@app/stores/searchStore';
 
 // Types
-import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
-import type { PrivateTabParamList } from '@app/interfaces/navigation';
-import type { CompositeNavigationProp } from '@react-navigation/native';
-import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import type { PrivateStackParamList } from '@app/interfaces/navigation';
+import type { PrivateTabScreenProps } from '@app/interfaces/navigation';
 
 // Constants
-import { PRIVATE_SCREENS, CATEGORIES } from '@app/constants';
+import {
+  PRIVATE_SCREENS,
+  SEARCH_MESSAGES,
+  SEARCH_SCREEN_MESSAGES,
+} from '@app/constants';
+
+// Mocks
+import { CATEGORIES } from '@app/mocks/categories';
 
 // Styles
 import { styles } from './index.style';
 
-type NavigationProp = CompositeNavigationProp<
-  BottomTabScreenProps<
-    PrivateTabParamList,
-    typeof PRIVATE_SCREENS.SEARCH
-  >['navigation'],
-  NativeStackNavigationProp<PrivateStackParamList>
->;
+type SearchScreenProps = PrivateTabScreenProps<typeof PRIVATE_SCREENS.SEARCH>;
 
-export const SearchScreen = () => {
-  const navigation = useNavigation<NavigationProp>();
+/**
+ * TODO: Use route.params to get the search query and category id.
+ * * Replace the useEffect with useEffect hook to get the search query and category id from the route.params.
+ * * Remove searchStore and use the route.params instead.
+ */
+export const SearchScreen = ({ navigation }: SearchScreenProps) => {
   const { categoryId, categoryName, searchQuery, setCategory, clearAll } =
     searchStore();
+
   const [localSearchQuery, setLocalSearchQuery] = useState('');
 
   useEffect(() => {
@@ -76,11 +78,12 @@ export const SearchScreen = () => {
     activeSearchQuery,
     categorySlug || undefined,
   );
-  const categoryResult = useProductsByCategory(
-    hasSearchQuery ? undefined : categorySlug,
-  );
+  const categoryResult = useProductsByCategory(categorySlug, !hasSearchQuery);
 
   const activeResult = hasSearchQuery ? searchResult : categoryResult;
+
+  // Bug: Crash when has many requests in the same time.
+  // TODO: Use reactotron-react-native to debug the issue.
   const { products, isLoading, isFetching, error, refetch } = activeResult;
 
   const handleApplyFilter = useCallback(
@@ -113,12 +116,9 @@ export const SearchScreen = () => {
 
   const handleItemPress = useCallback(
     (id: string) => {
-      const parentNavigation = navigation.getParent();
-      if (parentNavigation) {
-        (
-          parentNavigation as NativeStackNavigationProp<PrivateStackParamList>
-        ).navigate(PRIVATE_SCREENS.PRODUCT_DETAIL, { productId: id });
-      }
+      navigation.navigate(PRIVATE_SCREENS.PRODUCT_DETAIL, {
+        productId: id,
+      });
     },
     [navigation],
   );
@@ -126,8 +126,8 @@ export const SearchScreen = () => {
   const loading = isLoading || isFetching;
   const displaySearchQuery = localSearchQuery?.trim();
   const searchTitle = displaySearchQuery
-    ? `Search: "${displaySearchQuery}"`
-    : categoryName || 'All Featured';
+    ? `${SEARCH_SCREEN_MESSAGES.SEARCH_PREFIX}"${displaySearchQuery}"`
+    : categoryName || SEARCH_SCREEN_MESSAGES.DEFAULT_TITLE;
   const showError = error && !products.length && !loading;
 
   if (showError) {
@@ -137,12 +137,12 @@ export const SearchScreen = () => {
           <SearchBar
             value={localSearchQuery}
             onChangeText={handleSearchChange}
-            placeholder="Search for products"
+            placeholder={SEARCH_MESSAGES.PLACEHOLDER}
           />
         </View>
         <NotFound
-          title="Something went wrong"
-          description="Please try again later"
+          title={SEARCH_SCREEN_MESSAGES.ERROR_TITLE}
+          description={SEARCH_SCREEN_MESSAGES.ERROR_DESCRIPTION}
           onRetry={refetch}
         />
       </View>
@@ -155,14 +155,14 @@ export const SearchScreen = () => {
         <SearchBar
           value={localSearchQuery}
           onChangeText={handleSearchChange}
-          placeholder="Search for products"
+          placeholder={SEARCH_MESSAGES.PLACEHOLDER}
         />
       </View>
 
       {loading ? (
         <View style={styles.center}>
           <LoadingState
-            message="Loading products..."
+            message={SEARCH_SCREEN_MESSAGES.LOADING}
             containerStyle={styles.center}
           />
         </View>
@@ -173,7 +173,9 @@ export const SearchScreen = () => {
               <Text style={styles.title}>{searchTitle}</Text>
               <Text style={styles.count}>
                 {products.length}{' '}
-                {products.length === 1 ? 'product' : 'products'}
+                {products.length === 1
+                  ? SEARCH_SCREEN_MESSAGES.PRODUCT_SINGULAR
+                  : SEARCH_SCREEN_MESSAGES.PRODUCT_PLURAL}
               </Text>
             </View>
             <FilterButtons onFilterPress={openModal} />
@@ -191,11 +193,11 @@ export const SearchScreen = () => {
           <View style={styles.content}>
             {products.length === 0 && !loading ? (
               <NotFound
-                title="No products found"
+                title={SEARCH_SCREEN_MESSAGES.NOT_FOUND_TITLE}
                 description={
                   displaySearchQuery
-                    ? `No products match "${displaySearchQuery}"`
-                    : 'Try adjusting your filters'
+                    ? `${SEARCH_SCREEN_MESSAGES.NOT_FOUND_DESC_PREFIX} "${displaySearchQuery}"`
+                    : SEARCH_SCREEN_MESSAGES.NOT_FOUND_DESC_DEFAULT
                 }
               />
             ) : (

@@ -7,17 +7,23 @@ import { authService } from '@app/services/auth';
 // Stores
 import { authStore } from '@app/stores/authStore';
 
+// Constants
+import { QUERY_KEYS } from '@app/constants/queryKeys';
+
 // Types
 import type { LoginPayload, RegisterPayload } from '@app/interfaces/auth';
 
+// TODO: Split into multiple hooks
 export const useAuthActions = () => {
-  const { setSession, clearSession } = authStore();
+  const setSession = authStore(state => state.setSession);
+  const clearSession = authStore(state => state.clearSession);
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const queryClient = useQueryClient();
 
   const clearUserQueries = useCallback(() => {
-    queryClient.removeQueries({ queryKey: ['cart'] });
-    queryClient.removeQueries({ queryKey: ['wishlist'] });
+    queryClient.removeQueries({ queryKey: [QUERY_KEYS.CART] });
+    queryClient.removeQueries({ queryKey: [QUERY_KEYS.WISHLIST] });
   }, [queryClient]);
 
   const login = useCallback(

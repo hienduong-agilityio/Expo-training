@@ -4,6 +4,9 @@ import { useMemo } from 'react';
 // Services
 import { productsService } from '@app/services/product';
 
+// Constants
+import { QUERY_KEYS } from '@app/constants/queryKeys';
+
 // Types
 import type { IProductCardProps } from '@app/interfaces/ui';
 import type { IProduct } from '@app/interfaces/product';
@@ -29,9 +32,10 @@ const DEFAULT_QUERY_OPTIONS = {
   refetchOnReconnect: true,
 } as const;
 
+// Apply this structure to all useQuery hooks
 export const useCategorizedProducts = () => {
   const query = useQuery<CategorizedProducts>({
-    queryKey: ['products', 'categorized'],
+    queryKey: [QUERY_KEYS.PRODUCTS, QUERY_KEYS.PRODUCTS_CATEGORIZED],
     queryFn: () => productsService.getCategorizedProducts(),
     staleTime: 60_000,
     retry: DEFAULT_QUERY_OPTIONS.retry,
@@ -48,7 +52,7 @@ export const useCategorizedProducts = () => {
 
 export const useProductById = (productId: string) => {
   const query = useQuery<IProduct>({
-    queryKey: ['product', productId],
+    queryKey: [QUERY_KEYS.PRODUCT, productId],
     queryFn: () => productsService.getProductById(productId),
     enabled: Boolean(productId),
     ...DEFAULT_QUERY_OPTIONS,
@@ -68,7 +72,7 @@ export const useProductsByIds = (ids: string[]) => {
 
   const queries = useQueries({
     queries: validIds.map(id => ({
-      queryKey: ['product', id],
+      queryKey: [QUERY_KEYS.PRODUCT, id],
       queryFn: () => productsService.getProductById(id),
       ...DEFAULT_QUERY_OPTIONS,
     })),
@@ -100,15 +104,18 @@ export const useProductsByIds = (ids: string[]) => {
   };
 };
 
-export const useProductsByCategory = (categorySlug?: string) => {
+export const useProductsByCategory = (
+  categorySlug?: string,
+  enabled: boolean = true,
+) => {
   const normalizedSlug = categorySlug?.trim() ?? '';
   const queryKey = normalizedSlug || 'all';
 
   const query = useQuery<IProductCardProps[]>({
-    queryKey: ['products', 'category', queryKey],
+    queryKey: [QUERY_KEYS.PRODUCTS, QUERY_KEYS.PRODUCTS_CATEGORY, queryKey],
     queryFn: () =>
       productsService.getProductsByCategory(normalizedSlug || undefined),
-    enabled: true,
+    enabled,
     ...DEFAULT_QUERY_OPTIONS,
   });
 
@@ -127,8 +134,17 @@ export const useSearchProducts = (
   const hasQuery = Boolean(normalizedQuery);
 
   const queryKey = normalizedQuery
-    ? ['products', 'search', normalizedQuery, normalizedCategory ?? 'all']
-    : ['products', 'search', 'empty'];
+    ? [
+        QUERY_KEYS.PRODUCTS,
+        QUERY_KEYS.PRODUCTS_SEARCH,
+        normalizedQuery,
+        normalizedCategory ?? 'all',
+      ]
+    : [
+        QUERY_KEYS.PRODUCTS,
+        QUERY_KEYS.PRODUCTS_SEARCH,
+        QUERY_KEYS.PRODUCTS_SEARCH_EMPTY,
+      ];
 
   const query = useQuery<IProductCardProps[]>({
     queryKey,

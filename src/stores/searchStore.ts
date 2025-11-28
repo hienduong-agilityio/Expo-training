@@ -11,6 +11,7 @@ interface SearchState {
   clearAll: () => void;
 }
 
+// Todo: Remove this store and use the route.params instead.
 export const searchStore = create<SearchState>(set => ({
   categoryId: null,
   categoryName: null,

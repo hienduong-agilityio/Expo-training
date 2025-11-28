@@ -28,7 +28,10 @@ describe('useWishlist', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
-    (authStore as unknown as jest.Mock).mockReturnValue({ user: mockUser });
+    (authStore as unknown as jest.Mock).mockImplementation(selector => {
+      const state = { user: mockUser };
+      return selector ? selector(state) : state;
+    });
     (useQueryClient as jest.Mock).mockReturnValue({
       getQueryData: jest.fn(() => null),
       setQueryData: jest.fn(),
@@ -64,7 +67,10 @@ describe('useWishlist', () => {
   });
 
   it('returns null wishlist when user is not authenticated', () => {
-    (authStore as unknown as jest.Mock).mockReturnValue({ user: null });
+    (authStore as unknown as jest.Mock).mockImplementation(selector => {
+      const state = { user: null };
+      return selector ? selector(state) : state;
+    });
     (useQuery as jest.Mock).mockReturnValue({
       data: null,
       isLoading: false,
@@ -324,7 +330,10 @@ describe('useWishlist', () => {
     });
 
     it('getCachedWishlist returns null when userId is null', () => {
-      (authStore as unknown as jest.Mock).mockReturnValue({ user: null });
+      (authStore as unknown as jest.Mock).mockImplementation(selector => {
+        const state = { user: null };
+        return selector ? selector(state) : state;
+      });
       mockQueryClient.getQueryData.mockReturnValue(null);
       (useQuery as jest.Mock).mockReturnValue({
         data: null,
@@ -340,7 +349,10 @@ describe('useWishlist', () => {
     });
 
     it('setCachedWishlist does nothing when userId is null', () => {
-      (authStore as unknown as jest.Mock).mockReturnValue({ user: null });
+      (authStore as unknown as jest.Mock).mockImplementation(selector => {
+        const state = { user: null };
+        return selector ? selector(state) : state;
+      });
 
       renderHook(() => useWishlist());
 

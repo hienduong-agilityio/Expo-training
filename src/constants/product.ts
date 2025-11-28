@@ -33,44 +33,43 @@ export const PRODUCT_LIST_TITLES: Record<ProductListType, string> = {
   [PRODUCT_LIST_TYPES.WEEKEND_SPECIAL]: 'Weekend Special',
 } as const;
 
-export interface DealInfo {
-  title: string;
-  badge?: {
-    icon: string;
-    text: string;
-    color: string;
-  };
-  countdown?: {
-    text: string;
-    color: string;
-  };
-}
+export const PRODUCT_MESSAGES = {
+  LOADING_DETAILS: 'Loading product details...',
+  NOT_FOUND: 'Product Not Found',
+  NOT_FOUND_DESCRIPTION:
+    "The product you're looking for doesn't exist or has been removed.",
+  FAILED_TO_LOAD: 'Failed to Load Product',
+  FAILED_TO_LOAD_DESCRIPTION:
+    'Unable to load product details. Please try again.',
+  GO_BACK: 'Go Back',
+  RETRY: 'Retry',
+  PRODUCT_DETAILS: 'Product Details',
+  NO_DETAILS_AVAILABLE: 'No details available',
+  VIEW_SIMILAR: 'View Similar',
+  VIEW_SIMILAR_DESCRIPTION: 'Showing similar products',
+  ADD_TO_COMPARE: 'Add to Compare',
+  ADD_TO_COMPARE_DESCRIPTION: 'Product added to comparison',
+  PROCEED_TO_CHECKOUT: (productName: string) =>
+    `Proceeding to checkout with ${productName}`,
+} as const;
 
-export const DEAL_INFO = {
-  dealOfDay: {
-    title: 'Deal of the Day',
-    countdown: {
-      text: '22h 55m 20s remaining',
-      color: '#4392F9',
-    },
-  },
-  weekendSpecial: {
-    title: 'Weekend Special',
-    badge: {
-      icon: '🎉',
-      text: 'Limited Time',
-      color: '#FFD700',
-    },
-  },
-  trending: {
-    title: 'Trending Products',
-    countdown: {
-      text: 'Last Date 29/02/22',
-      color: '#F83758',
-    },
-  },
-  newArrivals: {
-    title: 'New Arrivals',
-    subtitle: "Summer '25 Collections",
-  },
+export const FILTER_MESSAGES = {
+  ALL_CATEGORIES: 'All Categories',
+} as const;
+
+export const SEARCH_MESSAGES = {
+  PLACEHOLDER: 'Search for products',
+} as const;
+
+export const SEARCH_SCREEN_MESSAGES = {
+  DEFAULT_TITLE: 'All Featured',
+  SEARCH_PREFIX: 'Search: ',
+  PRODUCT_SINGULAR: 'product',
+  PRODUCT_PLURAL: 'products',
+  LOADING: 'Loading products...',
+  ERROR_TITLE: 'Something went wrong',
+  ERROR_DESCRIPTION: 'Please try again later',
+  NOT_FOUND_TITLE: 'No products found',
+  NOT_FOUND_DESC_PREFIX: 'No products match',
+  NOT_FOUND_DESC_DEFAULT: 'Try adjusting your filters',
 } as const;

@@ -14,7 +14,12 @@ import { NotFound } from '@app/components/ui/NotFound';
 import { GridProductList } from '@app/components/ui/ProductList';
 
 // Constants
-import { POSITION, STATUS, TOAST_MESSAGES } from '@app/constants';
+import {
+  POSITION,
+  STATUS,
+  TOAST_MESSAGES,
+  WISHLIST_MESSAGES,
+} from '@app/constants';
 import { PRIVATE_SCREENS } from '@app/constants';
 
 // Types
@@ -37,7 +42,8 @@ type Props = CompositeScreenProps<
 >;
 
 export const WishlistScreen = ({ navigation }: Props) => {
-  const { showToast } = toastStore();
+  const showToast = toastStore(state => state.showToast);
+
   const {
     wishlist,
     wishlistItems,
@@ -50,6 +56,7 @@ export const WishlistScreen = ({ navigation }: Props) => {
   const productIds = wishlistItems.map(
     (item: IWishlistItem) => item.productId ?? '',
   );
+
   const { products, isLoading: isLoadingProducts } =
     useProductsByIds(productIds);
 
@@ -80,7 +87,7 @@ export const WishlistScreen = ({ navigation }: Props) => {
   if (isLoading || isLoadingProducts) {
     return (
       <View style={styles.container}>
-        <LoadingState message="Loading wishlist..." />
+        <LoadingState message={WISHLIST_MESSAGES.LOADING} />
       </View>
     );
   }
@@ -89,8 +96,8 @@ export const WishlistScreen = ({ navigation }: Props) => {
     return (
       <View style={styles.container}>
         <NotFound
-          title="Your wishlist is empty"
-          description="Save products you love to see them here"
+          title={WISHLIST_MESSAGES.EMPTY_TITLE}
+          description={WISHLIST_MESSAGES.EMPTY_DESCRIPTION}
         />
       </View>
     );

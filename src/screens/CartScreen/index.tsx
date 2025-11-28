@@ -26,13 +26,7 @@ import {
 
 // Types
 import type { ICartItem } from '@app/interfaces/cart';
-import type {
-  PrivateTabParamList,
-  PrivateStackParamList,
-} from '@app/interfaces/navigation';
-import type { CompositeScreenProps } from '@react-navigation/native';
-import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
-import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import type { PrivateTabScreenProps } from '@app/interfaces/navigation';
 
 // Styles
 import { styles } from './index.style';
@@ -40,13 +34,10 @@ import { styles } from './index.style';
 // Enums
 import { BUTTON_VARIANTS } from '@app/enums';
 
-type ICartScreenProps = CompositeScreenProps<
-  BottomTabScreenProps<PrivateTabParamList, typeof PRIVATE_SCREENS.CART>,
-  NativeStackScreenProps<PrivateStackParamList>
->;
+type CartScreenProps = PrivateTabScreenProps<typeof PRIVATE_SCREENS.CART>;
 
-export const CartScreen = ({ navigation }: ICartScreenProps) => {
-  const { showToast } = toastStore();
+export const CartScreen = ({ navigation }: CartScreenProps) => {
+  const showToast = toastStore(state => state.showToast);
 
   const {
     cart,
@@ -58,10 +49,10 @@ export const CartScreen = ({ navigation }: ICartScreenProps) => {
     removeItem,
   } = useCart();
 
-  const productIds = cartItems.map(item => item.productId);
-  const { productMap, isLoading: isLoadingProducts } = useProductsByIds(
-    productIds ?? [],
-  );
+  const productIds = cartItems.map((item: ICartItem) => item.productId);
+
+  const { productMap, isLoading: isLoadingProducts } =
+    useProductsByIds(productIds);
 
   const handleRemoveItem = async (productId: string) => {
     await removeItem(productId);
@@ -108,10 +99,7 @@ export const CartScreen = ({ navigation }: ICartScreenProps) => {
   }, [cartItems, productMap]);
 
   const handleCheckout = useCallback(() => {
-    const parentNavigation = navigation.getParent();
-    if (parentNavigation) {
-      parentNavigation.navigate(PRIVATE_SCREENS.CHECKOUT);
-    }
+    navigation.navigate(PRIVATE_SCREENS.CHECKOUT);
   }, [navigation]);
 
   if (isLoading || isLoadingProducts) {
@@ -149,6 +137,7 @@ export const CartScreen = ({ navigation }: ICartScreenProps) => {
 
       {cartItems.map((item: ICartItem, index: number) => {
         const product = productMap.get(item.productId);
+
         if (!product) return null;
 
         return (

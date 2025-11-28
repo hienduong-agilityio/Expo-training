@@ -1,22 +1,6 @@
-export interface PromoBanner {
-  id: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  ctaText: string;
-  image: string;
-  backgroundColor: string;
-}
+import type { IPromoBanner, ISaleBanner } from '@app/interfaces';
 
-export interface SaleBanner {
-  id: string;
-  title: string;
-  subtitle: string;
-  backgroundColor: string;
-  image: string;
-}
-
-export const PROMO_BANNER: PromoBanner = {
+export const PROMO_BANNER: IPromoBanner = {
   id: 'main-promo',
   title: '50-40% OFF',
   subtitle: 'Now in (product)',
@@ -27,7 +11,7 @@ export const PROMO_BANNER: PromoBanner = {
   backgroundColor: '#F83758',
 } as const;
 
-export const SUMMER_SALE_BANNER: SaleBanner = {
+export const SUMMER_SALE_BANNER: ISaleBanner = {
   id: 'summer-sale',
   title: 'Hot SUMMER Sale',
   subtitle: 'SPECIAL OFFERS',

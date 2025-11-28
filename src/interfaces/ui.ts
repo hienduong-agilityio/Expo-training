@@ -15,13 +15,55 @@ import type {
 import type { IProduct } from '@app/interfaces/product';
 import type { ComponentType } from 'react';
 import type { IconProps } from '@app/interfaces';
-import type { DEAL_INFO } from '@app/constants/product';
 import type { ICustomStyles } from '@app/interfaces/style';
 
 // Helpers
 import { ComponentSize } from '@app/helpers/ui';
 
 export type HeaderStyle = 'deal' | 'trending';
+
+export interface IPromoBanner {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  ctaText: string;
+  image: string;
+  backgroundColor: string;
+}
+
+export interface ISaleBanner {
+  id: string;
+  title: string;
+  subtitle: string;
+  backgroundColor: string;
+  image: string;
+}
+
+export interface IDealBadge {
+  icon: string;
+  text: string;
+  color: string;
+}
+
+export interface IDealCountdown {
+  text: string;
+  color: string;
+}
+
+export interface IDealItem {
+  title: string;
+  subtitle?: string;
+  badge?: IDealBadge;
+  countdown?: IDealCountdown;
+}
+
+export interface IDealInfo {
+  dealOfDay: IDealItem;
+  weekendSpecial: IDealItem;
+  trending: IDealItem;
+  newArrivals: IDealItem;
+}
 
 export interface IButtonProps extends Omit<PressableProps, 'children'> {
   label?: string;
@@ -83,12 +125,10 @@ export interface INotFoundProps {
   onRetry?: () => void;
 }
 
-export type DealInfoType = typeof DEAL_INFO;
-
 export interface IIconConfig {
   Icon?: ComponentType<IconProps>;
   iconText?: string;
-  dealInfo?: DealInfoType;
+  dealInfo?: IDealInfo;
   iconContainerStyle?: ViewStyle;
 }
 

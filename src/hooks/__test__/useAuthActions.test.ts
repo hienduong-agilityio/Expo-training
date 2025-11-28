@@ -29,9 +29,12 @@ describe('useAuthActions', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
-    (authStore as unknown as jest.Mock).mockReturnValue({
-      setSession: mockSetSession,
-      clearSession: mockClearSession,
+    (authStore as unknown as jest.Mock).mockImplementation(selector => {
+      const state = {
+        setSession: mockSetSession,
+        clearSession: mockClearSession,
+      };
+      return selector ? selector(state) : state;
     });
     (useQueryClient as jest.Mock).mockReturnValue(mockQueryClient);
   });

@@ -1,5 +1,8 @@
 import { useState, useCallback } from 'react';
 
+// Constants
+import { FILTER_MESSAGES } from '@app/constants';
+
 // Types
 import type { ICategory } from '@app/interfaces/categories';
 
@@ -48,7 +51,7 @@ export const useFilterModal = ({
 
       onApply(selectedCategoryId, category?.name || '');
     } else {
-      onApply(null, 'All Categories');
+      onApply(null, FILTER_MESSAGES.ALL_CATEGORIES);
     }
 
     setIsVisible(false);

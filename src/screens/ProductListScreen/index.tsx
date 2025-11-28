@@ -1,21 +1,33 @@
 import { useCallback, useMemo } from 'react';
-import { View, ActivityIndicator, StyleSheet, Text } from 'react-native';
-import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { View, ActivityIndicator, Text } from 'react-native';
 
-import type { PrivateStackParamList } from '@app/interfaces/navigation';
+// Types
+import type { PrivateStackScreenProps } from '@app/interfaces/navigation';
+
+// Constants
 import { PRIVATE_SCREENS } from '@app/constants';
 
+// Hooks
 import { useCategorizedProducts } from '@app/hooks/useProduct';
+
+// Helpers
 import { getProductsByListType } from '@app/helpers/products';
+
+// Components
 import { GridProductList } from '@app/components/ui/ProductList';
 
-type Props = NativeStackScreenProps<
-  PrivateStackParamList,
+// Styles
+import { styles } from './index.style';
+
+type ProductListScreenProps = PrivateStackScreenProps<
   typeof PRIVATE_SCREENS.PRODUCT_LIST
 >;
 
-export const ProductListScreen = ({ route, navigation }: Props) => {
-  const { type } = route.params;
+export const ProductListScreen = ({
+  route,
+  navigation,
+}: ProductListScreenProps) => {
+  const productListType = route.params?.type;
 
   const {
     data: categorizedData,
@@ -27,8 +39,8 @@ export const ProductListScreen = ({ route, navigation }: Props) => {
   const loading = isLoading || isFetching;
 
   const products = useMemo(
-    () => getProductsByListType(type, categorizedData),
-    [type, categorizedData],
+    () => getProductsByListType(productListType, categorizedData),
+    [productListType, categorizedData],
   );
 
   const handleItemPress = useCallback(
@@ -64,14 +76,3 @@ export const ProductListScreen = ({ route, navigation }: Props) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  center: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

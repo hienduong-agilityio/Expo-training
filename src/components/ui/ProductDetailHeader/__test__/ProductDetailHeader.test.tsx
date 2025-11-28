@@ -60,9 +60,12 @@ describe('ProductDetailHeaderRight', () => {
     } as unknown as ReturnType<typeof useWishlist>);
 
     // Mock toastStore as a hook that returns an object
-    mockToastStore.mockReturnValue({
-      showToast: mockShowToast,
-    } as unknown as ReturnType<typeof toastStore>);
+    mockToastStore.mockImplementation(selector => {
+      const state = {
+        showToast: mockShowToast,
+      };
+      return selector ? selector(state) : state;
+    });
   });
 
   const renderComponent = (productId = '1') => {

@@ -1,9 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Alert, View } from 'react-native';
-import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 // Types
-import type { PrivateStackParamList } from '@app/interfaces/navigation';
+import type { PrivateStackScreenProps } from '@app/interfaces/navigation';
 import type { IProductSize } from '@app/interfaces/product';
 
 // Constants
@@ -12,6 +11,8 @@ import {
   POSITION,
   STATUS,
   TOAST_MESSAGES,
+  PRODUCT_MESSAGES,
+  MESSAGES,
 } from '@app/constants';
 
 // Hooks
@@ -32,8 +33,7 @@ import { getApiErrorMessage } from '@app/helpers/errorMessage';
 // Styles
 import { styles } from './index.style';
 
-type Props = NativeStackScreenProps<
-  PrivateStackParamList,
+type ProductDetailScreenProps = PrivateStackScreenProps<
   typeof PRIVATE_SCREENS.PRODUCT_DETAIL
 >;
 
@@ -44,11 +44,15 @@ const MOCK_SIZES: IProductSize[] = [
   { id: '4', size: '10 UK', available: false },
 ];
 
-export const ProductDetailScreen = ({ route, navigation }: Props) => {
-  const { productId } = route.params;
+export const ProductDetailScreen = ({
+  route,
+  navigation,
+}: ProductDetailScreenProps) => {
+  const productId = route.params?.productId;
+
   const [selectedSize, setSelectedSize] = useState<string>('');
 
-  const { showToast } = toastStore();
+  const showToast = toastStore(state => state.showToast);
 
   const {
     product,
@@ -56,15 +60,18 @@ export const ProductDetailScreen = ({ route, navigation }: Props) => {
     error: queryError,
     refetch,
   } = useProductById(productId);
+
   const { addItem } = useCart();
 
   const productImages = useMemo(() => {
     if (!product?.imageSource) return [];
+
     return [product.imageSource];
   }, [product?.imageSource]);
 
   const productSizes: IProductSize[] = useMemo(() => {
     if (!product) return [];
+
     return MOCK_SIZES;
   }, [product]);
 
@@ -87,11 +94,7 @@ export const ProductDetailScreen = ({ route, navigation }: Props) => {
       return;
     }
 
-    const parent = navigation.getParent();
-
-    if (parent) {
-      parent.navigate(PRIVATE_SCREENS.HOME);
-    }
+    navigation.navigate(PRIVATE_SCREENS.HOME);
   };
 
   const handleAddToCart = useCallback(async () => {
@@ -113,21 +116,35 @@ export const ProductDetailScreen = ({ route, navigation }: Props) => {
     }
   }, [product, selectedSize, addItem, showToast]);
 
+  const handleBuyNow = useCallback(() => {
+    showToast({
+      type: STATUS.SUCCESS,
+      message: `${MESSAGES.OR_CONTINUE_WITH} ${product?.name}`,
+      position: POSITION.TOP,
+    });
+  }, [product, showToast]);
+
   const handleShowMoreDetails = () => {
     if (!product) return;
 
     Alert.alert(
-      'Product Details',
-      product.description || 'No details available',
+      PRODUCT_MESSAGES.PRODUCT_DETAILS,
+      product.description || PRODUCT_MESSAGES.NO_DETAILS_AVAILABLE,
     );
   };
 
   const handleViewSimilar = () => {
-    Alert.alert('View Similar', 'Showing similar products');
+    Alert.alert(
+      PRODUCT_MESSAGES.VIEW_SIMILAR,
+      PRODUCT_MESSAGES.VIEW_SIMILAR_DESCRIPTION,
+    );
   };
 
   const handleAddToCompare = () => {
-    Alert.alert('Add to Compare', 'Product added to comparison');
+    Alert.alert(
+      PRODUCT_MESSAGES.ADD_TO_COMPARE,
+      PRODUCT_MESSAGES.ADD_TO_COMPARE_DESCRIPTION,
+    );
   };
 
   const handleSimilarProductPress = (similarProductId: string) => {
@@ -140,7 +157,7 @@ export const ProductDetailScreen = ({ route, navigation }: Props) => {
     return (
       <View style={styles.container}>
         <LoadingState
-          message="Loading product details..."
+          message={PRODUCT_MESSAGES.LOADING_DETAILS}
           containerStyle={styles.loadingContainer}
         />
       </View>
@@ -151,9 +168,9 @@ export const ProductDetailScreen = ({ route, navigation }: Props) => {
     return (
       <View style={styles.container}>
         <NotFound
-          title="Product Not Found"
-          description="The product you're looking for doesn't exist or has been removed."
-          retryLabel="Go Back"
+          title={PRODUCT_MESSAGES.NOT_FOUND}
+          description={PRODUCT_MESSAGES.NOT_FOUND_DESCRIPTION}
+          retryLabel={PRODUCT_MESSAGES.GO_BACK}
           onRetry={handleGoBack}
         />
       </View>
@@ -164,10 +181,12 @@ export const ProductDetailScreen = ({ route, navigation }: Props) => {
     return (
       <View style={styles.container}>
         <NotFound
-          title="Failed to Load Product"
-          description="Unable to load product details. Please try again."
-          retryLabel="Retry"
-          onRetry={() => refetch()}
+          title={PRODUCT_MESSAGES.FAILED_TO_LOAD}
+          description={PRODUCT_MESSAGES.FAILED_TO_LOAD_DESCRIPTION}
+          retryLabel={PRODUCT_MESSAGES.RETRY}
+          onRetry={() => {
+            refetch();
+          }}
         />
       </View>
     );
@@ -182,13 +201,7 @@ export const ProductDetailScreen = ({ route, navigation }: Props) => {
         selectedSize={selectedSize}
         onSizeSelect={handleSizeSelect}
         onAddToCart={handleAddToCart}
-        onBuyNow={() => {
-          showToast({
-            type: STATUS.SUCCESS,
-            message: `Proceeding to checkout for ${product.name} `,
-            position: POSITION.TOP,
-          });
-        }}
+        onBuyNow={handleBuyNow}
         onShowMoreDetails={handleShowMoreDetails}
         onViewSimilar={handleViewSimilar}
         onAddToCompare={handleAddToCompare}

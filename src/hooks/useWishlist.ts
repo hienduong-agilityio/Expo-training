@@ -6,22 +6,22 @@ import { wishlistService } from '@app/services/wishlist';
 // Stores
 import { authStore } from '@app/stores/authStore';
 
+// Constants
+import { QUERY_KEYS } from '@app/constants';
+
 // Types
 import type { ApiError } from '@app/interfaces/api';
 import type { IWishlist, IWishlistItem } from '@app/interfaces/wishlist';
 
 export type WishlistHookError = ApiError | Error | unknown;
 
-export const wishlistQueryKey = (userId?: string) =>
-  ['wishlist', userId] as const;
-
 export const useWishlist = () => {
-  const { user } = authStore();
-  const userId = user?.documentId;
+  const userId = authStore(state => state.user?.documentId);
+
   const queryClient = useQueryClient();
 
   const wishlistQuery = useQuery<IWishlist | null, WishlistHookError>({
-    queryKey: wishlistQueryKey(userId),
+    queryKey: [QUERY_KEYS.WISHLIST, userId],
     enabled: Boolean(userId),
     staleTime: 30_000,
     queryFn: () =>
@@ -33,9 +33,10 @@ export const useWishlist = () => {
   const getCachedWishlist = (): IWishlist | null => {
     if (!userId) return null;
 
-    const cached = queryClient.getQueryData<IWishlist | null>(
-      wishlistQueryKey(userId),
-    );
+    const cached = queryClient.getQueryData<IWishlist | null>([
+      QUERY_KEYS.WISHLIST,
+      userId,
+    ]);
 
     return cached ?? null;
   };
@@ -44,7 +45,7 @@ export const useWishlist = () => {
     if (!userId) return;
 
     queryClient.setQueryData<IWishlist | null>(
-      wishlistQueryKey(userId),
+      [QUERY_KEYS.WISHLIST, userId],
       wishlist,
     );
   };
@@ -64,7 +65,7 @@ export const useWishlist = () => {
   };
 
   const addItemMutation = useMutation<IWishlist, WishlistHookError, string>({
-    mutationKey: ['wishlist-add-item', userId],
+    mutationKey: [QUERY_KEYS.WISHLIST_ADD_ITEM, userId],
     mutationFn: async productId => {
       const baseWishlist = await ensureWishlist();
       const current = baseWishlist.products ?? [];
@@ -87,7 +88,7 @@ export const useWishlist = () => {
   });
 
   const removeItemMutation = useMutation<IWishlist, WishlistHookError, string>({
-    mutationKey: ['wishlist-remove-item', userId],
+    mutationKey: [QUERY_KEYS.WISHLIST_REMOVE_ITEM, userId],
     mutationFn: async productId => {
       const baseWishlist = await ensureWishlist();
       const current = baseWishlist.products ?? [];

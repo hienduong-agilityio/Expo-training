@@ -22,6 +22,8 @@ export const useHydration = (store: TPersistedStore): boolean => {
 
     setHydrated(store.persist.hasHydrated());
 
+    //TODO: Onboarding screen should be shown only once after the app is installed
+
     return () => {
       unsubHydrate();
       unsubFinishHydration();

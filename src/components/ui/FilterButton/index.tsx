@@ -4,7 +4,7 @@ import { View, TouchableOpacity, Text } from 'react-native';
 import { SortIcon, FilterIcon } from '@app/icons';
 
 // Constants
-import { UI_BUTTON_LABELS } from '@app/constants';
+import { BUTTON_LABELS } from '@app/constants';
 
 // Styles
 import { styles } from './index.style';
@@ -30,7 +30,7 @@ export const FilterButtons = ({
           onPress={onSortPress}
           accessibilityRole="button"
           accessibilityLabel="Sort results">
-          <Text style={styles.filterButtonText}>{UI_BUTTON_LABELS.SORT}</Text>
+          <Text style={styles.filterButtonText}>{BUTTON_LABELS.SORT}</Text>
           <SortIcon width={16} height={16} color="#666" />
         </TouchableOpacity>
       )}
@@ -41,7 +41,7 @@ export const FilterButtons = ({
           onPress={onFilterPress}
           accessibilityRole="button"
           accessibilityLabel="Filter results">
-          <Text style={styles.filterButtonText}>{UI_BUTTON_LABELS.FILTER}</Text>
+          <Text style={styles.filterButtonText}>{BUTTON_LABELS.FILTER}</Text>
           <FilterIcon width={16} height={16} color="#666" />
         </TouchableOpacity>
       )}

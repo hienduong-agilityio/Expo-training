@@ -10,6 +10,7 @@ import type {
   CartSingleResponse,
 } from '@app/interfaces/cart';
 
+// Todo: Split into multiple services
 export const cartService = {
   async getActiveCartForUser(userDocumentId: string): Promise<Cart | null> {
     const response = await apiRequest<CartListResponse>(CART_ENDPOINTS.ROOT, {

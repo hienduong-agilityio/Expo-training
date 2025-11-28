@@ -15,48 +15,53 @@ import { ClockIcon, CalendarIcon } from '@app/icons';
 
 // Constants
 import {
-  CATEGORIES,
-  PROMO_BANNER,
-  SUMMER_SALE_BANNER,
-  SPONSORED_BANNER,
-  SPECIAL_OFFERS_BANNER,
-  DEAL_INFO,
   PRODUCT_LIST_TYPES,
   PRODUCT_LIST_TITLES,
   PRIVATE_SCREENS,
   MESSAGES,
+  SEARCH_MESSAGES,
 } from '@app/constants';
 
+import type { ProductListType } from '@app/constants';
+
+// Mocks
+import { CATEGORIES } from '@app/mocks/categories';
+import {
+  PROMO_BANNER,
+  SUMMER_SALE_BANNER,
+  SPONSORED_BANNER,
+  SPECIAL_OFFERS_BANNER,
+} from '@app/mocks/banners';
+import { DEAL_INFO } from '@app/mocks/home';
+
 // Types
-import type {
-  PrivateStackParamList,
-  PrivateTabParamList,
-} from '@app/interfaces/navigation';
-import type { CompositeScreenProps } from '@react-navigation/native';
-import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
-import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import type { PrivateTabScreenProps } from '@app/interfaces/navigation';
 
 // Hooks
 import { useCategorizedProducts } from '@app/hooks/useProduct';
 
-// Styles
-import { styles } from './index.style';
-
 // Stores
 import { searchStore } from '@app/stores/searchStore';
 
-type Props = CompositeScreenProps<
-  BottomTabScreenProps<PrivateTabParamList, typeof PRIVATE_SCREENS.HOME>,
-  NativeStackScreenProps<PrivateStackParamList>
->;
+// Styles
+import { styles } from './index.style';
 
-export const HomeScreen = ({ navigation }: Props) => {
+type HomeScreenProps = PrivateTabScreenProps<typeof PRIVATE_SCREENS.HOME>;
+
+/**
+ * TODO: Use route.params to get the search query and category id.
+ * * Replace the useEffect with useEffect hook to get the search query and category id from the route.params.
+ * * Remove searchStore and use the route.params instead.s
+ */
+export const HomeScreen = ({ navigation }: HomeScreenProps) => {
   const {
     data: categorizedData,
     isLoading,
     isFetching,
     error,
   } = useCategorizedProducts();
+
+  // Todo: Use route.params to get the search query and category id.
   const { setCategory, setSearchQuery } = searchStore();
   const [searchValue, setSearchValue] = useState('');
 
@@ -69,10 +74,8 @@ export const HomeScreen = ({ navigation }: Props) => {
   const loading = isLoading || isFetching;
 
   const navigateToProductList = useCallback(
-    (type: keyof typeof PRODUCT_LIST_TYPES) => {
-      const listType = PRODUCT_LIST_TYPES[type];
-
-      navigation.getParent()?.navigate(PRIVATE_SCREENS.PRODUCT_LIST, {
+    (listType: ProductListType) => {
+      navigation.navigate(PRIVATE_SCREENS.PRODUCT_LIST, {
         type: listType,
         title: PRODUCT_LIST_TITLES[listType],
       });
@@ -82,24 +85,22 @@ export const HomeScreen = ({ navigation }: Props) => {
 
   const handleProductPress = useCallback(
     (id: string) => {
-      navigation
-        .getParent()
-        ?.navigate(PRIVATE_SCREENS.PRODUCT_DETAIL, { productId: id });
+      navigation.navigate(PRIVATE_SCREENS.PRODUCT_DETAIL, {
+        productId: id,
+      });
     },
     [navigation],
   );
 
   const handleViewAllNewArrivals = useCallback(() => {
-    navigateToProductList('NEW_ARRIVALS');
+    navigateToProductList(PRODUCT_LIST_TYPES.NEW_ARRIVALS);
   }, [navigateToProductList]);
 
   const handleCategoryPress = useCallback(
     (categoryId: string, categoryName: string) => {
       setCategory(categoryId, categoryName);
 
-      const tabNavigation =
-        navigation as BottomTabScreenProps<PrivateTabParamList>['navigation'];
-      tabNavigation.navigate(PRIVATE_SCREENS.SEARCH);
+      navigation.navigate(PRIVATE_SCREENS.SEARCH);
     },
     [navigation, setCategory],
   );
@@ -111,9 +112,7 @@ export const HomeScreen = ({ navigation }: Props) => {
       setCategory(null, null);
       setSearchQuery(trimmedQuery);
 
-      const tabNavigation =
-        navigation as BottomTabScreenProps<PrivateTabParamList>['navigation'];
-      tabNavigation.navigate(PRIVATE_SCREENS.SEARCH);
+      navigation.navigate(PRIVATE_SCREENS.SEARCH);
     }
   }, [searchValue, navigation, setCategory, setSearchQuery]);
 
@@ -125,7 +124,7 @@ export const HomeScreen = ({ navigation }: Props) => {
             value={searchValue}
             onChangeText={setSearchValue}
             onSubmitEditing={handleSearchSubmit}
-            placeholder="Search for products"
+            placeholder={SEARCH_MESSAGES.PLACEHOLDER}
           />
         </View>
 
@@ -146,7 +145,9 @@ export const HomeScreen = ({ navigation }: Props) => {
           actionLabel={MESSAGES.VIEW_ALL}
           Icon={ClockIcon}
           label={DEAL_INFO.dealOfDay.countdown?.text}
-          onPressViewAll={() => navigateToProductList('DEAL_OF_DAY')}
+          onPressViewAll={() =>
+            navigateToProductList(PRODUCT_LIST_TYPES.DEAL_OF_DAY)
+          }
         />
 
         <SpecialOffersBanner banner={SPECIAL_OFFERS_BANNER} />
@@ -161,13 +162,15 @@ export const HomeScreen = ({ navigation }: Props) => {
           actionLabel={MESSAGES.VIEW_ALL}
           Icon={CalendarIcon}
           label={DEAL_INFO.trending.countdown?.text}
-          onPressViewAll={() => navigateToProductList('TRENDING')}
+          onPressViewAll={() =>
+            navigateToProductList(PRODUCT_LIST_TYPES.TRENDING)
+          }
         />
 
         <SummerSaleBanner
           banner={SUMMER_SALE_BANNER}
           newArrivalsTitle={DEAL_INFO.newArrivals.title}
-          newArrivalsSubtitle={DEAL_INFO.newArrivals.subtitle}
+          newArrivalsSubtitle={DEAL_INFO.newArrivals.subtitle ?? ''}
           onPressViewAll={handleViewAllNewArrivals}
           actionLabel={MESSAGES.VIEW_ALL}
         />

@@ -12,22 +12,24 @@ import {
   POSITION,
   STATUS,
   TOAST_MESSAGES,
+  SETTINGS_MESSAGES,
 } from '@app/constants';
-
-// Styles
-import { styles } from './index.style';
 
 // Hooks
 import { useAuthActions } from '@app/hooks/useAuthActions';
 
-export const SettingsScreen = () => {
-  const { user } = authStore();
-  const { logout } = useAuthActions();
-  const { showToast } = toastStore();
+// Styles
+import { styles } from './index.style';
 
-  const handleSignOut = async () => {
+export const SettingsScreen = () => {
+  const userEmail = authStore(state => state.user?.email);
+  const showToast = toastStore(state => state.showToast);
+
+  const { logout } = useAuthActions();
+
+  const handleSignOut = () => {
     try {
-      await logout();
+      logout();
 
       showToast({
         type: STATUS.SUCCESS,
@@ -46,7 +48,10 @@ export const SettingsScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.text}>User: {user?.email ?? '—'}</Text>
+        <Text style={styles.text}>
+          User:
+          {userEmail ?? SETTINGS_MESSAGES.DEFAULT_USER}
+        </Text>
         <Button label={BUTTON_LABELS.SIGN_OUT} onPress={handleSignOut} />
       </View>
     </SafeAreaView>
