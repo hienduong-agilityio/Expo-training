@@ -7,11 +7,12 @@ A **React Native CLI** application for browsing, discovering, and purchasing pro
 ## Target
 
 - Set up a reliable **Android/iOS** development environment.
-- Understand **navigation** in React Native application
+- Understand **navigation** in React Native application (React Navigation v7).
 - Understand and apply **core React Native building blocks** to real screens.
 - Build **reusable components** and document them in **Storybook**.
-- Write **meaningful unit tests** with comprehensive coverage (**90.28%** achieved).
+- Write **meaningful unit tests** with comprehensive coverage.
 - Practice **debugging** (DevTools) and consistent code quality.
+- Implement **efficient data fetching** using TanStack Query.
 
 ---
 
@@ -21,8 +22,8 @@ A **React Native CLI** application for browsing, discovering, and purchasing pro
 
 - **Boot splash screen** with animated logo
 - **Multi-step onboarding** with navigation dots
-- **Sign In / Sign Up** with email/password validation
-- **Secure authentication** with JWT tokens and keychain storage
+- **Sign In / Sign Up** with email/password validation (Zod)
+- **Secure authentication** with JWT tokens
 - **Auto-login** functionality with session persistence
 
 ### 🏠 Home & Discovery
@@ -57,6 +58,12 @@ A **React Native CLI** application for browsing, discovering, and purchasing pro
 - **Delivery information** display
 - **Cart item calculations** (subtotal, shipping, taxes)
 
+### 💳 Checkout Flow
+
+- **Checkout Screen** for finalizing purchases
+- **Payment method selection**
+- **Order summary** review
+
 ### 👤 User Profile & Settings
 
 - **User profile** management
@@ -76,10 +83,13 @@ A **React Native CLI** application for browsing, discovering, and purchasing pro
 
 ## Technical stacks
 
-- 📱 **[React Native (CLI)](https://reactnative.dev/)** – Native mobile app framework (iOS/Android) powered by React
-- ⚛️ **[React](https://react.dev/)** – Component model & rendering
+- 📱 **[React Native (CLI)](https://reactnative.dev/)** (v0.81) – Native mobile app framework (iOS/Android) powered by React
+- ⚛️ **[React](https://react.dev/)** (v19) – Component model & rendering
 - 🔥 **[TypeScript](https://www.typescriptlang.org/)** – Static typing for safer, scalable code
-- 🧭 **[React Navigation](https://reactnavigation.org/)** – Stacks, tabs, and deep-linking
+- 🧭 **[React Navigation](https://reactnavigation.org/)** (v7) – Stacks, tabs, and deep-linking
+- 📡 **[TanStack Query](https://tanstack.com/query/latest)** (v5) – Async state management & data fetching
+- 🐻 **[Zustand](https://zustand-demo.pmnd.rs/)** (v5) – specific Client state management
+- 🛡️ **[Zod](https://zod.dev/)** – Schema validation
 - 📚 **[Storybook](https://storybook.js.org/)** – Build & document UI components in isolation
 - 🧪 **[Jest](https://jestjs.io/)** + **[@testing-library/react-native](https://testing-library.com/docs/react-native-testing-library/intro/)** – Unit & component testing
 - 🧰 **[ESLint](https://eslint.org/)** + **[Prettier](https://prettier.io/)** – Linting & formatting
@@ -95,44 +105,47 @@ A **React Native CLI** application for browsing, discovering, and purchasing pro
 ```shell
 src/
 ├── assets/                       # Static resources: images, icons, fonts
-├── components/                   # Reusable UI components with stories and tests
-│   ├── common/                   # Shared components (Button, FormField, Loading, etc.)
-│   ├── CartItem/                 # Shopping cart item component
-│   ├── ProductCard/              # Product display component
-│   ├── ProductList/              # Product listing components
-│   ├── SearchInput/              # Search functionality
-│   └── ...                       # Other specialized components
+├── components/                   # Reusable UI components
+│   ├── common/                   # Shared components (Button, FormField, etc.)
+│   ├── ui/                       # Atomic UI components (extensive library)
+│   ├── BottomTabHeader/          # Navigation headers
+│   ├── GlobalHeader/             # App-wide header
+│   ├── ToastContainer/           # Toast notification wrapper
+│   └── ...
 ├── constants/                    # App constants: routes, endpoints, UI constants
+├── contexts/                     # React Context definitions (e.g., QueryClient)
 ├── enums/                        # TypeScript enums for app logic
 ├── helpers/                      # Pure utility functions: formatters, validators
-├── hooks/                        # Custom React hooks: auth, forms, error handling
+├── hooks/                        # Custom React hooks (useAuthActions, useCart, etc.)
 ├── icons/                        # SVG icon components
 ├── interfaces/                   # TypeScript type definitions
 ├── mocks/                        # Mock data for development and testing
-├── navigation/                   # React Navigation setup: stacks, tabs, linking
+├── navigation/                   # React Navigation setup (v7)
 ├── schemas/                      # Zod validation schemas
 ├── screens/                      # Page-level screens
 │   ├── OnboardingScreen/         # App introduction
-│   ├── Login/                    # Authentication
+│   ├── LoginScreen/              # Authentication
 │   ├── HomeScreen/               # Main dashboard
 │   ├── ProductListScreen/        # Product browsing
-│   ├── ProductDetailScreen/      # Product details
+│   ├── ProductDetailsScreen/     # Product details
 │   ├── CartScreen/               # Shopping cart
+│   ├── CheckoutScreen/           # Order finalization
 │   ├── WishlistScreen/           # User wishlist
 │   ├── SearchScreen/             # Product search
-│   └── SettingScreen/            # User settings
+│   ├── SettingsScreen/           # User settings
+│   └── RegisterScreen/           # User registration
 ├── services/                     # API services and data layer
-│   ├── api.ts                    # Base API client
+│   ├── apiClient.ts              # Base API client with interceptors
 │   ├── auth.ts                   # Authentication service
 │   ├── products.ts               # Product-related API calls
 │   ├── cart.ts                   # Cart management
 │   └── wishlist.ts               # Wishlist operations
-├── stores/                       # Zustand state management
+├── stores/                       # Zustand state management (auth, search, toast)
 ├── styles/                       # Global styles and themes
 └── themes/                       # App theming configuration
 
 backend/                          # Strapi v5 CMS backend
-├── config/                        # Strapi configuration
+├── config/                       # Strapi configuration
 ├── src/                          # Strapi source code
 │   ├── api/                      # API endpoints and controllers
 │   ├── components/               # Strapi components
@@ -146,14 +159,14 @@ backend/                          # Strapi v5 CMS backend
 
 ### 🧪 Test Coverage
 
-The project maintains comprehensive test coverage with **80%** overall coverage:
+The project maintains comprehensive test coverage:
 
-- **48 test suites** with **530+ tests** passing
-- **67 snapshot tests** for UI components
-- **Component testing** with React Native Testing Library
-- **Service layer testing** with mocked API responses
-- **Hook testing** for custom React hooks
-- **Helper function testing** for utility functions
+- **Unit Tests** with Jest
+- **Snapshot Tests** for UI components
+- **Component Testing** with React Native Testing Library
+- **Service Layer Testing** with mocked API responses
+- **Hook Testing** for custom React hooks
+- **Helper Function Testing** for utility functions
 
 ### 📚 Component Documentation
 
@@ -176,7 +189,7 @@ The project maintains comprehensive test coverage with **80%** overall coverage:
 
 ### 🗄️ Strapi v5 CMS
 
-The app integrates with a **Strapi v5.23.6** backend that provides:
+The app integrates with a **Strapi v5** backend that provides:
 
 - **RESTful API** endpoints for products, users, carts, and wishlists
 - **Authentication & authorization** with JWT tokens
@@ -334,7 +347,7 @@ This is one way to run your app — you can also build it directly from Android 
 
 Now that you have successfully run the app, let's make changes!
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
 
 When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
 
