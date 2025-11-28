@@ -18,6 +18,8 @@ export async function apiRequest<TResponse, TBody = unknown>(
     method = HTTP_METHODS.GET,
     query,
     body,
+    // Todo: Auth should be true by default.
+    // * Remove the auth parameter from the options.
     auth = false,
     signal,
   } = options;

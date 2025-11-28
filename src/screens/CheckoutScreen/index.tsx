@@ -17,6 +17,7 @@ import { toastStore } from '@app/stores/toastStore';
 // Types
 import type { PrivateStackParamList } from '@app/interfaces/navigation';
 import type { PaymentProvider } from '@app/constants';
+import type { ICartItem } from '@app/interfaces/cart';
 
 // Constants
 import {
@@ -29,27 +30,30 @@ import {
   BUTTON_LABELS,
   PAYMENT_PROVIDER,
 } from '@app/constants';
+
+// Mocks
 import { MOCK_PAYMENT_OPTIONS } from '@app/mocks/payments';
 
 // Styles
 import { styles } from './index.style';
 
-type Props = NativeStackScreenProps<
+type CheckoutScreenProps = NativeStackScreenProps<
   PrivateStackParamList,
   typeof PRIVATE_SCREENS.CHECKOUT
 >;
 
 const SHIPPING_PRICE = 30;
 
-export const CheckoutScreen = ({ navigation }: Props) => {
-  const { showToast } = toastStore();
+export const CheckoutScreen = ({ navigation }: CheckoutScreenProps) => {
+  const showToast = toastStore(state => state.showToast);
+
   const { cart, cartItems, isLoading, checkout } = useCart();
 
   const [selectedPayment, setSelectedPayment] = useState<PaymentProvider>(
     PAYMENT_PROVIDER.VISA,
   );
 
-  const productIds = cartItems.map(item => item.productId);
+  const productIds = cartItems.map((item: ICartItem) => item.productId);
 
   const { productMap, isLoading: isLoadingProducts } =
     useProductsByIds(productIds);
@@ -72,6 +76,7 @@ export const CheckoutScreen = ({ navigation }: Props) => {
       await checkout();
       navigation.goBack();
 
+      // Todo: UseDebounce hook
       setTimeout(() => {
         showToast({
           type: STATUS.SUCCESS,

@@ -6,21 +6,23 @@ import { cartService } from '@app/services/cart';
 // Stores
 import { authStore } from '@app/stores/authStore';
 
+// Constants
+import { QUERY_KEYS } from '@app/constants/queryKeys';
+
 // Types
 import type { ApiError } from '@app/interfaces/api';
 import type { Cart, ICartItem } from '@app/interfaces/cart';
 
 export type CartHookError = ApiError | Error | unknown;
 
-export const cartQueryKey = (userId?: string) => ['cart', userId] as const;
-
+// TODO: Split into multiple hooks
 export const useCart = () => {
-  const { user } = authStore();
-  const userId = user?.documentId;
+  const userId = authStore(state => state.user?.documentId);
+
   const queryClient = useQueryClient();
 
   const cartQuery = useQuery<Cart | null, CartHookError>({
-    queryKey: cartQueryKey(userId),
+    queryKey: [QUERY_KEYS.CART, userId],
     enabled: Boolean(userId),
     staleTime: 30_000,
     queryFn: () =>
@@ -30,7 +32,10 @@ export const useCart = () => {
   const getCachedCart = (): Cart | null => {
     if (!userId) return null;
 
-    const cached = queryClient.getQueryData<Cart | null>(cartQueryKey(userId));
+    const cached = queryClient.getQueryData<Cart | null>([
+      QUERY_KEYS.CART,
+      userId,
+    ]);
 
     return cached ?? null;
   };
@@ -38,7 +43,7 @@ export const useCart = () => {
   const setCachedCart = (cart: Cart | null) => {
     if (!userId) return;
 
-    queryClient.setQueryData<Cart | null>(cartQueryKey(userId), cart);
+    queryClient.setQueryData<Cart | null>([QUERY_KEYS.CART, userId], cart);
   };
 
   const ensureCart = async (): Promise<Cart> => {
@@ -58,7 +63,7 @@ export const useCart = () => {
   };
 
   const addItemMutation = useMutation<Cart, CartHookError, ICartItem>({
-    mutationKey: ['cart-add-item', userId],
+    mutationKey: [QUERY_KEYS.CART_ADD_ITEM, userId],
     mutationFn: async ({ productId, quantity = 1 }) => {
       const baseCart = await ensureCart();
       const current = baseCart.products ?? [];
@@ -85,7 +90,7 @@ export const useCart = () => {
   });
 
   const updateItemMutation = useMutation<Cart, CartHookError, ICartItem>({
-    mutationKey: ['cart-update-item', userId],
+    mutationKey: [QUERY_KEYS.CART_UPDATE_ITEM, userId],
     mutationFn: async ({ productId, quantity }) => {
       const baseCart = await ensureCart();
       const current = baseCart.products ?? [];
@@ -117,7 +122,7 @@ export const useCart = () => {
   });
 
   const removeItemMutation = useMutation<Cart, CartHookError, string>({
-    mutationKey: ['cart-remove-item', userId],
+    mutationKey: [QUERY_KEYS.CART_REMOVE_ITEM, userId],
     mutationFn: async productId => {
       const baseCart = await ensureCart();
       const current = baseCart.products ?? [];
@@ -135,7 +140,7 @@ export const useCart = () => {
   });
 
   const checkoutMutation = useMutation<Cart, CartHookError, void>({
-    mutationKey: ['cart-checkout', userId],
+    mutationKey: [QUERY_KEYS.CART_CHECKOUT, userId],
     mutationFn: async () => {
       const baseCart = await ensureCart();
       const clearedCart = await cartService.clearCartProducts(

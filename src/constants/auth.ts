@@ -9,5 +9,39 @@ export const AUTH_ENDPOINTS = {
   LOGIN: '/auth/local',
 } as const;
 
+export const AUTH_FIELDS = {
+  USERNAME: 'username',
+  EMAIL: 'email',
+  IDENTIFIER: 'identifier',
+  PASSWORD: 'password',
+  CONFIRM_PASSWORD: 'confirmPassword',
+} as const;
+
+export const AUTH_FORM_MESSAGES = {
+  USERNAME_OR_EMAIL: 'Username or Email',
+  USERNAME: 'Username',
+  EMAIL: 'Email',
+  CREATE_ACCOUNT: 'Create an Account',
+  WELCOME_BACK: 'Welcome back',
+  BY_CLICKING_REGISTER:
+    'By clicking Register, you agree to our Terms of Service and Privacy Policy',
+  PASSWORD: 'Password',
+  DONT_HAVE_AN_ACCOUNT: "Don't have an account?",
+  CONFIRM_PASSWORD: 'Confirm Password',
+} as const;
+
+export const LINK_MESSAGES = {
+  RESET_PASSWORD: 'Reset Password',
+} as const;
+
+export const TEXTFIELD_MESSAGES = {
+  USERNAME_OR_EMAIL: 'Username or Email',
+  PASSWORD: 'Password',
+} as const;
+
+export const ONBOARDING_MESSAGES = {
+  SKIP: 'Skip',
+} as const;
+
 export type SocialProvider =
   (typeof SOCIAL_PROVIDER)[keyof typeof SOCIAL_PROVIDER];

@@ -11,6 +11,7 @@ import type {
   IWishlistItem,
 } from '@app/interfaces/wishlist';
 
+// Todo: Split into multiple services
 export const wishlistService = {
   async getWishlistForUser(userDocumentId: string): Promise<IWishlist | null> {
     const response = await apiRequest<IWishlistListResponse>(

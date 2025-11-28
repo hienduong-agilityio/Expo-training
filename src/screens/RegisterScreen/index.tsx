@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { AuthTextField } from '@app/components/ui/AuthTextField';
 import { AuthFooter } from '@app/components/ui/AuthFooter';
 import { AuthScreenLayout } from '@app/components/ui/AuthScreenLayout';
+import { LoadingButton } from '@app/components/common/LoadingButton';
 
 // Icons
 import { UserIcon, PassIcon } from '@app/icons';
@@ -18,6 +19,7 @@ import {
   STATUS,
   TOAST_MESSAGES,
 } from '@app/constants';
+import { AUTH_FIELDS } from '@app/constants/auth';
 
 // Types
 import type { PublicStackScreenProps } from '@app/interfaces';
@@ -38,7 +40,6 @@ import { validateRegister } from '@app/helpers/validation';
 
 // Schemas
 import { RegisterFormValues } from '@app/schemas/auth';
-import { LoadingButton } from '@app/components/common/LoadingButton';
 
 type RegisterScreenProps = PublicStackScreenProps<
   typeof PUBLIC_SCREENS.REGISTER
@@ -48,13 +49,15 @@ export const RegisterScreen = ({ navigation }: RegisterScreenProps) => {
   const { values, fieldErrors, handleChange, resetForm, setFieldError } =
     useForm({
       initialValues: {
-        username: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
+        [AUTH_FIELDS.USERNAME]: '',
+        [AUTH_FIELDS.EMAIL]: '',
+        [AUTH_FIELDS.PASSWORD]: '',
+        [AUTH_FIELDS.CONFIRM_PASSWORD]: '',
       },
     });
-  const { showToast } = toastStore();
+
+  const showToast = toastStore(state => state.showToast);
+
   const { register, isSubmitting } = useAuthActions();
 
   const navigateToLogin = () => navigation.navigate(PUBLIC_SCREENS.LOGIN);
@@ -98,7 +101,7 @@ export const RegisterScreen = ({ navigation }: RegisterScreenProps) => {
         <AuthTextField
           placeholder={AUTH_FORM_MESSAGES.USERNAME}
           value={values.username}
-          onChangeText={text => handleChange('username', text)}
+          onChangeText={text => handleChange(AUTH_FIELDS.USERNAME, text)}
           leftIcon={<UserIcon width={20} height={20} />}
           autoCapitalize="none"
           autoCorrect={false}
@@ -107,7 +110,7 @@ export const RegisterScreen = ({ navigation }: RegisterScreenProps) => {
         <AuthTextField
           placeholder={AUTH_FORM_MESSAGES.EMAIL}
           value={values.email}
-          onChangeText={text => handleChange('email', text)}
+          onChangeText={text => handleChange(AUTH_FIELDS.EMAIL, text)}
           leftIcon={<UserIcon width={20} height={20} />}
           keyboardType="email-address"
           autoCapitalize="none"
@@ -117,7 +120,7 @@ export const RegisterScreen = ({ navigation }: RegisterScreenProps) => {
         <AuthTextField
           placeholder={AUTH_FORM_MESSAGES.PASSWORD}
           value={values.password}
-          onChangeText={text => handleChange('password', text)}
+          onChangeText={text => handleChange(AUTH_FIELDS.PASSWORD, text)}
           leftIcon={<PassIcon width={20} height={20} />}
           isPassword
           error={fieldErrors.password}
@@ -125,7 +128,9 @@ export const RegisterScreen = ({ navigation }: RegisterScreenProps) => {
         <AuthTextField
           placeholder={AUTH_FORM_MESSAGES.CONFIRM_PASSWORD}
           value={values.confirmPassword}
-          onChangeText={text => handleChange('confirmPassword', text)}
+          onChangeText={text =>
+            handleChange(AUTH_FIELDS.CONFIRM_PASSWORD, text)
+          }
           leftIcon={<PassIcon width={20} height={20} />}
           isPassword
           error={fieldErrors.confirmPassword}

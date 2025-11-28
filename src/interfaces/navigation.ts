@@ -1,11 +1,21 @@
+// Constants
 import {
   PRIVATE_SCREENS,
   PUBLIC_SCREENS,
   ProductListType,
 } from '@app/constants';
-import { NavigatorScreenParams } from '@react-navigation/native';
 
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+// Types
+import type {
+  NavigatorScreenParams,
+  RouteProp,
+} from '@react-navigation/native';
+import type {
+  NativeStackScreenProps,
+  NativeStackNavigationProp,
+} from '@react-navigation/native-stack';
+
+import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 
 export type PrivateTabParamList = {
   [PRIVATE_SCREENS.HOME]: undefined;
@@ -16,7 +26,9 @@ export type PrivateTabParamList = {
 };
 
 export type PrivateStackParamList = {
-  [PRIVATE_SCREENS.HOME]: NavigatorScreenParams<PrivateTabParamList>;
+  [PRIVATE_SCREENS.HOME]:
+    | NavigatorScreenParams<PrivateTabParamList>
+    | undefined;
   [PRIVATE_SCREENS.PRODUCT_LIST]: {
     type: ProductListType;
     title: string;
@@ -33,8 +45,24 @@ export type PublicStackParamList = {
   [PUBLIC_SCREENS.REGISTER]: undefined;
 };
 
-export type PrivateStackScreenProps<Screen extends keyof PrivateTabParamList> =
-  NativeStackScreenProps<PrivateTabParamList, Screen>;
+export type PrivateStackScreenProps<
+  Screen extends keyof PrivateStackParamList,
+> = NativeStackScreenProps<PrivateStackParamList, Screen>;
+
+export type PrivateTabScreenProps<Screen extends keyof PrivateTabParamList> = {
+  navigation: AppNavigationProp;
+  route: RouteProp<PrivateTabParamList, Screen>;
+};
+
+export type AppNavigationProp =
+  NativeStackNavigationProp<PrivateStackParamList> &
+    BottomTabNavigationProp<PrivateTabParamList>;
 
 export type PublicStackScreenProps<Screen extends keyof PublicStackParamList> =
   NativeStackScreenProps<PublicStackParamList, Screen>;
+
+declare global {
+  namespace ReactNavigation {
+    interface RootParamList extends PrivateStackParamList {}
+  }
+}

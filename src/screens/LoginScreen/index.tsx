@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { AuthTextField } from '@app/components/ui/AuthTextField';
 import { AuthFooter } from '@app/components/ui/AuthFooter';
 import { AuthScreenLayout } from '@app/components/ui/AuthScreenLayout';
+import { LoadingButton } from '@app/components/common/LoadingButton';
 
 // Icons
 import { UserIcon, PassIcon } from '@app/icons';
@@ -19,12 +20,10 @@ import {
   STATUS,
   TOAST_MESSAGES,
 } from '@app/constants';
+import { AUTH_FIELDS } from '@app/constants/auth';
 
 // Types
 import type { PublicStackScreenProps } from '@app/interfaces';
-
-// Styles
-import { authStyles } from '@app/styles';
 
 // Hooks
 import { useForm } from '@app/hooks/useForm';
@@ -39,17 +38,23 @@ import { validateLogin } from '@app/helpers/validation';
 
 // Schemas
 import { LoginFormValues } from '@app/schemas/auth';
-import { LoadingButton } from '@app/components/common/LoadingButton';
+
+// Styles
+import { authStyles } from '@app/styles';
 
 type LoginScreenProps = PublicStackScreenProps<typeof PUBLIC_SCREENS.LOGIN>;
 
 export const LoginScreen = ({ navigation }: LoginScreenProps) => {
   const { values, fieldErrors, handleChange, resetForm, setFieldError } =
     useForm({
-      initialValues: { identifier: '', password: '' },
+      initialValues: {
+        [AUTH_FIELDS.IDENTIFIER]: '',
+        [AUTH_FIELDS.PASSWORD]: '',
+      },
     });
 
-  const { showToast } = toastStore();
+  const showToast = toastStore(state => state.showToast);
+
   const { login, isSubmitting } = useAuthActions();
 
   const handleSubmit = async () => {
@@ -90,7 +95,7 @@ export const LoginScreen = ({ navigation }: LoginScreenProps) => {
         <AuthTextField
           placeholder={AUTH_FORM_MESSAGES.USERNAME_OR_EMAIL}
           value={values.identifier}
-          onChangeText={text => handleChange('identifier', text)}
+          onChangeText={text => handleChange(AUTH_FIELDS.IDENTIFIER, text)}
           leftIcon={<UserIcon width={20} height={20} />}
           keyboardType="email-address"
           autoCapitalize="none"
@@ -101,7 +106,7 @@ export const LoginScreen = ({ navigation }: LoginScreenProps) => {
         <AuthTextField
           placeholder={AUTH_FORM_MESSAGES.PASSWORD}
           value={values.password}
-          onChangeText={text => handleChange('password', text)}
+          onChangeText={text => handleChange(AUTH_FIELDS.PASSWORD, text)}
           leftIcon={<PassIcon width={20} height={20} />}
           isPassword
           error={fieldErrors.password}
@@ -109,6 +114,7 @@ export const LoginScreen = ({ navigation }: LoginScreenProps) => {
 
         <TouchableOpacity
           style={authStyles.linkContainer}
+          // Todo: Refactor to arrow function
           onPress={() =>
             Alert.alert(
               BUTTON_LABELS.FORGOT_PASSWORD,
@@ -133,10 +139,10 @@ export const LoginScreen = ({ navigation }: LoginScreenProps) => {
         <AuthFooter
           helperText={AUTH_FORM_MESSAGES.DONT_HAVE_AN_ACCOUNT}
           helperActionLabel={BUTTON_LABELS.REGISTER}
+          // Todo: Convert string to constant
           onHelperActionPress={() =>
             navigation.navigate(PUBLIC_SCREENS.REGISTER)
           }
-          onSocialSelect={() => {}}
         />
       </AuthScreenLayout>
     </SafeAreaView>

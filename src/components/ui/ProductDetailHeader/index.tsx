@@ -35,8 +35,9 @@ export const ProductDetailHeaderRight = ({
   productId: string;
   navigation: NativeStackNavigationProp<PrivateStackParamList>;
 }) => {
+  const showToast = toastStore(state => state.showToast);
+
   const { isInWishlist, addItem, removeItem } = useWishlist();
-  const { showToast } = toastStore();
 
   const isWishlisted = isInWishlist(productId);
 

@@ -1,6 +1,5 @@
 import { useCallback, useRef, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 // Components
 import {
@@ -17,21 +16,22 @@ import { PaginationDots } from '@app/components/ui/PaginationDots';
 import { OnboardingNavigation } from '@app/components/ui/OnboardingNavigation';
 
 // Constants
-import { ONBOARDING_DATA, HIT_SLOP, PUBLIC_SCREENS } from '@app/constants';
+import { HIT_SLOP, PUBLIC_SCREENS, BUTTON_LABELS } from '@app/constants';
+
+// Mocks
+import { ONBOARDING_DATA } from '@app/mocks/onboarding';
 
 // Types
-import type { IOnboardingItem, PublicStackParamList } from '@app/interfaces';
+import type { IOnboardingItem, PublicStackScreenProps } from '@app/interfaces';
 
 // Styles
 import { styles } from './index.style';
 
-interface IOnboardingScreenProps
-  extends NativeStackScreenProps<
-    PublicStackParamList,
-    typeof PUBLIC_SCREENS.ONBOARDING
-  > {}
+type OnboardingScreenProps = PublicStackScreenProps<
+  typeof PUBLIC_SCREENS.ONBOARDING
+>;
 
-export const OnboardingScreen = ({ navigation }: IOnboardingScreenProps) => {
+export const OnboardingScreen = ({ navigation }: OnboardingScreenProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const flatListRef = useRef<FlatList<IOnboardingItem>>(null);
 
@@ -98,7 +98,7 @@ export const OnboardingScreen = ({ navigation }: IOnboardingScreenProps) => {
             hitSlop={HIT_SLOP}
             accessibilityRole="button"
             accessibilityLabel="Skip onboarding">
-            <Text style={styles.skipText}>Skip</Text>
+            <Text style={styles.skipText}>{BUTTON_LABELS.SKIP}</Text>
           </TouchableOpacity>
         </View>
 

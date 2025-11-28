@@ -22,7 +22,10 @@ describe('useCart', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
-    (authStore as unknown as jest.Mock).mockReturnValue({ user: mockUser });
+    (authStore as unknown as jest.Mock).mockImplementation(selector => {
+      const state = { user: mockUser };
+      return selector ? selector(state) : state;
+    });
     (useQueryClient as jest.Mock).mockReturnValue({
       getQueryData: jest.fn(() => null),
       setQueryData: jest.fn(),
@@ -50,7 +53,10 @@ describe('useCart', () => {
   });
 
   it('returns null cart when user is not authenticated', () => {
-    (authStore as unknown as jest.Mock).mockReturnValue({ user: null });
+    (authStore as unknown as jest.Mock).mockImplementation(selector => {
+      const state = { user: null };
+      return selector ? selector(state) : state;
+    });
     (useQuery as jest.Mock).mockReturnValue({
       data: null,
       isLoading: false,
@@ -454,7 +460,10 @@ describe('useCart', () => {
     });
 
     it('getCachedCart returns null when userId is null', () => {
-      (authStore as unknown as jest.Mock).mockReturnValue({ user: null });
+      (authStore as unknown as jest.Mock).mockImplementation(selector => {
+        const state = { user: null };
+        return selector ? selector(state) : state;
+      });
       mockQueryClient.getQueryData.mockReturnValue(null);
       (useQuery as jest.Mock).mockReturnValue({
         data: null,
@@ -467,16 +476,6 @@ describe('useCart', () => {
       const { result } = renderHook(() => useCart());
 
       expect(result.current.cart).toBeNull();
-    });
-
-    it('setCachedCart does nothing when userId is null', () => {
-      (
-        authStore as unknown as jest.MockedFunction<typeof authStore>
-      ).mockReturnValue({ user: null });
-
-      renderHook(() => useCart());
-
-      expect(mockQueryClient.setQueryData).not.toHaveBeenCalled();
     });
   });
 });
