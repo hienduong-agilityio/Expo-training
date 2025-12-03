@@ -1,5 +1,6 @@
 import { useCallback, useRef, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Components
 import {
@@ -60,17 +61,22 @@ export const OnboardingScreen = ({ navigation }: OnboardingScreenProps) => {
     setCurrentIndex(index);
   }, []);
 
+  // Handle complete onboarding
+  const handleCompleteOnboarding = useCallback(async () => {
+    await AsyncStorage.setItem('HAS_SEEN_ONBOARDING', 'true');
+
+    navigation.reset({
+      index: 0,
+      routes: [{ name: PUBLIC_SCREENS.LOGIN }],
+    });
+  }, [navigation]);
+
   // Handle next onboarding slide
   const handleNextSlide = useCallback(() => {
     const isLastSlide = currentIndex === totalCount - 1;
 
-    isLastSlide
-      ? navigation.reset({
-          index: 0,
-          routes: [{ name: PUBLIC_SCREENS.LOGIN }],
-        })
-      : scrollToIndex(currentIndex + 1);
-  }, [currentIndex, totalCount, navigation, scrollToIndex]);
+    isLastSlide ? handleCompleteOnboarding() : scrollToIndex(currentIndex + 1);
+  }, [currentIndex, totalCount, handleCompleteOnboarding, scrollToIndex]);
 
   // Handle previous onboarding slide
   const handlePrevSlide = useCallback(() => {
@@ -79,11 +85,8 @@ export const OnboardingScreen = ({ navigation }: OnboardingScreenProps) => {
 
   // Handle skip onboarding
   const handleSkipOnboarding = useCallback(() => {
-    navigation.reset({
-      index: 0,
-      routes: [{ name: PUBLIC_SCREENS.LOGIN }],
-    });
-  }, [navigation]);
+    handleCompleteOnboarding();
+  }, [handleCompleteOnboarding]);
 
   const renderOnboardingSlide: ListRenderItem<IOnboardingItem> = ({ item }) => (
     <OnboardingSlide item={item} />

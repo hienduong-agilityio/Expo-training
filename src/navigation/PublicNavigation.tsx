@@ -13,10 +13,16 @@ import type { PublicStackParamList } from '@app/interfaces';
 
 const Stack = createNativeStackNavigator<PublicStackParamList>();
 
-export const PublicStackNavigation = () => {
+interface PublicStackNavigationProps {
+  initialRouteName?: keyof PublicStackParamList;
+}
+
+export const PublicStackNavigation = ({
+  initialRouteName = PUBLIC_SCREENS.ONBOARDING,
+}: PublicStackNavigationProps) => {
   return (
     <Stack.Navigator
-      initialRouteName={PUBLIC_SCREENS.ONBOARDING}
+      initialRouteName={initialRouteName}
       screenOptions={{ headerShown: false }}>
       <Stack.Screen
         name={PUBLIC_SCREENS.ONBOARDING}

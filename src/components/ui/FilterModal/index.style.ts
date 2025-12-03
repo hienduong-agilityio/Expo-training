@@ -4,18 +4,17 @@ import { StyleSheet } from 'react-native';
 import { colors, spacing, borderRadius, typography } from '@app/themes';
 
 export const styles = StyleSheet.create({
-  overlay: {
-    flex: 1,
-    backgroundColor: colors.overlayWeak,
-    justifyContent: 'flex-end',
-  },
-
   container: {
     backgroundColor: colors.surface,
     borderTopLeftRadius: borderRadius.xl,
     borderTopRightRadius: borderRadius.xl,
     maxHeight: '70%',
     paddingBottom: spacing['14.5'],
+    padding: 0,
+    width: '100%',
+    maxWidth: undefined,
+    position: 'absolute',
+    bottom: 0,
   },
 
   header: {

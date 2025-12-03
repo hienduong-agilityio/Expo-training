@@ -7,6 +7,7 @@ import { useProductsByIds } from '@app/hooks/useProduct';
 
 // Stores
 import { toastStore } from '@app/stores/toastStore';
+import { modalStore } from '@app/stores/modalStore';
 
 // Components
 import { CartItem } from '@app/components/ui/CartItem';
@@ -38,6 +39,7 @@ type CartScreenProps = PrivateTabScreenProps<typeof PRIVATE_SCREENS.CART>;
 
 export const CartScreen = ({ navigation }: CartScreenProps) => {
   const showToast = toastStore(state => state.showToast);
+  const showConfirm = modalStore(state => state.showConfirm);
 
   const {
     cart,
@@ -78,7 +80,14 @@ export const CartScreen = ({ navigation }: CartScreenProps) => {
     currentQuantity: number,
   ) => {
     if (currentQuantity <= 1) {
-      await handleRemoveItem(productId);
+      showConfirm({
+        title: CART_MESSAGES.REMOVE_TITLE,
+        message: CART_MESSAGES.REMOVE_MESSAGE,
+        confirmLabel: BUTTON_LABELS.REMOVE,
+        cancelLabel: BUTTON_LABELS.CANCEL,
+        isDestructive: true,
+        onConfirm: () => handleRemoveItem(productId),
+      });
 
       return;
     }
@@ -151,7 +160,16 @@ export const CartScreen = ({ navigation }: CartScreenProps) => {
             onDecrease={() =>
               handleDecreaseQuantity(item.productId, item.quantity)
             }
-            onRemove={() => handleRemoveItem(item.productId)}
+            onRemove={() =>
+              showConfirm({
+                title: CART_MESSAGES.REMOVE_TITLE,
+                message: CART_MESSAGES.REMOVE_MESSAGE,
+                confirmLabel: BUTTON_LABELS.REMOVE,
+                cancelLabel: BUTTON_LABELS.CANCEL,
+                isDestructive: true,
+                onConfirm: () => handleRemoveItem(item.productId),
+              })
+            }
           />
         );
       })}

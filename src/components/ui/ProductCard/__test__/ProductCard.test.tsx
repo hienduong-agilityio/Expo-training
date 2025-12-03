@@ -26,7 +26,7 @@ describe('ProductCard', () => {
       renderProductCard();
 
       expect(screen.getByText('Black Winter Jacket')).toBeTruthy();
-      expect(screen.getByText('₹ 499')).toBeTruthy();
+      expect(screen.getByText('₹ 499.00')).toBeTruthy();
       expect(screen.getByText('6,890')).toBeTruthy();
       expect(
         screen.getByText('Autumn And Winter Casual cotton-padded jacket'),
@@ -46,7 +46,7 @@ describe('ProductCard', () => {
         },
         {
           props: { currency: 'USD' as const },
-          check: () => expect(screen.getByText('$ 499')).toBeTruthy(),
+          check: () => expect(screen.getByText('$ 499.00')).toBeTruthy(),
         },
         {
           props: { style: { marginTop: 20 } },

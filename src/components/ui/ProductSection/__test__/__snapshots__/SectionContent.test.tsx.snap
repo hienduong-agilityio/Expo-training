@@ -337,7 +337,7 @@ exports[`SectionContent renders empty products list 1`] = `
                   }
                 }
               >
-                ₹ 499
+                ₹ 499.00
               </Text>
             </View>
             <View
@@ -624,7 +624,7 @@ exports[`SectionContent renders empty products list 1`] = `
                   }
                 }
               >
-                ₹ 399
+                ₹ 399.00
               </Text>
             </View>
             <View
@@ -911,7 +911,7 @@ exports[`SectionContent renders empty products list 1`] = `
                   }
                 }
               >
-                ₹ 2000
+                ₹ 2000.00
               </Text>
             </View>
             <View
@@ -1463,7 +1463,7 @@ exports[`SectionContent renders products when not loading and no error 1`] = `
                   }
                 }
               >
-                ₹ 499
+                ₹ 499.00
               </Text>
             </View>
             <View
@@ -1750,7 +1750,7 @@ exports[`SectionContent renders products when not loading and no error 1`] = `
                   }
                 }
               >
-                ₹ 399
+                ₹ 399.00
               </Text>
             </View>
             <View
@@ -2037,7 +2037,7 @@ exports[`SectionContent renders products when not loading and no error 1`] = `
                   }
                 }
               >
-                ₹ 2000
+                ₹ 2000.00
               </Text>
             </View>
             <View

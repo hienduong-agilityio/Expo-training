@@ -19,8 +19,8 @@ exports[`<AuthScreenLayout /> renders title and children 1`] = `
     contentContainerStyle={
       {
         "flexGrow": 1,
-        "marginBottom": 40,
         "marginTop": 40,
+        "paddingBottom": 90,
         "paddingHorizontal": 16,
       }
     }

@@ -17,5 +17,5 @@ export function formatCurrencyUnit(
 ): string {
   const symbol = getCurrencySymbol(currency);
 
-  return `${symbol} ${String(value)}`;
+  return `${symbol} ${Number(value).toFixed(2)}`;
 }

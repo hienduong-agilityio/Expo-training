@@ -28,6 +28,7 @@ exports[`AuthTextField Rendering renders correctly with all props and matches sn
           "borderRadius": 10,
           "borderWidth": 1,
           "flexDirection": "row",
+          "padding": 1,
         },
         {
           "borderColor": "#EB3030",
@@ -66,6 +67,7 @@ exports[`AuthTextField Rendering renders correctly with all props and matches sn
       style={
         [
           {
+            "color": "#1C1B1F",
             "flex": 1,
             "fontWeight": "400",
             "includeFontPadding": false,

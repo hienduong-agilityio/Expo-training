@@ -25,6 +25,8 @@ export const BUTTON_LABELS = {
   BUY_NOW: 'Buy Now',
   SORT: 'Sort',
   FILTER: 'Filter',
+  REMOVE: 'Remove',
+  CONFIRM: 'Confirm',
 } as const;
 
 export const MESSAGES = {

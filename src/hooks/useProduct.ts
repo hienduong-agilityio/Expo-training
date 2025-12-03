@@ -10,6 +10,13 @@ import { QUERY_KEYS } from '@app/constants/queryKeys';
 // Types
 import type { IProductCardProps } from '@app/interfaces/ui';
 import type { IProduct } from '@app/interfaces/product';
+import type { ApiProduct } from '@app/interfaces/api';
+
+// Helpers
+import {
+  filterProductsByCategorySlug,
+  filterProductsBySearchQuery,
+} from '@app/helpers/products';
 
 export type CategorizedProducts = {
   deals: IProductCardProps[];
@@ -31,6 +38,20 @@ const DEFAULT_QUERY_OPTIONS = {
   refetchOnWindowFocus: false,
   refetchOnReconnect: true,
 } as const;
+
+// This hook uses the cache-first strategy but still allows for refetching
+const useAllProducts = () => {
+  return useQuery<IProductCardProps[]>({
+    queryKey: [QUERY_KEYS.PRODUCTS, 'all'],
+    queryFn: () => productsService.getAllProducts(),
+    ...DEFAULT_QUERY_OPTIONS,
+    // Cache all products for 5 minutes to prevent redundant requests
+    // This fixes the "crash on multiple requests" bug by avoiding new fetches
+    // on every keystroke.
+    staleTime: 5 * 60 * 1000,
+    gcTime: 10 * 60 * 1000, // Garbage collect after 10 minutes
+  });
+};
 
 // Apply this structure to all useQuery hooks
 export const useCategorizedProducts = () => {
@@ -109,19 +130,28 @@ export const useProductsByCategory = (
   enabled: boolean = true,
 ) => {
   const normalizedSlug = categorySlug?.trim() ?? '';
-  const queryKey = normalizedSlug || 'all';
 
-  const query = useQuery<IProductCardProps[]>({
-    queryKey: [QUERY_KEYS.PRODUCTS, QUERY_KEYS.PRODUCTS_CATEGORY, queryKey],
-    queryFn: () =>
-      productsService.getProductsByCategory(normalizedSlug || undefined),
-    enabled,
-    ...DEFAULT_QUERY_OPTIONS,
-  });
+  // Use the shared "all products" query
+  const query = useAllProducts();
+
+  // Filter locally
+  const filteredProducts = useMemo(() => {
+    if (!query.data) return [];
+
+    if (!normalizedSlug) {
+      return query.data;
+    }
+
+    // Cast to ApiProduct[] for helper compatibility, assuming runtime structure is compatible
+    return filterProductsByCategorySlug(
+      query.data as unknown as ApiProduct[],
+      normalizedSlug,
+    ) as unknown as IProductCardProps[];
+  }, [query.data, normalizedSlug]);
 
   return {
     ...query,
-    products: query.data ?? [],
+    products: enabled ? filteredProducts : [],
   };
 };
 
@@ -133,29 +163,28 @@ export const useSearchProducts = (
   const normalizedCategory = categorySlug?.trim() ?? undefined;
   const hasQuery = Boolean(normalizedQuery);
 
-  const queryKey = normalizedQuery
-    ? [
-        QUERY_KEYS.PRODUCTS,
-        QUERY_KEYS.PRODUCTS_SEARCH,
-        normalizedQuery,
-        normalizedCategory ?? 'all',
-      ]
-    : [
-        QUERY_KEYS.PRODUCTS,
-        QUERY_KEYS.PRODUCTS_SEARCH,
-        QUERY_KEYS.PRODUCTS_SEARCH_EMPTY,
-      ];
+  // Use the shared "all products" query
+  const query = useAllProducts();
 
-  const query = useQuery<IProductCardProps[]>({
-    queryKey,
-    queryFn: () =>
-      productsService.searchProducts(normalizedQuery, normalizedCategory),
-    enabled: hasQuery,
-    ...DEFAULT_QUERY_OPTIONS,
-  });
+  // Filter locally
+  const filteredProducts = useMemo(() => {
+    if (!query.data || !hasQuery) return [];
+
+    let result = query.data as unknown as ApiProduct[];
+
+    // Filter by query
+    result = filterProductsBySearchQuery(result, normalizedQuery);
+
+    // Filter by category if present
+    if (normalizedCategory) {
+      result = filterProductsByCategorySlug(result, normalizedCategory);
+    }
+
+    return result as unknown as IProductCardProps[];
+  }, [query.data, normalizedQuery, normalizedCategory, hasQuery]);
 
   return {
     ...query,
-    products: query.data ?? [],
+    products: filteredProducts,
   };
 };

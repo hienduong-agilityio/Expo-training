@@ -800,7 +800,7 @@ exports[`SimilarProducts Rendering renders all UI elements correctly 1`] = `
                 }
               }
             >
-              ₹ 499
+              ₹ 499.00
             </Text>
           </View>
           <View
@@ -1054,7 +1054,7 @@ exports[`SimilarProducts Rendering renders all UI elements correctly 1`] = `
                 }
               }
             >
-              ₹ 399
+              ₹ 399.00
             </Text>
           </View>
           <View
@@ -1308,7 +1308,7 @@ exports[`SimilarProducts Rendering renders all UI elements correctly 1`] = `
                 }
               }
             >
-              ₹ 2000
+              ₹ 2000.00
             </Text>
           </View>
           <View

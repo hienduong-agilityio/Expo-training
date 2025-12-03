@@ -344,7 +344,7 @@ exports[`GridProductList Rendering renders correctly with products and matches s
                     }
                   }
                 >
-                  ₹ 499
+                  ₹ 499.00
                 </Text>
               </View>
               <View
@@ -615,7 +615,7 @@ exports[`GridProductList Rendering renders correctly with products and matches s
                     }
                   }
                 >
-                  ₹ 399
+                  ₹ 399.00
                 </Text>
               </View>
               <View
@@ -905,7 +905,7 @@ exports[`GridProductList Rendering renders correctly with products and matches s
                     }
                   }
                 >
-                  ₹ 2000
+                  ₹ 2000.00
                 </Text>
               </View>
               <View

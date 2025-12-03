@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     flexGrow: 1,
     paddingHorizontal: spacing[4],
     marginTop: spacing[10],
-    marginBottom: spacing[10],
+    paddingBottom: spacing['22.5'],
   },
   header: {
     marginBottom: spacing[10],

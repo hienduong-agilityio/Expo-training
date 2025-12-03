@@ -137,7 +137,7 @@ exports[`ProductCard Snapshots matches snapshot for different states: complete-p
           }
         }
       >
-        ₹ 499
+        ₹ 499.00
       </Text>
     </View>
     <View
@@ -512,7 +512,7 @@ exports[`ProductCard Snapshots matches snapshot for different states: with-wishl
           }
         }
       >
-        ₹ 499
+        ₹ 499.00
       </Text>
     </View>
     <View

@@ -15,6 +15,7 @@ interface AuthFooterProps {
   onSubmit?: () => void;
   onHelperActionPress?: () => void;
   onSocialSelect?: (provider: SocialProvider) => void;
+  disabled?: boolean;
 }
 
 export const AuthFooter = ({
@@ -22,17 +23,18 @@ export const AuthFooter = ({
   helperActionLabel,
   onHelperActionPress,
   onSocialSelect,
+  disabled = false,
 }: AuthFooterProps) => {
   return (
     <>
       <View style={styles.divider}>
         <Text style={styles.dividerLabel}>OR continue with</Text>
       </View>
-      <SocialAuthButtons onSelect={onSocialSelect} />
+      <SocialAuthButtons onSelect={onSocialSelect} disabled={disabled} />
 
       <View style={styles.navigationContainer}>
         <Text style={styles.navigationText}>{helperText}</Text>
-        <TouchableOpacity onPress={onHelperActionPress}>
+        <TouchableOpacity onPress={onHelperActionPress} disabled={disabled}>
           <Text style={styles.navigationLink}>{helperActionLabel}</Text>
         </TouchableOpacity>
       </View>

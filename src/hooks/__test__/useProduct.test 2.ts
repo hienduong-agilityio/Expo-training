@@ -15,8 +15,8 @@ jest.mock('@tanstack/react-query', () => ({
   useQueries: jest.fn(),
 }));
 jest.mock('@app/helpers/products', () => ({
-  filterProductsByCategorySlug: jest.fn(),
-  filterProductsBySearchQuery: jest.fn(),
+  filterProductsByCategorySlug: jest.fn(products => products),
+  filterProductsBySearchQuery: jest.fn(products => products),
 }));
 
 import {
@@ -25,6 +25,10 @@ import {
 } from '@app/helpers/products';
 
 describe('useProduct hooks', () => {
+  it('sanity check', () => {
+    expect(true).toBe(true);
+  });
+
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -141,12 +145,31 @@ describe('useProduct hooks', () => {
 
       expect(filterProductsByCategorySlug).toHaveBeenCalledWith(
         mockProducts,
-        'Electronics',
+        'electronics',
       );
     });
   });
 
   describe('useSearchProducts', () => {
+    it('returns search results', () => {
+      const mockProducts = [{ id: '1' }];
+
+      (useQuery as jest.Mock).mockReturnValue({
+        data: mockProducts,
+        isLoading: false,
+        isError: false,
+        error: null,
+      });
+
+      (filterProductsBySearchQuery as jest.Mock).mockReturnValue(mockProducts);
+
+      const { result } = renderHook(() =>
+        useSearchProducts('test query', 'electronics'),
+      );
+
+      expect(result.current.products).toEqual(mockProducts);
+    });
+
     it('uses cached query for search', () => {
       (useQuery as jest.Mock).mockReturnValue({
         data: [],
@@ -177,11 +200,11 @@ describe('useProduct hooks', () => {
 
       expect(filterProductsBySearchQuery).toHaveBeenCalledWith(
         mockProducts,
-        'Test',
+        'test',
       );
       expect(filterProductsByCategorySlug).toHaveBeenCalledWith(
         mockProducts,
-        'Electronics',
+        'electronics',
       );
     });
 

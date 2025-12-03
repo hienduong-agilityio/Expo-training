@@ -155,9 +155,16 @@ export const searchProducts = async (
   return transformToCardProps(filteredProducts);
 };
 
+export const getAllProducts = async (): Promise<IProductCardProps[]> => {
+  const allProducts = await fetchAllProducts();
+
+  return transformToCardProps(allProducts);
+};
+
 export const productsService = {
   getCategorizedProducts,
   getProductById,
   getProductsByCategory,
   searchProducts,
+  getAllProducts,
 };

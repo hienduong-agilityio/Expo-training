@@ -11,6 +11,7 @@ import { queryClient } from '@app/contexts/query';
 
 // Components
 import { ToastContainer } from '@app/components/ToastContainer';
+import { ConfirmModal } from '@app/components/ui/ConfirmModal';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -19,6 +20,8 @@ const App = () => {
   useEffect(() => {
     if (__DEV__) {
       // Toggle Storybook
+      require('./ReactotronConfig');
+
       DevSettings.addMenuItem('Toggle Storybook', () => {
         setShowStorybook(prev => !prev);
       });
@@ -37,6 +40,7 @@ const App = () => {
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
         <Navigation />
         <ToastContainer />
+        <ConfirmModal />
       </SafeAreaProvider>
     </QueryClientProvider>
   );

@@ -40,19 +40,11 @@ import type { PrivateTabScreenProps } from '@app/interfaces/navigation';
 // Hooks
 import { useCategorizedProducts } from '@app/hooks/useProduct';
 
-// Stores
-import { searchStore } from '@app/stores/searchStore';
-
 // Styles
 import { styles } from './index.style';
 
 type HomeScreenProps = PrivateTabScreenProps<typeof PRIVATE_SCREENS.HOME>;
 
-/**
- * TODO: Use route.params to get the search query and category id.
- * * Replace the useEffect with useEffect hook to get the search query and category id from the route.params.
- * * Remove searchStore and use the route.params instead.s
- */
 export const HomeScreen = ({ navigation }: HomeScreenProps) => {
   const {
     data: categorizedData,
@@ -61,8 +53,6 @@ export const HomeScreen = ({ navigation }: HomeScreenProps) => {
     error,
   } = useCategorizedProducts();
 
-  // Todo: Use route.params to get the search query and category id.
-  const { setCategory, setSearchQuery } = searchStore();
   const [searchValue, setSearchValue] = useState('');
 
   const products = {
@@ -98,23 +88,24 @@ export const HomeScreen = ({ navigation }: HomeScreenProps) => {
 
   const handleCategoryPress = useCallback(
     (categoryId: string, categoryName: string) => {
-      setCategory(categoryId, categoryName);
-
-      navigation.navigate(PRIVATE_SCREENS.SEARCH);
+      navigation.navigate(PRIVATE_SCREENS.SEARCH, {
+        categoryId,
+        categoryName,
+      });
     },
-    [navigation, setCategory],
+    [navigation],
   );
 
   const handleSearchSubmit = useCallback(() => {
     const trimmedQuery = searchValue?.trim();
 
     if (trimmedQuery) {
-      setCategory(null, null);
-      setSearchQuery(trimmedQuery);
-
-      navigation.navigate(PRIVATE_SCREENS.SEARCH);
+      navigation.navigate(PRIVATE_SCREENS.SEARCH, {
+        searchQuery: trimmedQuery,
+      });
+      setSearchValue('');
     }
-  }, [searchValue, navigation, setCategory, setSearchQuery]);
+  }, [searchValue, navigation]);
 
   return (
     <View style={styles.container}>

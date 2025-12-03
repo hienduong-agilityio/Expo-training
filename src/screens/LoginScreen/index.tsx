@@ -101,6 +101,7 @@ export const LoginScreen = ({ navigation }: LoginScreenProps) => {
           autoCapitalize="none"
           autoCorrect={false}
           error={fieldErrors.identifier}
+          editable={!isSubmitting}
         />
 
         <AuthTextField
@@ -110,11 +111,13 @@ export const LoginScreen = ({ navigation }: LoginScreenProps) => {
           leftIcon={<PassIcon width={20} height={20} />}
           isPassword
           error={fieldErrors.password}
+          editable={!isSubmitting}
         />
 
         <TouchableOpacity
           style={authStyles.linkContainer}
           // Todo: Refactor to arrow function
+          disabled={isSubmitting}
           onPress={() =>
             Alert.alert(
               BUTTON_LABELS.FORGOT_PASSWORD,
@@ -139,6 +142,7 @@ export const LoginScreen = ({ navigation }: LoginScreenProps) => {
         <AuthFooter
           helperText={AUTH_FORM_MESSAGES.DONT_HAVE_AN_ACCOUNT}
           helperActionLabel={BUTTON_LABELS.REGISTER}
+          disabled={isSubmitting}
           // Todo: Convert string to constant
           onHelperActionPress={() =>
             navigation.navigate(PUBLIC_SCREENS.REGISTER)
