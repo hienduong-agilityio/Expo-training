@@ -10,14 +10,17 @@ import { authStore } from '@app/stores/authStore';
 import { PrivateStackNavigation } from '@app/navigation/PrivateNavigation';
 import { PublicStackNavigation } from '@app/navigation/PublicNavigation';
 
+// Constants
+import { PUBLIC_SCREENS } from '@app/constants';
+
 // Hooks
 import { useHydration } from '@app/hooks/useHydration';
 
 export const Navigation = () => {
   const { accessToken } = authStore();
-  const isHydrated = useHydration(authStore);
+  const { hydrated, isFirstLaunch } = useHydration(authStore);
 
-  if (!isHydrated) {
+  if (!hydrated || isFirstLaunch === null) {
     return (
       <View style={styles.container}>
         <ActivityIndicator />
@@ -29,7 +32,15 @@ export const Navigation = () => {
 
   return (
     <NavigationContainer>
-      {isAuth ? <PrivateStackNavigation /> : <PublicStackNavigation />}
+      {isAuth ? (
+        <PrivateStackNavigation />
+      ) : (
+        <PublicStackNavigation
+          initialRouteName={
+            isFirstLaunch ? PUBLIC_SCREENS.ONBOARDING : PUBLIC_SCREENS.LOGIN
+          }
+        />
+      )}
     </NavigationContainer>
   );
 };

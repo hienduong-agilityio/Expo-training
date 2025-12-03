@@ -60,6 +60,12 @@ export const CartItems: Story = {
   render: () => (
     <View style={styles.container}>
       <CartItem
+        title="Product 1"
+        slug="product-1"
+        deals={[]}
+        trendings={[]}
+        createdAt="2021-01-01"
+        updatedAt="2021-01-01"
         id="1"
         name="Product 1"
         imageSource={MOCK_IMAGE_SOURCES.valid}
@@ -67,6 +73,12 @@ export const CartItems: Story = {
         price={1999}
       />
       <CartItem
+        title="Product 2"
+        slug="product-2"
+        deals={[]}
+        trendings={[]}
+        createdAt="2021-01-01"
+        updatedAt="2021-01-01"
         id="2"
         name="Product 2"
         imageSource={MOCK_IMAGE_SOURCES.valid}
@@ -74,13 +86,31 @@ export const CartItems: Story = {
         price={2999}
       />
       <CartItem
+        title="Product 3"
+        slug="product-3"
+        deals={[]}
+        trendings={[]}
+        createdAt="2021-01-01"
+        updatedAt="2021-01-01"
         id="3"
         name="Product 3"
         imageSource={MOCK_IMAGE_SOURCES.valid}
         quantity={11}
         price={1000}
       />
-      <CartItem id="4" name="Product 4" quantity={2} price={999} />
+      <CartItem
+        title="Product 4"
+        slug="product-4"
+        deals={[]}
+        trendings={[]}
+        createdAt="2021-01-01"
+        updatedAt="2021-01-01"
+        id="4"
+        name="Product 4"
+        imageSource={MOCK_IMAGE_SOURCES.valid}
+        quantity={2}
+        price={999}
+      />
     </View>
   ),
 };

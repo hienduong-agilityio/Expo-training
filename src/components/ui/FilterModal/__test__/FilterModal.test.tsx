@@ -4,7 +4,7 @@ import { fireEvent, render, screen } from '@testing-library/react-native';
 import { FilterModal } from '@app/components/ui/FilterModal';
 
 // Constants
-import { CATEGORIES } from '@app/constants';
+import { CATEGORIES } from '@app/mocks/categories';
 
 describe('FilterModal', () => {
   const baseProps = () => ({

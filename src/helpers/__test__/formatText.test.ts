@@ -18,15 +18,15 @@ describe('formatText helpers', () => {
 
   describe('formatCurrencyUnit', () => {
     it('formats number with USD', () => {
-      expect(formatCurrencyUnit(100, 'USD')).toBe('$ 100');
+      expect(formatCurrencyUnit(100, 'USD')).toBe('$ 100.00');
     });
 
     it('formats number with INR', () => {
-      expect(formatCurrencyUnit(500, 'INR')).toBe('₹ 500');
+      expect(formatCurrencyUnit(500, 'INR')).toBe('₹ 500.00');
     });
 
     it('formats string value', () => {
-      expect(formatCurrencyUnit('1000', 'USD')).toBe('$ 1000');
+      expect(formatCurrencyUnit('1000', 'USD')).toBe('$ 1000.00');
     });
   });
 });

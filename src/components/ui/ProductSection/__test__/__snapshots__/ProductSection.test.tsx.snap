@@ -403,7 +403,7 @@ exports[`ProductSection renders correctly with products 1`] = `
                     }
                   }
                 >
-                  ₹ 499
+                  ₹ 499.00
                 </Text>
               </View>
               <View
@@ -690,7 +690,7 @@ exports[`ProductSection renders correctly with products 1`] = `
                     }
                   }
                 >
-                  ₹ 399
+                  ₹ 399.00
                 </Text>
               </View>
               <View
@@ -977,7 +977,7 @@ exports[`ProductSection renders correctly with products 1`] = `
                     }
                   }
                 >
-                  ₹ 2000
+                  ₹ 2000.00
                 </Text>
               </View>
               <View
@@ -1680,7 +1680,7 @@ exports[`ProductSection renders with custom action label 1`] = `
                     }
                   }
                 >
-                  ₹ 499
+                  ₹ 499.00
                 </Text>
               </View>
               <View
@@ -1967,7 +1967,7 @@ exports[`ProductSection renders with custom action label 1`] = `
                     }
                   }
                 >
-                  ₹ 399
+                  ₹ 399.00
                 </Text>
               </View>
               <View
@@ -2254,7 +2254,7 @@ exports[`ProductSection renders with custom action label 1`] = `
                     }
                   }
                 >
-                  ₹ 2000
+                  ₹ 2000.00
                 </Text>
               </View>
               <View

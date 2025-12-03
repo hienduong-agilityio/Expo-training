@@ -7,6 +7,7 @@ import { useProductsByIds } from '@app/hooks/useProduct';
 
 // Stores
 import { toastStore } from '@app/stores/toastStore';
+import { modalStore } from '@app/stores/modalStore';
 
 // Components
 import { LoadingState } from '@app/components/ui/LoadingState';
@@ -19,8 +20,9 @@ import {
   STATUS,
   TOAST_MESSAGES,
   WISHLIST_MESSAGES,
+  PRIVATE_SCREENS,
+  BUTTON_LABELS,
 } from '@app/constants';
-import { PRIVATE_SCREENS } from '@app/constants';
 
 // Types
 import type {
@@ -43,6 +45,7 @@ type Props = CompositeScreenProps<
 
 export const WishlistScreen = ({ navigation }: Props) => {
   const showToast = toastStore(state => state.showToast);
+  const showConfirm = modalStore(state => state.showConfirm);
 
   const {
     wishlist,
@@ -63,16 +66,25 @@ export const WishlistScreen = ({ navigation }: Props) => {
   const hasWishlistItems = wishlist && wishlistItems.length > 0;
 
   const handleRemoveFromWishlist = useCallback(
-    async (productId: string) => {
-      await removeItem(productId);
+    (productId: string) => {
+      showConfirm({
+        title: WISHLIST_MESSAGES.REMOVE_TITLE,
+        message: WISHLIST_MESSAGES.REMOVE_MESSAGE,
+        confirmLabel: BUTTON_LABELS.REMOVE,
+        cancelLabel: BUTTON_LABELS.CANCEL,
+        isDestructive: true,
+        onConfirm: async () => {
+          await removeItem(productId);
 
-      showToast({
-        type: STATUS.SUCCESS,
-        message: TOAST_MESSAGES.REMOVED_FROM_WISHLIST,
-        position: POSITION.TOP,
+          showToast({
+            type: STATUS.SUCCESS,
+            message: TOAST_MESSAGES.REMOVED_FROM_WISHLIST,
+            position: POSITION.TOP,
+          });
+        },
       });
     },
-    [removeItem, showToast],
+    [removeItem, showToast, showConfirm],
   );
 
   const handleProductPress = useCallback(

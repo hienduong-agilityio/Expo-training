@@ -14,7 +14,7 @@ describe('Price', () => {
 
   const currencyTestCases = [
     { value: 99.99, currency: 'USD' as CurrencyCode, expected: '$ 99.99' },
-    { value: 1999, currency: 'INR' as CurrencyCode, expected: '₹ 1999' },
+    { value: 1999, currency: 'INR' as CurrencyCode, expected: '₹ 1999.00' },
   ];
 
   test.each(currencyTestCases)(
@@ -27,6 +27,6 @@ describe('Price', () => {
 
   it('handles zero values', () => {
     render(<Price value={0} currency="USD" />);
-    expect(screen.getByText('$ 0')).toBeTruthy();
+    expect(screen.getByText('$ 0.00')).toBeTruthy();
   });
 });

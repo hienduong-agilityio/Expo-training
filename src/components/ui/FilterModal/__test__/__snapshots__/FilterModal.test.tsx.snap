@@ -4,27 +4,86 @@ exports[`FilterModal renders correctly with default props 1`] = `
 <Modal
   animationType="slide"
   onRequestClose={[MockFunction]}
+  statusBarTranslucent={true}
   transparent={true}
   visible={true}
 >
   <View
     style={
       {
-        "backgroundColor": "rgba(0,0,0,0.08)",
+        "alignItems": "center",
         "flex": 1,
-        "justifyContent": "flex-end",
+        "justifyContent": "center",
       }
     }
   >
     <View
-      style={
+      accessibilityState={
         {
-          "backgroundColor": "#FFFFFF",
-          "borderTopLeftRadius": 12,
-          "borderTopRightRadius": 12,
-          "maxHeight": "70%",
-          "paddingBottom": 58,
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
         }
+      }
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "backgroundColor": "rgba(0,0,0,0.08)",
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          {
+            "backgroundColor": "#000000",
+            "opacity": 0.5,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "backgroundColor": "#FFFFFF",
+            "borderRadius": 10,
+            "elevation": 5,
+            "maxWidth": 340,
+            "padding": 16,
+            "shadowColor": "#000000",
+            "shadowOffset": {
+              "height": 2,
+              "width": 0,
+            },
+            "shadowOpacity": 0.25,
+            "shadowRadius": 3.84,
+            "width": "100%",
+          },
+          {
+            "backgroundColor": "#FFFFFF",
+            "borderTopLeftRadius": 12,
+            "borderTopRightRadius": 12,
+            "bottom": 0,
+            "maxHeight": "70%",
+            "maxWidth": undefined,
+            "padding": 0,
+            "paddingBottom": 58,
+            "position": "absolute",
+            "width": "100%",
+          },
+        ]
       }
     >
       <View
@@ -595,27 +654,86 @@ exports[`FilterModal renders with selected category preselected 1`] = `
 <Modal
   animationType="slide"
   onRequestClose={[MockFunction]}
+  statusBarTranslucent={true}
   transparent={true}
   visible={true}
 >
   <View
     style={
       {
-        "backgroundColor": "rgba(0,0,0,0.08)",
+        "alignItems": "center",
         "flex": 1,
-        "justifyContent": "flex-end",
+        "justifyContent": "center",
       }
     }
   >
     <View
-      style={
+      accessibilityState={
         {
-          "backgroundColor": "#FFFFFF",
-          "borderTopLeftRadius": 12,
-          "borderTopRightRadius": 12,
-          "maxHeight": "70%",
-          "paddingBottom": 58,
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
         }
+      }
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "backgroundColor": "rgba(0,0,0,0.08)",
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          {
+            "backgroundColor": "#000000",
+            "opacity": 0.5,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "backgroundColor": "#FFFFFF",
+            "borderRadius": 10,
+            "elevation": 5,
+            "maxWidth": 340,
+            "padding": 16,
+            "shadowColor": "#000000",
+            "shadowOffset": {
+              "height": 2,
+              "width": 0,
+            },
+            "shadowOpacity": 0.25,
+            "shadowRadius": 3.84,
+            "width": "100%",
+          },
+          {
+            "backgroundColor": "#FFFFFF",
+            "borderTopLeftRadius": 12,
+            "borderTopRightRadius": 12,
+            "bottom": 0,
+            "maxHeight": "70%",
+            "maxWidth": undefined,
+            "padding": 0,
+            "paddingBottom": 58,
+            "position": "absolute",
+            "width": "100%",
+          },
+        ]
       }
     >
       <View

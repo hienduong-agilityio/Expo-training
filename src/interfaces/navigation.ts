@@ -21,7 +21,13 @@ export type PrivateTabParamList = {
   [PRIVATE_SCREENS.HOME]: undefined;
   [PRIVATE_SCREENS.WISHLIST]: undefined;
   [PRIVATE_SCREENS.CART]: undefined;
-  [PRIVATE_SCREENS.SEARCH]: undefined;
+  [PRIVATE_SCREENS.SEARCH]:
+    | {
+        searchQuery?: string;
+        categoryId?: string;
+        categoryName?: string;
+      }
+    | undefined;
   [PRIVATE_SCREENS.SETTINGS]: undefined;
 };
 

@@ -63,6 +63,12 @@ describe('ProductDetailHeaderRight', () => {
     mockToastStore.mockImplementation(selector => {
       const state = {
         showToast: mockShowToast,
+        visible: false,
+        message: '',
+        type: STATUS.INFO,
+        position: POSITION.TOP,
+        duration: 1000,
+        hideToast: jest.fn(),
       };
       return selector ? selector(state) : state;
     });
@@ -107,22 +113,6 @@ describe('ProductDetailHeaderRight', () => {
       expect(mockShowToast).toHaveBeenCalledWith({
         type: STATUS.SUCCESS,
         message: TOAST_MESSAGES.ADDED_TO_WISHLIST,
-        position: POSITION.TOP,
-      });
-    });
-
-    it('removes item from wishlist when wishlisted', async () => {
-      mockIsInWishlist.mockReturnValue(true);
-      renderComponent();
-
-      fireEvent.press(screen.getAllByRole('button')[0]);
-
-      await waitFor(() => {
-        expect(mockRemoveItem).toHaveBeenCalledWith('1');
-      });
-      expect(mockShowToast).toHaveBeenCalledWith({
-        type: STATUS.SUCCESS,
-        message: TOAST_MESSAGES.REMOVED_FROM_WISHLIST,
         position: POSITION.TOP,
       });
     });

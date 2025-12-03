@@ -38,7 +38,7 @@ exports[`<AuthFooter /> renders divider, social icons and helper navigation 1`] 
         {
           "busy": undefined,
           "checked": undefined,
-          "disabled": undefined,
+          "disabled": false,
           "expanded": undefined,
           "selected": undefined,
         }
@@ -85,7 +85,7 @@ exports[`<AuthFooter /> renders divider, social icons and helper navigation 1`] 
         {
           "busy": undefined,
           "checked": undefined,
-          "disabled": undefined,
+          "disabled": false,
           "expanded": undefined,
           "selected": undefined,
         }
@@ -132,7 +132,7 @@ exports[`<AuthFooter /> renders divider, social icons and helper navigation 1`] 
         {
           "busy": undefined,
           "checked": undefined,
-          "disabled": undefined,
+          "disabled": false,
           "expanded": undefined,
           "selected": undefined,
         }
@@ -200,7 +200,7 @@ exports[`<AuthFooter /> renders divider, social icons and helper navigation 1`] 
         {
           "busy": undefined,
           "checked": undefined,
-          "disabled": undefined,
+          "disabled": false,
           "expanded": undefined,
           "selected": undefined,
         }

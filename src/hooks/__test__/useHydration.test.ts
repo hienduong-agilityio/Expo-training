@@ -1,8 +1,13 @@
-import { renderHook, act } from '@testing-library/react-native';
+import { renderHook, act, waitFor } from '@testing-library/react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { TPersistedStore, useHydration } from '../useHydration';
 
 describe('useHydration', () => {
-  it('returns false initially when not hydrated', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('returns false initially when not hydrated and not checked onboarding', async () => {
     const mockStore = {
       persist: {
         hasHydrated: jest.fn(() => false),
@@ -15,10 +20,15 @@ describe('useHydration', () => {
       useHydration(mockStore as unknown as TPersistedStore),
     );
 
-    expect(result.current).toBe(false);
+    await waitFor(() => {
+      expect(result.current).toEqual({
+        hydrated: false,
+        isFirstLaunch: true,
+      });
+    });
   });
 
-  it('returns true when already hydrated', () => {
+  it('returns true when already hydrated and checked onboarding', async () => {
     const mockStore = {
       persist: {
         hasHydrated: jest.fn(() => true),
@@ -27,14 +37,21 @@ describe('useHydration', () => {
       },
     };
 
+    (AsyncStorage.getItem as jest.Mock).mockResolvedValue('true');
+
     const { result } = renderHook(() =>
       useHydration(mockStore as unknown as TPersistedStore),
     );
 
-    expect(result.current).toBe(true);
+    await waitFor(() => {
+      expect(result.current).toEqual({
+        hydrated: true,
+        isFirstLaunch: false,
+      });
+    });
   });
 
-  it('subscribes to hydration events', () => {
+  it('subscribes to hydration events', async () => {
     const unsubscribeHydrate = jest.fn();
     const unsubscribeFinish = jest.fn();
 
@@ -59,7 +76,7 @@ describe('useHydration', () => {
     expect(unsubscribeFinish).toHaveBeenCalled();
   });
 
-  it('updates when finish hydration callback is called', () => {
+  it('updates when finish hydration callback is called', async () => {
     let finishCallback: (() => void) | undefined;
     const mockStore = {
       persist: {
@@ -76,7 +93,9 @@ describe('useHydration', () => {
       useHydration(mockStore as unknown as TPersistedStore),
     );
 
-    expect(result.current).toBe(false);
+    await waitFor(() => {
+      expect(result.current.hydrated).toBe(false);
+    });
 
     if (finishCallback) {
       act(() => {
@@ -85,10 +104,12 @@ describe('useHydration', () => {
       rerender({});
     }
 
-    expect(result.current).toBe(true);
+    await waitFor(() => {
+      expect(result.current.hydrated).toBe(true);
+    });
   });
 
-  it('updates when hydrate callback is called', () => {
+  it('updates when hydrate callback is called', async () => {
     let hydrateCallback: (() => void) | undefined;
     const mockStore = {
       persist: {
@@ -105,7 +126,9 @@ describe('useHydration', () => {
       useHydration(mockStore as unknown as TPersistedStore),
     );
 
-    expect(result.current).toBe(true);
+    await waitFor(() => {
+      expect(result.current.hydrated).toBe(true);
+    });
 
     if (hydrateCallback) {
       act(() => {
@@ -114,10 +137,12 @@ describe('useHydration', () => {
       rerender({});
     }
 
-    expect(result.current).toBe(false);
+    await waitFor(() => {
+      expect(result.current.hydrated).toBe(false);
+    });
   });
 
-  it('handles store change', () => {
+  it('handles store change', async () => {
     const mockStore1 = {
       persist: {
         hasHydrated: jest.fn(() => false),
@@ -141,10 +166,14 @@ describe('useHydration', () => {
       },
     );
 
-    expect(result.current).toBe(false);
+    await waitFor(() => {
+      expect(result.current.hydrated).toBe(false);
+    });
 
     rerender({ store: mockStore2 as unknown as TPersistedStore });
 
-    expect(result.current).toBe(true);
+    await waitFor(() => {
+      expect(result.current.hydrated).toBe(true);
+    });
   });
 });

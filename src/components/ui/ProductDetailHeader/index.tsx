@@ -7,14 +7,6 @@ import { CartIcon, HeartIcon } from '@app/icons';
 // Themes
 import { colors } from '@app/themes';
 
-// Constants
-import {
-  POSITION,
-  PRIVATE_SCREENS,
-  STATUS,
-  TOAST_MESSAGES,
-} from '@app/constants';
-
 // Types
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { PrivateStackParamList } from '@app/interfaces/navigation';
@@ -27,6 +19,17 @@ import { useWishlist } from '@app/hooks/useWishlist';
 
 // Stores
 import { toastStore } from '@app/stores/toastStore';
+import { modalStore } from '@app/stores/modalStore';
+
+// Constants
+import {
+  POSITION,
+  PRIVATE_SCREENS,
+  STATUS,
+  TOAST_MESSAGES,
+  WISHLIST_MESSAGES,
+  BUTTON_LABELS,
+} from '@app/constants';
 
 export const ProductDetailHeaderRight = ({
   navigation,
@@ -36,6 +39,7 @@ export const ProductDetailHeaderRight = ({
   navigation: NativeStackNavigationProp<PrivateStackParamList>;
 }) => {
   const showToast = toastStore(state => state.showToast);
+  const showConfirm = modalStore(state => state.showConfirm);
 
   const { isInWishlist, addItem, removeItem } = useWishlist();
 
@@ -44,12 +48,21 @@ export const ProductDetailHeaderRight = ({
   const handleToggleWishlist = useCallback(
     async (productIdToToggle: string) => {
       if (isInWishlist(productIdToToggle)) {
-        await removeItem(productIdToToggle);
+        showConfirm({
+          title: WISHLIST_MESSAGES.REMOVE_TITLE,
+          message: WISHLIST_MESSAGES.REMOVE_MESSAGE,
+          confirmLabel: BUTTON_LABELS.REMOVE,
+          cancelLabel: BUTTON_LABELS.CANCEL,
+          isDestructive: true,
+          onConfirm: async () => {
+            await removeItem(productIdToToggle);
 
-        showToast({
-          type: STATUS.SUCCESS,
-          message: TOAST_MESSAGES.REMOVED_FROM_WISHLIST,
-          position: POSITION.TOP,
+            showToast({
+              type: STATUS.SUCCESS,
+              message: TOAST_MESSAGES.REMOVED_FROM_WISHLIST,
+              position: POSITION.TOP,
+            });
+          },
         });
       } else {
         await addItem(productIdToToggle);
@@ -61,7 +74,7 @@ export const ProductDetailHeaderRight = ({
         });
       }
     },
-    [isInWishlist, addItem, removeItem, showToast],
+    [isInWishlist, addItem, removeItem, showToast, showConfirm],
   );
 
   const handleCartPress = () => {

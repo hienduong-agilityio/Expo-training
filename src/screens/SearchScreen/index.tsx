@@ -1,5 +1,4 @@
 import { useCallback, useState, useMemo, useEffect } from 'react';
-import { useFocusEffect } from '@react-navigation/native';
 import { View, Text } from 'react-native';
 
 // Components
@@ -17,9 +16,6 @@ import {
 } from '@app/hooks/useProduct';
 import { useFilterModal } from '@app/hooks/useFilterModal';
 import { useDebounce } from '@app/hooks/useDebounce';
-
-// Store
-import { searchStore } from '@app/stores/searchStore';
 
 // Types
 import type { PrivateTabScreenProps } from '@app/interfaces/navigation';
@@ -39,31 +35,20 @@ import { styles } from './index.style';
 
 type SearchScreenProps = PrivateTabScreenProps<typeof PRIVATE_SCREENS.SEARCH>;
 
-/**
- * TODO: Use route.params to get the search query and category id.
- * * Replace the useEffect with useEffect hook to get the search query and category id from the route.params.
- * * Remove searchStore and use the route.params instead.
- */
-export const SearchScreen = ({ navigation }: SearchScreenProps) => {
-  const { categoryId, categoryName, searchQuery, setCategory, clearAll } =
-    searchStore();
+export const SearchScreen = ({ navigation, route }: SearchScreenProps) => {
+  const { searchQuery, categoryId, categoryName } = route.params || {};
 
-  const [localSearchQuery, setLocalSearchQuery] = useState('');
+  const [localSearchQuery, setLocalSearchQuery] = useState(searchQuery || '');
+  const [activeCategoryId, setActiveCategoryId] = useState(categoryId || null);
+  const [activeCategoryName, setActiveCategoryName] = useState(
+    categoryName || null,
+  );
 
   useEffect(() => {
-    if (searchQuery) {
-      setLocalSearchQuery(searchQuery);
-    }
-  }, [searchQuery]);
-
-  useFocusEffect(
-    useCallback(() => {
-      return () => {
-        clearAll();
-        setLocalSearchQuery('');
-      };
-    }, [clearAll]),
-  );
+    setLocalSearchQuery(searchQuery || '');
+    setActiveCategoryId(categoryId || null);
+    setActiveCategoryName(categoryName || null);
+  }, [searchQuery, categoryId, categoryName]);
 
   const debouncedSearchQuery = useDebounce(localSearchQuery, 500);
   const activeSearchQuery = useMemo(
@@ -72,7 +57,7 @@ export const SearchScreen = ({ navigation }: SearchScreenProps) => {
   );
 
   const hasSearchQuery = Boolean(activeSearchQuery);
-  const categorySlug = categoryId?.trim();
+  const categorySlug = activeCategoryId?.trim();
 
   const searchResult = useSearchProducts(
     activeSearchQuery,
@@ -82,19 +67,33 @@ export const SearchScreen = ({ navigation }: SearchScreenProps) => {
 
   const activeResult = hasSearchQuery ? searchResult : categoryResult;
 
-  // Bug: Crash when has many requests in the same time.
-  // TODO: Use reactotron-react-native to debug the issue.
-  const { products, isLoading, isFetching, error, refetch } = activeResult;
+  const {
+    products,
+    isLoading,
+    isFetching,
+    error,
+    refetch,
+    isPending,
+    isRefetching,
+  } = activeResult;
 
+  const handleRefresh = useCallback(() => {
+    refetch();
+  }, [refetch]);
+
+  // Only show full loading state on first load or when manually searching/filtering
+  // This prevents the "blank screen" effect during background refetches
+  const showFullLoading =
+    (isLoading || isPending) && !products.length && !isRefetching;
+
+  const loading = isLoading || isFetching;
+  const displaySearchQuery = localSearchQuery?.trim();
   const handleApplyFilter = useCallback(
     (selectedCategoryId: string | null, selectedCategoryName: string) => {
-      if (selectedCategoryId) {
-        setCategory(selectedCategoryId, selectedCategoryName);
-      } else {
-        setCategory(null, null);
-      }
+      setActiveCategoryId(selectedCategoryId);
+      setActiveCategoryName(selectedCategoryName);
     },
-    [setCategory],
+    [],
   );
 
   const {
@@ -105,7 +104,7 @@ export const SearchScreen = ({ navigation }: SearchScreenProps) => {
     selectCategory,
     applyFilter,
   } = useFilterModal({
-    initialCategoryId: categoryId,
+    initialCategoryId: activeCategoryId,
     categories: CATEGORIES,
     onApply: handleApplyFilter,
   });
@@ -123,11 +122,9 @@ export const SearchScreen = ({ navigation }: SearchScreenProps) => {
     [navigation],
   );
 
-  const loading = isLoading || isFetching;
-  const displaySearchQuery = localSearchQuery?.trim();
   const searchTitle = displaySearchQuery
     ? `${SEARCH_SCREEN_MESSAGES.SEARCH_PREFIX}"${displaySearchQuery}"`
-    : categoryName || SEARCH_SCREEN_MESSAGES.DEFAULT_TITLE;
+    : activeCategoryName || SEARCH_SCREEN_MESSAGES.DEFAULT_TITLE;
   const showError = error && !products.length && !loading;
 
   if (showError) {
@@ -159,7 +156,7 @@ export const SearchScreen = ({ navigation }: SearchScreenProps) => {
         />
       </View>
 
-      {loading ? (
+      {showFullLoading ? (
         <View style={styles.center}>
           <LoadingState
             message={SEARCH_SCREEN_MESSAGES.LOADING}
@@ -206,6 +203,8 @@ export const SearchScreen = ({ navigation }: SearchScreenProps) => {
                 onItemPress={handleItemPress}
                 numColumns={2}
                 contentPadding={12}
+                refreshing={isLoading || isFetching}
+                onRefresh={handleRefresh}
               />
             )}
           </View>

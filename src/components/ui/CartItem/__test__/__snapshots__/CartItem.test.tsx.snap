@@ -82,7 +82,7 @@ exports[`CartItem renders product info and quantity 1`] = `
           }
         }
       >
-        ₹ 1500
+        ₹ 1500.00
       </Text>
       <Text
         accessibilityLabel="Quantity 2"
@@ -349,7 +349,7 @@ exports[`CartItem renders product info and quantity 1`] = `
             }
           }
         >
-          ₹ 3000
+          ₹ 3000.00
         </Text>
       </View>
     </View>

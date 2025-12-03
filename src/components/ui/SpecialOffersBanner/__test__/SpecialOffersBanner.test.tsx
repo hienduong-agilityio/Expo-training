@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react-native';
 import { SpecialOffersBanner } from '@app/components/ui/SpecialOffersBanner';
 
 // Constants
-import { SPECIAL_OFFERS_BANNER } from '@app/constants/banner';
+import { SPECIAL_OFFERS_BANNER } from '@app/mocks/banners';
 
 describe('SpecialOffersBanner', () => {
   it('renders correctly with banner data', () => {

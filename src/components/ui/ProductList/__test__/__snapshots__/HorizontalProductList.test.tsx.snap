@@ -337,7 +337,7 @@ exports[`HorizontalProductList handles custom keyExtractor 1`] = `
                   }
                 }
               >
-                ₹ 499
+                ₹ 499.00
               </Text>
             </View>
             <View
@@ -624,7 +624,7 @@ exports[`HorizontalProductList handles custom keyExtractor 1`] = `
                   }
                 }
               >
-                ₹ 399
+                ₹ 399.00
               </Text>
             </View>
             <View
@@ -911,7 +911,7 @@ exports[`HorizontalProductList handles custom keyExtractor 1`] = `
                   }
                 }
               >
-                ₹ 2000
+                ₹ 2000.00
               </Text>
             </View>
             <View
@@ -1374,7 +1374,7 @@ exports[`HorizontalProductList handles customStyle 1`] = `
                   }
                 }
               >
-                ₹ 499
+                ₹ 499.00
               </Text>
             </View>
             <View
@@ -1663,7 +1663,7 @@ exports[`HorizontalProductList handles customStyle 1`] = `
                   }
                 }
               >
-                ₹ 399
+                ₹ 399.00
               </Text>
             </View>
             <View
@@ -1952,7 +1952,7 @@ exports[`HorizontalProductList handles customStyle 1`] = `
                   }
                 }
               >
-                ₹ 2000
+                ₹ 2000.00
               </Text>
             </View>
             <View
@@ -2363,7 +2363,7 @@ exports[`HorizontalProductList handles keyExtractor with null id and name 1`] = 
                   }
                 }
               >
-                ₹ 499
+                ₹ 499.00
               </Text>
             </View>
             <View
@@ -2824,7 +2824,7 @@ exports[`HorizontalProductList renders correctly with products 1`] = `
                   }
                 }
               >
-                ₹ 499
+                ₹ 499.00
               </Text>
             </View>
             <View
@@ -3111,7 +3111,7 @@ exports[`HorizontalProductList renders correctly with products 1`] = `
                   }
                 }
               >
-                ₹ 399
+                ₹ 399.00
               </Text>
             </View>
             <View
@@ -3398,7 +3398,7 @@ exports[`HorizontalProductList renders correctly with products 1`] = `
                   }
                 }
               >
-                ₹ 2000
+                ₹ 2000.00
               </Text>
             </View>
             <View
@@ -3859,7 +3859,7 @@ exports[`HorizontalProductList renders with custom itemWidth 1`] = `
                   }
                 }
               >
-                ₹ 499
+                ₹ 499.00
               </Text>
             </View>
             <View
@@ -4146,7 +4146,7 @@ exports[`HorizontalProductList renders with custom itemWidth 1`] = `
                   }
                 }
               >
-                ₹ 399
+                ₹ 399.00
               </Text>
             </View>
             <View
@@ -4433,7 +4433,7 @@ exports[`HorizontalProductList renders with custom itemWidth 1`] = `
                   }
                 }
               >
-                ₹ 2000
+                ₹ 2000.00
               </Text>
             </View>
             <View
@@ -4894,7 +4894,7 @@ exports[`HorizontalProductList renders with snap disabled 1`] = `
                   }
                 }
               >
-                ₹ 499
+                ₹ 499.00
               </Text>
             </View>
             <View
@@ -5181,7 +5181,7 @@ exports[`HorizontalProductList renders with snap disabled 1`] = `
                   }
                 }
               >
-                ₹ 399
+                ₹ 399.00
               </Text>
             </View>
             <View
@@ -5468,7 +5468,7 @@ exports[`HorizontalProductList renders with snap disabled 1`] = `
                   }
                 }
               >
-                ₹ 2000
+                ₹ 2000.00
               </Text>
             </View>
             <View
@@ -5933,7 +5933,7 @@ exports[`HorizontalProductList renders with snap enabled 1`] = `
                   }
                 }
               >
-                ₹ 499
+                ₹ 499.00
               </Text>
             </View>
             <View
@@ -6220,7 +6220,7 @@ exports[`HorizontalProductList renders with snap enabled 1`] = `
                   }
                 }
               >
-                ₹ 399
+                ₹ 399.00
               </Text>
             </View>
             <View
@@ -6507,7 +6507,7 @@ exports[`HorizontalProductList renders with snap enabled 1`] = `
                   }
                 }
               >
-                ₹ 2000
+                ₹ 2000.00
               </Text>
             </View>
             <View

@@ -12,9 +12,11 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
+    padding: 1,
   },
   inputFocused: {
     borderWidth: 2,
+    padding: 0,
   },
   inputError: {
     borderColor: colors.error,
@@ -25,6 +27,7 @@ export const styles = StyleSheet.create({
     paddingVertical: spacing['2.5'],
     textAlignVertical: 'center',
     includeFontPadding: false,
+    color: colors.text,
   },
   label: {
     fontWeight: typography.fontWeights.medium,

@@ -4,7 +4,7 @@ import { fireEvent, render, screen } from '@testing-library/react-native';
 import { SponsoredBanner } from '@app/components/ui/SponsoredBanner';
 
 // Constants
-import { SPONSORED_BANNER } from '@app/constants/banner';
+import { SPONSORED_BANNER } from '@app/mocks/banners';
 
 describe('SponsoredBanner', () => {
   it('renders correctly with banner data', () => {

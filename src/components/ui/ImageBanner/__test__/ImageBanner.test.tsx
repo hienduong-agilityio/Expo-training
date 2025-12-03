@@ -4,7 +4,7 @@ import { fireEvent, render, screen } from '@testing-library/react-native';
 import { ImageBanner } from '@app/components/ui/ImageBanner';
 
 // Constants
-import { PROMO_BANNER } from '@app/constants/banner';
+import { PROMO_BANNER } from '@app/mocks/banners';
 
 describe('ImageBanner', () => {
   const renderComponent = (overrides = {}) => {

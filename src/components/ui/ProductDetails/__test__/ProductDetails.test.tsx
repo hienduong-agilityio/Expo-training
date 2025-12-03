@@ -19,7 +19,7 @@ describe('ProductDetails', () => {
       const { toJSON } = renderComponent();
 
       expect(screen.getByText('Test Product')).toBeTruthy();
-      expect(screen.getByText('$ 100')).toBeTruthy();
+      expect(screen.getByText('$ 100.00')).toBeTruthy();
       expect(toJSON()).toMatchSnapshot();
     });
 
@@ -37,7 +37,7 @@ describe('ProductDetails', () => {
 
       expect(screen.getByText('A great product')).toBeTruthy();
       expect(screen.getByText('1,234')).toBeTruthy();
-      expect(screen.getByText('$ 150')).toBeTruthy();
+      expect(screen.getByText('$ 150.00')).toBeTruthy();
       expect(screen.getByText('33% Off')).toBeTruthy();
       expect(screen.getByText('Product details text')).toBeTruthy();
       expect(toJSON()).toMatchSnapshot();
@@ -64,18 +64,18 @@ describe('ProductDetails', () => {
   describe('Price and discount', () => {
     it('renders with original price and discount', () => {
       renderComponent({ originalPrice: 150, discountPercent: 33 });
-      expect(screen.getByText('$ 150')).toBeTruthy();
+      expect(screen.getByText('$ 150.00')).toBeTruthy();
       expect(screen.getByText('33% Off')).toBeTruthy();
     });
 
     it('does not render original price when not provided or <= current price', () => {
       const { rerender } = renderComponent({ price: 100 });
-      expect(screen.getByText('$ 100')).toBeTruthy();
+      expect(screen.getByText('$ 100.00')).toBeTruthy();
 
       rerender(
         <ProductDetails {...baseProps} price={100} originalPrice={100} />,
       );
-      expect(screen.getByText('$ 100')).toBeTruthy();
+      expect(screen.getByText('$ 100.00')).toBeTruthy();
     });
 
     it('does not render discount badge when discountPercent is 0 or undefined', () => {

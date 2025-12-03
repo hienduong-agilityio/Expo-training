@@ -16,7 +16,7 @@ exports[`<SocialAuthButtons /> renders three provider buttons 1`] = `
       {
         "busy": undefined,
         "checked": undefined,
-        "disabled": undefined,
+        "disabled": false,
         "expanded": undefined,
         "selected": undefined,
       }
@@ -63,7 +63,7 @@ exports[`<SocialAuthButtons /> renders three provider buttons 1`] = `
       {
         "busy": undefined,
         "checked": undefined,
-        "disabled": undefined,
+        "disabled": false,
         "expanded": undefined,
         "selected": undefined,
       }
@@ -110,7 +110,7 @@ exports[`<SocialAuthButtons /> renders three provider buttons 1`] = `
       {
         "busy": undefined,
         "checked": undefined,
-        "disabled": undefined,
+        "disabled": false,
         "expanded": undefined,
         "selected": undefined,
       }

@@ -6,3 +6,4 @@ export { ProductDetails } from './ProductDetails';
 export { SizeSelector } from './SizeSelector';
 export { DeliveryInfo } from './DeliveryInfo';
 export { SimilarProducts } from './SimilarProducts';
+export { ConfirmModal } from './ConfirmModal';

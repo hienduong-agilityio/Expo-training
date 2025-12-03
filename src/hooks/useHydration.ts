@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface IPersistHelpers {
   hasHydrated: () => boolean;
@@ -10,8 +11,9 @@ export type TPersistedStore = {
   persist: IPersistHelpers;
 };
 
-export const useHydration = (store: TPersistedStore): boolean => {
+export const useHydration = (store: TPersistedStore) => {
   const [hydrated, setHydrated] = useState(false);
+  const [isFirstLaunch, setIsFirstLaunch] = useState<boolean | null>(null);
 
   useEffect(() => {
     const unsubHydrate = store.persist.onHydrate(() => setHydrated(false));
@@ -22,7 +24,16 @@ export const useHydration = (store: TPersistedStore): boolean => {
 
     setHydrated(store.persist.hasHydrated());
 
-    //TODO: Onboarding screen should be shown only once after the app is installed
+    const checkOnboarding = async () => {
+      try {
+        const value = await AsyncStorage.getItem('HAS_SEEN_ONBOARDING');
+        setIsFirstLaunch(value === null);
+      } catch (error) {
+        setIsFirstLaunch(false);
+      }
+    };
+
+    checkOnboarding();
 
     return () => {
       unsubHydrate();
@@ -30,5 +41,5 @@ export const useHydration = (store: TPersistedStore): boolean => {
     };
   }, [store]);
 
-  return hydrated;
+  return { hydrated, isFirstLaunch };
 };

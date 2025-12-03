@@ -4,7 +4,7 @@ import { fireEvent, render, screen } from '@testing-library/react-native';
 import { SummerSaleBanner } from '@app/components/ui/SummerSaleBanner';
 
 // Constants
-import { SUMMER_SALE_BANNER } from '@app/constants/banner';
+import { SUMMER_SALE_BANNER } from '@app/mocks/banners';
 
 describe('SummerSaleBanner', () => {
   const baseProps = {
