@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
 // Components
@@ -15,7 +16,7 @@ import { styles } from './index.style';
 // Icons
 import { StarsRating } from '@app/components/ui/StarsRating';
 
-export const ProductDetails = ({
+export const ProductDetails = memo(function ProductDetails({
   name,
   price,
   originalPrice,
@@ -26,7 +27,7 @@ export const ProductDetails = ({
   reviewCount,
   details,
   onShowMoreDetails,
-}: IProductDetailsProps) => {
+}: IProductDetailsProps) {
   return (
     <View style={styles.container}>
       {/* Product Name */}
@@ -78,4 +79,4 @@ export const ProductDetails = ({
       )}
     </View>
   );
-};
+});

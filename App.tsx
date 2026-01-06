@@ -12,17 +12,22 @@ import { queryClient } from '@app/contexts/query';
 // Components
 import { ToastContainer } from '@app/components/ToastContainer';
 import { ConfirmModal } from '@app/components/ui/ConfirmModal';
+import { NoInternetModal } from '@app/components/NoInternetModal/index';
+
+// Hooks
+import { useNetworkStatus } from '@app/hooks/useNetworkStatus';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const [showStorybook, setShowStorybook] = useState(false);
+  const { isConnected, showOfflineModal, closeModal } = useNetworkStatus();
 
   useEffect(() => {
     if (__DEV__) {
       // Toggle Storybook
       require('./ReactotronConfig');
 
-      DevSettings.addMenuItem('Toggle Storybook', () => {
+      DevSettings?.addMenuItem?.('Toggle Storybook', () => {
         setShowStorybook(prev => !prev);
       });
     }
@@ -39,6 +44,10 @@ const App = () => {
       <SafeAreaProvider>
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
         <Navigation />
+        <NoInternetModal
+          visible={!isConnected && showOfflineModal}
+          onClose={closeModal}
+        />
         <ToastContainer />
         <ConfirmModal />
       </SafeAreaProvider>

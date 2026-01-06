@@ -20,3 +20,7 @@ export const CART_ENDPOINTS = {
 export const WISHLIST_ENDPOINTS = {
   ROOT: '/wishlists',
 } as const;
+
+export const USER_ENDPOINTS = {
+  DEVICE_TOKEN: '/device-tokens',
+} as const;

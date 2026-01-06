@@ -1,5 +1,4 @@
-import { render } from '@testing-library/react-native';
-import { act } from 'react-test-renderer';
+import { render, act } from '@testing-library/react-native';
 
 // Components
 import { ToastContainer } from '@app/components/ToastContainer';
@@ -12,9 +11,7 @@ import { STATUS, POSITION } from '@app/constants';
 
 describe('ToastContainer', () => {
   beforeEach(() => {
-    // Reset toast store before each test
-    toastStore.setState({
-      visible: false,
+    toastStore.getState().showToast({
       message: '',
       type: STATUS.INFO,
       position: POSITION.TOP,
@@ -45,21 +42,31 @@ describe('ToastContainer', () => {
   it('hides toast after duration', () => {
     jest.useFakeTimers();
 
+    // Set up initial state
     act(() => {
-      toastStore.getState().showToast({
+      toastStore.setState({
+        visible: true,
         message: 'Test message',
         duration: 1000,
       });
     });
 
-    const { rerender } = render(<ToastContainer />);
+    expect(toastStore.getState().visible).toBe(true);
 
+    // Render component
+    render(<ToastContainer />);
+
+    // Advance timers - this should trigger the timeout
     act(() => {
       jest.advanceTimersByTime(1000);
     });
 
-    rerender(<ToastContainer />);
+    // Flush pending updates
+    act(() => {
+      jest.runAllTimers();
+    });
 
+    // Check that toast was hidden
     expect(toastStore.getState().visible).toBe(false);
 
     jest.useRealTimers();

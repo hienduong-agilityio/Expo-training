@@ -1,7 +1,7 @@
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 
 // Components
-import { ProductCard } from '@app/components/ui/ProductCard';
+import { ProductCard } from '@app/components/ui';
 
 // Icons
 import { EyeOpenIcon, LayersIcon, SortIcon, FilterIcon } from '@app/icons';

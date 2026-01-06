@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 // Hooks
-import { useCart } from '@app/hooks/useCart';
+import { useCart, useCartActions } from '@app/hooks/useCart';
 import { useProductsByIds } from '@app/hooks/useProduct';
 
 // Components
@@ -43,11 +43,13 @@ type CheckoutScreenProps = NativeStackScreenProps<
 >;
 
 const SHIPPING_PRICE = 30;
+const TOAST_DELAY_MS = 100;
 
 export const CheckoutScreen = ({ navigation }: CheckoutScreenProps) => {
-  const showToast = toastStore(state => state.showToast);
+  const { cart, cartItems, isLoading } = useCart();
+  const { checkout } = useCartActions();
 
-  const { cart, cartItems, isLoading, checkout } = useCart();
+  const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const [selectedPayment, setSelectedPayment] = useState<PaymentProvider>(
     PAYMENT_PROVIDER.VISA,
@@ -58,38 +60,47 @@ export const CheckoutScreen = ({ navigation }: CheckoutScreenProps) => {
   const { productMap, isLoading: isLoadingProducts } =
     useProductsByIds(productIds);
 
-  const totalPrice = cartItems.reduce((sum, item) => {
-    const product = productMap.get(item.productId);
-    const price = product?.price ?? 0;
+  const showToast = toastStore(state => state.showToast);
 
-    return sum + price * item.quantity;
-  }, 0);
+  const totalPrice = useMemo(
+    () =>
+      cartItems.reduce((sum, item) => {
+        const product = productMap.get(item.productId);
+        const price = product?.price ?? 0;
+
+        return sum + price * item.quantity;
+      }, 0),
+    [cartItems, productMap],
+  );
 
   const orderTotal = totalPrice + SHIPPING_PRICE;
 
-  const handlePaymentSelect = (id: PaymentProvider) => {
+  const handlePaymentSelect = useCallback((id: PaymentProvider) => {
     setSelectedPayment(id);
-  };
+  }, []);
 
-  const handleCheckout = async () => {
+  const handleGoBack = useCallback(() => {
+    navigation.goBack();
+  }, [navigation]);
+
+  const handleCheckout = useCallback(async () => {
     try {
       await checkout();
       navigation.goBack();
 
-      // Todo: UseDebounce hook
-      setTimeout(() => {
+      toastTimerRef.current = setTimeout(() => {
         showToast({
           type: STATUS.SUCCESS,
           message: TOAST_MESSAGES.PAYMENT_SUCCESS,
         });
-      }, 100);
+      }, TOAST_DELAY_MS);
     } catch {
       showToast({
         type: STATUS.ERROR,
         message: TOAST_MESSAGES.PAYMENT_FAILED,
       });
     }
-  };
+  }, [checkout, navigation, showToast]);
 
   if (isLoading || isLoadingProducts) {
     return (
@@ -108,7 +119,7 @@ export const CheckoutScreen = ({ navigation }: CheckoutScreenProps) => {
         <Text style={styles.emptyText}>{CART_MESSAGES.EMPTY}</Text>
         <Button
           label={BUTTON_LABELS.GO_TO_CART}
-          onPress={() => navigation.goBack()}
+          onPress={handleGoBack}
           fullWidth
           style={styles.button}
         />

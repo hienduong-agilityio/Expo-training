@@ -1,4 +1,5 @@
 export { ProductImageCarousel } from './ProductImageCarousel';
+export { default as ProductCard } from './ProductCard';
 export { ProductActions } from './ProductActions';
 export { LoadingState } from './LoadingState';
 export { ErrorState } from './ErrorState';

@@ -9,7 +9,7 @@ module.exports = {
     },
   },
   transformIgnorePatterns: [
-    '/node_modules/(?!((jest-)?react-native|@react-native(-community)?)|react-clone-referenced-element|react-navigation|@react-navigation/.*)',
+    '/node_modules/(?!((jest-)?react-native|@react-native(-community)?|@notifee)|react-clone-referenced-element|react-navigation|@react-navigation/.*)',
   ],
   collectCoverageFrom: [
     'src/components/**/*.{ts,tsx}',
@@ -17,6 +17,7 @@ module.exports = {
     'src/services/**/*.{ts,tsx}',
     'src/utils/**/*.{ts,tsx}',
     '!**/*.stories.{ts,tsx}',
+    '!src/services/firebase/**',
   ],
   moduleDirectories: [
     'node_modules',

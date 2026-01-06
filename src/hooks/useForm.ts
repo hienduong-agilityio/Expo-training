@@ -1,18 +1,30 @@
 import { useCallback, useState } from 'react';
 
 // Types
-type FieldErrors = Partial<Record<string, string>>;
+type FieldErrors<T extends string> = Partial<Record<T, string>>;
 
-interface IUseFormOptions {
-  initialValues: Record<string, string>;
+interface IUseFormOptions<T extends Record<string, string>> {
+  initialValues: T;
 }
 
-export const useForm = ({ initialValues }: IUseFormOptions) => {
-  const [values, setValues] = useState(initialValues);
-  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
+interface IUseFormReturn<T extends Record<string, string>> {
+  values: T;
+  fieldErrors: Partial<Record<keyof T & string, string>>;
+  handleChange: (field: keyof T & string, value: string) => void;
+  resetForm: () => void;
+  setFieldError: (field: keyof T & string, error: string) => void;
+}
 
-  const handleChange = useCallback((field: string, value: string) => {
-    setValues((prev: Record<string, string>) => ({ ...prev, [field]: value }));
+export const useForm = <T extends Record<string, string>>({
+  initialValues,
+}: IUseFormOptions<T>): IUseFormReturn<T> => {
+  const [values, setValues] = useState<T>(initialValues);
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors<keyof T & string>>(
+    {},
+  );
+
+  const handleChange = useCallback((field: keyof T & string, value: string) => {
+    setValues(prev => ({ ...prev, [field]: value }));
 
     setFieldErrors(prev => {
       if (prev[field]) {
@@ -27,9 +39,12 @@ export const useForm = ({ initialValues }: IUseFormOptions) => {
     setFieldErrors({});
   }, [initialValues]);
 
-  const setFieldError = useCallback((field: string, error: string) => {
-    setFieldErrors(prev => ({ ...prev, [field]: error }));
-  }, []);
+  const setFieldError = useCallback(
+    (field: keyof T & string, error: string) => {
+      setFieldErrors(prev => ({ ...prev, [field]: error }));
+    },
+    [],
+  );
 
   return {
     values,

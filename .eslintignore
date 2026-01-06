@@ -15,3 +15,5 @@ __snapshots__/
 .yarn/
 .expo/
 .expo-shared/
+
+!.storybook

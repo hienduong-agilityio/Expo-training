@@ -15,7 +15,7 @@ import type { PrivateStackParamList } from '@app/interfaces/navigation';
 import { styles } from './index.style';
 
 // Hooks
-import { useWishlist } from '@app/hooks/useWishlist';
+import { useWishlist, useWishlistActions } from '@app/hooks/useWishlist';
 
 // Stores
 import { toastStore } from '@app/stores/toastStore';
@@ -38,10 +38,11 @@ export const ProductDetailHeaderRight = ({
   productId: string;
   navigation: NativeStackNavigationProp<PrivateStackParamList>;
 }) => {
+  const { isInWishlist } = useWishlist();
+  const { addItem, removeItem } = useWishlistActions();
+
   const showToast = toastStore(state => state.showToast);
   const showConfirm = modalStore(state => state.showConfirm);
-
-  const { isInWishlist, addItem, removeItem } = useWishlist();
 
   const isWishlisted = isInWishlist(productId);
 
@@ -78,7 +79,7 @@ export const ProductDetailHeaderRight = ({
   );
 
   const handleCartPress = () => {
-    navigation.navigate(PRIVATE_SCREENS.HOME, {
+    navigation.navigate(PRIVATE_SCREENS.MAIN_TABS, {
       screen: PRIVATE_SCREENS.CART,
     });
   };

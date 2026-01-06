@@ -3,6 +3,7 @@
 exports[`SectionContent renders empty products list 1`] = `
 <RCTScrollView
   ItemSeparatorComponent={[Function]}
+  ListFooterComponent={[Function]}
   accessibilityLabel="Horizontal product list"
   accessibilityRole="list"
   contentContainerStyle={
@@ -161,6 +162,8 @@ exports[`SectionContent renders empty products list 1`] = `
   keyExtractor={[Function]}
   maxToRenderPerBatch={8}
   onContentSizeChange={[Function]}
+  onEndReached={[Function]}
+  onEndReachedThreshold={0.5}
   onLayout={[Function]}
   onMomentumScrollBegin={[Function]}
   onMomentumScrollEnd={[Function]}
@@ -265,22 +268,41 @@ exports[`SectionContent renders empty products list 1`] = `
               }
             }
           >
-            <Image
-              accessibilityLabel="Black Winter Jacket product image"
-              onError={[Function]}
-              resizeMode="cover"
-              source={
-                {
-                  "uri": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop",
-                }
-              }
+            <View
               style={
-                {
-                  "height": "100%",
-                  "width": "100%",
-                }
+                [
+                  {
+                    "overflow": "hidden",
+                  },
+                  {
+                    "height": "100%",
+                    "width": "100%",
+                  },
+                ]
               }
-            />
+            >
+              <FastImageView
+                accessibilityLabel="Black Winter Jacket product image"
+                defaultSource={null}
+                onFastImageError={[Function]}
+                resizeMode="cover"
+                source={
+                  {
+                    "priority": "normal",
+                    "uri": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop",
+                  }
+                }
+                style={
+                  {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+              />
+            </View>
           </View>
           <View
             style={
@@ -552,22 +574,41 @@ exports[`SectionContent renders empty products list 1`] = `
               }
             }
           >
-            <Image
-              accessibilityLabel="Mens Starry Sky Printed Shirt product image"
-              onError={[Function]}
-              resizeMode="cover"
-              source={
-                {
-                  "uri": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=300&h=400&fit=crop",
-                }
-              }
+            <View
               style={
-                {
-                  "height": "100%",
-                  "width": "100%",
-                }
+                [
+                  {
+                    "overflow": "hidden",
+                  },
+                  {
+                    "height": "100%",
+                    "width": "100%",
+                  },
+                ]
               }
-            />
+            >
+              <FastImageView
+                accessibilityLabel="Mens Starry Sky Printed Shirt product image"
+                defaultSource={null}
+                onFastImageError={[Function]}
+                resizeMode="cover"
+                source={
+                  {
+                    "priority": "normal",
+                    "uri": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=300&h=400&fit=crop",
+                  }
+                }
+                style={
+                  {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+              />
+            </View>
           </View>
           <View
             style={
@@ -839,22 +880,41 @@ exports[`SectionContent renders empty products list 1`] = `
               }
             }
           >
-            <Image
-              accessibilityLabel="Black Dress product image"
-              onError={[Function]}
-              resizeMode="cover"
-              source={
-                {
-                  "uri": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300&h=400&fit=crop",
-                }
-              }
+            <View
               style={
-                {
-                  "height": "100%",
-                  "width": "100%",
-                }
+                [
+                  {
+                    "overflow": "hidden",
+                  },
+                  {
+                    "height": "100%",
+                    "width": "100%",
+                  },
+                ]
               }
-            />
+            >
+              <FastImageView
+                accessibilityLabel="Black Dress product image"
+                defaultSource={null}
+                onFastImageError={[Function]}
+                resizeMode="cover"
+                source={
+                  {
+                    "priority": "normal",
+                    "uri": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300&h=400&fit=crop",
+                  }
+                }
+                style={
+                  {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+              />
+            </View>
           </View>
           <View
             style={
@@ -1031,6 +1091,9 @@ exports[`SectionContent renders empty products list 1`] = `
         </View>
       </View>
     </View>
+    <View
+      onLayout={[Function]}
+    />
   </View>
 </RCTScrollView>
 `;
@@ -1129,6 +1192,7 @@ exports[`SectionContent renders loading state 1`] = `
 exports[`SectionContent renders products when not loading and no error 1`] = `
 <RCTScrollView
   ItemSeparatorComponent={[Function]}
+  ListFooterComponent={[Function]}
   accessibilityLabel="Horizontal product list"
   accessibilityRole="list"
   contentContainerStyle={
@@ -1287,6 +1351,8 @@ exports[`SectionContent renders products when not loading and no error 1`] = `
   keyExtractor={[Function]}
   maxToRenderPerBatch={8}
   onContentSizeChange={[Function]}
+  onEndReached={[Function]}
+  onEndReachedThreshold={0.5}
   onLayout={[Function]}
   onMomentumScrollBegin={[Function]}
   onMomentumScrollEnd={[Function]}
@@ -1391,22 +1457,41 @@ exports[`SectionContent renders products when not loading and no error 1`] = `
               }
             }
           >
-            <Image
-              accessibilityLabel="Black Winter Jacket product image"
-              onError={[Function]}
-              resizeMode="cover"
-              source={
-                {
-                  "uri": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop",
-                }
-              }
+            <View
               style={
-                {
-                  "height": "100%",
-                  "width": "100%",
-                }
+                [
+                  {
+                    "overflow": "hidden",
+                  },
+                  {
+                    "height": "100%",
+                    "width": "100%",
+                  },
+                ]
               }
-            />
+            >
+              <FastImageView
+                accessibilityLabel="Black Winter Jacket product image"
+                defaultSource={null}
+                onFastImageError={[Function]}
+                resizeMode="cover"
+                source={
+                  {
+                    "priority": "normal",
+                    "uri": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop",
+                  }
+                }
+                style={
+                  {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+              />
+            </View>
           </View>
           <View
             style={
@@ -1678,22 +1763,41 @@ exports[`SectionContent renders products when not loading and no error 1`] = `
               }
             }
           >
-            <Image
-              accessibilityLabel="Mens Starry Sky Printed Shirt product image"
-              onError={[Function]}
-              resizeMode="cover"
-              source={
-                {
-                  "uri": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=300&h=400&fit=crop",
-                }
-              }
+            <View
               style={
-                {
-                  "height": "100%",
-                  "width": "100%",
-                }
+                [
+                  {
+                    "overflow": "hidden",
+                  },
+                  {
+                    "height": "100%",
+                    "width": "100%",
+                  },
+                ]
               }
-            />
+            >
+              <FastImageView
+                accessibilityLabel="Mens Starry Sky Printed Shirt product image"
+                defaultSource={null}
+                onFastImageError={[Function]}
+                resizeMode="cover"
+                source={
+                  {
+                    "priority": "normal",
+                    "uri": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=300&h=400&fit=crop",
+                  }
+                }
+                style={
+                  {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+              />
+            </View>
           </View>
           <View
             style={
@@ -1965,22 +2069,41 @@ exports[`SectionContent renders products when not loading and no error 1`] = `
               }
             }
           >
-            <Image
-              accessibilityLabel="Black Dress product image"
-              onError={[Function]}
-              resizeMode="cover"
-              source={
-                {
-                  "uri": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300&h=400&fit=crop",
-                }
-              }
+            <View
               style={
-                {
-                  "height": "100%",
-                  "width": "100%",
-                }
+                [
+                  {
+                    "overflow": "hidden",
+                  },
+                  {
+                    "height": "100%",
+                    "width": "100%",
+                  },
+                ]
               }
-            />
+            >
+              <FastImageView
+                accessibilityLabel="Black Dress product image"
+                defaultSource={null}
+                onFastImageError={[Function]}
+                resizeMode="cover"
+                source={
+                  {
+                    "priority": "normal",
+                    "uri": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300&h=400&fit=crop",
+                  }
+                }
+                style={
+                  {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+              />
+            </View>
           </View>
           <View
             style={
@@ -2157,6 +2280,9 @@ exports[`SectionContent renders products when not loading and no error 1`] = `
         </View>
       </View>
     </View>
+    <View
+      onLayout={[Function]}
+    />
   </View>
 </RCTScrollView>
 `;

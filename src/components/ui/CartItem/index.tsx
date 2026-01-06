@@ -1,3 +1,5 @@
+import { memo, useCallback } from 'react';
+
 // Components
 import { View, Text } from 'react-native';
 import { FallbackImage } from '@app/components/common/FallbackImage';
@@ -15,13 +17,14 @@ import { styles } from './index.style';
 import { BUTTON_VARIANTS } from '@app/enums';
 
 interface ICartItemProps extends IProduct {
+  id: string;
   quantity: number;
-  onIncrease?: () => void;
-  onDecrease?: () => void;
-  onRemove?: () => void;
+  onIncrease: (id: string, quantity: number) => void;
+  onDecrease: (id: string, quantity: number) => void;
+  onRemove: (id: string) => void;
 }
-
-export const CartItem = ({
+export const CartItem = memo(function CartItem({
+  id,
   name,
   imageSource,
   price,
@@ -29,7 +32,19 @@ export const CartItem = ({
   onIncrease,
   onDecrease,
   onRemove,
-}: ICartItemProps) => {
+}: ICartItemProps) {
+  const handleIncrease = useCallback(() => {
+    onIncrease(id, quantity);
+  }, [id, quantity, onIncrease]);
+
+  const handleDecrease = useCallback(() => {
+    onDecrease(id, quantity);
+  }, [id, quantity, onDecrease]);
+
+  const handleRemove = useCallback(() => {
+    onRemove(id);
+  }, [id, onRemove]);
+
   return (
     <View style={styles.card} accessibilityLabel="Cart item">
       {/* Image */}
@@ -63,8 +78,8 @@ export const CartItem = ({
         <View style={styles.quantitySection}>
           <Quantity
             value={quantity}
-            onIncrease={onIncrease}
-            onDecrease={onDecrease}
+            onIncrease={handleIncrease}
+            onDecrease={handleDecrease}
           />
         </View>
 
@@ -73,7 +88,7 @@ export const CartItem = ({
           <Button
             variant={BUTTON_VARIANTS.GHOST}
             style={styles.removeBtn}
-            onPress={onRemove}
+            onPress={handleRemove}
             accessibilityRole="button"
             accessibilityLabel="Remove item">
             <Text style={styles.removeText}>Remove</Text>
@@ -87,4 +102,4 @@ export const CartItem = ({
       </View>
     </View>
   );
-};
+});

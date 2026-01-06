@@ -1,14 +1,18 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo, useLayoutEffect } from 'react';
 import { View, ActivityIndicator, Text } from 'react-native';
 
 // Types
 import type { PrivateStackScreenProps } from '@app/interfaces/navigation';
+import type { ProductListType } from '@app/constants';
 
 // Constants
-import { PRIVATE_SCREENS } from '@app/constants';
+import { PRIVATE_SCREENS, PRODUCT_LIST_TYPES } from '@app/constants';
 
 // Hooks
-import { useCategorizedProducts } from '@app/hooks/useProduct';
+import {
+  useCategorizedProducts,
+  useInfiniteProducts,
+} from '@app/hooks/useProduct';
 
 // Helpers
 import { getProductsByListType } from '@app/helpers/products';
@@ -27,21 +31,53 @@ export const ProductListScreen = ({
   route,
   navigation,
 }: ProductListScreenProps) => {
-  const productListType = route.params?.type;
+  const { type: productListType, title } = route.params;
+
+  // Set navigation title
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: title || 'Products',
+    });
+  }, [navigation, title]);
+
+  const isCategorized = useMemo(() => {
+    return (
+      [
+        PRODUCT_LIST_TYPES.TRENDING,
+        PRODUCT_LIST_TYPES.DEALS,
+        PRODUCT_LIST_TYPES.DEAL_OF_DAY,
+        PRODUCT_LIST_TYPES.NEW_ARRIVALS,
+      ] as ProductListType[]
+    ).includes(productListType);
+  }, [productListType]);
 
   const {
     data: categorizedData,
-    isLoading,
-    isFetching,
-    error,
-  } = useCategorizedProducts();
+    isLoading: isCategorizedLoading,
+    error: categorizedError,
+    refetch: refetchCategorized,
+  } = useCategorizedProducts({ enabled: isCategorized });
 
-  const loading = isLoading || isFetching;
+  const {
+    data: infiniteData,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    isLoading: isInfiniteLoading,
+    error: infiniteError,
+    refetch: refetchInfinite,
+  } = useInfiniteProducts(10, { enabled: !isCategorized });
 
-  const products = useMemo(
-    () => getProductsByListType(productListType, categorizedData),
-    [productListType, categorizedData],
-  );
+  const isLoading = isCategorized ? isCategorizedLoading : isInfiniteLoading;
+  const error = isCategorized ? categorizedError : infiniteError;
+
+  const products = useMemo(() => {
+    if (isCategorized) {
+      return getProductsByListType(productListType, categorizedData);
+    }
+
+    return infiniteData?.pages.flatMap(page => page.data) ?? [];
+  }, [isCategorized, productListType, categorizedData, infiniteData]);
 
   const handleItemPress = useCallback(
     (id: string) => {
@@ -50,18 +86,28 @@ export const ProductListScreen = ({
     [navigation],
   );
 
-  if (loading && !categorizedData) {
+  const handleRefresh = useCallback(() => {
+    if (isCategorized) {
+      refetchCategorized();
+    } else {
+      refetchInfinite();
+    }
+  }, [isCategorized, refetchCategorized, refetchInfinite]);
+
+  if (isLoading && !products.length) {
     return (
       <View style={styles.center}>
-        <ActivityIndicator />
+        <ActivityIndicator size="large" />
       </View>
     );
   }
 
-  if (error && !categorizedData) {
+  if (error && !products.length) {
     return (
       <View style={styles.center}>
-        <Text>Something went wrong. Please try again later.</Text>
+        <Text style={styles.errorText}>
+          Something went wrong. Please try again later.
+        </Text>
       </View>
     );
   }
@@ -72,6 +118,11 @@ export const ProductListScreen = ({
         products={products}
         onItemPress={handleItemPress}
         numColumns={2}
+        onEndReached={isCategorized ? undefined : fetchNextPage}
+        isLoadingMore={isCategorized ? false : isFetchingNextPage}
+        hasMore={isCategorized ? false : hasNextPage}
+        onRefresh={handleRefresh}
+        refreshing={isLoading && products.length > 0}
       />
     </View>
   );

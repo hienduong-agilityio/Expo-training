@@ -2,7 +2,7 @@ import { View, Text, ScrollView, RefreshControl } from 'react-native';
 import { useMemo, useCallback } from 'react';
 
 // Hooks
-import { useCart } from '@app/hooks/useCart';
+import { useCart, useCartActions } from '@app/hooks/useCart';
 import { useProductsByIds } from '@app/hooks/useProduct';
 
 // Stores
@@ -38,48 +38,62 @@ import { BUTTON_VARIANTS } from '@app/enums';
 type CartScreenProps = PrivateTabScreenProps<typeof PRIVATE_SCREENS.CART>;
 
 export const CartScreen = ({ navigation }: CartScreenProps) => {
-  const showToast = toastStore(state => state.showToast);
-  const showConfirm = modalStore(state => state.showConfirm);
+  const { cart, cartItems, isLoading, refetch } = useCart();
 
-  const {
-    cart,
-    cartItems,
-    isLoading,
-    isMutating,
-    refetch,
-    updateItem,
-    removeItem,
-  } = useCart();
+  const { updateItem, removeItem, isMutating } = useCartActions();
 
   const productIds = cartItems.map((item: ICartItem) => item.productId);
 
   const { productMap, isLoading: isLoadingProducts } =
     useProductsByIds(productIds);
 
-  const handleRemoveItem = async (productId: string) => {
-    await removeItem(productId);
+  const showToast = toastStore(state => state.showToast);
+  const showConfirm = modalStore(state => state.showConfirm);
 
-    showToast({
-      type: STATUS.SUCCESS,
-      message: TOAST_MESSAGES.REMOVED_FROM_CART,
-    });
-  };
+  const handleRemoveItem = useCallback(
+    async (productId: string) => {
+      await removeItem(productId);
 
-  const handleIncreaseQuantity = async (
-    productId: string,
-    currentQuantity: number,
-  ) => {
-    await updateItem({
-      productId,
-      quantity: currentQuantity + 1,
-    });
-  };
+      showToast({
+        type: STATUS.SUCCESS,
+        message: TOAST_MESSAGES.REMOVED_FROM_CART,
+      });
+    },
+    [removeItem, showToast],
+  );
 
-  const handleDecreaseQuantity = async (
-    productId: string,
-    currentQuantity: number,
-  ) => {
-    if (currentQuantity <= 1) {
+  const handleIncreaseQuantity = useCallback(
+    async (productId: string, currentQuantity: number) => {
+      await updateItem({ productId, quantity: currentQuantity + 1 });
+    },
+    [updateItem],
+  );
+
+  const handleDecreaseQuantity = useCallback(
+    async (productId: string, currentQuantity: number) => {
+      if (currentQuantity <= 1) {
+        showConfirm({
+          title: CART_MESSAGES.REMOVE_TITLE,
+          message: CART_MESSAGES.REMOVE_MESSAGE,
+          confirmLabel: BUTTON_LABELS.REMOVE,
+          cancelLabel: BUTTON_LABELS.CANCEL,
+          isDestructive: true,
+          onConfirm: () => handleRemoveItem(productId),
+        });
+
+        return;
+      }
+
+      await updateItem({
+        productId,
+        quantity: currentQuantity - 1,
+      });
+    },
+    [handleRemoveItem, showConfirm, updateItem],
+  );
+
+  const handleRequestRemove = useCallback(
+    (productId: string) => {
       showConfirm({
         title: CART_MESSAGES.REMOVE_TITLE,
         message: CART_MESSAGES.REMOVE_MESSAGE,
@@ -88,15 +102,9 @@ export const CartScreen = ({ navigation }: CartScreenProps) => {
         isDestructive: true,
         onConfirm: () => handleRemoveItem(productId),
       });
-
-      return;
-    }
-
-    await updateItem({
-      productId,
-      quantity: currentQuantity - 1,
-    });
-  };
+    },
+    [showConfirm, handleRemoveItem],
+  );
 
   const totalPrice = useMemo(() => {
     return cartItems.reduce((sum, item) => {
@@ -151,25 +159,13 @@ export const CartScreen = ({ navigation }: CartScreenProps) => {
 
         return (
           <CartItem
-            key={item.productId || index}
             {...product}
+            key={item.productId || index}
+            id={item.productId}
             quantity={item.quantity}
-            onIncrease={() =>
-              handleIncreaseQuantity(item.productId, item.quantity)
-            }
-            onDecrease={() =>
-              handleDecreaseQuantity(item.productId, item.quantity)
-            }
-            onRemove={() =>
-              showConfirm({
-                title: CART_MESSAGES.REMOVE_TITLE,
-                message: CART_MESSAGES.REMOVE_MESSAGE,
-                confirmLabel: BUTTON_LABELS.REMOVE,
-                cancelLabel: BUTTON_LABELS.CANCEL,
-                isDestructive: true,
-                onConfirm: () => handleRemoveItem(item.productId),
-              })
-            }
+            onIncrease={handleIncreaseQuantity}
+            onDecrease={handleDecreaseQuantity}
+            onRemove={handleRequestRemove}
           />
         );
       })}

@@ -13,6 +13,7 @@ export const PUBLIC_SCREENS = {
 } as const;
 
 export const PRIVATE_SCREENS = {
+  MAIN_TABS: 'MainTabs',
   HOME: 'Home',
   WISHLIST: 'Wishlist',
   CART: 'Cart',

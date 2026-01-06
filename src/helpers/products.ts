@@ -2,7 +2,7 @@ import { PRODUCT_LIST_TYPES } from '@app/constants';
 import { API_CONFIG } from '@app/constants/api';
 
 // Interfaces
-import type { CategorizedProducts } from '@app/hooks/useProduct';
+import type { CategorizedProducts } from '@app/interfaces/product';
 
 //  Types
 import type { ProductListType } from '@app/constants';

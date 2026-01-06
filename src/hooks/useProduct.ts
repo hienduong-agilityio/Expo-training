@@ -1,5 +1,7 @@
-import { useQueries, useQuery } from '@tanstack/react-query';
 import { useMemo } from 'react';
+
+// React Query
+import { useQueries, useQuery, useInfiniteQuery } from '@tanstack/react-query';
 
 // Services
 import { productsService } from '@app/services/product';
@@ -8,21 +10,15 @@ import { productsService } from '@app/services/product';
 import { QUERY_KEYS } from '@app/constants/queryKeys';
 
 // Types
-import type { IProductCardProps } from '@app/interfaces/ui';
-import type { IProduct } from '@app/interfaces/product';
+import type { IProduct, CategorizedProducts } from '@app/interfaces/product';
 import type { ApiProduct } from '@app/interfaces/api';
 
 // Helpers
 import {
   filterProductsByCategorySlug,
   filterProductsBySearchQuery,
+  mapApiProductToCard,
 } from '@app/helpers/products';
-
-export type CategorizedProducts = {
-  deals: IProductCardProps[];
-  trending: IProductCardProps[];
-  newArrivals: IProductCardProps[];
-};
 
 const EMPTY_CATEGORIZED_PRODUCTS: CategorizedProducts = {
   deals: [],
@@ -39,30 +35,55 @@ const DEFAULT_QUERY_OPTIONS = {
   refetchOnReconnect: true,
 } as const;
 
-// This hook uses the cache-first strategy but still allows for refetching
+/**
+ * Shared hook to fetch all products with caching
+ */
 const useAllProducts = () => {
-  return useQuery<IProductCardProps[]>({
+  return useQuery<ApiProduct[]>({
     queryKey: [QUERY_KEYS.PRODUCTS, 'all'],
-    queryFn: () => productsService.getAllProducts(),
+    queryFn: productsService.fetchAllProducts,
     ...DEFAULT_QUERY_OPTIONS,
-    // Cache all products for 5 minutes to prevent redundant requests
-    // This fixes the "crash on multiple requests" bug by avoiding new fetches
-    // on every keystroke.
     staleTime: 5 * 60 * 1000,
-    gcTime: 10 * 60 * 1000, // Garbage collect after 10 minutes
+    gcTime: 10 * 60 * 1000,
   });
 };
 
-// Apply this structure to all useQuery hooks
-export const useCategorizedProducts = () => {
+/**
+ * Shared hook to fetch products with pagination (Infinite Scroll)
+ */
+export const useInfiniteProducts = (
+  pageSize: number = 10,
+  options: { enabled?: boolean } = {},
+) => {
+  return useInfiniteQuery({
+    queryKey: [QUERY_KEYS.PRODUCTS, 'infinite', pageSize],
+    queryFn: async ({ pageParam = 1 }) => {
+      const response = await productsService.fetchAllProducts();
+      const start = (pageParam - 1) * pageSize;
+      const end = start + pageSize;
+
+      return {
+        data: response.slice(start, end).map(mapApiProductToCard),
+        nextPage: response.length > end ? pageParam + 1 : undefined,
+      };
+    },
+    initialPageParam: 1,
+    getNextPageParam: lastPage => lastPage.nextPage,
+    enabled: options.enabled,
+    ...DEFAULT_QUERY_OPTIONS,
+  });
+};
+
+/**
+ * Hook to get products grouped by category (deals, trending, etc.)
+ */
+export const useCategorizedProducts = (options: { enabled?: boolean } = {}) => {
   const query = useQuery<CategorizedProducts>({
     queryKey: [QUERY_KEYS.PRODUCTS, QUERY_KEYS.PRODUCTS_CATEGORIZED],
-    queryFn: () => productsService.getCategorizedProducts(),
+    queryFn: productsService.getCategorizedProducts,
+    enabled: options.enabled,
+    ...DEFAULT_QUERY_OPTIONS,
     staleTime: 60_000,
-    retry: DEFAULT_QUERY_OPTIONS.retry,
-    retryDelay: DEFAULT_QUERY_OPTIONS.retryDelay,
-    refetchOnWindowFocus: DEFAULT_QUERY_OPTIONS.refetchOnWindowFocus,
-    refetchOnReconnect: DEFAULT_QUERY_OPTIONS.refetchOnReconnect,
   });
 
   return {
@@ -71,10 +92,16 @@ export const useCategorizedProducts = () => {
   };
 };
 
-export const useProductById = (productId: string) => {
+/**
+ * Hook to fetch a single product by its ID
+ */
+export const useProductById = (productId?: string) => {
   const query = useQuery<IProduct>({
     queryKey: [QUERY_KEYS.PRODUCT, productId],
-    queryFn: () => productsService.getProductById(productId),
+    queryFn: () =>
+      productId
+        ? productsService.getProductById(productId)
+        : Promise.reject('No ID'),
     enabled: Boolean(productId),
     ...DEFAULT_QUERY_OPTIONS,
   });
@@ -85,6 +112,9 @@ export const useProductById = (productId: string) => {
   };
 };
 
+/**
+ * Hook to fetch multiple products by their IDs efficiently
+ */
 export const useProductsByIds = (ids: string[]) => {
   const validIds = useMemo(
     () => ids.filter((id): id is string => Boolean(id)),
@@ -102,7 +132,7 @@ export const useProductsByIds = (ids: string[]) => {
   const isLoading = queries.some(query => query.isLoading);
   const isError = queries.some(query => query.isError);
 
-  const products: IProduct[] = useMemo(
+  const products = useMemo(
     () =>
       queries
         .map(query => query.data)
@@ -112,6 +142,7 @@ export const useProductsByIds = (ids: string[]) => {
 
   const productMap = useMemo(() => {
     const map = new Map<string, IProduct>();
+
     products.forEach(product => map.set(product.id, product));
 
     return map;
@@ -125,28 +156,23 @@ export const useProductsByIds = (ids: string[]) => {
   };
 };
 
+/**
+ * Hook to filter products by category locally from cached all products
+ */
 export const useProductsByCategory = (
   categorySlug?: string,
   enabled: boolean = true,
 ) => {
   const normalizedSlug = categorySlug?.trim() ?? '';
-
-  // Use the shared "all products" query
   const query = useAllProducts();
 
-  // Filter locally
   const filteredProducts = useMemo(() => {
     if (!query.data) return [];
+    if (!normalizedSlug) return query.data.map(mapApiProductToCard);
 
-    if (!normalizedSlug) {
-      return query.data;
-    }
-
-    // Cast to ApiProduct[] for helper compatibility, assuming runtime structure is compatible
-    return filterProductsByCategorySlug(
-      query.data as unknown as ApiProduct[],
-      normalizedSlug,
-    ) as unknown as IProductCardProps[];
+    return filterProductsByCategorySlug(query.data, normalizedSlug).map(
+      mapApiProductToCard,
+    );
   }, [query.data, normalizedSlug]);
 
   return {
@@ -155,6 +181,9 @@ export const useProductsByCategory = (
   };
 };
 
+/**
+ * Hook to search products locally from cached all products
+ */
 export const useSearchProducts = (
   searchQuery?: string | null,
   categorySlug?: string | null,
@@ -163,24 +192,18 @@ export const useSearchProducts = (
   const normalizedCategory = categorySlug?.trim() ?? undefined;
   const hasQuery = Boolean(normalizedQuery);
 
-  // Use the shared "all products" query
   const query = useAllProducts();
 
-  // Filter locally
   const filteredProducts = useMemo(() => {
     if (!query.data || !hasQuery) return [];
 
-    let result = query.data as unknown as ApiProduct[];
+    let result = filterProductsBySearchQuery(query.data, normalizedQuery);
 
-    // Filter by query
-    result = filterProductsBySearchQuery(result, normalizedQuery);
-
-    // Filter by category if present
     if (normalizedCategory) {
       result = filterProductsByCategorySlug(result, normalizedCategory);
     }
 
-    return result as unknown as IProductCardProps[];
+    return result.map(mapApiProductToCard);
   }, [query.data, normalizedQuery, normalizedCategory, hasQuery]);
 
   return {

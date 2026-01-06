@@ -1,3 +1,4 @@
+import { useCallback, useRef } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // Components
@@ -13,6 +14,7 @@ import { UserIcon, PassIcon } from '@app/icons';
 import {
   AUTH_FORM_MESSAGES,
   BUTTON_LABELS,
+  ERROR_MESSAGES,
   NAVIGATION_DELAYS,
   POSITION,
   PUBLIC_SCREENS,
@@ -46,6 +48,7 @@ type RegisterScreenProps = PublicStackScreenProps<
 >;
 
 export const RegisterScreen = ({ navigation }: RegisterScreenProps) => {
+  const navigationTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { values, fieldErrors, handleChange, resetForm, setFieldError } =
     useForm({
       initialValues: {
@@ -56,20 +59,31 @@ export const RegisterScreen = ({ navigation }: RegisterScreenProps) => {
       },
     });
 
-  const showToast = toastStore(state => state.showToast);
-
   const { register, isSubmitting } = useAuthActions();
 
-  const navigateToLogin = () => navigation.navigate(PUBLIC_SCREENS.LOGIN);
+  const showToast = toastStore(state => state.showToast);
 
-  const handleSubmit = async () => {
+  const navigateToLogin = useCallback(
+    () => navigation.navigate(PUBLIC_SCREENS.LOGIN),
+    [navigation],
+  );
+
+  const handleSubmit = useCallback(async () => {
     if (isSubmitting) return;
 
     const validationResult = validateRegister(values as RegisterFormValues);
 
     if (!validationResult.ok) {
       Object.entries(validationResult.errors).forEach(([field, error]) => {
-        if (error) setFieldError(field, error);
+        if (
+          error &&
+          (field === AUTH_FIELDS.USERNAME ||
+            field === AUTH_FIELDS.EMAIL ||
+            field === AUTH_FIELDS.PASSWORD ||
+            field === AUTH_FIELDS.CONFIRM_PASSWORD)
+        ) {
+          setFieldError(field as keyof RegisterFormValues, error);
+        }
       });
 
       return;
@@ -85,15 +99,27 @@ export const RegisterScreen = ({ navigation }: RegisterScreenProps) => {
       });
 
       resetForm();
-      setTimeout(navigateToLogin, NAVIGATION_DELAYS.AFTER_REGISTER);
+
+      navigationTimerRef.current = setTimeout(
+        navigateToLogin,
+        NAVIGATION_DELAYS.AFTER_REGISTER,
+      );
     } catch (error) {
       showToast({
         type: STATUS.ERROR,
-        message: getApiErrorMessage(error, TOAST_MESSAGES.REQUEST_FAILED),
+        message: getApiErrorMessage(error, ERROR_MESSAGES.REQUEST_FAILED),
         position: POSITION.TOP,
       });
     }
-  };
+  }, [
+    isSubmitting,
+    values,
+    setFieldError,
+    register,
+    showToast,
+    resetForm,
+    navigateToLogin,
+  ]);
 
   return (
     <SafeAreaView style={authStyles.screen}>

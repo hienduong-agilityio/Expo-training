@@ -13,6 +13,9 @@ describe('CartItem', () => {
     imageSource: MOCK_IMAGE_SOURCES.valid,
     quantity: 2,
     price: 1500,
+    onIncrease: jest.fn(),
+    onDecrease: jest.fn(),
+    onRemove: jest.fn(),
   };
 
   it('renders product info and quantity', () => {

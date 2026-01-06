@@ -9,7 +9,7 @@ import {
 import { ProductDetailHeaderRight } from '@app/components/ui/ProductDetailHeader';
 
 // Hooks
-import { useWishlist } from '@app/hooks/useWishlist';
+import { useWishlist, useWishlistActions } from '@app/hooks/useWishlist';
 
 // Stores
 import { toastStore } from '@app/stores/toastStore';
@@ -26,7 +26,10 @@ import {
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { PrivateStackParamList } from '@app/interfaces/navigation';
 
-jest.mock('@app/hooks/useWishlist');
+jest.mock('@app/hooks/useWishlist', () => ({
+  useWishlist: jest.fn(),
+  useWishlistActions: jest.fn(),
+}));
 jest.mock('@app/stores/toastStore', () => ({
   toastStore: jest.fn(),
 }));
@@ -36,9 +39,8 @@ describe('ProductDetailHeaderRight', () => {
     navigate: jest.fn(),
   } as unknown as BottomTabNavigationProp<ParamListBase, string>;
 
-  const mockUseWishlist = useWishlist as jest.MockedFunction<
-    typeof useWishlist
-  >;
+  const mockUseWishlist = useWishlist as jest.Mock;
+  const mockUseWishlistActions = useWishlistActions as jest.Mock;
   const mockToastStore = toastStore as jest.MockedFunction<typeof toastStore>;
 
   const mockShowToast = jest.fn();
@@ -55,9 +57,12 @@ describe('ProductDetailHeaderRight', () => {
 
     mockUseWishlist.mockReturnValue({
       isInWishlist: mockIsInWishlist,
+    });
+
+    mockUseWishlistActions.mockReturnValue({
       addItem: mockAddItem,
       removeItem: mockRemoveItem,
-    } as unknown as ReturnType<typeof useWishlist>);
+    });
 
     // Mock toastStore as a hook that returns an object
     mockToastStore.mockImplementation(selector => {
@@ -95,9 +100,12 @@ describe('ProductDetailHeaderRight', () => {
 
     fireEvent.press(screen.getByLabelText('Go to cart'));
 
-    expect(mockNavigation.navigate).toHaveBeenCalledWith(PRIVATE_SCREENS.HOME, {
-      screen: PRIVATE_SCREENS.CART,
-    });
+    expect(mockNavigation.navigate).toHaveBeenCalledWith(
+      PRIVATE_SCREENS.MAIN_TABS,
+      {
+        screen: PRIVATE_SCREENS.CART,
+      },
+    );
   });
 
   describe('Wishlist actions', () => {

@@ -1,34 +1,24 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { Alert, View } from 'react-native';
+import { useMemo } from 'react';
+import { View } from 'react-native';
 
 // Types
 import type { PrivateStackScreenProps } from '@app/interfaces/navigation';
 import type { IProductSize } from '@app/interfaces/product';
 
 // Constants
-import {
-  PRIVATE_SCREENS,
-  POSITION,
-  STATUS,
-  TOAST_MESSAGES,
-  PRODUCT_MESSAGES,
-  MESSAGES,
-} from '@app/constants';
+import { PRIVATE_SCREENS, PRODUCT_MESSAGES } from '@app/constants';
 
 // Hooks
 import { useProductById } from '@app/hooks/useProduct';
-import { useCart } from '@app/hooks/useCart';
-
-// Stores
-import { toastStore } from '@app/stores/toastStore';
+import { useProductSizeSelection } from '@app/hooks/useProductSizeSelection';
+import { useProductCart } from '@app/hooks/useProductCart';
+import { useProductAlerts } from '@app/hooks/useProductAlerts';
+import { useAppNavigation } from '@app/hooks/useAppNavigation';
 
 // Components
 import { LoadingState } from '@app/components/ui/LoadingState';
 import { NotFound } from '@app/components/ui/NotFound';
 import { ProductDetailContent } from './ProductDetailContent';
-
-// Helpers
-import { getApiErrorMessage } from '@app/helpers/errorMessage';
 
 // Styles
 import { styles } from './index.style';
@@ -44,149 +34,36 @@ const MOCK_SIZES: IProductSize[] = [
   { id: '4', size: '10 UK', available: false },
 ];
 
-export const ProductDetailScreen = ({
-  route,
-  navigation,
-}: ProductDetailScreenProps) => {
+export const ProductDetailScreen = ({ route }: ProductDetailScreenProps) => {
   const productId = route.params?.productId;
 
-  const [selectedSize, setSelectedSize] = useState<string>('');
+  // 1. Data Fetching
+  const { product, isLoading } = useProductById(productId);
 
-  const showToast = toastStore(state => state.showToast);
+  // 2. Domain Hooks (Split chuẩn, dễ tái sử dụng)
+  const { handleGoBack, navigateToDetail } = useAppNavigation();
+  const { handleAddToCart, handleBuyNow } = useProductCart();
+  const { showDetails, showSimilar, showCompare } = useProductAlerts();
 
-  const {
-    product,
-    isLoading,
-    error: queryError,
-    refetch,
-  } = useProductById(productId);
+  // 3. Local Logic & Memoization
+  const productSizes = useMemo(() => (product ? MOCK_SIZES : []), [product]);
+  const { selectedSize, handleSizeSelect } = useProductSizeSelection(
+    productId,
+    productSizes,
+  );
 
-  const { addItem } = useCart();
-
-  const productImages = useMemo(() => {
-    if (!product?.imageSource) return [];
-
-    return [product.imageSource];
-  }, [product?.imageSource]);
-
-  const productSizes: IProductSize[] = useMemo(() => {
-    if (!product) return [];
-
-    return MOCK_SIZES;
-  }, [product]);
-
-  useEffect(() => {
-    if (productSizes.length === 0 || selectedSize) return;
-
-    const firstAvailable = productSizes.find(size => size.available);
-    if (firstAvailable) {
-      setSelectedSize(firstAvailable.size);
-    }
-  }, [productSizes, selectedSize]);
-
-  const handleSizeSelect = useCallback((sizeId: string) => {
-    setSelectedSize(sizeId);
-  }, []);
-
-  const handleGoBack = () => {
-    if (navigation.canGoBack()) {
-      navigation.goBack();
-      return;
-    }
-
-    navigation.navigate(PRIVATE_SCREENS.HOME);
-  };
-
-  const handleAddToCart = useCallback(async () => {
-    try {
-      await addItem({
-        productId: product?.id ?? '',
-        quantity: 1,
-      });
-
-      showToast({
-        type: STATUS.SUCCESS,
-        message: `${product?.name} (${selectedSize}) added to cart`,
-      });
-    } catch (error) {
-      showToast({
-        type: STATUS.ERROR,
-        message: getApiErrorMessage(error, TOAST_MESSAGES.ADD_TO_CART_FAILED),
-      });
-    }
-  }, [product, selectedSize, addItem, showToast]);
-
-  const handleBuyNow = useCallback(() => {
-    showToast({
-      type: STATUS.SUCCESS,
-      message: `${MESSAGES.OR_CONTINUE_WITH} ${product?.name}`,
-      position: POSITION.TOP,
-    });
-  }, [product, showToast]);
-
-  const handleShowMoreDetails = () => {
-    if (!product) return;
-
-    Alert.alert(
-      PRODUCT_MESSAGES.PRODUCT_DETAILS,
-      product.description || PRODUCT_MESSAGES.NO_DETAILS_AVAILABLE,
-    );
-  };
-
-  const handleViewSimilar = () => {
-    Alert.alert(
-      PRODUCT_MESSAGES.VIEW_SIMILAR,
-      PRODUCT_MESSAGES.VIEW_SIMILAR_DESCRIPTION,
-    );
-  };
-
-  const handleAddToCompare = () => {
-    Alert.alert(
-      PRODUCT_MESSAGES.ADD_TO_COMPARE,
-      PRODUCT_MESSAGES.ADD_TO_COMPARE_DESCRIPTION,
-    );
-  };
-
-  const handleSimilarProductPress = (similarProductId: string) => {
-    navigation.navigate(PRIVATE_SCREENS.PRODUCT_DETAIL, {
-      productId: similarProductId,
-    });
-  };
-
+  // 4. UI Rendering
   if (isLoading) {
-    return (
-      <View style={styles.container}>
-        <LoadingState
-          message={PRODUCT_MESSAGES.LOADING_DETAILS}
-          containerStyle={styles.loadingContainer}
-        />
-      </View>
-    );
-  }
-
-  if (!product && !queryError) {
-    return (
-      <View style={styles.container}>
-        <NotFound
-          title={PRODUCT_MESSAGES.NOT_FOUND}
-          description={PRODUCT_MESSAGES.NOT_FOUND_DESCRIPTION}
-          retryLabel={PRODUCT_MESSAGES.GO_BACK}
-          onRetry={handleGoBack}
-        />
-      </View>
-    );
+    return <LoadingState message={PRODUCT_MESSAGES.LOADING_DETAILS} />;
   }
 
   if (!product) {
     return (
       <View style={styles.container}>
         <NotFound
-          title={PRODUCT_MESSAGES.FAILED_TO_LOAD}
-          description={PRODUCT_MESSAGES.FAILED_TO_LOAD_DESCRIPTION}
-          retryLabel={PRODUCT_MESSAGES.RETRY}
-          onRetry={() => {
-            refetch();
-          }}
+          title={PRODUCT_MESSAGES.NOT_FOUND}
+          retryLabel={PRODUCT_MESSAGES.GO_BACK}
+          onRetry={handleGoBack}
         />
       </View>
     );
@@ -196,16 +73,16 @@ export const ProductDetailScreen = ({
     <View style={styles.container}>
       <ProductDetailContent
         product={product}
-        productImages={productImages}
+        productImages={product?.imageSource ? [product.imageSource] : []}
         productSizes={productSizes}
         selectedSize={selectedSize}
         onSizeSelect={handleSizeSelect}
-        onAddToCart={handleAddToCart}
-        onBuyNow={handleBuyNow}
-        onShowMoreDetails={handleShowMoreDetails}
-        onViewSimilar={handleViewSimilar}
-        onAddToCompare={handleAddToCompare}
-        onSimilarProductPress={handleSimilarProductPress}
+        onAddToCart={() => handleAddToCart(product, selectedSize)}
+        onBuyNow={() => handleBuyNow(product)}
+        onShowMoreDetails={() => showDetails(product)}
+        onViewSimilar={showSimilar}
+        onAddToCompare={showCompare}
+        onSimilarProductPress={navigateToDetail}
       />
     </View>
   );

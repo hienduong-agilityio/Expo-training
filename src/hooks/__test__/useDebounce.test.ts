@@ -101,4 +101,22 @@ describe('useDebounce', () => {
 
     expect(result.current).toBe(100);
   });
+
+  it('uses default delay when not provided', () => {
+    const { result, rerender } = renderHook(({ value }) => useDebounce(value), {
+      initialProps: { value: 'initial' },
+    });
+
+    expect(result.current).toBe('initial');
+
+    rerender({ value: 'updated' });
+
+    expect(result.current).toBe('initial');
+
+    act(() => {
+      jest.advanceTimersByTime(300);
+    });
+
+    expect(result.current).toBe('updated');
+  });
 });

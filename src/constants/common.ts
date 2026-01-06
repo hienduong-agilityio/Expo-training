@@ -48,3 +48,14 @@ export const POSITION = {
   TOP: 'top',
   BOTTOM: 'bottom',
 } as const;
+
+export const TOAST_DURATION = {
+  DEFAULT: 1000,
+  SHORT: 500,
+  LONG: 2000,
+};
+
+export const PLATFORM = {
+  ANDROID: 'android',
+  IOS: 'ios',
+} as const;

@@ -7,7 +7,8 @@ import {
 } from 'react-native';
 
 // Components
-import { ProductCard } from '@app/components/ui/ProductCard';
+import { ProductCard } from '@app/components/ui';
+import { ActivityIndicator } from 'react-native';
 
 // Types
 import type { IProductCardProps } from '@app/interfaces';
@@ -30,6 +31,9 @@ export interface IHorizontalProductListProps extends FlatListModifiedProps {
   onItemPress?: (id: string) => void;
   keyExtractor?: (item: IProductCardProps, index: number) => string;
   customStyle?: ICustomStyles;
+  onEndReached?: () => void;
+  isLoadingMore?: boolean;
+  hasMore?: boolean;
 }
 
 export const HorizontalProductList = ({
@@ -43,6 +47,9 @@ export const HorizontalProductList = ({
     item.id ?? String(item.name ?? index),
   contentContainerStyle = {},
   customStyle,
+  onEndReached,
+  isLoadingMore = false,
+  hasMore = true,
   ...rest
 }: IHorizontalProductListProps) => {
   const renderItem = useCallback(
@@ -83,6 +90,22 @@ export const HorizontalProductList = ({
       }
     : {};
 
+  const renderFooter = useCallback(() => {
+    if (!isLoadingMore) return null;
+
+    return (
+      <View style={[styles.footerLoader, { width: itemWidth }]}>
+        <ActivityIndicator size="small" />
+      </View>
+    );
+  }, [isLoadingMore, itemWidth]);
+
+  const handleEndReached = useCallback(() => {
+    if (!isLoadingMore && hasMore && onEndReached) {
+      onEndReached();
+    }
+  }, [isLoadingMore, hasMore, onEndReached]);
+
   return (
     <FlatList
       data={products}
@@ -104,6 +127,9 @@ export const HorizontalProductList = ({
       windowSize={5}
       maxToRenderPerBatch={8}
       updateCellsBatchingPeriod={50}
+      onEndReachedThreshold={0.5}
+      onEndReached={handleEndReached}
+      ListFooterComponent={renderFooter}
       accessibilityRole="list"
       accessibilityLabel="Horizontal product list"
       {...snapProps}

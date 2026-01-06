@@ -1,4 +1,6 @@
+import { ERROR_MESSAGES } from '@app/constants';
 import { getApiErrorMessage } from '../errorMessage';
+import { ApiError } from '@app/interfaces/api';
 
 describe('getApiErrorMessage', () => {
   it('returns fallback when error is null', () => {
@@ -10,7 +12,12 @@ describe('getApiErrorMessage', () => {
   });
 
   it('returns custom fallback message', () => {
-    expect(getApiErrorMessage(null, 'Custom error')).toBe('Custom error');
+    expect(
+      getApiErrorMessage(
+        null as unknown as ApiError,
+        ERROR_MESSAGES.REQUEST_FAILED,
+      ),
+    ).toBe(ERROR_MESSAGES.REQUEST_FAILED);
   });
 
   it('returns error message when ApiError has message', () => {

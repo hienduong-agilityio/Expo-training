@@ -11,11 +11,13 @@ describe('CategoryList', () => {
     {
       id: '1',
       name: 'Electronics',
+      slug: 'electronics',
       image: 'https://example.com/electronics.jpg',
     },
     {
       id: '2',
       name: 'Clothing',
+      slug: 'clothing',
       image: 'https://example.com/clothing.jpg',
     },
   ];

@@ -20,20 +20,39 @@ exports[`SummerSaleBanner renders correctly with all props 1`] = `
     }
   }
 >
-  <Image
-    resizeMode="cover"
-    source={
-      {
-        "uri": "https://whimsical-benefit-a69d430573.media.strapiapp.com/Converted_Image_1_b6b748d2e2.webp",
-      }
-    }
+  <View
     style={
-      {
-        "height": 200,
-        "width": "100%",
-      }
+      [
+        {
+          "overflow": "hidden",
+        },
+        {
+          "height": 200,
+          "width": "100%",
+        },
+      ]
     }
-  />
+  >
+    <FastImageView
+      defaultSource={null}
+      resizeMode="cover"
+      source={
+        {
+          "priority": "normal",
+          "uri": "https://whimsical-benefit-a69d430573.media.strapiapp.com/Converted_Image_1_b6b748d2e2.webp",
+        }
+      }
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    />
+  </View>
   <View
     style={
       {

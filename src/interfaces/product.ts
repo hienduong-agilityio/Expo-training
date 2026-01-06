@@ -32,3 +32,9 @@ export interface IProductFeature {
   title: string;
   description?: string;
 }
+
+export interface CategorizedProducts {
+  deals: import('./ui').IProductCardProps[];
+  trending: import('./ui').IProductCardProps[];
+  newArrivals: import('./ui').IProductCardProps[];
+}

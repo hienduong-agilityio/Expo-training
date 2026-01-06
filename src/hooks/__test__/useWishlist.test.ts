@@ -1,20 +1,38 @@
 import { renderHook } from '@testing-library/react-native';
 
 // Hooks
-import { useWishlist } from '../useWishlist';
+import { useWishlist, useWishlistActions } from '../useWishlist';
 
 // Services
 import { wishlistService } from '@app/services/wishlist';
 
 // Stores
 import { authStore } from '@app/stores/authStore';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 jest.mock('@app/services/wishlist');
 jest.mock('@app/stores/authStore');
 jest.mock('@tanstack/react-query', () => ({
   useQuery: jest.fn(),
-  useMutation: jest.fn(),
+  useMutation: jest.fn(({ mutationFn }) => {
+    const [isPending, setIsPending] = require('react').useState(false);
+    const { act } = require('@testing-library/react-native');
+    return {
+      mutateAsync: jest.fn(async data => {
+        await act(async () => {
+          setIsPending(true);
+        });
+        try {
+          return await mutationFn(data);
+        } finally {
+          await act(async () => {
+            setIsPending(false);
+          });
+        }
+      }),
+      isPending,
+    };
+  }),
   useQueryClient: jest.fn(),
 }));
 
@@ -43,10 +61,6 @@ describe('useWishlist', () => {
       error: null,
       refetch: jest.fn(),
     });
-    (useMutation as jest.Mock).mockReturnValue({
-      isPending: false,
-      mutateAsync: jest.fn(),
-    });
   });
 
   it('returns wishlist data', () => {
@@ -56,7 +70,6 @@ describe('useWishlist', () => {
     expect(result.current.wishlistItems).toEqual([{ productId: '1' }]);
     expect(result.current.wishlistProductIds).toEqual(['1']);
     expect(result.current.isLoading).toBe(false);
-    expect(result.current.isMutating).toBe(false);
   });
 
   it('checks if product is in wishlist', () => {
@@ -86,28 +99,17 @@ describe('useWishlist', () => {
     expect(result.current.isInWishlist('1')).toBe(false);
   });
 
-  it('provides mutation functions', () => {
-    const mockAddItem = jest.fn();
-    const mockRemoveItem = jest.fn();
-
-    (useMutation as jest.Mock)
-      .mockReturnValueOnce({ isPending: false, mutateAsync: mockAddItem })
-      .mockReturnValueOnce({ isPending: false, mutateAsync: mockRemoveItem });
-
-    const { result } = renderHook(() => useWishlist());
+  it('provides mutation functions from useWishlistActions', () => {
+    const { result } = renderHook(() => useWishlistActions());
 
     expect(typeof result.current.addItem).toBe('function');
     expect(typeof result.current.removeItem).toBe('function');
   });
 
-  it('handles isMutating state', () => {
-    (useMutation as jest.Mock)
-      .mockReturnValueOnce({ isPending: true, mutateAsync: jest.fn() })
-      .mockReturnValueOnce({ isPending: false, mutateAsync: jest.fn() });
+  it('handles isMutating state in useWishlistActions', () => {
+    const { result } = renderHook(() => useWishlistActions());
 
-    const { result } = renderHook(() => useWishlist());
-
-    expect(result.current.isMutating).toBe(true);
+    expect(result.current.isMutating).toBe(false);
   });
 
   it('handles error state', () => {
@@ -201,14 +203,7 @@ describe('useWishlist', () => {
         updatedWishlist,
       );
 
-      (useMutation as jest.Mock).mockImplementation(({ mutationFn }) => ({
-        isPending: false,
-        mutateAsync: async (...args: unknown[]) => {
-          return await mutationFn(...args);
-        },
-      }));
-
-      const { result } = renderHook(() => useWishlist());
+      const { result } = renderHook(() => useWishlistActions());
 
       const added = await result.current.addItem('2');
 
@@ -230,14 +225,7 @@ describe('useWishlist', () => {
         wishlistWithItem,
       );
 
-      (useMutation as jest.Mock).mockImplementation(({ mutationFn }) => ({
-        isPending: false,
-        mutateAsync: async (...args: unknown[]) => {
-          return await mutationFn(...args);
-        },
-      }));
-
-      const { result } = renderHook(() => useWishlist());
+      const { result } = renderHook(() => useWishlistActions());
 
       const added = await result.current.addItem('1');
 
@@ -263,14 +251,7 @@ describe('useWishlist', () => {
         updatedWishlist,
       );
 
-      (useMutation as jest.Mock).mockImplementation(({ mutationFn }) => ({
-        isPending: false,
-        mutateAsync: async (...args: unknown[]) => {
-          return await mutationFn(...args);
-        },
-      }));
-
-      const { result } = renderHook(() => useWishlist());
+      const { result } = renderHook(() => useWishlistActions());
 
       const removed = await result.current.removeItem('1');
 
@@ -288,14 +269,7 @@ describe('useWishlist', () => {
       };
       mockQueryClient.getQueryData.mockReturnValue(cachedWishlist);
 
-      (useMutation as jest.Mock).mockImplementation(({ mutationFn }) => ({
-        isPending: false,
-        mutateAsync: async (...args: unknown[]) => {
-          return await mutationFn(...args);
-        },
-      }));
-
-      const { result } = renderHook(() => useWishlist());
+      const { result } = renderHook(() => useWishlistActions());
 
       await result.current.addItem('2');
 
@@ -312,14 +286,7 @@ describe('useWishlist', () => {
         mockWishlist,
       );
 
-      (useMutation as jest.Mock).mockImplementation(({ mutationFn }) => ({
-        isPending: false,
-        mutateAsync: async (...args: unknown[]) => {
-          return await mutationFn(...args);
-        },
-      }));
-
-      const { result } = renderHook(() => useWishlist());
+      const { result } = renderHook(() => useWishlistActions());
 
       await result.current.addItem('2');
 
@@ -371,14 +338,7 @@ describe('useWishlist', () => {
         products: [{ productId: '1' }],
       });
 
-      (useMutation as jest.Mock).mockImplementation(({ mutationFn }) => ({
-        isPending: false,
-        mutateAsync: async (...args: unknown[]) => {
-          return await mutationFn(...args);
-        },
-      }));
-
-      const { result } = renderHook(() => useWishlist());
+      const { result } = renderHook(() => useWishlistActions());
 
       await result.current.addItem('1');
 

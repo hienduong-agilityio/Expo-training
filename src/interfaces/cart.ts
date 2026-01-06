@@ -1,4 +1,4 @@
-import { StrapiPaginationMeta } from './api';
+import { StrapiResponse } from './api';
 
 export interface ICartItem {
   productId: string;
@@ -18,12 +18,5 @@ export interface Cart {
   publishedAt: string | null;
 }
 
-export interface CartListResponse {
-  data: Cart[];
-  meta: StrapiPaginationMeta;
-}
-
-export interface CartSingleResponse {
-  data: Cart;
-  meta: StrapiPaginationMeta;
-}
+export type CartListResponse = StrapiResponse<Cart[]>;
+export type CartSingleResponse = StrapiResponse<Cart>;

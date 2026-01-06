@@ -14,4 +14,9 @@ export const styles = StyleSheet.create({
   },
   emptyWrap: { minHeight: 200, alignItems: 'center', justifyContent: 'center' },
   emptyText: { fontSize: 16, color: colors.textMuted, textAlign: 'center' },
+  footerLoader: {
+    paddingVertical: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });

@@ -2,6 +2,7 @@
 
 exports[`GridProductList Rendering matches snapshot 1`] = `
 <RCTScrollView
+  ListFooterComponent={[Function]}
   accessibilityLabel="Grid product list"
   accessibilityRole="list"
   contentContainerStyle={
@@ -156,14 +157,10 @@ exports[`GridProductList Rendering matches snapshot 1`] = `
   getItemCount={[Function]}
   initialNumToRender={12}
   keyExtractor={[Function]}
-  listRef={
-    {
-      "current": null,
-    }
-  }
   maxToRenderPerBatch={8}
   onContentSizeChange={[Function]}
-  onEndReachedThreshold={0.4}
+  onEndReached={[Function]}
+  onEndReachedThreshold={0.5}
   onLayout={[Function]}
   onMomentumScrollBegin={[Function]}
   onMomentumScrollEnd={[Function]}
@@ -437,6 +434,9 @@ exports[`GridProductList Rendering matches snapshot 1`] = `
         </View>
       </View>
     </View>
+    <View
+      onLayout={[Function]}
+    />
   </View>
 </RCTScrollView>
 `;

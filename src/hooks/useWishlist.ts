@@ -1,3 +1,7 @@
+// React
+import { useCallback, useMemo } from 'react';
+
+// React Query
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 
 // Services
@@ -10,122 +14,123 @@ import { authStore } from '@app/stores/authStore';
 import { QUERY_KEYS } from '@app/constants';
 
 // Types
-import type { ApiError } from '@app/interfaces/api';
+import type { ApiError, RawApiItem } from '@app/interfaces/api';
 import type { IWishlist, IWishlistItem } from '@app/interfaces/wishlist';
+
+// Helpers
+import { convertRawApiItemToWishlistItem } from '@app/helpers/converters';
 
 export type WishlistHookError = ApiError | Error | unknown;
 
+const DEFAULT_STALE_TIME = 30_000;
+
+/**
+ * Hook to fetch and manage wishlist data
+ */
 export const useWishlist = () => {
   const userId = authStore(state => state.user?.documentId);
 
-  const queryClient = useQueryClient();
-
-  const wishlistQuery = useQuery<IWishlist | null, WishlistHookError>({
+  const query = useQuery<IWishlist | null, WishlistHookError>({
     queryKey: [QUERY_KEYS.WISHLIST, userId],
     enabled: Boolean(userId),
-    staleTime: 30_000,
+    staleTime: DEFAULT_STALE_TIME,
     queryFn: () =>
       userId
         ? wishlistService.getWishlistForUser(userId)
         : Promise.resolve(null),
   });
 
-  const getCachedWishlist = (): IWishlist | null => {
-    if (!userId) return null;
+  const wishlist = query.data ?? null;
 
-    const cached = queryClient.getQueryData<IWishlist | null>([
-      QUERY_KEYS.WISHLIST,
-      userId,
-    ]);
+  const wishlistItems = useMemo(
+    () =>
+      (wishlist?.products ?? []).map((item: RawApiItem) =>
+        convertRawApiItemToWishlistItem(item),
+      ),
+    [wishlist?.products],
+  );
 
-    return cached ?? null;
-  };
+  const wishlistProductIds = useMemo(
+    () => wishlistItems.map(item => item.productId),
+    [wishlistItems],
+  );
 
-  const setCachedWishlist = (wishlist: IWishlist | null) => {
-    if (!userId) return;
-
-    queryClient.setQueryData<IWishlist | null>(
-      [QUERY_KEYS.WISHLIST, userId],
-      wishlist,
-    );
-  };
-
-  const ensureWishlist = async (): Promise<IWishlist> => {
-    if (!userId) {
-      throw new Error('User not authenticated');
-    }
-
-    const cached = getCachedWishlist();
-    if (cached) return cached;
-
-    const created = await wishlistService.ensureWishlistForUser(userId);
-
-    setCachedWishlist(created);
-    return created;
-  };
-
-  const addItemMutation = useMutation<IWishlist, WishlistHookError, string>({
-    mutationKey: [QUERY_KEYS.WISHLIST_ADD_ITEM, userId],
-    mutationFn: async productId => {
-      const baseWishlist = await ensureWishlist();
-      const current = baseWishlist.products ?? [];
-
-      const exists = current.some(item => item.productId === productId);
-
-      if (exists) return baseWishlist;
-
-      const next: IWishlistItem[] = [...current, { productId }];
-
-      const updated = await wishlistService.updateWishlistProducts(
-        baseWishlist.documentId,
-        next,
-      );
-
-      setCachedWishlist(updated);
-
-      return updated;
-    },
-  });
-
-  const removeItemMutation = useMutation<IWishlist, WishlistHookError, string>({
-    mutationKey: [QUERY_KEYS.WISHLIST_REMOVE_ITEM, userId],
-    mutationFn: async productId => {
-      const baseWishlist = await ensureWishlist();
-      const current = baseWishlist.products ?? [];
-
-      const next = current.filter(item => item.productId !== productId);
-
-      const updated = await wishlistService.updateWishlistProducts(
-        baseWishlist.documentId,
-        next,
-      );
-
-      setCachedWishlist(updated);
-
-      return updated;
-    },
-  });
-
-  const wishlist = wishlistQuery.data ?? null;
-  const wishlistItems: IWishlistItem[] = wishlist?.products ?? [];
-  const wishlistProductIds = wishlistItems.map(item => item.productId);
-
-  const isInWishlist = (productId: string): boolean =>
-    wishlistProductIds.includes(productId);
-
-  const isMutating = addItemMutation.isPending || removeItemMutation.isPending;
+  const isInWishlist = useCallback(
+    (productId: string): boolean => wishlistProductIds.includes(productId),
+    [wishlistProductIds],
+  );
 
   return {
     wishlist,
     wishlistItems,
     wishlistProductIds,
-    isLoading: wishlistQuery.isLoading,
-    isFetching: wishlistQuery.isFetching,
-    isMutating,
-    error: (wishlistQuery.error ?? null) as WishlistHookError | null,
+    isLoading: query.isLoading,
+    isFetching: query.isFetching,
+    error: query.error as WishlistHookError | null,
+    refetch: query.refetch,
     isInWishlist,
-    refetch: wishlistQuery.refetch,
+  };
+};
+
+/**
+ * Hook for wishlist actions (add, remove)
+ */
+export const useWishlistActions = () => {
+  const queryClient = useQueryClient();
+  const userId = authStore(state => state.user?.documentId);
+  const queryKey = [QUERY_KEYS.WISHLIST, userId];
+
+  const ensureWishlist = async (): Promise<IWishlist> => {
+    if (!userId) throw new Error('User not authenticated');
+
+    const cached = queryClient.getQueryData<IWishlist | null>(queryKey);
+    if (cached) return cached;
+
+    const created = await wishlistService.ensureWishlistForUser(userId);
+    queryClient.setQueryData(queryKey, created);
+    return created;
+  };
+
+  const convertProducts = (products: RawApiItem[]): IWishlistItem[] =>
+    products.map(convertRawApiItemToWishlistItem);
+
+  const addItemMutation = useMutation<IWishlist, WishlistHookError, string>({
+    mutationFn: async productId => {
+      const baseWishlist = await ensureWishlist();
+      const current = convertProducts(baseWishlist.products ?? []);
+
+      if (current.some(item => item.productId === productId)) {
+        return baseWishlist;
+      }
+
+      return wishlistService.updateWishlistProducts(baseWishlist.documentId, [
+        ...current,
+        { productId },
+      ]);
+    },
+    onSuccess: updated => {
+      queryClient.setQueryData(queryKey, updated);
+    },
+  });
+
+  const removeItemMutation = useMutation<IWishlist, WishlistHookError, string>({
+    mutationFn: async productId => {
+      const baseWishlist = await ensureWishlist();
+      const current = convertProducts(baseWishlist.products ?? []);
+
+      return wishlistService.updateWishlistProducts(
+        baseWishlist.documentId,
+        current.filter(item => item.productId !== productId),
+      );
+    },
+    onSuccess: updated => {
+      queryClient.setQueryData(queryKey, updated);
+    },
+  });
+
+  return {
     addItem: addItemMutation.mutateAsync,
     removeItem: removeItemMutation.mutateAsync,
+    isMutating: addItemMutation.isPending || removeItemMutation.isPending,
   };
 };

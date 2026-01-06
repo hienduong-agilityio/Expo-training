@@ -101,7 +101,7 @@ export const PrivateStackNavigation = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen
-        name={PRIVATE_SCREENS.HOME}
+        name={PRIVATE_SCREENS.MAIN_TABS}
         component={PrivateTabNavigation}
       />
 

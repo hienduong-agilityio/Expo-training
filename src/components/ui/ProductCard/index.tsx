@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+import { memo, useCallback, useMemo } from 'react';
 
 // Components
 import { View, Text, Pressable } from 'react-native';
@@ -18,7 +18,7 @@ import { colors } from '@app/themes';
 // Styles
 import { styles } from './index.style';
 
-export const ProductCard = ({
+const ProductCard = ({
   id,
   name,
   description,
@@ -29,9 +29,9 @@ export const ProductCard = ({
   reviewCount,
   imageSource,
   style,
+  isWishlisted = false,
   onPress,
   onWishlistToggle,
-  isWishlisted = false,
 }: IProductCardProps) => {
   // Handle press event
   const handlePress = useCallback(() => {
@@ -78,7 +78,8 @@ export const ProductCard = ({
               pressed && styles.wishlistPressed,
             ]}
             onPress={handleWishlistToggle}
-            accessibilityRole="button">
+            accessibilityRole="button"
+            accessibilityLabel={`${isWishlisted ? 'Remove from' : 'Add to'} wishlist`}>
             <HeartIcon
               width={20}
               height={20}
@@ -115,7 +116,7 @@ export const ProductCard = ({
         {/* Rating */}
         <View style={styles.ratingContainer}>
           <StarsRating rating={rating} />
-          {reviewCount && (
+          {reviewCount && reviewCount > 0 && (
             <Text
               style={styles.reviewCount}
               accessibilityLabel={`${reviewCount.toLocaleString()} reviews`}>
@@ -127,3 +128,5 @@ export const ProductCard = ({
     </Pressable>
   );
 };
+
+export default memo(ProductCard);

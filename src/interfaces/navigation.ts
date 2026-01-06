@@ -32,7 +32,7 @@ export type PrivateTabParamList = {
 };
 
 export type PrivateStackParamList = {
-  [PRIVATE_SCREENS.HOME]:
+  [PRIVATE_SCREENS.MAIN_TABS]:
     | NavigatorScreenParams<PrivateTabParamList>
     | undefined;
   [PRIVATE_SCREENS.PRODUCT_LIST]: {
