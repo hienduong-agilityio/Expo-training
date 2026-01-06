@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { View, RefreshControl } from 'react-native';
 
 // Hooks
-import { useWishlist } from '@app/hooks/useWishlist';
+import { useWishlist, useWishlistActions } from '@app/hooks/useWishlist';
 import { useProductsByIds } from '@app/hooks/useProduct';
 
 // Stores
@@ -44,17 +44,9 @@ type Props = CompositeScreenProps<
 >;
 
 export const WishlistScreen = ({ navigation }: Props) => {
-  const showToast = toastStore(state => state.showToast);
-  const showConfirm = modalStore(state => state.showConfirm);
+  const { wishlist, wishlistItems, isLoading, refetch } = useWishlist();
 
-  const {
-    wishlist,
-    wishlistItems,
-    isLoading,
-    isMutating,
-    refetch,
-    removeItem,
-  } = useWishlist();
+  const { removeItem, isMutating } = useWishlistActions();
 
   const productIds = wishlistItems.map(
     (item: IWishlistItem) => item.productId ?? '',
@@ -62,6 +54,9 @@ export const WishlistScreen = ({ navigation }: Props) => {
 
   const { products, isLoading: isLoadingProducts } =
     useProductsByIds(productIds);
+
+  const showToast = toastStore(state => state.showToast);
+  const showConfirm = modalStore(state => state.showConfirm);
 
   const hasWishlistItems = wishlist && wishlistItems.length > 0;
 

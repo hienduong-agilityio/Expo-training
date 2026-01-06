@@ -23,7 +23,7 @@ describe('SimilarProducts', () => {
   const renderComponent = (overrides = {}) =>
     render(
       <SimilarProducts
-        products={MOCK_PRODUCTS.slice(0, 3) as IProduct[]}
+        products={MOCK_PRODUCTS.slice(0, 3) as unknown as IProduct[]}
         onViewSimilar={mockCallbacks.onViewSimilar}
         onAddToCompare={mockCallbacks.onAddToCompare}
         onProductPress={mockCallbacks.onProductPress}

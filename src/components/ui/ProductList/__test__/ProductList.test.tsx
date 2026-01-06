@@ -1,6 +1,4 @@
 import { render, screen } from '@testing-library/react-native';
-import { createRef } from 'react';
-import { FlatList } from 'react-native';
 
 // Components
 import { GridProductList, IGridProductListProps } from '../GridProductList';
@@ -11,23 +9,25 @@ import type { IProductCardProps } from '@app/interfaces';
 // Mocks
 import { MOCK_PRODUCTS } from '@app/mocks/products';
 
-jest.mock('../../ProductCard', () => ({
-  ProductCard: ({ name, ...props }: IProductCardProps) => {
-    const MockView = require('react-native').View;
-    const MockText = require('react-native').Text;
+jest.mock('@app/components/ui', () => {
+  const { View, Text } = require('react-native');
 
+  const MockProductCard = ({ name, ...props }: IProductCardProps) => {
     return (
-      <MockView {...props}>
-        <MockText>{name}</MockText>
-      </MockView>
+      <View {...props}>
+        <Text>{name}</Text>
+      </View>
     );
-  },
-}));
+  };
+
+  return {
+    ProductCard: MockProductCard,
+  };
+});
 
 describe('GridProductList', () => {
   const mockProducts = MOCK_PRODUCTS.slice(0, 3);
   const defaultProps = {
-    listRef: createRef<FlatList<IProductCardProps>>(),
     products: mockProducts,
     gap: 16,
     contentPadding: 16,
@@ -55,8 +55,6 @@ describe('GridProductList', () => {
       mockProducts.forEach(product => {
         expect(screen.getByText(product.name)).toBeTruthy();
       });
-
-      expect(defaultProps.listRef.current).toBeDefined();
     });
   });
 });

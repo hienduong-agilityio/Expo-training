@@ -32,22 +32,42 @@ exports[`SponsoredBanner renders correctly with banner data 1`] = `
   >
     Sponsored
   </Text>
-  <Image
-    source={
-      {
-        "uri": "https://whimsical-benefit-a69d430573.media.strapiapp.com/Image_from_Free_Convert_1_5821a5a6cb.webp",
-      }
-    }
+  <View
     style={
-      {
-        "borderRadius": 10,
-        "height": 300,
-        "marginBottom": 2,
-        "marginHorizontal": 8,
-        "width": "100%",
-      }
+      [
+        {
+          "overflow": "hidden",
+        },
+        {
+          "borderRadius": 10,
+          "height": 300,
+          "marginBottom": 2,
+          "marginHorizontal": 8,
+          "width": "100%",
+        },
+      ]
     }
-  />
+  >
+    <FastImageView
+      defaultSource={null}
+      resizeMode="cover"
+      source={
+        {
+          "priority": "normal",
+          "uri": "https://whimsical-benefit-a69d430573.media.strapiapp.com/Image_from_Free_Convert_1_5821a5a6cb.webp",
+        }
+      }
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    />
+  </View>
   <View
     accessibilityState={
       {

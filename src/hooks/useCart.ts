@@ -1,3 +1,7 @@
+// React
+import { useMemo } from 'react';
+
+// React Query
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 
 // Services
@@ -10,169 +14,151 @@ import { authStore } from '@app/stores/authStore';
 import { QUERY_KEYS } from '@app/constants/queryKeys';
 
 // Types
-import type { ApiError } from '@app/interfaces/api';
+import type { ApiError, RawApiItem } from '@app/interfaces/api';
 import type { Cart, ICartItem } from '@app/interfaces/cart';
+
+// Helpers
+import { convertRawApiItemToCartItem } from '@app/helpers/converters';
 
 export type CartHookError = ApiError | Error | unknown;
 
-// TODO: Split into multiple hooks
+const DEFAULT_STALE_TIME = 30_000;
+
+/**
+ * Hook to fetch and manage cart data
+ */
 export const useCart = () => {
   const userId = authStore(state => state.user?.documentId);
 
-  const queryClient = useQueryClient();
-
-  const cartQuery = useQuery<Cart | null, CartHookError>({
+  const query = useQuery<Cart | null, CartHookError>({
     queryKey: [QUERY_KEYS.CART, userId],
     enabled: Boolean(userId),
-    staleTime: 30_000,
+    staleTime: DEFAULT_STALE_TIME,
     queryFn: () =>
       userId ? cartService.getActiveCartForUser(userId) : Promise.resolve(null),
   });
 
-  const getCachedCart = (): Cart | null => {
-    if (!userId) return null;
+  const cartItems = useMemo(
+    () =>
+      (query.data?.products ?? []).map((item: RawApiItem) =>
+        convertRawApiItemToCartItem(item),
+      ),
+    [query.data?.products],
+  );
 
-    const cached = queryClient.getQueryData<Cart | null>([
-      QUERY_KEYS.CART,
-      userId,
-    ]);
-
-    return cached ?? null;
+  return {
+    cart: query.data ?? null,
+    cartItems,
+    isLoading: query.isLoading,
+    isFetching: query.isFetching,
+    error: query.error,
+    refetch: query.refetch,
   };
+};
 
-  const setCachedCart = (cart: Cart | null) => {
-    if (!userId) return;
-
-    queryClient.setQueryData<Cart | null>([QUERY_KEYS.CART, userId], cart);
-  };
+/**
+ * Hook for cart mutations (add, update, remove, checkout)
+ */
+export const useCartActions = () => {
+  const queryClient = useQueryClient();
+  const userId = authStore(state => state.user?.documentId);
+  const queryKey = [QUERY_KEYS.CART, userId];
 
   const ensureCart = async (): Promise<Cart> => {
-    if (!userId) {
-      throw new Error('User not authenticated');
-    }
+    if (!userId) throw new Error('User not authenticated');
 
-    const cached = getCachedCart();
-
+    const cached = queryClient.getQueryData<Cart | null>(queryKey);
     if (cached) return cached;
 
     const created = await cartService.ensureActiveCartForUser(userId);
-
-    setCachedCart(created);
-
+    queryClient.setQueryData(queryKey, created);
     return created;
   };
 
+  const convertProducts = (products: RawApiItem[]): ICartItem[] =>
+    products.map(convertRawApiItemToCartItem);
+
   const addItemMutation = useMutation<Cart, CartHookError, ICartItem>({
-    mutationKey: [QUERY_KEYS.CART_ADD_ITEM, userId],
     mutationFn: async ({ productId, quantity = 1 }) => {
       const baseCart = await ensureCart();
-      const current = baseCart.products ?? [];
+      const current = convertProducts(baseCart.products ?? []);
 
-      const index = current.findIndex(item => item.productId === productId);
+      const existingIndex = current.findIndex(
+        item => item.productId === productId,
+      );
 
-      const nextProducts: ICartItem[] =
-        index === -1
+      const nextProducts =
+        existingIndex === -1
           ? [...current, { productId, quantity }]
-          : current.map(item =>
-              item.productId === productId
+          : current.map((item, idx) =>
+              idx === existingIndex
                 ? { ...item, quantity: item.quantity + quantity }
                 : item,
             );
 
-      const updated = await cartService.updateCartProducts(
-        baseCart.documentId,
-        nextProducts,
-      );
-
-      setCachedCart(updated);
-      return updated;
+      return cartService.updateCartProducts(baseCart.documentId, nextProducts);
     },
-  });
-
-  const updateItemMutation = useMutation<Cart, CartHookError, ICartItem>({
-    mutationKey: [QUERY_KEYS.CART_UPDATE_ITEM, userId],
-    mutationFn: async ({ productId, quantity }) => {
-      const baseCart = await ensureCart();
-      const current = baseCart.products ?? [];
-
-      if (quantity <= 0) {
-        const filtered = current.filter(item => item.productId !== productId);
-        const updated = await cartService.updateCartProducts(
-          baseCart.documentId,
-          filtered,
-        );
-
-        setCachedCart(updated);
-
-        return updated;
-      }
-
-      const nextProducts = current.map(item =>
-        item.productId === productId ? { ...item, quantity } : item,
-      );
-
-      const updated = await cartService.updateCartProducts(
-        baseCart.documentId,
-        nextProducts,
-      );
-
-      setCachedCart(updated);
-      return updated;
+    onSuccess: updated => {
+      queryClient.setQueryData(queryKey, updated);
     },
   });
 
   const removeItemMutation = useMutation<Cart, CartHookError, string>({
-    mutationKey: [QUERY_KEYS.CART_REMOVE_ITEM, userId],
     mutationFn: async productId => {
       const baseCart = await ensureCart();
-      const current = baseCart.products ?? [];
+      const current = convertProducts(baseCart.products ?? []);
 
-      const nextProducts = current.filter(item => item.productId !== productId);
-
-      const updated = await cartService.updateCartProducts(
+      return cartService.updateCartProducts(
         baseCart.documentId,
-        nextProducts,
+        current.filter(item => item.productId !== productId),
       );
+    },
+    onSuccess: updated => {
+      queryClient.setQueryData(queryKey, updated);
+    },
+  });
 
-      setCachedCart(updated);
-      return updated;
+  const updateItemMutation = useMutation<Cart, CartHookError, ICartItem>({
+    mutationFn: async ({ productId, quantity }) => {
+      if (quantity <= 0) {
+        return removeItemMutation.mutateAsync(productId);
+      }
+
+      const baseCart = await ensureCart();
+      const current = convertProducts(baseCart.products ?? []);
+
+      return cartService.updateCartProducts(
+        baseCart.documentId,
+        current.map(item =>
+          item.productId === productId ? { ...item, quantity } : item,
+        ),
+      );
+    },
+    onSuccess: updated => {
+      queryClient.setQueryData(queryKey, updated);
     },
   });
 
   const checkoutMutation = useMutation<Cart, CartHookError, void>({
-    mutationKey: [QUERY_KEYS.CART_CHECKOUT, userId],
     mutationFn: async () => {
       const baseCart = await ensureCart();
-      const clearedCart = await cartService.clearCartProducts(
-        baseCart.documentId,
-      );
+      return cartService.clearCartProducts(baseCart.documentId);
+    },
 
-      setCachedCart(clearedCart);
-
-      return clearedCart;
+    onSuccess: updated => {
+      queryClient.setQueryData(queryKey, updated);
     },
   });
 
-  const cart = cartQuery.data;
-  const cartItems: ICartItem[] = cart?.products ?? [];
-
-  const isMutating =
-    addItemMutation.isPending ||
-    updateItemMutation.isPending ||
-    removeItemMutation.isPending ||
-    checkoutMutation.isPending;
-
   return {
-    cart,
-    cartItems,
-    isLoading: cartQuery.isLoading,
-    isFetching: cartQuery.isFetching,
-    isMutating,
-    error: cartQuery.error,
-    refetch: cartQuery.refetch,
     addItem: addItemMutation.mutateAsync,
     updateItem: updateItemMutation.mutateAsync,
     removeItem: removeItemMutation.mutateAsync,
     checkout: checkoutMutation.mutateAsync,
+    isMutating:
+      addItemMutation.isPending ||
+      updateItemMutation.isPending ||
+      removeItemMutation.isPending ||
+      checkoutMutation.isPending,
   };
 };

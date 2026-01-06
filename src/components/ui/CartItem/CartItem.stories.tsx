@@ -16,6 +16,9 @@ const meta: Meta<typeof CartItem> = {
     imageSource: MOCK_IMAGE_SOURCES.valid,
     quantity: 2,
     price: 1999,
+    onIncrease: () => {},
+    onDecrease: () => {},
+    onRemove: () => {},
   },
   parameters: {
     notes:
@@ -71,6 +74,9 @@ export const CartItems: Story = {
         imageSource={MOCK_IMAGE_SOURCES.valid}
         quantity={1}
         price={1999}
+        onIncrease={() => {}}
+        onDecrease={() => {}}
+        onRemove={() => {}}
       />
       <CartItem
         title="Product 2"
@@ -84,6 +90,9 @@ export const CartItems: Story = {
         imageSource={MOCK_IMAGE_SOURCES.valid}
         quantity={3}
         price={2999}
+        onIncrease={() => {}}
+        onDecrease={() => {}}
+        onRemove={() => {}}
       />
       <CartItem
         title="Product 3"
@@ -97,6 +106,9 @@ export const CartItems: Story = {
         imageSource={MOCK_IMAGE_SOURCES.valid}
         quantity={11}
         price={1000}
+        onIncrease={() => {}}
+        onDecrease={() => {}}
+        onRemove={() => {}}
       />
       <CartItem
         title="Product 4"
@@ -110,6 +122,9 @@ export const CartItems: Story = {
         imageSource={MOCK_IMAGE_SOURCES.valid}
         quantity={2}
         price={999}
+        onIncrease={() => {}}
+        onDecrease={() => {}}
+        onRemove={() => {}}
       />
     </View>
   ),

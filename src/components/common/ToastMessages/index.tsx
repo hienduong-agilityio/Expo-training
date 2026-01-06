@@ -5,7 +5,12 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { styles } from './index.style';
 
 // Constants
-import { POSITION, STATUS, TOAST_COLOR_BY_STATUS, TOAST_ICON_BY_STATUS } from '@app/constants';
+import {
+  POSITION,
+  STATUS,
+  TOAST_COLOR_BY_STATUS,
+  TOAST_ICON_BY_STATUS,
+} from '@app/constants';
 
 // Types
 import type { TStatus, TPosition } from '@app/interfaces';

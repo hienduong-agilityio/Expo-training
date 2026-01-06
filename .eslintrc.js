@@ -1,13 +1,27 @@
 module.exports = {
   root: true,
-  extends: ['@react-native', 'plugin:react/jsx-runtime', 'prettier'],
-  plugins: ['prettier'],
+  extends: [
+    '@react-native',
+    'plugin:react-hooks/recommended',
+    'plugin:react/jsx-runtime',
+    'prettier',
+  ],
+  plugins: ['prettier', 'react-hooks'],
   rules: {
     // Disable the non-existent rule
     '@react-native/no-deep-imports': 'off',
 
     // Warn about the any type
     '@typescript-eslint/no-explicit-any': 'warn',
+
+    // TypeScript specific rules - check for unused variables
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
+      {
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+      },
+    ],
 
     // Detect StyleSheet rules which are not used in your React components
     'react-native/no-unused-styles': 2,
@@ -20,10 +34,12 @@ module.exports = {
 
     // Detect raw text outside of Text component
     'react-native/no-raw-text': 2,
+
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
   },
   overrides: [
     {
-      // Test files only
       files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
       extends: ['plugin:testing-library/react'],
     },

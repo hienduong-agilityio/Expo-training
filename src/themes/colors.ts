@@ -56,5 +56,6 @@ export const colors = {
   white: '#FFFFFF',
 
   overlayWeak: 'rgba(0,0,0,0.08)',
+  overlayModal: 'rgba(0,0,0,0.5)',
   overlayStrong: 'rgba(0,0,0,0.63)',
 };

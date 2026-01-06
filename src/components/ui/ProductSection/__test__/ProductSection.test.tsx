@@ -6,11 +6,14 @@ import { ProductSection } from '@app/components/ui/ProductSection';
 // Mocks
 import { MOCK_PRODUCTS } from '@app/mocks/products';
 
+// Types
+import type { IProductCardProps } from '@app/interfaces';
+
 describe('ProductSection', () => {
   const baseProps = {
     title: 'Featured Products',
     subtitle: 'Best deals',
-    products: MOCK_PRODUCTS.slice(0, 3),
+    products: MOCK_PRODUCTS.slice(0, 3) as unknown as IProductCardProps[],
     loading: false,
     error: null,
   };

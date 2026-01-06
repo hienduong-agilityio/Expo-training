@@ -1,5 +1,5 @@
 import { toastStore } from '../toastStore';
-import { STATUS, POSITION } from '@app/constants';
+import { STATUS, POSITION, TOAST_DURATION } from '@app/constants';
 
 describe('toastStore', () => {
   beforeEach(() => {
@@ -9,7 +9,7 @@ describe('toastStore', () => {
       message: '',
       type: STATUS.INFO,
       position: POSITION.TOP,
-      duration: 1000,
+      duration: TOAST_DURATION.DEFAULT,
     });
   });
 

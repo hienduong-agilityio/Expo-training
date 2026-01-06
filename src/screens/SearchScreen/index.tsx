@@ -1,4 +1,4 @@
-import { useCallback, useState, useMemo, useEffect } from 'react';
+import { useCallback, useState, useMemo, useEffect, useRef } from 'react';
 import { View, Text } from 'react-native';
 
 // Components
@@ -44,10 +44,22 @@ export const SearchScreen = ({ navigation, route }: SearchScreenProps) => {
     categoryName || null,
   );
 
+  const prevParamsRef = useRef({ searchQuery, categoryId, categoryName });
+
   useEffect(() => {
-    setLocalSearchQuery(searchQuery || '');
-    setActiveCategoryId(categoryId || null);
-    setActiveCategoryName(categoryName || null);
+    const prev = prevParamsRef.current;
+
+    if (
+      prev.searchQuery !== searchQuery ||
+      prev.categoryId !== categoryId ||
+      prev.categoryName !== categoryName
+    ) {
+      setLocalSearchQuery(searchQuery || '');
+      setActiveCategoryId(categoryId || null);
+      setActiveCategoryName(categoryName || null);
+
+      prevParamsRef.current = { searchQuery, categoryId, categoryName };
+    }
   }, [searchQuery, categoryId, categoryName]);
 
   const debouncedSearchQuery = useDebounce(localSearchQuery, 500);

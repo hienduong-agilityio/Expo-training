@@ -1,5 +1,8 @@
+import { useCallback } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { View, Text } from 'react-native';
+
+// Components
 import { Button } from '@app/components/common/Button';
 
 // Stores
@@ -22,12 +25,12 @@ import { useAuthActions } from '@app/hooks/useAuthActions';
 import { styles } from './index.style';
 
 export const SettingsScreen = () => {
+  const { logout } = useAuthActions();
+
   const userEmail = authStore(state => state.user?.email);
   const showToast = toastStore(state => state.showToast);
 
-  const { logout } = useAuthActions();
-
-  const handleSignOut = () => {
+  const handleSignOut = useCallback(() => {
     try {
       logout();
 
@@ -43,7 +46,7 @@ export const SettingsScreen = () => {
         position: POSITION.TOP,
       });
     }
-  };
+  }, [logout, showToast]);
 
   return (
     <SafeAreaView style={styles.container}>

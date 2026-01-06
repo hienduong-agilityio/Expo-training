@@ -8,8 +8,18 @@ import type { ICategory } from '@app/interfaces/categories';
 
 describe('CategoriesSection', () => {
   const mockCategories: ICategory[] = [
-    { id: '1', name: 'Electronics', image: 'https://example.com/1.jpg' },
-    { id: '2', name: 'Clothing', image: 'https://example.com/2.jpg' },
+    {
+      id: '1',
+      name: 'Electronics',
+      image: 'https://example.com/1.jpg',
+      slug: 'electronics',
+    },
+    {
+      id: '2',
+      name: 'Clothing',
+      image: 'https://example.com/2.jpg',
+      slug: 'clothing',
+    },
   ];
 
   const renderComponent = (overrides = {}) => {

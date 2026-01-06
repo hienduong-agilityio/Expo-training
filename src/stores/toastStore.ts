@@ -4,11 +4,7 @@ import { create } from 'zustand';
 import type { TStatus, TPosition } from '@app/interfaces/ui';
 
 // Constants
-import { STATUS, POSITION } from '@app/constants';
-
-export const TOAST_DURATION = {
-  DEFAULT: 1000,
-} as const;
+import { STATUS, POSITION, TOAST_DURATION } from '@app/constants';
 
 interface ToastState {
   visible: boolean;

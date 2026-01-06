@@ -28,3 +28,6 @@ export const DEAL_INFO: IDealInfo = {
     subtitle: "Summer '25 Collections",
   },
 } as const;
+
+export const NO_INTERNET_CONNECTION_IMAGE =
+  'https://cdn-icons-png.flaticon.com/512/114/114665.png';

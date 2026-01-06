@@ -25,18 +25,8 @@ export interface StrapiPaginationMeta {
   };
 }
 
-export interface StrapiSingle<T> {
-  data: {
-    id: number;
-    attributes: T;
-  } | null;
-}
-
-export interface StrapiList<T> {
-  data: Array<{
-    id: number;
-    attributes: T;
-  }>;
+export interface StrapiResponse<T> {
+  data: T;
   meta: StrapiPaginationMeta;
 }
 
@@ -59,6 +49,12 @@ export interface ApiProduct {
   createdAt: string;
   updatedAt: string;
   publishedAt?: string;
+}
+
+export interface RawApiItem {
+  productId?: string | number;
+  product?: string | number;
+  quantity?: number;
 }
 
 export interface ApiMedia {

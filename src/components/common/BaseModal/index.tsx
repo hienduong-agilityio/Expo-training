@@ -9,24 +9,24 @@ import { colors } from '@app/themes';
 
 export interface IBaseModalProps {
   visible: boolean;
-  onClose: () => void;
   children: ReactNode;
   backdropOpacity?: number;
   backdropColor?: string;
   contentStyle?: ViewStyle;
   animationType?: 'none' | 'slide' | 'fade';
   transparent?: boolean;
+  onClose: () => void;
 }
 
 export const BaseModal = ({
   visible,
-  onClose,
   children,
   backdropOpacity = 0.5,
   backdropColor = colors.black,
   contentStyle,
   animationType = 'fade',
   transparent = true,
+  onClose,
 }: IBaseModalProps) => {
   return (
     <Modal

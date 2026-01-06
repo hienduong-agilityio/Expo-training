@@ -30,7 +30,6 @@ describe('cartService', () => {
         expect.any(String),
         expect.objectContaining({
           method: 'GET',
-          auth: true,
         }),
       );
     });

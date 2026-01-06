@@ -1,3 +1,4 @@
+import { memo, useMemo } from 'react';
 import { ScrollView } from 'react-native';
 
 // Types
@@ -31,7 +32,10 @@ interface ProductDetailContentProps {
   onSimilarProductPress: (productId: string) => void;
 }
 
-export const ProductDetailContent = ({
+const EMPTY_FEATURES: never[] = [];
+const DELIVERY_TIME = '1 within Hour';
+
+export const ProductDetailContent = memo(function ProductDetailContent({
   product,
   productImages,
   productSizes,
@@ -43,7 +47,23 @@ export const ProductDetailContent = ({
   onViewSimilar,
   onAddToCompare,
   onSimilarProductPress,
-}: ProductDetailContentProps) => {
+}: ProductDetailContentProps) {
+  const productDetailsProps = useMemo(
+    () => ({
+      ...product,
+      details: product.description || '',
+      sizes: productSizes,
+      features: EMPTY_FEATURES,
+      onShowMoreDetails,
+    }),
+    [product, productSizes, onShowMoreDetails],
+  );
+
+  const similarProducts = useMemo(
+    () => MOCK_PRODUCTS as unknown as IProduct[],
+    [],
+  );
+
   return (
     <ScrollView
       style={styles.scrollView}
@@ -51,13 +71,7 @@ export const ProductDetailContent = ({
       contentContainerStyle={styles.scrollContent}>
       <ProductImageCarousel images={productImages} productName={product.name} />
 
-      <ProductDetails
-        {...product}
-        details={product.description || ''}
-        sizes={productSizes}
-        features={[]}
-        onShowMoreDetails={onShowMoreDetails}
-      />
+      <ProductDetails {...productDetailsProps} />
 
       {productSizes.length > 0 && (
         <SizeSelector
@@ -69,14 +83,14 @@ export const ProductDetailContent = ({
 
       <ProductActions onAddToCart={onAddToCart} onBuyNow={onBuyNow} />
 
-      <DeliveryInfo deliveryTime="1 within Hour" />
+      <DeliveryInfo deliveryTime={DELIVERY_TIME} />
 
       <SimilarProducts
-        products={MOCK_PRODUCTS as unknown as IProduct[]}
+        products={similarProducts}
         onViewSimilar={onViewSimilar}
         onAddToCompare={onAddToCompare}
         onProductPress={onSimilarProductPress}
       />
     </ScrollView>
   );
-};
+});

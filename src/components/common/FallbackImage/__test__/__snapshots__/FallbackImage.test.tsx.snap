@@ -1,68 +1,205 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FallbackImage renders with null source 1`] = `
-<Image
-  onError={[Function]}
-  source={
-    {
-      "uri": "",
-    }
+<View
+  style={
+    [
+      {
+        "overflow": "hidden",
+      },
+      undefined,
+    ]
   }
-/>
+>
+  <FastImageView
+    defaultSource={null}
+    resizeMode="cover"
+    source={
+      {
+        "priority": "normal",
+        "uri": "https://whimsical-benefit-a69d430573.media.strapiapp.com/default_fallback_image_ce6f43d139.png",
+      }
+    }
+    style={
+      {
+        "bottom": 0,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+  />
+</View>
 `;
 
 exports[`FallbackImage renders with valid source 1`] = `
-<Image
-  onError={[Function]}
-  source={
-    {
-      "uri": "https://picsum.photos/300/400",
-    }
+<View
+  style={
+    [
+      {
+        "overflow": "hidden",
+      },
+      undefined,
+    ]
   }
-/>
+>
+  <FastImageView
+    defaultSource={null}
+    onFastImageError={[Function]}
+    resizeMode="cover"
+    source={
+      {
+        "priority": "normal",
+        "uri": "https://picsum.photos/300/400",
+      }
+    }
+    style={
+      {
+        "bottom": 0,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+  />
+</View>
 `;
 
 exports[`FallbackImage switches to fallback when image error occurs 1`] = `
-<Image
-  onError={[Function]}
-  source={
-    {
-      "uri": "https://whimsical-benefit-a69d430573.media.strapiapp.com/default_fallback_image_ce6f43d139.png",
-    }
+<View
+  style={
+    [
+      {
+        "overflow": "hidden",
+      },
+      undefined,
+    ]
   }
-  testID="fallback-image"
-/>
+>
+  <FastImageView
+    defaultSource={null}
+    onFastImageError={[Function]}
+    resizeMode="cover"
+    source={
+      {
+        "priority": "normal",
+        "uri": "https://whimsical-benefit-a69d430573.media.strapiapp.com/default_fallback_image_ce6f43d139.png",
+      }
+    }
+    style={
+      {
+        "bottom": 0,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+    testID="fallback-image"
+  />
+</View>
 `;
 
 exports[`FallbackImage uses custom fallback source 1`] = `
-<Image
-  onError={[Function]}
-  source={
-    {
-      "uri": "https://example.com/custom-fallback.jpg",
-    }
+<View
+  style={
+    [
+      {
+        "overflow": "hidden",
+      },
+      undefined,
+    ]
   }
-/>
+>
+  <FastImageView
+    defaultSource={null}
+    onFastImageError={[Function]}
+    resizeMode="cover"
+    source={
+      {
+        "priority": "normal",
+        "uri": "https://example.com/custom-fallback.jpg",
+      }
+    }
+    style={
+      {
+        "bottom": 0,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+  />
+</View>
 `;
 
 exports[`FallbackImage uses fallback when source is null 1`] = `
-<Image
-  onError={[Function]}
-  source={
-    {
-      "uri": "https://whimsical-benefit-a69d430573.media.strapiapp.com/default_fallback_image_ce6f43d139.png",
-    }
+<View
+  style={
+    [
+      {
+        "overflow": "hidden",
+      },
+      undefined,
+    ]
   }
-/>
+>
+  <FastImageView
+    defaultSource={null}
+    onFastImageError={[Function]}
+    resizeMode="cover"
+    source={
+      {
+        "priority": "normal",
+        "uri": "https://whimsical-benefit-a69d430573.media.strapiapp.com/default_fallback_image_ce6f43d139.png",
+      }
+    }
+    style={
+      {
+        "bottom": 0,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+  />
+</View>
 `;
 
 exports[`FallbackImage uses fallback when source is undefined 1`] = `
-<Image
-  onError={[Function]}
-  source={
-    {
-      "uri": "https://whimsical-benefit-a69d430573.media.strapiapp.com/default_fallback_image_ce6f43d139.png",
-    }
+<View
+  style={
+    [
+      {
+        "overflow": "hidden",
+      },
+      undefined,
+    ]
   }
-/>
+>
+  <FastImageView
+    defaultSource={null}
+    onFastImageError={[Function]}
+    resizeMode="cover"
+    source={
+      {
+        "priority": "normal",
+        "uri": "https://whimsical-benefit-a69d430573.media.strapiapp.com/default_fallback_image_ce6f43d139.png",
+      }
+    }
+    style={
+      {
+        "bottom": 0,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+  />
+</View>
 `;

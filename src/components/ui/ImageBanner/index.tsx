@@ -1,13 +1,13 @@
 import { View, Text, TouchableOpacity, ImageBackground } from 'react-native';
 
 // Types
-import type { PromoBanner as PromoBannerType } from '@app/constants/banner';
+import type { IPromoBanner } from '@app/interfaces';
 
 // Styles
 import { styles } from './index.style';
 
 interface ImageBannerProps {
-  banner: PromoBannerType;
+  banner: IPromoBanner;
   onPress?: () => void;
 }
 

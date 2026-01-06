@@ -1,3 +1,4 @@
+import { ActivityIndicator } from 'react-native';
 import { useCallback, useMemo } from 'react';
 import {
   View,
@@ -9,7 +10,7 @@ import {
 } from 'react-native';
 
 // Components
-import { ProductCard } from '@app/components/ui/ProductCard';
+import { ProductCard } from '@app/components/ui';
 
 // Styles
 import { styles } from './index.style';
@@ -32,6 +33,9 @@ export interface IGridProductListProps extends FlatListModifiedProps {
   onWishlistToggle?: (id: string) => void;
   keyExtractor?: (item: IProductCardProps, index: number) => string;
   customStyle?: ICustomStyles;
+  onEndReached?: () => void;
+  isLoadingMore?: boolean;
+  hasMore?: boolean;
 }
 
 export const GridProductList = ({
@@ -45,6 +49,9 @@ export const GridProductList = ({
     item.id ?? String(item.name ?? index),
   contentContainerStyle = {},
   customStyle,
+  onEndReached,
+  isLoadingMore = false,
+  hasMore = true,
   ...rest
 }: IGridProductListProps) => {
   const screenWidth = useMemo(() => Dimensions.get('window').width, []);
@@ -99,6 +106,22 @@ export const GridProductList = ({
     ],
   );
 
+  const renderFooter = useCallback(() => {
+    if (!isLoadingMore) return null;
+
+    return (
+      <View style={styles.footerLoader}>
+        <ActivityIndicator size="small" />
+      </View>
+    );
+  }, [isLoadingMore]);
+
+  const handleEndReached = useCallback(() => {
+    if (!isLoadingMore && hasMore && onEndReached) {
+      onEndReached();
+    }
+  }, [isLoadingMore, hasMore, onEndReached]);
+
   return (
     <FlatList
       data={products}
@@ -119,7 +142,9 @@ export const GridProductList = ({
       windowSize={5}
       maxToRenderPerBatch={8}
       updateCellsBatchingPeriod={50}
-      onEndReachedThreshold={0.4}
+      onEndReachedThreshold={0.5}
+      onEndReached={handleEndReached}
+      ListFooterComponent={renderFooter}
       accessibilityRole="list"
       accessibilityLabel="Grid product list"
       {...rest}

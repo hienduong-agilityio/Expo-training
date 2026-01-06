@@ -1,4 +1,4 @@
-import type { StrapiPaginationMeta } from './api';
+import type { StrapiResponse } from './api';
 
 export interface IWishlistItem {
   productId: string;
@@ -14,12 +14,5 @@ export interface IWishlist {
   publishedAt: string | null;
 }
 
-export interface IWishlistListResponse {
-  data: IWishlist[];
-  meta: StrapiPaginationMeta;
-}
-
-export interface IWishlistSingleResponse {
-  data: IWishlist;
-  meta: StrapiPaginationMeta;
-}
+export type IWishlistListResponse = StrapiResponse<IWishlist[]>;
+export type IWishlistSingleResponse = StrapiResponse<IWishlist>;

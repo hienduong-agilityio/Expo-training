@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { Alert, Text, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -14,6 +15,7 @@ import { UserIcon, PassIcon } from '@app/icons';
 import {
   AUTH_FORM_MESSAGES,
   BUTTON_LABELS,
+  ERROR_MESSAGES,
   LINK_MESSAGES,
   POSITION,
   PUBLIC_SCREENS,
@@ -45,26 +47,28 @@ import { authStyles } from '@app/styles';
 type LoginScreenProps = PublicStackScreenProps<typeof PUBLIC_SCREENS.LOGIN>;
 
 export const LoginScreen = ({ navigation }: LoginScreenProps) => {
+  const initialValues = {
+    [AUTH_FIELDS.IDENTIFIER]: '',
+    [AUTH_FIELDS.PASSWORD]: '',
+  };
+
   const { values, fieldErrors, handleChange, resetForm, setFieldError } =
     useForm({
-      initialValues: {
-        [AUTH_FIELDS.IDENTIFIER]: '',
-        [AUTH_FIELDS.PASSWORD]: '',
-      },
+      initialValues,
     });
-
-  const showToast = toastStore(state => state.showToast);
 
   const { login, isSubmitting } = useAuthActions();
 
-  const handleSubmit = async () => {
+  const showToast = toastStore(state => state.showToast);
+
+  const handleSubmit = useCallback(async () => {
     if (isSubmitting) return;
 
     const validationResult = validateLogin(values as LoginFormValues);
 
     if (!validationResult.ok) {
       Object.entries(validationResult.errors).forEach(([field, error]) => {
-        if (error) setFieldError(field, error);
+        if (error) setFieldError(field as keyof LoginFormValues, error);
       });
 
       return;
@@ -83,11 +87,11 @@ export const LoginScreen = ({ navigation }: LoginScreenProps) => {
     } catch (error) {
       showToast({
         type: STATUS.ERROR,
-        message: getApiErrorMessage(error, TOAST_MESSAGES.LOGIN_FAILED),
+        message: getApiErrorMessage(error, ERROR_MESSAGES.REQUEST_FAILED),
         position: POSITION.TOP,
       });
     }
-  };
+  }, [isSubmitting, values, setFieldError, login, showToast, resetForm]);
 
   return (
     <SafeAreaView style={authStyles.screen}>

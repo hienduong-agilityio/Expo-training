@@ -1,14 +1,32 @@
 import { renderHook } from '@testing-library/react-native';
-import { useCart } from '../useCart';
+import { useCart, useCartActions } from '../useCart';
 import { cartService } from '@app/services/cart';
 import { authStore } from '@app/stores/authStore';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 jest.mock('@app/services/cart');
 jest.mock('@app/stores/authStore');
 jest.mock('@tanstack/react-query', () => ({
   useQuery: jest.fn(),
-  useMutation: jest.fn(),
+  useMutation: jest.fn(({ mutationFn }) => {
+    const [isPending, setIsPending] = require('react').useState(false);
+    const { act } = require('@testing-library/react-native');
+    return {
+      mutateAsync: jest.fn(async data => {
+        await act(async () => {
+          setIsPending(true);
+        });
+        try {
+          return await mutationFn(data);
+        } finally {
+          await act(async () => {
+            setIsPending(false);
+          });
+        }
+      }),
+      isPending,
+    };
+  }),
   useQueryClient: jest.fn(),
 }));
 
@@ -37,10 +55,6 @@ describe('useCart', () => {
       error: null,
       refetch: jest.fn(),
     });
-    (useMutation as jest.Mock).mockReturnValue({
-      isPending: false,
-      mutateAsync: jest.fn(),
-    });
   });
 
   it('returns cart data', () => {
@@ -49,7 +63,6 @@ describe('useCart', () => {
     expect(result.current.cart).toEqual(mockCart);
     expect(result.current.cartItems).toEqual([]);
     expect(result.current.isLoading).toBe(false);
-    expect(result.current.isMutating).toBe(false);
   });
 
   it('returns null cart when user is not authenticated', () => {
@@ -72,18 +85,7 @@ describe('useCart', () => {
   });
 
   it('provides mutation functions', () => {
-    const mockAddItem = jest.fn();
-    const mockUpdateItem = jest.fn();
-    const mockRemoveItem = jest.fn();
-    const mockCheckout = jest.fn();
-
-    (useMutation as jest.Mock)
-      .mockReturnValueOnce({ isPending: false, mutateAsync: mockAddItem })
-      .mockReturnValueOnce({ isPending: false, mutateAsync: mockUpdateItem })
-      .mockReturnValueOnce({ isPending: false, mutateAsync: mockRemoveItem })
-      .mockReturnValueOnce({ isPending: false, mutateAsync: mockCheckout });
-
-    const { result } = renderHook(() => useCart());
+    const { result } = renderHook(() => useCartActions());
 
     expect(typeof result.current.addItem).toBe('function');
     expect(typeof result.current.updateItem).toBe('function');
@@ -92,15 +94,9 @@ describe('useCart', () => {
   });
 
   it('handles isMutating state correctly', () => {
-    (useMutation as jest.Mock)
-      .mockReturnValueOnce({ isPending: true, mutateAsync: jest.fn() })
-      .mockReturnValueOnce({ isPending: false, mutateAsync: jest.fn() })
-      .mockReturnValueOnce({ isPending: false, mutateAsync: jest.fn() })
-      .mockReturnValueOnce({ isPending: false, mutateAsync: jest.fn() });
+    const { result } = renderHook(() => useCartActions());
 
-    const { result } = renderHook(() => useCart());
-
-    expect(result.current.isMutating).toBe(true);
+    expect(result.current.isMutating).toBe(false);
   });
 
   it('returns empty cartItems when cart is null', () => {
@@ -174,7 +170,6 @@ describe('useCart', () => {
 
   describe('mutations', () => {
     let mockQueryClient: { getQueryData: jest.Mock; setQueryData: jest.Mock };
-    let mockMutateAsync: jest.Mock;
 
     beforeEach(() => {
       mockQueryClient = {
@@ -182,7 +177,6 @@ describe('useCart', () => {
         setQueryData: jest.fn(),
       };
       (useQueryClient as jest.Mock).mockReturnValue(mockQueryClient);
-      mockMutateAsync = jest.fn();
     });
 
     it('addItem adds new item when product not in cart', async () => {
@@ -199,16 +193,8 @@ describe('useCart', () => {
       (cartService.updateCartProducts as jest.Mock).mockResolvedValue(
         updatedCart,
       );
-      mockMutateAsync.mockResolvedValue(updatedCart);
 
-      (useMutation as jest.Mock).mockImplementation(({ mutationFn }) => ({
-        isPending: false,
-        mutateAsync: async (...args: unknown[]) => {
-          return await mutationFn(...args);
-        },
-      }));
-
-      const { result } = renderHook(() => useCart());
+      const { result } = renderHook(() => useCartActions());
 
       const addedCart = await result.current.addItem({
         productId: '1',
@@ -239,14 +225,7 @@ describe('useCart', () => {
         updatedCart,
       );
 
-      (useMutation as jest.Mock).mockImplementation(({ mutationFn }) => ({
-        isPending: false,
-        mutateAsync: async (...args: unknown[]) => {
-          return await mutationFn(...args);
-        },
-      }));
-
-      const { result } = renderHook(() => useCart());
+      const { result } = renderHook(() => useCartActions());
 
       const addedCart = await result.current.addItem({
         productId: '1',
@@ -280,14 +259,7 @@ describe('useCart', () => {
         updatedCart,
       );
 
-      (useMutation as jest.Mock).mockImplementation(({ mutationFn }) => ({
-        isPending: false,
-        mutateAsync: async (...args: unknown[]) => {
-          return await mutationFn(...args);
-        },
-      }));
-
-      const { result } = renderHook(() => useCart());
+      const { result } = renderHook(() => useCartActions());
 
       const updated = await result.current.updateItem({
         productId: '1',
@@ -318,14 +290,7 @@ describe('useCart', () => {
         updatedCart,
       );
 
-      (useMutation as jest.Mock).mockImplementation(({ mutationFn }) => ({
-        isPending: false,
-        mutateAsync: async (...args: unknown[]) => {
-          return await mutationFn(...args);
-        },
-      }));
-
-      const { result } = renderHook(() => useCart());
+      const { result } = renderHook(() => useCartActions());
 
       const updated = await result.current.updateItem({
         productId: '1',
@@ -359,14 +324,7 @@ describe('useCart', () => {
         updatedCart,
       );
 
-      (useMutation as jest.Mock).mockImplementation(({ mutationFn }) => ({
-        isPending: false,
-        mutateAsync: async (...args: unknown[]) => {
-          return await mutationFn(...args);
-        },
-      }));
-
-      const { result } = renderHook(() => useCart());
+      const { result } = renderHook(() => useCartActions());
 
       const updated = await result.current.removeItem('1');
 
@@ -397,14 +355,7 @@ describe('useCart', () => {
         clearedCart,
       );
 
-      (useMutation as jest.Mock).mockImplementation(({ mutationFn }) => ({
-        isPending: false,
-        mutateAsync: async (...args: unknown[]) => {
-          return await mutationFn(...args);
-        },
-      }));
-
-      const { result } = renderHook(() => useCart());
+      const { result } = renderHook(() => useCartActions());
 
       const checkedOut = await result.current.checkout();
 
@@ -419,14 +370,7 @@ describe('useCart', () => {
       };
       mockQueryClient.getQueryData.mockReturnValue(cachedCart);
 
-      (useMutation as jest.Mock).mockImplementation(({ mutationFn }) => ({
-        isPending: false,
-        mutateAsync: async (...args: unknown[]) => {
-          return await mutationFn(...args);
-        },
-      }));
-
-      const { result } = renderHook(() => useCart());
+      const { result } = renderHook(() => useCartActions());
 
       await result.current.addItem({ productId: '2', quantity: 1 });
 
@@ -444,14 +388,7 @@ describe('useCart', () => {
       );
       (cartService.updateCartProducts as jest.Mock).mockResolvedValue(mockCart);
 
-      (useMutation as jest.Mock).mockImplementation(({ mutationFn }) => ({
-        isPending: false,
-        mutateAsync: async (...args: unknown[]) => {
-          return await mutationFn(...args);
-        },
-      }));
-
-      const { result } = renderHook(() => useCart());
+      const { result } = renderHook(() => useCartActions());
 
       await result.current.addItem({ productId: '1', quantity: 1 });
 

@@ -8,8 +8,8 @@ import {
   filterProductsBySearchQuery,
   getProductsByListType,
 } from '../products';
-import { PRODUCT_LIST_TYPES } from '@app/constants';
-import { CategorizedProducts } from '@app/hooks/useProduct';
+import { PRODUCT_LIST_TYPES, ProductListType } from '@app/constants';
+import { CategorizedProducts } from '@app/interfaces/product';
 
 describe('products helpers', () => {
   describe('buildProductImageSource', () => {

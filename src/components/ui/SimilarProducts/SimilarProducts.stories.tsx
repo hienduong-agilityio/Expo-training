@@ -46,24 +46,36 @@ type Story = StoryObj<typeof SimilarProducts>;
 
 export const Default: Story = {
   args: {
-    products: MOCK_PRODUCTS.slice(0, 4) as IProduct[],
+    products: MOCK_PRODUCTS.slice(0, 4) as unknown as IProduct[],
+    onViewSimilar: () => {},
+    onAddToCompare: () => {},
+    onProductPress: () => {},
   },
 };
 
 export const WithManyProducts: Story = {
   args: {
-    products: MOCK_PRODUCTS.slice(0, 8) as IProduct[],
+    products: MOCK_PRODUCTS.slice(0, 8) as unknown as IProduct[],
+    onViewSimilar: () => {},
+    onAddToCompare: () => {},
+    onProductPress: () => {},
   },
 };
 
 export const EmptyState: Story = {
   args: {
     products: [],
+    onViewSimilar: () => {},
+    onAddToCompare: () => {},
+    onProductPress: () => {},
   },
 };
 
 export const SingleProduct: Story = {
   args: {
-    products: MOCK_PRODUCTS.slice(0, 1) as IProduct[],
+    products: MOCK_PRODUCTS.slice(0, 1) as unknown as IProduct[],
+    onViewSimilar: () => {},
+    onAddToCompare: () => {},
+    onProductPress: () => {},
   },
 };

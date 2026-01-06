@@ -3,15 +3,28 @@ import { fireEvent, render, screen } from '@testing-library/react-native';
 // Components
 import { ProductDetails } from '@app/components/ui/ProductDetails';
 
+// Mocks
+import { MOCK_SIZES } from '@app/mocks/products';
+import { IProductDetailsProps, IProductSize } from '@app/interfaces/product';
+
 describe('ProductDetails', () => {
   const baseProps = {
+    id: '1',
     name: 'Test Product',
     price: 100,
     currency: 'USD' as const,
+    sizes: MOCK_SIZES,
+    features: [],
+    onShowMoreDetails: jest.fn(),
   };
 
   const renderComponent = (overrides = {}) => {
-    return render(<ProductDetails {...baseProps} {...overrides} />);
+    return render(
+      <ProductDetails
+        {...(baseProps as unknown as IProductDetailsProps)}
+        {...overrides}
+      />,
+    );
   };
 
   describe('Basic rendering', () => {
@@ -73,7 +86,14 @@ describe('ProductDetails', () => {
       expect(screen.getByText('$ 100.00')).toBeTruthy();
 
       rerender(
-        <ProductDetails {...baseProps} price={100} originalPrice={100} />,
+        <ProductDetails
+          {...(baseProps as unknown as IProductDetailsProps)}
+          price={100}
+          originalPrice={100}
+          sizes={MOCK_SIZES as unknown as IProductSize[]}
+          features={[]}
+          onShowMoreDetails={jest.fn()}
+        />,
       );
       expect(screen.getByText('$ 100.00')).toBeTruthy();
     });
@@ -88,10 +108,12 @@ describe('ProductDetails', () => {
 
       rerender(
         <ProductDetails
-          {...baseProps}
+          {...(baseProps as unknown as IProductDetailsProps)}
           price={80}
           originalPrice={100}
           discountPercent={undefined}
+          features={[]}
+          onShowMoreDetails={jest.fn()}
         />,
       );
       expect(screen.queryByText('% Off')).toBeNull();
@@ -114,7 +136,14 @@ describe('ProductDetails', () => {
       const { rerender } = renderComponent();
       expect(screen.queryByText('More')).toBeNull();
 
-      rerender(<ProductDetails {...baseProps} details="" />);
+      rerender(
+        <ProductDetails
+          {...(baseProps as unknown as IProductDetailsProps)}
+          details=""
+          features={[]}
+          onShowMoreDetails={jest.fn()}
+        />,
+      );
       expect(screen.queryByText('More')).toBeNull();
     });
   });

@@ -2,13 +2,14 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 // Components
 import { View, StyleSheet, ScrollView } from 'react-native';
-import { ProductCard } from '@app/components/ui/ProductCard';
+import ProductCard from '@app/components/ui/ProductCard';
 
 // Mocks
 import { MOCK_PRODUCTS, getMockProduct } from '@app/mocks/products';
 
 // Themes
 import { colors } from '@app/themes';
+import { IProductCardProps } from '@app/interfaces/ui';
 
 const meta: Meta<typeof ProductCard> = {
   title: 'UI/ProductCard',
@@ -27,9 +28,9 @@ const styles = StyleSheet.create({
 });
 
 export const Default: Story = {
-  args: getMockProduct('1')!,
+  args: getMockProduct('1') as unknown as IProductCardProps,
 
-  render: args => (
+  render: (args: IProductCardProps) => (
     <View style={styles.container}>
       <ProductCard {...args} />
     </View>
@@ -37,9 +38,9 @@ export const Default: Story = {
 };
 
 export const WithImageError: Story = {
-  args: getMockProduct('9')!,
+  args: getMockProduct('9') as unknown as IProductCardProps,
 
-  render: args => (
+  render: (args: IProductCardProps) => (
     <View style={styles.container}>
       <ProductCard {...args} />
     </View>
@@ -56,8 +57,8 @@ export const ProductGrid: Story = {
           {products.map(product => (
             <View key={product.id} style={styles.gridItem}>
               <ProductCard
-                {...product}
-                onPress={_id => {
+                {...(product as unknown as IProductCardProps)}
+                onPress={() => {
                   // Product pressed
                 }}
               />

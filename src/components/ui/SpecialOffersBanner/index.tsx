@@ -1,23 +1,24 @@
-import { View, Text, Image } from 'react-native';
+import { View, Text } from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 // Types
-import type { SPECIAL_OFFERS_BANNER } from '@app/constants/banner';
+import type { SpecialOffersBannerType } from '@app/constants/banner';
 
 // Styles
 import { styles } from './index.style';
 
 interface SpecialOffersBannerProps {
-  banner: typeof SPECIAL_OFFERS_BANNER;
+  banner: SpecialOffersBannerType;
 }
 
 export const SpecialOffersBanner = ({ banner }: SpecialOffersBannerProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.iconContainer}>
-        <Image
-          source={{ uri: banner.image }}
+        <FastImage
+          source={{ uri: banner.image, priority: FastImage.priority.normal }}
           style={styles.iconImage}
-          resizeMode="cover"
+          resizeMode={FastImage.resizeMode.cover}
         />
       </View>
       <View style={styles.content}>

@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react-native';
 
 // Components
-import { ProductCard } from '@app/components/ui/ProductCard';
+import { ProductCard } from '@app/components/ui';
 
 // Mocks
 import { getMockProduct } from '@app/mocks/products';

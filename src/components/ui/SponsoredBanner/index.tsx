@@ -1,10 +1,11 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 // Icons
 import { RightArrowIcon } from '@app/icons';
 
 // Types
-import type { SPONSORED_BANNER } from '@app/constants/banner';
+import type { SPONSORED_BANNER } from '@app/mocks/banners';
 
 // Styles
 import { styles } from './index.style';
@@ -18,7 +19,11 @@ export const SponsoredBanner = ({ banner, onPress }: ISponsoredBannerProps) => {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>Sponsored</Text>
-      <Image source={{ uri: banner.image }} style={styles.image} />
+      <FastImage
+        source={{ uri: banner.image, priority: FastImage.priority.normal }}
+        style={styles.image}
+        resizeMode={FastImage.resizeMode.cover}
+      />
       <TouchableOpacity
         activeOpacity={0.8}
         onPress={onPress}
@@ -29,4 +34,3 @@ export const SponsoredBanner = ({ banner, onPress }: ISponsoredBannerProps) => {
     </View>
   );
 };
-

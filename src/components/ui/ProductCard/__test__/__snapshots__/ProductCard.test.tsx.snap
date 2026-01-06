@@ -65,22 +65,41 @@ exports[`ProductCard Snapshots matches snapshot for different states: complete-p
       }
     }
   >
-    <Image
-      accessibilityLabel="Black Winter Jacket product image"
-      onError={[Function]}
-      resizeMode="cover"
-      source={
-        {
-          "uri": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop",
-        }
-      }
+    <View
       style={
-        {
-          "height": "100%",
-          "width": "100%",
-        }
+        [
+          {
+            "overflow": "hidden",
+          },
+          {
+            "height": "100%",
+            "width": "100%",
+          },
+        ]
       }
-    />
+    >
+      <FastImageView
+        accessibilityLabel="Black Winter Jacket product image"
+        defaultSource={null}
+        onFastImageError={[Function]}
+        resizeMode="cover"
+        source={
+          {
+            "priority": "normal",
+            "uri": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop",
+          }
+        }
+        style={
+          {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          }
+        }
+      />
+    </View>
   </View>
   <View
     style={
@@ -322,23 +341,43 @@ exports[`ProductCard Snapshots matches snapshot for different states: with-wishl
       }
     }
   >
-    <Image
-      accessibilityLabel="Black Winter Jacket product image"
-      onError={[Function]}
-      resizeMode="cover"
-      source={
-        {
-          "uri": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop",
-        }
-      }
-      style={
-        {
-          "height": "100%",
-          "width": "100%",
-        }
-      }
-    />
     <View
+      style={
+        [
+          {
+            "overflow": "hidden",
+          },
+          {
+            "height": "100%",
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <FastImageView
+        accessibilityLabel="Black Winter Jacket product image"
+        defaultSource={null}
+        onFastImageError={[Function]}
+        resizeMode="cover"
+        source={
+          {
+            "priority": "normal",
+            "uri": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop",
+          }
+        }
+        style={
+          {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          }
+        }
+      />
+    </View>
+    <View
+      accessibilityLabel="Remove from wishlist"
       accessibilityRole="button"
       accessibilityState={
         {

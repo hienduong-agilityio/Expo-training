@@ -12,7 +12,7 @@ Reactotron.setAsyncStorageHandler(AsyncStorage)
       ignoreUrls: /symbolicate/,
     },
     editor: false, // there are more options to editor
-    errors: { veto: stackFrame => false }, // or turn it off with false
+    errors: { veto: _stackFrame => false }, // or turn it off with false
     overlay: false, // just turning off overlay
   })
   .connect();

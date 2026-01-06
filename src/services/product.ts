@@ -1,8 +1,13 @@
+// Services
 import { apiRequest } from '@app/services/apiClient';
+
+// Constants
+import { PRODUCT_DEAL_SLUGS, PRODUCT_ENDPOINTS } from '@app/constants/product';
+import { HTTP_METHODS } from '@app/constants/api';
 
 // Types
 import type { IProductCardProps } from '@app/interfaces/ui';
-import type { ApiProduct } from '@app/interfaces/api';
+import type { ApiProduct, StrapiResponse } from '@app/interfaces/api';
 import type { IProduct } from '@app/interfaces/product';
 
 // Helpers
@@ -14,52 +19,41 @@ import {
   filterProductsBySearchQuery,
 } from '@app/helpers/products';
 
-// Constants
-import { PRODUCT_DEAL_SLUGS, PRODUCT_ENDPOINTS } from '@app/constants/product';
-import { HTTP_METHODS } from '@app/constants/api';
-
-const parseApiListResponse = <T>(
-  response: T[] | { data: T[] } | null | undefined,
-): T[] => {
-  if (!response) return [];
-
-  if (Array.isArray(response)) {
-    return response;
-  }
+/**
+ * Generic response parser for Strapi-style data structures
+ */
+const parseData = <T>(response: T | { data: T }): T => {
+  if (!response) return null as T;
 
   if (typeof response === 'object' && 'data' in response) {
-    return Array.isArray(response.data) ? response.data : [];
-  }
-
-  return [];
-};
-
-const parseApiSingleResponse = <T>(
-  response: T | { data: T } | null | undefined,
-): T | null => {
-  if (!response) return null;
-
-  if (typeof response === 'object' && 'data' in response) {
-    return response.data ?? null;
+    const data = (response as { data: T }).data;
+    return data ?? (null as T);
   }
 
   return response as T;
 };
 
+/**
+ * Fetches all products from the API
+ */
 const fetchAllProducts = async (): Promise<ApiProduct[]> => {
-  const response = await apiRequest<ApiProduct[] | { data: ApiProduct[] }>(
-    PRODUCT_ENDPOINTS.PRODUCTS,
-    {
-      method: HTTP_METHODS.GET,
-      query: { populate: '*' },
-    },
-  );
+  const response = await apiRequest<
+    ApiProduct[] | StrapiResponse<ApiProduct[]>
+  >(PRODUCT_ENDPOINTS.PRODUCTS, {
+    method: HTTP_METHODS.GET,
+    query: { populate: '*', pagination: { pageSize: 1000 } },
+  });
 
-  return parseApiListResponse(response);
+  const parsed = parseData<ApiProduct[]>(response);
+
+  return Array.isArray(parsed) ? parsed : [];
 };
 
+/**
+ * Fetches a single product by ID
+ */
 const fetchProductById = async (id: string): Promise<ApiProduct> => {
-  const response = await apiRequest<ApiProduct | { data: ApiProduct }>(
+  const response = await apiRequest<ApiProduct | StrapiResponse<ApiProduct>>(
     `${PRODUCT_ENDPOINTS.PRODUCTS}/${id}`,
     {
       method: HTTP_METHODS.GET,
@@ -67,7 +61,7 @@ const fetchProductById = async (id: string): Promise<ApiProduct> => {
     },
   );
 
-  const product = parseApiSingleResponse(response);
+  const product = parseData<ApiProduct>(response);
 
   if (!product) {
     throw new Error('Product not found');
@@ -76,95 +70,84 @@ const fetchProductById = async (id: string): Promise<ApiProduct> => {
   return product;
 };
 
-const transformToCardProps = (products: ApiProduct[]): IProductCardProps[] => {
-  return products.map(mapApiProductToCard);
-};
-
-export const getCategorizedProducts = async (): Promise<{
-  deals: IProductCardProps[];
-  trending: IProductCardProps[];
-  newArrivals: IProductCardProps[];
-}> => {
+/**
+ * Fetches products grouped by categories (deals, trending, new arrivals)
+ */
+const getCategorizedProducts = async () => {
   const allProducts = await fetchAllProducts();
 
   return {
-    deals: transformToCardProps(
-      filterProductsByDealSlug(allProducts, PRODUCT_DEAL_SLUGS.DEAL_OF_DAY),
-    ),
-    trending: transformToCardProps(filterTrendingProducts(allProducts)),
-    newArrivals: transformToCardProps(
-      filterProductsByDealSlug(allProducts, PRODUCT_DEAL_SLUGS.NEW_ARRIVALS),
-    ),
+    deals: filterProductsByDealSlug(
+      allProducts,
+      PRODUCT_DEAL_SLUGS.DEAL_OF_DAY,
+    ).map(mapApiProductToCard),
+    trending: filterTrendingProducts(allProducts).map(mapApiProductToCard),
+    newArrivals: filterProductsByDealSlug(
+      allProducts,
+      PRODUCT_DEAL_SLUGS.NEW_ARRIVALS,
+    ).map(mapApiProductToCard),
   };
 };
 
-export const getProductById = async (id: string): Promise<IProduct> => {
+/**
+ * Fetches a single product by ID and transforms it to IProduct format
+ */
+const getProductById = async (id: string): Promise<IProduct> => {
   const product = await fetchProductById(id);
-
   return mapApiProductToCard(product);
 };
 
-export const getProductsByCategory = async (
+/**
+ * Fetches products filtered by category slug
+ */
+const getProductsByCategory = async (
   categorySlug?: string,
 ): Promise<IProductCardProps[]> => {
   const allProducts = await fetchAllProducts();
-
-  if (allProducts.length === 0) {
-    return [];
-  }
+  if (!Array.isArray(allProducts) || allProducts.length === 0) return [];
 
   const normalizedSlug = categorySlug?.trim();
+  if (!normalizedSlug) return allProducts.map(mapApiProductToCard);
 
-  if (!normalizedSlug) {
-    return transformToCardProps(allProducts);
-  }
-
-  const filtered = filterProductsByCategorySlug(allProducts, normalizedSlug);
-
-  return transformToCardProps(filtered);
+  return filterProductsByCategorySlug(allProducts, normalizedSlug).map(
+    mapApiProductToCard,
+  );
 };
 
-export const searchProducts = async (
+/**
+ * Searches products by query and optional category
+ */
+const searchProducts = async (
   searchQuery: string,
   categorySlug?: string,
 ): Promise<IProductCardProps[]> => {
   const normalizedQuery = searchQuery?.trim();
-
-  if (!normalizedQuery) {
-    return [];
-  }
+  if (!normalizedQuery) return [];
 
   const allProducts = await fetchAllProducts();
+  if (allProducts.length === 0) return [];
 
-  if (allProducts.length === 0) {
-    return [];
-  }
-
-  let filteredProducts = filterProductsBySearchQuery(
-    allProducts,
-    normalizedQuery,
-  );
+  let filtered = filterProductsBySearchQuery(allProducts, normalizedQuery);
 
   if (categorySlug?.trim()) {
-    filteredProducts = filterProductsByCategorySlug(
-      filteredProducts,
-      categorySlug.trim(),
-    );
+    filtered = filterProductsByCategorySlug(filtered, categorySlug.trim());
   }
 
-  return transformToCardProps(filteredProducts);
+  return filtered.map(mapApiProductToCard);
 };
 
-export const getAllProducts = async (): Promise<IProductCardProps[]> => {
-  const allProducts = await fetchAllProducts();
-
-  return transformToCardProps(allProducts);
+/**
+ * Fetches all products transformed to card props
+ */
+const getAllProducts = async (): Promise<IProductCardProps[]> => {
+  return (await fetchAllProducts()).map(mapApiProductToCard);
 };
 
 export const productsService = {
   getCategorizedProducts,
   getProductById,
+  fetchAllProducts,
   getProductsByCategory,
   searchProducts,
   getAllProducts,
-};
+} as const;

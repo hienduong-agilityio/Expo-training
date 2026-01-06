@@ -13,7 +13,11 @@ export const ToastContainer = () => {
   useEffect(() => {
     if (!visible) return;
 
-    setTimeout(() => hideToast(), duration);
+    const timer = setTimeout(() => {
+      hideToast();
+    }, duration);
+
+    return () => clearTimeout(timer);
   }, [visible, duration, hideToast]);
 
   return (
