@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
 // Components
@@ -29,16 +30,17 @@ const NavigationContent = ({ isFirstLaunch }: NavigationContentProps) => {
   const accessToken = authStore(state => state.accessToken);
   const isAuth = Boolean(accessToken);
 
+  const initialRouteName = useMemo(
+    () => (isFirstLaunch ? PUBLIC_SCREENS.ONBOARDING : PUBLIC_SCREENS.LOGIN),
+    [isFirstLaunch],
+  );
+
   return (
     <NavigationContainer linking={linking}>
       {isAuth ? (
         <PrivateStackNavigation />
       ) : (
-        <PublicStackNavigation
-          initialRouteName={
-            isFirstLaunch ? PUBLIC_SCREENS.ONBOARDING : PUBLIC_SCREENS.LOGIN
-          }
-        />
+        <PublicStackNavigation initialRouteName={initialRouteName} />
       )}
     </NavigationContainer>
   );

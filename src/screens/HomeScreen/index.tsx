@@ -107,6 +107,14 @@ export const HomeScreen = ({ navigation }: HomeScreenProps) => {
     }
   }, [searchValue, navigation]);
 
+  const handleViewAllDeals = useCallback(() => {
+    navigateToProductList(PRODUCT_LIST_TYPES.DEAL_OF_DAY);
+  }, [navigateToProductList]);
+
+  const handleViewAllTrending = useCallback(() => {
+    navigateToProductList(PRODUCT_LIST_TYPES.TRENDING);
+  }, [navigateToProductList]);
+
   return (
     <View style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -136,9 +144,7 @@ export const HomeScreen = ({ navigation }: HomeScreenProps) => {
           actionLabel={MESSAGES.VIEW_ALL}
           Icon={ClockIcon}
           label={DEAL_INFO.dealOfDay.countdown?.text}
-          onPressViewAll={() =>
-            navigateToProductList(PRODUCT_LIST_TYPES.DEAL_OF_DAY)
-          }
+          onPressViewAll={handleViewAllDeals}
         />
 
         <SpecialOffersBanner banner={SPECIAL_OFFERS_BANNER} />
@@ -153,9 +159,7 @@ export const HomeScreen = ({ navigation }: HomeScreenProps) => {
           actionLabel={MESSAGES.VIEW_ALL}
           Icon={CalendarIcon}
           label={DEAL_INFO.trending.countdown?.text}
-          onPressViewAll={() =>
-            navigateToProductList(PRODUCT_LIST_TYPES.TRENDING)
-          }
+          onPressViewAll={handleViewAllTrending}
         />
 
         <SummerSaleBanner

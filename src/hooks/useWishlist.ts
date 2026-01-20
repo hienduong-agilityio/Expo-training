@@ -51,7 +51,7 @@ export const useWishlist = () => {
   );
 
   const wishlistProductIds = useMemo(
-    () => wishlistItems.map(item => item.productId),
+    () => wishlistItems.map((item: { productId: string }) => item.productId),
     [wishlistItems],
   );
 
@@ -95,7 +95,7 @@ export const useWishlistActions = () => {
     products.map(convertRawApiItemToWishlistItem);
 
   const addItemMutation = useMutation<IWishlist, WishlistHookError, string>({
-    mutationFn: async productId => {
+    mutationFn: async (productId: string) => {
       const baseWishlist = await ensureWishlist();
       const current = convertProducts(baseWishlist.products ?? []);
 
@@ -108,13 +108,13 @@ export const useWishlistActions = () => {
         { productId },
       ]);
     },
-    onSuccess: updated => {
+    onSuccess: (updated: IWishlist) => {
       queryClient.setQueryData(queryKey, updated);
     },
   });
 
   const removeItemMutation = useMutation<IWishlist, WishlistHookError, string>({
-    mutationFn: async productId => {
+    mutationFn: async (productId: string) => {
       const baseWishlist = await ensureWishlist();
       const current = convertProducts(baseWishlist.products ?? []);
 
@@ -123,7 +123,7 @@ export const useWishlistActions = () => {
         current.filter(item => item.productId !== productId),
       );
     },
-    onSuccess: updated => {
+    onSuccess: (updated: IWishlist) => {
       queryClient.setQueryData(queryKey, updated);
     },
   });
