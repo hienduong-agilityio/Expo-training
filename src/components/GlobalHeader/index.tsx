@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { View, TouchableOpacity, StatusBar } from 'react-native';
 import type { ICustomStyles } from '@app/interfaces/style';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -19,7 +20,7 @@ export interface IGlobalHeaderProps {
   customStyle?: ICustomStyles;
 }
 
-export const GlobalHeader = ({
+const GlobalHeaderComponent = ({
   showMenu = true,
   showProfile = true,
   onMenuPress,
@@ -69,3 +70,17 @@ export const GlobalHeader = ({
     </View>
   );
 };
+
+// Ignore function handlers to prevent unnecessary re-renders
+const arePropsEqual = (
+  prevProps: IGlobalHeaderProps,
+  nextProps: IGlobalHeaderProps,
+) => {
+  return (
+    prevProps.showMenu === nextProps.showMenu &&
+    prevProps.showProfile === nextProps.showProfile &&
+    prevProps.customStyle === nextProps.customStyle
+  );
+};
+
+export const GlobalHeader = memo(GlobalHeaderComponent, arePropsEqual);

@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { View, RefreshControl } from 'react-native';
 
 // Hooks
@@ -48,8 +48,9 @@ export const WishlistScreen = ({ navigation }: Props) => {
 
   const { removeItem, isMutating } = useWishlistActions();
 
-  const productIds = wishlistItems.map(
-    (item: IWishlistItem) => item.productId ?? '',
+  const productIds = useMemo(
+    () => wishlistItems.map((item: IWishlistItem) => item.productId ?? ''),
+    [wishlistItems],
   );
 
   const { products, isLoading: isLoadingProducts } =
@@ -91,6 +92,20 @@ export const WishlistScreen = ({ navigation }: Props) => {
     [navigation],
   );
 
+  const wishlistProducts = useMemo(
+    () =>
+      products.map((product: IProduct) => ({
+        ...product,
+        isWishlisted: true,
+      })),
+    [products],
+  );
+
+  const refreshing = useMemo(
+    () => isLoading || isMutating,
+    [isLoading, isMutating],
+  );
+
   if (isLoading || isLoadingProducts) {
     return (
       <View style={styles.container}>
@@ -109,13 +124,6 @@ export const WishlistScreen = ({ navigation }: Props) => {
       </View>
     );
   }
-
-  const refreshing = isLoading || isMutating;
-
-  const wishlistProducts = products.map((product: IProduct) => ({
-    ...product,
-    isWishlisted: true,
-  }));
 
   return (
     <View style={styles.container}>

@@ -42,7 +42,10 @@ export const CartScreen = ({ navigation }: CartScreenProps) => {
 
   const { updateItem, removeItem, isMutating } = useCartActions();
 
-  const productIds = cartItems.map((item: ICartItem) => item.productId);
+  const productIds = useMemo(
+    () => cartItems.map((item: ICartItem) => item.productId),
+    [cartItems],
+  );
 
   const { productMap, isLoading: isLoadingProducts } =
     useProductsByIds(productIds);
@@ -107,13 +110,18 @@ export const CartScreen = ({ navigation }: CartScreenProps) => {
   );
 
   const totalPrice = useMemo(() => {
-    return cartItems.reduce((sum, item) => {
+    return cartItems.reduce((sum: number, item: ICartItem) => {
       const product = productMap.get(item.productId);
       const price = product?.price ?? 0;
 
       return sum + price * item.quantity;
     }, 0);
   }, [cartItems, productMap]);
+
+  const refreshing = useMemo(
+    () => isLoading || isMutating,
+    [isLoading, isMutating],
+  );
 
   const handleCheckout = useCallback(() => {
     navigation.navigate(PRIVATE_SCREENS.CHECKOUT);
@@ -140,8 +148,6 @@ export const CartScreen = ({ navigation }: CartScreenProps) => {
       </View>
     );
   }
-
-  const refreshing = isLoading || isMutating;
 
   return (
     <ScrollView

@@ -55,7 +55,10 @@ export const CheckoutScreen = ({ navigation }: CheckoutScreenProps) => {
     PAYMENT_PROVIDER.VISA,
   );
 
-  const productIds = cartItems.map((item: ICartItem) => item.productId);
+  const productIds = useMemo(
+    () => cartItems.map((item: ICartItem) => item.productId),
+    [cartItems],
+  );
 
   const { productMap, isLoading: isLoadingProducts } =
     useProductsByIds(productIds);
@@ -64,7 +67,7 @@ export const CheckoutScreen = ({ navigation }: CheckoutScreenProps) => {
 
   const totalPrice = useMemo(
     () =>
-      cartItems.reduce((sum, item) => {
+      cartItems.reduce((sum: number, item: ICartItem) => {
         const product = productMap.get(item.productId);
         const price = product?.price ?? 0;
 
@@ -73,7 +76,7 @@ export const CheckoutScreen = ({ navigation }: CheckoutScreenProps) => {
     [cartItems, productMap],
   );
 
-  const orderTotal = totalPrice + SHIPPING_PRICE;
+  const orderTotal = useMemo(() => totalPrice + SHIPPING_PRICE, [totalPrice]);
 
   const handlePaymentSelect = useCallback((id: PaymentProvider) => {
     setSelectedPayment(id);

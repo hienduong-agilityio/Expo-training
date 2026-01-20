@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useCallback } from 'react';
 import { View } from 'react-native';
 
 // Types
@@ -37,22 +37,41 @@ const MOCK_SIZES: IProductSize[] = [
 export const ProductDetailScreen = ({ route }: ProductDetailScreenProps) => {
   const productId = route.params?.productId;
 
-  // 1. Data Fetching
   const { product, isLoading } = useProductById(productId);
 
-  // 2. Domain Hooks (Split chuẩn, dễ tái sử dụng)
   const { handleGoBack, navigateToDetail } = useAppNavigation();
   const { handleAddToCart, handleBuyNow } = useProductCart();
   const { showDetails, showSimilar, showCompare } = useProductAlerts();
 
-  // 3. Local Logic & Memoization
   const productSizes = useMemo(() => (product ? MOCK_SIZES : []), [product]);
   const { selectedSize, handleSizeSelect } = useProductSizeSelection(
     productId,
     productSizes,
   );
 
-  // 4. UI Rendering
+  const productImages = useMemo(
+    () => (product?.imageSource ? [product.imageSource] : []),
+    [product],
+  );
+
+  const handleAddToCartPress = useCallback(() => {
+    if (product) {
+      handleAddToCart(product, selectedSize);
+    }
+  }, [product, selectedSize, handleAddToCart]);
+
+  const handleBuyNowPress = useCallback(() => {
+    if (product) {
+      handleBuyNow(product);
+    }
+  }, [product, handleBuyNow]);
+
+  const handleShowMoreDetails = useCallback(() => {
+    if (product) {
+      showDetails(product);
+    }
+  }, [product, showDetails]);
+
   if (isLoading) {
     return <LoadingState message={PRODUCT_MESSAGES.LOADING_DETAILS} />;
   }
@@ -73,13 +92,13 @@ export const ProductDetailScreen = ({ route }: ProductDetailScreenProps) => {
     <View style={styles.container}>
       <ProductDetailContent
         product={product}
-        productImages={product?.imageSource ? [product.imageSource] : []}
+        productImages={productImages}
         productSizes={productSizes}
         selectedSize={selectedSize}
         onSizeSelect={handleSizeSelect}
-        onAddToCart={() => handleAddToCart(product, selectedSize)}
-        onBuyNow={() => handleBuyNow(product)}
-        onShowMoreDetails={() => showDetails(product)}
+        onAddToCart={handleAddToCartPress}
+        onBuyNow={handleBuyNowPress}
+        onShowMoreDetails={handleShowMoreDetails}
         onViewSimilar={showSimilar}
         onAddToCompare={showCompare}
         onSimilarProductPress={navigateToDetail}
