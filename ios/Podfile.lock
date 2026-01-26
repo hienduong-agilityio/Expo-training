@@ -2676,18 +2676,11 @@ PODS:
     - React-Core
     - SDWebImage (~> 5.11.1)
     - SDWebImageWebPCoder (~> 0.8.4)
-  - RNFBApp (23.8.2):
-    - Firebase/CoreOnly (= 12.8.0)
-    - React-Core
-  - RNFBMessaging (23.8.2):
-    - Firebase/Messaging (= 12.8.0)
-    - FirebaseCoreExtension
-    - React-Core
-    - RNFBApp
-  - RNKeychain (10.0.0):
+  - RNFBApp (23.8.3):
     - boost
     - DoubleConversion
     - fast_float
+    - Firebase/CoreOnly (= 12.8.0)
     - fmt
     - glog
     - hermes-engine
@@ -2710,6 +2703,37 @@ PODS:
     - ReactCodegen
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
+    - SocketRocket
+    - Yoga
+  - RNFBMessaging (23.8.3):
+    - boost
+    - DoubleConversion
+    - fast_float
+    - Firebase/Messaging (= 12.8.0)
+    - FirebaseCoreExtension
+    - fmt
+    - glog
+    - hermes-engine
+    - RCT-Folly
+    - RCT-Folly/Fabric
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-renderercss
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - RNFBApp
     - SocketRocket
     - Yoga
   - RNNotifee (9.1.8):
@@ -2745,7 +2769,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - RNScreens (4.19.0):
+  - RNScreens (4.20.0):
     - boost
     - DoubleConversion
     - fast_float
@@ -2772,10 +2796,10 @@ PODS:
     - ReactCodegen
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - RNScreens/common (= 4.19.0)
+    - RNScreens/common (= 4.20.0)
     - SocketRocket
     - Yoga
-  - RNScreens/common (4.19.0):
+  - RNScreens/common (4.20.0):
     - boost
     - DoubleConversion
     - fast_float
@@ -2957,7 +2981,6 @@ DEPENDENCIES:
   - RNFastImage (from `../node_modules/react-native-fast-image`)
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBMessaging (from `../node_modules/@react-native-firebase/messaging`)"
-  - RNKeychain (from `../node_modules/react-native-keychain`)
   - "RNNotifee (from `../node_modules/@notifee/react-native`)"
   - RNPermissions (from `../node_modules/react-native-permissions`)
   - RNScreens (from `../node_modules/react-native-screens`)
@@ -3154,8 +3177,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/app"
   RNFBMessaging:
     :path: "../node_modules/@react-native-firebase/messaging"
-  RNKeychain:
-    :path: "../node_modules/react-native-keychain"
   RNNotifee:
     :path: "../node_modules/@notifee/react-native"
   RNPermissions:
@@ -3262,12 +3283,11 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: fd44f4b03e007e642e98df6726737bc66e9ba609
   RNDeviceInfo: 36d7f232bfe7c9b5c494cb7793230424ed32c388
   RNFastImage: 462a183c4b0b6b26fdfd639e1ed6ba37536c3b87
-  RNFBApp: 7104f721191eec915eb669285a552d46e9567f35
-  RNFBMessaging: 91df9cd73442c4906b379851d3d13f6132f623d2
-  RNKeychain: 76d042fc1dfba47f3945920bc82e0bce9ad1ff55
+  RNFBApp: ce5d5119eb41391b0300340dcb332ba4548c0aa1
+  RNFBMessaging: 3143f20f4bdfeb273f8a7162dd72887e6043200d
   RNNotifee: 5e3b271e8ea7456a36eec994085543c9adca9168
   RNPermissions: c57762bf3a4b0ebd252708a73b0935391614a194
-  RNScreens: d6413aeb1878cdafd3c721e2c5218faf5d5d3b13
+  RNScreens: 0811c38c9b11745e0bdb52157421c87a79e3d8b1
   RNSVG: b5da7cb4bb60503fd841bf6eddae1d171e515d79
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: 908b83b6adda48effe7667cd2b7f78c897e5111d

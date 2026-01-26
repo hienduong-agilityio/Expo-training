@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useMemo, useCallback, useState } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
@@ -11,9 +11,6 @@ import { PaymentMethods } from '@app/components/ui/PaymentMethods';
 import { LoadingState } from '@app/components/ui/LoadingState';
 import { Button } from '@app/components/common/Button';
 
-// Stores
-import { toastStore } from '@app/stores/toastStore';
-
 // Types
 import type { PrivateStackParamList } from '@app/interfaces/navigation';
 import type { PaymentProvider } from '@app/constants';
@@ -22,8 +19,6 @@ import type { ICartItem } from '@app/interfaces/cart';
 // Constants
 import {
   PRIVATE_SCREENS,
-  STATUS,
-  TOAST_MESSAGES,
   LOADING_MESSAGES,
   CART_MESSAGES,
   CHECKOUT_MESSAGES,
@@ -43,13 +38,10 @@ type CheckoutScreenProps = NativeStackScreenProps<
 >;
 
 const SHIPPING_PRICE = 30;
-const TOAST_DELAY_MS = 100;
 
 export const CheckoutScreen = ({ navigation }: CheckoutScreenProps) => {
   const { cart, cartItems, isLoading } = useCart();
   const { checkout } = useCartActions();
-
-  const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const [selectedPayment, setSelectedPayment] = useState<PaymentProvider>(
     PAYMENT_PROVIDER.VISA,
@@ -63,47 +55,29 @@ export const CheckoutScreen = ({ navigation }: CheckoutScreenProps) => {
   const { productMap, isLoading: isLoadingProducts } =
     useProductsByIds(productIds);
 
-  const showToast = toastStore(state => state.showToast);
+  const totalPrice = useMemo(() => {
+    return cartItems.reduce((sum: number, item: ICartItem) => {
+      const product = productMap.get(item.productId);
+      const price = product?.price ?? 0;
 
-  const totalPrice = useMemo(
-    () =>
-      cartItems.reduce((sum: number, item: ICartItem) => {
-        const product = productMap.get(item.productId);
-        const price = product?.price ?? 0;
+      return sum + price * item.quantity;
+    }, 0);
+  }, [cartItems, productMap]);
 
-        return sum + price * item.quantity;
-      }, 0),
-    [cartItems, productMap],
-  );
+  const orderTotal = totalPrice + SHIPPING_PRICE;
 
-  const orderTotal = useMemo(() => totalPrice + SHIPPING_PRICE, [totalPrice]);
-
-  const handlePaymentSelect = useCallback((id: PaymentProvider) => {
+  const handlePaymentSelect = (id: PaymentProvider) => {
     setSelectedPayment(id);
-  }, []);
+  };
 
-  const handleGoBack = useCallback(() => {
+  const handleGoBack = () => {
     navigation.goBack();
-  }, [navigation]);
+  };
 
   const handleCheckout = useCallback(async () => {
-    try {
-      await checkout();
-      navigation.goBack();
-
-      toastTimerRef.current = setTimeout(() => {
-        showToast({
-          type: STATUS.SUCCESS,
-          message: TOAST_MESSAGES.PAYMENT_SUCCESS,
-        });
-      }, TOAST_DELAY_MS);
-    } catch {
-      showToast({
-        type: STATUS.ERROR,
-        message: TOAST_MESSAGES.PAYMENT_FAILED,
-      });
-    }
-  }, [checkout, navigation, showToast]);
+    await checkout();
+    navigation.goBack();
+  }, [checkout, navigation]);
 
   if (isLoading || isLoadingProducts) {
     return (

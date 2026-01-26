@@ -5,12 +5,14 @@ import { typography } from '@app/themes';
 
 export const styles = StyleSheet.create({
   base: {
-    borderRadius: 10,
+    borderRadius: 6,
     alignItems: 'center',
+    height: 66,
     justifyContent: 'center',
   },
   label: {
-    fontWeight: typography.fontWeights.medium,
+    fontSize: 29,
+    fontWeight: typography.fontWeights.semiBold,
   },
   fullWidth: { alignSelf: 'stretch' },
   inactive: { opacity: 0.7 },

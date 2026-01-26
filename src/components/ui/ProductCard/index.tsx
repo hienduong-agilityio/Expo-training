@@ -1,4 +1,4 @@
-import { memo, useCallback, useMemo } from 'react';
+import { memo } from 'react';
 
 // Components
 import { View, Text, Pressable } from 'react-native';
@@ -18,6 +18,9 @@ import { colors } from '@app/themes';
 // Styles
 import { styles } from './index.style';
 
+// Hooks
+import { useWishlist } from '@app/hooks/useWishlist';
+
 const ProductCard = ({
   id,
   name,
@@ -29,28 +32,18 @@ const ProductCard = ({
   reviewCount,
   imageSource,
   style,
-  isWishlisted = false,
   onPress,
   onWishlistToggle,
 }: IProductCardProps) => {
-  // Handle press event
-  const handlePress = useCallback(() => {
-    onPress?.(id);
-  }, [onPress, id]);
+  const { isInWishlist } = useWishlist();
 
-  // Handle wishlist toggle event
-  const handleWishlistToggle = useCallback(() => {
-    onWishlistToggle?.(id);
-  }, [onWishlistToggle, id]);
+  const isWishlisted = isInWishlist(id);
 
-  // Memoize computed values
-  const displayDescription = useMemo(() => {
-    return description || `${brand || ''} ${name}`.trim();
-  }, [description, brand, name]);
+  const handlePress = () => onPress?.(id);
+  const handleWishlistToggle = () => onWishlistToggle?.(id, isWishlisted);
 
-  const accessibilityLabel = useMemo(() => {
-    return `Product: ${name}, Price: ${price} ${currency}, Rating: ${rating} stars`;
-  }, [name, price, currency, rating]);
+  const displayDescription = description || `${brand || ''} ${name}`.trim();
+  const accessibilityLabel = `Product: ${name}, Price: ${price} ${currency}, Rating: ${rating} stars`;
 
   return (
     <Pressable

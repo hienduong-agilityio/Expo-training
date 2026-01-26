@@ -5,14 +5,16 @@ import { colors, spacing, typography } from '@app/themes';
 
 export const styles = StyleSheet.create({
   containerSpacing: {
-    marginBottom: 20,
+    marginBottom: 10,
   },
   inputContainer: {
     borderRadius: 10,
+    height: 64,
     flexDirection: 'row',
     alignItems: 'center',
+    gap: 1,
     borderWidth: 1,
-    padding: 1,
+    borderColor: colors.black,
   },
   inputFocused: {
     borderWidth: 2,
@@ -23,11 +25,12 @@ export const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    fontWeight: typography.fontWeights.regular,
-    paddingVertical: spacing['2.5'],
+    fontWeight: typography.fontWeights.medium,
+    paddingVertical: spacing['2'],
     textAlignVertical: 'center',
     includeFontPadding: false,
-    color: colors.text,
+    lineHeight: 20,
+    letterSpacing: 0.2,
   },
   label: {
     fontWeight: typography.fontWeights.medium,
@@ -43,7 +46,7 @@ export const styles = StyleSheet.create({
   },
   leftIcon: {
     paddingLeft: spacing['3'],
-    paddingRight: spacing['2'],
+    paddingRight: spacing['1'],
     justifyContent: 'center',
     alignItems: 'center',
   },

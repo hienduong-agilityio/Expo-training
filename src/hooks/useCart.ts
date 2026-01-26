@@ -1,5 +1,6 @@
 // React
-import { useMemo } from 'react';
+import { authStore } from '@app/stores/authStore';
+import { toastStore } from '@app/stores/toastStore';
 
 // React Query
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
@@ -7,11 +8,9 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 // Services
 import { cartService } from '@app/services/cart';
 
-// Stores
-import { authStore } from '@app/stores/authStore';
-
 // Constants
 import { QUERY_KEYS } from '@app/constants/queryKeys';
+import { STATUS, TOAST_MESSAGES } from '@app/constants';
 
 // Types
 import type { ApiError, RawApiItem } from '@app/interfaces/api';
@@ -19,6 +18,7 @@ import type { Cart, ICartItem } from '@app/interfaces/cart';
 
 // Helpers
 import { convertRawApiItemToCartItem } from '@app/helpers/converters';
+import { getApiErrorMessage } from '@app/helpers/errorMessage';
 
 export type CartHookError = ApiError | Error | unknown;
 
@@ -38,17 +38,9 @@ export const useCart = () => {
       userId ? cartService.getActiveCartForUser(userId) : Promise.resolve(null),
   });
 
-  const cartItems = useMemo(
-    () =>
-      (query.data?.products ?? []).map((item: RawApiItem) =>
-        convertRawApiItemToCartItem(item),
-      ),
-    [query.data?.products],
-  );
-
   return {
     cart: query.data ?? null,
-    cartItems,
+    cartItems: (query.data?.products ?? []).map(convertRawApiItemToCartItem),
     isLoading: query.isLoading,
     isFetching: query.isFetching,
     error: query.error,
@@ -62,103 +54,193 @@ export const useCart = () => {
 export const useCartActions = () => {
   const queryClient = useQueryClient();
   const userId = authStore(state => state.user?.documentId);
+  const showToast = toastStore(state => state.showToast);
   const queryKey = [QUERY_KEYS.CART, userId];
 
-  const ensureCart = async (): Promise<Cart> => {
-    if (!userId) throw new Error('User not authenticated');
+  const mutateCart = async (updateFn: (items: ICartItem[]) => ICartItem[]) => {
+    const base = await cartService.ensureActiveCartForUser(userId!);
+    const current = (base.products ?? []).map(convertRawApiItemToCartItem);
+    const payload = updateFn(current).map(p => ({
+      productId: String(p.productId),
+      product: String(p.productId),
+      quantity: p.quantity,
+    }));
 
-    const cached = queryClient.getQueryData<Cart | null>(queryKey);
-    if (cached) return cached;
-
-    const created = await cartService.ensureActiveCartForUser(userId);
-    queryClient.setQueryData(queryKey, created);
-    return created;
+    return cartService.updateCartProducts(base.documentId, payload);
   };
 
-  const convertProducts = (products: RawApiItem[]): ICartItem[] =>
-    products.map(convertRawApiItemToCartItem);
+  const addItem = useMutation({
+    mutationKey: [QUERY_KEYS.CART_ADD_ITEM, userId],
+    onMutate: async ({ productId, quantity = 1 }: ICartItem) => {
+      await queryClient.cancelQueries({ queryKey });
 
-  const addItemMutation = useMutation<Cart, CartHookError, ICartItem>({
-    mutationFn: async ({ productId, quantity = 1 }) => {
-      const baseCart = await ensureCart();
-      const current = convertProducts(baseCart.products ?? []);
+      const previousCart = queryClient.getQueryData<Cart>(queryKey);
 
-      const existingIndex = current.findIndex(
-        item => item.productId === productId,
-      );
-
-      const nextProducts =
-        existingIndex === -1
-          ? [...current, { productId, quantity }]
-          : current.map((item, idx) =>
-              idx === existingIndex
-                ? { ...item, quantity: item.quantity + quantity }
-                : item,
-            );
-
-      return cartService.updateCartProducts(baseCart.documentId, nextProducts);
-    },
-    onSuccess: updated => {
-      queryClient.setQueryData(queryKey, updated);
-    },
-  });
-
-  const removeItemMutation = useMutation<Cart, CartHookError, string>({
-    mutationFn: async productId => {
-      const baseCart = await ensureCart();
-      const current = convertProducts(baseCart.products ?? []);
-
-      return cartService.updateCartProducts(
-        baseCart.documentId,
-        current.filter(item => item.productId !== productId),
-      );
-    },
-    onSuccess: updated => {
-      queryClient.setQueryData(queryKey, updated);
-    },
-  });
-
-  const updateItemMutation = useMutation<Cart, CartHookError, ICartItem>({
-    mutationFn: async ({ productId, quantity }) => {
-      if (quantity <= 0) {
-        return removeItemMutation.mutateAsync(productId);
+      if (previousCart) {
+        const current = (previousCart.products ?? []) as RawApiItem[];
+        const id = String(productId);
+        const idx = current.findIndex(
+          i => String(i.productId || i.product) === id,
+        );
+        const next =
+          idx === -1
+            ? [...current, { productId: id, product: id, quantity }]
+            : current.map((item, i) =>
+                i === idx
+                  ? {
+                      ...item,
+                      quantity: (item.quantity ?? 0) + quantity,
+                    }
+                  : item,
+              );
+        queryClient.setQueryData(queryKey, {
+          ...previousCart,
+          products: next,
+        });
       }
 
-      const baseCart = await ensureCart();
-      const current = convertProducts(baseCart.products ?? []);
-
-      return cartService.updateCartProducts(
-        baseCart.documentId,
-        current.map(item =>
-          item.productId === productId ? { ...item, quantity } : item,
-        ),
-      );
+      return { previousCart };
     },
-    onSuccess: updated => {
-      queryClient.setQueryData(queryKey, updated);
+    mutationFn: (vars: ICartItem) =>
+      mutateCart(items => {
+        const id = String(vars.productId);
+        const idx = items.findIndex(i => String(i.productId) === id);
+
+        return idx === -1
+          ? [...items, { productId: id, quantity: vars.quantity }]
+          : items.map((item, i) =>
+              i === idx
+                ? { ...item, quantity: item.quantity + vars.quantity }
+                : item,
+            );
+      }),
+    onSuccess: data => {
+      queryClient.setQueryData(queryKey, data);
+    },
+    onError: (error, _variables, context) => {
+      if (context?.previousCart) {
+        queryClient.setQueryData(queryKey, context.previousCart);
+      }
+      showToast({ type: STATUS.ERROR, message: getApiErrorMessage(error) });
+    },
+    onSettled: () => queryClient.invalidateQueries({ queryKey }),
+  });
+
+  const removeItem = useMutation({
+    mutationKey: [QUERY_KEYS.CART_REMOVE_ITEM, userId],
+    onMutate: async (id: string) => {
+      await queryClient.cancelQueries({ queryKey });
+
+      const previousCart = queryClient.getQueryData<Cart>(queryKey);
+
+      if (previousCart) {
+        const current = (previousCart.products ?? []) as RawApiItem[];
+        queryClient.setQueryData(queryKey, {
+          ...previousCart,
+          products: current.filter(
+            i => String(i.productId || i.product) !== String(id),
+          ),
+        });
+      }
+
+      return { previousCart };
+    },
+    mutationFn: (id: string) =>
+      mutateCart(items =>
+        items.filter(i => String(i.productId) !== String(id)),
+      ),
+    onSuccess: data => {
+      queryClient.setQueryData(queryKey, data);
+      showToast({
+        type: STATUS.SUCCESS,
+        message: TOAST_MESSAGES.REMOVED_FROM_CART,
+      });
+    },
+    onError: (error, _variables, context) => {
+      if (context?.previousCart) {
+        queryClient.setQueryData(queryKey, context.previousCart);
+      }
+      showToast({ type: STATUS.ERROR, message: getApiErrorMessage(error) });
     },
   });
 
-  const checkoutMutation = useMutation<Cart, CartHookError, void>({
-    mutationFn: async () => {
-      const baseCart = await ensureCart();
-      return cartService.clearCartProducts(baseCart.documentId);
-    },
+  const updateItem = useMutation({
+    mutationKey: [QUERY_KEYS.CART_UPDATE_ITEM, userId],
+    onMutate: async ({ productId, quantity }: ICartItem) => {
+      await queryClient.cancelQueries({ queryKey });
 
-    onSuccess: updated => {
-      queryClient.setQueryData(queryKey, updated);
+      const previousCart = queryClient.getQueryData<Cart>(queryKey);
+
+      if (previousCart) {
+        const current = (previousCart.products ?? []) as RawApiItem[];
+        const id = String(productId);
+        const next =
+          quantity <= 0
+            ? current.filter(i => String(i.productId || i.product) !== id)
+            : current.map(i =>
+                String(i.productId || i.product) === id
+                  ? { ...i, quantity }
+                  : i,
+              );
+        queryClient.setQueryData(queryKey, {
+          ...previousCart,
+          products: next,
+        });
+      }
+
+      return { previousCart };
     },
+    mutationFn: (vars: ICartItem) =>
+      mutateCart(items => {
+        const id = String(vars.productId);
+        return vars.quantity <= 0
+          ? items.filter(i => String(i.productId) !== String(id))
+          : items.map(i =>
+              String(i.productId) === id
+                ? { ...i, quantity: vars.quantity }
+                : i,
+            );
+      }),
+    onSuccess: data => {
+      queryClient.setQueryData(queryKey, data);
+    },
+    onError: (error, _variables, context) => {
+      if (context?.previousCart) {
+        queryClient.setQueryData(queryKey, context.previousCart);
+      }
+      showToast({ type: STATUS.ERROR, message: getApiErrorMessage(error) });
+    },
+  });
+
+  const checkout = useMutation({
+    mutationKey: [QUERY_KEYS.CART_CHECKOUT, userId],
+    mutationFn: async () =>
+      cartService.clearCartProducts(
+        (await cartService.ensureActiveCartForUser(userId!)).documentId,
+      ),
+    onSuccess: data => {
+      queryClient.setQueryData(queryKey, data);
+      showToast({
+        type: STATUS.SUCCESS,
+        message: TOAST_MESSAGES.PAYMENT_SUCCESS,
+      });
+    },
+    onError: error =>
+      showToast({
+        type: STATUS.ERROR,
+        message: getApiErrorMessage(error, TOAST_MESSAGES.PAYMENT_FAILED),
+      }),
   });
 
   return {
-    addItem: addItemMutation.mutateAsync,
-    updateItem: updateItemMutation.mutateAsync,
-    removeItem: removeItemMutation.mutateAsync,
-    checkout: checkoutMutation.mutateAsync,
+    addItem: addItem.mutateAsync,
+    updateItem: updateItem.mutateAsync,
+    removeItem: removeItem.mutateAsync,
+    checkout: checkout.mutateAsync,
     isMutating:
-      addItemMutation.isPending ||
-      updateItemMutation.isPending ||
-      removeItemMutation.isPending ||
-      checkoutMutation.isPending,
+      addItem.isPending ||
+      updateItem.isPending ||
+      removeItem.isPending ||
+      checkout.isPending,
   };
 };

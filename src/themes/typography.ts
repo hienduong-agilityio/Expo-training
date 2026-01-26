@@ -17,6 +17,8 @@ export const typography = {
     '4xl': 24,
     '5xl': 30,
     '6xl': 34,
+    '7xl': 36,
+    '8xl': 44,
   },
   fontWeights: {
     thin: '100', // Montserrat-Thin

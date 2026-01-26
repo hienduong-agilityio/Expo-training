@@ -1,14 +1,13 @@
-import { useCallback } from 'react';
 import {
   View,
   type ListRenderItemInfo,
   type FlatListProps,
   FlatList,
+  ActivityIndicator,
 } from 'react-native';
 
 // Components
 import { ProductCard } from '@app/components/ui';
-import { ActivityIndicator } from 'react-native';
 
 // Types
 import type { IProductCardProps } from '@app/interfaces';
@@ -16,6 +15,7 @@ import type { ICustomStyles } from '@app/interfaces/style';
 
 // Styles
 import { styles } from './index.style';
+import { useCallback } from 'react';
 
 type FlatListModifiedProps = Omit<
   FlatListProps<IProductCardProps>,
@@ -29,6 +29,7 @@ export interface IHorizontalProductListProps extends FlatListModifiedProps {
   contentPadding?: number;
   snap?: boolean;
   onItemPress?: (id: string) => void;
+  onWishlistToggle?: (id: string, isWishlisted: boolean) => void;
   keyExtractor?: (item: IProductCardProps, index: number) => string;
   customStyle?: ICustomStyles;
   onEndReached?: () => void;
@@ -43,6 +44,7 @@ export const HorizontalProductList = ({
   contentPadding = 0,
   snap = false,
   onItemPress = () => {},
+  onWishlistToggle,
   keyExtractor = (item: IProductCardProps, index: number) =>
     item.id ?? String(item.name ?? index),
   contentContainerStyle = {},
@@ -52,34 +54,29 @@ export const HorizontalProductList = ({
   hasMore = true,
   ...rest
 }: IHorizontalProductListProps) => {
-  const renderItem = useCallback(
-    ({ item }: ListRenderItemInfo<IProductCardProps>) => (
-      <View
-        style={[
-          styles.itemContainer,
-          customStyle?.itemContainer,
-          { width: itemWidth },
-        ]}>
-        <ProductCard
-          {...item}
-          onPress={onItemPress}
-          style={styles.productCard}
-        />
-      </View>
-    ),
-    [itemWidth, onItemPress, customStyle?.itemContainer],
+  const renderItem = ({ item }: ListRenderItemInfo<IProductCardProps>) => (
+    <View
+      style={[
+        styles.itemContainer,
+        customStyle?.itemContainer,
+        { width: itemWidth },
+      ]}>
+      <ProductCard
+        {...item}
+        onPress={onItemPress}
+        onWishlistToggle={onWishlistToggle}
+        style={styles.productCard}
+      />
+    </View>
   );
 
   const Separator = useCallback(() => <View style={{ width: gap }} />, [gap]);
 
-  const getItemLayout = useCallback(
-    (_: unknown, index: number) => ({
-      length: itemWidth,
-      offset: index * (itemWidth + gap),
-      index,
-    }),
-    [itemWidth, gap],
-  );
+  const getItemLayout = (_: unknown, index: number) => ({
+    length: itemWidth,
+    offset: index * (itemWidth + gap),
+    index,
+  });
 
   const snapProps = snap
     ? {
@@ -90,7 +87,7 @@ export const HorizontalProductList = ({
       }
     : {};
 
-  const renderFooter = useCallback(() => {
+  const renderFooter = () => {
     if (!isLoadingMore) return null;
 
     return (
@@ -98,13 +95,13 @@ export const HorizontalProductList = ({
         <ActivityIndicator size="small" />
       </View>
     );
-  }, [isLoadingMore, itemWidth]);
+  };
 
-  const handleEndReached = useCallback(() => {
+  const handleEndReached = () => {
     if (!isLoadingMore && hasMore && onEndReached) {
       onEndReached();
     }
-  }, [isLoadingMore, hasMore, onEndReached]);
+  };
 
   return (
     <FlatList

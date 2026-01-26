@@ -97,7 +97,7 @@ export interface IProductCardProps extends IProduct {
   style?: ViewStyle;
   isWishlisted?: boolean;
   onPress?: (id: string) => void;
-  onWishlistToggle?: (id: string) => void;
+  onWishlistToggle?: (id: string, isWishlisted: boolean) => void;
 }
 
 export interface IOnboardingItem {

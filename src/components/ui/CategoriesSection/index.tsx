@@ -1,4 +1,3 @@
-import { useCallback } from 'react';
 import { View, Text } from 'react-native';
 
 // Components
@@ -47,14 +46,11 @@ export const CategoriesSection = ({
     onApply: handleApplyFilter,
   });
 
-  const handleCategoryItemPress = useCallback(
-    (categoryId: string) => {
-      const category = categories.find(cat => cat.id === categoryId);
+  const handleCategoryItemPress = (categoryId: string) => {
+    const category = categories.find(cat => cat.id === categoryId);
 
-      onCategoryPress(categoryId, category?.name || '');
-    },
-    [categories, onCategoryPress],
-  );
+    onCategoryPress(categoryId, category?.name || '');
+  };
 
   return (
     <View style={styles.section}>

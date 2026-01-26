@@ -6,8 +6,10 @@ module.exports = {
     'plugin:react/jsx-runtime',
     'prettier',
   ],
-  plugins: ['prettier', 'react-hooks'],
+  plugins: ['prettier', 'react-hooks', 'eslint-plugin-react-compiler'],
   rules: {
+    'react-compiler/react-compiler': 'error',
+
     // Disable the non-existent rule
     '@react-native/no-deep-imports': 'off',
 

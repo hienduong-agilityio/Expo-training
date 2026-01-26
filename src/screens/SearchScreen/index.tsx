@@ -1,4 +1,4 @@
-import { useCallback, useState, useMemo, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { View, Text } from 'react-native';
 
 // Components
@@ -63,10 +63,7 @@ export const SearchScreen = ({ navigation, route }: SearchScreenProps) => {
   }, [searchQuery, categoryId, categoryName]);
 
   const debouncedSearchQuery = useDebounce(localSearchQuery, 500);
-  const activeSearchQuery = useMemo(
-    () => debouncedSearchQuery?.trim() || null,
-    [debouncedSearchQuery],
-  );
+  const activeSearchQuery = debouncedSearchQuery?.trim() || null;
 
   const hasSearchQuery = Boolean(activeSearchQuery);
   const categorySlug = activeCategoryId?.trim();
@@ -89,9 +86,9 @@ export const SearchScreen = ({ navigation, route }: SearchScreenProps) => {
     isRefetching,
   } = activeResult;
 
-  const handleRefresh = useCallback(() => {
+  const handleRefresh = () => {
     refetch();
-  }, [refetch]);
+  };
 
   // Only show full loading state on first load or when manually searching/filtering
   // This prevents the "blank screen" effect during background refetches
@@ -100,13 +97,14 @@ export const SearchScreen = ({ navigation, route }: SearchScreenProps) => {
 
   const loading = isLoading || isFetching;
   const displaySearchQuery = localSearchQuery?.trim();
-  const handleApplyFilter = useCallback(
-    (selectedCategoryId: string | null, selectedCategoryName: string) => {
-      setActiveCategoryId(selectedCategoryId);
-      setActiveCategoryName(selectedCategoryName);
-    },
-    [],
-  );
+
+  const handleApplyFilter = (
+    selectedCategoryId: string | null,
+    selectedCategoryName: string,
+  ) => {
+    setActiveCategoryId(selectedCategoryId);
+    setActiveCategoryName(selectedCategoryName);
+  };
 
   const {
     isVisible,
@@ -121,18 +119,15 @@ export const SearchScreen = ({ navigation, route }: SearchScreenProps) => {
     onApply: handleApplyFilter,
   });
 
-  const handleSearchChange = useCallback((text: string) => {
+  const handleSearchChange = (text: string) => {
     setLocalSearchQuery(text);
-  }, []);
+  };
 
-  const handleItemPress = useCallback(
-    (id: string) => {
-      navigation.navigate(PRIVATE_SCREENS.PRODUCT_DETAIL, {
-        productId: id,
-      });
-    },
-    [navigation],
-  );
+  const handleItemPress = (id: string) => {
+    navigation.navigate(PRIVATE_SCREENS.PRODUCT_DETAIL, {
+      productId: id,
+    });
+  };
 
   const searchTitle = displaySearchQuery
     ? `${SEARCH_SCREEN_MESSAGES.SEARCH_PREFIX}"${displaySearchQuery}"`

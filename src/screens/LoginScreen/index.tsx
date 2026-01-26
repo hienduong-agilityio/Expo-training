@@ -15,12 +15,8 @@ import { UserIcon, PassIcon } from '@app/icons';
 import {
   AUTH_FORM_MESSAGES,
   BUTTON_LABELS,
-  ERROR_MESSAGES,
   LINK_MESSAGES,
-  POSITION,
   PUBLIC_SCREENS,
-  STATUS,
-  TOAST_MESSAGES,
 } from '@app/constants';
 import { AUTH_FIELDS } from '@app/constants/auth';
 
@@ -31,11 +27,7 @@ import type { PublicStackScreenProps } from '@app/interfaces';
 import { useForm } from '@app/hooks/useForm';
 import { useAuthActions } from '@app/hooks/useAuthActions';
 
-// Stores
-import { toastStore } from '@app/stores/toastStore';
-
 // Helpers
-import { getApiErrorMessage } from '@app/helpers/errorMessage';
 import { validateLogin } from '@app/helpers/validation';
 
 // Schemas
@@ -59,8 +51,6 @@ export const LoginScreen = ({ navigation }: LoginScreenProps) => {
 
   const { login, isSubmitting } = useAuthActions();
 
-  const showToast = toastStore(state => state.showToast);
-
   const handleSubmit = useCallback(async () => {
     if (isSubmitting) return;
 
@@ -74,24 +64,9 @@ export const LoginScreen = ({ navigation }: LoginScreenProps) => {
       return;
     }
 
-    try {
-      await login(validationResult.payload);
-
-      showToast({
-        type: STATUS.SUCCESS,
-        message: TOAST_MESSAGES.LOGIN_SUCCESS,
-        position: POSITION.TOP,
-      });
-
-      resetForm();
-    } catch (error) {
-      showToast({
-        type: STATUS.ERROR,
-        message: getApiErrorMessage(error, ERROR_MESSAGES.REQUEST_FAILED),
-        position: POSITION.TOP,
-      });
-    }
-  }, [isSubmitting, values, setFieldError, login, showToast, resetForm]);
+    await login(validationResult.payload);
+    resetForm();
+  }, [isSubmitting, values, setFieldError, login, resetForm]);
 
   return (
     <SafeAreaView style={authStyles.screen}>
@@ -100,7 +75,7 @@ export const LoginScreen = ({ navigation }: LoginScreenProps) => {
           placeholder={AUTH_FORM_MESSAGES.USERNAME_OR_EMAIL}
           value={values.identifier}
           onChangeText={text => handleChange(AUTH_FIELDS.IDENTIFIER, text)}
-          leftIcon={<UserIcon width={20} height={20} />}
+          leftIcon={<UserIcon width={28} height={28} />}
           keyboardType="email-address"
           autoCapitalize="none"
           autoCorrect={false}
@@ -112,7 +87,7 @@ export const LoginScreen = ({ navigation }: LoginScreenProps) => {
           placeholder={AUTH_FORM_MESSAGES.PASSWORD}
           value={values.password}
           onChangeText={text => handleChange(AUTH_FIELDS.PASSWORD, text)}
-          leftIcon={<PassIcon width={20} height={20} />}
+          leftIcon={<PassIcon width={24} height={24} />}
           isPassword
           error={fieldErrors.password}
           editable={!isSubmitting}
@@ -120,7 +95,6 @@ export const LoginScreen = ({ navigation }: LoginScreenProps) => {
 
         <TouchableOpacity
           style={authStyles.linkContainer}
-          // Todo: Refactor to arrow function
           disabled={isSubmitting}
           onPress={() =>
             Alert.alert(
@@ -144,7 +118,7 @@ export const LoginScreen = ({ navigation }: LoginScreenProps) => {
         />
 
         <AuthFooter
-          helperText={AUTH_FORM_MESSAGES.DONT_HAVE_AN_ACCOUNT}
+          helperText={AUTH_FORM_MESSAGES.CREATE_AN_ACCOUNT}
           helperActionLabel={BUTTON_LABELS.REGISTER}
           disabled={isSubmitting}
           // Todo: Convert string to constant

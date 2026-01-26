@@ -8,7 +8,7 @@ export const HIT_SLOP = {
 export const BUTTON_LABELS = {
   LOGIN: 'Login',
   LOGGING_IN: 'Logging in...',
-  REGISTER: 'Register',
+  REGISTER: 'Sign Up',
   REGISTERING: 'Registering...',
   CREATING_ACCOUNT: 'Creating account',
   FORGOT_PASSWORD: 'Forgot Password?',

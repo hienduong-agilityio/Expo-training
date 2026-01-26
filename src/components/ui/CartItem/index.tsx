@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react';
+import { memo } from 'react';
 
 // Components
 import { View, Text } from 'react-native';
@@ -33,17 +33,9 @@ export const CartItem = memo(function CartItem({
   onDecrease,
   onRemove,
 }: ICartItemProps) {
-  const handleIncrease = useCallback(() => {
-    onIncrease(id, quantity);
-  }, [id, quantity, onIncrease]);
-
-  const handleDecrease = useCallback(() => {
-    onDecrease(id, quantity);
-  }, [id, quantity, onDecrease]);
-
-  const handleRemove = useCallback(() => {
-    onRemove(id);
-  }, [id, onRemove]);
+  const handleIncrease = () => onIncrease(id, quantity);
+  const handleDecrease = () => onDecrease(id, quantity);
+  const handleRemove = () => onRemove(id);
 
   return (
     <View style={styles.card} accessibilityLabel="Cart item">

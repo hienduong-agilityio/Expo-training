@@ -14,12 +14,8 @@ import { UserIcon, PassIcon } from '@app/icons';
 import {
   AUTH_FORM_MESSAGES,
   BUTTON_LABELS,
-  ERROR_MESSAGES,
   NAVIGATION_DELAYS,
-  POSITION,
   PUBLIC_SCREENS,
-  STATUS,
-  TOAST_MESSAGES,
 } from '@app/constants';
 import { AUTH_FIELDS } from '@app/constants/auth';
 
@@ -33,11 +29,7 @@ import { authStyles } from '@app/styles';
 import { useForm } from '@app/hooks/useForm';
 import { useAuthActions } from '@app/hooks/useAuthActions';
 
-// Stores
-import { toastStore } from '@app/stores/toastStore';
-
 // Helpers
-import { getApiErrorMessage } from '@app/helpers/errorMessage';
 import { validateRegister } from '@app/helpers/validation';
 
 // Schemas
@@ -60,8 +52,6 @@ export const RegisterScreen = ({ navigation }: RegisterScreenProps) => {
     });
 
   const { register, isSubmitting } = useAuthActions();
-
-  const showToast = toastStore(state => state.showToast);
 
   const navigateToLogin = useCallback(
     () => navigation.navigate(PUBLIC_SCREENS.LOGIN),
@@ -89,34 +79,19 @@ export const RegisterScreen = ({ navigation }: RegisterScreenProps) => {
       return;
     }
 
-    try {
-      await register(validationResult.payload);
+    await register(validationResult.payload);
 
-      showToast({
-        type: STATUS.SUCCESS,
-        message: TOAST_MESSAGES.REGISTER_SUCCESS,
-        position: POSITION.TOP,
-      });
+    resetForm();
 
-      resetForm();
-
-      navigationTimerRef.current = setTimeout(
-        navigateToLogin,
-        NAVIGATION_DELAYS.AFTER_REGISTER,
-      );
-    } catch (error) {
-      showToast({
-        type: STATUS.ERROR,
-        message: getApiErrorMessage(error, ERROR_MESSAGES.REQUEST_FAILED),
-        position: POSITION.TOP,
-      });
-    }
+    navigationTimerRef.current = setTimeout(
+      navigateToLogin,
+      NAVIGATION_DELAYS.AFTER_REGISTER,
+    );
   }, [
     isSubmitting,
     values,
     setFieldError,
     register,
-    showToast,
     resetForm,
     navigateToLogin,
   ]);
@@ -173,7 +148,7 @@ export const RegisterScreen = ({ navigation }: RegisterScreenProps) => {
         />
 
         <AuthFooter
-          helperText={AUTH_FORM_MESSAGES.DONT_HAVE_AN_ACCOUNT}
+          helperText={AUTH_FORM_MESSAGES.CREATE_AN_ACCOUNT}
           helperActionLabel={BUTTON_LABELS.LOGIN}
           onHelperActionPress={navigateToLogin}
         />

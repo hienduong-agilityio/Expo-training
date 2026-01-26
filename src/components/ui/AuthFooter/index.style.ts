@@ -4,6 +4,9 @@ import { StyleSheet } from 'react-native';
 import { colors, spacing, typography } from '@app/themes';
 
 export const styles = StyleSheet.create({
+  footerContainer: {
+    marginTop: spacing[4],
+  },
   agreementContainer: {
     marginTop: -spacing['5'],
     marginBottom: spacing['5'],
@@ -19,6 +22,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: spacing[2],
   },
   navigationText: {
     fontSize: typography.fontSizes['2xl'],
@@ -33,10 +37,11 @@ export const styles = StyleSheet.create({
   },
   divider: {
     alignItems: 'center',
-    marginVertical: spacing['7.5'],
+    marginTop: spacing[12],
+    marginBottom: spacing[7],
   },
   dividerLabel: {
-    fontSize: typography.fontSizes['2xl'],
+    fontSize: typography.fontSizes.xl,
     color: colors.textMuted,
     marginHorizontal: spacing['5'],
     fontWeight: typography.fontWeights.medium,

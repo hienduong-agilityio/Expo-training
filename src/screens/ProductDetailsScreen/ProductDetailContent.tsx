@@ -59,10 +59,7 @@ export const ProductDetailContent = memo(function ProductDetailContent({
     [product, productSizes, onShowMoreDetails],
   );
 
-  const similarProducts = useMemo(
-    () => MOCK_PRODUCTS as unknown as IProduct[],
-    [],
-  );
+  const similarProducts = MOCK_PRODUCTS as unknown as IProduct[];
 
   return (
     <ScrollView

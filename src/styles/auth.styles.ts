@@ -8,6 +8,7 @@ export const authStyles = StyleSheet.create({
   screen: {
     flex: 1,
     backgroundColor: colors.white,
+    paddingHorizontal: 22,
   },
   scrollContent: {
     flexGrow: 1,
@@ -40,7 +41,7 @@ export const authStyles = StyleSheet.create({
   // Link styles
   linkContainer: {
     alignSelf: 'flex-end',
-    marginTop: -30,
+    marginTop: -20,
     marginBottom: 30,
   },
   linkText: {

@@ -26,9 +26,9 @@ export const AuthFooter = ({
   disabled = false,
 }: AuthFooterProps) => {
   return (
-    <>
+    <View style={styles.footerContainer}>
       <View style={styles.divider}>
-        <Text style={styles.dividerLabel}>OR continue with</Text>
+        <Text style={styles.dividerLabel}>- OR continue with -</Text>
       </View>
       <SocialAuthButtons onSelect={onSocialSelect} disabled={disabled} />
 
@@ -38,6 +38,6 @@ export const AuthFooter = ({
           <Text style={styles.navigationLink}>{helperActionLabel}</Text>
         </TouchableOpacity>
       </View>
-    </>
+    </View>
   );
 };

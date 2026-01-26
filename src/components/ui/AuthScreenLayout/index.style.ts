@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 // Themes
-import { colors, spacing, typography } from '@app/themes';
+import { colors, fontFaces, spacing, typography } from '@app/themes';
 
 export const styles = StyleSheet.create({
   screen: {
@@ -11,18 +11,19 @@ export const styles = StyleSheet.create({
   scrollContent: {
     flexGrow: 1,
     paddingHorizontal: spacing[4],
-    marginTop: spacing[10],
+    marginTop: spacing[4],
     paddingBottom: spacing['22.5'],
   },
   header: {
     marginBottom: spacing[10],
   },
   title: {
-    fontSize: typography.fontSizes['6xl'],
-    fontWeight: typography.fontWeights.bold,
+    fontFamily: fontFaces.montserrat.extraBold,
+    fontSize: typography.fontSizes['8xl'],
+    fontWeight: typography.fontWeights.extraBold,
     color: colors.text,
   },
   form: {
-    gap: spacing[5],
+    gap: spacing[6],
   },
 });

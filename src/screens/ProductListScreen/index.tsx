@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useLayoutEffect } from 'react';
+import { useLayoutEffect, useMemo } from 'react';
 import { View, ActivityIndicator, Text } from 'react-native';
 
 // Types
@@ -40,16 +40,14 @@ export const ProductListScreen = ({
     });
   }, [navigation, title]);
 
-  const isCategorized = useMemo(() => {
-    return (
-      [
-        PRODUCT_LIST_TYPES.TRENDING,
-        PRODUCT_LIST_TYPES.DEALS,
-        PRODUCT_LIST_TYPES.DEAL_OF_DAY,
-        PRODUCT_LIST_TYPES.NEW_ARRIVALS,
-      ] as ProductListType[]
-    ).includes(productListType);
-  }, [productListType]);
+  const isCategorized = (
+    [
+      PRODUCT_LIST_TYPES.TRENDING,
+      PRODUCT_LIST_TYPES.DEALS,
+      PRODUCT_LIST_TYPES.DEAL_OF_DAY,
+      PRODUCT_LIST_TYPES.NEW_ARRIVALS,
+    ] as ProductListType[]
+  ).includes(productListType);
 
   const {
     data: categorizedData,
@@ -68,61 +66,33 @@ export const ProductListScreen = ({
     refetch: refetchInfinite,
   } = useInfiniteProducts(10, { enabled: !isCategorized });
 
-  const isLoading = useMemo(
-    () => (isCategorized ? isCategorizedLoading : isInfiniteLoading),
-    [isCategorized, isCategorizedLoading, isInfiniteLoading],
-  );
-
-  const error = useMemo(
-    () => (isCategorized ? categorizedError : infiniteError),
-    [isCategorized, categorizedError, infiniteError],
-  );
+  const isLoading = isCategorized ? isCategorizedLoading : isInfiniteLoading;
+  const error = isCategorized ? categorizedError : infiniteError;
 
   const products = useMemo(() => {
-    if (isCategorized) {
-      return getProductsByListType(productListType, categorizedData);
-    }
-
-    return (
-      infiniteData?.pages.flatMap((page: { data: IProduct[] }) => page.data) ??
-      []
-    );
+    return isCategorized
+      ? getProductsByListType(productListType, categorizedData)
+      : infiniteData?.pages.flatMap(
+          (page: { data: IProduct[] }) => page.data,
+        ) ?? [];
   }, [isCategorized, productListType, categorizedData, infiniteData]);
 
-  const onEndReached = useMemo(
-    () => (isCategorized ? undefined : fetchNextPage),
-    [isCategorized, fetchNextPage],
-  );
+  const onEndReached = isCategorized ? undefined : fetchNextPage;
+  const isLoadingMore = isCategorized ? false : isFetchingNextPage;
+  const hasMore = isCategorized ? false : hasNextPage;
+  const refreshing = isLoading && products.length > 0;
 
-  const isLoadingMore = useMemo(
-    () => (isCategorized ? false : isFetchingNextPage),
-    [isCategorized, isFetchingNextPage],
-  );
+  const handleItemPress = (id: string) => {
+    navigation.navigate(PRIVATE_SCREENS.PRODUCT_DETAIL, { productId: id });
+  };
 
-  const hasMore = useMemo(
-    () => (isCategorized ? false : hasNextPage),
-    [isCategorized, hasNextPage],
-  );
-
-  const refreshing = useMemo(
-    () => isLoading && products.length > 0,
-    [isLoading, products.length],
-  );
-
-  const handleItemPress = useCallback(
-    (id: string) => {
-      navigation.navigate(PRIVATE_SCREENS.PRODUCT_DETAIL, { productId: id });
-    },
-    [navigation],
-  );
-
-  const handleRefresh = useCallback(() => {
+  const handleRefresh = () => {
     if (isCategorized) {
       refetchCategorized();
     } else {
       refetchInfinite();
     }
-  }, [isCategorized, refetchCategorized, refetchInfinite]);
+  };
 
   if (isLoading && !products.length) {
     return (

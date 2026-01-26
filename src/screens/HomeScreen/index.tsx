@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { View, ScrollView } from 'react-native';
 
 // Components
@@ -39,6 +39,7 @@ import type { PrivateTabScreenProps } from '@app/interfaces/navigation';
 
 // Hooks
 import { useCategorizedProducts } from '@app/hooks/useProduct';
+import { useWishlistActions } from '@app/hooks/useWishlist';
 
 // Styles
 import { styles } from './index.style';
@@ -46,6 +47,7 @@ import { styles } from './index.style';
 type HomeScreenProps = PrivateTabScreenProps<typeof PRIVATE_SCREENS.HOME>;
 
 export const HomeScreen = ({ navigation }: HomeScreenProps) => {
+  const { addItem, removeItem } = useWishlistActions();
   const {
     data: categorizedData,
     isLoading,
@@ -63,40 +65,31 @@ export const HomeScreen = ({ navigation }: HomeScreenProps) => {
 
   const loading = isLoading || isFetching;
 
-  const navigateToProductList = useCallback(
-    (listType: ProductListType) => {
-      navigation.navigate(PRIVATE_SCREENS.PRODUCT_LIST, {
-        type: listType,
-        title: PRODUCT_LIST_TITLES[listType],
-      });
-    },
-    [navigation],
-  );
+  const navigateToProductList = (listType: ProductListType) => {
+    navigation.navigate(PRIVATE_SCREENS.PRODUCT_LIST, {
+      type: listType,
+      title: PRODUCT_LIST_TITLES[listType],
+    });
+  };
 
-  const handleProductPress = useCallback(
-    (id: string) => {
-      navigation.navigate(PRIVATE_SCREENS.PRODUCT_DETAIL, {
-        productId: id,
-      });
-    },
-    [navigation],
-  );
+  const handleProductPress = (id: string) => {
+    navigation.navigate(PRIVATE_SCREENS.PRODUCT_DETAIL, {
+      productId: id,
+    });
+  };
 
-  const handleViewAllNewArrivals = useCallback(() => {
+  const handleViewAllNewArrivals = () => {
     navigateToProductList(PRODUCT_LIST_TYPES.NEW_ARRIVALS);
-  }, [navigateToProductList]);
+  };
 
-  const handleCategoryPress = useCallback(
-    (categoryId: string, categoryName: string) => {
-      navigation.navigate(PRIVATE_SCREENS.SEARCH, {
-        categoryId,
-        categoryName,
-      });
-    },
-    [navigation],
-  );
+  const handleCategoryPress = (categoryId: string, categoryName: string) => {
+    navigation.navigate(PRIVATE_SCREENS.SEARCH, {
+      categoryId,
+      categoryName,
+    });
+  };
 
-  const handleSearchSubmit = useCallback(() => {
+  const handleSearchSubmit = () => {
     const trimmedQuery = searchValue?.trim();
 
     if (trimmedQuery) {
@@ -105,15 +98,26 @@ export const HomeScreen = ({ navigation }: HomeScreenProps) => {
       });
       setSearchValue('');
     }
-  }, [searchValue, navigation]);
+  };
 
-  const handleViewAllDeals = useCallback(() => {
+  const handleWishlistToggle = async (
+    productId: string,
+    isWishlisted: boolean,
+  ) => {
+    if (isWishlisted) {
+      await removeItem(productId);
+    } else {
+      await addItem(productId);
+    }
+  };
+
+  const handleViewAllDeals = () => {
     navigateToProductList(PRODUCT_LIST_TYPES.DEAL_OF_DAY);
-  }, [navigateToProductList]);
+  };
 
-  const handleViewAllTrending = useCallback(() => {
+  const handleViewAllTrending = () => {
     navigateToProductList(PRODUCT_LIST_TYPES.TRENDING);
-  }, [navigateToProductList]);
+  };
 
   return (
     <View style={styles.container}>
@@ -140,6 +144,7 @@ export const HomeScreen = ({ navigation }: HomeScreenProps) => {
           loading={loading}
           error={error}
           onItemPress={handleProductPress}
+          onWishlistToggle={handleWishlistToggle}
           headerStyle="deal"
           actionLabel={MESSAGES.VIEW_ALL}
           Icon={ClockIcon}
@@ -155,6 +160,7 @@ export const HomeScreen = ({ navigation }: HomeScreenProps) => {
           loading={loading}
           error={error}
           onItemPress={handleProductPress}
+          onWishlistToggle={handleWishlistToggle}
           headerStyle="trending"
           actionLabel={MESSAGES.VIEW_ALL}
           Icon={CalendarIcon}

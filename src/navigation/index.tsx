@@ -22,6 +22,9 @@ import { useFirstLaunch } from '@app/hooks/useFirstLaunch';
 import { useStoreHydration } from '@app/hooks/useStoreHydration';
 import { useFirebaseMessaging } from '@app/hooks/useFirebaseMessaging';
 
+// Config
+import { setupNavigationTracking } from '@app/config/performance';
+
 interface NavigationContentProps {
   isFirstLaunch: boolean;
 }
@@ -30,13 +33,17 @@ const NavigationContent = ({ isFirstLaunch }: NavigationContentProps) => {
   const accessToken = authStore(state => state.accessToken);
   const isAuth = Boolean(accessToken);
 
-  const initialRouteName = useMemo(
-    () => (isFirstLaunch ? PUBLIC_SCREENS.ONBOARDING : PUBLIC_SCREENS.LOGIN),
-    [isFirstLaunch],
-  );
+  const initialRouteName = isFirstLaunch
+    ? PUBLIC_SCREENS.ONBOARDING
+    : PUBLIC_SCREENS.LOGIN;
+
+  const navigationTracking = useMemo(() => setupNavigationTracking(), []);
 
   return (
-    <NavigationContainer linking={linking}>
+    <NavigationContainer
+      linking={linking}
+      onReady={navigationTracking.onReady}
+      onStateChange={navigationTracking.onStateChange}>
       {isAuth ? (
         <PrivateStackNavigation />
       ) : (

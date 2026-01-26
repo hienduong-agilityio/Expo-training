@@ -27,6 +27,7 @@ const getWishlistForUser = async (
           userId: { $eq: userDocumentId },
         },
         pagination: { pageSize: 1 },
+        populate: '*',
       },
     },
   );
@@ -48,6 +49,7 @@ const ensureWishlistForUser = async (
     { data: Pick<IWishlist, 'userId'> & { products: IWishlistItem[] } }
   >(WISHLIST_ENDPOINTS.ROOT, {
     method: HTTP_METHODS.POST,
+    query: { populate: '*' },
     body: {
       data: {
         userId: userDocumentId,
@@ -71,6 +73,7 @@ const updateWishlistProducts = async (
     { data: { products: IWishlistItem[] } }
   >(`${WISHLIST_ENDPOINTS.ROOT}/${wishlistId}`, {
     method: HTTP_METHODS.PUT,
+    query: { populate: '*' },
     body: {
       data: { products },
     },

@@ -18,7 +18,7 @@ export function extractErrorMessage(error: unknown): string {
  */
 export function getApiErrorMessage(
   error: unknown,
-  fallback = ERROR_MESSAGES.REQUEST_FAILED,
+  fallback: string = ERROR_MESSAGES.REQUEST_FAILED,
 ): string {
   if (!error) return fallback;
 

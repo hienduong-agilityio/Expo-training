@@ -23,7 +23,10 @@ export const ProductSection = ({
   containerStyle,
   onPressViewAll,
   onItemPress,
-}: IProductSectionProps) => {
+  onWishlistToggle,
+}: IProductSectionProps & {
+  onWishlistToggle?: (id: string, isWishlisted: boolean) => void;
+}) => {
   return (
     <View style={styles.section}>
       <View style={containerStyle}>
@@ -42,6 +45,7 @@ export const ProductSection = ({
         loading={loading}
         error={error}
         onItemPress={onItemPress}
+        onWishlistToggle={onWishlistToggle}
       />
     </View>
   );
