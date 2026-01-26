@@ -32,9 +32,7 @@ export const Button = memo<IButtonProps>(function Button({
   const { containerStyle, labelStyle, isSolid } = getButtonStyles(variant);
 
   const content = children || (
-    <Text
-      style={[styles.label, { fontSize: sizeMetrics.fontSize }, labelStyle]}
-      numberOfLines={1}>
+    <Text style={[styles.label, labelStyle]} numberOfLines={1}>
       {label}
     </Text>
   );
@@ -47,7 +45,6 @@ export const Button = memo<IButtonProps>(function Button({
       style={({ pressed }) => [
         styles.base,
         {
-          height: sizeMetrics.height,
           paddingHorizontal: sizeMetrics.paddingHorizontal,
         },
         containerStyle,

@@ -6,7 +6,6 @@ import { useCart, useCartActions } from '@app/hooks/useCart';
 import { useProductsByIds } from '@app/hooks/useProduct';
 
 // Stores
-import { toastStore } from '@app/stores/toastStore';
 import { modalStore } from '@app/stores/modalStore';
 
 // Components
@@ -17,9 +16,7 @@ import { Button } from '@app/components/common/Button';
 
 // Constants
 import {
-  STATUS,
   PRIVATE_SCREENS,
-  TOAST_MESSAGES,
   LOADING_MESSAGES,
   CART_MESSAGES,
   BUTTON_LABELS,
@@ -50,19 +47,13 @@ export const CartScreen = ({ navigation }: CartScreenProps) => {
   const { productMap, isLoading: isLoadingProducts } =
     useProductsByIds(productIds);
 
-  const showToast = toastStore(state => state.showToast);
   const showConfirm = modalStore(state => state.showConfirm);
 
   const handleRemoveItem = useCallback(
     async (productId: string) => {
       await removeItem(productId);
-
-      showToast({
-        type: STATUS.SUCCESS,
-        message: TOAST_MESSAGES.REMOVED_FROM_CART,
-      });
     },
-    [removeItem, showToast],
+    [removeItem],
   );
 
   const handleIncreaseQuantity = useCallback(
@@ -118,14 +109,11 @@ export const CartScreen = ({ navigation }: CartScreenProps) => {
     }, 0);
   }, [cartItems, productMap]);
 
-  const refreshing = useMemo(
-    () => isLoading || isMutating,
-    [isLoading, isMutating],
-  );
+  const refreshing = isLoading || isMutating;
 
-  const handleCheckout = useCallback(() => {
+  const handleCheckout = () => {
     navigation.navigate(PRIVATE_SCREENS.CHECKOUT);
-  }, [navigation]);
+  };
 
   if (isLoading || isLoadingProducts) {
     return (

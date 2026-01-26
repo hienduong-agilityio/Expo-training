@@ -1,16 +1,17 @@
 import { StyleSheet } from 'react-native';
 
 // Themes
-import { typography } from '@app/themes';
+import { borderRadius, typography } from '@app/themes';
 
 export const styles = StyleSheet.create({
   base: {
-    borderRadius: 10,
+    borderRadius: borderRadius.base,
     alignItems: 'center',
     justifyContent: 'center',
   },
   label: {
-    fontWeight: typography.fontWeights.medium,
+    fontWeight: typography.fontWeights.semiBold,
+    fontSize: typography.fontSizes['2xl'],
   },
   fullWidth: {
     alignSelf: 'stretch',

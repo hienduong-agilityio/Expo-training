@@ -54,14 +54,10 @@ export const GridProductList = ({
   hasMore = true,
   ...rest
 }: IGridProductListProps) => {
-  const screenWidth = useMemo(() => Dimensions.get('window').width, []);
-
-  const itemWidth = useMemo(() => {
-    const totalPadding = contentPadding * 2;
-    const totalGap = gap * (numColumns - 1);
-
-    return (screenWidth - totalPadding - totalGap) / numColumns;
-  }, [screenWidth, contentPadding, gap, numColumns]);
+  const screenWidth = Dimensions.get('window').width;
+  const totalPadding = contentPadding * 2;
+  const totalGap = gap * (numColumns - 1);
+  const itemWidth = (screenWidth - totalPadding - totalGap) / numColumns;
 
   const itemContainerStyle = useMemo(
     () => ({
@@ -72,12 +68,9 @@ export const GridProductList = ({
     [itemWidth, gap],
   );
 
-  const columnWrapperStyle = useMemo(
-    () => ({
-      marginRight: -gap,
-    }),
-    [gap],
-  );
+  const columnWrapperStyle = {
+    marginRight: -gap,
+  };
 
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<IProductCardProps>) => (
@@ -106,6 +99,7 @@ export const GridProductList = ({
     ],
   );
 
+  // Keep useCallback for FlatList component props
   const renderFooter = useCallback(() => {
     if (!isLoadingMore) return null;
 

@@ -15,4 +15,6 @@ export const QUERY_KEYS = {
   WISHLIST: 'wishlist',
   WISHLIST_ADD_ITEM: 'wishlist-add-item',
   WISHLIST_REMOVE_ITEM: 'wishlist-remove-item',
+
+  AUTH: 'auth',
 } as const;

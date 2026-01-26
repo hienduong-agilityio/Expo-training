@@ -88,7 +88,6 @@ export const TextField = memo<TextFieldProps>(function TextField({
         style={[
           styles.inputContainer,
           {
-            height: sizeMetrics.height,
             borderColor: getBorderColor(),
           },
           variant === TEXTFIELD_VARIANTS.FILLED && {
@@ -104,11 +103,10 @@ export const TextField = memo<TextFieldProps>(function TextField({
             styles.input,
             {
               fontSize: sizeMetrics.fontSize,
-              paddingHorizontal: sizeMetrics.paddingHorizontal,
             },
             style,
           ]}
-          placeholderTextColor={colors.textSecondary}
+          placeholderTextColor={colors.grayDark}
           secureTextEntry={isSecureText && !showPassword}
           onFocus={handleFocus}
           onBlur={handleBlur}

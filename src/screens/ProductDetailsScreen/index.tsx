@@ -1,4 +1,3 @@
-import { useMemo, useCallback } from 'react';
 import { View } from 'react-native';
 
 // Types
@@ -43,34 +42,31 @@ export const ProductDetailScreen = ({ route }: ProductDetailScreenProps) => {
   const { handleAddToCart, handleBuyNow } = useProductCart();
   const { showDetails, showSimilar, showCompare } = useProductAlerts();
 
-  const productSizes = useMemo(() => (product ? MOCK_SIZES : []), [product]);
+  const productSizes = product ? MOCK_SIZES : [];
   const { selectedSize, handleSizeSelect } = useProductSizeSelection(
     productId,
     productSizes,
   );
 
-  const productImages = useMemo(
-    () => (product?.imageSource ? [product.imageSource] : []),
-    [product],
-  );
+  const productImages = product?.imageSource ? [product.imageSource] : [];
 
-  const handleAddToCartPress = useCallback(() => {
+  const handleAddToCartPress = () => {
     if (product) {
       handleAddToCart(product, selectedSize);
     }
-  }, [product, selectedSize, handleAddToCart]);
+  };
 
-  const handleBuyNowPress = useCallback(() => {
+  const handleBuyNowPress = () => {
     if (product) {
       handleBuyNow(product);
     }
-  }, [product, handleBuyNow]);
+  };
 
-  const handleShowMoreDetails = useCallback(() => {
+  const handleShowMoreDetails = () => {
     if (product) {
       showDetails(product);
     }
-  }, [product, showDetails]);
+  };
 
   if (isLoading) {
     return <LoadingState message={PRODUCT_MESSAGES.LOADING_DETAILS} />;

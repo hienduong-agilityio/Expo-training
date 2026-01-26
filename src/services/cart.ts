@@ -27,6 +27,7 @@ const getActiveCartForUser = async (
         ],
       },
       pagination: { pageSize: 1 },
+      populate: '*',
     },
   });
 
@@ -47,6 +48,7 @@ const ensureActiveCartForUser = async (
     { data: Pick<Cart, 'userId' | 'cart_status'> }
   >(CART_ENDPOINTS.ROOT, {
     method: HTTP_METHODS.POST,
+    query: { populate: '*' },
     body: {
       data: {
         userId: userDocumentId,
@@ -70,6 +72,7 @@ const updateCartProducts = async (
     { data: { products: Array<{ productId: string; quantity: number }> } }
   >(`${CART_ENDPOINTS.ROOT}/${cartId}`, {
     method: HTTP_METHODS.PUT,
+    query: { populate: '*' },
     body: {
       data: { products },
     },

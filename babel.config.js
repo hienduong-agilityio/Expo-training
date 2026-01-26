@@ -1,8 +1,11 @@
+// const ReactCompilerConfig = {
+//   target: '19',
+// };
+
 module.exports = {
   presets: ['module:@react-native/babel-preset'],
   plugins: [
-    // TODO: Disabled 'babel-plugin-react-compiler' due to React compiler compatibility issues.
-    // 'babel-plugin-react-compiler',
+    // ['babel-plugin-react-compiler', ReactCompilerConfig],
     '@babel/plugin-transform-export-namespace-from',
     [
       'module-resolver',

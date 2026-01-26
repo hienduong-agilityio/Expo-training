@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react';
+import { memo } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import FastImage from 'react-native-fast-image';
 
@@ -23,9 +23,7 @@ export const SummerSaleBanner = memo(function SummerSaleBanner({
   actionLabel,
   onPressViewAll,
 }: ISummerSaleBannerProps) {
-  const handlePressViewAll = useCallback(() => {
-    onPressViewAll();
-  }, [onPressViewAll]);
+  const handlePressViewAll = () => onPressViewAll();
 
   return (
     <View style={styles.container}>

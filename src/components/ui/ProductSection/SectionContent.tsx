@@ -16,7 +16,10 @@ export const SectionContent = ({
   error,
   products,
   onItemPress,
-}: ISectionContentProps) => {
+  onWishlistToggle,
+}: ISectionContentProps & {
+  onWishlistToggle?: (id: string, isWishlisted: boolean) => void;
+}) => {
   if (loading) {
     return (
       <View style={styles.loadingContainer}>
@@ -39,6 +42,7 @@ export const SectionContent = ({
     <HorizontalProductList
       products={products}
       onItemPress={onItemPress}
+      onWishlistToggle={onWishlistToggle}
       itemWidth={160}
       gap={12}
       contentPadding={0}

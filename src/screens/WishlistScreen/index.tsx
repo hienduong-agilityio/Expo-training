@@ -6,7 +6,6 @@ import { useWishlist, useWishlistActions } from '@app/hooks/useWishlist';
 import { useProductsByIds } from '@app/hooks/useProduct';
 
 // Stores
-import { toastStore } from '@app/stores/toastStore';
 import { modalStore } from '@app/stores/modalStore';
 
 // Components
@@ -16,9 +15,6 @@ import { GridProductList } from '@app/components/ui/ProductList';
 
 // Constants
 import {
-  POSITION,
-  STATUS,
-  TOAST_MESSAGES,
   WISHLIST_MESSAGES,
   PRIVATE_SCREENS,
   BUTTON_LABELS,
@@ -56,7 +52,6 @@ export const WishlistScreen = ({ navigation }: Props) => {
   const { products, isLoading: isLoadingProducts } =
     useProductsByIds(productIds);
 
-  const showToast = toastStore(state => state.showToast);
   const showConfirm = modalStore(state => state.showConfirm);
 
   const hasWishlistItems = wishlist && wishlistItems.length > 0;
@@ -71,26 +66,17 @@ export const WishlistScreen = ({ navigation }: Props) => {
         isDestructive: true,
         onConfirm: async () => {
           await removeItem(productId);
-
-          showToast({
-            type: STATUS.SUCCESS,
-            message: TOAST_MESSAGES.REMOVED_FROM_WISHLIST,
-            position: POSITION.TOP,
-          });
         },
       });
     },
-    [removeItem, showToast, showConfirm],
+    [removeItem, showConfirm],
   );
 
-  const handleProductPress = useCallback(
-    (productId: string) => {
-      navigation
-        .getParent()
-        ?.navigate(PRIVATE_SCREENS.PRODUCT_DETAIL, { productId });
-    },
-    [navigation],
-  );
+  const handleProductPress = (productId: string) => {
+    navigation
+      .getParent()
+      ?.navigate(PRIVATE_SCREENS.PRODUCT_DETAIL, { productId });
+  };
 
   const wishlistProducts = useMemo(
     () =>
@@ -101,10 +87,7 @@ export const WishlistScreen = ({ navigation }: Props) => {
     [products],
   );
 
-  const refreshing = useMemo(
-    () => isLoading || isMutating,
-    [isLoading, isMutating],
-  );
+  const refreshing = isLoading || isMutating;
 
   if (isLoading || isLoadingProducts) {
     return (

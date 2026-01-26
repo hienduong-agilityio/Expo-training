@@ -51,7 +51,7 @@ export const colors = {
   neutralTag: '#BBBBBB',
   grayLight: '#F9F9F9',
   gray: '#CACACA',
-  grayDark: '#626262',
+  grayDark: '#676767',
   black: '#000000',
   white: '#FFFFFF',
 

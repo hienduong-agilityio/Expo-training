@@ -1,4 +1,3 @@
-import { useCallback } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 
 // Icons
@@ -18,15 +17,11 @@ import { styles } from './index.style';
 import { useWishlist, useWishlistActions } from '@app/hooks/useWishlist';
 
 // Stores
-import { toastStore } from '@app/stores/toastStore';
 import { modalStore } from '@app/stores/modalStore';
 
 // Constants
 import {
-  POSITION,
   PRIVATE_SCREENS,
-  STATUS,
-  TOAST_MESSAGES,
   WISHLIST_MESSAGES,
   BUTTON_LABELS,
 } from '@app/constants';
@@ -41,42 +36,26 @@ export const ProductDetailHeaderRight = ({
   const { isInWishlist } = useWishlist();
   const { addItem, removeItem } = useWishlistActions();
 
-  const showToast = toastStore(state => state.showToast);
   const showConfirm = modalStore(state => state.showConfirm);
 
   const isWishlisted = isInWishlist(productId);
 
-  const handleToggleWishlist = useCallback(
-    async (productIdToToggle: string) => {
-      if (isInWishlist(productIdToToggle)) {
-        showConfirm({
-          title: WISHLIST_MESSAGES.REMOVE_TITLE,
-          message: WISHLIST_MESSAGES.REMOVE_MESSAGE,
-          confirmLabel: BUTTON_LABELS.REMOVE,
-          cancelLabel: BUTTON_LABELS.CANCEL,
-          isDestructive: true,
-          onConfirm: async () => {
-            await removeItem(productIdToToggle);
-
-            showToast({
-              type: STATUS.SUCCESS,
-              message: TOAST_MESSAGES.REMOVED_FROM_WISHLIST,
-              position: POSITION.TOP,
-            });
-          },
-        });
-      } else {
-        await addItem(productIdToToggle);
-
-        showToast({
-          type: STATUS.SUCCESS,
-          message: TOAST_MESSAGES.ADDED_TO_WISHLIST,
-          position: POSITION.TOP,
-        });
-      }
-    },
-    [isInWishlist, addItem, removeItem, showToast, showConfirm],
-  );
+  const handleToggleWishlist = async (productIdToToggle: string) => {
+    if (isInWishlist(productIdToToggle)) {
+      showConfirm({
+        title: WISHLIST_MESSAGES.REMOVE_TITLE,
+        message: WISHLIST_MESSAGES.REMOVE_MESSAGE,
+        confirmLabel: BUTTON_LABELS.REMOVE,
+        cancelLabel: BUTTON_LABELS.CANCEL,
+        isDestructive: true,
+        onConfirm: async () => {
+          await removeItem(productIdToToggle);
+        },
+      });
+    } else {
+      await addItem(productIdToToggle);
+    }
+  };
 
   const handleCartPress = () => {
     navigation.navigate(PRIVATE_SCREENS.MAIN_TABS, {

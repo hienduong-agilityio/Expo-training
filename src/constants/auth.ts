@@ -21,12 +21,12 @@ export const AUTH_FORM_MESSAGES = {
   USERNAME_OR_EMAIL: 'Username or Email',
   USERNAME: 'Username',
   EMAIL: 'Email',
-  CREATE_ACCOUNT: 'Create an Account',
-  WELCOME_BACK: 'Welcome back',
+  CREATE_ACCOUNT: 'Create an\nAccount',
+  WELCOME_BACK: 'Welcome\nBack!',
   BY_CLICKING_REGISTER:
     'By clicking Register, you agree to our Terms of Service and Privacy Policy',
   PASSWORD: 'Password',
-  DONT_HAVE_AN_ACCOUNT: "Don't have an account?",
+  CREATE_AN_ACCOUNT: 'Create An Account ',
   CONFIRM_PASSWORD: 'Confirm Password',
 } as const;
 
