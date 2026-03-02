@@ -6,6 +6,8 @@
     "start": "expo start",
     "start:clear": "expo start --clear",
     "build:web": "yarn expo export --platform web",
+    "deploy": "eas deploy --prod",
+    "update": "eas update:configure",
     "deploy:production": "npx eas-cli deploy --prod",
     "android": "expo run:android",
     "ios": "expo run:ios",
@@ -20,19 +22,22 @@
     "@react-navigation/bottom-tabs": "^7.7.3",
     "@react-navigation/elements": "^2.8.1",
     "@react-navigation/native": "^7.1.28",
-    "expo": "~55.0.3",
+    "expo": "~55.0.4",
+    "expo-build-properties": "~55.0.9",
     "expo-constants": "~55.0.7",
     "expo-dev-client": "~55.0.9",
     "expo-device": "~55.0.9",
     "expo-font": "~55.0.4",
     "expo-glass-effect": "~55.0.7",
     "expo-image": "~55.0.5",
+    "expo-insights": "~55.0.10",
     "expo-linking": "~55.0.7",
     "expo-router": "~55.0.3",
     "expo-splash-screen": "~55.0.10",
     "expo-status-bar": "~55.0.4",
     "expo-symbols": "~55.0.4",
     "expo-system-ui": "~55.0.9",
+    "expo-updates": "~55.0.12",
     "expo-web-browser": "~55.0.9",
     "react": "19.2.0",
     "react-dom": "19.2.0",
@@ -47,6 +52,12 @@
   "devDependencies": {
     "@types/react": "~19.2.2",
     "typescript": "~5.9.2"
+  },
+  "overrides": {
+    "hermes-compiler": "250829098.0.4"
+  },
+  "resolutions": {
+    "hermes-compiler": "250829098.0.4"
   },
   "private": true
 }
