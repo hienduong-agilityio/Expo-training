@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-native-web-vite';
 
+import type React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { fn } from 'storybook/test';
 
@@ -16,7 +17,7 @@ const meta = {
   title: 'Example/Button',
   component: Button,
   decorators: [
-    (Story) => (
+    (Story: React.ComponentType) => (
       <View style={styles.container}>
         <Story />
       </View>

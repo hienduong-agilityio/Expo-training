@@ -5,6 +5,8 @@ import { Platform, useColorScheme } from 'react-native';
 import { AnimatedSplashOverlay } from '@/components/animated-icon';
 import AppTabs from '@/components/app-tabs';
 
+import StorybookUIRoot from '@root/.rnstorybook';
+
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const isWeb = Platform.OS === 'web';
@@ -15,6 +17,7 @@ export default function RootLayout() {
   useEffect(() => {
     if (!__DEV__ || isWeb) return;
     // Lazy require prevents expo-dev-menu from being bundled on web/production
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     const { registerDevMenuItems } = require('expo-dev-menu');
     registerDevMenuItems([
       {
@@ -26,8 +29,6 @@ export default function RootLayout() {
   }, [isWeb]);
 
   if (__DEV__ && !isWeb && showStorybook) {
-    // Lazy require prevents Storybook's start() side effect on web/production
-    const StorybookUIRoot = require('../../.rnstorybook').default;
     return <StorybookUIRoot />;
   }
 

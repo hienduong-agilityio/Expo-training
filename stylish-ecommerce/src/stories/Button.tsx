@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     lineHeight: 1,
   },
-  primary: {  
+  primary: {
     backgroundColor: Colors.light.backgroundElement,
   },
   primaryText: {

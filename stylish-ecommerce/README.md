@@ -52,47 +52,48 @@ yarn android
 
 ## Available Scripts
 
-| Script               | Description                              |
-| -------------------- | ---------------------------------------- |
-| `yarn start`         | Start Expo development server            |
-| `yarn start:clear`   | Start with cleared Metro cache           |
-| `yarn ios`           | Run on iOS simulator                     |
-| `yarn android`       | Run on Android emulator                  |
-| `yarn lint`          | Check for linting errors                 |
-| `yarn lint:fix`      | Auto-fix linting errors                  |
-| `yarn format`        | Format code with Prettier                |
-| `yarn typecheck`     | Check TypeScript types                   |
-| `yarn test`          | Run tests                                |
-| `yarn test:coverage` | Run tests with coverage                  |
-| `yarn validate`      | Run all checks (typecheck + lint + test) |
-| `yarn prebuild`      | Generate native projects (CNG)           |
-| `yarn storybook`     | Start app with Storybook as main UI      |
-| `yarn storybook:web`       | Run Storybook for web (port 6006)         |
-| `yarn build:web`           | Export main web app to `dist/`            |
-| `yarn build:storybook:web` | Build Storybook static site to `dist/`    |
-| `yarn atlas`               | Build + open Atlas viewer (all platforms) |
-| `yarn deploy:web`          | Deploy main web app → production URL      |
-| `yarn deploy:storybook:web`| Deploy Storybook web → alias URL          |
+| Script                     | Description                              |
+| -------------------------- | ---------------------------------------- |
+| `yarn start`               | Start Expo development server            |
+| `yarn start:clear`         | Start with cleared Metro cache           |
+| `yarn ios`                 | Run on iOS simulator                     |
+| `yarn android`             | Run on Android emulator                  |
+| `yarn lint`                | Check for linting errors                 |
+| `yarn lint:fix`            | Auto-fix linting errors                  |
+| `yarn format`              | Format code with Prettier                |
+| `yarn typecheck`           | Check TypeScript types                   |
+| `yarn test`                | Run tests                                |
+| `yarn test:coverage`       | Run tests with coverage                  |
+| `yarn validate`            | Run all checks (typecheck + lint + test) |
+| `yarn prebuild`            | Generate native projects (CNG)           |
+| `yarn storybook`           | Start app with Storybook as main UI      |
+| `yarn storybook:web`       | Run Storybook for web (port 6006)        |
+| `yarn build:web`           | Export main web app to `dist/`           |
+| `yarn build:storybook:web` | Build Storybook static site to `dist/`   |
+| `yarn atlas`               | Build + open Atlas viewer (all platforms)|
+| `yarn deploy:web`          | Deploy main web app → production URL     |
+| `yarn deploy:storybook:web`| Deploy Storybook web → alias URL         |
 
-## Web Deployment Guide (3 targets, isolated)
+## Web Deployment Guide
 
-Ba bản web được quản lý riêng biệt, **không đè lên nhau**:
+You have three separate web experiences, each managed independently so they **never overwrite each other**:
 
-| # | Target              | Build tool | URL                                              | Cách chạy                   |
+| # | Target              | Build tool | URL                                              | How to run                  |
 |---|---------------------|------------|--------------------------------------------------|-----------------------------|
 | 1 | **Main Web App**    | Metro/Expo | `https://<subdomain>.expo.app` (production)      | `yarn deploy:web`           |
 | 2 | **Storybook Web**   | Vite       | `https://<subdomain>--storybook.expo.app` (alias)| `yarn deploy:storybook:web` |
-| 3 | **Expo Atlas**      | Local only | `http://localhost:5173` (dev tool)               | `yarn atlas`                             |
+| 3 | **Expo Atlas**      | Local only | `http://localhost:5173` (dev tool)               | `yarn atlas`                |
 
-### Tại sao không bị đè lên nhau?
+### Why they do not conflict
 
-EAS Hosting dùng hệ thống **alias** để tách biệt các deployment:
+EAS Hosting uses an **alias** system to keep deployments isolated:
+
 - `eas deploy --prod` → production URL (main app)
 - `eas deploy --alias storybook` → alias URL (storybook)
 
-Mỗi alias là một deployment riêng biệt. Deploy main app **không** ảnh hưởng storybook và ngược lại.
+Each alias is a separate deployment. Deploying the main app **does not** affect Storybook, and vice versa.
 
-Thêm vào đó, mỗi script đã có `rm -rf dist` để xoá sạch output trước khi build, tránh file thừa từ bản trước.
+Additionally, each script runs `rm -rf dist` before building to ensure a clean output directory with no leftover files.
 
 ---
 
@@ -103,19 +104,18 @@ Thêm vào đó, mỗi script đã có `rm -rf dist` để xoá sạch output tr
 **Deploy:** EAS Hosting production URL
 
 ```bash
-# Bước 1: Build web app
+# Step 1: Build the web app
 yarn build:web
-# → rm -rf dist && expo export --platform web
-# → Output: dist/
 
-# Bước 2: Deploy lên production URL
+# Step 2: Deploy to the production URL
 eas deploy --prod
 
-# Hoặc chạy 1 lệnh:
+# Or in a single command:
 yarn deploy:web
 ```
 
-**EAS Workflow (CI):** Auto-deploy khi push lên `main`:
+**EAS Workflow (CI):** Auto-deploys when pushing to `main`:
+
 ```bash
 eas workflow:run .eas/workflows/deploy-web.yml
 ```
@@ -124,82 +124,34 @@ eas workflow:run .eas/workflows/deploy-web.yml
 
 ### 2. Deploy Storybook Web (Vite)
 
-**Build:** `storybook build` (Vite bundler, đọc config từ `.storybook/main.ts`)
+**Build:** `storybook build` (Vite bundler, reads config from `.storybook/main.ts`)
 **Output:** `dist/`
 **Deploy:** EAS Hosting alias `storybook`
 
-> **Quan trọng:** Storybook web dùng Vite, KHÔNG phải Metro/Expo.
-> Script `storybook build -o dist` build Storybook UI riêng biệt.
+> **Important:** Storybook web uses Vite, **not** Metro/Expo.
+> The `storybook build -o dist` script builds an isolated Storybook UI.
 
 ```bash
-# Bước 1: Build Storybook static site
+# Step 1: Build the Storybook static site
 yarn build:storybook:web
-# → rm -rf dist && storybook build -o dist
-# → Output: dist/ (Storybook UI, không phải Expo app)
 
-# Bước 2: Deploy lên alias URL
+# Step 2: Deploy to the alias URL
 eas deploy --alias storybook
 
-# Hoặc chạy 1 lệnh:
+# Or in a single command:
 yarn deploy:storybook:web
 ```
 
 **EAS Workflow (CI):**
+
 ```bash
 eas workflow:run .eas/workflows/deploy-storybook-web.yml
 ```
-> Workflow này dùng custom steps (không phải `type: deploy`) vì Storybook cần Vite build.
-> Nếu workflow fail, dùng CLI: `yarn deploy:storybook:web`
+
+> This workflow uses custom steps (not `type: deploy`) because Storybook requires a Vite build.
+> If the workflow fails, fall back to the CLI: `yarn deploy:storybook:web`
 
 ---
-
-### 3. Expo Atlas (Native Bundle Analysis — Local Only)
-
-**Mục đích:** Phân tích kích thước JS bundle cho **Android** và **iOS** (native).
-**Build + View:** Chỉ 1 lệnh duy nhất.
-
-> Expo Atlas là dev tool chạy local, **không deploy lên hosting**.
-> Nó phân tích JS bundle mà Metro tạo ra cho từng platform native.
-> Atlas CLI chỉ hỗ trợ chạy server (không có static export).
-
-```bash
-# 1 lệnh duy nhất: clean → export all platforms → open viewer
-yarn atlas
-# → rm -rf .expo/atlas
-# → EXPO_ATLAS=1 expo export --platform all (Android + iOS + Web)
-# → npx expo-atlas
-# → Mở trình duyệt: http://localhost:5173
-# → Chọn platform (android/ios/web) để xem chi tiết bundle
-```
-
-**Atlas giúp bạn:**
-- Xem kích thước từng module/package trong bundle
-- Tìm dependencies nặng cần optimize
-- So sánh bundle size giữa Android và iOS
-
----
-
-### Tóm tắt: Các bản deploy hoàn toàn độc lập
-
-```
-┌─────────────────┐     ┌─────────────────┐     ┌───────────────────┐
-│  Main Web App   │     │  Storybook Web  │     │    Expo Atlas     │
-│                 │     │                 │     │  (Native Bundle)  │
-│ Build: Metro    │     │ Build: Vite     │     │ EXPO_ATLAS=1      │
-│ expo export     │     │ storybook build │     │ expo export       │
-│ --platform web  │     │   -o dist       │     │ --platform all    │
-│       ↓         │     │       ↓         │     │       ↓           │
-│   dist/         │     │   dist/         │     │  .expo/atlas/     │
-│       ↓         │     │       ↓         │     │       ↓           │
-│ eas deploy      │     │ eas deploy      │     │  npx expo-atlas   │
-│   --prod        │     │   --alias sb    │     │       ↓           │
-│       ↓         │     │       ↓         │     │ localhost:5173    │
-│ <slug>.expo.app │     │ <slug>--sb.     │     │                   │
-│                 │     │   expo.app      │     │                   │
-└─────────────────┘     └─────────────────┘     └───────────────────┘
-      DEPLOYED               DEPLOYED              LOCAL ONLY
-      (isolated)             (isolated)       (no static export CLI)
-```
 
 ## Storybook (Android)
 
