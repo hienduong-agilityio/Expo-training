@@ -1,0 +1,59 @@
+{
+  "cli": {
+    "version": ">= 18.0.1",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "channel": "development"
+    },
+    "preview": {
+      "distribution": "internal",
+      "channel": "preview"
+    },
+    "production": {
+      "autoIncrement": true,
+      "channel": "production",
+      "env": {
+        "NODE_ENV": "production"
+      },
+      "android": {
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleRelease"
+      },
+      "ios": {
+        "buildConfiguration": "Release"
+      }
+    },
+    "production-aab": {
+      "extends": "production",
+      "android": {
+        "buildType": "app-bundle"
+      }
+    },
+    "development-simulator": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "ios": {
+        "simulator": true
+      },
+      "environment": "development",
+      "channel": "development-simulator"
+    },
+    "storybook": {
+      "distribution": "internal",
+      "channel": "storybook",
+      "env": {
+        "EXPO_PUBLIC_ENVIRONMENT": "storybook"
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}

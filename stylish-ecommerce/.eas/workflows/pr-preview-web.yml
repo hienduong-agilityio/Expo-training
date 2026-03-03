@@ -1,0 +1,16 @@
+name: PR Preview Web
+
+on:
+  # Only run when opening/updating a PR whose target branch is feature/practice-one
+  pull_request:
+    branches: ['feature/practice-one']
+
+jobs:
+  deploy:
+    type: deploy
+    name: Deploy PR Preview Web
+
+  comment:
+    needs: [deploy]
+    type: github-comment
+

@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+.expo/
+web-build/
+android/
+ios/
+
+# Coverage
+coverage/
+
+# Storybook
+storybook-static/
+.rnstorybook/storybook.requires.ts
+
+# Lock files
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
+
+# Generated files
+*.generated.*
+expo-env.d.ts

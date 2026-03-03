@@ -1,0 +1,42 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    // Strict Type-Checking
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    // Path alias: @/ -> src/; @/assets -> project root assets/
+    "baseUrl": ".",
+    "paths": {
+      "@/assets/*": ["./assets/*"],
+      "@/*": ["./src/*"],
+      "@root/*": ["./*"]
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts",
+    ".rnstorybook/**/*.tsx",
+    "jest.setup.js"
+  ],
+  "exclude": [
+    "node_modules",
+    "android",
+    "ios",
+    ".expo",
+    "dist",
+    "coverage",
+    "app-example",
+    "storybook-static",
+    "web-build",
+    ".rnstorybook",
+    ".storybook"
+  ]
+}

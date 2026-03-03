@@ -1,0 +1,36 @@
+# Deploy Storybook Web (Vite-based) to alias URL
+# URL: https://<subdomain>--storybook.expo.app
+#
+# Storybook uses Vite (@storybook/react-native-web-vite), NOT Metro/Expo,
+# so we use custom steps instead of `type: deploy` (which runs `expo export`).
+#
+# === CLI (recommended, always works) ===
+#   yarn deploy:storybook:web
+#
+# === EAS Workflow ===
+#   eas workflow:run .eas/workflows/deploy-storybook-web.yml
+#
+# NOTE: If the custom steps below fail, fall back to the CLI command above.
+name: Deploy Storybook Web
+
+on:
+  # Manual run from EAS dashboard / CLI
+  workflow_dispatch: {}
+  # Auto-run on PRs targeting feature/practice-one so reviewers can see Storybook updates
+  pull_request:
+    branches: ['feature/practice-one']
+
+jobs:
+  deploy_storybook_web:
+    name: Build and Deploy Storybook Web
+    steps:
+      - uses: eas/checkout
+      - uses: eas/install_node_modules
+      - run:
+          name: Build Storybook static site
+          command: npx storybook build -o dist
+      - uses: eas/deploy
+        with:
+          # One Storybook URL per branch / PR, e.g.:
+          #   storybook-main, storybook-feature-login
+          alias: 'storybook-${{ github.ref_name }}'

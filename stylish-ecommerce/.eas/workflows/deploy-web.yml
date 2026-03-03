@@ -1,0 +1,22 @@
+# Deploy main web app to production URL (https://<subdomain>.expo.app)
+#
+# === CLI ===
+#   yarn deploy:web
+#
+# === EAS Workflow ===
+#   eas workflow:run .eas/workflows/deploy-web.yml
+#   Or auto-triggered on push to main.
+name: Deploy Web App
+
+on:
+  push:
+    branches: ['main']
+  workflow_dispatch: {}
+
+jobs:
+  deploy_web:
+    name: Deploy web app
+    type: deploy
+    environment: production
+    params:
+      prod: true
