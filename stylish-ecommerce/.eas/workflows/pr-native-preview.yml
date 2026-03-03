@@ -1,16 +1,12 @@
-name: Build or Update Preview Native Apps
+name: PR Native Preview (feature/practice-one)
 
 on:
-  # Run automatically on push to main (after PRs are merged)
-  push:
-    branches: ['main']
-  # Allow manual runs from the EAS dashboard or CLI
-  workflow_dispatch: {}
+  # Run when creating or updating a PR whose target branch is feature/practice-one
+  pull_request:
+    branches: ['feature/practice-one']
 
 jobs:
   fingerprint:
-    # Calculate native fingerprints for Android + iOS so we can decide
-    # whether to build a new binary or just publish an update.
     environment: preview
     type: fingerprint
 
@@ -61,3 +57,4 @@ jobs:
     params:
       platform: ios
       profile: preview
+

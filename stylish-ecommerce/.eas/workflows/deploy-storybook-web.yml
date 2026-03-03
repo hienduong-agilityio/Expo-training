@@ -14,7 +14,11 @@
 name: Deploy Storybook Web
 
 on:
+  # Manual run from EAS dashboard / CLI
   workflow_dispatch: {}
+  # Auto-run on PRs targeting feature/practice-one so reviewers can see Storybook updates
+  pull_request:
+    branches: ['feature/practice-one']
 
 jobs:
   deploy_storybook_web:
@@ -27,4 +31,6 @@ jobs:
           command: npx storybook build -o dist
       - uses: eas/deploy
         with:
-          alias: storybook
+          # One Storybook URL per branch / PR, e.g.:
+          #   storybook-main, storybook-feature-login
+          alias: 'storybook-${{ github.ref_name }}'

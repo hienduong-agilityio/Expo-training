@@ -1,0 +1,22 @@
+name: Release Production Native Apps
+
+on:
+  # Triggered manually when you are ready to promote
+  # a tested preview release to production.
+  workflow_dispatch: {}
+
+jobs:
+  update_android:
+    type: update
+    environment: production
+    params:
+      channel: production
+      platform: android
+
+  update_ios:
+    type: update
+    environment: production
+    params:
+      channel: production
+      platform: ios
+

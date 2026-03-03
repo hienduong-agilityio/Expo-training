@@ -23,7 +23,11 @@ A production-ready [Expo](https://expo.dev) React Native project with best pract
 yarn install
 
 # Copy environment variables
-cp .env.example .env
+cp .env.example .env.local
+
+
+## A collection of AI agent skills for working with Expo projects and Expo Services
+bunx skills add expo/skills
 
 # Start development server
 yarn start
@@ -52,37 +56,37 @@ yarn android
 
 ## Available Scripts
 
-| Script                     | Description                              |
-| -------------------------- | ---------------------------------------- |
-| `yarn start`               | Start Expo development server            |
-| `yarn start:clear`         | Start with cleared Metro cache           |
-| `yarn ios`                 | Run on iOS simulator                     |
-| `yarn android`             | Run on Android emulator                  |
-| `yarn lint`                | Check for linting errors                 |
-| `yarn lint:fix`            | Auto-fix linting errors                  |
-| `yarn format`              | Format code with Prettier                |
-| `yarn typecheck`           | Check TypeScript types                   |
-| `yarn test`                | Run tests                                |
-| `yarn test:coverage`       | Run tests with coverage                  |
-| `yarn validate`            | Run all checks (typecheck + lint + test) |
-| `yarn prebuild`            | Generate native projects (CNG)           |
-| `yarn storybook`           | Start app with Storybook as main UI      |
-| `yarn storybook:web`       | Run Storybook for web (port 6006)        |
-| `yarn build:web`           | Export main web app to `dist/`           |
-| `yarn build:storybook:web` | Build Storybook static site to `dist/`   |
-| `yarn atlas`               | Build + open Atlas viewer (all platforms)|
-| `yarn deploy:web`          | Deploy main web app → production URL     |
-| `yarn deploy:storybook:web`| Deploy Storybook web → alias URL         |
+| Script                      | Description                               |
+| --------------------------- | ----------------------------------------- |
+| `yarn start`                | Start Expo development server             |
+| `yarn start:clear`          | Start with cleared Metro cache            |
+| `yarn ios`                  | Run on iOS simulator                      |
+| `yarn android`              | Run on Android emulator                   |
+| `yarn lint`                 | Check for linting errors                  |
+| `yarn lint:fix`             | Auto-fix linting errors                   |
+| `yarn format`               | Format code with Prettier                 |
+| `yarn typecheck`            | Check TypeScript types                    |
+| `yarn test`                 | Run tests                                 |
+| `yarn test:coverage`        | Run tests with coverage                   |
+| `yarn validate`             | Run all checks (typecheck + lint + test)  |
+| `yarn prebuild`             | Generate native projects (CNG)            |
+| `yarn storybook`            | Start app with Storybook as main UI       |
+| `yarn storybook:web`        | Run Storybook for web (port 6006)         |
+| `yarn build:web`            | Export main web app to `dist/`            |
+| `yarn build:storybook:web`  | Build Storybook static site to `dist/`    |
+| `yarn atlas`                | Build + open Atlas viewer (all platforms) |
+| `yarn deploy:web`           | Deploy main web app → production URL      |
+| `yarn deploy:storybook:web` | Deploy Storybook web → alias URL          |
 
 ## Web Deployment Guide
 
 You have three separate web experiences, each managed independently so they **never overwrite each other**:
 
-| # | Target              | Build tool | URL                                              | How to run                  |
-|---|---------------------|------------|--------------------------------------------------|-----------------------------|
-| 1 | **Main Web App**    | Metro/Expo | `https://<subdomain>.expo.app` (production)      | `yarn deploy:web`           |
-| 2 | **Storybook Web**   | Vite       | `https://<subdomain>--storybook.expo.app` (alias)| `yarn deploy:storybook:web` |
-| 3 | **Expo Atlas**      | Local only | `http://localhost:5173` (dev tool)               | `yarn atlas`                |
+| #   | Target            | Build tool | URL                                               | How to run                  |
+| --- | ----------------- | ---------- | ------------------------------------------------- | --------------------------- |
+| 1   | **Main Web App**  | Metro/Expo | `https://<subdomain>.expo.app` (production)       | `yarn deploy:web`           |
+| 2   | **Storybook Web** | Vite       | `https://<subdomain>--storybook.expo.app` (alias) | `yarn deploy:storybook:web` |
+| 3   | **Expo Atlas**    | Local only | `http://localhost:5173` (dev tool)                | `yarn atlas`                |
 
 ### Why they do not conflict
 

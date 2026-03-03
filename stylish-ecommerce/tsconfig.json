@@ -14,7 +14,6 @@
     "baseUrl": ".",
     "paths": {
       "@/assets/*": ["./assets/*"],
-      
       "@/*": ["./src/*"],
       "@root/*": ["./*"]
     }
@@ -24,7 +23,20 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
-    ".rnstorybook/**/*.tsx"
-, "jest.setup.js"  ],
-  "exclude": ["node_modules", "android", "ios", ".expo", "dist", "coverage", "app-example"]
+    ".rnstorybook/**/*.tsx",
+    "jest.setup.js"
+  ],
+  "exclude": [
+    "node_modules",
+    "android",
+    "ios",
+    ".expo",
+    "dist",
+    "coverage",
+    "app-example",
+    "storybook-static",
+    "web-build",
+    ".rnstorybook",
+    ".storybook"
+  ]
 }
