@@ -46,9 +46,9 @@
           "buildReactNativeFromSource": true,
           "useHermesV1": true,
           "android": {
-            "compileSdkVersion": 35,
-            "targetSdkVersion": 35,
-            "buildToolsVersion": "35.0.0"
+            "compileSdkVersion": 36,
+            "targetSdkVersion": 36,
+            "buildToolsVersion": "36.0.0"
           },
           "ios": {
             "deploymentTarget": "15.1"
@@ -58,7 +58,8 @@
     ],
     "experiments": {
       "typedRoutes": true,
-      "reactCompiler": true
+      "reactCompiler": true,
+      "tsconfigPaths": true
     },
     "extra": {
       "router": {},
@@ -70,7 +71,8 @@
       "policy": "appVersion"
     },
     "updates": {
-      "url": "https://u.expo.dev/84d3f2d3-17f4-4118-9c4e-b1df996c10e6"
+      "url": "https://u.expo.dev/84d3f2d3-17f4-4118-9c4e-b1df996c10e6",
+      "enableBsdiffPatchSupport":true
     }
   }
 }

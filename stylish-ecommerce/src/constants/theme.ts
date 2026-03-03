@@ -63,3 +63,9 @@ export const Spacing = {
 
 export const BottomTabInset = Platform.select({ ios: 50, android: 80 }) ?? 0;
 export const MaxContentWidth = 800;
+
+/** Brand/splash blue used in splash screen and links */
+export const BrandColors = {
+  splash: '#208AEF',
+  link: '#3c87f7',
+} as const;

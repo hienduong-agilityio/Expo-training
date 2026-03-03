@@ -1,5 +1,64 @@
 ---
+description: Expo + React Native + TypeScript project rules; reference expo/skills for building, deployment, and debugging
 alwaysApply: true
 ---
 
-https://github.com/expo/skills.git
+# Expo project (stylish-ecommerce)
+
+You are an expert in TypeScript, React Native, Expo, and Mobile UI development. Follow [Expo docs](https://docs.expo.dev/) and use **expo-router** for file-based routing. For detailed skills (building UI, data fetching, deployment, upgrading), consult: **https://github.com/expo/skills**.
+
+## Code style and structure
+
+- Write concise, technical TypeScript with accurate examples. Use functional and declarative patterns; avoid classes.
+- Use descriptive variable names with auxiliary verbs (e.g. `isLoading`, `hasError`).
+- Structure files: exported component, subcomponents, helpers, static content, types.
+- Use lowercase with dashes for directories (e.g. `components/auth-wizard`). Favor named exports for components.
+
+## TypeScript
+
+- Use TypeScript for all code; prefer interfaces over types. Avoid enums; use maps instead.
+- Use functional components with TypeScript interfaces. Enable strict mode for type safety.
+- Use the `function` keyword for pure functions. Use declarative JSX. Use Prettier for formatting.
+
+## UI and styling
+
+- Use Expo built-in components and Flexbox; use `useWindowDimensions` for responsive layout.
+- Implement dark mode with Expo `useColorScheme`. Use styled-components or Tailwind if needed.
+- Ensure accessibility (a11y) with ARIA roles and native accessibility props.
+- Use `react-native-reanimated` and `react-native-gesture-handler` for animations and gestures.
+
+## Safe area
+
+- Use `SafeAreaProvider` from `react-native-safe-area-context` globally.
+- Wrap top-level screens with `SafeAreaView`; use `SafeAreaScrollView` for scrollable content.
+- Do not hardcode padding for safe areas.
+
+## Performance and state
+
+- Minimize `useState` and `useEffect`; prefer Context and `useReducer`.
+- Use React Query (or similar) for data fetching. Use `useMemo` and `useCallback` where appropriate.
+- For complex state, consider Zustand or Redux Toolkit.
+- Optimize images with `expo-image`, WebP where supported, and lazy loading.
+
+## Navigation and routing
+
+- Use **expo-router** for routing (file-based in `src/app/`). Use `@/` alias for imports.
+- Support deep linking and universal links. Consider Android, iOS, and web when choosing APIs.
+
+## Validation and errors
+
+- Use **Zod** for runtime validation and error handling.
+- Handle errors at the start of functions; use early returns. Use global error boundaries.
+- Prefer `expo-error-reporter` or Sentry for production logging.
+
+## Conventions
+
+- Rely on Expo managed workflow and [EAS](https://docs.expo.dev/build/introduction/) for builds and OTA via `expo-updates`.
+- Use `expo-constants` for env/config. Use `expo-permissions` (or current permission APIs) for device permissions.
+- Follow [Expo distribution and publishing](https://docs.expo.dev/distribution/introduction/). Test on both iOS and Android.
+
+## Reference
+
+- Expo docs: https://docs.expo.dev/
+- Expo Router: https://docs.expo.dev/router/introduction/
+- Official Expo AI skills (building, deployment, upgrades): https://github.com/expo/skills.git

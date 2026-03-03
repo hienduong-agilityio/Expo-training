@@ -20,16 +20,20 @@ export default function TabTwoScreen() {
   };
   const theme = useTheme();
 
-  const contentPlatformStyle = Platform.select({
-    android: {
-      paddingTop: insets.top,
-      paddingLeft: insets.left,
-      paddingRight: insets.right,
-      paddingBottom: insets.bottom,
-    },
+  const nativeSafeAreaPadding = {
+    paddingTop: insets.top,
+    paddingLeft: insets.left,
+    paddingRight: insets.right,
+    paddingBottom: insets.bottom,
+  };
+  const contentPlatformStyle = Platform.select<Record<string, number>>({
+    android: nativeSafeAreaPadding,
+    ios: nativeSafeAreaPadding,
     web: {
       paddingTop: Spacing.six,
       paddingBottom: Spacing.four,
+      paddingLeft: 0,
+      paddingRight: 0,
     },
   });
 
@@ -37,7 +41,8 @@ export default function TabTwoScreen() {
     <ScrollView
       style={[styles.scrollView, { backgroundColor: theme.background }]}
       contentInset={insets}
-      contentContainerStyle={[styles.contentContainer, contentPlatformStyle]}>
+      contentContainerStyle={[styles.contentContainer, contentPlatformStyle]}
+    >
       <ThemedView style={styles.container}>
         <ThemedView style={styles.titleContainer}>
           <ThemedText type="subtitle">Explore</ThemedText>
@@ -46,7 +51,7 @@ export default function TabTwoScreen() {
           </ThemedText>
 
           <ExternalLink href="https://docs.expo.dev" asChild>
-            <Pressable style={({ pressed }) => pressed && styles.pressed}>
+            <Pressable style={({ pressed }) => (pressed ? [styles.pressed] : [])}>
               <ThemedView type="backgroundElement" style={styles.linkButton}>
                 <ThemedText type="link">Expo documentation</ThemedText>
                 <SymbolView

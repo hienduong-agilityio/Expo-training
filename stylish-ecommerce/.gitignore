@@ -43,3 +43,20 @@ app-example
 # generated native folders
 /ios
 /android
+
+# IDE and AI assistant configs
+.agents/
+.claude/
+.cursor/
+skills-lock.json
+
+# Testing
+coverage/
+*.lcov
+
+# Bundle analysis
+bundle-visualizer-report.html
+bundle-report/
+
+*storybook.log
+storybook-static

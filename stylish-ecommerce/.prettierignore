@@ -1,0 +1,12 @@
+node_modules/
+.expo/
+dist/
+web-build/
+ios/
+android/
+coverage/
+*.lock
+yarn.lock
+package-lock.json
+.expo-shared/
+*.log
