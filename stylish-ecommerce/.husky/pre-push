@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Run TypeScript type checking
+echo "Running TypeScript type check..."
+npx tsc --noEmit
+
+# Run tests
+echo "Running tests..."
+yarn test:coverage

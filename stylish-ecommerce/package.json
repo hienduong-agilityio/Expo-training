@@ -5,20 +5,20 @@
   "scripts": {
     "start": "expo start",
     "start:clear": "expo start --clear",
-    "doctor": "npx expo-doctor --verbose",
+    "web": "expo start --web",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "storybook": "EXPO_PUBLIC_ENVIRONMENT=storybook expo start",
+    "storybook:web": "storybook dev -p 6006",
+    "storybook-generate": "sb-rn-get-stories",
     "build:web": "rm -rf dist && expo export --platform web",
     "build:storybook:web": "rm -rf dist && storybook build -o dist",
     "atlas": "rm -rf .expo/atlas && EXPO_ATLAS=1 expo export --platform all && npx expo-atlas",
+    "prebuild": "expo prebuild",
+    "prebuild:clean": "expo prebuild --clean",
     "update": "eas update:configure",
     "deploy:web": "yarn build:web && eas deploy --prod",
     "deploy:storybook:web": "yarn build:storybook:web && eas deploy --alias storybook",
-    "install:fix": "npx expo install --fix",
-    "android": "expo run:android",
-    "ios": "expo run:ios",
-    "web": "expo start --web",
-    "prebuild": "expo prebuild",
-    "prebuild:clean": "expo prebuild --clean",
-    "reset-project": "node ./scripts/reset-project.js",
     "lint": "expo lint",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json}\"",
@@ -26,9 +26,11 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "storybook-generate": "sb-rn-get-stories",
-    "storybook": "EXPO_PUBLIC_ENVIRONMENT=storybook expo start",
-    "storybook:web": "storybook dev -p 6006"
+    "validate": "yarn type-check && yarn lint && yarn test",
+    "doctor": "npx expo-doctor --verbose",
+    "install:fix": "npx expo install --fix",
+    "reset-project": "node ./scripts/reset-project.js",
+    "prepare": "husky"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.2",
@@ -80,6 +82,8 @@
   "devDependencies": {
     "@babel/core": "^7.26.0",
     "@chromatic-com/storybook": "^5.0.1",
+    "@commitlint/cli": "^20.4.2",
+    "@commitlint/config-conventional": "^20.4.2",
     "@storybook/addon-a11y": "^10.2.14",
     "@storybook/addon-docs": "^10.2.14",
     "@storybook/addon-vitest": "^10.2.14",
@@ -122,6 +126,15 @@
     "hermes-compiler": "250829098.0.4",
     "react": "19.2.0",
     "react-dom": "19.2.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
   },
   "private": true
 }
