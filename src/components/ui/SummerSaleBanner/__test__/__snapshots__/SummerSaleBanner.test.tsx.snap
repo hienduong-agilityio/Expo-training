@@ -1,0 +1,152 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SummerSaleBanner renders correctly with all props 1`] = `
+<View
+  style={
+    {
+      "backgroundColor": "#FFFFFF",
+      "borderRadius": 10,
+      "elevation": 2,
+      "marginHorizontal": 24,
+      "marginVertical": 24,
+      "overflow": "hidden",
+      "shadowColor": "#000000",
+      "shadowOffset": {
+        "height": 1,
+        "width": 0,
+      },
+      "shadowOpacity": 0.1,
+      "shadowRadius": 2,
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "overflow": "hidden",
+        },
+        {
+          "height": 200,
+          "width": "100%",
+        },
+      ]
+    }
+  >
+    <FastImageView
+      defaultSource={null}
+      resizeMode="cover"
+      source={
+        {
+          "priority": "normal",
+          "uri": "https://whimsical-benefit-a69d430573.media.strapiapp.com/Converted_Image_1_b6b748d2e2.webp",
+        }
+      }
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    />
+  </View>
+  <View
+    style={
+      {
+        "backgroundColor": "#FFFFFF",
+        "padding": 24,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <View>
+        <Text
+          style={
+            {
+              "color": "#1C1B1F",
+              "fontSize": 16,
+              "fontWeight": "700",
+              "marginBottom": 2,
+            }
+          }
+        >
+          New Arrivals
+        </Text>
+        <Text
+          style={
+            {
+              "color": "#575757",
+              "fontSize": 13,
+            }
+          }
+        >
+          Check out the latest
+        </Text>
+      </View>
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "backgroundColor": "#F83758",
+            "borderRadius": 4,
+            "justifyContent": "center",
+            "opacity": 1,
+            "paddingHorizontal": 24,
+            "paddingVertical": 8,
+          }
+        }
+      >
+        <Text
+          style={
+            {
+              "color": "#FFFFFF",
+              "fontSize": 13,
+              "fontWeight": "600",
+            }
+          }
+        >
+          View All
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

@@ -1,93 +1,359 @@
-# Expo-training
+# Stylish E-commerce — Expo
 
+A **React Native CLI** application for browsing, discovering, and purchasing products with a smooth mobile shopping experience. The project focuses on real-world app structure, reusable UI, Storybook documentation, and unit testing.
 
+---
 
-## Getting started
+## Target
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+- Set up a reliable **Android/iOS** development environment.
+- Understand **navigation** in React Native application (React Navigation v7).
+- Understand and apply **core React Native building blocks** to real screens.
+- Build **reusable components** and document them in **Storybook**.
+- Write **meaningful unit tests** with comprehensive coverage.
+- Practice **debugging** (DevTools) and consistent code quality.
+- Implement **efficient data fetching** using TanStack Query.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+---
 
-## Add your files
+## Features
 
-* [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-* [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+### 🚀 Onboarding & Authentication
 
+- **Boot splash screen** with animated logo
+- **Multi-step onboarding** with navigation dots
+- **Sign In / Sign Up** with email/password validation (Zod)
+- **Secure authentication** with JWT tokens
+- **Auto-login** functionality with session persistence
+
+### 🏠 Home & Discovery
+
+- **Product banners** and trending items
+- **Horizontal product lists** for featured products
+- **Product cards** with images, names, prices, and ratings
+- **Category navigation** and filtering
+- **Deals and special offers** sections
+
+### 🔍 Browse & Search
+
+- **Advanced search** with real-time filtering
+- **Product categories** and subcategories
+- **Filter modal** with multiple criteria
+- **Loading, empty, and error states** throughout the app
+- **Infinite scrolling** for product lists
+
+### 📱 Product Details
+
+- **Image carousel** with multiple product photos
+- **Detailed product information** (price, stock, rating, description)
+- **Size selector** for clothing items
+- **Similar products** recommendations
+- **Product actions**: Add to Cart, Buy Now, Add to Wishlist
+
+### 🛒 Cart & Wishlist Management
+
+- **Shopping cart** with item management (add/remove/update quantity)
+- **Cart persistence** across app sessions
+- **Wishlist functionality** with heart icon toggle
+- **Delivery information** display
+- **Cart item calculations** (subtotal, shipping, taxes)
+
+### 💳 Checkout Flow
+
+- **Checkout Screen** for finalizing purchases
+- **Payment method selection**
+- **Order summary** review
+
+### 👤 User Profile & Settings
+
+- **User profile** management
+- **Settings screen** with app preferences
+- **Logout functionality** with session cleanup
+- **Secure storage** for user data
+
+### 🎨 UI/UX Features
+
+- **Custom tab navigation** with floating cart button
+- **Responsive design** for different screen sizes
+- **Loading states** and skeleton screens
+- **Error handling** with user-friendly messages
+- **Smooth animations** and transitions
+
+---
+
+## Technical stacks
+
+- 📱 **[React Native (CLI)](https://reactnative.dev/)** (v0.81) – Native mobile app framework (iOS/Android) powered by React
+- ⚛️ **[React](https://react.dev/)** (v19) – Component model & rendering
+- 🔥 **[TypeScript](https://www.typescriptlang.org/)** – Static typing for safer, scalable code
+- 🧭 **[React Navigation](https://reactnavigation.org/)** (v7) – Stacks, tabs, and deep-linking
+- 📡 **[TanStack Query](https://tanstack.com/query/latest)** (v5) – Async state management & data fetching
+- 🐻 **[Zustand](https://zustand-demo.pmnd.rs/)** (v5) – specific Client state management
+- 🛡️ **[Zod](https://zod.dev/)** – Schema validation
+- 📚 **[Storybook](https://storybook.js.org/)** – Build & document UI components in isolation
+- 🧪 **[Jest](https://jestjs.io/)** + **[@testing-library/react-native](https://testing-library.com/docs/react-native-testing-library/intro/)** – Unit & component testing
+- 🧰 **[ESLint](https://eslint.org/)** + **[Prettier](https://prettier.io/)** – Linting & formatting
+- 🦊 **[Husky](https://github.com/typicode/husky)** + **[lint-staged](https://github.com/lint-staged/lint-staged)** – Git hooks & staged-file linting
+- 📝 **[Commitlint](https://commitlint.js.org/)** – Conventional commits for clean history
+- 🗄️ **[Strapi v5](https://strapi.io/)** – Headless CMS / API provider
+- 🧱 **Metro**, **CocoaPods** (iOS), **Azul Zulu JDK** (Android)
+
+---
+
+## Project Structure
+
+```shell
+src/
+├── assets/                       # Static resources: images, icons, fonts
+├── components/                   # Reusable UI components
+│   ├── common/                   # Shared components (Button, FormField, etc.)
+│   ├── ui/                       # Atomic UI components (extensive library)
+│   ├── BottomTabHeader/          # Navigation headers
+│   ├── GlobalHeader/             # App-wide header
+│   ├── ToastContainer/           # Toast notification wrapper
+│   └── ...
+├── constants/                    # App constants: routes, endpoints, UI constants
+├── contexts/                     # React Context definitions (e.g., QueryClient)
+├── enums/                        # TypeScript enums for app logic
+├── helpers/                      # Pure utility functions: formatters, validators
+├── hooks/                        # Custom React hooks (useAuthActions, useCart, etc.)
+├── icons/                        # SVG icon components
+├── interfaces/                   # TypeScript type definitions
+├── mocks/                        # Mock data for development and testing
+├── navigation/                   # React Navigation setup (v7)
+├── schemas/                      # Zod validation schemas
+├── screens/                      # Page-level screens
+│   ├── OnboardingScreen/         # App introduction
+│   ├── LoginScreen/              # Authentication
+│   ├── HomeScreen/               # Main dashboard
+│   ├── ProductListScreen/        # Product browsing
+│   ├── ProductDetailsScreen/     # Product details
+│   ├── CartScreen/               # Shopping cart
+│   ├── CheckoutScreen/           # Order finalization
+│   ├── WishlistScreen/           # User wishlist
+│   ├── SearchScreen/             # Product search
+│   ├── SettingsScreen/           # User settings
+│   └── RegisterScreen/           # User registration
+├── services/                     # API services and data layer
+│   ├── apiClient.ts              # Base API client with interceptors
+│   ├── auth.ts                   # Authentication service
+│   ├── products.ts               # Product-related API calls
+│   ├── cart.ts                   # Cart management
+│   └── wishlist.ts               # Wishlist operations
+├── stores/                       # Zustand state management (auth, search, toast)
+├── styles/                       # Global styles and themes
+└── themes/                       # App theming configuration
+
+backend/                          # Strapi v5 CMS backend
+├── config/                       # Strapi configuration
+├── src/                          # Strapi source code
+│   ├── api/                      # API endpoints and controllers
+│   ├── components/               # Strapi components
+│   └── extensions/               # Strapi extensions
+└── database/                     # Database migrations and seeds
 ```
-cd existing_repo
-git remote add origin https://gitlab.asoft-python.com/hien.duong/expo-training.git
-git branch -M main
-git push -uf origin main
+
+---
+
+## Testing & Quality Assurance
+
+### 🧪 Test Coverage
+
+The project maintains comprehensive test coverage:
+
+- **Unit Tests** with Jest
+- **Snapshot Tests** for UI components
+- **Component Testing** with React Native Testing Library
+- **Service Layer Testing** with mocked API responses
+- **Hook Testing** for custom React hooks
+- **Helper Function Testing** for utility functions
+
+### 📚 Component Documentation
+
+- **Storybook integration** for component documentation
+- **Interactive component playground** for development
+- **Visual regression testing** with snapshots
+- **Component stories** for different states and props
+
+### 🔧 Code Quality
+
+- **ESLint** configuration for code linting
+- **Prettier** for consistent code formatting
+- **Husky** git hooks for pre-commit checks
+- **TypeScript** strict mode for type safety
+- **Zod** runtime validation for API responses
+
+---
+
+## Backend Integration
+
+### 🗄️ Strapi v5 CMS
+
+The app integrates with a **Strapi v5** backend that provides:
+
+- **RESTful API** endpoints for products, users, carts, and wishlists
+- **Authentication & authorization** with JWT tokens
+- **Content management** for products, categories, and deals
+- **File upload** capabilities for product images
+- **Database seeding** with sample data
+- **Admin panel** for content management
+
+---
+
+## Getting Started
+
+> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+
+Step by step to get started this app at your location
+
+## How to Run
+
+### Prerequisites
+
+Make sure you install packages with correct version below:
+
+- [Node.js v20.0.0+](https://nodejs.org/en/download/package-manager)
+- [React Native CLI](https://reactnative.dev/docs/environment-setup)
+- [CocoaPods](https://cocoapods.org/) (for iOS)
+- [Android Studio](https://developer.android.com/studio) (for Android)
+
+### Backend Setup (Strapi)
+
+```sh
+# Navigate to backend directory
+cd backend
+
+# Install dependencies
+npm install
+# or
+yarn install
+
+# Start Strapi development server
+npm run dev
+# or
+yarn dev
+
+# The Strapi admin panel will be available at http://localhost:1337/admin
 ```
 
-## Integrate with your tools
+### Environment Configuration
 
-* [Set up project integrations](https://gitlab.asoft-python.com/hien.duong/expo-training/-/settings/integrations)
+Create environment files in the root directory:
 
-## Collaborate with your team
+```sh
+# .env.development
+API_BASE_URL=http://localhost:1337/api
+STRAPI_URL=http://localhost:1337
 
-* [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-* [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-* [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-* [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-* [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+# .env.production
+API_BASE_URL=https://your-production-api.com/api
+STRAPI_URL=https://your-production-api.com
+```
 
-## Test and Deploy
+- **Note:**
+  - Please add `.env` files into root of project source code
+  - The app integrates with a Strapi v5 backend for API services
 
-Use the built-in continuous integration in GitLab.
+### Get source code
 
-* [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-* [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-* [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-* [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-* [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+| Command                                                                      | Action                    |
+| :--------------------------------------------------------------------------- | :------------------------ |
+| `git clone git@gitlab.asoft-python.com:hien.duong/react-native-training.git` | Clone Repository with SSH |
+| `cd react-native-training`                                                   | Redirect to folder        |
 
-***
+### Frontend Commands
 
-# Editing this README
+| Command              | Action                          | Port/Output             |
+| :------------------- | :------------------------------ | :---------------------- |
+| `yarn install`       | Install packages dependencies   | N/A                     |
+| `yarn start`         | Start Metro bundler             | <http://localhost:8081> |
+| `yarn android`       | Run on Android device/emulator  | Android                 |
+| `yarn ios`           | Run on iOS simulator/device     | iOS                     |
+| `yarn test:coverage` | Generate code coverage report   | Coverage report         |
+| `yarn lint`          | Run ESLint code linting         | N/A                     |
+| `yarn eslint:fix`    | Fix ESLint errors automatically | N/A                     |
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+### Custom Fonts
 
-## Suggestions for a good README
+When you add or update custom fonts in the `src/assets/fonts/` directory, you need to link them to your native projects. After adding new font files, run the following command:
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+```sh
+npx react-native-asset
+```
 
-## Name
-Choose a self-explaining name for your project.
+This command will automatically configure the fonts for both Android and iOS platforms. You only need to run this command when you add new fonts or update existing ones.
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+> **Note:** After running this command, you may need to rebuild your app for the changes to take effect.
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+## Step 1: Start Metro
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+First, you will need to run **Metro**, the JavaScript build tool for React Native.
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+To start the Metro dev server, run the following command from the root of your React Native project:
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+```sh
+# Using npm
+npm start
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+# OR using Yarn
+yarn start
+```
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+## Step 2: Build and run your app
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+### Android
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+```sh
+# Using npm
+npm run android
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+# OR using Yarn
+yarn android
+```
 
-## License
-For open source projects, say how it is licensed.
+### iOS
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+
+The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+
+```sh
+bundle install
+```
+
+Then, and every time you update your native dependencies, run:
+
+```sh
+bundle exec pod install
+```
+
+For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+
+```sh
+# Using npm
+npm run ios
+
+# OR using Yarn
+yarn ios
+```
+
+If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+
+This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+
+## Step 3: Modify your app
+
+Now that you have successfully run the app, let's make changes!
+
+Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+
+When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+
+**Android**: Press the **R** key twice or select **"Reload"** from the **Dev Menu**, accessed via **Ctrl + M** (Windows/Linux) or **Cmd ⌘ + M** (macOS).
+**iOS**: Press **R** in iOS Simulator.
+
+## Congratulations! :tada:
+
+You've successfully run and modified your React Native App. :partying_face:

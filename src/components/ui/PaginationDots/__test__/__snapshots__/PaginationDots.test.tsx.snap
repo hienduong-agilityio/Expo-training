@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PaginationDots matches snapshot 1`] = `
+<View
+  accessibilityLabel="Pagination dots"
+  accessibilityRole="checkbox"
+  style={
+    {
+      "alignItems": "center",
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "marginBottom": 30,
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "borderRadius": 8,
+          "height": 10,
+          "marginHorizontal": 4,
+          "width": 10,
+        },
+        {
+          "backgroundColor": "#F83758",
+          "width": 34,
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      [
+        {
+          "borderRadius": 8,
+          "height": 10,
+          "marginHorizontal": 4,
+          "width": 10,
+        },
+        {
+          "backgroundColor": "#E0E0E0",
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      [
+        {
+          "borderRadius": 8,
+          "height": 10,
+          "marginHorizontal": 4,
+          "width": 10,
+        },
+        {
+          "backgroundColor": "#E0E0E0",
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      [
+        {
+          "borderRadius": 8,
+          "height": 10,
+          "marginHorizontal": 4,
+          "width": 10,
+        },
+        {
+          "backgroundColor": "#E0E0E0",
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      [
+        {
+          "borderRadius": 8,
+          "height": 10,
+          "marginHorizontal": 4,
+          "width": 10,
+        },
+        {
+          "backgroundColor": "#E0E0E0",
+        },
+      ]
+    }
+  />
+</View>
+`;

@@ -1,0 +1,217 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OnboardingSlide Component Structure handles empty icon gracefully 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "justifyContent": "center",
+      "paddingHorizontal": 40,
+      "width": 750,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "marginBottom": 40,
+      }
+    }
+  />
+  <Text
+    accessibilityLabel="No Icon"
+    accessibilityRole="header"
+    accessible={true}
+    style={
+      {
+        "color": "#1C1B1F",
+        "fontSize": 34,
+        "fontWeight": "700",
+        "marginBottom": 8,
+        "textAlign": "center",
+      }
+    }
+  >
+    No Icon
+  </Text>
+  <Text
+    accessibilityLabel="This slide has no icon."
+    accessibilityRole="text"
+    accessible={true}
+    style={
+      {
+        "color": "#9CA4AB",
+        "fontSize": 14,
+        "fontWeight": "400",
+        "lineHeight": 14,
+        "paddingHorizontal": 20,
+        "textAlign": "center",
+      }
+    }
+  >
+    This slide has no icon.
+  </Text>
+</View>
+`;
+
+exports[`OnboardingSlide Component Structure renders icon container 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "justifyContent": "center",
+      "paddingHorizontal": 40,
+      "width": 750,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "marginBottom": 40,
+      }
+    }
+  />
+  <Text
+    accessibilityLabel="Choose Products"
+    accessibilityRole="header"
+    accessible={true}
+    style={
+      {
+        "color": "#1C1B1F",
+        "fontSize": 34,
+        "fontWeight": "700",
+        "marginBottom": 8,
+        "textAlign": "center",
+      }
+    }
+  >
+    Choose Products
+  </Text>
+  <Text
+    accessibilityLabel="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint."
+    accessibilityRole="text"
+    accessible={true}
+    style={
+      {
+        "color": "#9CA4AB",
+        "fontSize": 14,
+        "fontWeight": "400",
+        "lineHeight": 14,
+        "paddingHorizontal": 20,
+        "textAlign": "center",
+      }
+    }
+  >
+    Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
+  </Text>
+</View>
+`;
+
+exports[`OnboardingSlide Rendering renders slide with title and description 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "justifyContent": "center",
+      "paddingHorizontal": 40,
+      "width": 750,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "marginBottom": 40,
+      }
+    }
+  />
+  <Text
+    accessibilityLabel="Choose Products"
+    accessibilityRole="header"
+    accessible={true}
+    style={
+      {
+        "color": "#1C1B1F",
+        "fontSize": 34,
+        "fontWeight": "700",
+        "marginBottom": 8,
+        "textAlign": "center",
+      }
+    }
+  >
+    Choose Products
+  </Text>
+  <Text
+    accessibilityLabel="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint."
+    accessibilityRole="text"
+    accessible={true}
+    style={
+      {
+        "color": "#9CA4AB",
+        "fontSize": 14,
+        "fontWeight": "400",
+        "lineHeight": 14,
+        "paddingHorizontal": 20,
+        "textAlign": "center",
+      }
+    }
+  >
+    Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
+  </Text>
+</View>
+`;
+
+exports[`OnboardingSlide Rendering renders with different content 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "justifyContent": "center",
+      "paddingHorizontal": 40,
+      "width": 750,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "marginBottom": 40,
+      }
+    }
+  />
+  <Text
+    accessibilityLabel="Make Payment"
+    accessibilityRole="header"
+    accessible={true}
+    style={
+      {
+        "color": "#1C1B1F",
+        "fontSize": 34,
+        "fontWeight": "700",
+        "marginBottom": 8,
+        "textAlign": "center",
+      }
+    }
+  >
+    Make Payment
+  </Text>
+  <Text
+    accessibilityLabel="Different description content for testing."
+    accessibilityRole="text"
+    accessible={true}
+    style={
+      {
+        "color": "#9CA4AB",
+        "fontSize": 14,
+        "fontWeight": "400",
+        "lineHeight": 14,
+        "paddingHorizontal": 20,
+        "textAlign": "center",
+      }
+    }
+  >
+    Different description content for testing.
+  </Text>
+</View>
+`;

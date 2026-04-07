@@ -1,0 +1,1319 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SizeSelector disables unavailable sizes 1`] = `
+<View
+  accessibilityLabel="Size selector"
+  style={
+    {
+      "backgroundColor": "#FFFFFF",
+      "paddingHorizontal": 16,
+      "paddingVertical": 12,
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": "#1C1B1F",
+        "fontSize": 15,
+        "fontWeight": "600",
+        "marginBottom": 8,
+      }
+    }
+  >
+    Size: 
+    Select size
+  </Text>
+  <View
+    style={
+      {
+        "flexDirection": "row",
+        "flexWrap": "wrap",
+        "gap": 2,
+      }
+    }
+  >
+    <View
+      accessibilityLabel="Size XS"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": false,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#F83758",
+            "borderRadius": 8,
+            "borderWidth": 1,
+            "minWidth": 60,
+            "paddingHorizontal": 8,
+            "paddingVertical": 2,
+          },
+          false,
+          false,
+        ]
+      }
+      testID="size-btn-XS"
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#F83758",
+              "fontSize": 13,
+              "fontWeight": "500",
+            },
+            false,
+            false,
+          ]
+        }
+      >
+        XS
+      </Text>
+    </View>
+    <View
+      accessibilityLabel="Size S"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": false,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#F83758",
+            "borderRadius": 8,
+            "borderWidth": 1,
+            "minWidth": 60,
+            "paddingHorizontal": 8,
+            "paddingVertical": 2,
+          },
+          false,
+          false,
+        ]
+      }
+      testID="size-btn-S"
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#F83758",
+              "fontSize": 13,
+              "fontWeight": "500",
+            },
+            false,
+            false,
+          ]
+        }
+      >
+        S
+      </Text>
+    </View>
+    <View
+      accessibilityLabel="Size M"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": false,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#F83758",
+            "borderRadius": 8,
+            "borderWidth": 1,
+            "minWidth": 60,
+            "paddingHorizontal": 8,
+            "paddingVertical": 2,
+          },
+          false,
+          false,
+        ]
+      }
+      testID="size-btn-M"
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#F83758",
+              "fontSize": 13,
+              "fontWeight": "500",
+            },
+            false,
+            false,
+          ]
+        }
+      >
+        M
+      </Text>
+    </View>
+    <View
+      accessibilityLabel="Size L"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": false,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#F83758",
+            "borderRadius": 8,
+            "borderWidth": 1,
+            "minWidth": 60,
+            "paddingHorizontal": 8,
+            "paddingVertical": 2,
+          },
+          false,
+          false,
+        ]
+      }
+      testID="size-btn-L"
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#F83758",
+              "fontSize": 13,
+              "fontWeight": "500",
+            },
+            false,
+            false,
+          ]
+        }
+      >
+        L
+      </Text>
+    </View>
+    <View
+      accessibilityLabel="Size XL"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": false,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#F83758",
+            "borderRadius": 8,
+            "borderWidth": 1,
+            "minWidth": 60,
+            "paddingHorizontal": 8,
+            "paddingVertical": 2,
+          },
+          false,
+          false,
+        ]
+      }
+      testID="size-btn-XL"
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#F83758",
+              "fontSize": 13,
+              "fontWeight": "500",
+            },
+            false,
+            false,
+          ]
+        }
+      >
+        XL
+      </Text>
+    </View>
+    <View
+      accessibilityLabel="Size XXL"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": true,
+          "expanded": undefined,
+          "selected": false,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#F83758",
+            "borderRadius": 8,
+            "borderWidth": 1,
+            "minWidth": 60,
+            "paddingHorizontal": 8,
+            "paddingVertical": 2,
+          },
+          false,
+          {
+            "backgroundColor": "#FAFAFA",
+            "borderColor": "#F0F0F0",
+          },
+        ]
+      }
+      testID="size-btn-XXL"
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#F83758",
+              "fontSize": 13,
+              "fontWeight": "500",
+            },
+            false,
+            {
+              "color": "#BBBBBB",
+            },
+          ]
+        }
+      >
+        XXL
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`SizeSelector highlights selected size 1`] = `
+<View
+  accessibilityLabel="Size selector"
+  style={
+    {
+      "backgroundColor": "#FFFFFF",
+      "paddingHorizontal": 16,
+      "paddingVertical": 12,
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": "#1C1B1F",
+        "fontSize": 15,
+        "fontWeight": "600",
+        "marginBottom": 8,
+      }
+    }
+  >
+    Size: 
+    L
+  </Text>
+  <View
+    style={
+      {
+        "flexDirection": "row",
+        "flexWrap": "wrap",
+        "gap": 2,
+      }
+    }
+  >
+    <View
+      accessibilityLabel="Size XS"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": false,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#F83758",
+            "borderRadius": 8,
+            "borderWidth": 1,
+            "minWidth": 60,
+            "paddingHorizontal": 8,
+            "paddingVertical": 2,
+          },
+          false,
+          false,
+        ]
+      }
+      testID="size-btn-XS"
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#F83758",
+              "fontSize": 13,
+              "fontWeight": "500",
+            },
+            false,
+            false,
+          ]
+        }
+      >
+        XS
+      </Text>
+    </View>
+    <View
+      accessibilityLabel="Size S"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": false,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#F83758",
+            "borderRadius": 8,
+            "borderWidth": 1,
+            "minWidth": 60,
+            "paddingHorizontal": 8,
+            "paddingVertical": 2,
+          },
+          false,
+          false,
+        ]
+      }
+      testID="size-btn-S"
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#F83758",
+              "fontSize": 13,
+              "fontWeight": "500",
+            },
+            false,
+            false,
+          ]
+        }
+      >
+        S
+      </Text>
+    </View>
+    <View
+      accessibilityLabel="Size M"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": false,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#F83758",
+            "borderRadius": 8,
+            "borderWidth": 1,
+            "minWidth": 60,
+            "paddingHorizontal": 8,
+            "paddingVertical": 2,
+          },
+          false,
+          false,
+        ]
+      }
+      testID="size-btn-M"
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#F83758",
+              "fontSize": 13,
+              "fontWeight": "500",
+            },
+            false,
+            false,
+          ]
+        }
+      >
+        M
+      </Text>
+    </View>
+    <View
+      accessibilityLabel="Size L"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": true,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#F83758",
+            "borderRadius": 8,
+            "borderWidth": 1,
+            "minWidth": 60,
+            "paddingHorizontal": 8,
+            "paddingVertical": 2,
+          },
+          {
+            "backgroundColor": "#F83758",
+          },
+          false,
+        ]
+      }
+      testID="size-btn-L"
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#F83758",
+              "fontSize": 13,
+              "fontWeight": "500",
+            },
+            {
+              "color": "#FFFFFF",
+            },
+            false,
+          ]
+        }
+      >
+        L
+      </Text>
+    </View>
+    <View
+      accessibilityLabel="Size XL"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": false,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#F83758",
+            "borderRadius": 8,
+            "borderWidth": 1,
+            "minWidth": 60,
+            "paddingHorizontal": 8,
+            "paddingVertical": 2,
+          },
+          false,
+          false,
+        ]
+      }
+      testID="size-btn-XL"
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#F83758",
+              "fontSize": 13,
+              "fontWeight": "500",
+            },
+            false,
+            false,
+          ]
+        }
+      >
+        XL
+      </Text>
+    </View>
+    <View
+      accessibilityLabel="Size XXL"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": true,
+          "expanded": undefined,
+          "selected": false,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#F83758",
+            "borderRadius": 8,
+            "borderWidth": 1,
+            "minWidth": 60,
+            "paddingHorizontal": 8,
+            "paddingVertical": 2,
+          },
+          false,
+          {
+            "backgroundColor": "#FAFAFA",
+            "borderColor": "#F0F0F0",
+          },
+        ]
+      }
+      testID="size-btn-XXL"
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#F83758",
+              "fontSize": 13,
+              "fontWeight": "500",
+            },
+            false,
+            {
+              "color": "#BBBBBB",
+            },
+          ]
+        }
+      >
+        XXL
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`SizeSelector renders all sizes 1`] = `
+<View
+  accessibilityLabel="Size selector"
+  style={
+    {
+      "backgroundColor": "#FFFFFF",
+      "paddingHorizontal": 16,
+      "paddingVertical": 12,
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": "#1C1B1F",
+        "fontSize": 15,
+        "fontWeight": "600",
+        "marginBottom": 8,
+      }
+    }
+  >
+    Size: 
+    Select size
+  </Text>
+  <View
+    style={
+      {
+        "flexDirection": "row",
+        "flexWrap": "wrap",
+        "gap": 2,
+      }
+    }
+  >
+    <View
+      accessibilityLabel="Size XS"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": false,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#F83758",
+            "borderRadius": 8,
+            "borderWidth": 1,
+            "minWidth": 60,
+            "paddingHorizontal": 8,
+            "paddingVertical": 2,
+          },
+          false,
+          false,
+        ]
+      }
+      testID="size-btn-XS"
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#F83758",
+              "fontSize": 13,
+              "fontWeight": "500",
+            },
+            false,
+            false,
+          ]
+        }
+      >
+        XS
+      </Text>
+    </View>
+    <View
+      accessibilityLabel="Size S"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": false,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#F83758",
+            "borderRadius": 8,
+            "borderWidth": 1,
+            "minWidth": 60,
+            "paddingHorizontal": 8,
+            "paddingVertical": 2,
+          },
+          false,
+          false,
+        ]
+      }
+      testID="size-btn-S"
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#F83758",
+              "fontSize": 13,
+              "fontWeight": "500",
+            },
+            false,
+            false,
+          ]
+        }
+      >
+        S
+      </Text>
+    </View>
+    <View
+      accessibilityLabel="Size M"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": false,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#F83758",
+            "borderRadius": 8,
+            "borderWidth": 1,
+            "minWidth": 60,
+            "paddingHorizontal": 8,
+            "paddingVertical": 2,
+          },
+          false,
+          false,
+        ]
+      }
+      testID="size-btn-M"
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#F83758",
+              "fontSize": 13,
+              "fontWeight": "500",
+            },
+            false,
+            false,
+          ]
+        }
+      >
+        M
+      </Text>
+    </View>
+    <View
+      accessibilityLabel="Size L"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": false,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#F83758",
+            "borderRadius": 8,
+            "borderWidth": 1,
+            "minWidth": 60,
+            "paddingHorizontal": 8,
+            "paddingVertical": 2,
+          },
+          false,
+          false,
+        ]
+      }
+      testID="size-btn-L"
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#F83758",
+              "fontSize": 13,
+              "fontWeight": "500",
+            },
+            false,
+            false,
+          ]
+        }
+      >
+        L
+      </Text>
+    </View>
+    <View
+      accessibilityLabel="Size XL"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": false,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#F83758",
+            "borderRadius": 8,
+            "borderWidth": 1,
+            "minWidth": 60,
+            "paddingHorizontal": 8,
+            "paddingVertical": 2,
+          },
+          false,
+          false,
+        ]
+      }
+      testID="size-btn-XL"
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#F83758",
+              "fontSize": 13,
+              "fontWeight": "500",
+            },
+            false,
+            false,
+          ]
+        }
+      >
+        XL
+      </Text>
+    </View>
+    <View
+      accessibilityLabel="Size XXL"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": true,
+          "expanded": undefined,
+          "selected": false,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#F83758",
+            "borderRadius": 8,
+            "borderWidth": 1,
+            "minWidth": 60,
+            "paddingHorizontal": 8,
+            "paddingVertical": 2,
+          },
+          false,
+          {
+            "backgroundColor": "#FAFAFA",
+            "borderColor": "#F0F0F0",
+          },
+        ]
+      }
+      testID="size-btn-XXL"
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#F83758",
+              "fontSize": 13,
+              "fontWeight": "500",
+            },
+            false,
+            {
+              "color": "#BBBBBB",
+            },
+          ]
+        }
+      >
+        XXL
+      </Text>
+    </View>
+  </View>
+</View>
+`;

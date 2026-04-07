@@ -1,0 +1,2288 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SectionContent renders empty products list 1`] = `
+<RCTScrollView
+  ItemSeparatorComponent={[Function]}
+  ListFooterComponent={[Function]}
+  accessibilityLabel="Horizontal product list"
+  accessibilityRole="list"
+  contentContainerStyle={
+    [
+      {
+        "paddingHorizontal": 0,
+        "paddingVertical": 0,
+      },
+      {},
+    ]
+  }
+  data={
+    [
+      {
+        "brand": "Winter Co.",
+        "currency": "INR",
+        "description": "Autumn And Winter Casual cotton-padded jacket",
+        "id": "1",
+        "imageSource": {
+          "uri": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop",
+        },
+        "name": "Black Winter Jacket",
+        "price": 499,
+        "rating": 5,
+        "reviewCount": 6890,
+        "sizes": [
+          {
+            "available": true,
+            "id": "1",
+            "size": "XS",
+          },
+          {
+            "available": true,
+            "id": "2",
+            "size": "S",
+          },
+          {
+            "available": true,
+            "id": "3",
+            "size": "M",
+          },
+          {
+            "available": true,
+            "id": "4",
+            "size": "L",
+          },
+          {
+            "available": true,
+            "id": "5",
+            "size": "XL",
+          },
+          {
+            "available": false,
+            "id": "6",
+            "size": "XXL",
+          },
+        ],
+      },
+      {
+        "brand": "Cotton Co.",
+        "currency": "INR",
+        "description": "Mens Starry Sky Printed Shirt 100% Cotton Fabric",
+        "id": "2",
+        "imageSource": {
+          "uri": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=300&h=400&fit=crop",
+        },
+        "name": "Mens Starry Sky Printed Shirt",
+        "price": 399,
+        "rating": 5,
+        "reviewCount": 152344,
+        "sizes": [
+          {
+            "available": true,
+            "id": "1",
+            "size": "XS",
+          },
+          {
+            "available": true,
+            "id": "2",
+            "size": "S",
+          },
+          {
+            "available": true,
+            "id": "3",
+            "size": "M",
+          },
+          {
+            "available": true,
+            "id": "4",
+            "size": "L",
+          },
+          {
+            "available": true,
+            "id": "5",
+            "size": "XL",
+          },
+          {
+            "available": false,
+            "id": "6",
+            "size": "XXL",
+          },
+        ],
+      },
+      {
+        "brand": "Fashion Co.",
+        "currency": "INR",
+        "description": "Solid Black Dress for Women, Sexy Chain Shorts",
+        "id": "3",
+        "imageSource": {
+          "uri": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300&h=400&fit=crop",
+        },
+        "name": "Black Dress",
+        "price": 2000,
+        "rating": 5,
+        "reviewCount": 523456,
+        "sizes": [
+          {
+            "available": true,
+            "id": "1",
+            "size": "XS",
+          },
+          {
+            "available": true,
+            "id": "2",
+            "size": "S",
+          },
+          {
+            "available": true,
+            "id": "3",
+            "size": "M",
+          },
+          {
+            "available": true,
+            "id": "4",
+            "size": "L",
+          },
+          {
+            "available": true,
+            "id": "5",
+            "size": "XL",
+          },
+          {
+            "available": false,
+            "id": "6",
+            "size": "XXL",
+          },
+        ],
+      },
+    ]
+  }
+  getItem={[Function]}
+  getItemCount={[Function]}
+  getItemLayout={[Function]}
+  horizontal={true}
+  initialNumToRender={10}
+  keyExtractor={[Function]}
+  maxToRenderPerBatch={8}
+  onContentSizeChange={[Function]}
+  onEndReached={[Function]}
+  onEndReachedThreshold={0.5}
+  onLayout={[Function]}
+  onMomentumScrollBegin={[Function]}
+  onMomentumScrollEnd={[Function]}
+  onScroll={[Function]}
+  onScrollBeginDrag={[Function]}
+  onScrollEndDrag={[Function]}
+  removeClippedSubviews={true}
+  renderItem={[Function]}
+  scrollEventThrottle={0.0001}
+  showsHorizontalScrollIndicator={false}
+  stickyHeaderIndices={[]}
+  updateCellsBatchingPeriod={50}
+  viewabilityConfigCallbackPairs={[]}
+  windowSize={5}
+>
+  <View>
+    <View
+      onFocusCapture={[Function]}
+      style={
+        [
+          {
+            "flexDirection": "row",
+          },
+          null,
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {},
+            undefined,
+            {
+              "width": 160,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityLabel="Product: Black Winter Jacket, Price: 499 INR, Rating: 5 stars"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderRadius": 20,
+                "elevation": 2,
+                "marginVertical": 10,
+                "shadowColor": "#000000",
+                "shadowOffset": {
+                  "height": 2,
+                  "width": 2,
+                },
+                "shadowOpacity": 0.1,
+                "shadowRadius": 2,
+                "width": 718,
+              },
+              {
+                "width": "100%",
+              },
+              false,
+            ]
+          }
+        >
+          <View
+            style={
+              {
+                "aspectRatio": 1.1,
+                "borderRadius": 8,
+                "overflow": "hidden",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "overflow": "hidden",
+                  },
+                  {
+                    "height": "100%",
+                    "width": "100%",
+                  },
+                ]
+              }
+            >
+              <FastImageView
+                accessibilityLabel="Black Winter Jacket product image"
+                defaultSource={null}
+                onFastImageError={[Function]}
+                resizeMode="cover"
+                source={
+                  {
+                    "priority": "normal",
+                    "uri": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop",
+                  }
+                }
+                style={
+                  {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+              />
+            </View>
+          </View>
+          <View
+            style={
+              {
+                "paddingBottom": 8,
+                "paddingHorizontal": 12,
+                "paddingVertical": 16,
+              }
+            }
+          >
+            <Text
+              accessibilityLabel="Product name: Black Winter Jacket"
+              numberOfLines={1}
+              style={
+                {
+                  "color": "#1C1B1F",
+                  "fontSize": 14,
+                  "fontWeight": "700",
+                  "letterSpacing": 0.02,
+                  "lineHeight": 14,
+                  "marginBottom": 8,
+                }
+              }
+            >
+              Black Winter Jacket
+            </Text>
+            <Text
+              accessibilityLabel="Description: Autumn And Winter Casual cotton-padded jacket"
+              numberOfLines={2}
+              style={
+                {
+                  "color": "#575757",
+                  "fontSize": 13,
+                  "lineHeight": 14,
+                  "marginBottom": 4,
+                  "opacity": 0.8,
+                }
+              }
+            >
+              Autumn And Winter Casual cotton-padded jacket
+            </Text>
+            <View
+              style={
+                {
+                  "marginBottom": 5,
+                }
+              }
+            >
+              <Text
+                style={
+                  {
+                    "color": "#1C1B1F",
+                    "fontSize": 14,
+                  }
+                }
+              >
+                ₹ 499.00
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 4,
+                }
+              }
+            >
+              <View
+                accessibilityRole="image"
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  }
+                }
+              >
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    [
+                      {
+                        "fontSize": 20,
+                        "marginHorizontal": 2,
+                      },
+                      {
+                        "color": "#ffb300",
+                      },
+                    ]
+                  }
+                >
+                  ★
+                </Text>
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    [
+                      {
+                        "fontSize": 20,
+                        "marginHorizontal": 2,
+                      },
+                      {
+                        "color": "#ffb300",
+                      },
+                    ]
+                  }
+                >
+                  ★
+                </Text>
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    [
+                      {
+                        "fontSize": 20,
+                        "marginHorizontal": 2,
+                      },
+                      {
+                        "color": "#ffb300",
+                      },
+                    ]
+                  }
+                >
+                  ★
+                </Text>
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    [
+                      {
+                        "fontSize": 20,
+                        "marginHorizontal": 2,
+                      },
+                      {
+                        "color": "#ffb300",
+                      },
+                    ]
+                  }
+                >
+                  ★
+                </Text>
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    [
+                      {
+                        "fontSize": 20,
+                        "marginHorizontal": 2,
+                      },
+                      {
+                        "color": "#ffb300",
+                      },
+                    ]
+                  }
+                >
+                  ★
+                </Text>
+              </View>
+              <Text
+                accessibilityLabel="6,890 reviews"
+                style={
+                  {
+                    "color": "#9CA4AB",
+                    "fontSize": 13,
+                    "fontWeight": "500",
+                    "opacity": 0.7,
+                  }
+                }
+              >
+                6,890
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "width": 12,
+          }
+        }
+      />
+    </View>
+    <View
+      onFocusCapture={[Function]}
+      style={
+        [
+          {
+            "flexDirection": "row",
+          },
+          null,
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {},
+            undefined,
+            {
+              "width": 160,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityLabel="Product: Mens Starry Sky Printed Shirt, Price: 399 INR, Rating: 5 stars"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderRadius": 20,
+                "elevation": 2,
+                "marginVertical": 10,
+                "shadowColor": "#000000",
+                "shadowOffset": {
+                  "height": 2,
+                  "width": 2,
+                },
+                "shadowOpacity": 0.1,
+                "shadowRadius": 2,
+                "width": 718,
+              },
+              {
+                "width": "100%",
+              },
+              false,
+            ]
+          }
+        >
+          <View
+            style={
+              {
+                "aspectRatio": 1.1,
+                "borderRadius": 8,
+                "overflow": "hidden",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "overflow": "hidden",
+                  },
+                  {
+                    "height": "100%",
+                    "width": "100%",
+                  },
+                ]
+              }
+            >
+              <FastImageView
+                accessibilityLabel="Mens Starry Sky Printed Shirt product image"
+                defaultSource={null}
+                onFastImageError={[Function]}
+                resizeMode="cover"
+                source={
+                  {
+                    "priority": "normal",
+                    "uri": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=300&h=400&fit=crop",
+                  }
+                }
+                style={
+                  {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+              />
+            </View>
+          </View>
+          <View
+            style={
+              {
+                "paddingBottom": 8,
+                "paddingHorizontal": 12,
+                "paddingVertical": 16,
+              }
+            }
+          >
+            <Text
+              accessibilityLabel="Product name: Mens Starry Sky Printed Shirt"
+              numberOfLines={1}
+              style={
+                {
+                  "color": "#1C1B1F",
+                  "fontSize": 14,
+                  "fontWeight": "700",
+                  "letterSpacing": 0.02,
+                  "lineHeight": 14,
+                  "marginBottom": 8,
+                }
+              }
+            >
+              Mens Starry Sky Printed Shirt
+            </Text>
+            <Text
+              accessibilityLabel="Description: Mens Starry Sky Printed Shirt 100% Cotton Fabric"
+              numberOfLines={2}
+              style={
+                {
+                  "color": "#575757",
+                  "fontSize": 13,
+                  "lineHeight": 14,
+                  "marginBottom": 4,
+                  "opacity": 0.8,
+                }
+              }
+            >
+              Mens Starry Sky Printed Shirt 100% Cotton Fabric
+            </Text>
+            <View
+              style={
+                {
+                  "marginBottom": 5,
+                }
+              }
+            >
+              <Text
+                style={
+                  {
+                    "color": "#1C1B1F",
+                    "fontSize": 14,
+                  }
+                }
+              >
+                ₹ 399.00
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 4,
+                }
+              }
+            >
+              <View
+                accessibilityRole="image"
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  }
+                }
+              >
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    [
+                      {
+                        "fontSize": 20,
+                        "marginHorizontal": 2,
+                      },
+                      {
+                        "color": "#ffb300",
+                      },
+                    ]
+                  }
+                >
+                  ★
+                </Text>
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    [
+                      {
+                        "fontSize": 20,
+                        "marginHorizontal": 2,
+                      },
+                      {
+                        "color": "#ffb300",
+                      },
+                    ]
+                  }
+                >
+                  ★
+                </Text>
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    [
+                      {
+                        "fontSize": 20,
+                        "marginHorizontal": 2,
+                      },
+                      {
+                        "color": "#ffb300",
+                      },
+                    ]
+                  }
+                >
+                  ★
+                </Text>
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    [
+                      {
+                        "fontSize": 20,
+                        "marginHorizontal": 2,
+                      },
+                      {
+                        "color": "#ffb300",
+                      },
+                    ]
+                  }
+                >
+                  ★
+                </Text>
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    [
+                      {
+                        "fontSize": 20,
+                        "marginHorizontal": 2,
+                      },
+                      {
+                        "color": "#ffb300",
+                      },
+                    ]
+                  }
+                >
+                  ★
+                </Text>
+              </View>
+              <Text
+                accessibilityLabel="152,344 reviews"
+                style={
+                  {
+                    "color": "#9CA4AB",
+                    "fontSize": 13,
+                    "fontWeight": "500",
+                    "opacity": 0.7,
+                  }
+                }
+              >
+                152,344
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "width": 12,
+          }
+        }
+      />
+    </View>
+    <View
+      onFocusCapture={[Function]}
+      style={
+        [
+          {
+            "flexDirection": "row",
+          },
+          null,
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {},
+            undefined,
+            {
+              "width": 160,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityLabel="Product: Black Dress, Price: 2000 INR, Rating: 5 stars"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderRadius": 20,
+                "elevation": 2,
+                "marginVertical": 10,
+                "shadowColor": "#000000",
+                "shadowOffset": {
+                  "height": 2,
+                  "width": 2,
+                },
+                "shadowOpacity": 0.1,
+                "shadowRadius": 2,
+                "width": 718,
+              },
+              {
+                "width": "100%",
+              },
+              false,
+            ]
+          }
+        >
+          <View
+            style={
+              {
+                "aspectRatio": 1.1,
+                "borderRadius": 8,
+                "overflow": "hidden",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "overflow": "hidden",
+                  },
+                  {
+                    "height": "100%",
+                    "width": "100%",
+                  },
+                ]
+              }
+            >
+              <FastImageView
+                accessibilityLabel="Black Dress product image"
+                defaultSource={null}
+                onFastImageError={[Function]}
+                resizeMode="cover"
+                source={
+                  {
+                    "priority": "normal",
+                    "uri": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300&h=400&fit=crop",
+                  }
+                }
+                style={
+                  {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+              />
+            </View>
+          </View>
+          <View
+            style={
+              {
+                "paddingBottom": 8,
+                "paddingHorizontal": 12,
+                "paddingVertical": 16,
+              }
+            }
+          >
+            <Text
+              accessibilityLabel="Product name: Black Dress"
+              numberOfLines={1}
+              style={
+                {
+                  "color": "#1C1B1F",
+                  "fontSize": 14,
+                  "fontWeight": "700",
+                  "letterSpacing": 0.02,
+                  "lineHeight": 14,
+                  "marginBottom": 8,
+                }
+              }
+            >
+              Black Dress
+            </Text>
+            <Text
+              accessibilityLabel="Description: Solid Black Dress for Women, Sexy Chain Shorts"
+              numberOfLines={2}
+              style={
+                {
+                  "color": "#575757",
+                  "fontSize": 13,
+                  "lineHeight": 14,
+                  "marginBottom": 4,
+                  "opacity": 0.8,
+                }
+              }
+            >
+              Solid Black Dress for Women, Sexy Chain Shorts
+            </Text>
+            <View
+              style={
+                {
+                  "marginBottom": 5,
+                }
+              }
+            >
+              <Text
+                style={
+                  {
+                    "color": "#1C1B1F",
+                    "fontSize": 14,
+                  }
+                }
+              >
+                ₹ 2000.00
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 4,
+                }
+              }
+            >
+              <View
+                accessibilityRole="image"
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  }
+                }
+              >
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    [
+                      {
+                        "fontSize": 20,
+                        "marginHorizontal": 2,
+                      },
+                      {
+                        "color": "#ffb300",
+                      },
+                    ]
+                  }
+                >
+                  ★
+                </Text>
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    [
+                      {
+                        "fontSize": 20,
+                        "marginHorizontal": 2,
+                      },
+                      {
+                        "color": "#ffb300",
+                      },
+                    ]
+                  }
+                >
+                  ★
+                </Text>
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    [
+                      {
+                        "fontSize": 20,
+                        "marginHorizontal": 2,
+                      },
+                      {
+                        "color": "#ffb300",
+                      },
+                    ]
+                  }
+                >
+                  ★
+                </Text>
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    [
+                      {
+                        "fontSize": 20,
+                        "marginHorizontal": 2,
+                      },
+                      {
+                        "color": "#ffb300",
+                      },
+                    ]
+                  }
+                >
+                  ★
+                </Text>
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    [
+                      {
+                        "fontSize": 20,
+                        "marginHorizontal": 2,
+                      },
+                      {
+                        "color": "#ffb300",
+                      },
+                    ]
+                  }
+                >
+                  ★
+                </Text>
+              </View>
+              <Text
+                accessibilityLabel="523,456 reviews"
+                style={
+                  {
+                    "color": "#9CA4AB",
+                    "fontSize": 13,
+                    "fontWeight": "500",
+                    "opacity": 0.7,
+                  }
+                }
+              >
+                523,456
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+    />
+  </View>
+</RCTScrollView>
+`;
+
+exports[`SectionContent renders error state with error message 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "justifyContent": "center",
+      "padding": 20,
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": "#EB3030",
+        "fontSize": 13,
+        "textAlign": "center",
+      }
+    }
+  >
+    Error: 
+    Failed to load products
+  </Text>
+</View>
+`;
+
+exports[`SectionContent renders error state with null error message 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "justifyContent": "center",
+      "padding": 20,
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": "#EB3030",
+        "fontSize": 13,
+        "textAlign": "center",
+      }
+    }
+  >
+    Error: 
+    Failed to load products
+  </Text>
+</View>
+`;
+
+exports[`SectionContent renders error state without error message 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "justifyContent": "center",
+      "padding": 20,
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": "#EB3030",
+        "fontSize": 13,
+        "textAlign": "center",
+      }
+    }
+  >
+    Error: 
+    Failed to load products
+  </Text>
+</View>
+`;
+
+exports[`SectionContent renders loading state 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "justifyContent": "center",
+      "padding": 20,
+    }
+  }
+>
+  <ActivityIndicator
+    size="small"
+  />
+</View>
+`;
+
+exports[`SectionContent renders products when not loading and no error 1`] = `
+<RCTScrollView
+  ItemSeparatorComponent={[Function]}
+  ListFooterComponent={[Function]}
+  accessibilityLabel="Horizontal product list"
+  accessibilityRole="list"
+  contentContainerStyle={
+    [
+      {
+        "paddingHorizontal": 0,
+        "paddingVertical": 0,
+      },
+      {},
+    ]
+  }
+  data={
+    [
+      {
+        "brand": "Winter Co.",
+        "currency": "INR",
+        "description": "Autumn And Winter Casual cotton-padded jacket",
+        "id": "1",
+        "imageSource": {
+          "uri": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop",
+        },
+        "name": "Black Winter Jacket",
+        "price": 499,
+        "rating": 5,
+        "reviewCount": 6890,
+        "sizes": [
+          {
+            "available": true,
+            "id": "1",
+            "size": "XS",
+          },
+          {
+            "available": true,
+            "id": "2",
+            "size": "S",
+          },
+          {
+            "available": true,
+            "id": "3",
+            "size": "M",
+          },
+          {
+            "available": true,
+            "id": "4",
+            "size": "L",
+          },
+          {
+            "available": true,
+            "id": "5",
+            "size": "XL",
+          },
+          {
+            "available": false,
+            "id": "6",
+            "size": "XXL",
+          },
+        ],
+      },
+      {
+        "brand": "Cotton Co.",
+        "currency": "INR",
+        "description": "Mens Starry Sky Printed Shirt 100% Cotton Fabric",
+        "id": "2",
+        "imageSource": {
+          "uri": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=300&h=400&fit=crop",
+        },
+        "name": "Mens Starry Sky Printed Shirt",
+        "price": 399,
+        "rating": 5,
+        "reviewCount": 152344,
+        "sizes": [
+          {
+            "available": true,
+            "id": "1",
+            "size": "XS",
+          },
+          {
+            "available": true,
+            "id": "2",
+            "size": "S",
+          },
+          {
+            "available": true,
+            "id": "3",
+            "size": "M",
+          },
+          {
+            "available": true,
+            "id": "4",
+            "size": "L",
+          },
+          {
+            "available": true,
+            "id": "5",
+            "size": "XL",
+          },
+          {
+            "available": false,
+            "id": "6",
+            "size": "XXL",
+          },
+        ],
+      },
+      {
+        "brand": "Fashion Co.",
+        "currency": "INR",
+        "description": "Solid Black Dress for Women, Sexy Chain Shorts",
+        "id": "3",
+        "imageSource": {
+          "uri": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300&h=400&fit=crop",
+        },
+        "name": "Black Dress",
+        "price": 2000,
+        "rating": 5,
+        "reviewCount": 523456,
+        "sizes": [
+          {
+            "available": true,
+            "id": "1",
+            "size": "XS",
+          },
+          {
+            "available": true,
+            "id": "2",
+            "size": "S",
+          },
+          {
+            "available": true,
+            "id": "3",
+            "size": "M",
+          },
+          {
+            "available": true,
+            "id": "4",
+            "size": "L",
+          },
+          {
+            "available": true,
+            "id": "5",
+            "size": "XL",
+          },
+          {
+            "available": false,
+            "id": "6",
+            "size": "XXL",
+          },
+        ],
+      },
+    ]
+  }
+  getItem={[Function]}
+  getItemCount={[Function]}
+  getItemLayout={[Function]}
+  horizontal={true}
+  initialNumToRender={10}
+  keyExtractor={[Function]}
+  maxToRenderPerBatch={8}
+  onContentSizeChange={[Function]}
+  onEndReached={[Function]}
+  onEndReachedThreshold={0.5}
+  onLayout={[Function]}
+  onMomentumScrollBegin={[Function]}
+  onMomentumScrollEnd={[Function]}
+  onScroll={[Function]}
+  onScrollBeginDrag={[Function]}
+  onScrollEndDrag={[Function]}
+  removeClippedSubviews={true}
+  renderItem={[Function]}
+  scrollEventThrottle={0.0001}
+  showsHorizontalScrollIndicator={false}
+  stickyHeaderIndices={[]}
+  updateCellsBatchingPeriod={50}
+  viewabilityConfigCallbackPairs={[]}
+  windowSize={5}
+>
+  <View>
+    <View
+      onFocusCapture={[Function]}
+      style={
+        [
+          {
+            "flexDirection": "row",
+          },
+          null,
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {},
+            undefined,
+            {
+              "width": 160,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityLabel="Product: Black Winter Jacket, Price: 499 INR, Rating: 5 stars"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderRadius": 20,
+                "elevation": 2,
+                "marginVertical": 10,
+                "shadowColor": "#000000",
+                "shadowOffset": {
+                  "height": 2,
+                  "width": 2,
+                },
+                "shadowOpacity": 0.1,
+                "shadowRadius": 2,
+                "width": 718,
+              },
+              {
+                "width": "100%",
+              },
+              false,
+            ]
+          }
+        >
+          <View
+            style={
+              {
+                "aspectRatio": 1.1,
+                "borderRadius": 8,
+                "overflow": "hidden",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "overflow": "hidden",
+                  },
+                  {
+                    "height": "100%",
+                    "width": "100%",
+                  },
+                ]
+              }
+            >
+              <FastImageView
+                accessibilityLabel="Black Winter Jacket product image"
+                defaultSource={null}
+                onFastImageError={[Function]}
+                resizeMode="cover"
+                source={
+                  {
+                    "priority": "normal",
+                    "uri": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop",
+                  }
+                }
+                style={
+                  {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+              />
+            </View>
+          </View>
+          <View
+            style={
+              {
+                "paddingBottom": 8,
+                "paddingHorizontal": 12,
+                "paddingVertical": 16,
+              }
+            }
+          >
+            <Text
+              accessibilityLabel="Product name: Black Winter Jacket"
+              numberOfLines={1}
+              style={
+                {
+                  "color": "#1C1B1F",
+                  "fontSize": 14,
+                  "fontWeight": "700",
+                  "letterSpacing": 0.02,
+                  "lineHeight": 14,
+                  "marginBottom": 8,
+                }
+              }
+            >
+              Black Winter Jacket
+            </Text>
+            <Text
+              accessibilityLabel="Description: Autumn And Winter Casual cotton-padded jacket"
+              numberOfLines={2}
+              style={
+                {
+                  "color": "#575757",
+                  "fontSize": 13,
+                  "lineHeight": 14,
+                  "marginBottom": 4,
+                  "opacity": 0.8,
+                }
+              }
+            >
+              Autumn And Winter Casual cotton-padded jacket
+            </Text>
+            <View
+              style={
+                {
+                  "marginBottom": 5,
+                }
+              }
+            >
+              <Text
+                style={
+                  {
+                    "color": "#1C1B1F",
+                    "fontSize": 14,
+                  }
+                }
+              >
+                ₹ 499.00
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 4,
+                }
+              }
+            >
+              <View
+                accessibilityRole="image"
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  }
+                }
+              >
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    [
+                      {
+                        "fontSize": 20,
+                        "marginHorizontal": 2,
+                      },
+                      {
+                        "color": "#ffb300",
+                      },
+                    ]
+                  }
+                >
+                  ★
+                </Text>
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    [
+                      {
+                        "fontSize": 20,
+                        "marginHorizontal": 2,
+                      },
+                      {
+                        "color": "#ffb300",
+                      },
+                    ]
+                  }
+                >
+                  ★
+                </Text>
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    [
+                      {
+                        "fontSize": 20,
+                        "marginHorizontal": 2,
+                      },
+                      {
+                        "color": "#ffb300",
+                      },
+                    ]
+                  }
+                >
+                  ★
+                </Text>
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    [
+                      {
+                        "fontSize": 20,
+                        "marginHorizontal": 2,
+                      },
+                      {
+                        "color": "#ffb300",
+                      },
+                    ]
+                  }
+                >
+                  ★
+                </Text>
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    [
+                      {
+                        "fontSize": 20,
+                        "marginHorizontal": 2,
+                      },
+                      {
+                        "color": "#ffb300",
+                      },
+                    ]
+                  }
+                >
+                  ★
+                </Text>
+              </View>
+              <Text
+                accessibilityLabel="6,890 reviews"
+                style={
+                  {
+                    "color": "#9CA4AB",
+                    "fontSize": 13,
+                    "fontWeight": "500",
+                    "opacity": 0.7,
+                  }
+                }
+              >
+                6,890
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "width": 12,
+          }
+        }
+      />
+    </View>
+    <View
+      onFocusCapture={[Function]}
+      style={
+        [
+          {
+            "flexDirection": "row",
+          },
+          null,
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {},
+            undefined,
+            {
+              "width": 160,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityLabel="Product: Mens Starry Sky Printed Shirt, Price: 399 INR, Rating: 5 stars"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderRadius": 20,
+                "elevation": 2,
+                "marginVertical": 10,
+                "shadowColor": "#000000",
+                "shadowOffset": {
+                  "height": 2,
+                  "width": 2,
+                },
+                "shadowOpacity": 0.1,
+                "shadowRadius": 2,
+                "width": 718,
+              },
+              {
+                "width": "100%",
+              },
+              false,
+            ]
+          }
+        >
+          <View
+            style={
+              {
+                "aspectRatio": 1.1,
+                "borderRadius": 8,
+                "overflow": "hidden",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "overflow": "hidden",
+                  },
+                  {
+                    "height": "100%",
+                    "width": "100%",
+                  },
+                ]
+              }
+            >
+              <FastImageView
+                accessibilityLabel="Mens Starry Sky Printed Shirt product image"
+                defaultSource={null}
+                onFastImageError={[Function]}
+                resizeMode="cover"
+                source={
+                  {
+                    "priority": "normal",
+                    "uri": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=300&h=400&fit=crop",
+                  }
+                }
+                style={
+                  {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+              />
+            </View>
+          </View>
+          <View
+            style={
+              {
+                "paddingBottom": 8,
+                "paddingHorizontal": 12,
+                "paddingVertical": 16,
+              }
+            }
+          >
+            <Text
+              accessibilityLabel="Product name: Mens Starry Sky Printed Shirt"
+              numberOfLines={1}
+              style={
+                {
+                  "color": "#1C1B1F",
+                  "fontSize": 14,
+                  "fontWeight": "700",
+                  "letterSpacing": 0.02,
+                  "lineHeight": 14,
+                  "marginBottom": 8,
+                }
+              }
+            >
+              Mens Starry Sky Printed Shirt
+            </Text>
+            <Text
+              accessibilityLabel="Description: Mens Starry Sky Printed Shirt 100% Cotton Fabric"
+              numberOfLines={2}
+              style={
+                {
+                  "color": "#575757",
+                  "fontSize": 13,
+                  "lineHeight": 14,
+                  "marginBottom": 4,
+                  "opacity": 0.8,
+                }
+              }
+            >
+              Mens Starry Sky Printed Shirt 100% Cotton Fabric
+            </Text>
+            <View
+              style={
+                {
+                  "marginBottom": 5,
+                }
+              }
+            >
+              <Text
+                style={
+                  {
+                    "color": "#1C1B1F",
+                    "fontSize": 14,
+                  }
+                }
+              >
+                ₹ 399.00
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 4,
+                }
+              }
+            >
+              <View
+                accessibilityRole="image"
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  }
+                }
+              >
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    [
+                      {
+                        "fontSize": 20,
+                        "marginHorizontal": 2,
+                      },
+                      {
+                        "color": "#ffb300",
+                      },
+                    ]
+                  }
+                >
+                  ★
+                </Text>
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    [
+                      {
+                        "fontSize": 20,
+                        "marginHorizontal": 2,
+                      },
+                      {
+                        "color": "#ffb300",
+                      },
+                    ]
+                  }
+                >
+                  ★
+                </Text>
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    [
+                      {
+                        "fontSize": 20,
+                        "marginHorizontal": 2,
+                      },
+                      {
+                        "color": "#ffb300",
+                      },
+                    ]
+                  }
+                >
+                  ★
+                </Text>
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    [
+                      {
+                        "fontSize": 20,
+                        "marginHorizontal": 2,
+                      },
+                      {
+                        "color": "#ffb300",
+                      },
+                    ]
+                  }
+                >
+                  ★
+                </Text>
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    [
+                      {
+                        "fontSize": 20,
+                        "marginHorizontal": 2,
+                      },
+                      {
+                        "color": "#ffb300",
+                      },
+                    ]
+                  }
+                >
+                  ★
+                </Text>
+              </View>
+              <Text
+                accessibilityLabel="152,344 reviews"
+                style={
+                  {
+                    "color": "#9CA4AB",
+                    "fontSize": 13,
+                    "fontWeight": "500",
+                    "opacity": 0.7,
+                  }
+                }
+              >
+                152,344
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "width": 12,
+          }
+        }
+      />
+    </View>
+    <View
+      onFocusCapture={[Function]}
+      style={
+        [
+          {
+            "flexDirection": "row",
+          },
+          null,
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {},
+            undefined,
+            {
+              "width": 160,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityLabel="Product: Black Dress, Price: 2000 INR, Rating: 5 stars"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderRadius": 20,
+                "elevation": 2,
+                "marginVertical": 10,
+                "shadowColor": "#000000",
+                "shadowOffset": {
+                  "height": 2,
+                  "width": 2,
+                },
+                "shadowOpacity": 0.1,
+                "shadowRadius": 2,
+                "width": 718,
+              },
+              {
+                "width": "100%",
+              },
+              false,
+            ]
+          }
+        >
+          <View
+            style={
+              {
+                "aspectRatio": 1.1,
+                "borderRadius": 8,
+                "overflow": "hidden",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "overflow": "hidden",
+                  },
+                  {
+                    "height": "100%",
+                    "width": "100%",
+                  },
+                ]
+              }
+            >
+              <FastImageView
+                accessibilityLabel="Black Dress product image"
+                defaultSource={null}
+                onFastImageError={[Function]}
+                resizeMode="cover"
+                source={
+                  {
+                    "priority": "normal",
+                    "uri": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300&h=400&fit=crop",
+                  }
+                }
+                style={
+                  {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+              />
+            </View>
+          </View>
+          <View
+            style={
+              {
+                "paddingBottom": 8,
+                "paddingHorizontal": 12,
+                "paddingVertical": 16,
+              }
+            }
+          >
+            <Text
+              accessibilityLabel="Product name: Black Dress"
+              numberOfLines={1}
+              style={
+                {
+                  "color": "#1C1B1F",
+                  "fontSize": 14,
+                  "fontWeight": "700",
+                  "letterSpacing": 0.02,
+                  "lineHeight": 14,
+                  "marginBottom": 8,
+                }
+              }
+            >
+              Black Dress
+            </Text>
+            <Text
+              accessibilityLabel="Description: Solid Black Dress for Women, Sexy Chain Shorts"
+              numberOfLines={2}
+              style={
+                {
+                  "color": "#575757",
+                  "fontSize": 13,
+                  "lineHeight": 14,
+                  "marginBottom": 4,
+                  "opacity": 0.8,
+                }
+              }
+            >
+              Solid Black Dress for Women, Sexy Chain Shorts
+            </Text>
+            <View
+              style={
+                {
+                  "marginBottom": 5,
+                }
+              }
+            >
+              <Text
+                style={
+                  {
+                    "color": "#1C1B1F",
+                    "fontSize": 14,
+                  }
+                }
+              >
+                ₹ 2000.00
+              </Text>
+            </View>
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 4,
+                }
+              }
+            >
+              <View
+                accessibilityRole="image"
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  }
+                }
+              >
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    [
+                      {
+                        "fontSize": 20,
+                        "marginHorizontal": 2,
+                      },
+                      {
+                        "color": "#ffb300",
+                      },
+                    ]
+                  }
+                >
+                  ★
+                </Text>
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    [
+                      {
+                        "fontSize": 20,
+                        "marginHorizontal": 2,
+                      },
+                      {
+                        "color": "#ffb300",
+                      },
+                    ]
+                  }
+                >
+                  ★
+                </Text>
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    [
+                      {
+                        "fontSize": 20,
+                        "marginHorizontal": 2,
+                      },
+                      {
+                        "color": "#ffb300",
+                      },
+                    ]
+                  }
+                >
+                  ★
+                </Text>
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    [
+                      {
+                        "fontSize": 20,
+                        "marginHorizontal": 2,
+                      },
+                      {
+                        "color": "#ffb300",
+                      },
+                    ]
+                  }
+                >
+                  ★
+                </Text>
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    [
+                      {
+                        "fontSize": 20,
+                        "marginHorizontal": 2,
+                      },
+                      {
+                        "color": "#ffb300",
+                      },
+                    ]
+                  }
+                >
+                  ★
+                </Text>
+              </View>
+              <Text
+                accessibilityLabel="523,456 reviews"
+                style={
+                  {
+                    "color": "#9CA4AB",
+                    "fontSize": 13,
+                    "fontWeight": "500",
+                    "opacity": 0.7,
+                  }
+                }
+              >
+                523,456
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+    />
+  </View>
+</RCTScrollView>
+`;

@@ -1,0 +1,247 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AuthFooter /> renders divider, social icons and helper navigation 1`] = `
+[
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "marginVertical": 30,
+      }
+    }
+  >
+    <Text
+      style={
+        {
+          "color": "#9CA4AB",
+          "fontSize": 18,
+          "fontWeight": "500",
+          "marginHorizontal": 20,
+        }
+      }
+    >
+      OR continue with
+    </Text>
+  </View>,
+  <View
+    style={
+      {
+        "flexDirection": "row",
+        "gap": 20,
+        "justifyContent": "center",
+        "marginBottom": 30,
+      }
+    }
+  >
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#FCF3F6",
+          "borderColor": "#F83758",
+          "borderRadius": 50,
+          "borderWidth": 2,
+          "height": 56,
+          "justifyContent": "center",
+          "opacity": 1,
+          "padding": 8,
+          "width": 56,
+        }
+      }
+    >
+      <View
+        accessibilityLabel="google-icon"
+      />
+    </View>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#FCF3F6",
+          "borderColor": "#F83758",
+          "borderRadius": 50,
+          "borderWidth": 2,
+          "height": 56,
+          "justifyContent": "center",
+          "opacity": 1,
+          "padding": 8,
+          "width": 56,
+        }
+      }
+    >
+      <View
+        accessibilityLabel="apple-icon"
+      />
+    </View>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#FCF3F6",
+          "borderColor": "#F83758",
+          "borderRadius": 50,
+          "borderWidth": 2,
+          "height": 56,
+          "justifyContent": "center",
+          "opacity": 1,
+          "padding": 8,
+          "width": 56,
+        }
+      }
+    >
+      <View
+        accessibilityLabel="facebook-icon"
+      />
+    </View>
+  </View>,
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <Text
+      style={
+        {
+          "color": "#1C1B1F",
+          "fontSize": 18,
+          "fontWeight": "400",
+        }
+      }
+    >
+      Don't have an account?
+    </Text>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "opacity": 1,
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "color": "#F83758",
+            "fontSize": 18,
+            "fontWeight": "500",
+            "textDecorationLine": "underline",
+          }
+        }
+      >
+        Sign up
+      </Text>
+    </View>
+  </View>,
+]
+`;
