@@ -1,6 +1,3 @@
-// Notifee
-import notifee from '@notifee/react-native';
-
 // React Native Firebase
 import {
   getMessaging,
@@ -83,18 +80,6 @@ export const registerListenerWithFCM = (
     getInitialNotification(messaging).then(remoteMessage => {
       if (remoteMessage) {
         handleRemoteMessage(remoteMessage, onNotificationOpen, true);
-      }
-    });
-
-    // Handle Notifee initial notification (quit state)
-    notifee.getInitialNotification().then(detail => {
-      if (detail?.notification?.data) {
-        const data = detail.notification.data as NotificationData;
-
-        setTimeout(
-          () => onNotificationOpen?.(data),
-          NOTIFICATION_TIMING.INITIAL_NOTIFICATION_DELAY,
-        );
       }
     });
 
