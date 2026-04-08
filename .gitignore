@@ -78,3 +78,8 @@ tmp/
 
 .env
 .env.production
+
+# Expo
+.expo
+dist/
+web-build/
