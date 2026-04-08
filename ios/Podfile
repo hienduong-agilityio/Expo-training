@@ -12,6 +12,10 @@ node_require('react-native/scripts/react_native_pods.rb')
 node_require('react-native-permissions/scripts/setup.rb')
 
 platform :ios, min_ios_version_supported
+
+# CocoaPods cannot infer the .xcodeproj when the project filename differs from the app target name.
+project 'ReactNativeTemplate.xcodeproj'
+
 prepare_react_native_project!
 
 setup_permissions([
@@ -22,6 +26,7 @@ use_frameworks! :linkage => :static
 $RNFirebaseAsStaticFramework = true
 
 target 'StylishEcommerce' do
+  use_expo_modules!
 
   if ENV['EXPO_USE_COMMUNITY_AUTOLINKING'] == '1'
     config_command = ['node', '-e', "process.argv=['', '', 'config'];require('@react-native-community/cli').run()"];

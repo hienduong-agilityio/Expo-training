@@ -1,5 +1,5 @@
 {
-  "date": 1775634173717,
+  "date": 1775641328624,
   "entryPoint": "/Users/hienduong/Documents/HienDuong/expo-training/index.js",
   "transformOptions": {
     "customTransformOptions": {
@@ -34,11 +34,6 @@
     {
       "name": "@babel/runtime",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime",
-      "version": "7.28.6"
-    },
-    {
-      "name": "@babel/runtime",
-      "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime",
       "version": "7.29.2"
     },
     {
@@ -57,11 +52,6 @@
       "version": "55.0.0"
     },
     {
-      "name": "@notifee/react-native",
-      "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native",
-      "version": "9.1.8"
-    },
-    {
       "name": "@react-native-async-storage/async-storage",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-native-async-storage/async-storage",
       "version": "2.2.0"
@@ -74,12 +64,12 @@
     {
       "name": "@react-native-firebase/app",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-native-firebase/app",
-      "version": "23.8.3"
+      "version": "23.8.8"
     },
     {
       "name": "@react-native-firebase/messaging",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-native-firebase/messaging",
-      "version": "23.8.3"
+      "version": "23.8.8"
     },
     {
       "name": "@react-native/assets-registry",
@@ -99,27 +89,27 @@
     {
       "name": "@react-navigation/bottom-tabs",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/bottom-tabs",
-      "version": "7.10.1"
+      "version": "7.15.9"
     },
     {
       "name": "@react-navigation/core",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core",
-      "version": "7.14.0"
+      "version": "7.17.2"
     },
     {
       "name": "@react-navigation/elements",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/elements",
-      "version": "2.9.5"
+      "version": "2.9.14"
     },
     {
       "name": "@react-navigation/native",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/native",
-      "version": "7.1.28"
+      "version": "7.2.2"
     },
     {
       "name": "@react-navigation/native-stack",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/native-stack",
-      "version": "7.10.1"
+      "version": "7.14.10"
     },
     {
       "name": "@react-navigation/routers",
@@ -127,29 +117,34 @@
       "version": "7.5.3"
     },
     {
+      "name": "@rozenite/agent-bridge",
+      "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@rozenite/agent-bridge",
+      "version": "1.6.0"
+    },
+    {
       "name": "@rozenite/network-activity-plugin",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@rozenite/network-activity-plugin",
-      "version": "1.2.0"
+      "version": "1.6.0"
     },
     {
       "name": "@rozenite/performance-monitor-plugin",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@rozenite/performance-monitor-plugin",
-      "version": "1.2.0"
+      "version": "1.6.0"
     },
     {
       "name": "@rozenite/plugin-bridge",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@rozenite/plugin-bridge",
-      "version": "1.2.0"
+      "version": "1.6.0"
     },
     {
       "name": "@rozenite/tanstack-query-plugin",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@rozenite/tanstack-query-plugin",
-      "version": "1.2.0"
+      "version": "1.6.0"
     },
     {
       "name": "@storybook/addon-actions",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@storybook/addon-actions",
-      "version": "7.6.21"
+      "version": "7.6.24"
     },
     {
       "name": "@storybook/addon-ondevice-actions",
@@ -169,17 +164,17 @@
     {
       "name": "@storybook/channels",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@storybook/channels",
-      "version": "7.6.21"
+      "version": "7.6.24"
     },
     {
       "name": "@storybook/client-logger",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@storybook/client-logger",
-      "version": "7.6.21"
+      "version": "7.6.24"
     },
     {
       "name": "@storybook/core-events",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@storybook/core-events",
-      "version": "7.6.21"
+      "version": "7.6.24"
     },
     {
       "name": "@storybook/csf",
@@ -189,7 +184,7 @@
     {
       "name": "@storybook/docs-tools",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@storybook/docs-tools",
-      "version": "7.6.21"
+      "version": "7.6.24"
     },
     {
       "name": "@storybook/global",
@@ -199,17 +194,17 @@
     {
       "name": "@storybook/manager-api",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@storybook/manager-api",
-      "version": "7.6.21"
+      "version": "7.6.24"
     },
     {
       "name": "@storybook/preview-api",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@storybook/preview-api",
-      "version": "7.6.21"
+      "version": "7.6.24"
     },
     {
       "name": "@storybook/react",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@storybook/react",
-      "version": "7.6.21"
+      "version": "7.6.24"
     },
     {
       "name": "@storybook/react-native",
@@ -224,27 +219,27 @@
     {
       "name": "@storybook/router",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@storybook/router",
-      "version": "7.6.21"
+      "version": "7.6.24"
     },
     {
       "name": "@storybook/theming",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@storybook/theming",
-      "version": "7.6.21"
+      "version": "7.6.24"
     },
     {
       "name": "@storybook/types",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@storybook/types",
-      "version": "7.6.21"
+      "version": "7.6.24"
     },
     {
       "name": "@tanstack/query-core",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core",
-      "version": "5.90.19"
+      "version": "5.96.2"
     },
     {
       "name": "@tanstack/react-query",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/react-query",
-      "version": "5.90.19"
+      "version": "5.96.2"
     },
     {
       "name": "abort-controller",
@@ -295,11 +290,6 @@
       "name": "base64-js",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/base64-js",
       "version": "1.5.1"
-    },
-    {
-      "name": "buffer",
-      "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/buffer",
-      "version": "5.7.1"
     },
     {
       "name": "call-bind",
@@ -359,7 +349,7 @@
     {
       "name": "dedent",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/dedent",
-      "version": "1.7.1"
+      "version": "1.7.2"
     },
     {
       "name": "deepmerge",
@@ -442,6 +432,16 @@
       "version": "55.0.12"
     },
     {
+      "name": "expo-constants",
+      "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-constants",
+      "version": "55.0.12"
+    },
+    {
+      "name": "expo-modules-core",
+      "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core",
+      "version": "55.0.21"
+    },
+    {
       "name": "fast-deep-equal",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/fast-deep-equal",
       "version": "3.1.3"
@@ -517,11 +517,6 @@
       "version": "3.3.1"
     },
     {
-      "name": "ieee754",
-      "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/ieee754",
-      "version": "1.2.1"
-    },
-    {
       "name": "inherits",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/inherits",
       "version": "2.0.4"
@@ -579,7 +574,7 @@
     {
       "name": "lodash",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/lodash",
-      "version": "4.17.21"
+      "version": "4.18.1"
     },
     {
       "name": "markdown-it",
@@ -608,7 +603,7 @@
     },
     {
       "name": "metro-runtime",
-      "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@expo/metro/node_modules/metro-runtime",
+      "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/metro-runtime",
       "version": "0.83.5"
     },
     {
@@ -684,7 +679,7 @@
     {
       "name": "qs",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/qs",
-      "version": "6.14.1"
+      "version": "6.15.0"
     },
     {
       "name": "query-string",
@@ -719,7 +714,7 @@
     {
       "name": "react-is",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-is",
-      "version": "19.2.3"
+      "version": "19.2.4"
     },
     {
       "name": "react-is",
@@ -744,7 +739,7 @@
     {
       "name": "react-native-device-info",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native-device-info",
-      "version": "15.0.1"
+      "version": "15.0.2"
     },
     {
       "name": "react-native-fast-image",
@@ -838,7 +833,7 @@
     },
     {
       "name": "source-map",
-      "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/escodegen/node_modules/source-map",
+      "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/source-map",
       "version": "0.6.1"
     },
     {
@@ -929,12 +924,12 @@
     {
       "name": "zod",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/zod",
-      "version": "4.3.5"
+      "version": "4.3.6"
     },
     {
       "name": "zustand",
       "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/zustand",
-      "version": "5.0.10"
+      "version": "5.0.12"
     }
   ],
   "modules": [
@@ -982,8 +977,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/index.js",
-      "source": { "code": "", "lineCount": 23, "sizeInBytes": 549 },
-      "output": { "code": "", "lineCount": 28, "sizeInBytes": 970 },
+      "source": { "code": "", "lineCount": 25, "sizeInBytes": 590 },
+      "output": { "code": "", "lineCount": 30, "sizeInBytes": 1216 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native/index.js",
@@ -2336,7 +2331,7 @@
       "output": { "code": "", "lineCount": 9, "sizeInBytes": 341 },
       "dependencies": [
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@expo/metro/node_modules/metro-runtime/src/modules/empty-module.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/metro-runtime/src/modules/empty-module.js",
           "name": "./cjs/react.production.js"
         },
         {
@@ -2346,7 +2341,7 @@
       ]
     },
     {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@expo/metro/node_modules/metro-runtime/src/modules/empty-module.js",
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/metro-runtime/src/modules/empty-module.js",
       "source": { "code": "", "lineCount": 2, "sizeInBytes": 14 },
       "output": { "code": "", "lineCount": 3, "sizeInBytes": 121 },
       "dependencies": []
@@ -3321,7 +3316,7 @@
       "output": { "code": "", "lineCount": 9, "sizeInBytes": 373 },
       "dependencies": [
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@expo/metro/node_modules/metro-runtime/src/modules/empty-module.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/metro-runtime/src/modules/empty-module.js",
           "name": "./cjs/react-jsx-dev-runtime.production.js"
         },
         {
@@ -3403,7 +3398,7 @@
           "name": "../implementations/ReactFabric-dev"
         },
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@expo/metro/node_modules/metro-runtime/src/modules/empty-module.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/metro-runtime/src/modules/empty-module.js",
           "name": "../implementations/ReactFabric-prod"
         }
       ]
@@ -5145,7 +5140,7 @@
       "output": { "code": "", "lineCount": 9, "sizeInBytes": 351 },
       "dependencies": [
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@expo/metro/node_modules/metro-runtime/src/modules/empty-module.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/metro-runtime/src/modules/empty-module.js",
           "name": "./cjs/react-is.production.min.js"
         },
         {
@@ -5345,8 +5340,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native/Libraries/Core/setUpReactDevTools.js",
-      "source": { "code": "", "lineCount": 279, "sizeInBytes": 9738 },
-      "output": { "code": "", "lineCount": 171, "sizeInBytes": 7937 },
+      "source": { "code": "", "lineCount": 296, "sizeInBytes": 10169 },
+      "output": { "code": "", "lineCount": 187, "sizeInBytes": 8427 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native/src/private/devsupport/rndevtools/setUpFuseboxReactDevToolsDispatcher.js",
@@ -6637,7 +6632,7 @@
       "output": { "code": "", "lineCount": 289, "sizeInBytes": 11416 },
       "dependencies": [
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/slicedToArray.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/slicedToArray.js",
           "name": "@babel/runtime/helpers/slicedToArray"
         },
         {
@@ -6655,76 +6650,18 @@
       ]
     },
     {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/slicedToArray.js",
-      "source": { "code": "", "lineCount": 8, "sizeInBytes": 509 },
-      "output": { "code": "", "lineCount": 10, "sizeInBytes": 707 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/arrayWithHoles.js",
-          "name": "./arrayWithHoles.js"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/iterableToArrayLimit.js",
-          "name": "./iterableToArrayLimit.js"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js",
-          "name": "./unsupportedIterableToArray.js"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/nonIterableRest.js",
-          "name": "./nonIterableRest.js"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/arrayWithHoles.js",
-      "source": { "code": "", "lineCount": 4, "sizeInBytes": 177 },
-      "output": { "code": "", "lineCount": 6, "sizeInBytes": 291 },
-      "dependencies": []
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/iterableToArrayLimit.js",
-      "source": { "code": "", "lineCount": 28, "sizeInBytes": 790 },
-      "output": { "code": "", "lineCount": 30, "sizeInBytes": 952 },
-      "dependencies": []
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js",
-      "source": { "code": "", "lineCount": 9, "sizeInBytes": 573 },
-      "output": { "code": "", "lineCount": 11, "sizeInBytes": 716 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/arrayLikeToArray.js",
-          "name": "./arrayLikeToArray.js"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/arrayLikeToArray.js",
-      "source": { "code": "", "lineCount": 6, "sizeInBytes": 268 },
-      "output": { "code": "", "lineCount": 8, "sizeInBytes": 386 },
-      "dependencies": []
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/nonIterableRest.js",
-      "source": { "code": "", "lineCount": 4, "sizeInBytes": 308 },
-      "output": { "code": "", "lineCount": 6, "sizeInBytes": 422 },
-      "dependencies": []
-    },
-    {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@expo/metro/metro-runtime/modules/HMRClient.js",
       "source": { "code": "", "lineCount": 1, "sizeInBytes": 67 },
       "output": { "code": "", "lineCount": 3, "sizeInBytes": 194 },
       "dependencies": [
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@expo/metro/node_modules/metro-runtime/src/modules/HMRClient.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/metro-runtime/src/modules/HMRClient.js",
           "name": "metro-runtime/src/modules/HMRClient.js"
         }
       ]
     },
     {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@expo/metro/node_modules/metro-runtime/src/modules/HMRClient.js",
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/metro-runtime/src/modules/HMRClient.js",
       "source": { "code": "", "lineCount": 161, "sizeInBytes": 3880 },
       "output": { "code": "", "lineCount": 190, "sizeInBytes": 5559 },
       "dependencies": [
@@ -6749,13 +6686,13 @@
           "name": "@babel/runtime/helpers/slicedToArray"
         },
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@expo/metro/node_modules/metro-runtime/src/modules/vendor/eventemitter3.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/metro-runtime/src/modules/vendor/eventemitter3.js",
           "name": "./vendor/eventemitter3"
         }
       ]
     },
     {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@expo/metro/node_modules/metro-runtime/src/modules/vendor/eventemitter3.js",
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/metro-runtime/src/modules/vendor/eventemitter3.js",
       "source": { "code": "", "lineCount": 184, "sizeInBytes": 5599 },
       "output": { "code": "", "lineCount": 163, "sizeInBytes": 5881 },
       "dependencies": []
@@ -6846,190 +6783,28 @@
       "output": { "code": "", "lineCount": 47, "sizeInBytes": 2340 },
       "dependencies": [
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/createClass.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/createClass.js",
           "name": "@babel/runtime/helpers/createClass"
         },
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/classCallCheck.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/classCallCheck.js",
           "name": "@babel/runtime/helpers/classCallCheck"
         },
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/callSuper.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/callSuper.js",
           "name": "@babel/runtime/helpers/callSuper"
         },
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/inherits.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/inherits.js",
           "name": "@babel/runtime/helpers/inherits"
         },
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/wrapNativeSuper.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/wrapNativeSuper.js",
           "name": "@babel/runtime/helpers/wrapNativeSuper"
         },
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@expo/log-box/utils.js",
           "name": "@expo/log-box/utils"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/createClass.js",
-      "source": { "code": "", "lineCount": 13, "sizeInBytes": 583 },
-      "output": { "code": "", "lineCount": 15, "sizeInBytes": 734 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/toPropertyKey.js",
-          "name": "./toPropertyKey.js"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/toPropertyKey.js",
-      "source": { "code": "", "lineCount": 7, "sizeInBytes": 317 },
-      "output": { "code": "", "lineCount": 9, "sizeInBytes": 475 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/typeof.js",
-          "name": "./typeof.js"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/toPrimitive.js",
-          "name": "./toPrimitive.js"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/typeof.js",
-      "source": { "code": "", "lineCount": 10, "sizeInBytes": 534 },
-      "output": { "code": "", "lineCount": 12, "sizeInBytes": 658 },
-      "dependencies": []
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/toPrimitive.js",
-      "source": { "code": "", "lineCount": 12, "sizeInBytes": 494 },
-      "output": { "code": "", "lineCount": 14, "sizeInBytes": 643 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/typeof.js",
-          "name": "./typeof.js"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/classCallCheck.js",
-      "source": { "code": "", "lineCount": 4, "sizeInBytes": 229 },
-      "output": { "code": "", "lineCount": 6, "sizeInBytes": 343 },
-      "dependencies": []
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/callSuper.js",
-      "source": { "code": "", "lineCount": 7, "sizeInBytes": 509 },
-      "output": { "code": "", "lineCount": 9, "sizeInBytes": 686 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/getPrototypeOf.js",
-          "name": "./getPrototypeOf.js"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/isNativeReflectConstruct.js",
-          "name": "./isNativeReflectConstruct.js"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/possibleConstructorReturn.js",
-          "name": "./possibleConstructorReturn.js"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/getPrototypeOf.js",
-      "source": { "code": "", "lineCount": 6, "sizeInBytes": 412 },
-      "output": { "code": "", "lineCount": 8, "sizeInBytes": 530 },
-      "dependencies": []
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/isNativeReflectConstruct.js",
-      "source": { "code": "", "lineCount": 9, "sizeInBytes": 476 },
-      "output": { "code": "", "lineCount": 11, "sizeInBytes": 600 },
-      "dependencies": []
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/possibleConstructorReturn.js",
-      "source": { "code": "", "lineCount": 8, "sizeInBytes": 493 },
-      "output": { "code": "", "lineCount": 10, "sizeInBytes": 653 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/typeof.js",
-          "name": "./typeof.js"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/assertThisInitialized.js",
-          "name": "./assertThisInitialized.js"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/assertThisInitialized.js",
-      "source": { "code": "", "lineCount": 5, "sizeInBytes": 276 },
-      "output": { "code": "", "lineCount": 7, "sizeInBytes": 392 },
-      "dependencies": []
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/inherits.js",
-      "source": { "code": "", "lineCount": 14, "sizeInBytes": 536 },
-      "output": { "code": "", "lineCount": 16, "sizeInBytes": 689 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/setPrototypeOf.js",
-          "name": "./setPrototypeOf.js"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/setPrototypeOf.js",
-      "source": { "code": "", "lineCount": 6, "sizeInBytes": 400 },
-      "output": { "code": "", "lineCount": 8, "sizeInBytes": 518 },
-      "dependencies": []
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/wrapNativeSuper.js",
-      "source": { "code": "", "lineCount": 27, "sizeInBytes": 1164 },
-      "output": { "code": "", "lineCount": 29, "sizeInBytes": 1400 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/getPrototypeOf.js",
-          "name": "./getPrototypeOf.js"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/setPrototypeOf.js",
-          "name": "./setPrototypeOf.js"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/isNativeFunction.js",
-          "name": "./isNativeFunction.js"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/construct.js",
-          "name": "./construct.js"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/isNativeFunction.js",
-      "source": { "code": "", "lineCount": 8, "sizeInBytes": 280 },
-      "output": { "code": "", "lineCount": 10, "sizeInBytes": 402 },
-      "dependencies": []
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/construct.js",
-      "source": { "code": "", "lineCount": 10, "sizeInBytes": 475 },
-      "output": { "code": "", "lineCount": 12, "sizeInBytes": 639 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/isNativeReflectConstruct.js",
-          "name": "./isNativeReflectConstruct.js"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo/node_modules/@babel/runtime/helpers/setPrototypeOf.js",
-          "name": "./setPrototypeOf.js"
         }
       ]
     },
@@ -7293,7 +7068,7 @@
       "output": { "code": "", "lineCount": 9, "sizeInBytes": 377 },
       "dependencies": [
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@expo/metro/node_modules/metro-runtime/src/modules/empty-module.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/metro-runtime/src/modules/empty-module.js",
           "name": "./cjs/react-refresh-runtime.production.min.js"
         },
         {
@@ -12913,7 +12688,7 @@
       "output": { "code": "", "lineCount": 9, "sizeInBytes": 363 },
       "dependencies": [
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@expo/metro/node_modules/metro-runtime/src/modules/empty-module.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/metro-runtime/src/modules/empty-module.js",
           "name": "./cjs/scheduler.native.production.js"
         },
         {
@@ -12938,7 +12713,7 @@
           "name": "../implementations/ReactNativeRenderer-dev"
         },
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@expo/metro/node_modules/metro-runtime/src/modules/empty-module.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/metro-runtime/src/modules/empty-module.js",
           "name": "../implementations/ReactNativeRenderer-prod"
         }
       ]
@@ -14675,8 +14450,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/App.tsx",
-      "source": { "code": "", "lineCount": 69, "sizeInBytes": 2044 },
-      "output": { "code": "", "lineCount": 119, "sizeInBytes": 5637 },
+      "source": { "code": "", "lineCount": 71, "sizeInBytes": 2122 },
+      "output": { "code": "", "lineCount": 122, "sizeInBytes": 5806 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/slicedToArray.js",
@@ -14737,6 +14512,10 @@
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/src/config/performance.ts",
           "name": "./src/config/performance"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-constants/build/Constants.js",
+          "name": "expo-constants"
         },
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/jsx-dev-runtime.js",
@@ -14987,12 +14766,16 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/index.js",
-      "source": { "code": "", "lineCount": 71, "sizeInBytes": 1760 },
-      "output": { "code": "", "lineCount": 221, "sizeInBytes": 6461 },
+      "source": { "code": "", "lineCount": 73, "sizeInBytes": 1844 },
+      "output": { "code": "", "lineCount": 228, "sizeInBytes": 6716 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/focusManager.js",
           "name": "./focusManager.js"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/environmentManager.js",
+          "name": "./environmentManager.js"
         },
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/hydration.js",
@@ -15066,8 +14849,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/focusManager.js",
-      "source": { "code": "", "lineCount": 68, "sizeInBytes": 1596 },
-      "output": { "code": "", "lineCount": 128, "sizeInBytes": 5693 },
+      "source": { "code": "", "lineCount": 67, "sizeInBytes": 1577 },
+      "output": { "code": "", "lineCount": 127, "sizeInBytes": 5645 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/classCallCheck.js",
@@ -15096,10 +14879,6 @@
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/subscribable.js",
           "name": "./subscribable.js"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/utils.js",
-          "name": "./utils.js"
         }
       ]
     },
@@ -15119,9 +14898,20 @@
       ]
     },
     {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/environmentManager.js",
+      "source": { "code": "", "lineCount": 23, "sizeInBytes": 540 },
+      "output": { "code": "", "lineCount": 33, "sizeInBytes": 866 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/utils.js",
+          "name": "./utils.js"
+        }
+      ]
+    },
+    {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/utils.js",
-      "source": { "code": "", "lineCount": 281, "sizeInBytes": 7634 },
-      "output": { "code": "", "lineCount": 410, "sizeInBytes": 11740 },
+      "source": { "code": "", "lineCount": 281, "sizeInBytes": 7650 },
+      "output": { "code": "", "lineCount": 410, "sizeInBytes": 11755 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/timeoutManager.js",
@@ -15131,8 +14921,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/timeoutManager.js",
-      "source": { "code": "", "lineCount": 70, "sizeInBytes": 2518 },
-      "output": { "code": "", "lineCount": 128, "sizeInBytes": 5702 },
+      "source": { "code": "", "lineCount": 71, "sizeInBytes": 2554 },
+      "output": { "code": "", "lineCount": 129, "sizeInBytes": 5742 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/classCallCheck.js",
@@ -15219,8 +15009,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/queryObserver.js",
-      "source": { "code": "", "lineCount": 472, "sizeInBytes": 16512 },
-      "output": { "code": "", "lineCount": 582, "sizeInBytes": 33756 },
+      "source": { "code": "", "lineCount": 472, "sizeInBytes": 16560 },
+      "output": { "code": "", "lineCount": 583, "sizeInBytes": 33866 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/objectDestructuringEmpty.js",
@@ -15253,6 +15043,10 @@
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/focusManager.js",
           "name": "./focusManager.js"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/environmentManager.js",
+          "name": "./environmentManager.js"
         },
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/notifyManager.js",
@@ -15299,8 +15093,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/query.js",
-      "source": { "code": "", "lineCount": 434, "sizeInBytes": 12729 },
-      "output": { "code": "", "lineCount": 565, "sizeInBytes": 24116 },
+      "source": { "code": "", "lineCount": 443, "sizeInBytes": 12977 },
+      "output": { "code": "", "lineCount": 581, "sizeInBytes": 24780 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/asyncToGenerator.js",
@@ -15354,8 +15148,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/retryer.js",
-      "source": { "code": "", "lineCount": 133, "sizeInBytes": 3651 },
-      "output": { "code": "", "lineCount": 179, "sizeInBytes": 6351 },
+      "source": { "code": "", "lineCount": 134, "sizeInBytes": 3724 },
+      "output": { "code": "", "lineCount": 180, "sizeInBytes": 6470 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/createClass.js",
@@ -15390,6 +15184,10 @@
           "name": "./thenable.js"
         },
         {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/environmentManager.js",
+          "name": "./environmentManager.js"
+        },
+        {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/utils.js",
           "name": "./utils.js"
         }
@@ -15397,8 +15195,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/onlineManager.js",
-      "source": { "code": "", "lineCount": 58, "sizeInBytes": 1483 },
-      "output": { "code": "", "lineCount": 115, "sizeInBytes": 5325 },
+      "source": { "code": "", "lineCount": 57, "sizeInBytes": 1464 },
+      "output": { "code": "", "lineCount": 114, "sizeInBytes": 5277 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/classCallCheck.js",
@@ -15427,17 +15225,13 @@
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/subscribable.js",
           "name": "./subscribable.js"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/utils.js",
-          "name": "./utils.js"
         }
       ]
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/removable.js",
-      "source": { "code": "", "lineCount": 33, "sizeInBytes": 770 },
-      "output": { "code": "", "lineCount": 67, "sizeInBytes": 2904 },
+      "source": { "code": "", "lineCount": 34, "sizeInBytes": 843 },
+      "output": { "code": "", "lineCount": 68, "sizeInBytes": 3023 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/classCallCheck.js",
@@ -15458,6 +15252,10 @@
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/timeoutManager.js",
           "name": "./timeoutManager.js"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/environmentManager.js",
+          "name": "./environmentManager.js"
         },
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/utils.js",
@@ -15529,8 +15327,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/mutation.js",
-      "source": { "code": "", "lineCount": 279, "sizeInBytes": 7059 },
-      "output": { "code": "", "lineCount": 324, "sizeInBytes": 14898 },
+      "source": { "code": "", "lineCount": 281, "sizeInBytes": 7128 },
+      "output": { "code": "", "lineCount": 326, "sizeInBytes": 14856 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/asyncToGenerator.js",
@@ -15772,8 +15570,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/streamedQuery.js",
-      "source": { "code": "", "lineCount": 57, "sizeInBytes": 1685 },
-      "output": { "code": "", "lineCount": 104, "sizeInBytes": 3965 },
+      "source": { "code": "", "lineCount": 55, "sizeInBytes": 1634 },
+      "output": { "code": "", "lineCount": 102, "sizeInBytes": 3906 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/asyncToGenerator.js",
@@ -15797,8 +15595,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/types.js",
-      "source": { "code": "", "lineCount": 10, "sizeInBytes": 255 },
-      "output": { "code": "", "lineCount": 29, "sizeInBytes": 775 },
+      "source": { "code": "", "lineCount": 10, "sizeInBytes": 303 },
+      "output": { "code": "", "lineCount": 29, "sizeInBytes": 820 },
       "dependencies": []
     },
     {
@@ -15809,8 +15607,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/react-query/build/modern/useQueries.js",
-      "source": { "code": "", "lineCount": 112, "sizeInBytes": 3475 },
-      "output": { "code": "", "lineCount": 110, "sizeInBytes": 5397 },
+      "source": { "code": "", "lineCount": 107, "sizeInBytes": 3320 },
+      "output": { "code": "", "lineCount": 106, "sizeInBytes": 5213 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/slicedToArray.js",
@@ -15871,7 +15669,7 @@
       "output": { "code": "", "lineCount": 9, "sizeInBytes": 365 },
       "dependencies": [
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@expo/metro/node_modules/metro-runtime/src/modules/empty-module.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/metro-runtime/src/modules/empty-module.js",
           "name": "./cjs/react-jsx-runtime.production.js"
         },
         {
@@ -15959,8 +15757,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/react-query/build/modern/useBaseQuery.js",
-      "source": { "code": "", "lineCount": 105, "sizeInBytes": 4062 },
-      "output": { "code": "", "lineCount": 107, "sizeInBytes": 5768 },
+      "source": { "code": "", "lineCount": 105, "sizeInBytes": 4093 },
+      "output": { "code": "", "lineCount": 107, "sizeInBytes": 5789 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/slicedToArray.js",
@@ -16194,20 +15992,28 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@rozenite/tanstack-query-plugin/dist/react-native.cjs",
-      "source": { "code": "", "lineCount": 2, "sizeInBytes": 413 },
-      "output": { "code": "", "lineCount": 14, "sizeInBytes": 612 },
+      "source": { "code": "", "lineCount": 2, "sizeInBytes": 347 },
+      "output": { "code": "", "lineCount": 13, "sizeInBytes": 531 },
       "dependencies": [
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@rozenite/tanstack-query-plugin/dist/useTanstackQueryDevTools.cjs",
-          "name": "./useTanstackQueryDevTools.cjs"
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@rozenite/tanstack-query-plugin/dist/useTanStackQueryDevTools.cjs",
+          "name": "./useTanStackQueryDevTools.cjs"
         }
       ]
     },
     {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@rozenite/tanstack-query-plugin/dist/useTanstackQueryDevTools.cjs",
-      "source": { "code": "", "lineCount": 2, "sizeInBytes": 4630 },
-      "output": { "code": "", "lineCount": 344, "sizeInBytes": 10597 },
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@rozenite/tanstack-query-plugin/dist/useTanStackQueryDevTools.cjs",
+      "source": { "code": "", "lineCount": 2, "sizeInBytes": 16580 },
+      "output": { "code": "", "lineCount": 950, "sizeInBytes": 30553 },
       "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/slicedToArray.js",
+          "name": "@babel/runtime/helpers/slicedToArray"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/asyncToGenerator.js",
+          "name": "@babel/runtime/helpers/asyncToGenerator"
+        },
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@rozenite/plugin-bridge/dist/index.cjs",
           "name": "@rozenite/plugin-bridge"
@@ -16223,13 +16029,17 @@
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/fast-deep-equal/index.js",
           "name": "fast-deep-equal"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@rozenite/agent-bridge/dist/index.cjs",
+          "name": "@rozenite/agent-bridge"
         }
       ]
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@rozenite/plugin-bridge/dist/index.cjs",
-      "source": { "code": "", "lineCount": 2, "sizeInBytes": 2819 },
-      "output": { "code": "", "lineCount": 236, "sizeInBytes": 7770 },
+      "source": { "code": "", "lineCount": 2, "sizeInBytes": 3330 },
+      "output": { "code": "", "lineCount": 255, "sizeInBytes": 8686 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/slicedToArray.js",
@@ -16358,8 +16168,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/index.cjs",
-      "source": { "code": "", "lineCount": 110, "sizeInBytes": 4528 },
-      "output": { "code": "", "lineCount": 124, "sizeInBytes": 5532 },
+      "source": { "code": "", "lineCount": 113, "sizeInBytes": 4693 },
+      "output": { "code": "", "lineCount": 127, "sizeInBytes": 5723 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/createForOfIteratorHelperLoose.js",
@@ -16368,6 +16178,10 @@
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/focusManager.cjs",
           "name": "./focusManager.cjs"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/environmentManager.cjs",
+          "name": "./environmentManager.cjs"
         },
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/hydration.cjs",
@@ -16441,8 +16255,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/focusManager.cjs",
-      "source": { "code": "", "lineCount": 94, "sizeInBytes": 2712 },
-      "output": { "code": "", "lineCount": 144, "sizeInBytes": 5999 },
+      "source": { "code": "", "lineCount": 93, "sizeInBytes": 2676 },
+      "output": { "code": "", "lineCount": 143, "sizeInBytes": 5942 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/classCallCheck.js",
@@ -16475,10 +16289,6 @@
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/subscribable.cjs",
           "name": "./subscribable.cjs"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/utils.cjs",
-          "name": "./utils.cjs"
         }
       ]
     },
@@ -16502,9 +16312,24 @@
       ]
     },
     {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/environmentManager.cjs",
+      "source": { "code": "", "lineCount": 48, "sizeInBytes": 1623 },
+      "output": { "code": "", "lineCount": 62, "sizeInBytes": 2137 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/createForOfIteratorHelperLoose.js",
+          "name": "@babel/runtime/helpers/createForOfIteratorHelperLoose"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/utils.cjs",
+          "name": "./utils.cjs"
+        }
+      ]
+    },
+    {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/utils.cjs",
-      "source": { "code": "", "lineCount": 330, "sizeInBytes": 9584 },
-      "output": { "code": "", "lineCount": 343, "sizeInBytes": 11091 },
+      "source": { "code": "", "lineCount": 330, "sizeInBytes": 9600 },
+      "output": { "code": "", "lineCount": 343, "sizeInBytes": 11106 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/createForOfIteratorHelperLoose.js",
@@ -16518,8 +16343,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/timeoutManager.cjs",
-      "source": { "code": "", "lineCount": 98, "sizeInBytes": 3712 },
-      "output": { "code": "", "lineCount": 137, "sizeInBytes": 6048 },
+      "source": { "code": "", "lineCount": 99, "sizeInBytes": 3748 },
+      "output": { "code": "", "lineCount": 138, "sizeInBytes": 6088 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/classCallCheck.js",
@@ -16622,8 +16447,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/queryObserver.cjs",
-      "source": { "code": "", "lineCount": 488, "sizeInBytes": 18145 },
-      "output": { "code": "", "lineCount": 601, "sizeInBytes": 32539 },
+      "source": { "code": "", "lineCount": 489, "sizeInBytes": 18238 },
+      "output": { "code": "", "lineCount": 602, "sizeInBytes": 32654 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/objectDestructuringEmpty.js",
@@ -16660,6 +16485,10 @@
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/focusManager.cjs",
           "name": "./focusManager.cjs"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/environmentManager.cjs",
+          "name": "./environmentManager.cjs"
         },
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/notifyManager.cjs",
@@ -16704,8 +16533,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/query.cjs",
-      "source": { "code": "", "lineCount": 452, "sizeInBytes": 13893 },
-      "output": { "code": "", "lineCount": 579, "sizeInBytes": 23709 },
+      "source": { "code": "", "lineCount": 461, "sizeInBytes": 14141 },
+      "output": { "code": "", "lineCount": 595, "sizeInBytes": 24347 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/asyncToGenerator.js",
@@ -16763,8 +16592,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/retryer.cjs",
-      "source": { "code": "", "lineCount": 161, "sizeInBytes": 4911 },
-      "output": { "code": "", "lineCount": 186, "sizeInBytes": 6808 },
+      "source": { "code": "", "lineCount": 162, "sizeInBytes": 5014 },
+      "output": { "code": "", "lineCount": 187, "sizeInBytes": 6933 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/createClass.js",
@@ -16803,6 +16632,10 @@
           "name": "./thenable.cjs"
         },
         {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/environmentManager.cjs",
+          "name": "./environmentManager.cjs"
+        },
+        {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/utils.cjs",
           "name": "./utils.cjs"
         }
@@ -16810,8 +16643,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/onlineManager.cjs",
-      "source": { "code": "", "lineCount": 84, "sizeInBytes": 2606 },
-      "output": { "code": "", "lineCount": 131, "sizeInBytes": 5649 },
+      "source": { "code": "", "lineCount": 83, "sizeInBytes": 2570 },
+      "output": { "code": "", "lineCount": 130, "sizeInBytes": 5592 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/classCallCheck.js",
@@ -16844,17 +16677,13 @@
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/subscribable.cjs",
           "name": "./subscribable.cjs"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/utils.cjs",
-          "name": "./utils.cjs"
         }
       ]
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/removable.cjs",
-      "source": { "code": "", "lineCount": 58, "sizeInBytes": 1861 },
-      "output": { "code": "", "lineCount": 89, "sizeInBytes": 3579 },
+      "source": { "code": "", "lineCount": 59, "sizeInBytes": 1964 },
+      "output": { "code": "", "lineCount": 90, "sizeInBytes": 3703 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/classCallCheck.js",
@@ -16879,6 +16708,10 @@
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/timeoutManager.cjs",
           "name": "./timeoutManager.cjs"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/environmentManager.cjs",
+          "name": "./environmentManager.cjs"
         },
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/utils.cjs",
@@ -16958,8 +16791,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/mutation.cjs",
-      "source": { "code": "", "lineCount": 305, "sizeInBytes": 8190 },
-      "output": { "code": "", "lineCount": 339, "sizeInBytes": 14816 },
+      "source": { "code": "", "lineCount": 307, "sizeInBytes": 8259 },
+      "output": { "code": "", "lineCount": 341, "sizeInBytes": 14761 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/asyncToGenerator.js",
@@ -17221,8 +17054,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/streamedQuery.cjs",
-      "source": { "code": "", "lineCount": 82, "sizeInBytes": 2743 },
-      "output": { "code": "", "lineCount": 126, "sizeInBytes": 4926 },
+      "source": { "code": "", "lineCount": 80, "sizeInBytes": 2692 },
+      "output": { "code": "", "lineCount": 124, "sizeInBytes": 4867 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/asyncToGenerator.js",
@@ -17244,8 +17077,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/query-core/build/modern/types.cjs",
-      "source": { "code": "", "lineCount": 37, "sizeInBytes": 1354 },
-      "output": { "code": "", "lineCount": 51, "sizeInBytes": 1841 },
+      "source": { "code": "", "lineCount": 37, "sizeInBytes": 1402 },
+      "output": { "code": "", "lineCount": 51, "sizeInBytes": 1886 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/createForOfIteratorHelperLoose.js",
@@ -17266,8 +17099,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/react-query/build/modern/useQueries.cjs",
-      "source": { "code": "", "lineCount": 132, "sizeInBytes": 5374 },
-      "output": { "code": "", "lineCount": 127, "sizeInBytes": 6569 },
+      "source": { "code": "", "lineCount": 128, "sizeInBytes": 5190 },
+      "output": { "code": "", "lineCount": 123, "sizeInBytes": 6377 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/slicedToArray.js",
@@ -17419,8 +17252,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@tanstack/react-query/build/modern/useBaseQuery.cjs",
-      "source": { "code": "", "lineCount": 130, "sizeInBytes": 5980 },
-      "output": { "code": "", "lineCount": 125, "sizeInBytes": 7076 },
+      "source": { "code": "", "lineCount": 130, "sizeInBytes": 6001 },
+      "output": { "code": "", "lineCount": 125, "sizeInBytes": 7097 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/slicedToArray.js",
@@ -17714,6 +17547,33 @@
       "dependencies": []
     },
     {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@rozenite/agent-bridge/dist/index.cjs",
+      "source": { "code": "", "lineCount": 68, "sizeInBytes": 2133 },
+      "output": { "code": "", "lineCount": 85, "sizeInBytes": 3196 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/objectDestructuringEmpty.js",
+          "name": "@babel/runtime/helpers/objectDestructuringEmpty"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/objectWithoutProperties.js",
+          "name": "@babel/runtime/helpers/objectWithoutProperties"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/asyncToGenerator.js",
+          "name": "@babel/runtime/helpers/asyncToGenerator"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/index.js",
+          "name": "react"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@rozenite/plugin-bridge/dist/index.cjs",
+          "name": "@rozenite/plugin-bridge"
+        }
+      ]
+    },
+    {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@rozenite/network-activity-plugin/dist/react-native.cjs",
       "source": { "code": "", "lineCount": 15, "sizeInBytes": 767 },
       "output": { "code": "", "lineCount": 19, "sizeInBytes": 937 },
@@ -17730,12 +17590,16 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@rozenite/network-activity-plugin/dist/useNetworkActivityDevTools.cjs",
-      "source": { "code": "", "lineCount": 174, "sizeInBytes": 5592 },
-      "output": { "code": "", "lineCount": 152, "sizeInBytes": 6294 },
+      "source": { "code": "", "lineCount": 1103, "sizeInBytes": 33359 },
+      "output": { "code": "", "lineCount": 1056, "sizeInBytes": 40349 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/asyncToGenerator.js",
           "name": "@babel/runtime/helpers/asyncToGenerator"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/slicedToArray.js",
+          "name": "@babel/runtime/helpers/slicedToArray"
         },
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/index.js",
@@ -17748,13 +17612,17 @@
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@rozenite/network-activity-plugin/dist/boot-recording.cjs",
           "name": "./boot-recording.cjs"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@rozenite/agent-bridge/dist/index.cjs",
+          "name": "@rozenite/agent-bridge"
         }
       ]
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@rozenite/network-activity-plugin/dist/boot-recording.cjs",
-      "source": { "code": "", "lineCount": 1093, "sizeInBytes": 31516 },
-      "output": { "code": "", "lineCount": 1100, "sizeInBytes": 34552 },
+      "source": { "code": "", "lineCount": 1088, "sizeInBytes": 31284 },
+      "output": { "code": "", "lineCount": 1099, "sizeInBytes": 34770 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/classCallCheck.js",
@@ -18124,8 +17992,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/native/lib/module/createStaticNavigation.js",
-      "source": { "code": "", "lineCount": 54, "sizeInBytes": 2226 },
-      "output": { "code": "", "lineCount": 84, "sizeInBytes": 4118 },
+      "source": { "code": "", "lineCount": 54, "sizeInBytes": 2152 },
+      "output": { "code": "", "lineCount": 84, "sizeInBytes": 4054 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/objectWithoutProperties.js",
@@ -18151,8 +18019,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/index.js",
-      "source": { "code": "", "lineCount": 38, "sizeInBytes": 2306 },
-      "output": { "code": "", "lineCount": 266, "sizeInBytes": 9804 },
+      "source": { "code": "", "lineCount": 38, "sizeInBytes": 2370 },
+      "output": { "code": "", "lineCount": 272, "sizeInBytes": 9971 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/BaseNavigationContainer.js",
@@ -18211,8 +18079,8 @@
           "name": "./NavigationMetaContext.js"
         },
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/NavigationRouteContext.js",
-          "name": "./NavigationRouteContext.js"
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/NavigationProvider.js",
+          "name": "./NavigationProvider.js"
         },
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/PreventRemoveContext.js",
@@ -18805,9 +18673,13 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/createNavigatorFactory.js",
-      "source": { "code": "", "lineCount": 31, "sizeInBytes": 744 },
-      "output": { "code": "", "lineCount": 35, "sizeInBytes": 1087 },
+      "source": { "code": "", "lineCount": 52, "sizeInBytes": 1502 },
+      "output": { "code": "", "lineCount": 73, "sizeInBytes": 2463 },
       "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/index.js",
+          "name": "react"
+        },
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/Group.js",
           "name": "./Group.js"
@@ -18815,6 +18687,10 @@
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/Screen.js",
           "name": "./Screen.js"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/StaticNavigation.js",
+          "name": "./StaticNavigation.js"
         }
       ]
     },
@@ -18829,6 +18705,141 @@
       "source": { "code": "", "lineCount": 10, "sizeInBytes": 191 },
       "output": { "code": "", "lineCount": 15, "sizeInBytes": 369 },
       "dependencies": []
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/StaticNavigation.js",
+      "source": { "code": "", "lineCount": 285, "sizeInBytes": 10181 },
+      "output": { "code": "", "lineCount": 328, "sizeInBytes": 13444 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/objectWithoutProperties.js",
+          "name": "@babel/runtime/helpers/objectWithoutProperties"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/slicedToArray.js",
+          "name": "@babel/runtime/helpers/slicedToArray"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/index.js",
+          "name": "react"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-is/index.js",
+          "name": "react-is"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/useRoute.js",
+          "name": "./useRoute.js"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/jsx-runtime.js",
+          "name": "react/jsx-runtime"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-is/index.js",
+      "source": { "code": "", "lineCount": 8, "sizeInBytes": 192 },
+      "output": { "code": "", "lineCount": 9, "sizeInBytes": 347 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/metro-runtime/src/modules/empty-module.js",
+          "name": "./cjs/react-is.production.js"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-is/cjs/react-is.development.js",
+          "name": "./cjs/react-is.development.js"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-is/cjs/react-is.development.js",
+      "source": { "code": "", "lineCount": 133, "sizeInBytes": 4981 },
+      "output": { "code": "", "lineCount": 113, "sizeInBytes": 4897 },
+      "dependencies": []
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/useRoute.js",
+      "source": { "code": "", "lineCount": 17, "sizeInBytes": 511 },
+      "output": { "code": "", "lineCount": 38, "sizeInBytes": 1179 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/index.js",
+          "name": "react"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/NavigationProvider.js",
+          "name": "./NavigationProvider.js"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/NavigationProvider.js",
+      "source": { "code": "", "lineCount": 39, "sizeInBytes": 1327 },
+      "output": { "code": "", "lineCount": 71, "sizeInBytes": 2530 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/index.js",
+          "name": "react"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/NavigationContext.js",
+          "name": "./NavigationContext.js"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/useIsFocused.js",
+          "name": "./useIsFocused.js"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/jsx-runtime.js",
+          "name": "react/jsx-runtime"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/NavigationContext.js",
+      "source": { "code": "", "lineCount": 8, "sizeInBytes": 235 },
+      "output": { "code": "", "lineCount": 34, "sizeInBytes": 951 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/index.js",
+          "name": "react"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/useIsFocused.js",
+      "source": { "code": "", "lineCount": 35, "sizeInBytes": 1409 },
+      "output": { "code": "", "lineCount": 68, "sizeInBytes": 2404 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/index.js",
+          "name": "react"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/useNavigation.js",
+          "name": "./useNavigation.js"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/useNavigation.js",
+      "source": { "code": "", "lineCount": 21, "sizeInBytes": 762 },
+      "output": { "code": "", "lineCount": 42, "sizeInBytes": 1516 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/index.js",
+          "name": "react"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/NavigationContainerRefContext.js",
+          "name": "./NavigationContainerRefContext.js"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/NavigationContext.js",
+          "name": "./NavigationContext.js"
+        }
+      ]
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/CurrentRenderContext.js",
@@ -19054,17 +19065,6 @@
       "dependencies": []
     },
     {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/NavigationContext.js",
-      "source": { "code": "", "lineCount": 8, "sizeInBytes": 235 },
-      "output": { "code": "", "lineCount": 34, "sizeInBytes": 951 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/index.js",
-          "name": "react"
-        }
-      ]
-    },
-    {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/NavigationHelpersContext.js",
       "source": { "code": "", "lineCount": 9, "sizeInBytes": 326 },
       "output": { "code": "", "lineCount": 35, "sizeInBytes": 1051 },
@@ -19077,8 +19077,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/NavigationIndependentTree.js",
-      "source": { "code": "", "lineCount": 30, "sizeInBytes": 975 },
-      "output": { "code": "", "lineCount": 33, "sizeInBytes": 1460 },
+      "source": { "code": "", "lineCount": 34, "sizeInBytes": 1137 },
+      "output": { "code": "", "lineCount": 37, "sizeInBytes": 1676 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/index.js",
@@ -19093,23 +19093,16 @@
           "name": "./NavigationIndependentTreeContext.js"
         },
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/NavigationRouteContext.js",
-          "name": "./NavigationRouteContext.js"
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/NavigationProvider.js",
+          "name": "./NavigationProvider.js"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/useIsFocused.js",
+          "name": "./useIsFocused.js"
         },
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/jsx-runtime.js",
           "name": "react/jsx-runtime"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/NavigationRouteContext.js",
-      "source": { "code": "", "lineCount": 9, "sizeInBytes": 241 },
-      "output": { "code": "", "lineCount": 34, "sizeInBytes": 961 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/index.js",
-          "name": "react"
         }
       ]
     },
@@ -19137,8 +19130,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/PreventRemoveProvider.js",
-      "source": { "code": "", "lineCount": 84, "sizeInBytes": 3285 },
-      "output": { "code": "", "lineCount": 119, "sizeInBytes": 5418 },
+      "source": { "code": "", "lineCount": 84, "sizeInBytes": 3281 },
+      "output": { "code": "", "lineCount": 119, "sizeInBytes": 5406 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/slicedToArray.js",
@@ -19161,8 +19154,8 @@
           "name": "./NavigationHelpersContext.js"
         },
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/NavigationRouteContext.js",
-          "name": "./NavigationRouteContext.js"
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/NavigationProvider.js",
+          "name": "./NavigationProvider.js"
         },
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/PreventRemoveContext.js",
@@ -19171,73 +19164,6 @@
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/jsx-runtime.js",
           "name": "react/jsx-runtime"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/StaticNavigation.js",
-      "source": { "code": "", "lineCount": 255, "sizeInBytes": 8784 },
-      "output": { "code": "", "lineCount": 297, "sizeInBytes": 11897 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/objectWithoutProperties.js",
-          "name": "@babel/runtime/helpers/objectWithoutProperties"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/slicedToArray.js",
-          "name": "@babel/runtime/helpers/slicedToArray"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/index.js",
-          "name": "react"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-is/index.js",
-          "name": "react-is"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/useRoute.js",
-          "name": "./useRoute.js"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/jsx-runtime.js",
-          "name": "react/jsx-runtime"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-is/index.js",
-      "source": { "code": "", "lineCount": 8, "sizeInBytes": 192 },
-      "output": { "code": "", "lineCount": 9, "sizeInBytes": 347 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@expo/metro/node_modules/metro-runtime/src/modules/empty-module.js",
-          "name": "./cjs/react-is.production.js"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-is/cjs/react-is.development.js",
-          "name": "./cjs/react-is.development.js"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-is/cjs/react-is.development.js",
-      "source": { "code": "", "lineCount": 133, "sizeInBytes": 4981 },
-      "output": { "code": "", "lineCount": 113, "sizeInBytes": 4897 },
-      "dependencies": []
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/useRoute.js",
-      "source": { "code": "", "lineCount": 17, "sizeInBytes": 515 },
-      "output": { "code": "", "lineCount": 38, "sizeInBytes": 1191 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/index.js",
-          "name": "react"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/NavigationRouteContext.js",
-          "name": "./NavigationRouteContext.js"
         }
       ]
     },
@@ -19287,43 +19213,9 @@
       ]
     },
     {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/useNavigation.js",
-      "source": { "code": "", "lineCount": 21, "sizeInBytes": 762 },
-      "output": { "code": "", "lineCount": 42, "sizeInBytes": 1516 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/index.js",
-          "name": "react"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/NavigationContainerRefContext.js",
-          "name": "./NavigationContainerRefContext.js"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/NavigationContext.js",
-          "name": "./NavigationContext.js"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/useIsFocused.js",
-      "source": { "code": "", "lineCount": 23, "sizeInBytes": 826 },
-      "output": { "code": "", "lineCount": 43, "sizeInBytes": 1503 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/index.js",
-          "name": "react"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/useNavigation.js",
-          "name": "./useNavigation.js"
-        }
-      ]
-    },
-    {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/useNavigationBuilder.js",
-      "source": { "code": "", "lineCount": 572, "sizeInBytes": 24954 },
-      "output": { "code": "", "lineCount": 605, "sizeInBytes": 31389 },
+      "source": { "code": "", "lineCount": 612, "sizeInBytes": 27157 },
+      "output": { "code": "", "lineCount": 646, "sizeInBytes": 33736 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/slicedToArray.js",
@@ -19354,6 +19246,10 @@
           "name": "use-latest-callback"
         },
         {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/ConsumedParamsContext.js",
+          "name": "./ConsumedParamsContext.js"
+        },
+        {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/deepFreeze.js",
           "name": "./deepFreeze.js"
         },
@@ -19378,8 +19274,8 @@
           "name": "./NavigationMetaContext.js"
         },
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/NavigationRouteContext.js",
-          "name": "./NavigationRouteContext.js"
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/NavigationProvider.js",
+          "name": "./NavigationProvider.js"
         },
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/NavigationStateContext.js",
@@ -19434,6 +19330,10 @@
           "name": "./useFocusEvents.js"
         },
         {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/useIsFocused.js",
+          "name": "./useIsFocused.js"
+        },
+        {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/useKeyedChildListeners.js",
           "name": "./useKeyedChildListeners.js"
         },
@@ -19472,6 +19372,17 @@
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/jsx-runtime.js",
           "name": "react/jsx-runtime"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/ConsumedParamsContext.js",
+      "source": { "code": "", "lineCount": 5, "sizeInBytes": 178 },
+      "output": { "code": "", "lineCount": 31, "sizeInBytes": 892 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/index.js",
+          "name": "react"
         }
       ]
     },
@@ -19518,8 +19429,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/useDescriptors.js",
-      "source": { "code": "", "lineCount": 187, "sizeInBytes": 5474 },
-      "output": { "code": "", "lineCount": 218, "sizeInBytes": 8399 },
+      "source": { "code": "", "lineCount": 184, "sizeInBytes": 5317 },
+      "output": { "code": "", "lineCount": 215, "sizeInBytes": 8168 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/objectWithoutProperties.js",
@@ -19542,12 +19453,8 @@
           "name": "./NavigationBuilderContext.js"
         },
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/NavigationContext.js",
-          "name": "./NavigationContext.js"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/NavigationRouteContext.js",
-          "name": "./NavigationRouteContext.js"
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/NavigationProvider.js",
+          "name": "./NavigationProvider.js"
         },
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/SceneView.js",
@@ -19573,16 +19480,20 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/SceneView.js",
-      "source": { "code": "", "lineCount": 162, "sizeInBytes": 5353 },
-      "output": { "code": "", "lineCount": 185, "sizeInBytes": 7400 },
+      "source": { "code": "", "lineCount": 152, "sizeInBytes": 4813 },
+      "output": { "code": "", "lineCount": 181, "sizeInBytes": 6839 },
       "dependencies": [
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/objectWithoutProperties.js",
-          "name": "@babel/runtime/helpers/objectWithoutProperties"
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/slicedToArray.js",
+          "name": "@babel/runtime/helpers/slicedToArray"
         },
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/index.js",
           "name": "react"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/ConsumedParamsContext.js",
+          "name": "./ConsumedParamsContext.js"
         },
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/EnsureSingleNavigator.js",
@@ -19729,8 +19640,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/useNavigationState.js",
-      "source": { "code": "", "lineCount": 47, "sizeInBytes": 1681 },
-      "output": { "code": "", "lineCount": 74, "sizeInBytes": 2784 },
+      "source": { "code": "", "lineCount": 49, "sizeInBytes": 1768 },
+      "output": { "code": "", "lineCount": 76, "sizeInBytes": 2873 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/index.js",
@@ -19812,8 +19723,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/useOnPreventRemove.js",
-      "source": { "code": "", "lineCount": 64, "sizeInBytes": 2159 },
-      "output": { "code": "", "lineCount": 98, "sizeInBytes": 3953 },
+      "source": { "code": "", "lineCount": 64, "sizeInBytes": 2155 },
+      "output": { "code": "", "lineCount": 98, "sizeInBytes": 3941 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/createForOfIteratorHelperLoose.js",
@@ -19828,15 +19739,15 @@
           "name": "./NavigationBuilderContext.js"
         },
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/NavigationRouteContext.js",
-          "name": "./NavigationRouteContext.js"
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/NavigationProvider.js",
+          "name": "./NavigationProvider.js"
         }
       ]
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/useOnGetState.js",
-      "source": { "code": "", "lineCount": 42, "sizeInBytes": 1236 },
-      "output": { "code": "", "lineCount": 62, "sizeInBytes": 2295 },
+      "source": { "code": "", "lineCount": 42, "sizeInBytes": 1232 },
+      "output": { "code": "", "lineCount": 62, "sizeInBytes": 2283 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/index.js",
@@ -19851,8 +19762,8 @@
           "name": "./NavigationBuilderContext.js"
         },
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/NavigationRouteContext.js",
-          "name": "./NavigationRouteContext.js"
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/core/lib/module/NavigationProvider.js",
+          "name": "./NavigationProvider.js"
         }
       ]
     },
@@ -20475,8 +20386,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/zustand/middleware.js",
-      "source": { "code": "", "lineCount": 495, "sizeInBytes": 16171 },
-      "output": { "code": "", "lineCount": 491, "sizeInBytes": 18274 },
+      "source": { "code": "", "lineCount": 496, "sizeInBytes": 16202 },
+      "output": { "code": "", "lineCount": 492, "sizeInBytes": 18303 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/objectWithoutProperties.js",
@@ -21775,8 +21686,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/elements/lib/module/Screen.js",
-      "source": { "code": "", "lineCount": 90, "sizeInBytes": 2963 },
-      "output": { "code": "", "lineCount": 122, "sizeInBytes": 5246 },
+      "source": { "code": "", "lineCount": 88, "sizeInBytes": 2833 },
+      "output": { "code": "", "lineCount": 120, "sizeInBytes": 5095 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/slicedToArray.js",
@@ -21869,8 +21780,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/bottom-tabs/lib/module/views/BottomTabBar.js",
-      "source": { "code": "", "lineCount": 368, "sizeInBytes": 12851 },
-      "output": { "code": "", "lineCount": 379, "sizeInBytes": 17402 },
+      "source": { "code": "", "lineCount": 366, "sizeInBytes": 12665 },
+      "output": { "code": "", "lineCount": 377, "sizeInBytes": 17189 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/slicedToArray.js",
@@ -22098,7 +22009,7 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native-screens/src/types.tsx",
-      "source": { "code": "", "lineCount": 1311, "sizeInBytes": 46807 },
+      "source": { "code": "", "lineCount": 1322, "sizeInBytes": 47357 },
       "output": { "code": "", "lineCount": 3, "sizeInBytes": 121 },
       "dependencies": []
     },
@@ -22302,8 +22213,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native-screens/src/flags.ts",
-      "source": { "code": "", "lineCount": 159, "sizeInBytes": 5927 },
-      "output": { "code": "", "lineCount": 142, "sizeInBytes": 6329 },
+      "source": { "code": "", "lineCount": 173, "sizeInBytes": 6571 },
+      "output": { "code": "", "lineCount": 151, "sizeInBytes": 6957 },
       "dependencies": []
     },
     {
@@ -22393,7 +22304,7 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native-screens/src/components/helpers/prepareHeaderBarButtonItems.ts",
-      "source": { "code": "", "lineCount": 86, "sizeInBytes": 2334 },
+      "source": { "code": "", "lineCount": 93, "sizeInBytes": 2584 },
       "output": { "code": "", "lineCount": 89, "sizeInBytes": 3516 },
       "dependencies": [
         {
@@ -22527,8 +22438,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native-screens/src/components/ScreenStack.tsx",
-      "source": { "code": "", "lineCount": 113, "sizeInBytes": 3393 },
-      "output": { "code": "", "lineCount": 98, "sizeInBytes": 4886 },
+      "source": { "code": "", "lineCount": 122, "sizeInBytes": 3816 },
+      "output": { "code": "", "lineCount": 106, "sizeInBytes": 5357 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/objectWithoutProperties.js",
@@ -22549,6 +22460,10 @@
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native-screens/src/fabric/ScreenStackNativeComponent.ts",
           "name": "../fabric/ScreenStackNativeComponent"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native-screens/src/flags.ts",
+          "name": "../flags"
         },
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/jsx-dev-runtime.js",
@@ -22579,8 +22494,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native-screens/src/fabric/ScreenStackNativeComponent.ts",
-      "source": { "code": "", "lineCount": 14, "sizeInBytes": 443 },
-      "output": { "code": "", "lineCount": 41, "sizeInBytes": 1370 },
+      "source": { "code": "", "lineCount": 16, "sizeInBytes": 521 },
+      "output": { "code": "", "lineCount": 42, "sizeInBytes": 1424 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native/index.js",
@@ -23018,7 +22933,7 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native-screens/src/components/tabs/TabsScreen.tsx",
-      "source": { "code": "", "lineCount": 378, "sizeInBytes": 10612 },
+      "source": { "code": "", "lineCount": 383, "sizeInBytes": 10745 },
       "output": { "code": "", "lineCount": 281, "sizeInBytes": 13060 },
       "dependencies": [
         {
@@ -23065,7 +22980,7 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native-screens/src/fabric/bottom-tabs/BottomTabsScreenNativeComponent.ts",
-      "source": { "code": "", "lineCount": 176, "sizeInBytes": 4552 },
+      "source": { "code": "", "lineCount": 176, "sizeInBytes": 4564 },
       "output": { "code": "", "lineCount": 96, "sizeInBytes": 3380 },
       "dependencies": [
         {
@@ -23153,8 +23068,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/native-stack/lib/module/views/NativeStackView.native.js",
-      "source": { "code": "", "lineCount": 490, "sizeInBytes": 20161 },
-      "output": { "code": "", "lineCount": 527, "sizeInBytes": 27128 },
+      "source": { "code": "", "lineCount": 492, "sizeInBytes": 20052 },
+      "output": { "code": "", "lineCount": 530, "sizeInBytes": 27130 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/slicedToArray.js",
@@ -23269,8 +23184,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-navigation/native-stack/lib/module/views/useHeaderConfigProps.js",
-      "source": { "code": "", "lineCount": 352, "sizeInBytes": 13624 },
-      "output": { "code": "", "lineCount": 364, "sizeInBytes": 18123 },
+      "source": { "code": "", "lineCount": 370, "sizeInBytes": 14327 },
+      "output": { "code": "", "lineCount": 382, "sizeInBytes": 18913 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/slicedToArray.js",
@@ -24127,8 +24042,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native-svg/src/utils/fetchData.ts",
-      "source": { "code": "", "lineCount": 42, "sizeInBytes": 1300 },
-      "output": { "code": "", "lineCount": 63, "sizeInBytes": 2257 },
+      "source": { "code": "", "lineCount": 40, "sizeInBytes": 1178 },
+      "output": { "code": "", "lineCount": 61, "sizeInBytes": 2124 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/asyncToGenerator.js",
@@ -24137,10 +24052,6 @@
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native/index.js",
           "name": "react-native"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/buffer/index.js",
-          "name": "buffer"
         }
       ]
     },
@@ -28619,8 +28530,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/zod/v4/core/schemas.js",
-      "source": { "code": "", "lineCount": 2096, "sizeInBytes": 77030 },
-      "output": { "code": "", "lineCount": 2697, "sizeInBytes": 91788 },
+      "source": { "code": "", "lineCount": 2094, "sizeInBytes": 76984 },
+      "output": { "code": "", "lineCount": 2698, "sizeInBytes": 91800 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/slicedToArray.js",
@@ -29505,8 +29416,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/zod/v4/core/to-json-schema.js",
-      "source": { "code": "", "lineCount": 438, "sizeInBytes": 16382 },
-      "output": { "code": "", "lineCount": 488, "sizeInBytes": 19710 },
+      "source": { "code": "", "lineCount": 438, "sizeInBytes": 16397 },
+      "output": { "code": "", "lineCount": 488, "sizeInBytes": 19725 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/createForOfIteratorHelperLoose.js",
@@ -30031,13 +29942,9 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/src/constants/notification/channels.ts",
-      "source": { "code": "", "lineCount": 76, "sizeInBytes": 2308 },
-      "output": { "code": "", "lineCount": 89, "sizeInBytes": 3578 },
+      "source": { "code": "", "lineCount": 74, "sizeInBytes": 2227 },
+      "output": { "code": "", "lineCount": 88, "sizeInBytes": 3456 },
       "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/index.js",
-          "name": "@notifee/react-native"
-        },
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/src/enums/notification.ts",
           "name": "../../enums/notification"
@@ -30352,7 +30259,7 @@
       "output": { "code": "", "lineCount": 532, "sizeInBytes": 18922 },
       "dependencies": [
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@expo/metro/node_modules/metro-runtime/src/modules/empty-module.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/metro-runtime/src/modules/empty-module.js",
           "name": "./util.inspect"
         }
       ]
@@ -30824,8 +30731,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/qs/lib/utils.js",
-      "source": { "code": "", "lineCount": 321, "sizeInBytes": 9211 },
-      "output": { "code": "", "lineCount": 280, "sizeInBytes": 8790 },
+      "source": { "code": "", "lineCount": 343, "sizeInBytes": 10249 },
+      "output": { "code": "", "lineCount": 300, "sizeInBytes": 9758 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/qs/lib/formats.js",
@@ -30845,8 +30752,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/qs/lib/parse.js",
-      "source": { "code": "", "lineCount": 361, "sizeInBytes": 13255 },
-      "output": { "code": "", "lineCount": 285, "sizeInBytes": 12490 },
+      "source": { "code": "", "lineCount": 374, "sizeInBytes": 14244 },
+      "output": { "code": "", "lineCount": 299, "sizeInBytes": 13456 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/qs/lib/utils.js",
@@ -33686,8 +33593,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native-device-info/src/index.ts",
-      "source": { "code": "", "lineCount": 1101, "sizeInBytes": 32411 },
-      "output": { "code": "", "lineCount": 1994, "sizeInBytes": 72009 },
+      "source": { "code": "", "lineCount": 2914, "sizeInBytes": 138397 },
+      "output": { "code": "", "lineCount": 3850, "sizeInBytes": 181144 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/asyncToGenerator.js",
@@ -33838,8 +33745,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-native-firebase/messaging/dist/module/modular.js",
-      "source": { "code": "", "lineCount": 388, "sizeInBytes": 17299 },
-      "output": { "code": "", "lineCount": 439, "sizeInBytes": 21227 },
+      "source": { "code": "", "lineCount": 388, "sizeInBytes": 17315 },
+      "output": { "code": "", "lineCount": 439, "sizeInBytes": 21452 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-native-firebase/app/dist/module/index.js",
@@ -33847,7 +33754,7 @@
         },
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-native-firebase/app/dist/module/common/index.js",
-          "name": "@react-native-firebase/app/lib/common"
+          "name": "@react-native-firebase/app/dist/module/common"
         },
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-native-firebase/messaging/dist/module/statics.js",
@@ -34091,8 +33998,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-native-firebase/app/dist/module/internal/NativeFirebaseError.js",
-      "source": { "code": "", "lineCount": 87, "sizeInBytes": 2751 },
-      "output": { "code": "", "lineCount": 118, "sizeInBytes": 4625 },
+      "source": { "code": "", "lineCount": 87, "sizeInBytes": 2755 },
+      "output": { "code": "", "lineCount": 119, "sizeInBytes": 5212 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/classCallCheck.js",
@@ -34418,8 +34325,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-native-firebase/messaging/dist/module/namespaced.js",
-      "source": { "code": "", "lineCount": 404, "sizeInBytes": 16053 },
-      "output": { "code": "", "lineCount": 516, "sizeInBytes": 23740 },
+      "source": { "code": "", "lineCount": 404, "sizeInBytes": 16069 },
+      "output": { "code": "", "lineCount": 516, "sizeInBytes": 24092 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/asyncToGenerator.js",
@@ -34447,11 +34354,11 @@
         },
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-native-firebase/app/dist/module/common/index.js",
-          "name": "@react-native-firebase/app/lib/common"
+          "name": "@react-native-firebase/app/dist/module/common"
         },
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-native-firebase/app/dist/module/internal/index.js",
-          "name": "@react-native-firebase/app/lib/internal"
+          "name": "@react-native-firebase/app/dist/module/internal"
         },
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native/index.js",
@@ -34473,12 +34380,12 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-native-firebase/messaging/dist/module/remoteMessageOptions.js",
-      "source": { "code": "", "lineCount": 83, "sizeInBytes": 3013 },
-      "output": { "code": "", "lineCount": 92, "sizeInBytes": 3834 },
+      "source": { "code": "", "lineCount": 83, "sizeInBytes": 3021 },
+      "output": { "code": "", "lineCount": 92, "sizeInBytes": 3933 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-native-firebase/app/dist/module/common/index.js",
-          "name": "@react-native-firebase/app/lib/common"
+          "name": "@react-native-firebase/app/dist/module/common"
         }
       ]
     },
@@ -34486,6 +34393,100 @@
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-native-firebase/messaging/dist/module/version.js",
       "source": { "code": "", "lineCount": 5, "sizeInBytes": 111 },
       "output": { "code": "", "lineCount": 15, "sizeInBytes": 374 },
+      "dependencies": []
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/src/services/notifications/index.ts",
+      "source": { "code": "", "lineCount": 7, "sizeInBytes": 207 },
+      "output": { "code": "", "lineCount": 34, "sizeInBytes": 1070 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/src/services/notifications/channels.ts",
+          "name": "./channels"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/src/services/notifications/display.ts",
+          "name": "./display"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/src/services/notifications/handlers.ts",
+          "name": "./handlers"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/src/services/notifications/channels.ts",
+      "source": { "code": "", "lineCount": 17, "sizeInBytes": 488 },
+      "output": { "code": "", "lineCount": 47, "sizeInBytes": 1550 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/asyncToGenerator.js",
+          "name": "@babel/runtime/helpers/asyncToGenerator"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/src/constants/notification/index.ts",
+          "name": "../../constants/notification"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/src/services/notifications/display.ts",
+      "source": { "code": "", "lineCount": 28, "sizeInBytes": 690 },
+      "output": { "code": "", "lineCount": 51, "sizeInBytes": 1668 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/asyncToGenerator.js",
+          "name": "@babel/runtime/helpers/asyncToGenerator"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/src/constants/notification/index.ts",
+          "name": "../../constants/notification"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/src/enums/notification.ts",
+          "name": "../../enums/notification"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/src/helpers/notifications.ts",
+          "name": "../../helpers/notifications"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/src/helpers/notifications.ts",
+      "source": { "code": "", "lineCount": 123, "sizeInBytes": 3180 },
+      "output": { "code": "", "lineCount": 154, "sizeInBytes": 5469 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/slicedToArray.js",
+          "name": "@babel/runtime/helpers/slicedToArray"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/asyncToGenerator.js",
+          "name": "@babel/runtime/helpers/asyncToGenerator"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native/index.js",
+          "name": "react-native"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/src/enums/notification.ts",
+          "name": "../enums/notification"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/src/constants/notification/index.ts",
+          "name": "../constants/notification"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/src/helpers/converters.ts",
+          "name": "./converters"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/src/services/notifications/handlers.ts",
+      "source": { "code": "", "lineCount": 19, "sizeInBytes": 405 },
+      "output": { "code": "", "lineCount": 34, "sizeInBytes": 822 },
       "dependencies": []
     },
     {
@@ -34505,16 +34506,12 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/src/services/firebase/listeners.ts",
-      "source": { "code": "", "lineCount": 106, "sizeInBytes": 2816 },
-      "output": { "code": "", "lineCount": 100, "sizeInBytes": 4134 },
+      "source": { "code": "", "lineCount": 91, "sizeInBytes": 2391 },
+      "output": { "code": "", "lineCount": 87, "sizeInBytes": 3481 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/asyncToGenerator.js",
           "name": "@babel/runtime/helpers/asyncToGenerator"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/index.js",
-          "name": "@notifee/react-native"
         },
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-native-firebase/messaging/dist/module/index.js",
@@ -34585,37 +34582,6 @@
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/src/constants/api.ts",
           "name": "../constants/api"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/src/helpers/notifications.ts",
-      "source": { "code": "", "lineCount": 123, "sizeInBytes": 3180 },
-      "output": { "code": "", "lineCount": 154, "sizeInBytes": 5469 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/slicedToArray.js",
-          "name": "@babel/runtime/helpers/slicedToArray"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/asyncToGenerator.js",
-          "name": "@babel/runtime/helpers/asyncToGenerator"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native/index.js",
-          "name": "react-native"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/src/enums/notification.ts",
-          "name": "../enums/notification"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/src/constants/notification/index.ts",
-          "name": "../constants/notification"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/src/helpers/converters.ts",
-          "name": "./converters"
         }
       ]
     },
@@ -34814,8 +34780,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-native-community/netinfo/src/internal/nativeInterface.ts",
-      "source": { "code": "", "lineCount": 44, "sizeInBytes": 1831 },
-      "output": { "code": "", "lineCount": 61, "sizeInBytes": 2387 },
+      "source": { "code": "", "lineCount": 48, "sizeInBytes": 1932 },
+      "output": { "code": "", "lineCount": 64, "sizeInBytes": 2519 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native/index.js",
@@ -34829,8 +34795,23 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-native-community/netinfo/src/internal/nativeModule.ts",
-      "source": { "code": "", "lineCount": 16, "sizeInBytes": 395 },
-      "output": { "code": "", "lineCount": 25, "sizeInBytes": 691 },
+      "source": { "code": "", "lineCount": 26, "sizeInBytes": 935 },
+      "output": { "code": "", "lineCount": 33, "sizeInBytes": 1255 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native/index.js",
+          "name": "react-native"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-native-community/netinfo/src/internal/NativeRNCNetInfo.ts",
+          "name": "./NativeRNCNetInfo"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-native-community/netinfo/src/internal/NativeRNCNetInfo.ts",
+      "source": { "code": "", "lineCount": 15, "sizeInBytes": 473 },
+      "output": { "code": "", "lineCount": 17, "sizeInBytes": 515 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native/index.js",
@@ -34871,7 +34852,7 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-native-community/netinfo/src/internal/internetReachability.ts",
-      "source": { "code": "", "lineCount": 181, "sizeInBytes": 5880 },
+      "source": { "code": "", "lineCount": 177, "sizeInBytes": 5781 },
       "output": { "code": "", "lineCount": 142, "sizeInBytes": 5710 },
       "dependencies": [
         {
@@ -34892,9 +34873,521 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@react-native-community/netinfo/src/internal/types.ts",
-      "source": { "code": "", "lineCount": 129, "sizeInBytes": 3319 },
+      "source": { "code": "", "lineCount": 127, "sizeInBytes": 3316 },
       "output": { "code": "", "lineCount": 46, "sizeInBytes": 1516 },
       "dependencies": []
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-constants/build/Constants.js",
+      "source": { "code": "", "lineCount": 189, "sizeInBytes": 6916 },
+      "output": { "code": "", "lineCount": 226, "sizeInBytes": 8608 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/objectWithoutProperties.js",
+          "name": "@babel/runtime/helpers/objectWithoutProperties"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/index.ts",
+          "name": "expo-modules-core"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native/index.js",
+          "name": "react-native"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-constants/build/Constants.types.js",
+          "name": "./Constants.types"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-constants/build/ExponentConstants.js",
+          "name": "./ExponentConstants"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/index.ts",
+      "source": { "code": "", "lineCount": 38, "sizeInBytes": 1160 },
+      "output": { "code": "", "lineCount": 189, "sizeInBytes": 6281 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/sweet/setUpJsLogger.fx.ts",
+          "name": "./sweet/setUpJsLogger.fx"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/polyfill/index.ts",
+          "name": "./polyfill"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/EventEmitter.ts",
+          "name": "./EventEmitter"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/NativeModule.ts",
+          "name": "./NativeModule"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/SharedObject.ts",
+          "name": "./SharedObject"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/SharedRef.ts",
+          "name": "./SharedRef"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/Platform.ts",
+          "name": "./Platform"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/uuid/index.ts",
+          "name": "./uuid"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/NativeViewManagerAdapter.native.tsx",
+          "name": "./NativeViewManagerAdapter"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/requireNativeModule.ts",
+          "name": "./requireNativeModule"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/registerWebModule.ts",
+          "name": "./registerWebModule"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/TypedArrays.types.ts",
+          "name": "./TypedArrays.types"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/PermissionsInterface.ts",
+          "name": "./PermissionsInterface"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/PermissionsHook.ts",
+          "name": "./PermissionsHook"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/Refs.ts",
+          "name": "./Refs"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/hooks/useReleasingSharedObject.ts",
+          "name": "./hooks/useReleasingSharedObject"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/reload.ts",
+          "name": "./reload"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/errors/CodedError.ts",
+          "name": "./errors/CodedError"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/errors/UnavailabilityError.ts",
+          "name": "./errors/UnavailabilityError"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/LegacyEventEmitter.ts",
+          "name": "./LegacyEventEmitter"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/NativeModulesProxy.native.ts",
+          "name": "./NativeModulesProxy"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/worklets/index.ts",
+          "name": "./worklets"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/sweet/setUpJsLogger.fx.ts",
+      "source": { "code": "", "lineCount": 63, "sizeInBytes": 1659 },
+      "output": { "code": "", "lineCount": 44, "sizeInBytes": 1703 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/errors/CodedError.ts",
+          "name": "../errors/CodedError"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/requireNativeModule.ts",
+          "name": "../requireNativeModule"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/errors/CodedError.ts",
+      "source": { "code": "", "lineCount": 15, "sizeInBytes": 386 },
+      "output": { "code": "", "lineCount": 44, "sizeInBytes": 1981 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/createClass.js",
+          "name": "@babel/runtime/helpers/createClass"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/classCallCheck.js",
+          "name": "@babel/runtime/helpers/classCallCheck"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/callSuper.js",
+          "name": "@babel/runtime/helpers/callSuper"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/inherits.js",
+          "name": "@babel/runtime/helpers/inherits"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/wrapNativeSuper.js",
+          "name": "@babel/runtime/helpers/wrapNativeSuper"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/requireNativeModule.ts",
+      "source": { "code": "", "lineCount": 50, "sizeInBytes": 1904 },
+      "output": { "code": "", "lineCount": 54, "sizeInBytes": 2731 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native/index.js",
+          "name": "react-native"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/NativeModulesProxy.native.ts",
+          "name": "./NativeModulesProxy"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/TurboModuleToExpoModuleProxy.native.ts",
+          "name": "./TurboModuleToExpoModuleProxy"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/ensureNativeModulesAreInstalled.native.ts",
+          "name": "./ensureNativeModulesAreInstalled"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/NativeModulesProxy.native.ts",
+      "source": { "code": "", "lineCount": 60, "sizeInBytes": 2376 },
+      "output": { "code": "", "lineCount": 63, "sizeInBytes": 2964 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native/index.js",
+          "name": "react-native"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/TurboModuleToExpoModuleProxy.native.ts",
+      "source": { "code": "", "lineCount": 32, "sizeInBytes": 888 },
+      "output": { "code": "", "lineCount": 30, "sizeInBytes": 979 },
+      "dependencies": []
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/ensureNativeModulesAreInstalled.native.ts",
+      "source": { "code": "", "lineCount": 23, "sizeInBytes": 770 },
+      "output": { "code": "", "lineCount": 27, "sizeInBytes": 1121 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native/index.js",
+          "name": "react-native"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/polyfill/index.ts",
+      "source": { "code": "", "lineCount": 2, "sizeInBytes": 8 },
+      "output": { "code": "", "lineCount": 1, "sizeInBytes": 104 },
+      "dependencies": []
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/EventEmitter.ts",
+      "source": { "code": "", "lineCount": 23, "sizeInBytes": 822 },
+      "output": { "code": "", "lineCount": 22, "sizeInBytes": 688 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/ensureNativeModulesAreInstalled.native.ts",
+          "name": "./ensureNativeModulesAreInstalled"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/NativeModule.ts",
+      "source": { "code": "", "lineCount": 12, "sizeInBytes": 477 },
+      "output": { "code": "", "lineCount": 17, "sizeInBytes": 576 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/ensureNativeModulesAreInstalled.native.ts",
+          "name": "./ensureNativeModulesAreInstalled"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/SharedObject.ts",
+      "source": { "code": "", "lineCount": 12, "sizeInBytes": 473 },
+      "output": { "code": "", "lineCount": 17, "sizeInBytes": 576 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/ensureNativeModulesAreInstalled.native.ts",
+          "name": "./ensureNativeModulesAreInstalled"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/SharedRef.ts",
+      "source": { "code": "", "lineCount": 14, "sizeInBytes": 522 },
+      "output": { "code": "", "lineCount": 17, "sizeInBytes": 564 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/ensureNativeModulesAreInstalled.native.ts",
+          "name": "./ensureNativeModulesAreInstalled"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/Platform.ts",
+      "source": { "code": "", "lineCount": 78, "sizeInBytes": 2753 },
+      "output": { "code": "", "lineCount": 72, "sizeInBytes": 2796 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native/index.js",
+          "name": "react-native"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/environment/browser.ts",
+          "name": "./environment/browser"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/environment/browser.ts",
+      "source": { "code": "", "lineCount": 16, "sizeInBytes": 532 },
+      "output": { "code": "", "lineCount": 41, "sizeInBytes": 1240 },
+      "dependencies": []
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/uuid/index.ts",
+      "source": { "code": "", "lineCount": 40, "sizeInBytes": 1074 },
+      "output": { "code": "", "lineCount": 49, "sizeInBytes": 1790 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/uuid/lib/bytesToUuid.ts",
+          "name": "./lib/bytesToUuid"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/uuid/uuid.types.ts",
+          "name": "./uuid.types"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/uuid/lib/bytesToUuid.ts",
+      "source": { "code": "", "lineCount": 39, "sizeInBytes": 853 },
+      "output": { "code": "", "lineCount": 28, "sizeInBytes": 1082 },
+      "dependencies": []
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/uuid/uuid.types.ts",
+      "source": { "code": "", "lineCount": 26, "sizeInBytes": 776 },
+      "output": { "code": "", "lineCount": 27, "sizeInBytes": 949 },
+      "dependencies": []
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/NativeViewManagerAdapter.native.tsx",
+      "source": { "code": "", "lineCount": 140, "sizeInBytes": 5029 },
+      "output": { "code": "", "lineCount": 139, "sizeInBytes": 7079 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/classCallCheck.js",
+          "name": "@babel/runtime/helpers/classCallCheck"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/createClass.js",
+          "name": "@babel/runtime/helpers/createClass"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/callSuper.js",
+          "name": "@babel/runtime/helpers/callSuper"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/inherits.js",
+          "name": "@babel/runtime/helpers/inherits"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/index.js",
+          "name": "react"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native/index.js",
+          "name": "react-native"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native/Libraries/NativeComponent/NativeComponentRegistry.js",
+          "name": "react-native/Libraries/NativeComponent/NativeComponentRegistry"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/requireNativeModule.ts",
+          "name": "./requireNativeModule"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/jsx-dev-runtime.js",
+          "name": "react/jsx-dev-runtime"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/registerWebModule.ts",
+      "source": { "code": "", "lineCount": 32, "sizeInBytes": 1297 },
+      "output": { "code": "", "lineCount": 32, "sizeInBytes": 1538 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/ensureNativeModulesAreInstalled.native.ts",
+          "name": "./ensureNativeModulesAreInstalled"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/TypedArrays.types.ts",
+      "source": { "code": "", "lineCount": 12, "sizeInBytes": 1054 },
+      "output": { "code": "", "lineCount": 3, "sizeInBytes": 121 },
+      "dependencies": []
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/PermissionsInterface.ts",
+      "source": { "code": "", "lineCount": 44, "sizeInBytes": 1024 },
+      "output": { "code": "", "lineCount": 34, "sizeInBytes": 944 },
+      "dependencies": []
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/PermissionsHook.ts",
+      "source": { "code": "", "lineCount": 93, "sizeInBytes": 3488 },
+      "output": { "code": "", "lineCount": 85, "sizeInBytes": 3574 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/asyncToGenerator.js",
+          "name": "@babel/runtime/helpers/asyncToGenerator"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/objectWithoutProperties.js",
+          "name": "@babel/runtime/helpers/objectWithoutProperties"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/slicedToArray.js",
+          "name": "@babel/runtime/helpers/slicedToArray"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/index.js",
+          "name": "react"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/Refs.ts",
+      "source": { "code": "", "lineCount": 11, "sizeInBytes": 307 },
+      "output": { "code": "", "lineCount": 17, "sizeInBytes": 572 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/index.js",
+          "name": "react"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/hooks/useReleasingSharedObject.ts",
+      "source": { "code": "", "lineCount": 66, "sizeInBytes": 2198 },
+      "output": { "code": "", "lineCount": 58, "sizeInBytes": 2465 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react/index.js",
+          "name": "react"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/reload.ts",
+      "source": { "code": "", "lineCount": 12, "sizeInBytes": 563 },
+      "output": { "code": "", "lineCount": 34, "sizeInBytes": 1458 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/asyncToGenerator.js",
+          "name": "@babel/runtime/helpers/asyncToGenerator"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/errors/UnavailabilityError.ts",
+      "source": { "code": "", "lineCount": 17, "sizeInBytes": 569 },
+      "output": { "code": "", "lineCount": 42, "sizeInBytes": 2084 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/createClass.js",
+          "name": "@babel/runtime/helpers/createClass"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/classCallCheck.js",
+          "name": "@babel/runtime/helpers/classCallCheck"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/callSuper.js",
+          "name": "@babel/runtime/helpers/callSuper"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/inherits.js",
+          "name": "@babel/runtime/helpers/inherits"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/errors/CodedError.ts",
+          "name": "./CodedError"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/Platform.ts",
+          "name": "../Platform"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/LegacyEventEmitter.ts",
+      "source": { "code": "", "lineCount": 112, "sizeInBytes": 3715 },
+      "output": { "code": "", "lineCount": 111, "sizeInBytes": 4612 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/classCallCheck.js",
+          "name": "@babel/runtime/helpers/classCallCheck"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/createClass.js",
+          "name": "@babel/runtime/helpers/createClass"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/invariant/browser.js",
+          "name": "invariant"
+        },
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native/index.js",
+          "name": "react-native"
+        }
+      ]
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/worklets/index.ts",
+      "source": { "code": "", "lineCount": 11, "sizeInBytes": 324 },
+      "output": { "code": "", "lineCount": 16, "sizeInBytes": 663 },
+      "dependencies": []
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-constants/build/Constants.types.js",
+      "source": { "code": "", "lineCount": 36, "sizeInBytes": 1504 },
+      "output": { "code": "", "lineCount": 60, "sizeInBytes": 2100 },
+      "dependencies": []
+    },
+    {
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-constants/build/ExponentConstants.js",
+      "source": { "code": "", "lineCount": 3, "sizeInBytes": 175 },
+      "output": { "code": "", "lineCount": 15, "sizeInBytes": 482 },
+      "dependencies": [
+        {
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/expo-modules-core/src/index.ts",
+          "name": "expo-modules-core"
+        }
+      ]
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/.storybook/index.tsx",
@@ -35215,8 +35708,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@storybook/channels/dist/index.js",
-      "source": { "code": "", "lineCount": 2, "sizeInBytes": 10510 },
-      "output": { "code": "", "lineCount": 470, "sizeInBytes": 19515 },
+      "source": { "code": "", "lineCount": 2, "sizeInBytes": 10573 },
+      "output": { "code": "", "lineCount": 474, "sizeInBytes": 19716 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/slicedToArray.js",
@@ -36342,8 +36835,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/lodash/_setCacheHas.js",
-      "source": { "code": "", "lineCount": 15, "sizeInBytes": 316 },
-      "output": { "code": "", "lineCount": 15, "sizeInBytes": 446 },
+      "source": { "code": "", "lineCount": 15, "sizeInBytes": 317 },
+      "output": { "code": "", "lineCount": 15, "sizeInBytes": 447 },
       "dependencies": []
     },
     {
@@ -38081,8 +38574,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/dedent/dist/dedent.js",
-      "source": { "code": "", "lineCount": 105, "sizeInBytes": 3302 },
-      "output": { "code": "", "lineCount": 109, "sizeInBytes": 4281 },
+      "source": { "code": "", "lineCount": 106, "sizeInBytes": 3721 },
+      "output": { "code": "", "lineCount": 110, "sizeInBytes": 4702 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/createForOfIteratorHelperLoose.js",
@@ -38265,7 +38758,7 @@
       "output": { "code": "", "lineCount": 9, "sizeInBytes": 351 },
       "dependencies": [
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@expo/metro/node_modules/metro-runtime/src/modules/empty-module.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/metro-runtime/src/modules/empty-module.js",
           "name": "./cjs/react-is.production.min.js"
         },
         {
@@ -40505,8 +40998,8 @@
     },
     {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@storybook/channels/dist/index.mjs",
-      "source": { "code": "", "lineCount": 12, "sizeInBytes": 997 },
-      "output": { "code": "", "lineCount": 77, "sizeInBytes": 2530 },
+      "source": { "code": "", "lineCount": 12, "sizeInBytes": 1060 },
+      "output": { "code": "", "lineCount": 80, "sizeInBytes": 2682 },
       "dependencies": [
         {
           "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@storybook/channels/dist/chunk-BNMUBNN5.mjs",
@@ -42237,7 +42730,7 @@
           "name": "esutils"
         },
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/escodegen/node_modules/source-map/source-map.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/source-map/source-map.js",
           "name": "source-map"
         },
         {
@@ -42253,142 +42746,142 @@
       "dependencies": []
     },
     {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/escodegen/node_modules/source-map/source-map.js",
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/source-map/source-map.js",
       "source": { "code": "", "lineCount": 9, "sizeInBytes": 405 },
       "output": { "code": "", "lineCount": 10, "sizeInBytes": 583 },
       "dependencies": [
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/escodegen/node_modules/source-map/lib/source-map-generator.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/source-map/lib/source-map-generator.js",
           "name": "./lib/source-map-generator"
         },
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/escodegen/node_modules/source-map/lib/source-map-consumer.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/source-map/lib/source-map-consumer.js",
           "name": "./lib/source-map-consumer"
         },
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/escodegen/node_modules/source-map/lib/source-node.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/source-map/lib/source-node.js",
           "name": "./lib/source-node"
         }
       ]
     },
     {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/escodegen/node_modules/source-map/lib/source-map-generator.js",
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/source-map/lib/source-map-generator.js",
       "source": { "code": "", "lineCount": 426, "sizeInBytes": 14356 },
       "output": { "code": "", "lineCount": 369, "sizeInBytes": 14361 },
       "dependencies": [
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/escodegen/node_modules/source-map/lib/base64-vlq.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/source-map/lib/base64-vlq.js",
           "name": "./base64-vlq"
         },
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/escodegen/node_modules/source-map/lib/util.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/source-map/lib/util.js",
           "name": "./util"
         },
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/escodegen/node_modules/source-map/lib/array-set.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/source-map/lib/array-set.js",
           "name": "./array-set"
         },
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/escodegen/node_modules/source-map/lib/mapping-list.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/source-map/lib/mapping-list.js",
           "name": "./mapping-list"
         }
       ]
     },
     {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/escodegen/node_modules/source-map/lib/base64-vlq.js",
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/source-map/lib/base64-vlq.js",
       "source": { "code": "", "lineCount": 141, "sizeInBytes": 4714 },
       "output": { "code": "", "lineCount": 131, "sizeInBytes": 5051 },
       "dependencies": [
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/escodegen/node_modules/source-map/lib/base64.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/source-map/lib/base64.js",
           "name": "./base64"
         }
       ]
     },
     {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/escodegen/node_modules/source-map/lib/base64.js",
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/source-map/lib/base64.js",
       "source": { "code": "", "lineCount": 68, "sizeInBytes": 1540 },
       "output": { "code": "", "lineCount": 69, "sizeInBytes": 1723 },
       "dependencies": []
     },
     {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/escodegen/node_modules/source-map/lib/util.js",
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/source-map/lib/util.js",
       "source": { "code": "", "lineCount": 489, "sizeInBytes": 12950 },
       "output": { "code": "", "lineCount": 435, "sizeInBytes": 13782 },
       "dependencies": []
     },
     {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/escodegen/node_modules/source-map/lib/array-set.js",
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/source-map/lib/array-set.js",
       "source": { "code": "", "lineCount": 122, "sizeInBytes": 3197 },
       "output": { "code": "", "lineCount": 121, "sizeInBytes": 3537 },
       "dependencies": [
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/escodegen/node_modules/source-map/lib/util.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/source-map/lib/util.js",
           "name": "./util"
         }
       ]
     },
     {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/escodegen/node_modules/source-map/lib/mapping-list.js",
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/source-map/lib/mapping-list.js",
       "source": { "code": "", "lineCount": 80, "sizeInBytes": 2339 },
       "output": { "code": "", "lineCount": 81, "sizeInBytes": 2605 },
       "dependencies": [
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/escodegen/node_modules/source-map/lib/util.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/source-map/lib/util.js",
           "name": "./util"
         }
       ]
     },
     {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/escodegen/node_modules/source-map/lib/source-map-consumer.js",
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/source-map/lib/source-map-consumer.js",
       "source": { "code": "", "lineCount": 1146, "sizeInBytes": 40562 },
       "output": { "code": "", "lineCount": 1001, "sizeInBytes": 40986 },
       "dependencies": [
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/escodegen/node_modules/source-map/lib/util.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/source-map/lib/util.js",
           "name": "./util"
         },
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/escodegen/node_modules/source-map/lib/binary-search.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/source-map/lib/binary-search.js",
           "name": "./binary-search"
         },
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/escodegen/node_modules/source-map/lib/array-set.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/source-map/lib/array-set.js",
           "name": "./array-set"
         },
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/escodegen/node_modules/source-map/lib/base64-vlq.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/source-map/lib/base64-vlq.js",
           "name": "./base64-vlq"
         },
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/escodegen/node_modules/source-map/lib/quick-sort.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/source-map/lib/quick-sort.js",
           "name": "./quick-sort"
         }
       ]
     },
     {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/escodegen/node_modules/source-map/lib/binary-search.js",
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/source-map/lib/binary-search.js",
       "source": { "code": "", "lineCount": 112, "sizeInBytes": 4249 },
       "output": { "code": "", "lineCount": 108, "sizeInBytes": 4518 },
       "dependencies": []
     },
     {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/escodegen/node_modules/source-map/lib/quick-sort.js",
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/source-map/lib/quick-sort.js",
       "source": { "code": "", "lineCount": 115, "sizeInBytes": 3616 },
       "output": { "code": "", "lineCount": 114, "sizeInBytes": 3921 },
       "dependencies": []
     },
     {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/escodegen/node_modules/source-map/lib/source-node.js",
+      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/source-map/lib/source-node.js",
       "source": { "code": "", "lineCount": 414, "sizeInBytes": 13808 },
       "output": { "code": "", "lineCount": 386, "sizeInBytes": 14136 },
       "dependencies": [
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/escodegen/node_modules/source-map/lib/source-map-generator.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/source-map/lib/source-map-generator.js",
           "name": "./source-map-generator"
         },
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/escodegen/node_modules/source-map/lib/util.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/source-map/lib/util.js",
           "name": "./util"
         }
       ]
@@ -42512,7 +43005,7 @@
       "output": { "code": "", "lineCount": 9, "sizeInBytes": 351 },
       "dependencies": [
         {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@expo/metro/node_modules/metro-runtime/src/modules/empty-module.js",
+          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/metro-runtime/src/modules/empty-module.js",
           "name": "./cjs/react-is.production.min.js"
         },
         {
@@ -42578,647 +43071,9 @@
       ]
     },
     {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/buffer/index.js",
-      "source": { "code": "", "lineCount": 1818, "sizeInBytes": 50097 },
-      "output": { "code": "", "lineCount": 1509, "sizeInBytes": 52908 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/base64-js/index.js",
-          "name": "base64-js"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/ieee754/index.js",
-          "name": "ieee754"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/ieee754/index.js",
-      "source": { "code": "", "lineCount": 86, "sizeInBytes": 2154 },
-      "output": { "code": "", "lineCount": 76, "sizeInBytes": 2411 },
-      "dependencies": []
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/src/services/notifications/index.ts",
-      "source": { "code": "", "lineCount": 7, "sizeInBytes": 207 },
-      "output": { "code": "", "lineCount": 34, "sizeInBytes": 1070 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/src/services/notifications/channels.ts",
-          "name": "./channels"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/src/services/notifications/display.ts",
-          "name": "./display"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/src/services/notifications/handlers.ts",
-          "name": "./handlers"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/src/services/notifications/channels.ts",
-      "source": { "code": "", "lineCount": 25, "sizeInBytes": 703 },
-      "output": { "code": "", "lineCount": 52, "sizeInBytes": 1877 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/asyncToGenerator.js",
-          "name": "@babel/runtime/helpers/asyncToGenerator"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/index.js",
-          "name": "@notifee/react-native"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/src/constants/notification/index.ts",
-          "name": "../../constants/notification"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/index.js",
-      "source": { "code": "", "lineCount": 43, "sizeInBytes": 1896 },
-      "output": { "code": "", "lineCount": 52, "sizeInBytes": 2191 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/NotifeeApiModule.js",
-          "name": "./NotifeeApiModule"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/version.js",
-          "name": "./version"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/utils/index.js",
-          "name": "./utils"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/types/Library.js",
-          "name": "./types/Library"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/types/Notification.js",
-          "name": "./types/Notification"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/types/Trigger.js",
-          "name": "./types/Trigger"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/types/NotificationIOS.js",
-          "name": "./types/NotificationIOS"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/types/NotificationAndroid.js",
-          "name": "./types/NotificationAndroid"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/NotifeeApiModule.js",
-      "source": { "code": "", "lineCount": 610, "sizeInBytes": 23720 },
-      "output": { "code": "", "lineCount": 626, "sizeInBytes": 24541 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/classCallCheck.js",
-          "name": "@babel/runtime/helpers/classCallCheck"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/createClass.js",
-          "name": "@babel/runtime/helpers/createClass"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/callSuper.js",
-          "name": "@babel/runtime/helpers/callSuper"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/inherits.js",
-          "name": "@babel/runtime/helpers/inherits"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native/index.js",
-          "name": "react-native"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/types/NotificationAndroid.js",
-          "name": "./types/NotificationAndroid"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/types/Notification.js",
-          "name": "./types/Notification"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/NotifeeNativeModule.js",
-          "name": "./NotifeeNativeModule"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/utils/index.js",
-          "name": "./utils"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateNotification.js",
-          "name": "./validators/validateNotification"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateTrigger.js",
-          "name": "./validators/validateTrigger"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateAndroidChannel.js",
-          "name": "./validators/validateAndroidChannel"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateAndroidChannelGroup.js",
-          "name": "./validators/validateAndroidChannelGroup"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateIOSCategory.js",
-          "name": "./validators/validateIOSCategory"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateIOSPermissions.js",
-          "name": "./validators/validateIOSPermissions"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/types/NotificationAndroid.js",
-      "source": { "code": "", "lineCount": 409, "sizeInBytes": 22253 },
-      "output": { "code": "", "lineCount": 413, "sizeInBytes": 22604 },
-      "dependencies": []
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/types/Notification.js",
-      "source": { "code": "", "lineCount": 111, "sizeInBytes": 4633 },
-      "output": { "code": "", "lineCount": 115, "sizeInBytes": 4755 },
-      "dependencies": []
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/NotifeeNativeModule.js",
-      "source": { "code": "", "lineCount": 43, "sizeInBytes": 1672 },
-      "output": { "code": "", "lineCount": 58, "sizeInBytes": 2202 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/classCallCheck.js",
-          "name": "@babel/runtime/helpers/classCallCheck"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/createClass.js",
-          "name": "@babel/runtime/helpers/createClass"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/NotifeeJSEventEmitter.js",
-          "name": "./NotifeeJSEventEmitter"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native/index.js",
-          "name": "react-native"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/NotifeeJSEventEmitter.js",
-      "source": { "code": "", "lineCount": 16, "sizeInBytes": 704 },
-      "output": { "code": "", "lineCount": 22, "sizeInBytes": 816 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native/Libraries/vendor/emitter/EventEmitter.js",
-          "name": "react-native/Libraries/vendor/emitter/EventEmitter"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/utils/index.js",
-      "source": { "code": "", "lineCount": 51, "sizeInBytes": 2413 },
-      "output": { "code": "", "lineCount": 60, "sizeInBytes": 2645 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native/index.js",
-          "name": "react-native"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/utils/id.js",
-          "name": "./id"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/utils/validate.js",
-          "name": "./validate"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/utils/id.js",
-      "source": { "code": "", "lineCount": 15, "sizeInBytes": 468 },
-      "output": { "code": "", "lineCount": 19, "sizeInBytes": 564 },
-      "dependencies": []
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/utils/validate.js",
-      "source": { "code": "", "lineCount": 91, "sizeInBytes": 2384 },
-      "output": { "code": "", "lineCount": 96, "sizeInBytes": 2708 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/slicedToArray.js",
-          "name": "@babel/runtime/helpers/slicedToArray"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateNotification.js",
-      "source": { "code": "", "lineCount": 129, "sizeInBytes": 4550 },
-      "output": { "code": "", "lineCount": 133, "sizeInBytes": 4747 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/slicedToArray.js",
-          "name": "@babel/runtime/helpers/slicedToArray"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/utils/index.js",
-          "name": "../utils"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateAndroidNotification.js",
-          "name": "./validateAndroidNotification"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateIOSNotification.js",
-          "name": "./validateIOSNotification"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native/index.js",
-          "name": "react-native"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateAndroidNotification.js",
-      "source": { "code": "", "lineCount": 547, "sizeInBytes": 23540 },
-      "output": { "code": "", "lineCount": 547, "sizeInBytes": 23002 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/slicedToArray.js",
-          "name": "@babel/runtime/helpers/slicedToArray"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native/index.js",
-          "name": "react-native"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/utils/index.js",
-          "name": "../utils"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/types/NotificationAndroid.js",
-          "name": "../types/NotificationAndroid"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validate.js",
-          "name": "./validate"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateAndroidStyle.js",
-          "name": "./validateAndroidStyle"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateAndroidPressAction.js",
-          "name": "./validateAndroidPressAction"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateAndroidFullScreenAction.js",
-          "name": "./validateAndroidFullScreenAction"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateAndroidAction.js",
-          "name": "./validateAndroidAction"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validate.js",
-      "source": { "code": "", "lineCount": 74, "sizeInBytes": 1907 },
-      "output": { "code": "", "lineCount": 82, "sizeInBytes": 2229 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/slicedToArray.js",
-          "name": "@babel/runtime/helpers/slicedToArray"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/types/NotificationAndroid.js",
-          "name": "../types/NotificationAndroid"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/utils/index.js",
-          "name": "../utils"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateAndroidStyle.js",
-      "source": { "code": "", "lineCount": 230, "sizeInBytes": 8820 },
-      "output": { "code": "", "lineCount": 226, "sizeInBytes": 8669 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native/index.js",
-          "name": "react-native"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/types/NotificationAndroid.js",
-          "name": "../types/NotificationAndroid"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/utils/index.js",
-          "name": "../utils"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateAndroidPressAction.js",
-      "source": { "code": "", "lineCount": 50, "sizeInBytes": 2141 },
-      "output": { "code": "", "lineCount": 53, "sizeInBytes": 2167 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/utils/index.js",
-          "name": "../utils"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateAndroidFullScreenAction.js",
-      "source": { "code": "", "lineCount": 50, "sizeInBytes": 2246 },
-      "output": { "code": "", "lineCount": 53, "sizeInBytes": 2267 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/utils/index.js",
-          "name": "../utils"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateAndroidAction.js",
-      "source": { "code": "", "lineCount": 52, "sizeInBytes": 1898 },
-      "output": { "code": "", "lineCount": 55, "sizeInBytes": 1961 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/utils/index.js",
-          "name": "../utils"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateAndroidPressAction.js",
-          "name": "./validateAndroidPressAction"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateAndroidInput.js",
-          "name": "./validateAndroidInput"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateAndroidInput.js",
-      "source": { "code": "", "lineCount": 54, "sizeInBytes": 2250 },
-      "output": { "code": "", "lineCount": 58, "sizeInBytes": 2286 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/utils/index.js",
-          "name": "../utils"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateIOSNotification.js",
-      "source": { "code": "", "lineCount": 211, "sizeInBytes": 8457 },
-      "output": { "code": "", "lineCount": 209, "sizeInBytes": 8179 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/utils/index.js",
-          "name": "../utils"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/iosCommunicationInfo/validateIOSCommunicationInfo.js",
-          "name": "./iosCommunicationInfo/validateIOSCommunicationInfo"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateIOSAttachment.js",
-          "name": "./validateIOSAttachment"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/iosCommunicationInfo/validateIOSCommunicationInfo.js",
-      "source": { "code": "", "lineCount": 51, "sizeInBytes": 2058 },
-      "output": { "code": "", "lineCount": 55, "sizeInBytes": 2113 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/utils/index.js",
-          "name": "../../utils"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/iosCommunicationInfo/validateIOSCommunicationInfoPerson.js",
-          "name": "./validateIOSCommunicationInfoPerson"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/iosCommunicationInfo/validateIOSCommunicationInfoPerson.js",
-      "source": { "code": "", "lineCount": 27, "sizeInBytes": 1110 },
-      "output": { "code": "", "lineCount": 31, "sizeInBytes": 1166 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/utils/index.js",
-          "name": "../../utils"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateIOSAttachment.js",
-      "source": { "code": "", "lineCount": 101, "sizeInBytes": 4344 },
-      "output": { "code": "", "lineCount": 99, "sizeInBytes": 4311 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/react-native/index.js",
-          "name": "react-native"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/utils/index.js",
-          "name": "../utils"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateTrigger.js",
-      "source": { "code": "", "lineCount": 110, "sizeInBytes": 4111 },
-      "output": { "code": "", "lineCount": 112, "sizeInBytes": 4075 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/utils/index.js",
-          "name": "../utils"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/types/Trigger.js",
-          "name": "../types/Trigger"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/types/Trigger.js",
-      "source": { "code": "", "lineCount": 51, "sizeInBytes": 2213 },
-      "output": { "code": "", "lineCount": 55, "sizeInBytes": 2360 },
-      "dependencies": []
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateAndroidChannel.js",
-      "source": { "code": "", "lineCount": 155, "sizeInBytes": 5388 },
-      "output": { "code": "", "lineCount": 159, "sizeInBytes": 5387 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/utils/index.js",
-          "name": "../utils"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validate.js",
-          "name": "./validate"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/types/NotificationAndroid.js",
-          "name": "../types/NotificationAndroid"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateAndroidChannelGroup.js",
-      "source": { "code": "", "lineCount": 42, "sizeInBytes": 1157 },
-      "output": { "code": "", "lineCount": 46, "sizeInBytes": 1226 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/utils/index.js",
-          "name": "../utils"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateIOSCategory.js",
-      "source": { "code": "", "lineCount": 124, "sizeInBytes": 4757 },
-      "output": { "code": "", "lineCount": 129, "sizeInBytes": 4740 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/types/NotificationIOS.js",
-          "name": "../types/NotificationIOS"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/utils/index.js",
-          "name": "../utils"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateIOSCategoryAction.js",
-          "name": "./validateIOSCategoryAction"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/types/NotificationIOS.js",
-      "source": { "code": "", "lineCount": 92, "sizeInBytes": 4927 },
-      "output": { "code": "", "lineCount": 96, "sizeInBytes": 5068 },
-      "dependencies": []
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateIOSCategoryAction.js",
-      "source": { "code": "", "lineCount": 59, "sizeInBytes": 2313 },
-      "output": { "code": "", "lineCount": 63, "sizeInBytes": 2327 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/utils/index.js",
-          "name": "../utils"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateIOSInput.js",
-          "name": "./validateIOSInput"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateIOSInput.js",
-      "source": { "code": "", "lineCount": 32, "sizeInBytes": 1149 },
-      "output": { "code": "", "lineCount": 36, "sizeInBytes": 1218 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/utils/index.js",
-          "name": "../utils"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/validators/validateIOSPermissions.js",
-      "source": { "code": "", "lineCount": 62, "sizeInBytes": 2332 },
-      "output": { "code": "", "lineCount": 66, "sizeInBytes": 2334 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/utils/index.js",
-          "name": "../utils"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/version.js",
-      "source": { "code": "", "lineCount": 6, "sizeInBytes": 193 },
-      "output": { "code": "", "lineCount": 10, "sizeInBytes": 280 },
-      "dependencies": []
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/types/Library.js",
-      "source": { "code": "", "lineCount": 6, "sizeInBytes": 167 },
-      "output": { "code": "", "lineCount": 10, "sizeInBytes": 254 },
-      "dependencies": []
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/src/services/notifications/display.ts",
-      "source": { "code": "", "lineCount": 87, "sizeInBytes": 2225 },
-      "output": { "code": "", "lineCount": 94, "sizeInBytes": 3616 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/asyncToGenerator.js",
-          "name": "@babel/runtime/helpers/asyncToGenerator"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/index.js",
-          "name": "@notifee/react-native"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/src/constants/notification/index.ts",
-          "name": "../../constants/notification"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/src/enums/notification.ts",
-          "name": "../../enums/notification"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/src/helpers/notifications.ts",
-          "name": "../../helpers/notifications"
-        }
-      ]
-    },
-    {
-      "path": "/Users/hienduong/Documents/HienDuong/expo-training/src/services/notifications/handlers.ts",
-      "source": { "code": "", "lineCount": 75, "sizeInBytes": 1898 },
-      "output": { "code": "", "lineCount": 95, "sizeInBytes": 3588 },
-      "dependencies": [
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@babel/runtime/helpers/asyncToGenerator.js",
-          "name": "@babel/runtime/helpers/asyncToGenerator"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/node_modules/@notifee/react-native/dist/index.js",
-          "name": "@notifee/react-native"
-        },
-        {
-          "absolutePath": "/Users/hienduong/Documents/HienDuong/expo-training/src/helpers/notifications.ts",
-          "name": "../../helpers/notifications"
-        }
-      ]
-    },
-    {
       "path": "/Users/hienduong/Documents/HienDuong/expo-training/app.json",
-      "source": { "code": "", "lineCount": 5, "sizeInBytes": 70 },
-      "output": { "code": "", "lineCount": 7, "sizeInBytes": 205 },
+      "source": { "code": "", "lineCount": 15, "sizeInBytes": 292 },
+      "output": { "code": "", "lineCount": 17, "sizeInBytes": 427 },
       "dependencies": []
     }
   ]

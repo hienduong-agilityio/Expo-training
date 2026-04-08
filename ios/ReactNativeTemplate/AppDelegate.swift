@@ -38,7 +38,7 @@ class AppDelegate: ExpoAppDelegate {
   }
 
   // Handle URL scheme deep links
-  func application(
+  override func application(
     _ application: UIApplication,
     open url: URL,
     options: [UIApplication.OpenURLOptionsKey: Any] = [:]
@@ -47,7 +47,7 @@ class AppDelegate: ExpoAppDelegate {
   }
 
   // Handle Universal Links (optional, for future use)
-  func application(
+  override func application(
     _ application: UIApplication,
     continue userActivity: NSUserActivity,
     restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void
