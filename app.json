@@ -27,7 +27,8 @@
         "expo-notifications",
         {
           "icon": "./assets/images/notification-icon.png",
-          "color": "#dbe7f0"
+          "color": "#dbe7f0",
+          "defaultChannel": "general"
         }
       ],
       [
@@ -59,6 +60,22 @@
             "./src/assets/fonts/Roboto-Regular.ttf",
             "./src/assets/fonts/Roboto-Medium.ttf"
           ]
+        }
+      ],
+      "expo-secure-store",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow access to your photos to choose a profile image.",
+          "cameraPermission": "Allow camera access to take a profile photo."
+        }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow camera access to take photos.",
+          "microphonePermission": false,
+          "recordAudioAndroid": false
         }
       ]
     ]

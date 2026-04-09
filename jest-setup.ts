@@ -72,16 +72,29 @@ jest.mock('react-native-device-info', () => {
   };
 });
 
-// Mock react-native-config
-jest.mock('react-native-config', () => ({
-  __esModule: true,
-  default: {
-    ENVIRONMENT: 'test',
-    API_BASE_URL: 'http://localhost:3000',
-    STRAPI_BASE_URL: 'http://localhost:1337',
-    REQUIRE_HTTPS: 'false',
-    DISABLE_ANDROID_LOCALHOST_REWRITE: undefined,
+jest.mock('expo-secure-store', () => ({
+  getItemAsync: jest.fn(() => Promise.resolve(null)),
+  setItemAsync: jest.fn(() => Promise.resolve()),
+  deleteItemAsync: jest.fn(() => Promise.resolve()),
+}));
+
+jest.mock('expo-notifications', () => ({
+  AndroidImportance: {
+    UNKNOWN: 0,
+    UNSPECIFIED: 1,
+    NONE: 2,
+    MIN: 3,
+    LOW: 4,
+    DEFAULT: 5,
+    HIGH: 6,
+    MAX: 7,
   },
+  setNotificationHandler: jest.fn(),
+  scheduleNotificationAsync: jest.fn(() => Promise.resolve('mock-id')),
+  setNotificationChannelAsync: jest.fn(() => Promise.resolve(null)),
+  addNotificationResponseReceivedListener: jest.fn(() => ({
+    remove: jest.fn(),
+  })),
 }));
 
 jest.mock('expo-font', () => ({

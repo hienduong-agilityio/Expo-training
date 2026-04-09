@@ -1,5 +1,6 @@
 export const SETTINGS_MESSAGES = {
   DEFAULT_USER: '—',
+  PHOTO_DEMO_TITLE: 'Profile photo (local demo)',
 } as const;
 
 export const WISHLIST_MESSAGES = {
