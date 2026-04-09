@@ -1,8 +1,10 @@
-import Config from 'react-native-config';
+const EXPO_PUBLIC_API_BASE_URL = process.env.EXPO_PUBLIC_API_BASE_URL;
+const EXPO_PUBLIC_STRAPI_BASE_URL = process.env.EXPO_PUBLIC_STRAPI_BASE_URL;
+const normalizeBaseUrl = (value: string) => value.replace(/\/+$/, '');
 
 export const API_CONFIG = {
-  BASE_URL: Config.API_BASE_URL,
-  STRAPI_BASE_URL: Config.STRAPI_BASE_URL,
+  BASE_URL: normalizeBaseUrl(EXPO_PUBLIC_API_BASE_URL ?? ''),
+  STRAPI_BASE_URL: normalizeBaseUrl(EXPO_PUBLIC_STRAPI_BASE_URL ?? ''),
 } as const;
 
 export const HTTP_METHODS = {

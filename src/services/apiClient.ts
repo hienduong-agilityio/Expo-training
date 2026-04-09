@@ -23,7 +23,7 @@ export async function apiRequest<TResponse, TBody = unknown>(
   } = options;
 
   // Build URL with query params
-  let requestUrl = `${API_CONFIG.STRAPI_BASE_URL}${endpoint}`;
+  let requestUrl = `${API_CONFIG.BASE_URL}${endpoint}`;
 
   if (query && Object.keys(query).length > 0) {
     let queryParams = qs.stringify(query, {
