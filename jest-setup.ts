@@ -81,3 +81,14 @@ jest.mock('react-native-config', () => ({
     REQUIRE_HTTPS: 'false',
   },
 }));
+
+jest.mock('expo-font', () => ({
+  useFonts: jest.fn(() => [true, null]),
+  loadAsync: jest.fn(),
+  isLoaded: jest.fn(() => true),
+}));
+
+jest.mock('expo-splash-screen', () => ({
+  hideAsync: jest.fn(() => Promise.resolve()),
+  preventAutoHideAsync: jest.fn(() => Promise.resolve()),
+}));

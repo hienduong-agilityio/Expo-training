@@ -4490,6 +4490,11 @@ babel-preset-jest@^29.6.3:
     babel-plugin-jest-hoist "^29.6.3"
     babel-preset-current-node-syntax "^1.0.0"
 
+badgin@^1.1.5:
+  version "1.2.3"
+  resolved "https://registry.npmjs.org/badgin/-/badgin-1.2.3.tgz#994b5f519827d7d5422224825b2c8faea2bc43ad"
+  integrity sha512-NQGA7LcfCpSzIbGRbkgjgdWkjy7HI+Th5VLxTJfW5EeaAf3fnS+xWQaQOCYiny+q6QSvxqoSO04vCx+4u++EJw==
+
 balanced-match@^1.0.0:
   version "1.0.2"
   resolved "https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"
@@ -6053,6 +6058,11 @@ expect@^29.0.0, expect@^29.7.0:
     jest-message-util "^29.7.0"
     jest-util "^29.7.0"
 
+expo-application@~55.0.13:
+  version "55.0.13"
+  resolved "https://registry.npmjs.org/expo-application/-/expo-application-55.0.13.tgz#c90d4c9234e0ae76b710676e42b6a1403547727d"
+  integrity sha512-mIx0Cxn4hSEuadb/eu/FBvATZRjISb4yEpUrP4xHYgK/RYuS4Fu/dXbE43sh8TZVqAFro0QGonpoPHLgQiSAsQ==
+
 expo-asset@~55.0.13:
   version "55.0.13"
   resolved "https://registry.npmjs.org/expo-asset/-/expo-asset-55.0.13.tgz#012a46ee26bc3bd6c541e343423b562d82b2bfe6"
@@ -6060,6 +6070,15 @@ expo-asset@~55.0.13:
   dependencies:
     "@expo/image-utils" "^0.8.12"
     expo-constants "~55.0.12"
+
+expo-build-properties@~55.0.12:
+  version "55.0.12"
+  resolved "https://registry.npmjs.org/expo-build-properties/-/expo-build-properties-55.0.12.tgz#9a589ab7609fa2c3da66b30409c5426e2e5963e4"
+  integrity sha512-PUK0uPxFESZTegqFk+v3V9HWRhjIgvkImoHAgXU22xAyzfrdPnWKCwesyd88rdhGdSc/7lGFmIB7bOYKi2vjkQ==
+  dependencies:
+    "@expo/schema-utils" "^55.0.3"
+    resolve-from "^5.0.0"
+    semver "^7.6.0"
 
 expo-constants@~55.0.12:
   version "55.0.12"
@@ -6080,6 +6099,13 @@ expo-font@~55.0.6:
   integrity sha512-x9czUA3UQWjIwa0ZUEs/eWJNqB4mAue/m4ltESlNPLZhHL0nWWqIfsyHmklTLFH7mVfcHSJvew6k+pR2FE1zVw==
   dependencies:
     fontfaceobserver "^2.1.0"
+
+expo-image@~55.0.8:
+  version "55.0.8"
+  resolved "https://registry.npmjs.org/expo-image/-/expo-image-55.0.8.tgz#0b23054041508e70948bd4ab5d3f6bdd71c53989"
+  integrity sha512-fNdvdYVcGn3g1x6o5AXHKzk4xX8U6rg2W9vFdE1pQO80kWCNReh003ypqSrGy4dD+zA8FtZjrNF3oMDGnPpIGQ==
+  dependencies:
+    sf-symbols-typescript "^2.2.0"
 
 expo-keep-awake@~55.0.6:
   version "55.0.6"
@@ -6103,10 +6129,28 @@ expo-modules-core@55.0.21:
   dependencies:
     invariant "^2.2.4"
 
+expo-notifications@~55.0.10:
+  version "55.0.17"
+  resolved "https://registry.npmjs.org/expo-notifications/-/expo-notifications-55.0.17.tgz#7c54724fdedf584cfa8ecd66eaec9fe343316cc4"
+  integrity sha512-Z2tRL9HcwpN8rS3cIPZyT/S7EWvVEVUeWf595LU0gksLu63VVCyrGynosUAo8Z8e0ePLXMhwVoIwYSvS3Tr5dw==
+  dependencies:
+    "@expo/image-utils" "^0.8.12"
+    abort-controller "^3.0.0"
+    badgin "^1.1.5"
+    expo-application "~55.0.13"
+    expo-constants "~55.0.12"
+
 expo-server@^55.0.7:
   version "55.0.7"
   resolved "https://registry.npmjs.org/expo-server/-/expo-server-55.0.7.tgz#51bdb292daa87194ce19fe163e32d34b704d50b9"
   integrity sha512-Cc1btFyPsD9P4DT2xd1pG/uR96TLVMx0W+dPm9Gjk1uDV9xuzvMcUsY7nf9bt4U5pGyWWkCXmPJcKwWfdl51Pw==
+
+expo-splash-screen@~55.0.16:
+  version "55.0.16"
+  resolved "https://registry.npmjs.org/expo-splash-screen/-/expo-splash-screen-55.0.16.tgz#6688e9476bdb44a11596a50f711e6244d312d512"
+  integrity sha512-k0GuXde9QNB7AVwwpJ/BVnSOliLDJy9qC0k7QlOSdbLH4HR1YhX1kWVhL6Yq68vZ7qpHl5WQZv1DDk3SxOaExg==
+  dependencies:
+    "@expo/prebuild-config" "^55.0.13"
 
 expo@~55.0.0:
   version "55.0.12"
@@ -9475,11 +9519,6 @@ react-native-device-info@^15.0.1:
   resolved "https://registry.npmjs.org/react-native-device-info/-/react-native-device-info-15.0.2.tgz#c7de1bb6baeb07e1bab70159ad540c5705cb8dc0"
   integrity sha512-dd71eXG2l3Cwp66IvKNadMTB8fhU3PEjyVddI97sYan+D4bgIAUmgGDhbSOFvHcGavksb2U17kiQYaDiK2WK2g==
 
-react-native-fast-image@^8.6.3:
-  version "8.6.3"
-  resolved "https://registry.npmjs.org/react-native-fast-image/-/react-native-fast-image-8.6.3.tgz#6edc3f9190092a909d636d93eecbcc54a8822255"
-  integrity sha512-Sdw4ESidXCXOmQ9EcYguNY2swyoWmx53kym2zRsvi+VeFCHEdkO+WG1DK+6W81juot40bbfLNhkc63QnWtesNg==
-
 react-native-fit-image@^1.5.5:
   version "1.5.5"
   resolved "https://registry.npmjs.org/react-native-fit-image/-/react-native-fit-image-1.5.5.tgz#c660d1ad74b9dcaa1cba27a0d9c23837e000226c"
@@ -10003,7 +10042,7 @@ setprototypeof@1.2.0, setprototypeof@~1.2.0:
   resolved "https://registry.npmjs.org/setprototypeof/-/setprototypeof-1.2.0.tgz#66c9a24a73f9fc28cbe66b09fed3d33dcaf1b424"
   integrity sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==
 
-sf-symbols-typescript@^2.1.0:
+sf-symbols-typescript@^2.1.0, sf-symbols-typescript@^2.2.0:
   version "2.2.0"
   resolved "https://registry.npmjs.org/sf-symbols-typescript/-/sf-symbols-typescript-2.2.0.tgz#926d6e0715e3d8784cadf7658431e36581254208"
   integrity sha512-TPbeg0b7ylrswdGCji8FRGFAKuqbpQlLbL8SOle3j1iHSs5Ob5mhvMAxWN2UItOjgALAB5Zp3fmMfj8mbWvXKw==

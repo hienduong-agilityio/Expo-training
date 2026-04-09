@@ -41,7 +41,25 @@ const isRozeniteEnabled =
   (process.env.WITH_ROZENITE === undefined &&
     process.env.NODE_ENV !== 'production');
 
-module.exports = withRozenite(mergedConfig, {
+/**
+ * RN may set watcher.unstable_workerThreads; expo-doctor's Metro schema rejects it.
+ * withRozenite() returns an async loader — strip on the resolved config, not on the function.
+ */
+function stripUnstableWatcherThreads(config) {
+  if (!config || typeof config !== 'object') return;
+  if (config.watcher && typeof config.watcher === 'object') {
+    const { unstable_workerThreads: _w, ...rest } = config.watcher;
+    if (Object.keys(rest).length === 0) {
+      delete config.watcher;
+    } else {
+      config.watcher = rest;
+    }
+  }
+}
+
+stripUnstableWatcherThreads(mergedConfig);
+
+const loadRozeniteConfig = withRozenite(mergedConfig, {
   enabled: isRozeniteEnabled,
   include: [
     '@rozenite/performance-monitor-plugin',
@@ -49,3 +67,9 @@ module.exports = withRozenite(mergedConfig, {
     '@rozenite/tanstack-query-plugin',
   ],
 });
+
+module.exports = async function metroConfig() {
+  const config = await loadRozeniteConfig();
+  stripUnstableWatcherThreads(config);
+  return config;
+};
