@@ -6,7 +6,6 @@ import { BUTTON_VARIANTS, BUTTON_COLORS } from '@app/enums';
 // Types
 import type { ImageProps as ExpoImageProps } from 'expo-image';
 import type {
-  ImageProps,
   ImageSourcePropType,
   PressableProps,
   StyleProp,
@@ -89,11 +88,11 @@ export interface IStarsRatingProps {
 }
 
 export interface IFallbackImageProps
-  extends Omit<ExpoImageProps, 'source' | 'contentFit'> {
+  extends Omit<ExpoImageProps, 'source' | 'contentFit' | 'resizeMode'> {
   source?: ImageSourcePropType;
   fallbackSource?: ImageSourcePropType;
   /** Mapped to expo-image `contentFit` */
-  resizeMode?: ImageProps['resizeMode'];
+  resizeMode?: ExpoImageProps['contentFit'];
 }
 
 export interface IProductCardProps extends IProduct {

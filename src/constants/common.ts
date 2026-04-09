@@ -27,6 +27,8 @@ export const BUTTON_LABELS = {
   FILTER: 'Filter',
   REMOVE: 'Remove',
   CONFIRM: 'Confirm',
+  PICK_PHOTO: 'Choose photo',
+  TAKE_PHOTO: 'Take photo',
 } as const;
 
 export const MESSAGES = {
