@@ -66,6 +66,7 @@ jest.mock('react-native-device-info', () => {
     __esModule: true,
     default: {
       isEmulator: jest.fn().mockResolvedValue(false),
+      isEmulatorSync: jest.fn(() => false),
       getUniqueId: jest.fn().mockResolvedValue('mock-device-id'),
     },
   };
@@ -79,6 +80,7 @@ jest.mock('react-native-config', () => ({
     API_BASE_URL: 'http://localhost:3000',
     STRAPI_BASE_URL: 'http://localhost:1337',
     REQUIRE_HTTPS: 'false',
+    DISABLE_ANDROID_LOCALHOST_REWRITE: undefined,
   },
 }));
 
@@ -92,3 +94,14 @@ jest.mock('expo-splash-screen', () => ({
   hideAsync: jest.fn(() => Promise.resolve()),
   preventAutoHideAsync: jest.fn(() => Promise.resolve()),
 }));
+
+jest.mock(
+  'expo/virtual/env',
+  () => ({
+    env: {
+      EXPO_PUBLIC_API_BASE_URL: '',
+      EXPO_PUBLIC_STRAPI_BASE_URL: '',
+    },
+  }),
+  { virtual: true },
+);
