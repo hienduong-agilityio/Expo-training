@@ -78,3 +78,15 @@ tmp/
 
 .env
 .env.production
+.env.local
+
+# Expo
+.expo
+dist/
+web-build/
+
+ios/
+android/
+
+/android
+/ios

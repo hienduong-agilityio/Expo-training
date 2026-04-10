@@ -4,7 +4,9 @@
 
 import { AppRegistry } from 'react-native';
 import App from './App';
-import { name as appName } from './app.json';
+import appJson from './app.json';
+
+const appName = appJson.expo?.name ?? appJson.name;
 import { setupBackgroundNotificationHandler } from './src/services/notifications';
 
 // Register background handler

@@ -1,5 +1,3 @@
-import { AndroidImportance } from '@notifee/react-native';
-
 // Enums
 import { NotificationChannel, NotificationType } from '@app/enums/notification';
 
@@ -32,7 +30,7 @@ export const CHANNEL_MAPPING: Record<NotificationType, NotificationChannel> = {
  * Base channel configuration (shared by all channels)
  */
 const BASE_CHANNEL_CONFIG = {
-  importance: AndroidImportance.HIGH,
+  importance: 4,
   sound: NOTIFICATION_DISPLAY.SOUND,
   vibration: true,
   lights: true,

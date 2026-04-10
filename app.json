@@ -1,4 +1,14 @@
 {
-  "name": "StylishEcommerce",
-  "displayName": "StylishEcommerce"
+  "expo": {
+    "name": "StylishEcommerce",
+    "slug": "stylish-ecommerce",
+    "version": "1.0.0",
+    "scheme": "stylish",
+    "android": {
+      "package": "com.reactnativetemplate"
+    },
+    "ios": {
+      "bundleIdentifier": "org.reactjs.native.example.StylishEcommerce"
+    }
+  }
 }
