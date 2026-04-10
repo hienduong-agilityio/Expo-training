@@ -10,35 +10,6 @@ jest.mock('@react-native-async-storage/async-storage', () => mockAsyncStorage);
 
 jest.mock('@react-native-community/netinfo', () => mockRNCNetInfo);
 
-// Mock @notifee/react-native
-jest.mock('@notifee/react-native', () => {
-  const mockNotifee = {
-    requestPermission: jest.fn().mockResolvedValue({}),
-    createChannel: jest.fn().mockResolvedValue('channel-id'),
-    deleteChannel: jest.fn().mockResolvedValue(undefined),
-    displayNotification: jest.fn().mockResolvedValue('notification-id'),
-    onForegroundEvent: jest.fn().mockReturnValue(jest.fn()),
-  };
-
-  return {
-    __esModule: true,
-    default: mockNotifee,
-    AndroidImportance: {
-      LOW: 1,
-      DEFAULT: 3,
-      HIGH: 4,
-    },
-    AndroidStyle: {
-      BIGTEXT: 1,
-      BIGPICTURE: 2,
-    },
-    EventType: {
-      PRESS: 1,
-      ACTION_PRESS: 2,
-    },
-  };
-});
-
 // Mock @react-native-firebase modules
 const mockFirebaseApp = {
   name: '[DEFAULT]',
