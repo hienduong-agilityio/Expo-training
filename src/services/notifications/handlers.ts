@@ -1,74 +1,49 @@
-// Notifee
-import notifee, { EventType, type Event } from '@notifee/react-native';
+import * as Notifications from 'expo-notifications';
 
 // Types
 import type { NotificationData } from '@app/interfaces/notification';
 
-// Helpers
-import {
-  handleNotificationAction,
-  openNotificationLink,
-} from '@app/helpers/notifications';
+import { notificationDataFromExpoContent } from './expoContent';
 
-/**
- * Unified event processor for notification events
- */
-const processNotificationEvent = async (
-  event: Event,
-  onPress?: (data: NotificationData | undefined) => void,
-  isBackground = false,
-) => {
-  const { type, detail } = event;
-  const notificationData = detail.notification?.data as NotificationData;
+let presentationHandlerRegistered = false;
 
-  const handlePress = async () => {
-    if (notificationData) {
-      // Open deep link for foreground events with deepLink
-      if (!isBackground && notificationData.deepLink) {
-        await openNotificationLink(notificationData);
-      }
-
-      // Always open link for background events
-      if (isBackground) {
-        await openNotificationLink(notificationData);
-      }
-    }
-
-    onPress?.(notificationData);
-  };
-
-  const handlers: Partial<Record<EventType, () => Promise<void> | void>> = {
-    [EventType.PRESS]: handlePress,
-    [EventType.ACTION_PRESS]: async () => {
-      const actionId = detail.pressAction?.id;
-
-      if (actionId && notificationData) {
-        await handleNotificationAction(actionId, notificationData);
-      }
-
-      onPress?.(notificationData);
-    },
-  };
-
-  await handlers[type]?.();
+const ensurePresentationHandler = () => {
+  if (presentationHandlerRegistered) {
+    return;
+  }
+  presentationHandlerRegistered = true;
+  Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+      shouldPlaySound: true,
+      shouldSetBadge: false,
+      shouldShowBanner: true,
+      shouldShowList: true,
+    }),
+  });
 };
 
 /**
- * Handle notification press events
+ * Subscribe to Expo notification responses (e.g. user opened a local notification).
  */
 export const setupNotificationHandlers = (
   onNotificationPress?: (data: NotificationData | undefined) => void,
 ) => {
-  return notifee.onForegroundEvent(event =>
-    processNotificationEvent(event, onNotificationPress),
+  ensurePresentationHandler();
+
+  const subscription = Notifications.addNotificationResponseReceivedListener(
+    response => {
+      const content = response.notification.request.content;
+      const data = notificationDataFromExpoContent(content);
+      onNotificationPress?.(data);
+    },
   );
+
+  return () => subscription.remove();
 };
 
 /**
- * Handle background notification events
+ * Reserved for Expo task-based background delivery; FCM uses native handlers in `listeners.ts`.
  */
 export const setupBackgroundNotificationHandler = () => {
-  notifee.onBackgroundEvent(event =>
-    processNotificationEvent(event, undefined, true),
-  );
+  return undefined;
 };

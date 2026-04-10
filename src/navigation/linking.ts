@@ -1,4 +1,5 @@
 import type { LinkingOptions } from '@react-navigation/native';
+import * as ExpoLinking from 'expo-linking';
 
 // Constants
 import { PRIVATE_SCREENS, PUBLIC_SCREENS } from '@app/constants';
@@ -11,8 +12,13 @@ import type {
 
 type RootStackParamList = PrivateStackParamList & PublicStackParamList;
 
+const schemePrefixes = ExpoLinking.collectManifestSchemes().map(
+  scheme => `${scheme}://`,
+);
+const prefixes = [...new Set([ExpoLinking.createURL('/'), ...schemePrefixes])];
+
 export const linking: LinkingOptions<RootStackParamList> = {
-  prefixes: ['stylish://'],
+  prefixes,
   config: {
     screens: {
       // Public

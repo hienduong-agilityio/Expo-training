@@ -10,35 +10,6 @@ jest.mock('@react-native-async-storage/async-storage', () => mockAsyncStorage);
 
 jest.mock('@react-native-community/netinfo', () => mockRNCNetInfo);
 
-// Mock @notifee/react-native
-jest.mock('@notifee/react-native', () => {
-  const mockNotifee = {
-    requestPermission: jest.fn().mockResolvedValue({}),
-    createChannel: jest.fn().mockResolvedValue('channel-id'),
-    deleteChannel: jest.fn().mockResolvedValue(undefined),
-    displayNotification: jest.fn().mockResolvedValue('notification-id'),
-    onForegroundEvent: jest.fn().mockReturnValue(jest.fn()),
-  };
-
-  return {
-    __esModule: true,
-    default: mockNotifee,
-    AndroidImportance: {
-      LOW: 1,
-      DEFAULT: 3,
-      HIGH: 4,
-    },
-    AndroidStyle: {
-      BIGTEXT: 1,
-      BIGPICTURE: 2,
-    },
-    EventType: {
-      PRESS: 1,
-      ACTION_PRESS: 2,
-    },
-  };
-});
-
 // Mock @react-native-firebase modules
 const mockFirebaseApp = {
   name: '[DEFAULT]',
@@ -79,34 +50,65 @@ jest.mock('@react-native-firebase/messaging', () => {
   };
 });
 
-// Mock react-native-permissions
-jest.mock('react-native-permissions', () => ({
-  PERMISSIONS: {
-    ANDROID: {
-      POST_NOTIFICATIONS: 'android.permission.POST_NOTIFICATIONS',
-    },
-  },
-  request: jest.fn().mockResolvedValue('granted'),
+jest.mock('expo-device', () => ({
+  isDevice: true,
 }));
 
-// Mock react-native-device-info
-jest.mock('react-native-device-info', () => {
-  return {
-    __esModule: true,
-    default: {
-      isEmulator: jest.fn().mockResolvedValue(false),
-      getUniqueId: jest.fn().mockResolvedValue('mock-device-id'),
-    },
-  };
-});
-
-// Mock react-native-config
-jest.mock('react-native-config', () => ({
-  __esModule: true,
-  default: {
-    ENVIRONMENT: 'test',
-    API_BASE_URL: 'http://localhost:3000',
-    STRAPI_BASE_URL: 'http://localhost:1337',
-    REQUIRE_HTTPS: 'false',
-  },
+jest.mock('expo-application', () => ({
+  getAndroidId: jest.fn(() => 'mock-android-id'),
+  getIosIdForVendorAsync: jest.fn(() => Promise.resolve('mock-ios-idfv')),
+  applicationId: 'com.test.app',
 }));
+
+jest.mock('expo-secure-store', () => ({
+  getItemAsync: jest.fn(() => Promise.resolve(null)),
+  setItemAsync: jest.fn(() => Promise.resolve()),
+  deleteItemAsync: jest.fn(() => Promise.resolve()),
+}));
+
+jest.mock('expo-notifications', () => ({
+  AndroidImportance: {
+    UNKNOWN: 0,
+    UNSPECIFIED: 1,
+    NONE: 2,
+    MIN: 3,
+    LOW: 4,
+    DEFAULT: 5,
+    HIGH: 6,
+    MAX: 7,
+  },
+  setNotificationHandler: jest.fn(),
+  scheduleNotificationAsync: jest.fn(() => Promise.resolve('mock-id')),
+  setNotificationChannelAsync: jest.fn(() => Promise.resolve(null)),
+  getPermissionsAsync: jest.fn(() =>
+    Promise.resolve({ status: 'granted', granted: true }),
+  ),
+  requestPermissionsAsync: jest.fn(() =>
+    Promise.resolve({ status: 'granted', granted: true }),
+  ),
+  addNotificationResponseReceivedListener: jest.fn(() => ({
+    remove: jest.fn(),
+  })),
+}));
+
+jest.mock('expo-font', () => ({
+  useFonts: jest.fn(() => [true, null]),
+  loadAsync: jest.fn(),
+  isLoaded: jest.fn(() => true),
+}));
+
+jest.mock('expo-splash-screen', () => ({
+  hideAsync: jest.fn(() => Promise.resolve()),
+  preventAutoHideAsync: jest.fn(() => Promise.resolve()),
+}));
+
+jest.mock(
+  'expo/virtual/env',
+  () => ({
+    env: {
+      EXPO_PUBLIC_API_BASE_URL: '',
+      EXPO_PUBLIC_STRAPI_BASE_URL: '',
+    },
+  }),
+  { virtual: true },
+);

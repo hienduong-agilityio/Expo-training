@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import FastImage from 'react-native-fast-image';
+import { Image } from 'expo-image';
 
 // Styles
 import { styles } from './index.style';
@@ -22,10 +22,11 @@ export const CategoryItem = ({
   return (
     <TouchableOpacity style={styles.container} onPress={handlePress}>
       <View style={styles.imageContainer}>
-        <FastImage
-          source={{ uri: category.image, priority: FastImage.priority.normal }}
+        <Image
+          source={{ uri: category.image }}
           style={styles.image}
-          resizeMode={FastImage.resizeMode.cover}
+          contentFit="cover"
+          priority="normal"
         />
       </View>
       <Text style={styles.name}>{category.name}</Text>

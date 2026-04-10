@@ -1,10 +1,5 @@
-import { AndroidImportance } from '@notifee/react-native';
-
 // Enums
 import { NotificationChannel, NotificationType } from '@app/enums/notification';
-
-// Constants
-import { NOTIFICATION_DISPLAY } from './constants';
 
 /**
  * Channel mapping from NotificationType to NotificationChannel
@@ -26,16 +21,6 @@ export const CHANNEL_MAPPING: Record<NotificationType, NotificationChannel> = {
   [NotificationType.CART_ITEM_LOW_STOCK]: NotificationChannel.CART,
 
   [NotificationType.GENERAL]: NotificationChannel.GENERAL,
-};
-
-/**
- * Base channel configuration (shared by all channels)
- */
-const BASE_CHANNEL_CONFIG = {
-  importance: AndroidImportance.HIGH,
-  sound: NOTIFICATION_DISPLAY.SOUND,
-  vibration: true,
-  lights: true,
 };
 
 /**
@@ -70,6 +55,5 @@ export const NOTIFICATION_CHANNELS = Object.values(NotificationChannel).map(
   channelId => ({
     id: channelId,
     ...CHANNEL_INFO[channelId],
-    ...BASE_CHANNEL_CONFIG,
   }),
 );

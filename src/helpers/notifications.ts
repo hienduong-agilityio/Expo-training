@@ -1,4 +1,4 @@
-import { Linking } from 'react-native';
+import * as Linking from 'expo-linking';
 
 // Types
 import type { NotificationData } from '@app/interfaces/notification';
@@ -38,8 +38,12 @@ export const buildNotificationDeepLink = (
  * Open deep link from notification data
  */
 export const openNotificationLink = async (
-  data: NotificationData,
+  data: NotificationData | null | undefined,
 ): Promise<void> => {
+  if (!data) {
+    return;
+  }
+
   const link = data.deepLink || buildNotificationDeepLink(data);
 
   if (link && (await Linking.canOpenURL(link).catch(() => false))) {

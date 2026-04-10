@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity } from 'react-native';
-import FastImage from 'react-native-fast-image';
+import { Image } from 'expo-image';
 
 // Icons
 import { RightArrowIcon } from '@app/icons';
@@ -19,10 +19,11 @@ export const SponsoredBanner = ({ banner, onPress }: ISponsoredBannerProps) => {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>Sponsored</Text>
-      <FastImage
-        source={{ uri: banner.image, priority: FastImage.priority.normal }}
+      <Image
+        source={{ uri: banner.image }}
         style={styles.image}
-        resizeMode={FastImage.resizeMode.cover}
+        contentFit="cover"
+        priority="normal"
       />
       <TouchableOpacity
         activeOpacity={0.8}

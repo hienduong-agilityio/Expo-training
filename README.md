@@ -343,6 +343,13 @@ If everything is set up correctly, you should see your new app running in the An
 
 This is one way to run your app — you can also build it directly from Android Studio or Xcode.
 
+## EAS cloud builds (Expo dashboard)
+
+Cloud builds require an **Expo account**, a **project on [expo.dev](https://expo.dev)**, and linking this repo with `eas init`. Do **not** skip creating the project on the dashboard (or choosing it in `eas init`).
+
+- **Full checklist (Vietnamese):** [docs/EAS_EXPO_DASHBOARD.md](./docs/EAS_EXPO_DASHBOARD.md)
+- **Scripts:** `yarn eas:login` → `yarn eas:init` → `yarn eas:build:android:production` (see `package.json`).
+
 ## Step 3: Modify your app
 
 Now that you have successfully run the app, let's make changes!

@@ -1,66 +1,56 @@
-import notifee from '@notifee/react-native';
-import { initializeNotificationChannels } from '../channels';
-import { NOTIFICATION_CHANNELS } from '@app/constants/notification';
+import { Platform } from 'react-native';
+import * as Notifications from 'expo-notifications';
 
-jest.mock('@notifee/react-native');
+import { initializeNotificationChannels } from '../channels';
 
 describe('channels', () => {
-  const mockDeleteChannel = notifee.deleteChannel as jest.MockedFunction<
-    typeof notifee.deleteChannel
-  >;
-  const mockCreateChannel = notifee.createChannel as jest.MockedFunction<
-    typeof notifee.createChannel
-  >;
+  const setChannel = Notifications.setNotificationChannelAsync as jest.Mock;
 
   beforeEach(() => {
     jest.clearAllMocks();
-    mockDeleteChannel.mockResolvedValue(undefined);
-    mockCreateChannel.mockResolvedValue('channel-id');
   });
 
   describe('initializeNotificationChannels', () => {
-    it('should delete and create all notification channels', async () => {
-      await initializeNotificationChannels();
-
-      const channelIds = NOTIFICATION_CHANNELS.map(channel => channel.id);
-
-      // Should delete all channels
-      expect(mockDeleteChannel).toHaveBeenCalledTimes(channelIds.length);
-      channelIds.forEach(channelId => {
-        expect(mockDeleteChannel).toHaveBeenCalledWith(channelId);
-      });
-
-      // Should create all channels
-      expect(mockCreateChannel).toHaveBeenCalledTimes(
-        NOTIFICATION_CHANNELS.length,
-      );
-      NOTIFICATION_CHANNELS.forEach(channel => {
-        expect(mockCreateChannel).toHaveBeenCalledWith(channel);
-      });
+    it('should resolve without throwing', async () => {
+      await expect(initializeNotificationChannels()).resolves.toBeUndefined();
     });
 
-    it('should handle deleteChannel errors gracefully', async () => {
-      mockDeleteChannel.mockRejectedValueOnce(new Error('Channel not found'));
-
-      await expect(initializeNotificationChannels()).resolves.not.toThrow();
-
-      // Should still create channels even if delete fails
-      expect(mockCreateChannel).toHaveBeenCalledTimes(
-        NOTIFICATION_CHANNELS.length,
-      );
+    it('does not call setNotificationChannelAsync on iOS', async () => {
+      const prev = Platform.OS;
+      Object.defineProperty(Platform, 'OS', {
+        configurable: true,
+        value: 'ios',
+      });
+      try {
+        await initializeNotificationChannels();
+        expect(setChannel).not.toHaveBeenCalled();
+      } finally {
+        Object.defineProperty(Platform, 'OS', {
+          configurable: true,
+          value: prev,
+        });
+      }
     });
 
-    it('should process channels in parallel', async () => {
-      await initializeNotificationChannels();
-
-      // Verify all delete operations are called
-      expect(mockDeleteChannel).toHaveBeenCalledTimes(
-        NOTIFICATION_CHANNELS.length,
-      );
-      // Verify all create operations are called
-      expect(mockCreateChannel).toHaveBeenCalledTimes(
-        NOTIFICATION_CHANNELS.length,
-      );
+    it('creates all channels on Android', async () => {
+      const prev = Platform.OS;
+      Object.defineProperty(Platform, 'OS', {
+        configurable: true,
+        value: 'android',
+      });
+      try {
+        await initializeNotificationChannels();
+        expect(setChannel).toHaveBeenCalledTimes(4);
+        expect(setChannel).toHaveBeenCalledWith(
+          'general',
+          expect.objectContaining({ name: 'General Notifications' }),
+        );
+      } finally {
+        Object.defineProperty(Platform, 'OS', {
+          configurable: true,
+          value: prev,
+        });
+      }
     });
   });
 });

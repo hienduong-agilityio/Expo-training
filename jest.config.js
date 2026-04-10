@@ -1,5 +1,8 @@
 module.exports = {
   preset: 'react-native',
+  moduleNameMapper: {
+    '\\.(ttf|otf)$': '<rootDir>/__mocks__/fileMock.js',
+  },
   coverageThreshold: {
     global: {
       statements: 80,
@@ -9,7 +12,7 @@ module.exports = {
     },
   },
   transformIgnorePatterns: [
-    '/node_modules/(?!((jest-)?react-native|@react-native(-community)?|@notifee)|react-clone-referenced-element|react-navigation|@react-navigation/.*)',
+    '/node_modules/(?!((jest-)?react-native|@react-native(-community)?)|react-clone-referenced-element|react-navigation|@react-navigation/.*)',
   ],
   collectCoverageFrom: [
     'src/components/**/*.{ts,tsx}',

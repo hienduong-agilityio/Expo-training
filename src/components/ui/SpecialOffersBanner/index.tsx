@@ -1,5 +1,5 @@
 import { View, Text } from 'react-native';
-import FastImage from 'react-native-fast-image';
+import { Image } from 'expo-image';
 
 // Types
 import type { SpecialOffersBannerType } from '@app/constants/banner';
@@ -15,10 +15,11 @@ export const SpecialOffersBanner = ({ banner }: SpecialOffersBannerProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.iconContainer}>
-        <FastImage
-          source={{ uri: banner.image, priority: FastImage.priority.normal }}
+        <Image
+          source={{ uri: banner.image }}
           style={styles.iconImage}
-          resizeMode={FastImage.resizeMode.cover}
+          contentFit="cover"
+          priority="normal"
         />
       </View>
       <View style={styles.content}>
