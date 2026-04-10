@@ -4,7 +4,7 @@ import type { BottomTabHeaderProps } from '@react-navigation/bottom-tabs';
 import { GlobalHeader } from '@app/components/GlobalHeader';
 
 // Constants
-import { PRIVATE_SCREENS } from '@app/constants';
+import { PRIVATE_SCREENS } from '@app/constants/screens';
 
 export const BottomTabHeader = ({ navigation }: BottomTabHeaderProps) => {
   const handleProfilePress = () => {
