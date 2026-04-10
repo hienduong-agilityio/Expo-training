@@ -12,20 +12,6 @@ export const styles = StyleSheet.create({
   content: {
     gap: spacing[4],
   },
-  photoSection: {
-    gap: spacing[2],
-  },
-  photoPreview: {
-    width: 120,
-    height: 120,
-    borderRadius: 8,
-    backgroundColor: colors.text + '14',
-  },
-  photoActions: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: spacing[2],
-  },
   text: {
     fontSize: typography.fontSizes.base,
     color: colors.text,

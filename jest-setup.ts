@@ -50,27 +50,15 @@ jest.mock('@react-native-firebase/messaging', () => {
   };
 });
 
-// Mock react-native-permissions
-jest.mock('react-native-permissions', () => ({
-  PERMISSIONS: {
-    ANDROID: {
-      POST_NOTIFICATIONS: 'android.permission.POST_NOTIFICATIONS',
-    },
-  },
-  request: jest.fn().mockResolvedValue('granted'),
+jest.mock('expo-device', () => ({
+  isDevice: true,
 }));
 
-// Mock react-native-device-info
-jest.mock('react-native-device-info', () => {
-  return {
-    __esModule: true,
-    default: {
-      isEmulator: jest.fn().mockResolvedValue(false),
-      isEmulatorSync: jest.fn(() => false),
-      getUniqueId: jest.fn().mockResolvedValue('mock-device-id'),
-    },
-  };
-});
+jest.mock('expo-application', () => ({
+  getAndroidId: jest.fn(() => 'mock-android-id'),
+  getIosIdForVendorAsync: jest.fn(() => Promise.resolve('mock-ios-idfv')),
+  applicationId: 'com.test.app',
+}));
 
 jest.mock('expo-secure-store', () => ({
   getItemAsync: jest.fn(() => Promise.resolve(null)),
