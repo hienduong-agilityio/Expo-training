@@ -92,6 +92,12 @@ jest.mock('expo-notifications', () => ({
   setNotificationHandler: jest.fn(),
   scheduleNotificationAsync: jest.fn(() => Promise.resolve('mock-id')),
   setNotificationChannelAsync: jest.fn(() => Promise.resolve(null)),
+  getPermissionsAsync: jest.fn(() =>
+    Promise.resolve({ status: 'granted', granted: true }),
+  ),
+  requestPermissionsAsync: jest.fn(() =>
+    Promise.resolve({ status: 'granted', granted: true }),
+  ),
   addNotificationResponseReceivedListener: jest.fn(() => ({
     remove: jest.fn(),
   })),

@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-native';
+import { renderHook, waitFor } from '@testing-library/react-native';
 import * as ExpoLinking from 'expo-linking';
 
 // Hooks
@@ -22,6 +22,16 @@ jest.mock('expo-linking', () => ({
 jest.mock('@app/services/firebase');
 jest.mock('@app/services/user');
 jest.mock('@app/stores/authStore');
+jest.mock('@app/services/notifications', () => {
+  const actual = jest.requireActual('@app/services/notifications');
+  return {
+    ...actual,
+    initializeNotificationChannels: jest.fn(() => Promise.resolve()),
+    ensureExpoNotificationPermissionsAsync: jest.fn(() =>
+      Promise.resolve('granted'),
+    ),
+  };
+});
 jest.mock('@app/helpers/notifications', () => {
   const actual = jest.requireActual('@app/helpers/notifications');
   const LinkingModule = require('expo-linking');
@@ -60,21 +70,22 @@ describe('useFirebaseMessaging', () => {
     );
   });
 
-  it('should get FCM token on mount', () => {
+  it('should get FCM token on mount', async () => {
     renderHook(() => useFirebaseMessaging());
 
-    expect(mockGetFcmToken).toHaveBeenCalled();
+    await waitFor(() => expect(mockGetFcmToken).toHaveBeenCalled());
   });
 
-  it('should register listener on mount', () => {
+  it('should register listener on mount', async () => {
     renderHook(() => useFirebaseMessaging());
 
-    expect(mockRegisterListenerWithFCM).toHaveBeenCalled();
+    await waitFor(() => expect(mockRegisterListenerWithFCM).toHaveBeenCalled());
   });
 
-  it('should return unsubscribe function when listener returns function', () => {
+  it('should return unsubscribe function when listener returns function', async () => {
     const { unmount } = renderHook(() => useFirebaseMessaging());
 
+    await waitFor(() => expect(mockRegisterListenerWithFCM).toHaveBeenCalled());
     unmount();
 
     expect(mockUnsubscribe).toHaveBeenCalled();
@@ -102,6 +113,9 @@ describe('useFirebaseMessaging', () => {
 
     renderHook(() => useFirebaseMessaging());
 
+    await waitFor(() =>
+      expect(mockRegisterListenerWithFCM.mock.calls.length).toBeGreaterThan(0),
+    );
     const notificationCallback = mockRegisterListenerWithFCM.mock.calls[0][0];
 
     await notificationCallback(mockNotificationData);
@@ -113,6 +127,9 @@ describe('useFirebaseMessaging', () => {
   it('should handle notification open without data', async () => {
     renderHook(() => useFirebaseMessaging());
 
+    await waitFor(() =>
+      expect(mockRegisterListenerWithFCM.mock.calls.length).toBeGreaterThan(0),
+    );
     const notificationCallback = mockRegisterListenerWithFCM.mock.calls[0][0];
 
     await notificationCallback(null);
@@ -131,6 +148,9 @@ describe('useFirebaseMessaging', () => {
 
     renderHook(() => useFirebaseMessaging());
 
+    await waitFor(() =>
+      expect(mockRegisterListenerWithFCM.mock.calls.length).toBeGreaterThan(0),
+    );
     const notificationCallback = mockRegisterListenerWithFCM.mock.calls[0][0];
 
     await notificationCallback(mockNotificationData);
@@ -151,6 +171,9 @@ describe('useFirebaseMessaging', () => {
 
     renderHook(() => useFirebaseMessaging());
 
+    await waitFor(() =>
+      expect(mockRegisterListenerWithFCM.mock.calls.length).toBeGreaterThan(0),
+    );
     const notificationCallback = mockRegisterListenerWithFCM.mock.calls[0][0];
 
     await notificationCallback(mockNotificationData);
@@ -171,6 +194,9 @@ describe('useFirebaseMessaging', () => {
 
     renderHook(() => useFirebaseMessaging());
 
+    await waitFor(() =>
+      expect(mockRegisterListenerWithFCM.mock.calls.length).toBeGreaterThan(0),
+    );
     const notificationCallback = mockRegisterListenerWithFCM.mock.calls[0][0];
 
     await notificationCallback(mockNotificationData);
@@ -193,6 +219,9 @@ describe('useFirebaseMessaging', () => {
 
     renderHook(() => useFirebaseMessaging());
 
+    await waitFor(() =>
+      expect(mockRegisterListenerWithFCM.mock.calls.length).toBeGreaterThan(0),
+    );
     const notificationCallback = mockRegisterListenerWithFCM.mock.calls[0][0];
 
     await notificationCallback(mockNotificationData);

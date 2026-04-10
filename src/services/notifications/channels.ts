@@ -33,7 +33,6 @@ export const initializeNotificationChannels = async (): Promise<void> => {
         name: channel.name,
         description: channel.description,
         importance: channelImportance(channel.id),
-        sound: 'default',
         enableVibrate: true,
         vibrationPattern: [...NOTIFICATION_DISPLAY.VIBRATION_PATTERN],
         showBadge: true,
