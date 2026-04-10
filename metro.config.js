@@ -10,13 +10,18 @@ const { withRozenite } = require('@rozenite/metro');
  * @type {import('@react-native/metro-config').MetroConfig}
  */
 
+const isEasBuild =
+  process.env.EAS_BUILD === 'true' || process.env.EAS_BUILD === '1';
+
 const defaultConfig = getDefaultConfig(__dirname);
 
-const mySerializer = createSerializer({
-  includeCode: false, // Useful if you want to compare source/bundle code (but a report file will be larger)
-  projectRoot: __dirname,
-  // ⚠️ WARNING: In a monorepo setup, this should point to the monorepo root, not the individual package directory.
-});
+const mySerializer = isEasBuild
+  ? null
+  : createSerializer({
+      includeCode: false,
+      projectRoot: __dirname,
+      // ⚠️ WARNING: In a monorepo setup, this should point to the monorepo root, not the individual package directory.
+    });
 
 const customConfig = {
   transformer: {
@@ -27,9 +32,7 @@ const customConfig = {
       '@app': './src',
     },
   },
-  serializer: {
-    customSerializer: mySerializer,
-  },
+  ...(mySerializer ? { serializer: { customSerializer: mySerializer } } : {}),
 };
 
 // Merge default config with custom config
@@ -37,9 +40,10 @@ const mergedConfig = mergeConfig(defaultConfig, customConfig);
 
 // Apply Rozenite configuration
 const isRozeniteEnabled =
-  process.env.WITH_ROZENITE === 'true' ||
-  (process.env.WITH_ROZENITE === undefined &&
-    process.env.NODE_ENV !== 'production');
+  !isEasBuild &&
+  (process.env.WITH_ROZENITE === 'true' ||
+    (process.env.WITH_ROZENITE === undefined &&
+      process.env.NODE_ENV !== 'production'));
 
 /**
  * RN may set watcher.unstable_workerThreads; expo-doctor's Metro schema rejects it.

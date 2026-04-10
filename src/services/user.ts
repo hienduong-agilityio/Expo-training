@@ -1,8 +1,8 @@
 // React Native
 import { Platform } from 'react-native';
 
-// Third-party libraries
-import DeviceInfo from 'react-native-device-info';
+// Helpers
+import { getStableDeviceId } from '@app/helpers/deviceId';
 
 // Services
 import { apiRequest } from '@app/services/apiClient';
@@ -17,7 +17,7 @@ export const syncFcmToken = async (
   userId: string | number,
   fcmToken: string,
 ): Promise<void> => {
-  const deviceId = await DeviceInfo.getUniqueId();
+  const deviceId = await getStableDeviceId();
   const platform = Platform.OS.toLowerCase();
 
   // Find if this deviceId already exists for THIS platform

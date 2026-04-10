@@ -1,8 +1,8 @@
 // React Native
 import { Platform } from 'react-native';
 
-// Third-party libraries
-import DeviceInfo from 'react-native-device-info';
+// Expo
+import * as Device from 'expo-device';
 
 // React Native Firebase
 import {
@@ -62,9 +62,7 @@ export const getFcmToken = async (): Promise<string | undefined> => {
 
   // iOS requires permission request and registration before getting token
   if (Platform.OS === 'ios') {
-    const isEmulator = await DeviceInfo.isEmulator();
-
-    if (isEmulator) {
+    if (!Device.isDevice) {
       return undefined;
     }
 

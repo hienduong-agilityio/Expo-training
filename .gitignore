@@ -55,6 +55,10 @@ yarn-error.log
 # Bundle artifact
 *.jsbundle
 
+# Local EAS CLI outputs (project root)
+build-*.aab
+build-*.apk
+
 # Bundle analysis reports
 tmp/
 

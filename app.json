@@ -62,22 +62,12 @@
           ]
         }
       ],
-      "expo-secure-store",
-      [
-        "expo-image-picker",
-        {
-          "photosPermission": "Allow access to your photos to choose a profile image.",
-          "cameraPermission": "Allow camera access to take a profile photo."
-        }
-      ],
-      [
-        "expo-camera",
-        {
-          "cameraPermission": "Allow camera access to take photos.",
-          "microphonePermission": false,
-          "recordAudioAndroid": false
-        }
-      ]
-    ]
+      "expo-secure-store"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "84d3f2d3-17f4-4118-9c4e-b1df996c10e6"
+      }
+    }
   }
 }
