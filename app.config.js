@@ -1,4 +1,4 @@
-const appJson = require('./app.json');
+const { NON_STANDARD_SYMBOL } = require('@expo/config/build/environment');
 const { withAndroidManifest, AndroidConfig } = require('expo/config-plugins');
 
 const { ensureToolsAvailable, getMainApplicationOrThrow } =
@@ -41,11 +41,21 @@ function withFirebaseMessagingToolsReplace(config) {
 
 const EXPO_OWNER = 'hienduong';
 
-/** First entry runs last on AndroidManifest — must run after expo-notifications. */
-module.exports = {
-  expo: {
-    ...appJson.expo,
+/**
+ * `config` is the **expo** object from app.json (merged with defaults), not `{ expo: ... }`.
+ * Return `{ expo }` and preserve NON_STANDARD_SYMBOL on the return value so static+dynamic
+ * merge is detected (expo-doctor / mayHaveUnusedStaticConfig).
+ * @see https://docs.expo.dev/workflow/configuration/
+ */
+module.exports = ({ config }) => {
+  const expo = {
+    ...config,
     owner: EXPO_OWNER,
-    plugins: [withFirebaseMessagingToolsReplace, ...appJson.expo.plugins],
-  },
+    plugins: [withFirebaseMessagingToolsReplace, ...(config.plugins ?? [])],
+  };
+  const result = { expo };
+  if (config[NON_STANDARD_SYMBOL]) {
+    result[NON_STANDARD_SYMBOL] = config[NON_STANDARD_SYMBOL];
+  }
+  return result;
 };
