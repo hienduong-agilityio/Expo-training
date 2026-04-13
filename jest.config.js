@@ -35,6 +35,6 @@ module.exports = {
     'utils', // a utility folder
     __dirname, // the root directory
   ],
-  setupFiles: ['<rootDir>/jest-setup-expo-global.js'],
+  setupFiles: ['<rootDir>/jest-setup-expo-global.ts'],
   setupFilesAfterEnv: ['./jest-setup.ts'],
 };
