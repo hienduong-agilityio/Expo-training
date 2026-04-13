@@ -34,39 +34,21 @@ exports[`SpecialOffersBanner renders correctly with banner data 1`] = `
       }
     }
   >
-    <View
-      style={
-        [
-          {
-            "overflow": "hidden",
-          },
-          {
-            "height": "100%",
-            "width": "100%",
-          },
-        ]
+    <Image
+      contentFit="cover"
+      priority="normal"
+      source={
+        {
+          "uri": "https://whimsical-benefit-a69d430573.media.strapiapp.com/Converted_Image_7ecf9d50b0.webp",
+        }
       }
-    >
-      <FastImageView
-        defaultSource={null}
-        resizeMode="cover"
-        source={
-          {
-            "priority": "normal",
-            "uri": "https://whimsical-benefit-a69d430573.media.strapiapp.com/Converted_Image_7ecf9d50b0.webp",
-          }
+      style={
+        {
+          "height": "100%",
+          "width": "100%",
         }
-        style={
-          {
-            "bottom": 0,
-            "left": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-          }
-        }
-      />
-    </View>
+      }
+    />
   </View>
   <View
     style={

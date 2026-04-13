@@ -1,16 +1,11 @@
+import { Platform } from 'react-native';
+import * as Notifications from 'expo-notifications';
+
 import { displayNotification } from '../display';
 import { NotificationType } from '@app/enums/notification';
 import type { NotificationData } from '@app/interfaces/notification';
-import { buildNotificationDeepLink } from '@app/helpers/notifications';
-
-jest.mock('@app/helpers/notifications');
 
 describe('display', () => {
-  const mockBuildNotificationDeepLink =
-    buildNotificationDeepLink as jest.MockedFunction<
-      typeof buildNotificationDeepLink
-    >;
-
   const mockNotificationData: NotificationData = {
     type: NotificationType.GENERAL,
     title: 'Test Title',
@@ -20,24 +15,44 @@ describe('display', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
-    mockBuildNotificationDeepLink.mockReturnValue('myapp://test');
   });
 
   describe('displayNotification', () => {
-    it('should call deep link builder', async () => {
+    it('schedules a local notification with content and platform-appropriate trigger', async () => {
       await displayNotification(mockNotificationData);
-      expect(mockBuildNotificationDeepLink).toHaveBeenCalledWith(
-        mockNotificationData,
+
+      expect(Notifications.scheduleNotificationAsync).toHaveBeenCalledWith(
+        expect.objectContaining({
+          content: expect.objectContaining({
+            title: 'Test Title',
+            body: 'Test Body',
+            data: expect.objectContaining({
+              type: NotificationType.GENERAL,
+              title: 'Test Title',
+              body: 'Test Body',
+            }),
+          }),
+          trigger: Platform.OS === 'android' ? { channelId: 'general' } : null,
+        }),
       );
     });
 
-    it('should resolve for different notification types', async () => {
+    it('resolves for different notification types', async () => {
       await expect(
         displayNotification({
           ...mockNotificationData,
           type: NotificationType.PROMOTION,
         }),
-      ).resolves.not.toThrow();
+      ).resolves.toBeUndefined();
+
+      expect(Notifications.scheduleNotificationAsync).toHaveBeenCalledWith(
+        expect.objectContaining({
+          content: expect.objectContaining({
+            title: 'Test Title',
+            body: 'Test Body',
+          }),
+        }),
+      );
     });
   });
 });

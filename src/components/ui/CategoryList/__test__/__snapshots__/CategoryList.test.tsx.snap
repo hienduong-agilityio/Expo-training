@@ -56,39 +56,21 @@ exports[`CategoryList renders correctly with categories 1`] = `
             }
           }
         >
-          <View
-            style={
-              [
-                {
-                  "overflow": "hidden",
-                },
-                {
-                  "height": "100%",
-                  "width": "100%",
-                },
-              ]
+          <Image
+            contentFit="cover"
+            priority="normal"
+            source={
+              {
+                "uri": "https://example.com/electronics.jpg",
+              }
             }
-          >
-            <FastImageView
-              defaultSource={null}
-              resizeMode="cover"
-              source={
-                {
-                  "priority": "normal",
-                  "uri": "https://example.com/electronics.jpg",
-                }
+            style={
+              {
+                "height": "100%",
+                "width": "100%",
               }
-              style={
-                {
-                  "bottom": 0,
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                }
-              }
-            />
-          </View>
+            }
+          />
         </View>
         <Text
           style={
@@ -152,39 +134,21 @@ exports[`CategoryList renders correctly with categories 1`] = `
             }
           }
         >
-          <View
-            style={
-              [
-                {
-                  "overflow": "hidden",
-                },
-                {
-                  "height": "100%",
-                  "width": "100%",
-                },
-              ]
+          <Image
+            contentFit="cover"
+            priority="normal"
+            source={
+              {
+                "uri": "https://example.com/clothing.jpg",
+              }
             }
-          >
-            <FastImageView
-              defaultSource={null}
-              resizeMode="cover"
-              source={
-                {
-                  "priority": "normal",
-                  "uri": "https://example.com/clothing.jpg",
-                }
+            style={
+              {
+                "height": "100%",
+                "width": "100%",
               }
-              style={
-                {
-                  "bottom": 0,
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                }
-              }
-            />
-          </View>
+            }
+          />
         </View>
         <Text
           style={

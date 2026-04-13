@@ -31,7 +31,7 @@ describe('<AuthFooter />', () => {
   it('renders divider, social icons and helper navigation', () => {
     const { toJSON } = renderFooter();
 
-    expect(screen.getByText('OR continue with')).toBeTruthy();
+    expect(screen.getByText('- OR continue with -')).toBeTruthy();
     expect(screen.getByLabelText('google-icon')).toBeTruthy();
     expect(screen.getByLabelText('apple-icon')).toBeTruthy();
     expect(screen.getByLabelText('facebook-icon')).toBeTruthy();

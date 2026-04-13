@@ -11,7 +11,7 @@ import type { NotificationData } from '@app/interfaces/notification';
 import { safeString, safeNumber } from '@app/helpers/converters';
 
 /**
- * Build NotificationData from an Expo notification content payload (e.g. user tapped a local notification).
+ * Build NotificationData from an Expo notification content payload.
  */
 export const notificationDataFromExpoContent = (content: {
   title: string | null;

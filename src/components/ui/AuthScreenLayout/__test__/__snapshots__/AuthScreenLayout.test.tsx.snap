@@ -19,7 +19,7 @@ exports[`<AuthScreenLayout /> renders title and children 1`] = `
     contentContainerStyle={
       {
         "flexGrow": 1,
-        "marginTop": 40,
+        "marginTop": 16,
         "paddingBottom": 90,
         "paddingHorizontal": 16,
       }
@@ -38,8 +38,9 @@ exports[`<AuthScreenLayout /> renders title and children 1`] = `
           style={
             {
               "color": "#1C1B1F",
-              "fontSize": 34,
-              "fontWeight": "700",
+              "fontFamily": "Montserrat-ExtraBold",
+              "fontSize": 44,
+              "fontWeight": "800",
             }
           }
         >
@@ -49,7 +50,7 @@ exports[`<AuthScreenLayout /> renders title and children 1`] = `
       <View
         style={
           {
-            "gap": 20,
+            "gap": 24,
           }
         }
       >

@@ -351,11 +351,11 @@ exports[`<PaymentMethods /> handles undefined onContinue gracefully 1`] = `
       [
         {
           "alignItems": "center",
-          "borderRadius": 10,
+          "borderRadius": 6,
+          "height": 66,
           "justifyContent": "center",
         },
         {
-          "height": 52,
           "paddingHorizontal": 20,
         },
         {
@@ -376,10 +376,8 @@ exports[`<PaymentMethods /> handles undefined onContinue gracefully 1`] = `
       style={
         [
           {
-            "fontWeight": "500",
-          },
-          {
-            "fontSize": 15,
+            "fontSize": 29,
+            "fontWeight": "600",
           },
           {
             "color": "#FFFFFF",
@@ -744,11 +742,11 @@ exports[`<PaymentMethods /> handles undefined onSelect gracefully 1`] = `
       [
         {
           "alignItems": "center",
-          "borderRadius": 10,
+          "borderRadius": 6,
+          "height": 66,
           "justifyContent": "center",
         },
         {
-          "height": 52,
           "paddingHorizontal": 20,
         },
         {
@@ -769,10 +767,8 @@ exports[`<PaymentMethods /> handles undefined onSelect gracefully 1`] = `
       style={
         [
           {
-            "fontWeight": "500",
-          },
-          {
-            "fontSize": 15,
+            "fontSize": 29,
+            "fontWeight": "600",
           },
           {
             "color": "#FFFFFF",
@@ -1137,11 +1133,11 @@ exports[`<PaymentMethods /> renders title, options and continue button 1`] = `
       [
         {
           "alignItems": "center",
-          "borderRadius": 10,
+          "borderRadius": 6,
+          "height": 66,
           "justifyContent": "center",
         },
         {
-          "height": 52,
           "paddingHorizontal": 20,
         },
         {
@@ -1162,10 +1158,8 @@ exports[`<PaymentMethods /> renders title, options and continue button 1`] = `
       style={
         [
           {
-            "fontWeight": "500",
-          },
-          {
-            "fontSize": 15,
+            "fontSize": 29,
+            "fontWeight": "600",
           },
           {
             "color": "#FFFFFF",
@@ -1530,11 +1524,11 @@ exports[`<PaymentMethods /> renders with no selected option 1`] = `
       [
         {
           "alignItems": "center",
-          "borderRadius": 10,
+          "borderRadius": 6,
+          "height": 66,
           "justifyContent": "center",
         },
         {
-          "height": 52,
           "paddingHorizontal": 20,
         },
         {
@@ -1555,10 +1549,8 @@ exports[`<PaymentMethods /> renders with no selected option 1`] = `
       style={
         [
           {
-            "fontWeight": "500",
-          },
-          {
-            "fontSize": 15,
+            "fontSize": 29,
+            "fontWeight": "600",
           },
           {
             "color": "#FFFFFF",

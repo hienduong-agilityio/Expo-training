@@ -68,7 +68,7 @@ exports[`SearchBar matches default snapshot 1`] = `
         }
         stroke={
           {
-            "payload": 4284637794,
+            "payload": 4284966759,
             "type": 0,
           }
         }
@@ -94,7 +94,7 @@ exports[`SearchBar matches default snapshot 1`] = `
         }
         stroke={
           {
-            "payload": 4284637794,
+            "payload": 4284966759,
             "type": 0,
           }
         }
@@ -109,7 +109,7 @@ exports[`SearchBar matches default snapshot 1`] = `
     onChangeText={[MockFunction]}
     onSubmitEditing={[Function]}
     placeholder="Search for products"
-    placeholderTextColor="#626262"
+    placeholderTextColor="#676767"
     returnKeyType="search"
     style={
       {
@@ -210,7 +210,7 @@ exports[`SearchBar matches default snapshot 1`] = `
           }
           stroke={
             {
-              "payload": 4284637794,
+              "payload": 4284966759,
               "type": 0,
             }
           }
@@ -236,7 +236,7 @@ exports[`SearchBar matches default snapshot 1`] = `
           }
           stroke={
             {
-              "payload": 4284637794,
+              "payload": 4284966759,
               "type": 0,
             }
           }
@@ -262,7 +262,7 @@ exports[`SearchBar matches default snapshot 1`] = `
           }
           stroke={
             {
-              "payload": 4284637794,
+              "payload": 4284966759,
               "type": 0,
             }
           }
@@ -288,7 +288,7 @@ exports[`SearchBar matches default snapshot 1`] = `
           }
           stroke={
             {
-              "payload": 4284637794,
+              "payload": 4284966759,
               "type": 0,
             }
           }

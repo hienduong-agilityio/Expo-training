@@ -1,13 +1,13 @@
 # Stylish E-commerce — Expo
 
-A **React Native CLI** application for browsing, discovering, and purchasing products with a smooth mobile shopping experience. The project focuses on real-world app structure, reusable UI, Storybook documentation, and unit testing.
+A **Expo** application for browsing, discovering, and purchasing products with a smooth mobile shopping experience. The project focuses on real-world app structure, reusable UI, Storybook documentation, and unit testing.
 
 ---
 
 ## Target
 
-- Set up a reliable **Android/iOS** development environment.
-- Understand **navigation** in React Native application (React Navigation v7).
+- Set up a reliable **Android/iOS** workflow with **Expo** (`expo start`, `expo prebuild`, optional **EAS Build**).
+- Understand **navigation** in a React Native app (React Navigation v7).
 - Understand and apply **core React Native building blocks** to real screens.
 - Build **reusable components** and document them in **Storybook**.
 - Write **meaningful unit tests** with comprehensive coverage.
@@ -83,20 +83,22 @@ A **React Native CLI** application for browsing, discovering, and purchasing pro
 
 ## Technical stacks
 
-- 📱 **[React Native (CLI)](https://reactnative.dev/)** (v0.81) – Native mobile app framework (iOS/Android) powered by React
-- ⚛️ **[React](https://react.dev/)** (v19) – Component model & rendering
+- 📦 **[Expo SDK](https://docs.expo.dev/)** (~55) – Dev server, config (`app.json`), modules (`expo-image`, `expo-notifications`, `expo-secure-store`, etc.), and **prebuild** for native projects
+- 📱 **[React Native](https://reactnative.dev/)** (0.83.x) – Native rendering on iOS and Android
+- ⚛️ **[React](https://react.dev/)** (19.x) – Component model & rendering
 - 🔥 **[TypeScript](https://www.typescriptlang.org/)** – Static typing for safer, scalable code
 - 🧭 **[React Navigation](https://reactnavigation.org/)** (v7) – Stacks, tabs, and deep-linking
 - 📡 **[TanStack Query](https://tanstack.com/query/latest)** (v5) – Async state management & data fetching
-- 🐻 **[Zustand](https://zustand-demo.pmnd.rs/)** (v5) – specific Client state management
+- 🐻 **[Zustand](https://zustand-demo.pmnd.rs/)** (v5) – Client state management
 - 🛡️ **[Zod](https://zod.dev/)** – Schema validation
 - 📚 **[Storybook](https://storybook.js.org/)** – Build & document UI components in isolation
-- 🧪 **[Jest](https://jestjs.io/)** + **[@testing-library/react-native](https://testing-library.com/docs/react-native-testing-library/intro/)** – Unit & component testing
+- 🧪 **[Jest](https://jestjs.io/)** + **[@testing-library/react-native](https://testing-library.com/docs/react-native-testing-library/intro/)** – Unit & component testing (global coverage thresholds: 80%)
 - 🧰 **[ESLint](https://eslint.org/)** + **[Prettier](https://prettier.io/)** – Linting & formatting
 - 🦊 **[Husky](https://github.com/typicode/husky)** + **[lint-staged](https://github.com/lint-staged/lint-staged)** – Git hooks & staged-file linting
 - 📝 **[Commitlint](https://commitlint.js.org/)** – Conventional commits for clean history
 - 🗄️ **[Strapi v5](https://strapi.io/)** – Headless CMS / API provider
-- 🧱 **Metro**, **CocoaPods** (iOS), **Azul Zulu JDK** (Android)
+- ☁️ **[EAS Build](https://docs.expo.dev/build/introduction/)** (optional) – Cloud or local production builds (see `package.json` `eas:*` scripts)
+- 🧱 **Metro** (via Expo), **CocoaPods** (iOS), **Android SDK / JDK** (Android)
 
 ---
 
@@ -202,20 +204,17 @@ The app integrates with a **Strapi v5** backend that provides:
 
 ## Getting Started
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
-
-Step by step to get started this app at your location
+> **Note:** Follow [Expo’s environment guide](https://docs.expo.dev/get-started/set-up-your-environment/) and the classic [React Native environment setup](https://reactnative.dev/docs/set-up-your-environment) for Android Studio / Xcode / CocoaPods details. This repo uses a **development build** (native Firebase, etc.), not a plain Expo Go–only workflow.
 
 ## How to Run
 
 ### Prerequisites
 
-Make sure you install packages with correct version below:
-
-- [Node.js v20.0.0+](https://nodejs.org/en/download/package-manager)
-- [React Native CLI](https://reactnative.dev/docs/environment-setup)
-- [CocoaPods](https://cocoapods.org/) (for iOS)
-- [Android Studio](https://developer.android.com/studio) (for Android)
+- [Node.js v20+](https://nodejs.org/en/download/package-manager)
+- [Yarn classic](https://classic.yarnpkg.com/) (or npm)
+- [Expo CLI](https://docs.expo.dev/more/expo-cli/) (invoked via `npx expo` / `yarn` scripts)
+- [Android Studio](https://developer.android.com/studio) and/or [Xcode](https://developer.apple.com/xcode/) for emulators and native builds
+- [CocoaPods](https://cocoapods.org/) (iOS; often via `bundle exec pod install` inside `ios/`)
 
 ### Backend Setup (Strapi)
 
@@ -236,42 +235,39 @@ yarn dev
 # The Strapi admin panel will be available at http://localhost:1337/admin
 ```
 
-### Environment Configuration
+### Environment configuration
 
-Create environment files in the root directory:
+Define API URLs for each environment in the project root (for example `.env.development`, `.env.production`, or `.env.local` for machine-specific overrides). The exact variable names should match what your app reads (see `app.config.*` / `babel` / `expo` config if applicable).
 
 ```sh
-# .env.development
+# Example — adjust to match your Expo / Babel env setup
 API_BASE_URL=http://localhost:1337/api
 STRAPI_URL=http://localhost:1337
-
-# .env.production
-API_BASE_URL=https://your-production-api.com/api
-STRAPI_URL=https://your-production-api.com
 ```
 
-- **Note:**
-  - Please add `.env` files into root of project source code
-  - The app integrates with a Strapi v5 backend for API services
+The app expects a **Strapi v5** backend for products, auth, cart, and wishlist APIs.
 
 ### Get source code
 
-| Command                                                                      | Action                    |
-| :--------------------------------------------------------------------------- | :------------------------ |
-| `git clone git@gitlab.asoft-python.com:hien.duong/react-native-training.git` | Clone Repository with SSH |
-| `cd react-native-training`                                                   | Redirect to folder        |
+| Command                                                              | Action                    |
+| :------------------------------------------------------------------- | :------------------------ |
+| `git clone git@gitlab.asoft-python.com:hien.duong/expo-training.git` | Clone Repository with SSH |
+| `cd expo-training`                                                   | Redirect to folder        |
 
-### Frontend Commands
+### Frontend commands
 
-| Command              | Action                          | Port/Output             |
-| :------------------- | :------------------------------ | :---------------------- |
-| `yarn install`       | Install packages dependencies   | N/A                     |
-| `yarn start`         | Start Metro bundler             | <http://localhost:8081> |
-| `yarn android`       | Run on Android device/emulator  | Android                 |
-| `yarn ios`           | Run on iOS simulator/device     | iOS                     |
-| `yarn test:coverage` | Generate code coverage report   | Coverage report         |
-| `yarn lint`          | Run ESLint code linting         | N/A                     |
-| `yarn eslint:fix`    | Fix ESLint errors automatically | N/A                     |
+| Command              | Action                                              | Port / notes                    |
+| :------------------- | :-------------------------------------------------- | :------------------------------ |
+| `yarn install`       | Install dependencies                                | N/A                             |
+| `yarn start`         | **Expo dev server** (Metro + dev tools)             | Default bundler URL in terminal |
+| `yarn start:clear`   | Start with cleared Metro cache                      | N/A                             |
+| `yarn android`       | `expo run:android` — debug build on device/emulator | Requires Android SDK            |
+| `yarn ios`           | `expo run:ios` — debug build on simulator/device    | Requires Xcode (macOS)          |
+| `yarn prebuild`      | Generate/update `android/` and `ios/` from config   | Run after native config changes |
+| `yarn test`          | Run Jest once                                       | N/A                             |
+| `yarn test:coverage` | Coverage in **watch** mode                          | Interactive                     |
+| `yarn lint`          | ESLint                                              | N/A                             |
+| `yarn eslint:fix`    | ESLint with `--fix`                                 | N/A                             |
 
 ### Custom Fonts
 
@@ -285,37 +281,32 @@ This command will automatically configure the fonts for both Android and iOS pla
 
 > **Note:** After running this command, you may need to rebuild your app for the changes to take effect.
 
-## Step 1: Start Metro
+## Step 1: Start the Expo dev server
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
-
-To start the Metro dev server, run the following command from the root of your React Native project:
+From the repo root:
 
 ```sh
-# Using npm
-npm start
-
-# OR using Yarn
 yarn start
 ```
 
-## Step 2: Build and run your app
+This runs **`expo start`**, which serves the JavaScript bundle (Metro) and opens the Expo developer UI. Use it for Fast Refresh while a native build is installed on a simulator or device.
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+## Step 2: Build and run the native app
 
-### Android
+This template relies on **custom native code** (Firebase, etc.), so you typically use **development or debug builds**, not Expo Go alone.
 
-```sh
-# Using npm
-npm run android
+- **First time or after changing native dependencies:** run `yarn prebuild` (or `yarn prebuild:clean` if you need a clean sync), then open the generated `android/` / `ios/` projects as needed.
+- **Android**
 
-# OR using Yarn
-yarn android
-```
+  ```sh
+  yarn android
+  ```
 
-### iOS
+- **iOS** — install pods when `ios/` exists or native deps change:
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+  ```sh
+  yarn ios
+  ```
 
 The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
 
@@ -352,9 +343,7 @@ Cloud builds require an **Expo account**, a **project on [expo.dev](https://expo
 
 ## Step 3: Modify your app
 
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+Open `App.tsx` (or any screen under `src/`) and save. Updates reload through the dev server using [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
 
 When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
 
@@ -363,4 +352,4 @@ When you want to forcefully reload, for example to reset the state of your app, 
 
 ## Congratulations! :tada:
 
-You've successfully run and modified your React Native App. :partying_face:
+You've successfully run and modified your **Expo + React Native** app. :partying_face:

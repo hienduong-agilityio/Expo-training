@@ -4,21 +4,47 @@ import { cartService } from '@app/services/cart';
 import { authStore } from '@app/stores/authStore';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 
+const mockShowToast = jest.fn();
+
 jest.mock('@app/services/cart');
 jest.mock('@app/stores/authStore');
-jest.mock('@tanstack/react-query', () => ({
-  useQuery: jest.fn(),
-  useMutation: jest.fn(({ mutationFn }) => {
-    const [isPending, setIsPending] = require('react').useState(false);
-    const { act } = require('@testing-library/react-native');
+jest.mock('@app/stores/toastStore', () => ({
+  toastStore: jest.fn(selector => {
+    const state = { showToast: mockShowToast };
+    return selector ? selector(state) : state;
+  }),
+}));
+
+jest.mock('@tanstack/react-query', () => {
+  const React = require('react');
+  const { act } = require('@testing-library/react-native');
+
+  const useMutation = jest.fn(options => {
+    const [isPending, setIsPending] = React.useState(false);
     return {
-      mutateAsync: jest.fn(async data => {
+      mutateAsync: jest.fn(async variables => {
+        let context;
         await act(async () => {
           setIsPending(true);
         });
         try {
-          return await mutationFn(data);
+          if (typeof options.onMutate === 'function') {
+            context = await options.onMutate(variables);
+          }
+          const result = await options.mutationFn(variables);
+          if (typeof options.onSuccess === 'function') {
+            options.onSuccess(result, variables, context);
+          }
+          return result;
+        } catch (error) {
+          if (typeof options.onError === 'function') {
+            options.onError(error, variables, context);
+          }
+          throw error;
         } finally {
+          if (typeof options.onSettled === 'function') {
+            options.onSettled();
+          }
           await act(async () => {
             setIsPending(false);
           });
@@ -26,9 +52,14 @@ jest.mock('@tanstack/react-query', () => ({
       }),
       isPending,
     };
-  }),
-  useQueryClient: jest.fn(),
-}));
+  });
+
+  return {
+    useQuery: jest.fn(),
+    useMutation,
+    useQueryClient: jest.fn(),
+  };
+});
 
 describe('useCart', () => {
   const mockUser = { documentId: 'user1' };
@@ -40,6 +71,7 @@ describe('useCart', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
+    mockShowToast.mockClear();
     (authStore as unknown as jest.Mock).mockImplementation(selector => {
       const state = { user: mockUser };
       return selector ? selector(state) : state;
@@ -175,6 +207,8 @@ describe('useCart', () => {
       mockQueryClient = {
         getQueryData: jest.fn(() => null),
         setQueryData: jest.fn(),
+        cancelQueries: jest.fn(() => Promise.resolve()),
+        invalidateQueries: jest.fn(() => Promise.resolve()),
       };
       (useQueryClient as jest.Mock).mockReturnValue(mockQueryClient);
     });
@@ -202,7 +236,7 @@ describe('useCart', () => {
       });
 
       expect(cartService.updateCartProducts).toHaveBeenCalledWith('cart1', [
-        { productId: '1', quantity: 2 },
+        { productId: '1', product: '1', quantity: 2 },
       ]);
       expect(addedCart).toEqual(updatedCart);
     });
@@ -233,7 +267,7 @@ describe('useCart', () => {
       });
 
       expect(cartService.updateCartProducts).toHaveBeenCalledWith('cart1', [
-        { productId: '1', quantity: 5 },
+        { productId: '1', product: '1', quantity: 5 },
       ]);
       expect(addedCart).toEqual(updatedCart);
     });
@@ -267,7 +301,7 @@ describe('useCart', () => {
       });
 
       expect(cartService.updateCartProducts).toHaveBeenCalledWith('cart1', [
-        { productId: '2', quantity: 1 },
+        { productId: '2', product: '2', quantity: 1 },
       ]);
       expect(updated).toEqual(updatedCart);
     });
@@ -298,7 +332,7 @@ describe('useCart', () => {
       });
 
       expect(cartService.updateCartProducts).toHaveBeenCalledWith('cart1', [
-        { productId: '1', quantity: 5 },
+        { productId: '1', product: '1', quantity: 5 },
       ]);
       expect(updated).toEqual(updatedCart);
     });
@@ -329,7 +363,7 @@ describe('useCart', () => {
       const updated = await result.current.removeItem('1');
 
       expect(cartService.updateCartProducts).toHaveBeenCalledWith('cart1', [
-        { productId: '2', quantity: 1 },
+        { productId: '2', product: '2', quantity: 1 },
       ]);
       expect(updated).toEqual(updatedCart);
     });
@@ -363,18 +397,22 @@ describe('useCart', () => {
       expect(checkedOut).toEqual(clearedCart);
     });
 
-    it('ensureCart returns cached cart when available', async () => {
+    it('ensureCart always resolves active cart before update', async () => {
       const cachedCart = {
         ...mockCart,
         products: [{ productId: '1', quantity: 1 }],
       };
       mockQueryClient.getQueryData.mockReturnValue(cachedCart);
+      (cartService.ensureActiveCartForUser as jest.Mock).mockResolvedValue(
+        cachedCart,
+      );
+      (cartService.updateCartProducts as jest.Mock).mockResolvedValue(mockCart);
 
       const { result } = renderHook(() => useCartActions());
 
       await result.current.addItem({ productId: '2', quantity: 1 });
 
-      expect(cartService.ensureActiveCartForUser).not.toHaveBeenCalled();
+      expect(cartService.ensureActiveCartForUser).toHaveBeenCalledWith('user1');
       expect(cartService.updateCartProducts).toHaveBeenCalledWith(
         'cart1',
         expect.any(Array),
@@ -413,6 +451,47 @@ describe('useCart', () => {
       const { result } = renderHook(() => useCart());
 
       expect(result.current.cart).toBeNull();
+    });
+
+    it('addItem onError restores previous cart and shows toast', async () => {
+      const previousCart = {
+        ...mockCart,
+        products: [{ productId: '1', quantity: 1 }],
+      };
+      mockQueryClient.getQueryData.mockReturnValue(previousCart);
+      (cartService.ensureActiveCartForUser as jest.Mock).mockResolvedValue(
+        previousCart,
+      );
+      (cartService.updateCartProducts as jest.Mock).mockRejectedValue(
+        new Error('network'),
+      );
+
+      const { result } = renderHook(() => useCartActions());
+
+      await expect(
+        result.current.addItem({ productId: '2', quantity: 1 }),
+      ).rejects.toThrow('network');
+
+      expect(mockShowToast).toHaveBeenCalled();
+      expect(mockQueryClient.setQueryData).toHaveBeenCalledWith(
+        expect.anything(),
+        previousCart,
+      );
+    });
+
+    it('checkout onError shows payment failed toast', async () => {
+      mockQueryClient.getQueryData.mockReturnValue(mockCart);
+      (cartService.ensureActiveCartForUser as jest.Mock).mockResolvedValue(
+        mockCart,
+      );
+      (cartService.clearCartProducts as jest.Mock).mockRejectedValue(
+        new Error('pay failed'),
+      );
+
+      const { result } = renderHook(() => useCartActions());
+
+      await expect(result.current.checkout()).rejects.toThrow('pay failed');
+      expect(mockShowToast).toHaveBeenCalled();
     });
   });
 });

@@ -1,12 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<AuthFooter /> renders divider, social icons and helper navigation 1`] = `
-[
+<View
+  style={
+    {
+      "marginTop": 16,
+    }
+  }
+>
   <View
     style={
       {
         "alignItems": "center",
-        "marginVertical": 30,
+        "marginBottom": 28,
+        "marginTop": 48,
       }
     }
   >
@@ -14,22 +21,22 @@ exports[`<AuthFooter /> renders divider, social icons and helper navigation 1`] 
       style={
         {
           "color": "#9CA4AB",
-          "fontSize": 18,
+          "fontSize": 17,
           "fontWeight": "500",
           "marginHorizontal": 20,
         }
       }
     >
-      OR continue with
+      - OR continue with -
     </Text>
-  </View>,
+  </View>
   <View
     style={
       {
         "flexDirection": "row",
-        "gap": 20,
+        "gap": 16,
         "justifyContent": "center",
-        "marginBottom": 30,
+        "marginBottom": 24,
       }
     }
   >
@@ -68,11 +75,11 @@ exports[`<AuthFooter /> renders divider, social icons and helper navigation 1`] 
           "borderColor": "#F83758",
           "borderRadius": 50,
           "borderWidth": 2,
-          "height": 56,
+          "height": 64,
           "justifyContent": "center",
           "opacity": 1,
-          "padding": 8,
-          "width": 56,
+          "padding": 16,
+          "width": 64,
         }
       }
     >
@@ -115,11 +122,11 @@ exports[`<AuthFooter /> renders divider, social icons and helper navigation 1`] 
           "borderColor": "#F83758",
           "borderRadius": 50,
           "borderWidth": 2,
-          "height": 56,
+          "height": 64,
           "justifyContent": "center",
           "opacity": 1,
-          "padding": 8,
-          "width": 56,
+          "padding": 16,
+          "width": 64,
         }
       }
     >
@@ -162,11 +169,11 @@ exports[`<AuthFooter /> renders divider, social icons and helper navigation 1`] 
           "borderColor": "#F83758",
           "borderRadius": 50,
           "borderWidth": 2,
-          "height": 56,
+          "height": 64,
           "justifyContent": "center",
           "opacity": 1,
-          "padding": 8,
-          "width": 56,
+          "padding": 16,
+          "width": 64,
         }
       }
     >
@@ -174,13 +181,14 @@ exports[`<AuthFooter /> renders divider, social icons and helper navigation 1`] 
         accessibilityLabel="facebook-icon"
       />
     </View>
-  </View>,
+  </View>
   <View
     style={
       {
         "alignItems": "center",
         "flexDirection": "row",
         "justifyContent": "center",
+        "marginTop": 8,
       }
     }
   >
@@ -242,6 +250,6 @@ exports[`<AuthFooter /> renders divider, social icons and helper navigation 1`] 
         Sign up
       </Text>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;

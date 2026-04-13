@@ -5,9 +5,9 @@ exports[`<SocialAuthButtons /> renders three provider buttons 1`] = `
   style={
     {
       "flexDirection": "row",
-      "gap": 20,
+      "gap": 16,
       "justifyContent": "center",
-      "marginBottom": 30,
+      "marginBottom": 24,
     }
   }
 >
@@ -46,11 +46,11 @@ exports[`<SocialAuthButtons /> renders three provider buttons 1`] = `
         "borderColor": "#F83758",
         "borderRadius": 50,
         "borderWidth": 2,
-        "height": 56,
+        "height": 64,
         "justifyContent": "center",
         "opacity": 1,
-        "padding": 8,
-        "width": 56,
+        "padding": 16,
+        "width": 64,
       }
     }
   >
@@ -93,11 +93,11 @@ exports[`<SocialAuthButtons /> renders three provider buttons 1`] = `
         "borderColor": "#F83758",
         "borderRadius": 50,
         "borderWidth": 2,
-        "height": 56,
+        "height": 64,
         "justifyContent": "center",
         "opacity": 1,
-        "padding": 8,
-        "width": 56,
+        "padding": 16,
+        "width": 64,
       }
     }
   >
@@ -140,11 +140,11 @@ exports[`<SocialAuthButtons /> renders three provider buttons 1`] = `
         "borderColor": "#F83758",
         "borderRadius": 50,
         "borderWidth": 2,
-        "height": 56,
+        "height": 64,
         "justifyContent": "center",
         "opacity": 1,
-        "padding": 8,
-        "width": 56,
+        "padding": 16,
+        "width": 64,
       }
     }
   >

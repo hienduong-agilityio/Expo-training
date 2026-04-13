@@ -268,41 +268,23 @@ exports[`HorizontalProductList handles custom keyExtractor 1`] = `
               }
             }
           >
-            <View
-              style={
-                [
-                  {
-                    "overflow": "hidden",
-                  },
-                  {
-                    "height": "100%",
-                    "width": "100%",
-                  },
-                ]
+            <Image
+              accessibilityLabel="Black Winter Jacket product image"
+              contentFit="cover"
+              onError={[Function]}
+              priority="normal"
+              source={
+                {
+                  "uri": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop",
+                }
               }
-            >
-              <FastImageView
-                accessibilityLabel="Black Winter Jacket product image"
-                defaultSource={null}
-                onFastImageError={[Function]}
-                resizeMode="cover"
-                source={
-                  {
-                    "priority": "normal",
-                    "uri": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop",
-                  }
+              style={
+                {
+                  "height": "100%",
+                  "width": "100%",
                 }
-                style={
-                  {
-                    "bottom": 0,
-                    "left": 0,
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
-                  }
-                }
-              />
-            </View>
+              }
+            />
           </View>
           <View
             style={
@@ -574,41 +556,23 @@ exports[`HorizontalProductList handles custom keyExtractor 1`] = `
               }
             }
           >
-            <View
-              style={
-                [
-                  {
-                    "overflow": "hidden",
-                  },
-                  {
-                    "height": "100%",
-                    "width": "100%",
-                  },
-                ]
+            <Image
+              accessibilityLabel="Mens Starry Sky Printed Shirt product image"
+              contentFit="cover"
+              onError={[Function]}
+              priority="normal"
+              source={
+                {
+                  "uri": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=300&h=400&fit=crop",
+                }
               }
-            >
-              <FastImageView
-                accessibilityLabel="Mens Starry Sky Printed Shirt product image"
-                defaultSource={null}
-                onFastImageError={[Function]}
-                resizeMode="cover"
-                source={
-                  {
-                    "priority": "normal",
-                    "uri": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=300&h=400&fit=crop",
-                  }
+              style={
+                {
+                  "height": "100%",
+                  "width": "100%",
                 }
-                style={
-                  {
-                    "bottom": 0,
-                    "left": 0,
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
-                  }
-                }
-              />
-            </View>
+              }
+            />
           </View>
           <View
             style={
@@ -880,41 +844,23 @@ exports[`HorizontalProductList handles custom keyExtractor 1`] = `
               }
             }
           >
-            <View
-              style={
-                [
-                  {
-                    "overflow": "hidden",
-                  },
-                  {
-                    "height": "100%",
-                    "width": "100%",
-                  },
-                ]
+            <Image
+              accessibilityLabel="Black Dress product image"
+              contentFit="cover"
+              onError={[Function]}
+              priority="normal"
+              source={
+                {
+                  "uri": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300&h=400&fit=crop",
+                }
               }
-            >
-              <FastImageView
-                accessibilityLabel="Black Dress product image"
-                defaultSource={null}
-                onFastImageError={[Function]}
-                resizeMode="cover"
-                source={
-                  {
-                    "priority": "normal",
-                    "uri": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300&h=400&fit=crop",
-                  }
+              style={
+                {
+                  "height": "100%",
+                  "width": "100%",
                 }
-                style={
-                  {
-                    "bottom": 0,
-                    "left": 0,
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
-                  }
-                }
-              />
-            </View>
+              }
+            />
           </View>
           <View
             style={
@@ -1368,41 +1314,23 @@ exports[`HorizontalProductList handles customStyle 1`] = `
               }
             }
           >
-            <View
-              style={
-                [
-                  {
-                    "overflow": "hidden",
-                  },
-                  {
-                    "height": "100%",
-                    "width": "100%",
-                  },
-                ]
+            <Image
+              accessibilityLabel="Black Winter Jacket product image"
+              contentFit="cover"
+              onError={[Function]}
+              priority="normal"
+              source={
+                {
+                  "uri": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop",
+                }
               }
-            >
-              <FastImageView
-                accessibilityLabel="Black Winter Jacket product image"
-                defaultSource={null}
-                onFastImageError={[Function]}
-                resizeMode="cover"
-                source={
-                  {
-                    "priority": "normal",
-                    "uri": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop",
-                  }
+              style={
+                {
+                  "height": "100%",
+                  "width": "100%",
                 }
-                style={
-                  {
-                    "bottom": 0,
-                    "left": 0,
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
-                  }
-                }
-              />
-            </View>
+              }
+            />
           </View>
           <View
             style={
@@ -1676,41 +1604,23 @@ exports[`HorizontalProductList handles customStyle 1`] = `
               }
             }
           >
-            <View
-              style={
-                [
-                  {
-                    "overflow": "hidden",
-                  },
-                  {
-                    "height": "100%",
-                    "width": "100%",
-                  },
-                ]
+            <Image
+              accessibilityLabel="Mens Starry Sky Printed Shirt product image"
+              contentFit="cover"
+              onError={[Function]}
+              priority="normal"
+              source={
+                {
+                  "uri": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=300&h=400&fit=crop",
+                }
               }
-            >
-              <FastImageView
-                accessibilityLabel="Mens Starry Sky Printed Shirt product image"
-                defaultSource={null}
-                onFastImageError={[Function]}
-                resizeMode="cover"
-                source={
-                  {
-                    "priority": "normal",
-                    "uri": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=300&h=400&fit=crop",
-                  }
+              style={
+                {
+                  "height": "100%",
+                  "width": "100%",
                 }
-                style={
-                  {
-                    "bottom": 0,
-                    "left": 0,
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
-                  }
-                }
-              />
-            </View>
+              }
+            />
           </View>
           <View
             style={
@@ -1984,41 +1894,23 @@ exports[`HorizontalProductList handles customStyle 1`] = `
               }
             }
           >
-            <View
-              style={
-                [
-                  {
-                    "overflow": "hidden",
-                  },
-                  {
-                    "height": "100%",
-                    "width": "100%",
-                  },
-                ]
+            <Image
+              accessibilityLabel="Black Dress product image"
+              contentFit="cover"
+              onError={[Function]}
+              priority="normal"
+              source={
+                {
+                  "uri": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300&h=400&fit=crop",
+                }
               }
-            >
-              <FastImageView
-                accessibilityLabel="Black Dress product image"
-                defaultSource={null}
-                onFastImageError={[Function]}
-                resizeMode="cover"
-                source={
-                  {
-                    "priority": "normal",
-                    "uri": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300&h=400&fit=crop",
-                  }
+              style={
+                {
+                  "height": "100%",
+                  "width": "100%",
                 }
-                style={
-                  {
-                    "bottom": 0,
-                    "left": 0,
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
-                  }
-                }
-              />
-            </View>
+              }
+            />
           </View>
           <View
             style={
@@ -2429,41 +2321,23 @@ exports[`HorizontalProductList handles keyExtractor with null id and name 1`] = 
               }
             }
           >
-            <View
-              style={
-                [
-                  {
-                    "overflow": "hidden",
-                  },
-                  {
-                    "height": "100%",
-                    "width": "100%",
-                  },
-                ]
+            <Image
+              accessibilityLabel="null product image"
+              contentFit="cover"
+              onError={[Function]}
+              priority="normal"
+              source={
+                {
+                  "uri": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop",
+                }
               }
-            >
-              <FastImageView
-                accessibilityLabel="null product image"
-                defaultSource={null}
-                onFastImageError={[Function]}
-                resizeMode="cover"
-                source={
-                  {
-                    "priority": "normal",
-                    "uri": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop",
-                  }
+              style={
+                {
+                  "height": "100%",
+                  "width": "100%",
                 }
-                style={
-                  {
-                    "bottom": 0,
-                    "left": 0,
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
-                  }
-                }
-              />
-            </View>
+              }
+            />
           </View>
           <View
             style={
@@ -2913,41 +2787,23 @@ exports[`HorizontalProductList renders correctly with products 1`] = `
               }
             }
           >
-            <View
-              style={
-                [
-                  {
-                    "overflow": "hidden",
-                  },
-                  {
-                    "height": "100%",
-                    "width": "100%",
-                  },
-                ]
+            <Image
+              accessibilityLabel="Black Winter Jacket product image"
+              contentFit="cover"
+              onError={[Function]}
+              priority="normal"
+              source={
+                {
+                  "uri": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop",
+                }
               }
-            >
-              <FastImageView
-                accessibilityLabel="Black Winter Jacket product image"
-                defaultSource={null}
-                onFastImageError={[Function]}
-                resizeMode="cover"
-                source={
-                  {
-                    "priority": "normal",
-                    "uri": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop",
-                  }
+              style={
+                {
+                  "height": "100%",
+                  "width": "100%",
                 }
-                style={
-                  {
-                    "bottom": 0,
-                    "left": 0,
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
-                  }
-                }
-              />
-            </View>
+              }
+            />
           </View>
           <View
             style={
@@ -3219,41 +3075,23 @@ exports[`HorizontalProductList renders correctly with products 1`] = `
               }
             }
           >
-            <View
-              style={
-                [
-                  {
-                    "overflow": "hidden",
-                  },
-                  {
-                    "height": "100%",
-                    "width": "100%",
-                  },
-                ]
+            <Image
+              accessibilityLabel="Mens Starry Sky Printed Shirt product image"
+              contentFit="cover"
+              onError={[Function]}
+              priority="normal"
+              source={
+                {
+                  "uri": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=300&h=400&fit=crop",
+                }
               }
-            >
-              <FastImageView
-                accessibilityLabel="Mens Starry Sky Printed Shirt product image"
-                defaultSource={null}
-                onFastImageError={[Function]}
-                resizeMode="cover"
-                source={
-                  {
-                    "priority": "normal",
-                    "uri": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=300&h=400&fit=crop",
-                  }
+              style={
+                {
+                  "height": "100%",
+                  "width": "100%",
                 }
-                style={
-                  {
-                    "bottom": 0,
-                    "left": 0,
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
-                  }
-                }
-              />
-            </View>
+              }
+            />
           </View>
           <View
             style={
@@ -3525,41 +3363,23 @@ exports[`HorizontalProductList renders correctly with products 1`] = `
               }
             }
           >
-            <View
-              style={
-                [
-                  {
-                    "overflow": "hidden",
-                  },
-                  {
-                    "height": "100%",
-                    "width": "100%",
-                  },
-                ]
+            <Image
+              accessibilityLabel="Black Dress product image"
+              contentFit="cover"
+              onError={[Function]}
+              priority="normal"
+              source={
+                {
+                  "uri": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300&h=400&fit=crop",
+                }
               }
-            >
-              <FastImageView
-                accessibilityLabel="Black Dress product image"
-                defaultSource={null}
-                onFastImageError={[Function]}
-                resizeMode="cover"
-                source={
-                  {
-                    "priority": "normal",
-                    "uri": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300&h=400&fit=crop",
-                  }
+              style={
+                {
+                  "height": "100%",
+                  "width": "100%",
                 }
-                style={
-                  {
-                    "bottom": 0,
-                    "left": 0,
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
-                  }
-                }
-              />
-            </View>
+              }
+            />
           </View>
           <View
             style={
@@ -4011,41 +3831,23 @@ exports[`HorizontalProductList renders with custom itemWidth 1`] = `
               }
             }
           >
-            <View
-              style={
-                [
-                  {
-                    "overflow": "hidden",
-                  },
-                  {
-                    "height": "100%",
-                    "width": "100%",
-                  },
-                ]
+            <Image
+              accessibilityLabel="Black Winter Jacket product image"
+              contentFit="cover"
+              onError={[Function]}
+              priority="normal"
+              source={
+                {
+                  "uri": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop",
+                }
               }
-            >
-              <FastImageView
-                accessibilityLabel="Black Winter Jacket product image"
-                defaultSource={null}
-                onFastImageError={[Function]}
-                resizeMode="cover"
-                source={
-                  {
-                    "priority": "normal",
-                    "uri": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop",
-                  }
+              style={
+                {
+                  "height": "100%",
+                  "width": "100%",
                 }
-                style={
-                  {
-                    "bottom": 0,
-                    "left": 0,
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
-                  }
-                }
-              />
-            </View>
+              }
+            />
           </View>
           <View
             style={
@@ -4317,41 +4119,23 @@ exports[`HorizontalProductList renders with custom itemWidth 1`] = `
               }
             }
           >
-            <View
-              style={
-                [
-                  {
-                    "overflow": "hidden",
-                  },
-                  {
-                    "height": "100%",
-                    "width": "100%",
-                  },
-                ]
+            <Image
+              accessibilityLabel="Mens Starry Sky Printed Shirt product image"
+              contentFit="cover"
+              onError={[Function]}
+              priority="normal"
+              source={
+                {
+                  "uri": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=300&h=400&fit=crop",
+                }
               }
-            >
-              <FastImageView
-                accessibilityLabel="Mens Starry Sky Printed Shirt product image"
-                defaultSource={null}
-                onFastImageError={[Function]}
-                resizeMode="cover"
-                source={
-                  {
-                    "priority": "normal",
-                    "uri": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=300&h=400&fit=crop",
-                  }
+              style={
+                {
+                  "height": "100%",
+                  "width": "100%",
                 }
-                style={
-                  {
-                    "bottom": 0,
-                    "left": 0,
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
-                  }
-                }
-              />
-            </View>
+              }
+            />
           </View>
           <View
             style={
@@ -4623,41 +4407,23 @@ exports[`HorizontalProductList renders with custom itemWidth 1`] = `
               }
             }
           >
-            <View
-              style={
-                [
-                  {
-                    "overflow": "hidden",
-                  },
-                  {
-                    "height": "100%",
-                    "width": "100%",
-                  },
-                ]
+            <Image
+              accessibilityLabel="Black Dress product image"
+              contentFit="cover"
+              onError={[Function]}
+              priority="normal"
+              source={
+                {
+                  "uri": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300&h=400&fit=crop",
+                }
               }
-            >
-              <FastImageView
-                accessibilityLabel="Black Dress product image"
-                defaultSource={null}
-                onFastImageError={[Function]}
-                resizeMode="cover"
-                source={
-                  {
-                    "priority": "normal",
-                    "uri": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300&h=400&fit=crop",
-                  }
+              style={
+                {
+                  "height": "100%",
+                  "width": "100%",
                 }
-                style={
-                  {
-                    "bottom": 0,
-                    "left": 0,
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
-                  }
-                }
-              />
-            </View>
+              }
+            />
           </View>
           <View
             style={
@@ -5109,41 +4875,23 @@ exports[`HorizontalProductList renders with snap disabled 1`] = `
               }
             }
           >
-            <View
-              style={
-                [
-                  {
-                    "overflow": "hidden",
-                  },
-                  {
-                    "height": "100%",
-                    "width": "100%",
-                  },
-                ]
+            <Image
+              accessibilityLabel="Black Winter Jacket product image"
+              contentFit="cover"
+              onError={[Function]}
+              priority="normal"
+              source={
+                {
+                  "uri": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop",
+                }
               }
-            >
-              <FastImageView
-                accessibilityLabel="Black Winter Jacket product image"
-                defaultSource={null}
-                onFastImageError={[Function]}
-                resizeMode="cover"
-                source={
-                  {
-                    "priority": "normal",
-                    "uri": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop",
-                  }
+              style={
+                {
+                  "height": "100%",
+                  "width": "100%",
                 }
-                style={
-                  {
-                    "bottom": 0,
-                    "left": 0,
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
-                  }
-                }
-              />
-            </View>
+              }
+            />
           </View>
           <View
             style={
@@ -5415,41 +5163,23 @@ exports[`HorizontalProductList renders with snap disabled 1`] = `
               }
             }
           >
-            <View
-              style={
-                [
-                  {
-                    "overflow": "hidden",
-                  },
-                  {
-                    "height": "100%",
-                    "width": "100%",
-                  },
-                ]
+            <Image
+              accessibilityLabel="Mens Starry Sky Printed Shirt product image"
+              contentFit="cover"
+              onError={[Function]}
+              priority="normal"
+              source={
+                {
+                  "uri": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=300&h=400&fit=crop",
+                }
               }
-            >
-              <FastImageView
-                accessibilityLabel="Mens Starry Sky Printed Shirt product image"
-                defaultSource={null}
-                onFastImageError={[Function]}
-                resizeMode="cover"
-                source={
-                  {
-                    "priority": "normal",
-                    "uri": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=300&h=400&fit=crop",
-                  }
+              style={
+                {
+                  "height": "100%",
+                  "width": "100%",
                 }
-                style={
-                  {
-                    "bottom": 0,
-                    "left": 0,
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
-                  }
-                }
-              />
-            </View>
+              }
+            />
           </View>
           <View
             style={
@@ -5721,41 +5451,23 @@ exports[`HorizontalProductList renders with snap disabled 1`] = `
               }
             }
           >
-            <View
-              style={
-                [
-                  {
-                    "overflow": "hidden",
-                  },
-                  {
-                    "height": "100%",
-                    "width": "100%",
-                  },
-                ]
+            <Image
+              accessibilityLabel="Black Dress product image"
+              contentFit="cover"
+              onError={[Function]}
+              priority="normal"
+              source={
+                {
+                  "uri": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300&h=400&fit=crop",
+                }
               }
-            >
-              <FastImageView
-                accessibilityLabel="Black Dress product image"
-                defaultSource={null}
-                onFastImageError={[Function]}
-                resizeMode="cover"
-                source={
-                  {
-                    "priority": "normal",
-                    "uri": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300&h=400&fit=crop",
-                  }
+              style={
+                {
+                  "height": "100%",
+                  "width": "100%",
                 }
-                style={
-                  {
-                    "bottom": 0,
-                    "left": 0,
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
-                  }
-                }
-              />
-            </View>
+              }
+            />
           </View>
           <View
             style={
@@ -6211,41 +5923,23 @@ exports[`HorizontalProductList renders with snap enabled 1`] = `
               }
             }
           >
-            <View
-              style={
-                [
-                  {
-                    "overflow": "hidden",
-                  },
-                  {
-                    "height": "100%",
-                    "width": "100%",
-                  },
-                ]
+            <Image
+              accessibilityLabel="Black Winter Jacket product image"
+              contentFit="cover"
+              onError={[Function]}
+              priority="normal"
+              source={
+                {
+                  "uri": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop",
+                }
               }
-            >
-              <FastImageView
-                accessibilityLabel="Black Winter Jacket product image"
-                defaultSource={null}
-                onFastImageError={[Function]}
-                resizeMode="cover"
-                source={
-                  {
-                    "priority": "normal",
-                    "uri": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop",
-                  }
+              style={
+                {
+                  "height": "100%",
+                  "width": "100%",
                 }
-                style={
-                  {
-                    "bottom": 0,
-                    "left": 0,
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
-                  }
-                }
-              />
-            </View>
+              }
+            />
           </View>
           <View
             style={
@@ -6517,41 +6211,23 @@ exports[`HorizontalProductList renders with snap enabled 1`] = `
               }
             }
           >
-            <View
-              style={
-                [
-                  {
-                    "overflow": "hidden",
-                  },
-                  {
-                    "height": "100%",
-                    "width": "100%",
-                  },
-                ]
+            <Image
+              accessibilityLabel="Mens Starry Sky Printed Shirt product image"
+              contentFit="cover"
+              onError={[Function]}
+              priority="normal"
+              source={
+                {
+                  "uri": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=300&h=400&fit=crop",
+                }
               }
-            >
-              <FastImageView
-                accessibilityLabel="Mens Starry Sky Printed Shirt product image"
-                defaultSource={null}
-                onFastImageError={[Function]}
-                resizeMode="cover"
-                source={
-                  {
-                    "priority": "normal",
-                    "uri": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=300&h=400&fit=crop",
-                  }
+              style={
+                {
+                  "height": "100%",
+                  "width": "100%",
                 }
-                style={
-                  {
-                    "bottom": 0,
-                    "left": 0,
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
-                  }
-                }
-              />
-            </View>
+              }
+            />
           </View>
           <View
             style={
@@ -6823,41 +6499,23 @@ exports[`HorizontalProductList renders with snap enabled 1`] = `
               }
             }
           >
-            <View
-              style={
-                [
-                  {
-                    "overflow": "hidden",
-                  },
-                  {
-                    "height": "100%",
-                    "width": "100%",
-                  },
-                ]
+            <Image
+              accessibilityLabel="Black Dress product image"
+              contentFit="cover"
+              onError={[Function]}
+              priority="normal"
+              source={
+                {
+                  "uri": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300&h=400&fit=crop",
+                }
               }
-            >
-              <FastImageView
-                accessibilityLabel="Black Dress product image"
-                defaultSource={null}
-                onFastImageError={[Function]}
-                resizeMode="cover"
-                source={
-                  {
-                    "priority": "normal",
-                    "uri": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300&h=400&fit=crop",
-                  }
+              style={
+                {
+                  "height": "100%",
+                  "width": "100%",
                 }
-                style={
-                  {
-                    "bottom": 0,
-                    "left": 0,
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
-                  }
-                }
-              />
-            </View>
+              }
+            />
           </View>
           <View
             style={

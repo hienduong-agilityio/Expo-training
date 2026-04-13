@@ -4,7 +4,7 @@ exports[`AuthTextField Rendering renders correctly with all props and matches sn
 <View
   style={
     {
-      "marginBottom": 20,
+      "marginBottom": 10,
     }
   }
 >
@@ -25,14 +25,15 @@ exports[`AuthTextField Rendering renders correctly with all props and matches sn
       [
         {
           "alignItems": "center",
+          "borderColor": "#000000",
           "borderRadius": 10,
           "borderWidth": 1,
           "flexDirection": "row",
-          "padding": 1,
+          "gap": 1,
+          "height": 64,
         },
         {
           "borderColor": "#EB3030",
-          "height": 52,
         },
         {
           "backgroundColor": "#F5F5F5",
@@ -50,7 +51,7 @@ exports[`AuthTextField Rendering renders correctly with all props and matches sn
           "alignItems": "center",
           "justifyContent": "center",
           "paddingLeft": 12,
-          "paddingRight": 8,
+          "paddingRight": 4,
         }
       }
     >
@@ -62,21 +63,21 @@ exports[`AuthTextField Rendering renders correctly with all props and matches sn
       onBlur={[Function]}
       onFocus={[Function]}
       placeholder="Password"
-      placeholderTextColor="#575757"
+      placeholderTextColor="#676767"
       secureTextEntry={true}
       style={
         [
           {
-            "color": "#1C1B1F",
             "flex": 1,
-            "fontWeight": "400",
+            "fontWeight": "500",
             "includeFontPadding": false,
-            "paddingVertical": 10,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
             "textAlignVertical": "center",
           },
           {
             "fontSize": 15,
-            "paddingHorizontal": 20,
           },
           undefined,
         ]

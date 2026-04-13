@@ -39,41 +39,23 @@ exports[`ProductImageCarousel does not render pagination for single image 1`] = 
             }
           }
         >
-          <View
-            style={
-              [
-                {
-                  "overflow": "hidden",
-                },
-                {
-                  "height": "100%",
-                  "width": "100%",
-                },
-              ]
+          <Image
+            accessibilityLabel="Test Product image 1"
+            contentFit="cover"
+            onError={[Function]}
+            priority="normal"
+            source={
+              {
+                "uri": "https://example.com/image1.jpg",
+              }
             }
-          >
-            <FastImageView
-              accessibilityLabel="Test Product image 1"
-              defaultSource={null}
-              onFastImageError={[Function]}
-              resizeMode="cover"
-              source={
-                {
-                  "priority": "normal",
-                  "uri": "https://example.com/image1.jpg",
-                }
+            style={
+              {
+                "height": "100%",
+                "width": "100%",
               }
-              style={
-                {
-                  "bottom": 0,
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                }
-              }
-            />
-          </View>
+            }
+          />
         </View>
       </View>
     </RCTScrollView>
@@ -120,41 +102,23 @@ exports[`ProductImageCarousel handles scroll events and updates active index 1`]
             }
           }
         >
-          <View
-            style={
-              [
-                {
-                  "overflow": "hidden",
-                },
-                {
-                  "height": "100%",
-                  "width": "100%",
-                },
-              ]
+          <Image
+            accessibilityLabel="Test Product image 1"
+            contentFit="cover"
+            onError={[Function]}
+            priority="normal"
+            source={
+              {
+                "uri": "https://example.com/image1.jpg",
+              }
             }
-          >
-            <FastImageView
-              accessibilityLabel="Test Product image 1"
-              defaultSource={null}
-              onFastImageError={[Function]}
-              resizeMode="cover"
-              source={
-                {
-                  "priority": "normal",
-                  "uri": "https://example.com/image1.jpg",
-                }
+            style={
+              {
+                "height": "100%",
+                "width": "100%",
               }
-              style={
-                {
-                  "bottom": 0,
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                }
-              }
-            />
-          </View>
+            }
+          />
         </View>
         <View
           style={
@@ -165,41 +129,23 @@ exports[`ProductImageCarousel handles scroll events and updates active index 1`]
             }
           }
         >
-          <View
-            style={
-              [
-                {
-                  "overflow": "hidden",
-                },
-                {
-                  "height": "100%",
-                  "width": "100%",
-                },
-              ]
+          <Image
+            accessibilityLabel="Test Product image 2"
+            contentFit="cover"
+            onError={[Function]}
+            priority="normal"
+            source={
+              {
+                "uri": "https://example.com/image2.jpg",
+              }
             }
-          >
-            <FastImageView
-              accessibilityLabel="Test Product image 2"
-              defaultSource={null}
-              onFastImageError={[Function]}
-              resizeMode="cover"
-              source={
-                {
-                  "priority": "normal",
-                  "uri": "https://example.com/image2.jpg",
-                }
+            style={
+              {
+                "height": "100%",
+                "width": "100%",
               }
-              style={
-                {
-                  "bottom": 0,
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                }
-              }
-            />
-          </View>
+            }
+          />
         </View>
         <View
           style={
@@ -210,41 +156,23 @@ exports[`ProductImageCarousel handles scroll events and updates active index 1`]
             }
           }
         >
-          <View
-            style={
-              [
-                {
-                  "overflow": "hidden",
-                },
-                {
-                  "height": "100%",
-                  "width": "100%",
-                },
-              ]
+          <Image
+            accessibilityLabel="Test Product image 3"
+            contentFit="cover"
+            onError={[Function]}
+            priority="normal"
+            source={
+              {
+                "uri": "https://example.com/image3.jpg",
+              }
             }
-          >
-            <FastImageView
-              accessibilityLabel="Test Product image 3"
-              defaultSource={null}
-              onFastImageError={[Function]}
-              resizeMode="cover"
-              source={
-                {
-                  "priority": "normal",
-                  "uri": "https://example.com/image3.jpg",
-                }
+            style={
+              {
+                "height": "100%",
+                "width": "100%",
               }
-              style={
-                {
-                  "bottom": 0,
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                }
-              }
-            />
-          </View>
+            }
+          />
         </View>
       </View>
     </RCTScrollView>
@@ -618,41 +546,23 @@ exports[`ProductImageCarousel renders correctly with images 1`] = `
             }
           }
         >
-          <View
-            style={
-              [
-                {
-                  "overflow": "hidden",
-                },
-                {
-                  "height": "100%",
-                  "width": "100%",
-                },
-              ]
+          <Image
+            accessibilityLabel="Test Product image 1"
+            contentFit="cover"
+            onError={[Function]}
+            priority="normal"
+            source={
+              {
+                "uri": "https://example.com/image1.jpg",
+              }
             }
-          >
-            <FastImageView
-              accessibilityLabel="Test Product image 1"
-              defaultSource={null}
-              onFastImageError={[Function]}
-              resizeMode="cover"
-              source={
-                {
-                  "priority": "normal",
-                  "uri": "https://example.com/image1.jpg",
-                }
+            style={
+              {
+                "height": "100%",
+                "width": "100%",
               }
-              style={
-                {
-                  "bottom": 0,
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                }
-              }
-            />
-          </View>
+            }
+          />
         </View>
         <View
           style={
@@ -663,41 +573,23 @@ exports[`ProductImageCarousel renders correctly with images 1`] = `
             }
           }
         >
-          <View
-            style={
-              [
-                {
-                  "overflow": "hidden",
-                },
-                {
-                  "height": "100%",
-                  "width": "100%",
-                },
-              ]
+          <Image
+            accessibilityLabel="Test Product image 2"
+            contentFit="cover"
+            onError={[Function]}
+            priority="normal"
+            source={
+              {
+                "uri": "https://example.com/image2.jpg",
+              }
             }
-          >
-            <FastImageView
-              accessibilityLabel="Test Product image 2"
-              defaultSource={null}
-              onFastImageError={[Function]}
-              resizeMode="cover"
-              source={
-                {
-                  "priority": "normal",
-                  "uri": "https://example.com/image2.jpg",
-                }
+            style={
+              {
+                "height": "100%",
+                "width": "100%",
               }
-              style={
-                {
-                  "bottom": 0,
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                }
-              }
-            />
-          </View>
+            }
+          />
         </View>
         <View
           style={
@@ -708,41 +600,23 @@ exports[`ProductImageCarousel renders correctly with images 1`] = `
             }
           }
         >
-          <View
-            style={
-              [
-                {
-                  "overflow": "hidden",
-                },
-                {
-                  "height": "100%",
-                  "width": "100%",
-                },
-              ]
+          <Image
+            accessibilityLabel="Test Product image 3"
+            contentFit="cover"
+            onError={[Function]}
+            priority="normal"
+            source={
+              {
+                "uri": "https://example.com/image3.jpg",
+              }
             }
-          >
-            <FastImageView
-              accessibilityLabel="Test Product image 3"
-              defaultSource={null}
-              onFastImageError={[Function]}
-              resizeMode="cover"
-              source={
-                {
-                  "priority": "normal",
-                  "uri": "https://example.com/image3.jpg",
-                }
+            style={
+              {
+                "height": "100%",
+                "width": "100%",
               }
-              style={
-                {
-                  "bottom": 0,
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                }
-              }
-            />
-          </View>
+            }
+          />
         </View>
       </View>
     </RCTScrollView>
@@ -1116,41 +990,23 @@ exports[`ProductImageCarousel renders navigation buttons correctly 1`] = `
             }
           }
         >
-          <View
-            style={
-              [
-                {
-                  "overflow": "hidden",
-                },
-                {
-                  "height": "100%",
-                  "width": "100%",
-                },
-              ]
+          <Image
+            accessibilityLabel="Test Product image 1"
+            contentFit="cover"
+            onError={[Function]}
+            priority="normal"
+            source={
+              {
+                "uri": "https://example.com/image1.jpg",
+              }
             }
-          >
-            <FastImageView
-              accessibilityLabel="Test Product image 1"
-              defaultSource={null}
-              onFastImageError={[Function]}
-              resizeMode="cover"
-              source={
-                {
-                  "priority": "normal",
-                  "uri": "https://example.com/image1.jpg",
-                }
+            style={
+              {
+                "height": "100%",
+                "width": "100%",
               }
-              style={
-                {
-                  "bottom": 0,
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                }
-              }
-            />
-          </View>
+            }
+          />
         </View>
         <View
           style={
@@ -1161,41 +1017,23 @@ exports[`ProductImageCarousel renders navigation buttons correctly 1`] = `
             }
           }
         >
-          <View
-            style={
-              [
-                {
-                  "overflow": "hidden",
-                },
-                {
-                  "height": "100%",
-                  "width": "100%",
-                },
-              ]
+          <Image
+            accessibilityLabel="Test Product image 2"
+            contentFit="cover"
+            onError={[Function]}
+            priority="normal"
+            source={
+              {
+                "uri": "https://example.com/image2.jpg",
+              }
             }
-          >
-            <FastImageView
-              accessibilityLabel="Test Product image 2"
-              defaultSource={null}
-              onFastImageError={[Function]}
-              resizeMode="cover"
-              source={
-                {
-                  "priority": "normal",
-                  "uri": "https://example.com/image2.jpg",
-                }
+            style={
+              {
+                "height": "100%",
+                "width": "100%",
               }
-              style={
-                {
-                  "bottom": 0,
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                }
-              }
-            />
-          </View>
+            }
+          />
         </View>
         <View
           style={
@@ -1206,41 +1044,23 @@ exports[`ProductImageCarousel renders navigation buttons correctly 1`] = `
             }
           }
         >
-          <View
-            style={
-              [
-                {
-                  "overflow": "hidden",
-                },
-                {
-                  "height": "100%",
-                  "width": "100%",
-                },
-              ]
+          <Image
+            accessibilityLabel="Test Product image 3"
+            contentFit="cover"
+            onError={[Function]}
+            priority="normal"
+            source={
+              {
+                "uri": "https://example.com/image3.jpg",
+              }
             }
-          >
-            <FastImageView
-              accessibilityLabel="Test Product image 3"
-              defaultSource={null}
-              onFastImageError={[Function]}
-              resizeMode="cover"
-              source={
-                {
-                  "priority": "normal",
-                  "uri": "https://example.com/image3.jpg",
-                }
+            style={
+              {
+                "height": "100%",
+                "width": "100%",
               }
-              style={
-                {
-                  "bottom": 0,
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                }
-              }
-            />
-          </View>
+            }
+          />
         </View>
       </View>
     </RCTScrollView>
@@ -1614,41 +1434,23 @@ exports[`ProductImageCarousel renders navigation buttons for multiple images 1`]
             }
           }
         >
-          <View
-            style={
-              [
-                {
-                  "overflow": "hidden",
-                },
-                {
-                  "height": "100%",
-                  "width": "100%",
-                },
-              ]
+          <Image
+            accessibilityLabel="Test Product image 1"
+            contentFit="cover"
+            onError={[Function]}
+            priority="normal"
+            source={
+              {
+                "uri": "https://example.com/image1.jpg",
+              }
             }
-          >
-            <FastImageView
-              accessibilityLabel="Test Product image 1"
-              defaultSource={null}
-              onFastImageError={[Function]}
-              resizeMode="cover"
-              source={
-                {
-                  "priority": "normal",
-                  "uri": "https://example.com/image1.jpg",
-                }
+            style={
+              {
+                "height": "100%",
+                "width": "100%",
               }
-              style={
-                {
-                  "bottom": 0,
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                }
-              }
-            />
-          </View>
+            }
+          />
         </View>
         <View
           style={
@@ -1659,41 +1461,23 @@ exports[`ProductImageCarousel renders navigation buttons for multiple images 1`]
             }
           }
         >
-          <View
-            style={
-              [
-                {
-                  "overflow": "hidden",
-                },
-                {
-                  "height": "100%",
-                  "width": "100%",
-                },
-              ]
+          <Image
+            accessibilityLabel="Test Product image 2"
+            contentFit="cover"
+            onError={[Function]}
+            priority="normal"
+            source={
+              {
+                "uri": "https://example.com/image2.jpg",
+              }
             }
-          >
-            <FastImageView
-              accessibilityLabel="Test Product image 2"
-              defaultSource={null}
-              onFastImageError={[Function]}
-              resizeMode="cover"
-              source={
-                {
-                  "priority": "normal",
-                  "uri": "https://example.com/image2.jpg",
-                }
+            style={
+              {
+                "height": "100%",
+                "width": "100%",
               }
-              style={
-                {
-                  "bottom": 0,
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                }
-              }
-            />
-          </View>
+            }
+          />
         </View>
         <View
           style={
@@ -1704,41 +1488,23 @@ exports[`ProductImageCarousel renders navigation buttons for multiple images 1`]
             }
           }
         >
-          <View
-            style={
-              [
-                {
-                  "overflow": "hidden",
-                },
-                {
-                  "height": "100%",
-                  "width": "100%",
-                },
-              ]
+          <Image
+            accessibilityLabel="Test Product image 3"
+            contentFit="cover"
+            onError={[Function]}
+            priority="normal"
+            source={
+              {
+                "uri": "https://example.com/image3.jpg",
+              }
             }
-          >
-            <FastImageView
-              accessibilityLabel="Test Product image 3"
-              defaultSource={null}
-              onFastImageError={[Function]}
-              resizeMode="cover"
-              source={
-                {
-                  "priority": "normal",
-                  "uri": "https://example.com/image3.jpg",
-                }
+            style={
+              {
+                "height": "100%",
+                "width": "100%",
               }
-              style={
-                {
-                  "bottom": 0,
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                }
-              }
-            />
-          </View>
+            }
+          />
         </View>
       </View>
     </RCTScrollView>
@@ -2112,41 +1878,23 @@ exports[`ProductImageCarousel renders navigation buttons when images.length > 1 
             }
           }
         >
-          <View
-            style={
-              [
-                {
-                  "overflow": "hidden",
-                },
-                {
-                  "height": "100%",
-                  "width": "100%",
-                },
-              ]
+          <Image
+            accessibilityLabel="Test Product image 1"
+            contentFit="cover"
+            onError={[Function]}
+            priority="normal"
+            source={
+              {
+                "uri": "https://example.com/image1.jpg",
+              }
             }
-          >
-            <FastImageView
-              accessibilityLabel="Test Product image 1"
-              defaultSource={null}
-              onFastImageError={[Function]}
-              resizeMode="cover"
-              source={
-                {
-                  "priority": "normal",
-                  "uri": "https://example.com/image1.jpg",
-                }
+            style={
+              {
+                "height": "100%",
+                "width": "100%",
               }
-              style={
-                {
-                  "bottom": 0,
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                }
-              }
-            />
-          </View>
+            }
+          />
         </View>
         <View
           style={
@@ -2157,41 +1905,23 @@ exports[`ProductImageCarousel renders navigation buttons when images.length > 1 
             }
           }
         >
-          <View
-            style={
-              [
-                {
-                  "overflow": "hidden",
-                },
-                {
-                  "height": "100%",
-                  "width": "100%",
-                },
-              ]
+          <Image
+            accessibilityLabel="Test Product image 2"
+            contentFit="cover"
+            onError={[Function]}
+            priority="normal"
+            source={
+              {
+                "uri": "https://example.com/image2.jpg",
+              }
             }
-          >
-            <FastImageView
-              accessibilityLabel="Test Product image 2"
-              defaultSource={null}
-              onFastImageError={[Function]}
-              resizeMode="cover"
-              source={
-                {
-                  "priority": "normal",
-                  "uri": "https://example.com/image2.jpg",
-                }
+            style={
+              {
+                "height": "100%",
+                "width": "100%",
               }
-              style={
-                {
-                  "bottom": 0,
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                }
-              }
-            />
-          </View>
+            }
+          />
         </View>
       </View>
     </RCTScrollView>
@@ -2550,41 +2280,23 @@ exports[`ProductImageCarousel renders pagination dots when images.length > 1 1`]
             }
           }
         >
-          <View
-            style={
-              [
-                {
-                  "overflow": "hidden",
-                },
-                {
-                  "height": "100%",
-                  "width": "100%",
-                },
-              ]
+          <Image
+            accessibilityLabel="Test Product image 1"
+            contentFit="cover"
+            onError={[Function]}
+            priority="normal"
+            source={
+              {
+                "uri": "https://example.com/image1.jpg",
+              }
             }
-          >
-            <FastImageView
-              accessibilityLabel="Test Product image 1"
-              defaultSource={null}
-              onFastImageError={[Function]}
-              resizeMode="cover"
-              source={
-                {
-                  "priority": "normal",
-                  "uri": "https://example.com/image1.jpg",
-                }
+            style={
+              {
+                "height": "100%",
+                "width": "100%",
               }
-              style={
-                {
-                  "bottom": 0,
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                }
-              }
-            />
-          </View>
+            }
+          />
         </View>
         <View
           style={
@@ -2595,41 +2307,23 @@ exports[`ProductImageCarousel renders pagination dots when images.length > 1 1`]
             }
           }
         >
-          <View
-            style={
-              [
-                {
-                  "overflow": "hidden",
-                },
-                {
-                  "height": "100%",
-                  "width": "100%",
-                },
-              ]
+          <Image
+            accessibilityLabel="Test Product image 2"
+            contentFit="cover"
+            onError={[Function]}
+            priority="normal"
+            source={
+              {
+                "uri": "https://example.com/image2.jpg",
+              }
             }
-          >
-            <FastImageView
-              accessibilityLabel="Test Product image 2"
-              defaultSource={null}
-              onFastImageError={[Function]}
-              resizeMode="cover"
-              source={
-                {
-                  "priority": "normal",
-                  "uri": "https://example.com/image2.jpg",
-                }
+            style={
+              {
+                "height": "100%",
+                "width": "100%",
               }
-              style={
-                {
-                  "bottom": 0,
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                }
-              }
-            />
-          </View>
+            }
+          />
         </View>
       </View>
     </RCTScrollView>
@@ -2969,41 +2663,23 @@ exports[`ProductImageCarousel renders placeholder when images array is empty 1`]
       }
     }
   >
-    <View
-      style={
-        [
-          {
-            "overflow": "hidden",
-          },
-          {
-            "height": "100%",
-            "width": "100%",
-          },
-        ]
+    <Image
+      accessibilityLabel="Test Product image"
+      contentFit="cover"
+      onError={[Function]}
+      priority="normal"
+      source={
+        {
+          "uri": "https://whimsical-benefit-a69d430573.media.strapiapp.com/default_fallback_image_ce6f43d139.png",
+        }
       }
-    >
-      <FastImageView
-        accessibilityLabel="Test Product image"
-        defaultSource={null}
-        onFastImageError={[Function]}
-        resizeMode="cover"
-        source={
-          {
-            "priority": "normal",
-            "uri": "https://whimsical-benefit-a69d430573.media.strapiapp.com/default_fallback_image_ce6f43d139.png",
-          }
+      style={
+        {
+          "height": "100%",
+          "width": "100%",
         }
-        style={
-          {
-            "bottom": 0,
-            "left": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-          }
-        }
-      />
-    </View>
+      }
+    />
   </View>
 </View>
 `;
@@ -3028,41 +2704,23 @@ exports[`ProductImageCarousel renders placeholder when images is null 1`] = `
       }
     }
   >
-    <View
-      style={
-        [
-          {
-            "overflow": "hidden",
-          },
-          {
-            "height": "100%",
-            "width": "100%",
-          },
-        ]
+    <Image
+      accessibilityLabel="Test Product image"
+      contentFit="cover"
+      onError={[Function]}
+      priority="normal"
+      source={
+        {
+          "uri": "https://whimsical-benefit-a69d430573.media.strapiapp.com/default_fallback_image_ce6f43d139.png",
+        }
       }
-    >
-      <FastImageView
-        accessibilityLabel="Test Product image"
-        defaultSource={null}
-        onFastImageError={[Function]}
-        resizeMode="cover"
-        source={
-          {
-            "priority": "normal",
-            "uri": "https://whimsical-benefit-a69d430573.media.strapiapp.com/default_fallback_image_ce6f43d139.png",
-          }
+      style={
+        {
+          "height": "100%",
+          "width": "100%",
         }
-        style={
-          {
-            "bottom": 0,
-            "left": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-          }
-        }
-      />
-    </View>
+      }
+    />
   </View>
 </View>
 `;
@@ -3087,41 +2745,23 @@ exports[`ProductImageCarousel renders placeholder when images is undefined 1`] =
       }
     }
   >
-    <View
-      style={
-        [
-          {
-            "overflow": "hidden",
-          },
-          {
-            "height": "100%",
-            "width": "100%",
-          },
-        ]
+    <Image
+      accessibilityLabel="Test Product image"
+      contentFit="cover"
+      onError={[Function]}
+      priority="normal"
+      source={
+        {
+          "uri": "https://whimsical-benefit-a69d430573.media.strapiapp.com/default_fallback_image_ce6f43d139.png",
+        }
       }
-    >
-      <FastImageView
-        accessibilityLabel="Test Product image"
-        defaultSource={null}
-        onFastImageError={[Function]}
-        resizeMode="cover"
-        source={
-          {
-            "priority": "normal",
-            "uri": "https://whimsical-benefit-a69d430573.media.strapiapp.com/default_fallback_image_ce6f43d139.png",
-          }
+      style={
+        {
+          "height": "100%",
+          "width": "100%",
         }
-        style={
-          {
-            "bottom": 0,
-            "left": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-          }
-        }
-      />
-    </View>
+      }
+    />
   </View>
 </View>
 `;
@@ -3165,41 +2805,23 @@ exports[`ProductImageCarousel renders with empty product name 1`] = `
             }
           }
         >
-          <View
-            style={
-              [
-                {
-                  "overflow": "hidden",
-                },
-                {
-                  "height": "100%",
-                  "width": "100%",
-                },
-              ]
+          <Image
+            accessibilityLabel=" image 1"
+            contentFit="cover"
+            onError={[Function]}
+            priority="normal"
+            source={
+              {
+                "uri": "https://example.com/image1.jpg",
+              }
             }
-          >
-            <FastImageView
-              accessibilityLabel=" image 1"
-              defaultSource={null}
-              onFastImageError={[Function]}
-              resizeMode="cover"
-              source={
-                {
-                  "priority": "normal",
-                  "uri": "https://example.com/image1.jpg",
-                }
+            style={
+              {
+                "height": "100%",
+                "width": "100%",
               }
-              style={
-                {
-                  "bottom": 0,
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                }
-              }
-            />
-          </View>
+            }
+          />
         </View>
         <View
           style={
@@ -3210,41 +2832,23 @@ exports[`ProductImageCarousel renders with empty product name 1`] = `
             }
           }
         >
-          <View
-            style={
-              [
-                {
-                  "overflow": "hidden",
-                },
-                {
-                  "height": "100%",
-                  "width": "100%",
-                },
-              ]
+          <Image
+            accessibilityLabel=" image 2"
+            contentFit="cover"
+            onError={[Function]}
+            priority="normal"
+            source={
+              {
+                "uri": "https://example.com/image2.jpg",
+              }
             }
-          >
-            <FastImageView
-              accessibilityLabel=" image 2"
-              defaultSource={null}
-              onFastImageError={[Function]}
-              resizeMode="cover"
-              source={
-                {
-                  "priority": "normal",
-                  "uri": "https://example.com/image2.jpg",
-                }
+            style={
+              {
+                "height": "100%",
+                "width": "100%",
               }
-              style={
-                {
-                  "bottom": 0,
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                }
-              }
-            />
-          </View>
+            }
+          />
         </View>
         <View
           style={
@@ -3255,41 +2859,23 @@ exports[`ProductImageCarousel renders with empty product name 1`] = `
             }
           }
         >
-          <View
-            style={
-              [
-                {
-                  "overflow": "hidden",
-                },
-                {
-                  "height": "100%",
-                  "width": "100%",
-                },
-              ]
+          <Image
+            accessibilityLabel=" image 3"
+            contentFit="cover"
+            onError={[Function]}
+            priority="normal"
+            source={
+              {
+                "uri": "https://example.com/image3.jpg",
+              }
             }
-          >
-            <FastImageView
-              accessibilityLabel=" image 3"
-              defaultSource={null}
-              onFastImageError={[Function]}
-              resizeMode="cover"
-              source={
-                {
-                  "priority": "normal",
-                  "uri": "https://example.com/image3.jpg",
-                }
+            style={
+              {
+                "height": "100%",
+                "width": "100%",
               }
-              style={
-                {
-                  "bottom": 0,
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                }
-              }
-            />
-          </View>
+            }
+          />
         </View>
       </View>
     </RCTScrollView>

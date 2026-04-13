@@ -4,7 +4,7 @@ exports[`TextField handles secureTextEntry when isSecureText is false 1`] = `
 <View
   style={
     {
-      "marginBottom": 20,
+      "marginBottom": 10,
     }
   }
 >
@@ -13,14 +13,15 @@ exports[`TextField handles secureTextEntry when isSecureText is false 1`] = `
       [
         {
           "alignItems": "center",
+          "borderColor": "#000000",
           "borderRadius": 10,
           "borderWidth": 1,
           "flexDirection": "row",
-          "padding": 1,
+          "gap": 1,
+          "height": 64,
         },
         {
           "borderColor": "#E0E0E0",
-          "height": 44,
         },
         false,
         false,
@@ -32,21 +33,21 @@ exports[`TextField handles secureTextEntry when isSecureText is false 1`] = `
       onBlur={[Function]}
       onFocus={[Function]}
       placeholder="Text"
-      placeholderTextColor="#575757"
+      placeholderTextColor="#676767"
       secureTextEntry={false}
       style={
         [
           {
-            "color": "#1C1B1F",
             "flex": 1,
-            "fontWeight": "400",
+            "fontWeight": "500",
             "includeFontPadding": false,
-            "paddingVertical": 10,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
             "textAlignVertical": "center",
           },
           {
             "fontSize": 14,
-            "paddingHorizontal": 16,
           },
           undefined,
         ]
@@ -60,7 +61,7 @@ exports[`TextField handles secureTextEntry with showPassword state 1`] = `
 <View
   style={
     {
-      "marginBottom": 20,
+      "marginBottom": 10,
     }
   }
 >
@@ -69,14 +70,15 @@ exports[`TextField handles secureTextEntry with showPassword state 1`] = `
       [
         {
           "alignItems": "center",
+          "borderColor": "#000000",
           "borderRadius": 10,
           "borderWidth": 1,
           "flexDirection": "row",
-          "padding": 1,
+          "gap": 1,
+          "height": 64,
         },
         {
           "borderColor": "#E0E0E0",
-          "height": 44,
         },
         false,
         false,
@@ -88,21 +90,21 @@ exports[`TextField handles secureTextEntry with showPassword state 1`] = `
       onBlur={[Function]}
       onFocus={[Function]}
       placeholder="Password"
-      placeholderTextColor="#575757"
+      placeholderTextColor="#676767"
       secureTextEntry={true}
       style={
         [
           {
-            "color": "#1C1B1F",
             "flex": 1,
-            "fontWeight": "400",
+            "fontWeight": "500",
             "includeFontPadding": false,
-            "paddingVertical": 10,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
             "textAlignVertical": "center",
           },
           {
             "fontSize": 14,
-            "paddingHorizontal": 16,
           },
           undefined,
         ]
@@ -158,7 +160,7 @@ exports[`TextField matches snapshot for basic field 1`] = `
 <View
   style={
     {
-      "marginBottom": 20,
+      "marginBottom": 10,
     }
   }
 >
@@ -167,14 +169,15 @@ exports[`TextField matches snapshot for basic field 1`] = `
       [
         {
           "alignItems": "center",
+          "borderColor": "#000000",
           "borderRadius": 10,
           "borderWidth": 1,
           "flexDirection": "row",
-          "padding": 1,
+          "gap": 1,
+          "height": 64,
         },
         {
           "borderColor": "#E0E0E0",
-          "height": 44,
         },
         false,
         false,
@@ -186,21 +189,21 @@ exports[`TextField matches snapshot for basic field 1`] = `
       onBlur={[Function]}
       onFocus={[Function]}
       placeholder="Enter text"
-      placeholderTextColor="#575757"
+      placeholderTextColor="#676767"
       secureTextEntry={false}
       style={
         [
           {
-            "color": "#1C1B1F",
             "flex": 1,
-            "fontWeight": "400",
+            "fontWeight": "500",
             "includeFontPadding": false,
-            "paddingVertical": 10,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
             "textAlignVertical": "center",
           },
           {
             "fontSize": 14,
-            "paddingHorizontal": 16,
           },
           undefined,
         ]
@@ -214,7 +217,7 @@ exports[`TextField matches snapshot with icons and password field 1`] = `
 <View
   style={
     {
-      "marginBottom": 20,
+      "marginBottom": 10,
     }
   }
 >
@@ -223,14 +226,15 @@ exports[`TextField matches snapshot with icons and password field 1`] = `
       [
         {
           "alignItems": "center",
+          "borderColor": "#000000",
           "borderRadius": 10,
           "borderWidth": 1,
           "flexDirection": "row",
-          "padding": 1,
+          "gap": 1,
+          "height": 64,
         },
         {
           "borderColor": "#E0E0E0",
-          "height": 44,
         },
         false,
         false,
@@ -244,7 +248,7 @@ exports[`TextField matches snapshot with icons and password field 1`] = `
           "alignItems": "center",
           "justifyContent": "center",
           "paddingLeft": 12,
-          "paddingRight": 8,
+          "paddingRight": 4,
         }
       }
     >
@@ -256,21 +260,21 @@ exports[`TextField matches snapshot with icons and password field 1`] = `
       onBlur={[Function]}
       onFocus={[Function]}
       placeholder="Password"
-      placeholderTextColor="#575757"
+      placeholderTextColor="#676767"
       secureTextEntry={true}
       style={
         [
           {
-            "color": "#1C1B1F",
             "flex": 1,
-            "fontWeight": "400",
+            "fontWeight": "500",
             "includeFontPadding": false,
-            "paddingVertical": 10,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
             "textAlignVertical": "center",
           },
           {
             "fontSize": 14,
-            "paddingHorizontal": 16,
           },
           undefined,
         ]
@@ -326,7 +330,7 @@ exports[`TextField matches snapshot with label and error 1`] = `
 <View
   style={
     {
-      "marginBottom": 20,
+      "marginBottom": 10,
     }
   }
 >
@@ -347,14 +351,15 @@ exports[`TextField matches snapshot with label and error 1`] = `
       [
         {
           "alignItems": "center",
+          "borderColor": "#000000",
           "borderRadius": 10,
           "borderWidth": 1,
           "flexDirection": "row",
-          "padding": 1,
+          "gap": 1,
+          "height": 64,
         },
         {
           "borderColor": "#EB3030",
-          "height": 44,
         },
         false,
         false,
@@ -368,21 +373,21 @@ exports[`TextField matches snapshot with label and error 1`] = `
       onBlur={[Function]}
       onFocus={[Function]}
       placeholder="Enter email"
-      placeholderTextColor="#575757"
+      placeholderTextColor="#676767"
       secureTextEntry={false}
       style={
         [
           {
-            "color": "#1C1B1F",
             "flex": 1,
-            "fontWeight": "400",
+            "fontWeight": "500",
             "includeFontPadding": false,
-            "paddingVertical": 10,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
             "textAlignVertical": "center",
           },
           {
             "fontSize": 14,
-            "paddingHorizontal": 16,
           },
           undefined,
         ]
@@ -408,7 +413,7 @@ exports[`TextField renders password field with right icon 1`] = `
 <View
   style={
     {
-      "marginBottom": 20,
+      "marginBottom": 10,
     }
   }
 >
@@ -417,14 +422,15 @@ exports[`TextField renders password field with right icon 1`] = `
       [
         {
           "alignItems": "center",
+          "borderColor": "#000000",
           "borderRadius": 10,
           "borderWidth": 1,
           "flexDirection": "row",
-          "padding": 1,
+          "gap": 1,
+          "height": 64,
         },
         {
           "borderColor": "#E0E0E0",
-          "height": 44,
         },
         false,
         false,
@@ -436,21 +442,21 @@ exports[`TextField renders password field with right icon 1`] = `
       onBlur={[Function]}
       onFocus={[Function]}
       placeholder="Password"
-      placeholderTextColor="#575757"
+      placeholderTextColor="#676767"
       secureTextEntry={true}
       style={
         [
           {
-            "color": "#1C1B1F",
             "flex": 1,
-            "fontWeight": "400",
+            "fontWeight": "500",
             "includeFontPadding": false,
-            "paddingVertical": 10,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
             "textAlignVertical": "center",
           },
           {
             "fontSize": 14,
-            "paddingHorizontal": 16,
           },
           undefined,
         ]
@@ -506,7 +512,7 @@ exports[`TextField renders with FILLED variant 1`] = `
 <View
   style={
     {
-      "marginBottom": 20,
+      "marginBottom": 10,
     }
   }
 >
@@ -515,14 +521,15 @@ exports[`TextField renders with FILLED variant 1`] = `
       [
         {
           "alignItems": "center",
+          "borderColor": "#000000",
           "borderRadius": 10,
           "borderWidth": 1,
           "flexDirection": "row",
-          "padding": 1,
+          "gap": 1,
+          "height": 64,
         },
         {
           "borderColor": "#E0E0E0",
-          "height": 44,
         },
         {
           "backgroundColor": "#F5F5F5",
@@ -536,21 +543,21 @@ exports[`TextField renders with FILLED variant 1`] = `
       onBlur={[Function]}
       onFocus={[Function]}
       placeholder="Filled variant"
-      placeholderTextColor="#575757"
+      placeholderTextColor="#676767"
       secureTextEntry={false}
       style={
         [
           {
-            "color": "#1C1B1F",
             "flex": 1,
-            "fontWeight": "400",
+            "fontWeight": "500",
             "includeFontPadding": false,
-            "paddingVertical": 10,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
             "textAlignVertical": "center",
           },
           {
             "fontSize": 14,
-            "paddingHorizontal": 16,
           },
           undefined,
         ]
@@ -564,7 +571,7 @@ exports[`TextField renders with OUTLINED variant by default 1`] = `
 <View
   style={
     {
-      "marginBottom": 20,
+      "marginBottom": 10,
     }
   }
 >
@@ -573,14 +580,15 @@ exports[`TextField renders with OUTLINED variant by default 1`] = `
       [
         {
           "alignItems": "center",
+          "borderColor": "#000000",
           "borderRadius": 10,
           "borderWidth": 1,
           "flexDirection": "row",
-          "padding": 1,
+          "gap": 1,
+          "height": 64,
         },
         {
           "borderColor": "#E0E0E0",
-          "height": 44,
         },
         false,
         false,
@@ -592,21 +600,21 @@ exports[`TextField renders with OUTLINED variant by default 1`] = `
       onBlur={[Function]}
       onFocus={[Function]}
       placeholder="Test"
-      placeholderTextColor="#575757"
+      placeholderTextColor="#676767"
       secureTextEntry={false}
       style={
         [
           {
-            "color": "#1C1B1F",
             "flex": 1,
-            "fontWeight": "400",
+            "fontWeight": "500",
             "includeFontPadding": false,
-            "paddingVertical": 10,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
             "textAlignVertical": "center",
           },
           {
             "fontSize": 14,
-            "paddingHorizontal": 16,
           },
           undefined,
         ]
@@ -620,7 +628,7 @@ exports[`TextField renders with different sizes: size-lg 1`] = `
 <View
   style={
     {
-      "marginBottom": 20,
+      "marginBottom": 10,
     }
   }
 >
@@ -629,14 +637,15 @@ exports[`TextField renders with different sizes: size-lg 1`] = `
       [
         {
           "alignItems": "center",
+          "borderColor": "#000000",
           "borderRadius": 10,
           "borderWidth": 1,
           "flexDirection": "row",
-          "padding": 1,
+          "gap": 1,
+          "height": 64,
         },
         {
           "borderColor": "#E0E0E0",
-          "height": 52,
         },
         false,
         false,
@@ -648,21 +657,21 @@ exports[`TextField renders with different sizes: size-lg 1`] = `
       onBlur={[Function]}
       onFocus={[Function]}
       placeholder="Size lg"
-      placeholderTextColor="#575757"
+      placeholderTextColor="#676767"
       secureTextEntry={false}
       style={
         [
           {
-            "color": "#1C1B1F",
             "flex": 1,
-            "fontWeight": "400",
+            "fontWeight": "500",
             "includeFontPadding": false,
-            "paddingVertical": 10,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
             "textAlignVertical": "center",
           },
           {
             "fontSize": 15,
-            "paddingHorizontal": 20,
           },
           undefined,
         ]
@@ -676,7 +685,7 @@ exports[`TextField renders with different sizes: size-md 1`] = `
 <View
   style={
     {
-      "marginBottom": 20,
+      "marginBottom": 10,
     }
   }
 >
@@ -685,14 +694,15 @@ exports[`TextField renders with different sizes: size-md 1`] = `
       [
         {
           "alignItems": "center",
+          "borderColor": "#000000",
           "borderRadius": 10,
           "borderWidth": 1,
           "flexDirection": "row",
-          "padding": 1,
+          "gap": 1,
+          "height": 64,
         },
         {
           "borderColor": "#E0E0E0",
-          "height": 44,
         },
         false,
         false,
@@ -704,21 +714,21 @@ exports[`TextField renders with different sizes: size-md 1`] = `
       onBlur={[Function]}
       onFocus={[Function]}
       placeholder="Size md"
-      placeholderTextColor="#575757"
+      placeholderTextColor="#676767"
       secureTextEntry={false}
       style={
         [
           {
-            "color": "#1C1B1F",
             "flex": 1,
-            "fontWeight": "400",
+            "fontWeight": "500",
             "includeFontPadding": false,
-            "paddingVertical": 10,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
             "textAlignVertical": "center",
           },
           {
             "fontSize": 14,
-            "paddingHorizontal": 16,
           },
           undefined,
         ]
@@ -732,7 +742,7 @@ exports[`TextField renders with different sizes: size-sm 1`] = `
 <View
   style={
     {
-      "marginBottom": 20,
+      "marginBottom": 10,
     }
   }
 >
@@ -741,14 +751,15 @@ exports[`TextField renders with different sizes: size-sm 1`] = `
       [
         {
           "alignItems": "center",
+          "borderColor": "#000000",
           "borderRadius": 10,
           "borderWidth": 1,
           "flexDirection": "row",
-          "padding": 1,
+          "gap": 1,
+          "height": 64,
         },
         {
           "borderColor": "#E0E0E0",
-          "height": 36,
         },
         false,
         false,
@@ -760,21 +771,21 @@ exports[`TextField renders with different sizes: size-sm 1`] = `
       onBlur={[Function]}
       onFocus={[Function]}
       placeholder="Size sm"
-      placeholderTextColor="#575757"
+      placeholderTextColor="#676767"
       secureTextEntry={false}
       style={
         [
           {
-            "color": "#1C1B1F",
             "flex": 1,
-            "fontWeight": "400",
+            "fontWeight": "500",
             "includeFontPadding": false,
-            "paddingVertical": 10,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
             "textAlignVertical": "center",
           },
           {
             "fontSize": 12,
-            "paddingHorizontal": 12,
           },
           undefined,
         ]
@@ -788,7 +799,7 @@ exports[`TextField renders with right icon and onRightPress 1`] = `
 <View
   style={
     {
-      "marginBottom": 20,
+      "marginBottom": 10,
     }
   }
 >
@@ -797,14 +808,15 @@ exports[`TextField renders with right icon and onRightPress 1`] = `
       [
         {
           "alignItems": "center",
+          "borderColor": "#000000",
           "borderRadius": 10,
           "borderWidth": 1,
           "flexDirection": "row",
-          "padding": 1,
+          "gap": 1,
+          "height": 64,
         },
         {
           "borderColor": "#E0E0E0",
-          "height": 44,
         },
         false,
         false,
@@ -816,21 +828,21 @@ exports[`TextField renders with right icon and onRightPress 1`] = `
       onBlur={[Function]}
       onFocus={[Function]}
       placeholder="Test"
-      placeholderTextColor="#575757"
+      placeholderTextColor="#676767"
       secureTextEntry={false}
       style={
         [
           {
-            "color": "#1C1B1F",
             "flex": 1,
-            "fontWeight": "400",
+            "fontWeight": "500",
             "includeFontPadding": false,
-            "paddingVertical": 10,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
             "textAlignVertical": "center",
           },
           {
             "fontSize": 14,
-            "paddingHorizontal": 16,
           },
           undefined,
         ]
@@ -886,7 +898,7 @@ exports[`TextField renders without label 1`] = `
 <View
   style={
     {
-      "marginBottom": 20,
+      "marginBottom": 10,
     }
   }
 >
@@ -895,14 +907,15 @@ exports[`TextField renders without label 1`] = `
       [
         {
           "alignItems": "center",
+          "borderColor": "#000000",
           "borderRadius": 10,
           "borderWidth": 1,
           "flexDirection": "row",
-          "padding": 1,
+          "gap": 1,
+          "height": 64,
         },
         {
           "borderColor": "#E0E0E0",
-          "height": 44,
         },
         false,
         false,
@@ -914,21 +927,21 @@ exports[`TextField renders without label 1`] = `
       onBlur={[Function]}
       onFocus={[Function]}
       placeholder="No label"
-      placeholderTextColor="#575757"
+      placeholderTextColor="#676767"
       secureTextEntry={false}
       style={
         [
           {
-            "color": "#1C1B1F",
             "flex": 1,
-            "fontWeight": "400",
+            "fontWeight": "500",
             "includeFontPadding": false,
-            "paddingVertical": 10,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
             "textAlignVertical": "center",
           },
           {
             "fontSize": 14,
-            "paddingHorizontal": 16,
           },
           undefined,
         ]
@@ -942,7 +955,7 @@ exports[`TextField renders without left icon 1`] = `
 <View
   style={
     {
-      "marginBottom": 20,
+      "marginBottom": 10,
     }
   }
 >
@@ -951,14 +964,15 @@ exports[`TextField renders without left icon 1`] = `
       [
         {
           "alignItems": "center",
+          "borderColor": "#000000",
           "borderRadius": 10,
           "borderWidth": 1,
           "flexDirection": "row",
-          "padding": 1,
+          "gap": 1,
+          "height": 64,
         },
         {
           "borderColor": "#E0E0E0",
-          "height": 44,
         },
         false,
         false,
@@ -970,21 +984,21 @@ exports[`TextField renders without left icon 1`] = `
       onBlur={[Function]}
       onFocus={[Function]}
       placeholder="No left icon"
-      placeholderTextColor="#575757"
+      placeholderTextColor="#676767"
       secureTextEntry={false}
       style={
         [
           {
-            "color": "#1C1B1F",
             "flex": 1,
-            "fontWeight": "400",
+            "fontWeight": "500",
             "includeFontPadding": false,
-            "paddingVertical": 10,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
             "textAlignVertical": "center",
           },
           {
             "fontSize": 14,
-            "paddingHorizontal": 16,
           },
           undefined,
         ]
@@ -1040,7 +1054,7 @@ exports[`TextField renders without right icon 1`] = `
 <View
   style={
     {
-      "marginBottom": 20,
+      "marginBottom": 10,
     }
   }
 >
@@ -1049,14 +1063,15 @@ exports[`TextField renders without right icon 1`] = `
       [
         {
           "alignItems": "center",
+          "borderColor": "#000000",
           "borderRadius": 10,
           "borderWidth": 1,
           "flexDirection": "row",
-          "padding": 1,
+          "gap": 1,
+          "height": 64,
         },
         {
           "borderColor": "#E0E0E0",
-          "height": 44,
         },
         false,
         false,
@@ -1070,7 +1085,7 @@ exports[`TextField renders without right icon 1`] = `
           "alignItems": "center",
           "justifyContent": "center",
           "paddingLeft": 12,
-          "paddingRight": 8,
+          "paddingRight": 4,
         }
       }
     >
@@ -1082,21 +1097,21 @@ exports[`TextField renders without right icon 1`] = `
       onBlur={[Function]}
       onFocus={[Function]}
       placeholder="No right icon"
-      placeholderTextColor="#575757"
+      placeholderTextColor="#676767"
       secureTextEntry={false}
       style={
         [
           {
-            "color": "#1C1B1F",
             "flex": 1,
-            "fontWeight": "400",
+            "fontWeight": "500",
             "includeFontPadding": false,
-            "paddingVertical": 10,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
             "textAlignVertical": "center",
           },
           {
             "fontSize": 14,
-            "paddingHorizontal": 16,
           },
           undefined,
         ]
@@ -1110,7 +1125,7 @@ exports[`TextField shows border color changes on focus 1`] = `
 <View
   style={
     {
-      "marginBottom": 20,
+      "marginBottom": 10,
     }
   }
 >
@@ -1119,14 +1134,15 @@ exports[`TextField shows border color changes on focus 1`] = `
       [
         {
           "alignItems": "center",
+          "borderColor": "#000000",
           "borderRadius": 10,
           "borderWidth": 1,
           "flexDirection": "row",
-          "padding": 1,
+          "gap": 1,
+          "height": 64,
         },
         {
           "borderColor": "#F83758",
-          "height": 44,
         },
         false,
         {
@@ -1141,21 +1157,21 @@ exports[`TextField shows border color changes on focus 1`] = `
       onBlur={[Function]}
       onFocus={[Function]}
       placeholder="Focus test"
-      placeholderTextColor="#575757"
+      placeholderTextColor="#676767"
       secureTextEntry={false}
       style={
         [
           {
-            "color": "#1C1B1F",
             "flex": 1,
-            "fontWeight": "400",
+            "fontWeight": "500",
             "includeFontPadding": false,
-            "paddingVertical": 10,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
             "textAlignVertical": "center",
           },
           {
             "fontSize": 14,
-            "paddingHorizontal": 16,
           },
           undefined,
         ]
@@ -1169,7 +1185,7 @@ exports[`TextField shows default border color when not focused and no error 1`] 
 <View
   style={
     {
-      "marginBottom": 20,
+      "marginBottom": 10,
     }
   }
 >
@@ -1178,14 +1194,15 @@ exports[`TextField shows default border color when not focused and no error 1`] 
       [
         {
           "alignItems": "center",
+          "borderColor": "#000000",
           "borderRadius": 10,
           "borderWidth": 1,
           "flexDirection": "row",
-          "padding": 1,
+          "gap": 1,
+          "height": 64,
         },
         {
           "borderColor": "#E0E0E0",
-          "height": 44,
         },
         false,
         false,
@@ -1197,21 +1214,21 @@ exports[`TextField shows default border color when not focused and no error 1`] 
       onBlur={[Function]}
       onFocus={[Function]}
       placeholder="Default test"
-      placeholderTextColor="#575757"
+      placeholderTextColor="#676767"
       secureTextEntry={false}
       style={
         [
           {
-            "color": "#1C1B1F",
             "flex": 1,
-            "fontWeight": "400",
+            "fontWeight": "500",
             "includeFontPadding": false,
-            "paddingVertical": 10,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
             "textAlignVertical": "center",
           },
           {
             "fontSize": 14,
-            "paddingHorizontal": 16,
           },
           undefined,
         ]
@@ -1225,7 +1242,7 @@ exports[`TextField shows error border color 1`] = `
 <View
   style={
     {
-      "marginBottom": 20,
+      "marginBottom": 10,
     }
   }
 >
@@ -1234,14 +1251,15 @@ exports[`TextField shows error border color 1`] = `
       [
         {
           "alignItems": "center",
+          "borderColor": "#000000",
           "borderRadius": 10,
           "borderWidth": 1,
           "flexDirection": "row",
-          "padding": 1,
+          "gap": 1,
+          "height": 64,
         },
         {
           "borderColor": "#EB3030",
-          "height": 44,
         },
         false,
         false,
@@ -1255,21 +1273,21 @@ exports[`TextField shows error border color 1`] = `
       onBlur={[Function]}
       onFocus={[Function]}
       placeholder="Error test"
-      placeholderTextColor="#575757"
+      placeholderTextColor="#676767"
       secureTextEntry={false}
       style={
         [
           {
-            "color": "#1C1B1F",
             "flex": 1,
-            "fontWeight": "400",
+            "fontWeight": "500",
             "includeFontPadding": false,
-            "paddingVertical": 10,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
             "textAlignVertical": "center",
           },
           {
             "fontSize": 14,
-            "paddingHorizontal": 16,
           },
           undefined,
         ]
@@ -1295,7 +1313,7 @@ exports[`TextField shows primary border color on focus when no error 1`] = `
 <View
   style={
     {
-      "marginBottom": 20,
+      "marginBottom": 10,
     }
   }
 >
@@ -1304,14 +1322,15 @@ exports[`TextField shows primary border color on focus when no error 1`] = `
       [
         {
           "alignItems": "center",
+          "borderColor": "#000000",
           "borderRadius": 10,
           "borderWidth": 1,
           "flexDirection": "row",
-          "padding": 1,
+          "gap": 1,
+          "height": 64,
         },
         {
           "borderColor": "#F83758",
-          "height": 44,
         },
         false,
         {
@@ -1326,21 +1345,21 @@ exports[`TextField shows primary border color on focus when no error 1`] = `
       onBlur={[Function]}
       onFocus={[Function]}
       placeholder="Focus test"
-      placeholderTextColor="#575757"
+      placeholderTextColor="#676767"
       secureTextEntry={false}
       style={
         [
           {
-            "color": "#1C1B1F",
             "flex": 1,
-            "fontWeight": "400",
+            "fontWeight": "500",
             "includeFontPadding": false,
-            "paddingVertical": 10,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
             "textAlignVertical": "center",
           },
           {
             "fontSize": 14,
-            "paddingHorizontal": 16,
           },
           undefined,
         ]
