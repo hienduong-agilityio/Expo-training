@@ -4,8 +4,8 @@ import { ReactNode } from 'react';
 import { BUTTON_VARIANTS, BUTTON_COLORS } from '@app/enums';
 
 // Types
+import type { ImageProps as ExpoImageProps } from 'expo-image';
 import type {
-  ImageProps,
   ImageSourcePropType,
   PressableProps,
   StyleProp,
@@ -87,9 +87,12 @@ export interface IStarsRatingProps {
   maxRating?: number;
 }
 
-export interface IFallbackImageProps extends ImageProps {
+export interface IFallbackImageProps
+  extends Omit<ExpoImageProps, 'source' | 'contentFit' | 'resizeMode'> {
   source?: ImageSourcePropType;
   fallbackSource?: ImageSourcePropType;
+  /** Mapped to expo-image `contentFit` */
+  resizeMode?: ExpoImageProps['contentFit'];
 }
 
 export interface IProductCardProps extends IProduct {

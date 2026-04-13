@@ -2,14 +2,10 @@
  * @format
  */
 
-import { AppRegistry } from 'react-native';
+import { registerRootComponent } from 'expo';
 import App from './App';
-import appJson from './app.json';
-
-const appName = appJson.expo?.name ?? appJson.name;
 import { setupBackgroundNotificationHandler } from './src/services/notifications';
 
-// Register background handler
 setupBackgroundNotificationHandler();
 
 let AppEntryPoint = App;
@@ -21,4 +17,4 @@ if (__DEV__) {
   }
 }
 
-AppRegistry.registerComponent(appName, () => AppEntryPoint);
+registerRootComponent(AppEntryPoint);

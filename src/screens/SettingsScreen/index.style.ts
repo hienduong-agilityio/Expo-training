@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: spacing[4],
   },
   content: {
-    gap: spacing[2],
+    gap: spacing[4],
   },
   text: {
     fontSize: typography.fontSizes.base,

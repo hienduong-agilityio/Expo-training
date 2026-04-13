@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-native';
-import { Linking } from 'react-native';
+import { renderHook, waitFor } from '@testing-library/react-native';
+import * as ExpoLinking from 'expo-linking';
 
 // Hooks
 import { useFirebaseMessaging } from '../useFirebaseMessaging';
@@ -13,12 +13,28 @@ import { buildNotificationDeepLink } from '@app/helpers/notifications';
 // Stores
 import { authStore } from '@app/stores/authStore';
 
+jest.mock('expo-linking', () => ({
+  canOpenURL: jest.fn(),
+  openURL: jest.fn(),
+  createURL: jest.fn(() => 'stylish://'),
+}));
+
 jest.mock('@app/services/firebase');
 jest.mock('@app/services/user');
 jest.mock('@app/stores/authStore');
+jest.mock('@app/services/notifications', () => {
+  const actual = jest.requireActual('@app/services/notifications');
+  return {
+    ...actual,
+    initializeNotificationChannels: jest.fn(() => Promise.resolve()),
+    ensureExpoNotificationPermissionsAsync: jest.fn(() =>
+      Promise.resolve('granted'),
+    ),
+  };
+});
 jest.mock('@app/helpers/notifications', () => {
   const actual = jest.requireActual('@app/helpers/notifications');
-  const ReactNativeLinking = require('react-native').Linking;
+  const LinkingModule = require('expo-linking');
   const mockBuildNotificationDeepLink = jest.fn();
   return {
     ...actual,
@@ -26,34 +42,22 @@ jest.mock('@app/helpers/notifications', () => {
     openNotificationLink: jest.fn(
       async (data: { deepLink?: string; [key: string]: unknown } | null) => {
         if (!data) return;
-        const link = data?.deepLink || mockBuildNotificationDeepLink(data);
-        if (
-          link &&
-          (await ReactNativeLinking.canOpenURL(link).catch(() => false))
-        ) {
-          await ReactNativeLinking.openURL(link);
+        const link = data.deepLink || mockBuildNotificationDeepLink(data);
+        if (link && (await LinkingModule.canOpenURL(link).catch(() => false))) {
+          await LinkingModule.openURL(link);
         }
       },
     ),
   };
 });
-jest.mock('react-native', () => ({
-  Platform: {
-    OS: 'ios',
-  },
-  Linking: {
-    canOpenURL: jest.fn(),
-    openURL: jest.fn(),
-  },
-}));
 
 describe('useFirebaseMessaging', () => {
   const mockUnsubscribe = jest.fn();
   const mockGetFcmToken = getFcmToken as jest.Mock;
   const mockRegisterListenerWithFCM = registerListenerWithFCM as jest.Mock;
   const mockBuildNotificationDeepLink = buildNotificationDeepLink as jest.Mock;
-  const mockCanOpenURL = Linking.canOpenURL as jest.Mock;
-  const mockOpenURL = Linking.openURL as jest.Mock;
+  const mockCanOpenURL = ExpoLinking.canOpenURL as jest.Mock;
+  const mockOpenURL = ExpoLinking.openURL as jest.Mock;
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -66,21 +70,22 @@ describe('useFirebaseMessaging', () => {
     );
   });
 
-  it('should get FCM token on mount', () => {
+  it('should get FCM token on mount', async () => {
     renderHook(() => useFirebaseMessaging());
 
-    expect(mockGetFcmToken).toHaveBeenCalled();
+    await waitFor(() => expect(mockGetFcmToken).toHaveBeenCalled());
   });
 
-  it('should register listener on mount', () => {
+  it('should register listener on mount', async () => {
     renderHook(() => useFirebaseMessaging());
 
-    expect(mockRegisterListenerWithFCM).toHaveBeenCalled();
+    await waitFor(() => expect(mockRegisterListenerWithFCM).toHaveBeenCalled());
   });
 
-  it('should return unsubscribe function when listener returns function', () => {
+  it('should return unsubscribe function when listener returns function', async () => {
     const { unmount } = renderHook(() => useFirebaseMessaging());
 
+    await waitFor(() => expect(mockRegisterListenerWithFCM).toHaveBeenCalled());
     unmount();
 
     expect(mockUnsubscribe).toHaveBeenCalled();
@@ -91,7 +96,6 @@ describe('useFirebaseMessaging', () => {
 
     const { unmount } = renderHook(() => useFirebaseMessaging());
 
-    // Should not throw error
     unmount();
 
     expect(mockUnsubscribe).not.toHaveBeenCalled();
@@ -109,6 +113,9 @@ describe('useFirebaseMessaging', () => {
 
     renderHook(() => useFirebaseMessaging());
 
+    await waitFor(() =>
+      expect(mockRegisterListenerWithFCM.mock.calls.length).toBeGreaterThan(0),
+    );
     const notificationCallback = mockRegisterListenerWithFCM.mock.calls[0][0];
 
     await notificationCallback(mockNotificationData);
@@ -120,6 +127,9 @@ describe('useFirebaseMessaging', () => {
   it('should handle notification open without data', async () => {
     renderHook(() => useFirebaseMessaging());
 
+    await waitFor(() =>
+      expect(mockRegisterListenerWithFCM.mock.calls.length).toBeGreaterThan(0),
+    );
     const notificationCallback = mockRegisterListenerWithFCM.mock.calls[0][0];
 
     await notificationCallback(null);
@@ -138,6 +148,9 @@ describe('useFirebaseMessaging', () => {
 
     renderHook(() => useFirebaseMessaging());
 
+    await waitFor(() =>
+      expect(mockRegisterListenerWithFCM.mock.calls.length).toBeGreaterThan(0),
+    );
     const notificationCallback = mockRegisterListenerWithFCM.mock.calls[0][0];
 
     await notificationCallback(mockNotificationData);
@@ -158,6 +171,9 @@ describe('useFirebaseMessaging', () => {
 
     renderHook(() => useFirebaseMessaging());
 
+    await waitFor(() =>
+      expect(mockRegisterListenerWithFCM.mock.calls.length).toBeGreaterThan(0),
+    );
     const notificationCallback = mockRegisterListenerWithFCM.mock.calls[0][0];
 
     await notificationCallback(mockNotificationData);
@@ -178,6 +194,9 @@ describe('useFirebaseMessaging', () => {
 
     renderHook(() => useFirebaseMessaging());
 
+    await waitFor(() =>
+      expect(mockRegisterListenerWithFCM.mock.calls.length).toBeGreaterThan(0),
+    );
     const notificationCallback = mockRegisterListenerWithFCM.mock.calls[0][0];
 
     await notificationCallback(mockNotificationData);
@@ -200,6 +219,9 @@ describe('useFirebaseMessaging', () => {
 
     renderHook(() => useFirebaseMessaging());
 
+    await waitFor(() =>
+      expect(mockRegisterListenerWithFCM.mock.calls.length).toBeGreaterThan(0),
+    );
     const notificationCallback = mockRegisterListenerWithFCM.mock.calls[0][0];
 
     await notificationCallback(mockNotificationData);

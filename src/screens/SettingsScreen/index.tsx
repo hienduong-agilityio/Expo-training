@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { View, Text } from 'react-native';
 
@@ -15,11 +16,9 @@ import { useAuthActions } from '@app/hooks/useAuthActions';
 
 // Styles
 import { styles } from './index.style';
-import { useCallback } from 'react';
 
 export const SettingsScreen = () => {
   const { logout } = useAuthActions();
-
   const userEmail = authStore(state => state.user?.email);
 
   const handleSignOut = useCallback(() => {
@@ -33,6 +32,7 @@ export const SettingsScreen = () => {
           User:
           {userEmail ?? SETTINGS_MESSAGES.DEFAULT_USER}
         </Text>
+
         <Button label={BUTTON_LABELS.SIGN_OUT} onPress={handleSignOut} />
       </View>
     </SafeAreaView>
