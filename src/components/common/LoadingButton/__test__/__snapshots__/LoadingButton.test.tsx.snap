@@ -36,11 +36,11 @@ exports[`LoadingButton Rendering renders loading button with custom loading labe
     [
       {
         "alignItems": "center",
-        "borderRadius": 10,
+        "borderRadius": 6,
+        "height": 66,
         "justifyContent": "center",
       },
       {
-        "height": 44,
         "paddingHorizontal": 16,
       },
       {
@@ -75,7 +75,8 @@ exports[`LoadingButton Rendering renders loading button with custom loading labe
       style={
         [
           {
-            "fontWeight": "500",
+            "fontSize": 18,
+            "fontWeight": "600",
           },
           {
             "fontSize": 14,
@@ -131,11 +132,11 @@ exports[`LoadingButton Rendering renders loading button with default label 1`] =
     [
       {
         "alignItems": "center",
-        "borderRadius": 10,
+        "borderRadius": 6,
+        "height": 66,
         "justifyContent": "center",
       },
       {
-        "height": 44,
         "paddingHorizontal": 16,
       },
       {
@@ -154,10 +155,8 @@ exports[`LoadingButton Rendering renders loading button with default label 1`] =
     style={
       [
         {
-          "fontWeight": "500",
-        },
-        {
-          "fontSize": 14,
+          "fontSize": 29,
+          "fontWeight": "600",
         },
         {
           "color": "#FFFFFF",
@@ -206,11 +205,11 @@ exports[`LoadingButton States renders different sizes 1`] = `
     [
       {
         "alignItems": "center",
-        "borderRadius": 10,
+        "borderRadius": 6,
+        "height": 66,
         "justifyContent": "center",
       },
       {
-        "height": 36,
         "paddingHorizontal": 12,
       },
       {
@@ -229,10 +228,8 @@ exports[`LoadingButton States renders different sizes 1`] = `
     style={
       [
         {
-          "fontWeight": "500",
-        },
-        {
-          "fontSize": 12,
+          "fontSize": 29,
+          "fontWeight": "600",
         },
         {
           "color": "#FFFFFF",
@@ -281,11 +278,11 @@ exports[`LoadingButton States renders different sizes 2`] = `
     [
       {
         "alignItems": "center",
-        "borderRadius": 10,
+        "borderRadius": 6,
+        "height": 66,
         "justifyContent": "center",
       },
       {
-        "height": 44,
         "paddingHorizontal": 16,
       },
       {
@@ -304,10 +301,8 @@ exports[`LoadingButton States renders different sizes 2`] = `
     style={
       [
         {
-          "fontWeight": "500",
-        },
-        {
-          "fontSize": 14,
+          "fontSize": 29,
+          "fontWeight": "600",
         },
         {
           "color": "#FFFFFF",
@@ -356,11 +351,11 @@ exports[`LoadingButton States renders different sizes 3`] = `
     [
       {
         "alignItems": "center",
-        "borderRadius": 10,
+        "borderRadius": 6,
+        "height": 66,
         "justifyContent": "center",
       },
       {
-        "height": 52,
         "paddingHorizontal": 20,
       },
       {
@@ -379,10 +374,8 @@ exports[`LoadingButton States renders different sizes 3`] = `
     style={
       [
         {
-          "fontWeight": "500",
-        },
-        {
-          "fontSize": 15,
+          "fontSize": 29,
+          "fontWeight": "600",
         },
         {
           "color": "#FFFFFF",
@@ -431,11 +424,11 @@ exports[`LoadingButton States renders disabled state 1`] = `
     [
       {
         "alignItems": "center",
-        "borderRadius": 10,
+        "borderRadius": 6,
+        "height": 66,
         "justifyContent": "center",
       },
       {
-        "height": 44,
         "paddingHorizontal": 16,
       },
       {
@@ -456,10 +449,8 @@ exports[`LoadingButton States renders disabled state 1`] = `
     style={
       [
         {
-          "fontWeight": "500",
-        },
-        {
-          "fontSize": 14,
+          "fontSize": 29,
+          "fontWeight": "600",
         },
         {
           "color": "#FFFFFF",
@@ -508,11 +499,11 @@ exports[`LoadingButton States renders full width button 1`] = `
     [
       {
         "alignItems": "center",
-        "borderRadius": 10,
+        "borderRadius": 6,
+        "height": 66,
         "justifyContent": "center",
       },
       {
-        "height": 44,
         "paddingHorizontal": 16,
       },
       {
@@ -533,10 +524,8 @@ exports[`LoadingButton States renders full width button 1`] = `
     style={
       [
         {
-          "fontWeight": "500",
-        },
-        {
-          "fontSize": 14,
+          "fontSize": 29,
+          "fontWeight": "600",
         },
         {
           "color": "#FFFFFF",

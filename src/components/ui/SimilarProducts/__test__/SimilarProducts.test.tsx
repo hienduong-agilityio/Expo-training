@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react-native';
+import { renderWithQueryClient, screen, fireEvent } from 'test-utils';
 
 // Components
 import { SimilarProducts } from '@app/components/ui/SimilarProducts';
@@ -21,7 +21,7 @@ describe('SimilarProducts', () => {
   });
 
   const renderComponent = (overrides = {}) =>
-    render(
+    renderWithQueryClient(
       <SimilarProducts
         products={MOCK_PRODUCTS.slice(0, 3) as unknown as IProduct[]}
         onViewSimilar={mockCallbacks.onViewSimilar}

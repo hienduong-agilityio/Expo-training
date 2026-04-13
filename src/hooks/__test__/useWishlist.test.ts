@@ -10,21 +10,47 @@ import { wishlistService } from '@app/services/wishlist';
 import { authStore } from '@app/stores/authStore';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 
+const mockShowToast = jest.fn();
+
 jest.mock('@app/services/wishlist');
 jest.mock('@app/stores/authStore');
-jest.mock('@tanstack/react-query', () => ({
-  useQuery: jest.fn(),
-  useMutation: jest.fn(({ mutationFn }) => {
-    const [isPending, setIsPending] = require('react').useState(false);
-    const { act } = require('@testing-library/react-native');
+jest.mock('@app/stores/toastStore', () => ({
+  toastStore: jest.fn(selector => {
+    const state = { showToast: mockShowToast };
+    return selector ? selector(state) : state;
+  }),
+}));
+
+jest.mock('@tanstack/react-query', () => {
+  const React = require('react');
+  const { act } = require('@testing-library/react-native');
+
+  const useMutation = jest.fn(options => {
+    const [isPending, setIsPending] = React.useState(false);
     return {
-      mutateAsync: jest.fn(async data => {
+      mutateAsync: jest.fn(async variables => {
+        let context;
         await act(async () => {
           setIsPending(true);
         });
         try {
-          return await mutationFn(data);
+          if (typeof options.onMutate === 'function') {
+            context = await options.onMutate(variables);
+          }
+          const result = await options.mutationFn(variables);
+          if (typeof options.onSuccess === 'function') {
+            options.onSuccess(result, variables, context);
+          }
+          return result;
+        } catch (error) {
+          if (typeof options.onError === 'function') {
+            options.onError(error, variables, context);
+          }
+          throw error;
         } finally {
+          if (typeof options.onSettled === 'function') {
+            options.onSettled();
+          }
           await act(async () => {
             setIsPending(false);
           });
@@ -32,9 +58,14 @@ jest.mock('@tanstack/react-query', () => ({
       }),
       isPending,
     };
-  }),
-  useQueryClient: jest.fn(),
-}));
+  });
+
+  return {
+    useQuery: jest.fn(),
+    useMutation,
+    useQueryClient: jest.fn(),
+  };
+});
 
 describe('useWishlist', () => {
   const mockUser = { documentId: 'user1' };
@@ -46,6 +77,7 @@ describe('useWishlist', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
+    mockShowToast.mockClear();
     (authStore as unknown as jest.Mock).mockImplementation(selector => {
       const state = { user: mockUser };
       return selector ? selector(state) : state;
@@ -184,6 +216,8 @@ describe('useWishlist', () => {
       mockQueryClient = {
         getQueryData: jest.fn(() => null),
         setQueryData: jest.fn(),
+        cancelQueries: jest.fn(() => Promise.resolve()),
+        invalidateQueries: jest.fn(() => Promise.resolve()),
       };
       (useQueryClient as jest.Mock).mockReturnValue(mockQueryClient);
     });
@@ -209,12 +243,13 @@ describe('useWishlist', () => {
 
       expect(wishlistService.updateWishlistProducts).toHaveBeenCalledWith(
         'wishlist1',
-        [{ productId: '2' }],
+        [{ productId: '2', product: '2' }],
       );
       expect(added).toEqual(updatedWishlist);
+      expect(mockShowToast).toHaveBeenCalled();
     });
 
-    it('addItem returns existing wishlist when product already exists', async () => {
+    it('addItem syncs wishlist when product already exists', async () => {
       const wishlistWithItem = {
         ...mockWishlist,
         products: [{ productId: '1' }],
@@ -224,12 +259,18 @@ describe('useWishlist', () => {
       (wishlistService.ensureWishlistForUser as jest.Mock).mockResolvedValue(
         wishlistWithItem,
       );
+      (wishlistService.updateWishlistProducts as jest.Mock).mockResolvedValue(
+        wishlistWithItem,
+      );
 
       const { result } = renderHook(() => useWishlistActions());
 
       const added = await result.current.addItem('1');
 
-      expect(wishlistService.updateWishlistProducts).not.toHaveBeenCalled();
+      expect(wishlistService.updateWishlistProducts).toHaveBeenCalledWith(
+        'wishlist1',
+        [{ productId: '1', product: '1' }],
+      );
       expect(added).toEqual(wishlistWithItem);
     });
 
@@ -257,23 +298,52 @@ describe('useWishlist', () => {
 
       expect(wishlistService.updateWishlistProducts).toHaveBeenCalledWith(
         'wishlist1',
-        [{ productId: '2' }],
+        [{ productId: '2', product: '2' }],
       );
       expect(removed).toEqual(updatedWishlist);
+      expect(mockShowToast).toHaveBeenCalled();
     });
 
-    it('ensureWishlist returns cached wishlist when available', async () => {
+    it('addItem onError restores wishlist and shows toast', async () => {
+      const prev = { ...mockWishlist };
+      mockQueryClient.getQueryData.mockReturnValue(prev);
+      (wishlistService.ensureWishlistForUser as jest.Mock).mockResolvedValue(
+        prev,
+      );
+      (wishlistService.updateWishlistProducts as jest.Mock).mockRejectedValue(
+        new Error('fail'),
+      );
+
+      const { result } = renderHook(() => useWishlistActions());
+
+      await expect(result.current.addItem('2')).rejects.toThrow('fail');
+      expect(mockShowToast).toHaveBeenCalled();
+      expect(mockQueryClient.setQueryData).toHaveBeenCalledWith(
+        expect.anything(),
+        prev,
+      );
+    });
+
+    it('ensureWishlist always resolves wishlist before update', async () => {
       const cachedWishlist = {
         ...mockWishlist,
         products: [{ productId: '1' }],
       };
       mockQueryClient.getQueryData.mockReturnValue(cachedWishlist);
+      (wishlistService.ensureWishlistForUser as jest.Mock).mockResolvedValue(
+        cachedWishlist,
+      );
+      (wishlistService.updateWishlistProducts as jest.Mock).mockResolvedValue(
+        mockWishlist,
+      );
 
       const { result } = renderHook(() => useWishlistActions());
 
       await result.current.addItem('2');
 
-      expect(wishlistService.ensureWishlistForUser).not.toHaveBeenCalled();
+      expect(wishlistService.ensureWishlistForUser).toHaveBeenCalledWith(
+        'user1',
+      );
       expect(wishlistService.updateWishlistProducts).toHaveBeenCalled();
     });
 
@@ -344,7 +414,29 @@ describe('useWishlist', () => {
 
       expect(wishlistService.updateWishlistProducts).toHaveBeenCalledWith(
         'wishlist1',
-        [{ productId: '1' }],
+        [{ productId: '1', product: '1' }],
+      );
+    });
+
+    it('removeItem onError restores wishlist', async () => {
+      const prev = {
+        ...mockWishlist,
+        products: [{ productId: '1' }, { productId: '2' }],
+      };
+      mockQueryClient.getQueryData.mockReturnValue(prev);
+      (wishlistService.ensureWishlistForUser as jest.Mock).mockResolvedValue(
+        prev,
+      );
+      (wishlistService.updateWishlistProducts as jest.Mock).mockRejectedValue(
+        new Error('rm fail'),
+      );
+
+      const { result } = renderHook(() => useWishlistActions());
+
+      await expect(result.current.removeItem('1')).rejects.toThrow('rm fail');
+      expect(mockQueryClient.setQueryData).toHaveBeenCalledWith(
+        expect.anything(),
+        prev,
       );
     });
   });

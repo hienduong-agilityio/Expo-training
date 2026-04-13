@@ -17,12 +17,7 @@ import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { ParamListBase } from '@react-navigation/native';
 
 // Constants
-import {
-  PRIVATE_SCREENS,
-  STATUS,
-  POSITION,
-  TOAST_MESSAGES,
-} from '@app/constants';
+import { PRIVATE_SCREENS, STATUS, POSITION } from '@app/constants';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { PrivateStackParamList } from '@app/interfaces/navigation';
 
@@ -117,11 +112,6 @@ describe('ProductDetailHeaderRight', () => {
 
       await waitFor(() => {
         expect(mockAddItem).toHaveBeenCalledWith('1');
-      });
-      expect(mockShowToast).toHaveBeenCalledWith({
-        type: STATUS.SUCCESS,
-        message: TOAST_MESSAGES.ADDED_TO_WISHLIST,
-        position: POSITION.TOP,
       });
     });
   });

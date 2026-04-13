@@ -21,44 +21,26 @@ exports[`CartItem renders product info and quantity 1`] = `
     }
   }
 >
-  <View
-    style={
-      [
-        {
-          "overflow": "hidden",
-        },
-        {
-          "backgroundColor": "#F4F4F4",
-          "borderRadius": 8,
-          "height": "100%",
-          "marginRight": 16,
-          "width": 120,
-        },
-      ]
+  <Image
+    accessibilityLabel="Test Product image"
+    contentFit="cover"
+    onError={[Function]}
+    priority="normal"
+    source={
+      {
+        "uri": "https://picsum.photos/300/400",
+      }
     }
-  >
-    <FastImageView
-      accessibilityLabel="Test Product image"
-      defaultSource={null}
-      onFastImageError={[Function]}
-      resizeMode="cover"
-      source={
-        {
-          "priority": "normal",
-          "uri": "https://picsum.photos/300/400",
-        }
+    style={
+      {
+        "backgroundColor": "#F4F4F4",
+        "borderRadius": 8,
+        "height": "100%",
+        "marginRight": 16,
+        "width": 120,
       }
-      style={
-        {
-          "bottom": 0,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        }
-      }
-    />
-  </View>
+    }
+  />
   <View
     style={
       {

@@ -36,11 +36,11 @@ exports[`Button Basic Rendering renders button with default props: default 1`] =
     [
       {
         "alignItems": "center",
-        "borderRadius": 10,
+        "borderRadius": 6,
+        "height": 66,
         "justifyContent": "center",
       },
       {
-        "height": 44,
         "paddingHorizontal": 16,
       },
       {
@@ -59,10 +59,8 @@ exports[`Button Basic Rendering renders button with default props: default 1`] =
     style={
       [
         {
-          "fontWeight": "500",
-        },
-        {
-          "fontSize": 14,
+          "fontSize": 29,
+          "fontWeight": "600",
         },
         {
           "color": "#FFFFFF",
@@ -111,11 +109,11 @@ exports[`Button Basic Rendering renders different button sizes: lg-size 1`] = `
     [
       {
         "alignItems": "center",
-        "borderRadius": 10,
+        "borderRadius": 6,
+        "height": 66,
         "justifyContent": "center",
       },
       {
-        "height": 52,
         "paddingHorizontal": 20,
       },
       {
@@ -134,10 +132,8 @@ exports[`Button Basic Rendering renders different button sizes: lg-size 1`] = `
     style={
       [
         {
-          "fontWeight": "500",
-        },
-        {
-          "fontSize": 15,
+          "fontSize": 29,
+          "fontWeight": "600",
         },
         {
           "color": "#FFFFFF",
@@ -186,11 +182,11 @@ exports[`Button Basic Rendering renders different button sizes: md-size 1`] = `
     [
       {
         "alignItems": "center",
-        "borderRadius": 10,
+        "borderRadius": 6,
+        "height": 66,
         "justifyContent": "center",
       },
       {
-        "height": 44,
         "paddingHorizontal": 16,
       },
       {
@@ -209,10 +205,8 @@ exports[`Button Basic Rendering renders different button sizes: md-size 1`] = `
     style={
       [
         {
-          "fontWeight": "500",
-        },
-        {
-          "fontSize": 14,
+          "fontSize": 29,
+          "fontWeight": "600",
         },
         {
           "color": "#FFFFFF",
@@ -261,11 +255,11 @@ exports[`Button Basic Rendering renders different button sizes: sm-size 1`] = `
     [
       {
         "alignItems": "center",
-        "borderRadius": 10,
+        "borderRadius": 6,
+        "height": 66,
         "justifyContent": "center",
       },
       {
-        "height": 36,
         "paddingHorizontal": 12,
       },
       {
@@ -284,10 +278,8 @@ exports[`Button Basic Rendering renders different button sizes: sm-size 1`] = `
     style={
       [
         {
-          "fontWeight": "500",
-        },
-        {
-          "fontSize": 12,
+          "fontSize": 29,
+          "fontWeight": "600",
         },
         {
           "color": "#FFFFFF",
@@ -336,11 +328,11 @@ exports[`Button Button Content renders children when provided 1`] = `
     [
       {
         "alignItems": "center",
-        "borderRadius": 10,
+        "borderRadius": 6,
+        "height": 66,
         "justifyContent": "center",
       },
       {
-        "height": 44,
         "paddingHorizontal": 16,
       },
       {
@@ -396,11 +388,11 @@ exports[`Button Button Interactions calls onPress for outline button: outline-in
     [
       {
         "alignItems": "center",
-        "borderRadius": 10,
+        "borderRadius": 6,
+        "height": 66,
         "justifyContent": "center",
       },
       {
-        "height": 44,
         "paddingHorizontal": 16,
       },
       {
@@ -418,10 +410,8 @@ exports[`Button Button Interactions calls onPress for outline button: outline-in
     style={
       [
         {
-          "fontWeight": "500",
-        },
-        {
-          "fontSize": 14,
+          "fontSize": 29,
+          "fontWeight": "600",
         },
         {
           "color": "#1C1B1F",
@@ -470,11 +460,11 @@ exports[`Button Button Interactions calls onPress for solid button: solid-intera
     [
       {
         "alignItems": "center",
-        "borderRadius": 10,
+        "borderRadius": 6,
+        "height": 66,
         "justifyContent": "center",
       },
       {
-        "height": 44,
         "paddingHorizontal": 16,
       },
       {
@@ -493,10 +483,8 @@ exports[`Button Button Interactions calls onPress for solid button: solid-intera
     style={
       [
         {
-          "fontWeight": "500",
-        },
-        {
-          "fontSize": 14,
+          "fontSize": 29,
+          "fontWeight": "600",
         },
         {
           "color": "#FFFFFF",
@@ -545,11 +533,11 @@ exports[`Button Button Press States applies pressed style for solid button 1`] =
     [
       {
         "alignItems": "center",
-        "borderRadius": 10,
+        "borderRadius": 6,
+        "height": 66,
         "justifyContent": "center",
       },
       {
-        "height": 44,
         "paddingHorizontal": 16,
       },
       {
@@ -568,10 +556,8 @@ exports[`Button Button Press States applies pressed style for solid button 1`] =
     style={
       [
         {
-          "fontWeight": "500",
-        },
-        {
-          "fontSize": 14,
+          "fontSize": 29,
+          "fontWeight": "600",
         },
         {
           "color": "#FFFFFF",
@@ -620,11 +606,11 @@ exports[`Button Button States renders disabled button button correctly: disabled
     [
       {
         "alignItems": "center",
-        "borderRadius": 10,
+        "borderRadius": 6,
+        "height": 66,
         "justifyContent": "center",
       },
       {
-        "height": 44,
         "paddingHorizontal": 16,
       },
       {
@@ -645,10 +631,8 @@ exports[`Button Button States renders disabled button button correctly: disabled
     style={
       [
         {
-          "fontWeight": "500",
-        },
-        {
-          "fontSize": 14,
+          "fontSize": 29,
+          "fontWeight": "600",
         },
         {
           "color": "#FFFFFF",
@@ -697,11 +681,11 @@ exports[`Button Button States renders full width button button correctly: full w
     [
       {
         "alignItems": "center",
-        "borderRadius": 10,
+        "borderRadius": 6,
+        "height": 66,
         "justifyContent": "center",
       },
       {
-        "height": 44,
         "paddingHorizontal": 16,
       },
       {
@@ -722,10 +706,8 @@ exports[`Button Button States renders full width button button correctly: full w
     style={
       [
         {
-          "fontWeight": "500",
-        },
-        {
-          "fontSize": 14,
+          "fontSize": 29,
+          "fontWeight": "600",
         },
         {
           "color": "#FFFFFF",
@@ -776,11 +758,11 @@ exports[`Button Button States renders selected outline button (renders as solid)
     [
       {
         "alignItems": "center",
-        "borderRadius": 10,
+        "borderRadius": 6,
+        "height": 66,
         "justifyContent": "center",
       },
       {
-        "height": 44,
         "paddingHorizontal": 16,
       },
       {
@@ -798,10 +780,8 @@ exports[`Button Button States renders selected outline button (renders as solid)
     style={
       [
         {
-          "fontWeight": "500",
-        },
-        {
-          "fontSize": 14,
+          "fontSize": 29,
+          "fontWeight": "600",
         },
         {
           "color": "#1C1B1F",
@@ -851,11 +831,11 @@ exports[`Button Button Variants renders outline neutral button correctly: outlin
     [
       {
         "alignItems": "center",
-        "borderRadius": 10,
+        "borderRadius": 6,
+        "height": 66,
         "justifyContent": "center",
       },
       {
-        "height": 44,
         "paddingHorizontal": 16,
       },
       {
@@ -873,10 +853,8 @@ exports[`Button Button Variants renders outline neutral button correctly: outlin
     style={
       [
         {
-          "fontWeight": "500",
-        },
-        {
-          "fontSize": 14,
+          "fontSize": 29,
+          "fontWeight": "600",
         },
         {
           "color": "#1C1B1F",
@@ -926,11 +904,11 @@ exports[`Button Button Variants renders outline primary button correctly: outlin
     [
       {
         "alignItems": "center",
-        "borderRadius": 10,
+        "borderRadius": 6,
+        "height": 66,
         "justifyContent": "center",
       },
       {
-        "height": 44,
         "paddingHorizontal": 16,
       },
       {
@@ -948,10 +926,8 @@ exports[`Button Button Variants renders outline primary button correctly: outlin
     style={
       [
         {
-          "fontWeight": "500",
-        },
-        {
-          "fontSize": 14,
+          "fontSize": 29,
+          "fontWeight": "600",
         },
         {
           "color": "#1C1B1F",
@@ -1001,11 +977,11 @@ exports[`Button Button Variants renders solid neutral button correctly: solid ne
     [
       {
         "alignItems": "center",
-        "borderRadius": 10,
+        "borderRadius": 6,
+        "height": 66,
         "justifyContent": "center",
       },
       {
-        "height": 44,
         "paddingHorizontal": 16,
       },
       {
@@ -1024,10 +1000,8 @@ exports[`Button Button Variants renders solid neutral button correctly: solid ne
     style={
       [
         {
-          "fontWeight": "500",
-        },
-        {
-          "fontSize": 14,
+          "fontSize": 29,
+          "fontWeight": "600",
         },
         {
           "color": "#FFFFFF",
@@ -1077,11 +1051,11 @@ exports[`Button Button Variants renders solid primary button correctly: solid pr
     [
       {
         "alignItems": "center",
-        "borderRadius": 10,
+        "borderRadius": 6,
+        "height": 66,
         "justifyContent": "center",
       },
       {
-        "height": 44,
         "paddingHorizontal": 16,
       },
       {
@@ -1100,10 +1074,8 @@ exports[`Button Button Variants renders solid primary button correctly: solid pr
     style={
       [
         {
-          "fontWeight": "500",
-        },
-        {
-          "fontSize": 14,
+          "fontSize": 29,
+          "fontWeight": "600",
         },
         {
           "color": "#FFFFFF",

@@ -5,7 +5,7 @@ import { useCartActions } from '@app/hooks/useCart';
 import { toastStore } from '@app/stores/toastStore';
 
 // Constants
-import { STATUS, MESSAGES } from '@app/constants';
+import { STATUS, MESSAGES, TOAST_MESSAGES } from '@app/constants';
 
 // Types
 import type { IProduct } from '@app/interfaces/product';
@@ -18,15 +18,22 @@ export const useProductCart = () => {
   const showToast = toastStore(state => state.showToast);
 
   const handleAddToCart = async (product: IProduct, size?: string) => {
-    await addItem({
-      productId: String(product.id),
-      quantity: 1,
-    });
+    try {
+      await addItem({
+        productId: String(product.id),
+        quantity: 1,
+      });
 
-    showToast({
-      type: STATUS.SUCCESS,
-      message: `${product.name} ${size ? `(${size})` : ''} added to cart`,
-    });
+      showToast({
+        type: STATUS.SUCCESS,
+        message: `${product.name} ${size ? `(${size})` : ''} added to cart`,
+      });
+    } catch {
+      showToast({
+        type: STATUS.ERROR,
+        message: TOAST_MESSAGES.ADD_TO_CART_FAILED,
+      });
+    }
   };
 
   const handleBuyNow = (product: IProduct) => {

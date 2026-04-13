@@ -2,6 +2,10 @@ module.exports = {
   preset: 'react-native',
   moduleNameMapper: {
     '\\.(ttf|otf)$': '<rootDir>/__mocks__/fileMock.js',
+    '^test-utils$': '<rootDir>/test-utils.tsx',
+    '^react-native-permissions$':
+      '<rootDir>/__mocks__/react-native-permissions.js',
+    '^expo-notifications$': '<rootDir>/__mocks__/expo-notifications.js',
   },
   coverageThreshold: {
     global: {
@@ -12,7 +16,7 @@ module.exports = {
     },
   },
   transformIgnorePatterns: [
-    '/node_modules/(?!((jest-)?react-native|@react-native(-community)?)|react-clone-referenced-element|react-navigation|@react-navigation/.*)',
+    '/node_modules/(?!((jest-)?react-native|@react-native(-community)?)|react-clone-referenced-element|react-navigation|@react-navigation/.*|expo(nent)?|@expo/.*|expo-modules-core|expo-image|expo-linking)',
   ],
   collectCoverageFrom: [
     'src/components/**/*.{ts,tsx}',
@@ -21,6 +25,9 @@ module.exports = {
     'src/utils/**/*.{ts,tsx}',
     '!**/*.stories.{ts,tsx}',
     '!src/services/firebase/**',
+    '!src/components/ui/index.ts',
+    '!src/components/ui/ProductList/index.ts',
+    '!src/services/notifications/index.ts',
   ],
   moduleDirectories: [
     'node_modules',
@@ -28,5 +35,6 @@ module.exports = {
     'utils', // a utility folder
     __dirname, // the root directory
   ],
+  setupFiles: ['<rootDir>/jest-setup-expo-global.js'],
   setupFilesAfterEnv: ['./jest-setup.ts'],
 };

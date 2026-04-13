@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react-native';
+import { renderWithQueryClient, screen, fireEvent } from 'test-utils';
 
 // Components
 import { HorizontalProductList } from '../HorizontalProductList';
@@ -18,7 +18,7 @@ describe('HorizontalProductList', () => {
   });
 
   it('renders correctly with products', () => {
-    const { toJSON } = render(
+    const { toJSON } = renderWithQueryClient(
       <HorizontalProductList
         {...mockProps}
         products={mockProps.products as unknown as IProductCardProps[]}
@@ -30,7 +30,7 @@ describe('HorizontalProductList', () => {
   });
 
   it('calls onItemPress when product is pressed', () => {
-    render(
+    renderWithQueryClient(
       <HorizontalProductList
         {...mockProps}
         products={mockProps.products as unknown as IProductCardProps[]}
@@ -46,7 +46,7 @@ describe('HorizontalProductList', () => {
   });
 
   it('renders with custom itemWidth', () => {
-    const { toJSON } = render(
+    const { toJSON } = renderWithQueryClient(
       <HorizontalProductList
         {...mockProps}
         itemWidth={200}
@@ -58,7 +58,7 @@ describe('HorizontalProductList', () => {
   });
 
   it('renders with snap enabled', () => {
-    const { toJSON } = render(
+    const { toJSON } = renderWithQueryClient(
       <HorizontalProductList
         {...mockProps}
         snap={true}
@@ -70,7 +70,7 @@ describe('HorizontalProductList', () => {
   });
 
   it('handles empty products array', () => {
-    const { toJSON } = render(
+    const { toJSON } = renderWithQueryClient(
       <HorizontalProductList products={[]} onItemPress={jest.fn()} />,
     );
 
@@ -79,7 +79,7 @@ describe('HorizontalProductList', () => {
 
   it('handles custom keyExtractor', () => {
     const customKeyExtractor = (item: IProductCardProps) => `custom-${item.id}`;
-    const { toJSON } = render(
+    const { toJSON } = renderWithQueryClient(
       <HorizontalProductList
         {...mockProps}
         keyExtractor={customKeyExtractor}
@@ -95,7 +95,7 @@ describe('HorizontalProductList', () => {
       { ...MOCK_PRODUCTS[0], id: null, name: null },
     ] as unknown as IProductCardProps[];
 
-    const { toJSON } = render(
+    const { toJSON } = renderWithQueryClient(
       <HorizontalProductList
         products={productsWithNullId}
         onItemPress={jest.fn()}
@@ -110,7 +110,7 @@ describe('HorizontalProductList', () => {
       itemContainer: { backgroundColor: 'red' },
     };
 
-    const { toJSON } = render(
+    const { toJSON } = renderWithQueryClient(
       <HorizontalProductList
         {...mockProps}
         customStyle={customStyle}
@@ -122,7 +122,7 @@ describe('HorizontalProductList', () => {
   });
 
   it('renders with snap disabled', () => {
-    const { toJSON } = render(
+    const { toJSON } = renderWithQueryClient(
       <HorizontalProductList
         {...mockProps}
         snap={false}

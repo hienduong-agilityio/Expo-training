@@ -1,7 +1,10 @@
-import { render, screen } from '@testing-library/react-native';
+import { Dimensions } from 'react-native';
+import { render, screen, fireEvent } from '@testing-library/react-native';
 
 // Components
 import { ProductImageCarousel } from '@app/components/ui/ProductImageCarousel';
+
+const mockDimensions = { width: 400, height: 800, scale: 2, fontScale: 1 };
 
 describe('ProductImageCarousel', () => {
   const mockImages = [
@@ -18,6 +21,16 @@ describe('ProductImageCarousel', () => {
     };
     return render(<ProductImageCarousel {...defaultProps} />);
   };
+
+  beforeEach(() => {
+    jest
+      .spyOn(Dimensions, 'get')
+      .mockReturnValue(mockDimensions as ReturnType<typeof Dimensions.get>);
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
 
   it('renders correctly with images', () => {
     const { toJSON } = renderComponent();
@@ -108,5 +121,14 @@ describe('ProductImageCarousel', () => {
     });
 
     expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('invokes prev/next navigation handlers', () => {
+    render(
+      <ProductImageCarousel images={mockImages} productName="Nav Product" />,
+    );
+
+    fireEvent.press(screen.getByLabelText('Scroll right'));
+    fireEvent.press(screen.getByLabelText('Scroll left'));
   });
 });

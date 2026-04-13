@@ -10,6 +10,16 @@ jest.mock('@react-native-async-storage/async-storage', () => mockAsyncStorage);
 
 jest.mock('@react-native-community/netinfo', () => mockRNCNetInfo);
 
+jest.mock('@rozenite/tanstack-query-plugin', () => ({
+  useTanStackQueryDevTools: jest.fn(),
+}));
+jest.mock('@rozenite/network-activity-plugin', () => ({
+  useNetworkActivityDevTools: jest.fn(),
+}));
+jest.mock('@rozenite/performance-monitor-plugin', () => ({
+  usePerformanceMonitorDevTools: jest.fn(),
+}));
+
 // Mock @react-native-firebase modules
 const mockFirebaseApp = {
   name: '[DEFAULT]',
@@ -101,6 +111,26 @@ jest.mock('expo-splash-screen', () => ({
   hideAsync: jest.fn(() => Promise.resolve()),
   preventAutoHideAsync: jest.fn(() => Promise.resolve()),
 }));
+
+jest.mock('expo-linking', () => ({
+  __esModule: true,
+  collectManifestSchemes: jest.fn(() => []),
+  createURL: jest.fn((path: string) => `https://app.test${path}`),
+  canOpenURL: jest.fn(() => Promise.resolve(true)),
+  openURL: jest.fn(() => Promise.resolve()),
+  getInitialURL: jest.fn(() => Promise.resolve(null)),
+  addEventListener: jest.fn(() => ({ remove: jest.fn() })),
+  removeEventListener: jest.fn(),
+  parse: jest.fn(),
+}));
+
+jest.mock('expo-image', () => {
+  const { Image } = require('react-native');
+  return {
+    __esModule: true,
+    Image,
+  };
+});
 
 jest.mock(
   'expo/virtual/env',
