@@ -60,11 +60,14 @@ export const registerListenerWithFCM = (
       setupNotificationHandlers(
         onNotificationOpen as (data: NotificationData | undefined) => void,
       ),
-      onMessage(messaging, async remoteMessage => {
+      onMessage(messaging, remoteMessage => {
         const data = parseNotificationData(remoteMessage);
 
-        if (data.title && data.body) {
-          await displayNotification(data);
+        if (data.title?.trim()) {
+          displayNotification({
+            ...data,
+            body: data.body?.trim() ? data.body : ' ',
+          }).catch(() => undefined);
         }
       }),
       onNotificationOpenedApp(messaging, remoteMessage =>

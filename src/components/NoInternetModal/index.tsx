@@ -6,7 +6,7 @@ import {
   TouchableWithoutFeedback,
   Modal,
 } from 'react-native';
-import FastImage from 'react-native-fast-image';
+import { Image } from 'expo-image';
 
 // Styles
 import { styles } from './index.style';
@@ -39,13 +39,11 @@ export const NoInternetModal = ({
         </TouchableWithoutFeedback>
         <View style={styles.contentWrapper} pointerEvents="box-none">
           <View style={styles.content}>
-            <FastImage
-              source={{
-                uri: NO_INTERNET_CONNECTION_IMAGE,
-                priority: FastImage.priority.normal,
-              }}
+            <Image
+              source={{ uri: NO_INTERNET_CONNECTION_IMAGE }}
               style={styles.image}
-              resizeMode={FastImage.resizeMode.cover}
+              contentFit="cover"
+              priority="normal"
             />
 
             <Text style={styles.title}>No Internet Connection</Text>

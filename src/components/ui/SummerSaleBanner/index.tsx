@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import FastImage from 'react-native-fast-image';
+import { Image } from 'expo-image';
 
 // Types
 import type { ISaleBanner } from '@app/interfaces';
@@ -27,10 +27,11 @@ export const SummerSaleBanner = memo(function SummerSaleBanner({
 
   return (
     <View style={styles.container}>
-      <FastImage
-        source={{ uri: banner.image, priority: FastImage.priority.normal }}
+      <Image
+        source={{ uri: banner.image }}
         style={styles.image}
-        resizeMode={FastImage.resizeMode.cover}
+        contentFit="cover"
+        priority="normal"
       />
       <View style={styles.newArrivalsSection}>
         <View style={styles.header}>

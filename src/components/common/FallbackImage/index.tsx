@@ -1,9 +1,6 @@
 import { memo, useState, useCallback } from 'react';
-import FastImage, {
-  type ResizeMode,
-  type ImageStyle as FastImageStyle,
-} from 'react-native-fast-image';
-import type { ImageSourcePropType, StyleProp } from 'react-native';
+import { Image, type ImageContentFit } from 'expo-image';
+import type { ImageSourcePropType, StyleProp, ImageStyle } from 'react-native';
 
 // Types
 import type { IFallbackImageProps } from '@app/interfaces';
@@ -11,17 +8,11 @@ import type { IFallbackImageProps } from '@app/interfaces';
 // Mocks
 import { FALLBACK_IMAGE } from '@app/mocks/images';
 
-/**
- * Helper to convert ImageSourcePropType to FastImage source format
- */
-const toFastImageSource = (source: ImageSourcePropType | undefined) => {
+const toExpoSource = (source: ImageSourcePropType | undefined) => {
   if (!source) return undefined;
 
   if (typeof source === 'object' && 'uri' in source && source.uri) {
-    return {
-      uri: source.uri,
-      priority: FastImage.priority.normal,
-    };
+    return { uri: source.uri };
   }
 
   if (typeof source === 'number') {
@@ -31,21 +22,18 @@ const toFastImageSource = (source: ImageSourcePropType | undefined) => {
   return undefined;
 };
 
-/**
- * Map resizeMode string to FastImage resizeMode constant
- */
-const mapResizeMode = (mode?: string): ResizeMode => {
+const mapResizeModeToContentFit = (mode?: string): ImageContentFit => {
   switch (mode) {
     case 'cover':
-      return FastImage.resizeMode.cover;
+      return 'cover';
     case 'contain':
-      return FastImage.resizeMode.contain;
+      return 'contain';
     case 'stretch':
-      return FastImage.resizeMode.stretch;
+      return 'fill';
     case 'center':
-      return FastImage.resizeMode.center;
+      return 'contain';
     default:
-      return FastImage.resizeMode.cover;
+      return 'cover';
   }
 };
 
@@ -64,17 +52,18 @@ export const FallbackImage = memo(function FallbackImage({
   }, []);
 
   const imageSource = !source || imageError ? fallbackSource : source;
-  const fastImageSource = toFastImageSource(imageSource);
+  const expoSource = toExpoSource(imageSource);
+  const contentFit = mapResizeModeToContentFit(resizeMode);
 
-  // If we can't convert to FastImage source, use fallback
-  if (!fastImageSource) {
-    const fallbackFastSource = toFastImageSource(fallbackSource);
+  if (!expoSource) {
+    const fallbackExpo = toExpoSource(fallbackSource);
 
     return (
-      <FastImage
-        source={fallbackFastSource || FALLBACK_IMAGE}
-        style={style as StyleProp<FastImageStyle>}
-        resizeMode={mapResizeMode(resizeMode)}
+      <Image
+        source={fallbackExpo || FALLBACK_IMAGE}
+        style={style as StyleProp<ImageStyle>}
+        contentFit={contentFit}
+        priority="normal"
         accessibilityLabel={accessibilityLabel}
         testID={testID}
       />
@@ -82,10 +71,11 @@ export const FallbackImage = memo(function FallbackImage({
   }
 
   return (
-    <FastImage
-      source={fastImageSource}
-      style={style as StyleProp<FastImageStyle>}
-      resizeMode={mapResizeMode(resizeMode)}
+    <Image
+      source={expoSource}
+      style={style as StyleProp<ImageStyle>}
+      contentFit={contentFit}
+      priority="normal"
       onError={handleError}
       accessibilityLabel={accessibilityLabel}
       testID={testID}
