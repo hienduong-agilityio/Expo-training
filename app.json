@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "StylishEcommerce",
-    "slug": "stylish-ecommerce",
+    "slug": "expo-training",
     "version": "1.0.0",
     "scheme": "stylish",
     "icon": "./assets/images/icon.png",
@@ -12,7 +12,6 @@
     },
     "android": {
       "package": "com.reactnativetemplate",
-      "googleServicesFile": "./config/google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon-foreground.png",
         "backgroundColor": "#dbe7f0"
@@ -20,7 +19,9 @@
     },
     "ios": {
       "bundleIdentifier": "org.reactjs.native.example.StylishEcommerce",
-      "googleServicesFile": "./config/GoogleService-Info.plist"
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "plugins": [
       [
@@ -66,7 +67,7 @@
     ],
     "extra": {
       "eas": {
-        "projectId": "84d3f2d3-17f4-4118-9c4e-b1df996c10e6"
+        "projectId": "aa1fbe91-06a1-4141-b4a9-9754bb2cadfa"
       }
     }
   }

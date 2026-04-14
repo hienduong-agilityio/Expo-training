@@ -39,7 +39,13 @@ function withFirebaseMessagingToolsReplace(config) {
   });
 }
 
-const EXPO_OWNER = 'hienduong';
+const EXPO_OWNER = 'hienduongs-organization';
+
+/** Must match the Expo project linked to this repo (EAS / expo.dev). Overrides stale app.json on CI. */
+const EAS_PROJECT_ID = 'aa1fbe91-06a1-4141-b4a9-9754bb2cadfa';
+
+const GOOGLE_SERVICES_JSON_LOCAL = './config/google-services.json';
+const GOOGLE_SERVICE_INFO_PLIST_LOCAL = './config/GoogleService-Info.plist';
 
 /**
  * `config` is the **expo** object from app.json (merged with defaults), not `{ expo: ... }`.
@@ -51,6 +57,31 @@ module.exports = ({ config }) => {
   const expo = {
     ...config,
     owner: EXPO_OWNER,
+    runtimeVersion: {
+      policy: 'appVersion',
+    },
+    android: {
+      ...(config.android ?? {}),
+      googleServicesFile:
+        process.env.GOOGLE_SERVICES_JSON ?? GOOGLE_SERVICES_JSON_LOCAL,
+    },
+    ios: {
+      ...(config.ios ?? {}),
+      googleServicesFile:
+        process.env.GOOGLE_SERVICE_INFO_PLIST ??
+        GOOGLE_SERVICE_INFO_PLIST_LOCAL,
+    },
+    extra: {
+      ...(config.extra ?? {}),
+      eas: {
+        ...(config.extra?.eas ?? {}),
+        projectId: EAS_PROJECT_ID,
+      },
+    },
+    updates: {
+      ...(config.updates ?? {}),
+      url: `https://u.expo.dev/${EAS_PROJECT_ID}`,
+    },
     plugins: [withFirebaseMessagingToolsReplace, ...(config.plugins ?? [])],
   };
   const result = { expo };
