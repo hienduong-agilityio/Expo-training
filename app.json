@@ -12,8 +12,6 @@
     },
     "android": {
       "package": "com.reactnativetemplate",
-      "runtimeVersion": "1.0.0",
-      "googleServicesFile": "./config/google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon-foreground.png",
         "backgroundColor": "#dbe7f0"
@@ -21,7 +19,9 @@
     },
     "ios": {
       "bundleIdentifier": "org.reactjs.native.example.StylishEcommerce",
-      "googleServicesFile": "./config/GoogleService-Info.plist"
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "plugins": [
       [
@@ -69,10 +69,6 @@
       "eas": {
         "projectId": "aa1fbe91-06a1-4141-b4a9-9754bb2cadfa"
       }
-    },
-    "runtimeVersion": "1.0.0",
-    "updates": {
-      "url": "https://u.expo.dev/aa1fbe91-06a1-4141-b4a9-9754bb2cadfa"
     }
   }
 }
