@@ -13,13 +13,17 @@ import { useWishlist, useWishlistActions } from '@app/hooks/useWishlist';
 
 // Stores
 import { toastStore } from '@app/stores/toastStore';
-import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import { ParamListBase } from '@react-navigation/native';
 
 // Constants
-import { PRIVATE_SCREENS, STATUS, POSITION } from '@app/constants';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { PrivateStackParamList } from '@app/interfaces/navigation';
+import { STATUS, POSITION } from '@app/constants';
+
+const mockPush = jest.fn();
+
+jest.mock('expo-router', () => ({
+  useRouter: () => ({
+    push: mockPush,
+  }),
+}));
 
 jest.mock('@app/hooks/useWishlist', () => ({
   useWishlist: jest.fn(),
@@ -30,10 +34,6 @@ jest.mock('@app/stores/toastStore', () => ({
 }));
 
 describe('ProductDetailHeaderRight', () => {
-  const mockNavigation = {
-    navigate: jest.fn(),
-  } as unknown as BottomTabNavigationProp<ParamListBase, string>;
-
   const mockUseWishlist = useWishlist as jest.Mock;
   const mockUseWishlistActions = useWishlistActions as jest.Mock;
   const mockToastStore = toastStore as jest.MockedFunction<typeof toastStore>;
@@ -59,7 +59,6 @@ describe('ProductDetailHeaderRight', () => {
       removeItem: mockRemoveItem,
     });
 
-    // Mock toastStore as a hook that returns an object
     mockToastStore.mockImplementation(selector => {
       const state = {
         showToast: mockShowToast,
@@ -75,14 +74,7 @@ describe('ProductDetailHeaderRight', () => {
   });
 
   const renderComponent = (productId = '1') => {
-    return render(
-      <ProductDetailHeaderRight
-        navigation={
-          mockNavigation as unknown as NativeStackNavigationProp<PrivateStackParamList>
-        }
-        productId={productId}
-      />,
-    );
+    return render(<ProductDetailHeaderRight productId={productId} />);
   };
 
   it('renders correctly', () => {
@@ -95,12 +87,7 @@ describe('ProductDetailHeaderRight', () => {
 
     fireEvent.press(screen.getByLabelText('Go to cart'));
 
-    expect(mockNavigation.navigate).toHaveBeenCalledWith(
-      PRIVATE_SCREENS.MAIN_TABS,
-      {
-        screen: PRIVATE_SCREENS.CART,
-      },
-    );
+    expect(mockPush).toHaveBeenCalledWith('/cart');
   });
 
   describe('Wishlist actions', () => {

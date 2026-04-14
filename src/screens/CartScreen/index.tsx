@@ -1,5 +1,6 @@
 import { View, Text, ScrollView, RefreshControl } from 'react-native';
 import { useMemo, useCallback } from 'react';
+import { useRouter } from 'expo-router';
 
 // Hooks
 import { useCart, useCartActions } from '@app/hooks/useCart';
@@ -16,7 +17,6 @@ import { Button } from '@app/components/common/Button';
 
 // Constants
 import {
-  PRIVATE_SCREENS,
   LOADING_MESSAGES,
   CART_MESSAGES,
   BUTTON_LABELS,
@@ -24,7 +24,6 @@ import {
 
 // Types
 import type { ICartItem } from '@app/interfaces/cart';
-import type { PrivateTabScreenProps } from '@app/interfaces/navigation';
 
 // Styles
 import { styles } from './index.style';
@@ -32,9 +31,8 @@ import { styles } from './index.style';
 // Enums
 import { BUTTON_VARIANTS } from '@app/enums';
 
-type CartScreenProps = PrivateTabScreenProps<typeof PRIVATE_SCREENS.CART>;
-
-export const CartScreen = ({ navigation }: CartScreenProps) => {
+export const CartScreen = () => {
+  const router = useRouter();
   const { cart, cartItems, isLoading, refetch } = useCart();
 
   const { updateItem, removeItem, isMutating } = useCartActions();
@@ -112,7 +110,7 @@ export const CartScreen = ({ navigation }: CartScreenProps) => {
   const refreshing = isLoading || isMutating;
 
   const handleCheckout = () => {
-    navigation.navigate(PRIVATE_SCREENS.CHECKOUT);
+    router.push('/checkout');
   };
 
   if (isLoading || isLoadingProducts) {

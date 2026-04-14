@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { View, Text } from 'react-native';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 
 // Components
 import { GridProductList } from '@app/components/ui/ProductList';
@@ -17,15 +18,8 @@ import {
 import { useFilterModal } from '@app/hooks/useFilterModal';
 import { useDebounce } from '@app/hooks/useDebounce';
 
-// Types
-import type { PrivateTabScreenProps } from '@app/interfaces/navigation';
-
 // Constants
-import {
-  PRIVATE_SCREENS,
-  SEARCH_MESSAGES,
-  SEARCH_SCREEN_MESSAGES,
-} from '@app/constants';
+import { SEARCH_MESSAGES, SEARCH_SCREEN_MESSAGES } from '@app/constants';
 
 // Mocks
 import { CATEGORIES } from '@app/mocks/categories';
@@ -33,10 +27,19 @@ import { CATEGORIES } from '@app/mocks/categories';
 // Styles
 import { styles } from './index.style';
 
-type SearchScreenProps = PrivateTabScreenProps<typeof PRIVATE_SCREENS.SEARCH>;
+const paramStr = (v: string | string[] | undefined) =>
+  Array.isArray(v) ? v[0] : v;
 
-export const SearchScreen = ({ navigation, route }: SearchScreenProps) => {
-  const { searchQuery, categoryId, categoryName } = route.params || {};
+export const SearchScreen = () => {
+  const router = useRouter();
+  const raw = useLocalSearchParams<{
+    searchQuery?: string | string[];
+    categoryId?: string | string[];
+    categoryName?: string | string[];
+  }>();
+  const searchQuery = paramStr(raw.searchQuery);
+  const categoryId = paramStr(raw.categoryId);
+  const categoryName = paramStr(raw.categoryName);
 
   const [localSearchQuery, setLocalSearchQuery] = useState(searchQuery || '');
   const [activeCategoryId, setActiveCategoryId] = useState(categoryId || null);
@@ -124,9 +127,7 @@ export const SearchScreen = ({ navigation, route }: SearchScreenProps) => {
   };
 
   const handleItemPress = (id: string) => {
-    navigation.navigate(PRIVATE_SCREENS.PRODUCT_DETAIL, {
-      productId: id,
-    });
+    router.push(`/product/${id}`);
   };
 
   const searchTitle = displaySearchQuery

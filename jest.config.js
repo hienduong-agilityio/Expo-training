@@ -16,7 +16,7 @@ module.exports = {
     },
   },
   transformIgnorePatterns: [
-    '/node_modules/(?!((jest-)?react-native|@react-native(-community)?)|react-clone-referenced-element|react-navigation|@react-navigation/.*|expo(nent)?|@expo/.*|expo-modules-core|expo-image|expo-linking)',
+    '/node_modules/(?!((jest-)?react-native|@react-native(-community)?)|react-clone-referenced-element|react-navigation|@react-navigation/.*|expo-router|expo(nent)?|@expo/.*|expo-modules-core|expo-image|expo-linking)',
   ],
   collectCoverageFrom: [
     'src/components/**/*.{ts,tsx}',

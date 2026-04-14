@@ -1,13 +1,16 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import { PropsWithChildren } from 'react';
-import { ParamListBase } from '@react-navigation/native';
 
 // Components
 import { BottomTabHeader } from '@app/components/BottomTabHeader';
 
-// Constants
-import { PRIVATE_SCREENS } from '@app/constants';
-import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+const mockPush = jest.fn();
+
+jest.mock('expo-router', () => ({
+  useRouter: () => ({
+    push: mockPush,
+  }),
+}));
 
 jest.mock('react-native-safe-area-context', () => ({
   SafeAreaProvider: ({ children }: PropsWithChildren) => children,
@@ -21,14 +24,10 @@ jest.mock('@app/icons', () => ({
 }));
 
 describe('BottomTabHeader', () => {
-  const mockNavigation = {
-    navigate: jest.fn(),
-  } as unknown as BottomTabNavigationProp<ParamListBase, string>;
-
   const renderComponent = () => {
     return render(
       <BottomTabHeader
-        navigation={mockNavigation}
+        navigation={{} as never}
         layout={{ width: 100, height: 100 }}
         options={{ headerShown: false }}
         route={{ key: 'Home', name: 'Home', path: 'Home' }}
@@ -52,8 +51,6 @@ describe('BottomTabHeader', () => {
     const profileButton = screen.getByLabelText('Profile');
     fireEvent.press(profileButton);
 
-    expect(mockNavigation.navigate).toHaveBeenCalledWith(
-      PRIVATE_SCREENS.SETTINGS,
-    );
+    expect(mockPush).toHaveBeenCalledWith('/settings');
   });
 });

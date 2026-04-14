@@ -1,5 +1,6 @@
 import { useCallback, useMemo } from 'react';
 import { View, RefreshControl } from 'react-native';
+import { useRouter } from 'expo-router';
 
 // Hooks
 import { useWishlist, useWishlistActions } from '@app/hooks/useWishlist';
@@ -16,30 +17,18 @@ import { GridProductList } from '@app/components/ui/ProductList';
 // Constants
 import {
   WISHLIST_MESSAGES,
-  PRIVATE_SCREENS,
   BUTTON_LABELS,
 } from '@app/constants';
 
 // Types
-import type {
-  PrivateStackParamList,
-  PrivateTabParamList,
-} from '@app/interfaces/navigation';
 import type { IProduct } from '@app/interfaces/product';
-import type { CompositeScreenProps } from '@react-navigation/native';
-import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
-import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { IWishlistItem } from '@app/interfaces/wishlist';
 
 // Styles
 import { styles } from './index.style';
 
-type Props = CompositeScreenProps<
-  BottomTabScreenProps<PrivateTabParamList, typeof PRIVATE_SCREENS.WISHLIST>,
-  NativeStackScreenProps<PrivateStackParamList>
->;
-
-export const WishlistScreen = ({ navigation }: Props) => {
+export const WishlistScreen = () => {
+  const router = useRouter();
   const { wishlist, wishlistItems, isLoading, refetch } = useWishlist();
 
   const { removeItem, isMutating } = useWishlistActions();
@@ -73,9 +62,7 @@ export const WishlistScreen = ({ navigation }: Props) => {
   );
 
   const handleProductPress = (productId: string) => {
-    navigation
-      .getParent()
-      ?.navigate(PRIVATE_SCREENS.PRODUCT_DETAIL, { productId });
+    router.push(`/product/${productId}`);
   };
 
   const wishlistProducts = useMemo(

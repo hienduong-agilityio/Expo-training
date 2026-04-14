@@ -1,37 +1,28 @@
 import { useCallback } from 'react';
 
-// React Navigation
-import { useNavigation, NavigationProp } from '@react-navigation/native';
-
-// Constants
-import { PRIVATE_SCREENS } from '@app/constants';
-
-// Types
-import { PrivateStackParamList } from '@app/interfaces/navigation';
+import { useRouter } from 'expo-router';
 
 export const useAppNavigation = () => {
-  const navigation = useNavigation<NavigationProp<PrivateStackParamList>>();
+  const router = useRouter();
 
   const handleGoBack = useCallback(() => {
-    if (navigation.canGoBack()) {
-      navigation.goBack();
+    if (router.canGoBack()) {
+      router.back();
     } else {
-      navigation.navigate(PRIVATE_SCREENS.MAIN_TABS);
+      router.replace('/home');
     }
-  }, [navigation]);
+  }, [router]);
 
   const navigateToDetail = useCallback(
     (productId: string) => {
-      navigation.navigate(PRIVATE_SCREENS.PRODUCT_DETAIL, {
-        productId,
-      });
+      router.push(`/product/${productId}`);
     },
-    [navigation],
+    [router],
   );
 
   return {
     handleGoBack,
     navigateToDetail,
-    navigation,
+    router,
   };
 };

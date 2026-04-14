@@ -1,14 +1,14 @@
 import type { BottomTabHeaderProps } from '@react-navigation/bottom-tabs';
+import { useRouter } from 'expo-router';
 
 // Components
 import { GlobalHeader } from '@app/components/GlobalHeader';
 
-// Constants
-import { PRIVATE_SCREENS } from '@app/constants/screens';
+export const BottomTabHeader = (_props: BottomTabHeaderProps) => {
+  const router = useRouter();
 
-export const BottomTabHeader = ({ navigation }: BottomTabHeaderProps) => {
   const handleProfilePress = () => {
-    navigation.navigate(PRIVATE_SCREENS.SETTINGS);
+    router.push('/settings');
   };
 
   return (
