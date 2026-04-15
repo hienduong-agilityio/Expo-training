@@ -1,5 +1,6 @@
 import { useCallback, useRef } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useRouter } from 'expo-router';
 
 // Components
 import { AuthTextField } from '@app/components/ui/AuthTextField';
@@ -15,12 +16,8 @@ import {
   AUTH_FORM_MESSAGES,
   BUTTON_LABELS,
   NAVIGATION_DELAYS,
-  PUBLIC_SCREENS,
 } from '@app/constants';
 import { AUTH_FIELDS } from '@app/constants/auth';
-
-// Types
-import type { PublicStackScreenProps } from '@app/interfaces';
 
 // Styles
 import { authStyles } from '@app/styles';
@@ -35,11 +32,8 @@ import { validateRegister } from '@app/helpers/validation';
 // Schemas
 import { RegisterFormValues } from '@app/schemas/auth';
 
-type RegisterScreenProps = PublicStackScreenProps<
-  typeof PUBLIC_SCREENS.REGISTER
->;
-
-export const RegisterScreen = ({ navigation }: RegisterScreenProps) => {
+export const RegisterScreen = () => {
+  const router = useRouter();
   const navigationTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { values, fieldErrors, handleChange, resetForm, setFieldError } =
     useForm({
@@ -53,10 +47,9 @@ export const RegisterScreen = ({ navigation }: RegisterScreenProps) => {
 
   const { register, isSubmitting } = useAuthActions();
 
-  const navigateToLogin = useCallback(
-    () => navigation.navigate(PUBLIC_SCREENS.LOGIN),
-    [navigation],
-  );
+  const navigateToLogin = useCallback(() => {
+    router.replace('/login');
+  }, [router]);
 
   const handleSubmit = useCallback(async () => {
     if (isSubmitting) return;

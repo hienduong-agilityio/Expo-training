@@ -1,3 +1,0 @@
-# Shrinks EAS upload: local CLI build outputs are not needed on Expo builders
-build-*.aab
-build-*.apk

@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import { Alert, Text, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useRouter } from 'expo-router';
 
 // Components
 import { AuthTextField } from '@app/components/ui/AuthTextField';
@@ -16,12 +17,8 @@ import {
   AUTH_FORM_MESSAGES,
   BUTTON_LABELS,
   LINK_MESSAGES,
-  PUBLIC_SCREENS,
 } from '@app/constants';
 import { AUTH_FIELDS } from '@app/constants/auth';
-
-// Types
-import type { PublicStackScreenProps } from '@app/interfaces';
 
 // Hooks
 import { useForm } from '@app/hooks/useForm';
@@ -36,9 +33,8 @@ import { LoginFormValues } from '@app/schemas/auth';
 // Styles
 import { authStyles } from '@app/styles';
 
-type LoginScreenProps = PublicStackScreenProps<typeof PUBLIC_SCREENS.LOGIN>;
-
-export const LoginScreen = ({ navigation }: LoginScreenProps) => {
+export const LoginScreen = () => {
+  const router = useRouter();
   const initialValues = {
     [AUTH_FIELDS.IDENTIFIER]: '',
     [AUTH_FIELDS.PASSWORD]: '',
@@ -122,9 +118,7 @@ export const LoginScreen = ({ navigation }: LoginScreenProps) => {
           helperActionLabel={BUTTON_LABELS.REGISTER}
           disabled={isSubmitting}
           // Todo: Convert string to constant
-          onHelperActionPress={() =>
-            navigation.navigate(PUBLIC_SCREENS.REGISTER)
-          }
+          onHelperActionPress={() => router.push('/register')}
         />
       </AuthScreenLayout>
     </SafeAreaView>

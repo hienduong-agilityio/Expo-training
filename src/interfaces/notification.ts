@@ -5,7 +5,19 @@ import type {
 
 // Types
 import type { ProductListType } from '@app/constants/product';
-import type { FirebaseMessagingTypes } from '@react-native-firebase/messaging';
+
+/**
+ * Payload shaped like FCM (data map + optional notification block) after reading an Expo notification.
+ * Used by `parseRemotePayloadToNotificationData` in `notificationPayload.ts`.
+ */
+export interface RemoteNotificationPayload {
+  data?: Record<string, string | undefined>;
+  notification?: {
+    title?: string;
+    body?: string;
+    android?: { imageUrl?: string };
+  };
+}
 
 export interface NotificationData {
   type: NotificationType;
@@ -41,5 +53,3 @@ export interface NotificationStyle {
   icon?: string;
   largeIcon?: string;
 }
-
-export type RemoteMessage = FirebaseMessagingTypes.RemoteMessage;

@@ -1,14 +1,11 @@
 import { TouchableOpacity, View } from 'react-native';
+import { useRouter } from 'expo-router';
 
 // Icons
 import { CartIcon, HeartIcon } from '@app/icons';
 
 // Themes
 import { colors } from '@app/themes';
-
-// Types
-import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import type { PrivateStackParamList } from '@app/interfaces/navigation';
 
 // Styles
 import { styles } from './index.style';
@@ -21,18 +18,16 @@ import { modalStore } from '@app/stores/modalStore';
 
 // Constants
 import {
-  PRIVATE_SCREENS,
   WISHLIST_MESSAGES,
   BUTTON_LABELS,
 } from '@app/constants';
 
 export const ProductDetailHeaderRight = ({
-  navigation,
   productId,
 }: {
   productId: string;
-  navigation: NativeStackNavigationProp<PrivateStackParamList>;
 }) => {
+  const router = useRouter();
   const { isInWishlist } = useWishlist();
   const { addItem, removeItem } = useWishlistActions();
 
@@ -58,9 +53,7 @@ export const ProductDetailHeaderRight = ({
   };
 
   const handleCartPress = () => {
-    navigation.navigate(PRIVATE_SCREENS.MAIN_TABS, {
-      screen: PRIVATE_SCREENS.CART,
-    });
+    router.push('/cart');
   };
 
   return (

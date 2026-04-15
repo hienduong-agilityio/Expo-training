@@ -37,6 +37,5 @@ export const FIREBASE_ERROR_MESSAGES = {
   MESSAGING_MODULE_NOT_AVAILABLE: 'Firebase messaging module is not available',
   FAILED_TO_LOAD_MESSAGING: 'Failed to load Firebase messaging',
   APP_NOT_INITIALIZED: 'Firebase default app is not initialized',
-  FAILED_TO_GET_APP: 'Failed to get Firebase app',
   UNKNOWN_ERROR: 'Unknown error',
 } as const;

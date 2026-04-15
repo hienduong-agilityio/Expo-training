@@ -1,13 +1,13 @@
 import { useLayoutEffect, useMemo } from 'react';
 import { View, ActivityIndicator, Text } from 'react-native';
+import { useLocalSearchParams, useNavigation, useRouter } from 'expo-router';
 
 // Types
-import type { PrivateStackScreenProps } from '@app/interfaces/navigation';
 import type { ProductListType } from '@app/constants';
 import type { IProduct } from '@app/interfaces/product';
 
 // Constants
-import { PRIVATE_SCREENS, PRODUCT_LIST_TYPES } from '@app/constants';
+import { PRODUCT_LIST_TYPES, PRODUCT_LIST_TITLES } from '@app/constants';
 
 // Hooks
 import {
@@ -24,37 +24,45 @@ import { GridProductList } from '@app/components/ui/ProductList';
 // Styles
 import { styles } from './index.style';
 
-type ProductListScreenProps = PrivateStackScreenProps<
-  typeof PRIVATE_SCREENS.PRODUCT_LIST
->;
+const paramStr = (v: string | string[] | undefined) =>
+  Array.isArray(v) ? v[0] : v;
 
-export const ProductListScreen = ({
-  route,
-  navigation,
-}: ProductListScreenProps) => {
-  const { type: productListType, title } = route.params;
+const isProductListType = (s: string): s is ProductListType =>
+  (Object.values(PRODUCT_LIST_TYPES) as string[]).includes(s);
+
+export const ProductListScreen = () => {
+  const router = useRouter();
+  const navigation = useNavigation();
+  const { type: rawType } = useLocalSearchParams<{ type: string | string[] }>();
+  const typeParam = paramStr(rawType) ?? '';
+  const validType = isProductListType(typeParam);
+  const productListType = validType ? typeParam : PRODUCT_LIST_TYPES.TRENDING;
+  const title = validType ? PRODUCT_LIST_TITLES[productListType] : 'Products';
 
   useLayoutEffect(() => {
     navigation.setOptions({
+      headerShown: true,
       title: title || 'Products',
     });
   }, [navigation, title]);
 
-  const isCategorized = (
-    [
-      PRODUCT_LIST_TYPES.TRENDING,
-      PRODUCT_LIST_TYPES.DEALS,
-      PRODUCT_LIST_TYPES.DEAL_OF_DAY,
-      PRODUCT_LIST_TYPES.NEW_ARRIVALS,
-    ] as ProductListType[]
-  ).includes(productListType);
+  const isCategorized = validType
+    ? (
+        [
+          PRODUCT_LIST_TYPES.TRENDING,
+          PRODUCT_LIST_TYPES.DEALS,
+          PRODUCT_LIST_TYPES.DEAL_OF_DAY,
+          PRODUCT_LIST_TYPES.NEW_ARRIVALS,
+        ] as ProductListType[]
+      ).includes(productListType)
+    : false;
 
   const {
     data: categorizedData,
     isLoading: isCategorizedLoading,
     error: categorizedError,
     refetch: refetchCategorized,
-  } = useCategorizedProducts({ enabled: isCategorized });
+  } = useCategorizedProducts({ enabled: validType && isCategorized });
 
   const {
     data: infiniteData,
@@ -64,18 +72,21 @@ export const ProductListScreen = ({
     isLoading: isInfiniteLoading,
     error: infiniteError,
     refetch: refetchInfinite,
-  } = useInfiniteProducts(10, { enabled: !isCategorized });
+  } = useInfiniteProducts(10, { enabled: validType && !isCategorized });
 
   const isLoading = isCategorized ? isCategorizedLoading : isInfiniteLoading;
   const error = isCategorized ? categorizedError : infiniteError;
 
   const products = useMemo(() => {
+    if (!validType) {
+      return [];
+    }
     return isCategorized
       ? getProductsByListType(productListType, categorizedData)
       : infiniteData?.pages.flatMap(
           (page: { data: IProduct[] }) => page.data,
         ) ?? [];
-  }, [isCategorized, productListType, categorizedData, infiniteData]);
+  }, [isCategorized, productListType, categorizedData, infiniteData, validType]);
 
   const onEndReached = isCategorized ? undefined : fetchNextPage;
   const isLoadingMore = isCategorized ? false : isFetchingNextPage;
@@ -83,7 +94,7 @@ export const ProductListScreen = ({
   const refreshing = isLoading && products.length > 0;
 
   const handleItemPress = (id: string) => {
-    navigation.navigate(PRIVATE_SCREENS.PRODUCT_DETAIL, { productId: id });
+    router.push(`/product/${id}`);
   };
 
   const handleRefresh = () => {
@@ -93,6 +104,14 @@ export const ProductListScreen = ({
       refetchInfinite();
     }
   };
+
+  if (!validType) {
+    return (
+      <View style={styles.center}>
+        <Text style={styles.errorText}>Unknown product list.</Text>
+      </View>
+    );
+  }
 
   if (isLoading && !products.length) {
     return (
