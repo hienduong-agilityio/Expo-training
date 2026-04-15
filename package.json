@@ -30,8 +30,8 @@
     "install:check": "expo install --check",
     "eas:build:android:preview": "eas build --platform android --profile preview",
     "eas:build:android:production": "eas build --platform android --profile production",
-    "eas:build:android:local:production": "eas build --platform android --profile production --local",
-    "eas:build:android:local:dev": "eas build --platform android --profile development --local",
+    "eas:build:android:local:production": "export GOOGLE_SERVICES_JSON=\"$PWD/config/google-services.json\" GOOGLE_SERVICE_INFO_PLIST=\"$PWD/config/GoogleService-Info.plist\" && eas build --platform android --profile production --local",
+    "eas:build:android:local:dev": "export GOOGLE_SERVICES_JSON=\"$PWD/config/google-services.json\" GOOGLE_SERVICE_INFO_PLIST=\"$PWD/config/GoogleService-Info.plist\" && eas build --platform android --profile development --local",
     "eas:update:preview": "eas update --channel preview --environment preview",
     "eas:update:production": "eas update --channel production --environment production"
   },
