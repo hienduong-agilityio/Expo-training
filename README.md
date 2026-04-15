@@ -83,7 +83,7 @@ A **Expo** application for browsing, discovering, and purchasing products with a
 
 ## Technical stacks
 
-- 📦 **[Expo SDK](https://docs.expo.dev/)** (~55) – Dev server, config (`app.json`), modules (`expo-image`, `expo-notifications`, `expo-secure-store`, etc.), and **prebuild** for native projects
+- 📦 **[Expo SDK](https://docs.expo.dev/)** (~55) – Dev server, config (`app.config.js`), modules (`expo-image`, `expo-notifications`, `expo-secure-store`, etc.), and **prebuild** for native projects
 - 📱 **[React Native](https://reactnative.dev/)** (0.83.x) – Native rendering on iOS and Android
 - ⚛️ **[React](https://react.dev/)** (19.x) – Component model & rendering
 - 🔥 **[TypeScript](https://www.typescriptlang.org/)** – Static typing for safer, scalable code

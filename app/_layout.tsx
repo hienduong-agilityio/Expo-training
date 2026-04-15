@@ -12,6 +12,7 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import * as SplashScreen from 'expo-splash-screen';
 import { Stack } from 'expo-router';
 
+import { getFirebaseApp } from '@app/config/firebase';
 import { useAppFonts } from '@app/config/fonts';
 import { useTanStackQueryDevTools } from '@rozenite/tanstack-query-plugin';
 import { useNetworkActivityDevTools } from '@rozenite/network-activity-plugin';
@@ -27,11 +28,12 @@ import { useFirebaseMessaging } from '@app/hooks/useFirebaseMessaging';
 
 SplashScreen.preventAutoHideAsync().catch(() => undefined);
 
-function FirebaseMessagingRoot() {
+const FirebaseMessagingRoot = () => {
   useFirebaseMessaging();
   return null;
 }
 
+getFirebaseApp();
 export default function RootLayout() {
   const isDarkMode = useColorScheme() === 'dark';
   const [showStorybook, setShowStorybook] = useState(false);

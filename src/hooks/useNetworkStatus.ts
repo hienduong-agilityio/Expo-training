@@ -1,27 +1,33 @@
-import { useState, useEffect, useCallback } from 'react';
-import NetInfo, { NetInfoState } from '@react-native-community/netinfo';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useNetworkState, type NetworkState } from 'expo-network';
+
+const isOnline = (state: NetworkState): boolean => {
+  return state.isConnected !== false && state.isInternetReachable !== false;
+};
 
 export const useNetworkStatus = () => {
-  const [isConnected, setIsConnected] = useState<boolean>(true);
-  const [showOfflineModal, setShowOfflineModal] = useState<boolean>(false);
+  const networkState = useNetworkState();
 
-  const applyState = useCallback((state: NetInfoState) => {
-    const isOnline =
-      state.isConnected !== false && state.isInternetReachable !== false;
+  const isConnected = useMemo(() => isOnline(networkState), [networkState]);
 
-    setIsConnected(isOnline);
-    setShowOfflineModal(!isOnline);
-  }, []);
-
-  const closeModal = useCallback(() => {
-    setShowOfflineModal(false);
-  }, []);
+  const [dismissedWhileOffline, setDismissedWhileOffline] = useState(false);
 
   useEffect(() => {
-    const unsubscribe = NetInfo.addEventListener(applyState);
+    if (!isConnected) {
+      return;
+    }
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setDismissedWhileOffline(false);
+  }, [isConnected]);
 
-    return unsubscribe;
-  }, [applyState]);
+  const showOfflineModal = useMemo(
+    () => !isConnected && !dismissedWhileOffline,
+    [isConnected, dismissedWhileOffline],
+  );
+
+  const closeModal = useCallback(() => {
+    setDismissedWhileOffline(true);
+  }, []);
 
   return {
     isConnected,

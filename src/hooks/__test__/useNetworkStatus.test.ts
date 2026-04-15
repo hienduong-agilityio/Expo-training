@@ -1,27 +1,43 @@
 import { renderHook, act } from '@testing-library/react-native';
-import NetInfo, {
-  NetInfoState,
-  NetInfoStateType,
-} from '@react-native-community/netinfo';
+import * as ExpoNetwork from 'expo-network';
 import { useNetworkStatus } from '../useNetworkStatus';
 
+const NetworkStateType = {
+  NONE: 'NONE',
+  WIFI: 'WIFI',
+  OTHER: 'OTHER',
+} as const;
+
+jest.mock('expo-network', () => ({
+  NetworkStateType: {
+    NONE: 'NONE',
+    UNKNOWN: 'UNKNOWN',
+    WIFI: 'WIFI',
+    CELLULAR: 'CELLULAR',
+    OTHER: 'OTHER',
+  },
+  useNetworkState: jest.fn(() => ({
+    type: 'WIFI',
+    isConnected: true,
+    isInternetReachable: true,
+  })),
+}));
+
+const useNetworkStateMock = ExpoNetwork.useNetworkState as jest.MockedFunction<
+  typeof ExpoNetwork.useNetworkState
+>;
+
 describe('useNetworkStatus', () => {
-  let mockUnsubscribe: jest.Mock;
-  let networkCallback: ((state: NetInfoState) => void) | null = null;
-
   beforeEach(() => {
-    mockUnsubscribe = jest.fn();
-    networkCallback = null;
-
-    (NetInfo.addEventListener as jest.Mock).mockImplementation(callback => {
-      networkCallback = callback;
-      return mockUnsubscribe;
+    useNetworkStateMock.mockReturnValue({
+      type: NetworkStateType.WIFI,
+      isConnected: true,
+      isInternetReachable: true,
     });
   });
 
   afterEach(() => {
     jest.clearAllMocks();
-    networkCallback = null;
   });
 
   it('initializes with connected state', () => {
@@ -32,96 +48,68 @@ describe('useNetworkStatus', () => {
   });
 
   it('updates to offline when network is disconnected', () => {
-    const { result } = renderHook(() => useNetworkStatus());
+    const { result, rerender } = renderHook(() => useNetworkStatus());
 
-    act(() => {
-      if (networkCallback) {
-        networkCallback({
-          isConnected: false,
-          isInternetReachable: false,
-          type: NetInfoStateType.none,
-          details: null,
-        });
-      }
+    useNetworkStateMock.mockReturnValue({
+      type: NetworkStateType.NONE,
+      isConnected: false,
+      isInternetReachable: false,
     });
+    rerender(undefined);
 
     expect(result.current.isConnected).toBe(false);
     expect(result.current.showOfflineModal).toBe(true);
   });
 
   it('updates to offline when internet is not reachable', () => {
-    const { result } = renderHook(() => useNetworkStatus());
+    const { result, rerender } = renderHook(() => useNetworkStatus());
 
-    act(() => {
-      if (networkCallback) {
-        networkCallback({
-          isConnected: true,
-          isInternetReachable: false,
-          type: NetInfoStateType.other,
-          details: {
-            isConnectionExpensive: false,
-          },
-        });
-      }
+    useNetworkStateMock.mockReturnValue({
+      type: NetworkStateType.OTHER,
+      isConnected: true,
+      isInternetReachable: false,
     });
+    rerender(undefined);
 
     expect(result.current.isConnected).toBe(false);
     expect(result.current.showOfflineModal).toBe(true);
   });
 
   it('updates to online when network is connected', () => {
-    const { result } = renderHook(() => useNetworkStatus());
+    const { result, rerender } = renderHook(() => useNetworkStatus());
 
-    // First set to offline
-    act(() => {
-      if (networkCallback) {
-        networkCallback({
-          isConnected: false,
-          isInternetReachable: false,
-          type: NetInfoStateType.none,
-          details: null,
-        });
-      }
+    useNetworkStateMock.mockReturnValue({
+      type: NetworkStateType.NONE,
+      isConnected: false,
+      isInternetReachable: false,
     });
+    rerender(undefined);
 
     expect(result.current.isConnected).toBe(false);
 
-    // Then set to online
-    act(() => {
-      if (networkCallback) {
-        networkCallback({
-          isConnected: true,
-          isInternetReachable: true,
-          type: NetInfoStateType.other,
-          details: {
-            isConnectionExpensive: false,
-          },
-        });
-      }
+    useNetworkStateMock.mockReturnValue({
+      type: NetworkStateType.OTHER,
+      isConnected: true,
+      isInternetReachable: true,
     });
+    rerender(undefined);
 
     expect(result.current.isConnected).toBe(true);
     expect(result.current.showOfflineModal).toBe(false);
   });
 
   it('closes offline modal when closeModal is called', () => {
-    const { result } = renderHook(() => useNetworkStatus());
+    const { result, rerender } = renderHook(() => useNetworkStatus());
 
-    // Set to offline
-    act(() => {
-      if (networkCallback) {
-        networkCallback({
-          isConnected: false,
-          isInternetReachable: false,
-          type: NetInfoStateType.none,
-          details: null,
-        });
-      }
+    useNetworkStateMock.mockReturnValue({
+      type: NetworkStateType.NONE,
+      isConnected: false,
+      isInternetReachable: false,
     });
+    rerender(undefined);
 
     expect(result.current.showOfflineModal).toBe(true);
 
-    // Close modal
     act(() => {
       result.current.closeModal();
     });
@@ -129,11 +117,9 @@ describe('useNetworkStatus', () => {
     expect(result.current.showOfflineModal).toBe(false);
   });
 
-  it('unsubscribes from network listener on unmount', () => {
+  it('unmounts without throwing', () => {
     const { unmount } = renderHook(() => useNetworkStatus());
 
-    unmount();
-
-    expect(mockUnsubscribe).toHaveBeenCalled();
+    expect(() => unmount()).not.toThrow();
   });
 });

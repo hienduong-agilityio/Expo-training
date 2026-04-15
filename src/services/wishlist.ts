@@ -5,6 +5,7 @@ import { apiRequest } from '@app/services/apiClient';
 import { WISHLIST_ENDPOINTS, HTTP_METHODS } from '@app/constants/api';
 
 // Types
+import type { ApiError } from '@app/interfaces/api';
 import type {
   IWishlist,
   IWishlistListResponse,
@@ -12,27 +13,44 @@ import type {
   IWishlistItem,
 } from '@app/interfaces/wishlist';
 
+function isApiNotFound(error: unknown): boolean {
+  return (
+    typeof error === 'object' &&
+    error !== null &&
+    'status' in error &&
+    (error as ApiError).status === 404
+  );
+}
+
 /**
  * Retrieves the wishlist for a specific user
  */
 const getWishlistForUser = async (
   userDocumentId: string,
 ): Promise<IWishlist | null> => {
-  const response = await apiRequest<IWishlistListResponse>(
-    WISHLIST_ENDPOINTS.ROOT,
-    {
-      method: HTTP_METHODS.GET,
-      query: {
-        filters: {
-          userId: { $eq: userDocumentId },
+  try {
+    const response = await apiRequest<IWishlistListResponse>(
+      WISHLIST_ENDPOINTS.ROOT,
+      {
+        method: HTTP_METHODS.GET,
+        query: {
+          filters: {
+            userId: { $eq: userDocumentId },
+          },
+          pagination: { pageSize: 1 },
+          populate: '*',
         },
-        pagination: { pageSize: 1 },
-        populate: '*',
       },
-    },
-  );
+    );
 
-  return response.data?.[0] ?? null;
+    return response.data?.[0] ?? null;
+  } catch (error) {
+    // Strapi returns 404 when the REST route or collection is missing — treat as empty wishlist.
+    if (isApiNotFound(error)) {
+      return null;
+    }
+    throw error;
+  }
 };
 
 /**

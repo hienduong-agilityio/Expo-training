@@ -5,13 +5,13 @@ import type { NotificationData } from '@app/interfaces/notification';
 
 import { notificationDataFromExpoContent } from './expoContent';
 
-let presentationHandlerRegistered = false;
+const presentation = { registered: false };
 
 const ensurePresentationHandler = () => {
-  if (presentationHandlerRegistered) {
+  if (presentation.registered) {
     return;
   }
-  presentationHandlerRegistered = true;
+  presentation.registered = true;
   Notifications.setNotificationHandler({
     handleNotification: async () => ({
       shouldPlaySound: true,
@@ -34,7 +34,9 @@ export const setupNotificationHandlers = (
     response => {
       const content = response.notification.request.content;
       const data = notificationDataFromExpoContent(content);
-      onNotificationPress?.(data);
+      Promise.resolve(onNotificationPress?.(data)).catch(() => {
+        /* deep link / handler may reject; avoid uncaught promise from native callback */
+      });
     },
   );
 
@@ -42,7 +44,7 @@ export const setupNotificationHandlers = (
 };
 
 /**
- * Reserved for Expo task-based background delivery; FCM uses native handlers in `listeners.ts`.
+ * Reserved for Expo task-based background delivery; foreground FCM is handled in `push.ts`.
  */
 export const setupBackgroundNotificationHandler = () => {
   return undefined;

@@ -24,7 +24,6 @@ module.exports = {
     'src/services/**/*.{ts,tsx}',
     'src/utils/**/*.{ts,tsx}',
     '!**/*.stories.{ts,tsx}',
-    '!src/services/firebase/**',
     '!src/components/ui/index.ts',
     '!src/components/ui/ProductList/index.ts',
     '!src/services/notifications/index.ts',

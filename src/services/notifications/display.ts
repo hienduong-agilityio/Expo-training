@@ -17,7 +17,15 @@ import {
  *
  * @see https://docs.expo.dev/versions/v55.0.0/sdk/notifications/
  */
-export const displayNotification = async (data: NotificationData) => {
+export type DisplayNotificationOptions = {
+  /** Same id → Expo replaces instead of stacking many locals (foreground FCM path). */
+  notificationIdentifier?: string;
+};
+
+export const displayNotification = async (
+  data: NotificationData,
+  options?: DisplayNotificationOptions,
+) => {
   const deepLink = buildNotificationDeepLink(data);
   const payload = convertNotificationDataToStrings(data, deepLink);
   const channelId = getChannelId(data.type);
@@ -26,10 +34,18 @@ export const displayNotification = async (data: NotificationData) => {
     Platform.OS === 'android' ? { channelId } : null;
 
   await Notifications.scheduleNotificationAsync({
+    ...(options?.notificationIdentifier && {
+      identifier: options.notificationIdentifier,
+    }),
     content: {
       title: data.title,
       body: data.body,
       data: payload,
+      ...(Platform.OS === 'android' && {
+        android: {
+          channelId,
+        },
+      }),
     },
     trigger,
   });
