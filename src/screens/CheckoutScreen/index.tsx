@@ -1,6 +1,6 @@
 import { useMemo, useCallback, useState } from 'react';
 import { View, Text, ScrollView } from 'react-native';
-import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useRouter } from 'expo-router';
 
 // Hooks
 import { useCart, useCartActions } from '@app/hooks/useCart';
@@ -12,13 +12,11 @@ import { LoadingState } from '@app/components/ui/LoadingState';
 import { Button } from '@app/components/common/Button';
 
 // Types
-import type { PrivateStackParamList } from '@app/interfaces/navigation';
 import type { PaymentProvider } from '@app/constants';
 import type { ICartItem } from '@app/interfaces/cart';
 
 // Constants
 import {
-  PRIVATE_SCREENS,
   LOADING_MESSAGES,
   CART_MESSAGES,
   CHECKOUT_MESSAGES,
@@ -32,14 +30,10 @@ import { MOCK_PAYMENT_OPTIONS } from '@app/mocks/payments';
 // Styles
 import { styles } from './index.style';
 
-type CheckoutScreenProps = NativeStackScreenProps<
-  PrivateStackParamList,
-  typeof PRIVATE_SCREENS.CHECKOUT
->;
-
 const SHIPPING_PRICE = 30;
 
-export const CheckoutScreen = ({ navigation }: CheckoutScreenProps) => {
+export const CheckoutScreen = () => {
+  const router = useRouter();
   const { cart, cartItems, isLoading } = useCart();
   const { checkout } = useCartActions();
 
@@ -71,13 +65,13 @@ export const CheckoutScreen = ({ navigation }: CheckoutScreenProps) => {
   };
 
   const handleGoBack = () => {
-    navigation.goBack();
+    router.back();
   };
 
   const handleCheckout = useCallback(async () => {
     await checkout();
-    navigation.goBack();
-  }, [checkout, navigation]);
+    router.back();
+  }, [checkout, router]);
 
   if (isLoading || isLoadingProducts) {
     return (

@@ -31,8 +31,23 @@ describe('display', () => {
               title: 'Test Title',
               body: 'Test Body',
             }),
+            ...(Platform.OS === 'android' && {
+              android: { channelId: 'general' },
+            }),
           }),
           trigger: Platform.OS === 'android' ? { channelId: 'general' } : null,
+        }),
+      );
+    });
+
+    it('passes identifier when provided so duplicates can replace', async () => {
+      await displayNotification(mockNotificationData, {
+        notificationIdentifier: 'stable-id-1',
+      });
+
+      expect(Notifications.scheduleNotificationAsync).toHaveBeenCalledWith(
+        expect.objectContaining({
+          identifier: 'stable-id-1',
         }),
       );
     });

@@ -1,4 +1,6 @@
-/** Jest stub for `expo-notifications` (optional dependency in RN CLI layout). */
+/** Jest stub for `expo-notifications`. */
+const subscription = { remove: jest.fn() };
+
 module.exports = {
   AndroidImportance: {
     UNKNOWN: 0,
@@ -19,7 +21,13 @@ module.exports = {
   requestPermissionsAsync: jest.fn(() =>
     Promise.resolve({ status: 'granted', granted: true }),
   ),
-  addNotificationResponseReceivedListener: jest.fn(() => ({
-    remove: jest.fn(),
-  })),
+  getDevicePushTokenAsync: jest.fn(() =>
+    Promise.resolve({ type: 'android', data: 'mock-device-push-token' }),
+  ),
+  addNotificationResponseReceivedListener: jest.fn(() => subscription),
+  addNotificationReceivedListener: jest.fn(() => subscription),
+  addPushTokenListener: jest.fn(() => subscription),
+  getLastNotificationResponseAsync: jest.fn(() => Promise.resolve(null)),
+  subscribeToTopicAsync: jest.fn(() => Promise.resolve(null)),
+  unsubscribeFromTopicAsync: jest.fn(() => Promise.resolve(null)),
 };

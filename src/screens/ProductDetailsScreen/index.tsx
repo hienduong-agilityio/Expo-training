@@ -1,11 +1,12 @@
+import { useLayoutEffect } from 'react';
 import { View } from 'react-native';
+import { useLocalSearchParams, useNavigation } from 'expo-router';
 
 // Types
-import type { PrivateStackScreenProps } from '@app/interfaces/navigation';
 import type { IProductSize } from '@app/interfaces/product';
 
 // Constants
-import { PRIVATE_SCREENS, PRODUCT_MESSAGES } from '@app/constants';
+import { PRODUCT_MESSAGES } from '@app/constants';
 
 // Hooks
 import { useProductById } from '@app/hooks/useProduct';
@@ -17,14 +18,15 @@ import { useAppNavigation } from '@app/hooks/useAppNavigation';
 // Components
 import { LoadingState } from '@app/components/ui/LoadingState';
 import { NotFound } from '@app/components/ui/NotFound';
+import { ProductDetailHeaderRight } from '@app/components/ui/ProductDetailHeader';
+import { defaultNavOptions } from '@app/components/ui/ProductDetailHeader/index.style';
 import { ProductDetailContent } from './ProductDetailContent';
 
 // Styles
 import { styles } from './index.style';
 
-type ProductDetailScreenProps = PrivateStackScreenProps<
-  typeof PRIVATE_SCREENS.PRODUCT_DETAIL
->;
+const paramStr = (v: string | string[] | undefined) =>
+  Array.isArray(v) ? v[0] : v;
 
 const MOCK_SIZES: IProductSize[] = [
   { id: '1', size: '7 UK', available: true },
@@ -33,8 +35,22 @@ const MOCK_SIZES: IProductSize[] = [
   { id: '4', size: '10 UK', available: false },
 ];
 
-export const ProductDetailScreen = ({ route }: ProductDetailScreenProps) => {
-  const productId = route.params?.productId;
+export const ProductDetailScreen = () => {
+  const navigation = useNavigation();
+  const raw = useLocalSearchParams<{ productId: string | string[] }>();
+  const productId = paramStr(raw.productId);
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: defaultNavOptions.title,
+      headerRight: () =>
+        productId ? (
+          <ProductDetailHeaderRight productId={productId} />
+        ) : null,
+      headerShown: true,
+      headerStyle: defaultNavOptions.headerStyle,
+    });
+  }, [navigation, productId]);
 
   const { product, isLoading } = useProductById(productId);
 

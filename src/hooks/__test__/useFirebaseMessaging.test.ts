@@ -5,7 +5,10 @@ import * as ExpoLinking from 'expo-linking';
 import { useFirebaseMessaging } from '../useFirebaseMessaging';
 
 // Services
-import { getFcmToken, registerListenerWithFCM } from '@app/services/firebase';
+import {
+  getFcmToken,
+  registerListenerWithFCM,
+} from '@app/services/notifications';
 
 // Helpers
 import { buildNotificationDeepLink } from '@app/helpers/notifications';
@@ -19,13 +22,16 @@ jest.mock('expo-linking', () => ({
   createURL: jest.fn(() => 'stylish://'),
 }));
 
-jest.mock('@app/services/firebase');
 jest.mock('@app/services/user');
 jest.mock('@app/stores/authStore');
 jest.mock('@app/services/notifications', () => {
   const actual = jest.requireActual('@app/services/notifications');
   return {
     ...actual,
+    deliverPendingQuitStateNotification: jest.fn(() => Promise.resolve()),
+    getFcmToken: jest.fn(),
+    registerListenerWithFCM: jest.fn(),
+    subscribeToDefaultTopics: jest.fn(() => Promise.resolve()),
     initializeNotificationChannels: jest.fn(() => Promise.resolve()),
     ensureExpoNotificationPermissionsAsync: jest.fn(() =>
       Promise.resolve('granted'),

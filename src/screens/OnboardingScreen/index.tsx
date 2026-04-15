@@ -1,6 +1,7 @@
 import { useCallback, useRef, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useRouter } from 'expo-router';
 
 // Components
 import {
@@ -17,22 +18,19 @@ import { PaginationDots } from '@app/components/ui/PaginationDots';
 import { OnboardingNavigation } from '@app/components/ui/OnboardingNavigation';
 
 // Constants
-import { HIT_SLOP, PUBLIC_SCREENS, BUTTON_LABELS } from '@app/constants';
+import { HIT_SLOP, BUTTON_LABELS } from '@app/constants';
 
 // Mocks
 import { ONBOARDING_DATA } from '@app/mocks/onboarding';
 
 // Types
-import type { IOnboardingItem, PublicStackScreenProps } from '@app/interfaces';
+import type { IOnboardingItem } from '@app/interfaces';
 
 // Styles
 import { styles } from './index.style';
 
-type OnboardingScreenProps = PublicStackScreenProps<
-  typeof PUBLIC_SCREENS.ONBOARDING
->;
-
-export const OnboardingScreen = ({ navigation }: OnboardingScreenProps) => {
+export const OnboardingScreen = () => {
+  const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
   const flatListRef = useRef<FlatList<IOnboardingItem>>(null);
 
@@ -65,11 +63,8 @@ export const OnboardingScreen = ({ navigation }: OnboardingScreenProps) => {
   const handleCompleteOnboarding = useCallback(async () => {
     await AsyncStorage.setItem('HAS_SEEN_ONBOARDING', 'true');
 
-    navigation.reset({
-      index: 0,
-      routes: [{ name: PUBLIC_SCREENS.LOGIN }],
-    });
-  }, [navigation]);
+    router.replace('/login');
+  }, [router]);
 
   // Handle next onboarding slide
   const handleNextSlide = useCallback(() => {

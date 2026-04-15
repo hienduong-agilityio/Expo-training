@@ -53,6 +53,19 @@ describe('wishlistService', () => {
       expect(result).toBeNull();
     });
 
+    it('returns null when API responds with 404 (missing collection or route)', async () => {
+      mockApiRequest.mockRejectedValueOnce({
+        status: 404,
+        message: 'Not Found',
+        name: 'NotFoundError',
+        details: {},
+      });
+
+      const result = await wishlistService.getWishlistForUser('user1');
+
+      expect(result).toBeNull();
+    });
+
     it('returns first wishlist when multiple wishlists found', async () => {
       const mockWishlist1 = {
         documentId: '1',

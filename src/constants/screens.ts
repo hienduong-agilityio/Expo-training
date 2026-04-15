@@ -1,5 +1,3 @@
-import type { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
-
 // Components
 import { BottomTabHeader } from '@app/components/BottomTabHeader';
 
@@ -24,7 +22,7 @@ export const PRIVATE_SCREENS = {
   CHECKOUT: 'Checkout',
 } as const;
 
-export const SCREEN_OPTIONS: BottomTabNavigationOptions = {
+export const SCREEN_OPTIONS = {
   animation: 'shift',
   headerShown: true,
   header: BottomTabHeader,

@@ -13,15 +13,18 @@ const { withRozenite } = require('@rozenite/metro');
 const isEasBuild =
   process.env.EAS_BUILD === 'true' || process.env.EAS_BUILD === '1';
 
+const isExpoExport = process.argv.includes('export');
+
 const defaultConfig = getDefaultConfig(__dirname);
 
-const mySerializer = isEasBuild
-  ? null
-  : createSerializer({
-      includeCode: false,
-      projectRoot: __dirname,
-      // ⚠️ WARNING: In a monorepo setup, this should point to the monorepo root, not the individual package directory.
-    });
+const mySerializer =
+  isEasBuild || isExpoExport
+    ? null
+    : createSerializer({
+        includeCode: false,
+        projectRoot: __dirname,
+        // ⚠️ WARNING: In a monorepo setup, this should point to the monorepo root, not the individual package directory.
+      });
 
 const customConfig = {
   transformer: {

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { View, ScrollView } from 'react-native';
+import { useRouter } from 'expo-router';
 
 // Components
 import { ProductSection } from '@app/components/ui/ProductSection';
@@ -16,8 +17,6 @@ import { ClockIcon, CalendarIcon } from '@app/icons';
 // Constants
 import {
   PRODUCT_LIST_TYPES,
-  PRODUCT_LIST_TITLES,
-  PRIVATE_SCREENS,
   MESSAGES,
   SEARCH_MESSAGES,
 } from '@app/constants';
@@ -34,9 +33,6 @@ import {
 } from '@app/mocks/banners';
 import { DEAL_INFO } from '@app/mocks/home';
 
-// Types
-import type { PrivateTabScreenProps } from '@app/interfaces/navigation';
-
 // Hooks
 import { useCategorizedProducts } from '@app/hooks/useProduct';
 import { useWishlistActions } from '@app/hooks/useWishlist';
@@ -44,9 +40,8 @@ import { useWishlistActions } from '@app/hooks/useWishlist';
 // Styles
 import { styles } from './index.style';
 
-type HomeScreenProps = PrivateTabScreenProps<typeof PRIVATE_SCREENS.HOME>;
-
-export const HomeScreen = ({ navigation }: HomeScreenProps) => {
+export const HomeScreen = () => {
+  const router = useRouter();
   const { addItem, removeItem } = useWishlistActions();
   const {
     data: categorizedData,
@@ -66,16 +61,11 @@ export const HomeScreen = ({ navigation }: HomeScreenProps) => {
   const loading = isLoading || isFetching;
 
   const navigateToProductList = (listType: ProductListType) => {
-    navigation.navigate(PRIVATE_SCREENS.PRODUCT_LIST, {
-      type: listType,
-      title: PRODUCT_LIST_TITLES[listType],
-    });
+    router.push(`/products/${listType}`);
   };
 
   const handleProductPress = (id: string) => {
-    navigation.navigate(PRIVATE_SCREENS.PRODUCT_DETAIL, {
-      productId: id,
-    });
+    router.push(`/product/${id}`);
   };
 
   const handleViewAllNewArrivals = () => {
@@ -83,9 +73,9 @@ export const HomeScreen = ({ navigation }: HomeScreenProps) => {
   };
 
   const handleCategoryPress = (categoryId: string, categoryName: string) => {
-    navigation.navigate(PRIVATE_SCREENS.SEARCH, {
-      categoryId,
-      categoryName,
+    router.push({
+      pathname: '/search',
+      params: { categoryId, categoryName },
     });
   };
 
@@ -93,8 +83,9 @@ export const HomeScreen = ({ navigation }: HomeScreenProps) => {
     const trimmedQuery = searchValue?.trim();
 
     if (trimmedQuery) {
-      navigation.navigate(PRIVATE_SCREENS.SEARCH, {
-        searchQuery: trimmedQuery,
+      router.push({
+        pathname: '/search',
+        params: { searchQuery: trimmedQuery },
       });
       setSearchValue('');
     }

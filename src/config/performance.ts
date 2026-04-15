@@ -1,5 +1,3 @@
-import type { NavigationState as RNNavigationState } from '@react-navigation/native';
-
 let performance: typeof import('react-native-performance').default | null =
   null;
 
@@ -87,43 +85,4 @@ export const trackScreenTransition = (
   } catch {
     // Ignore
   }
-};
-
-export const setupNavigationTracking = (): {
-  onReady?: () => void;
-  onStateChange?: (state: RNNavigationState | undefined) => void;
-} => {
-  if (!__DEV__) return {};
-
-  let previousRouteName: string | null = null;
-  let isFirstRender = true;
-
-  const getCurrentRouteName = (
-    state: RNNavigationState | null,
-  ): string | null => {
-    if (!state) return null;
-    const route = state.routes[state.index];
-    if (!route) return null;
-    return route.state
-      ? getCurrentRouteName(route.state as RNNavigationState)
-      : route.name;
-  };
-
-  return {
-    onReady: trackNavigationReady,
-    onStateChange: (state: RNNavigationState | undefined) => {
-      if (!state) return;
-      const currentRouteName = getCurrentRouteName(state);
-      if (!currentRouteName) return;
-      if (isFirstRender) {
-        isFirstRender = false;
-        trackFirstScreen(currentRouteName);
-        return;
-      }
-      if (previousRouteName && previousRouteName !== currentRouteName) {
-        trackScreenTransition(previousRouteName, currentRouteName);
-      }
-      previousRouteName = currentRouteName;
-    },
-  };
 };

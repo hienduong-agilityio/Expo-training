@@ -84,6 +84,10 @@ tmp/
 .env.production
 .env.local
 
+# Firebase native config
+config/google-services.json
+config/GoogleService-Info.plist
+
 # Expo
 .expo
 dist/

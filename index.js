@@ -2,19 +2,14 @@
  * @format
  */
 
-import { registerRootComponent } from 'expo';
-import App from './App';
 import { setupBackgroundNotificationHandler } from './src/services/notifications';
 
 setupBackgroundNotificationHandler();
 
-let AppEntryPoint = App;
-
-if (__DEV__) {
-  if (process.env.LOAD_STORYBOOK === 'true') {
-    const StorybookUIRoot = require('./.storybook/index').default;
-    AppEntryPoint = StorybookUIRoot;
-  }
+if (__DEV__ && process.env.LOAD_STORYBOOK === 'true') {
+  const { registerRootComponent } = require('expo');
+  const StorybookUIRoot = require('./.storybook/index').default;
+  registerRootComponent(StorybookUIRoot);
+} else {
+  require('expo-router/entry');
 }
-
-registerRootComponent(AppEntryPoint);
