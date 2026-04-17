@@ -84,10 +84,6 @@ tmp/
 .env.production
 .env.local
 
-# Firebase native config
-config/google-services.json
-config/GoogleService-Info.plist
-
 # Expo
 .expo
 dist/
@@ -101,3 +97,7 @@ android/
 
 /metro-stats.json
 metro-stats.json
+
+# Firebase admin SDK
+stylishecom-39c74-firebase-adminsdk-fbsvc-9f60121730.json
+stylishecommerce-2fa14-firebase-adminsdk-fbsvc-134d7a1874.json
