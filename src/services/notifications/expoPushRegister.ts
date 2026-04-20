@@ -9,29 +9,42 @@ type ExpoPushTokenResult =
   | { ok: true; token: string }
   | { ok: false; message: string };
 
-async function getExpoPushTokenResultAsync(): Promise<ExpoPushTokenResult> {
+/**
+ * Initialize Android channels and request notification permission.
+ * Works on **both** emulator and real device — required before any
+ * `scheduleNotificationAsync` call (and before the Android 13+ permission prompt).
+ */
+export async function ensureNotificationPermissionAsync(): Promise<boolean> {
   if (Platform.OS === 'android') {
     try {
       await initializeNotificationChannels();
     } catch {
-      // best-effort
+      // best-effort; channels are not fatal for local notifications on newer OS versions
     }
   }
 
-  if (!Device.isDevice) {
-    return { ok: false, message: 'Must use physical device for push notifications' };
+  const { status: existingStatus } = await Notifications.getPermissionsAsync();
+  if (existingStatus === 'granted') {
+    return true;
   }
 
-  const { status: existingStatus } = await Notifications.getPermissionsAsync();
-  let finalStatus = existingStatus;
-  if (existingStatus !== 'granted') {
-    const { status } = await Notifications.requestPermissionsAsync();
-    finalStatus = status;
-  }
-  if (finalStatus !== 'granted') {
+  const { status } = await Notifications.requestPermissionsAsync();
+  return status === 'granted';
+}
+
+async function getExpoPushTokenResultAsync(): Promise<ExpoPushTokenResult> {
+  const granted = await ensureNotificationPermissionAsync();
+  if (!granted) {
     return {
       ok: false,
       message: 'Permission not granted to get push token for push notification!',
+    };
+  }
+
+  if (!Device.isDevice) {
+    return {
+      ok: false,
+      message: 'Must use physical device for push notifications',
     };
   }
 
@@ -58,6 +71,7 @@ async function getExpoPushTokenResultAsync(): Promise<ExpoPushTokenResult> {
 
 /**
  * Token for debugging / server registration — does not throw and does not show alerts.
+ * Real device only (Expo/FCM requires a physical device to mint a push token).
  */
 export async function tryGetExpoPushTokenAsync(): Promise<ExpoPushTokenResult> {
   return getExpoPushTokenResultAsync();
