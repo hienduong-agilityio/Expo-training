@@ -71,8 +71,7 @@ module.exports = () => ({
         foregroundImage: './assets/images/adaptive-icon-foreground.png',
         backgroundColor: '#dbe7f0',
       },
-      googleServicesFile:
-        process.env.GOOGLE_SERVICES_JSON ?? GOOGLE_SERVICES_JSON_LOCAL,
+      "googleServicesFile": "./config/google-services.json"
     },
     ios: {
       bundleIdentifier: 'org.reactjs.native.example.StylishEcommerce',
