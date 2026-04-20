@@ -8,6 +8,7 @@ import { authService } from '@app/services/auth';
 
 // Stores
 import { authStore } from '@app/stores/authStore';
+import { deferredNavigationStore } from '@app/stores/deferredNavigationStore';
 import { toastStore } from '@app/stores/toastStore';
 
 // Constants
@@ -73,6 +74,7 @@ export const useAuthActions = () => {
 
   const logout = useCallback(() => {
     try {
+      deferredNavigationStore.getState().resetDeferredNavigation();
       clearSession();
       clearUserQueries();
       showToast({

@@ -2,21 +2,41 @@ import { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import * as Updates from 'expo-updates';
 
-import { useOTAUpdate } from '@app/hooks/useOTAUpdate';
+import type { UseOTAUpdateReturn } from '@app/hooks/useOTAUpdate';
+import { colors } from '@app/themes';
 
 const VISIBLE_CHANNELS = new Set(['development', 'preview']);
 
 const shortId = (id?: string | null) =>
   id && id.length > 8 ? `${id.slice(0, 8)}…` : (id ?? 'embedded');
 
+type RuntimeBadgeProps = Pick<
+  UseOTAUpdateReturn,
+  | 'runtimeVersion'
+  | 'channel'
+  | 'updateId'
+  | 'isUpdateAvailable'
+  | 'isUpdatePending'
+  | 'isChecking'
+  | 'isDownloading'
+  | 'checkForUpdate'
+>;
+
 /**
- * Corner badge that lets QA verify which runtime / update is currently running.
- * Visible only in `__DEV__` or when the channel is `development` / `preview`.
- * Tap to toggle extra diagnostic fields.
+ * QA-only corner badge. Visible in `__DEV__` and on `development` / `preview` channels.
+ * Tap the badge to expand; tap "Check now" to manually exercise
+ * `Updates.checkForUpdateAsync()` + `Updates.fetchUpdateAsync()`.
  */
-export const RuntimeBadge = () => {
-  const { runtimeVersion, channel, updateId, isUpdateAvailable, isUpdatePending } =
-    useOTAUpdate();
+export const RuntimeBadge = ({
+  runtimeVersion,
+  channel,
+  updateId,
+  isUpdateAvailable,
+  isUpdatePending,
+  isChecking,
+  isDownloading,
+  checkForUpdate,
+}: RuntimeBadgeProps) => {
   const [expanded, setExpanded] = useState(false);
 
   const visible = __DEV__ || (channel ? VISIBLE_CHANNELS.has(channel) : false);
@@ -24,33 +44,53 @@ export const RuntimeBadge = () => {
     return null;
   }
 
+  const busyLabel = isChecking
+    ? 'Checking…'
+    : isDownloading
+      ? 'Downloading…'
+      : 'Check now';
+
   return (
-    <Pressable style={styles.wrapper} onPress={() => setExpanded(v => !v)}>
-      <View style={styles.badge}>
-        <Text style={styles.text}>
-          rt {runtimeVersion ?? '?'} · {channel ?? 'embedded'} · {shortId(updateId)}
-        </Text>
-        {expanded && (
-          <View style={styles.details}>
-            <Text style={styles.detailText}>
-              isEmbeddedLaunch: {String(Updates.isEmbeddedLaunch)}
-            </Text>
-            <Text style={styles.detailText}>
-              isEmergencyLaunch: {String(Updates.isEmergencyLaunch)}
-            </Text>
-            <Text style={styles.detailText}>
-              isUpdateAvailable: {String(isUpdateAvailable)}
-            </Text>
-            <Text style={styles.detailText}>
-              isUpdatePending: {String(isUpdatePending)}
-            </Text>
-            <Text style={styles.detailText}>
-              createdAt: {Updates.createdAt?.toISOString?.() ?? '—'}
-            </Text>
-          </View>
-        )}
-      </View>
-    </Pressable>
+    <View style={styles.wrapper}>
+      <Pressable onPress={() => setExpanded(v => !v)}>
+        <View style={styles.badge}>
+          <Text style={styles.text}>
+            rt {runtimeVersion ?? '?'} · {channel ?? 'embedded'} ·{' '}
+            {shortId(updateId)}
+          </Text>
+          {expanded && (
+            <View style={styles.details}>
+              <Text style={styles.detailText}>
+                isEmbeddedLaunch: {String(Updates.isEmbeddedLaunch)}
+              </Text>
+              <Text style={styles.detailText}>
+                isEmergencyLaunch: {String(Updates.isEmergencyLaunch)}
+              </Text>
+              <Text style={styles.detailText}>
+                isUpdateAvailable: {String(isUpdateAvailable)}
+              </Text>
+              <Text style={styles.detailText}>
+                isUpdatePending: {String(isUpdatePending)}
+              </Text>
+              <Text style={styles.detailText}>
+                createdAt: {Updates.createdAt?.toISOString?.() ?? '—'}
+              </Text>
+            </View>
+          )}
+        </View>
+      </Pressable>
+      {expanded && (
+        <Pressable
+          disabled={isChecking || isDownloading}
+          onPress={() => checkForUpdate(true)}
+          style={[
+            styles.button,
+            (isChecking || isDownloading) && styles.buttonDisabled,
+          ]}>
+          <Text style={styles.buttonText}>{busyLabel}</Text>
+        </Pressable>
+      )}
+    </View>
   );
 };
 
@@ -60,15 +100,33 @@ const styles = StyleSheet.create({
     bottom: 24,
     right: 8,
     zIndex: 9999,
+    alignItems: 'flex-end',
   },
   badge: {
-    backgroundColor: 'rgba(0,0,0,0.65)',
+    backgroundColor: colors.overlayStrong,
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 6,
     maxWidth: 280,
   },
-  text: { color: '#fff', fontSize: 10, fontFamily: 'monospace' },
+  text: { color: colors.white, fontSize: 10, fontFamily: 'monospace' },
   details: { marginTop: 4 },
-  detailText: { color: '#ddd', fontSize: 9, fontFamily: 'monospace' },
+  detailText: {
+    color: colors.gray,
+    fontSize: 9,
+    fontFamily: 'monospace',
+  },
+  button: {
+    marginTop: 4,
+    backgroundColor: colors.black,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 6,
+  },
+  buttonDisabled: { opacity: 0.5 },
+  buttonText: {
+    color: colors.white,
+    fontSize: 10,
+    fontFamily: 'monospace',
+  },
 });

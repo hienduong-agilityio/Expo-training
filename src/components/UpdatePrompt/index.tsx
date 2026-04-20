@@ -8,25 +8,21 @@ import {
   View,
 } from 'react-native';
 
-import { useOTAUpdate } from '@app/hooks/useOTAUpdate';
+import type { UseOTAUpdateReturn } from '@app/hooks/useOTAUpdate';
 import { borderRadius, colors, typography } from '@app/themes';
 
-/**
- * Non-blocking prompt for EAS Update.
- *
- * - Renders nothing while an update is still downloading (silent UX).
- * - When a non-critical update is ready, prompts the user with "Restart now / Later".
- * - Critical updates are auto-applied by `useOTAUpdate`, so this component stays hidden for them.
- */
-export const UpdatePrompt = () => {
-  const {
-    isUpdateReady,
-    isApplying,
-    releaseNotes,
-    applyUpdate,
-    dismissUpdate,
-  } = useOTAUpdate();
+type UpdatePromptProps = Pick<
+  UseOTAUpdateReturn,
+  'isUpdateReady' | 'isApplying' | 'releaseNotes' | 'applyUpdate' | 'dismissUpdate'
+>;
 
+export const UpdatePrompt = ({
+  isUpdateReady,
+  isApplying,
+  releaseNotes,
+  applyUpdate,
+  dismissUpdate,
+}: UpdatePromptProps) => {
   if (!isUpdateReady) {
     return null;
   }
@@ -106,7 +102,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 8,
   },
-  textPrimary: { color: colors.white, fontWeight: typography.fontWeights.semiBold },
+  textPrimary: {
+    color: colors.white,
+    fontWeight: typography.fontWeights.semiBold,
+  },
   buttonSecondary: { paddingVertical: 10 },
-  textSecondary: { color: colors.secondary, fontWeight: typography.fontWeights.medium },
+  textSecondary: {
+    color: colors.secondary,
+    fontWeight: typography.fontWeights.medium,
+  },
 });
