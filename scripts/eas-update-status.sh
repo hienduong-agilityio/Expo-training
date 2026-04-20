@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
-# In ra trạng thái hiện tại của EAS Update: channels + branches + 5 update mới
-# nhất ở mỗi branch. Dùng trước & sau khi publish để verify.
+# Print the current EAS Update state: channels + branches + 5 most recent
+# updates per branch. Run before and after each publish to verify.
 #
 # Usage: scripts/eas-update-status.sh
 

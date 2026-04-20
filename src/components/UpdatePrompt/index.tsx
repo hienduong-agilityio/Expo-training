@@ -12,11 +12,11 @@ import { useOTAUpdate } from '@app/hooks/useOTAUpdate';
 import { borderRadius, colors, typography } from '@app/themes';
 
 /**
- * Non-blocking prompt cho EAS Update.
+ * Non-blocking prompt for EAS Update.
  *
- * - Không hiển thị khi đang download (UX im lặng).
- * - Khi update đã download xong và KHÔNG critical => prompt user "Restart now / Later".
- * - Critical update đã được hook tự `reloadAsync()` => không vẽ gì.
+ * - Renders nothing while an update is still downloading (silent UX).
+ * - When a non-critical update is ready, prompts the user with "Restart now / Later".
+ * - Critical updates are auto-applied by `useOTAUpdate`, so this component stays hidden for them.
  */
 export const UpdatePrompt = () => {
   const {

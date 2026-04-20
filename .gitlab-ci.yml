@@ -19,12 +19,13 @@ secret_detection:
 # ─────────────────────────────────────────────────────────────────────────────
 # EAS Update — manual gates
 # ─────────────────────────────────────────────────────────────────────────────
-# Yêu cầu CI/CD variables (Settings → CI/CD → Variables, type "Variable",
+# Required CI/CD variables (Settings → CI/CD → Variables, type "Variable",
 # masked + protected):
-#   EXPO_TOKEN — robot token từ https://expo.dev/accounts/<owner>/settings/access-tokens
+#   EXPO_TOKEN — robot token from https://expo.dev/accounts/<owner>/settings/access-tokens
 #
-# Cả 2 job đều `when: manual` ⇒ không tự chạy, dev/PM phải bấm trên GitLab.
-# `only.refs` giới hạn chỉ chạy trên các branch cụ thể.
+# Both jobs are `when: manual`, so they never run automatically — a developer
+# or PM must trigger them from the GitLab UI. `only.refs` limits the jobs to
+# the long-lived branches where publishing is allowed.
 
 .eas-base: &eas-base
   stage: eas-update

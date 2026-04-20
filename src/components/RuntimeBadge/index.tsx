@@ -10,9 +10,9 @@ const shortId = (id?: string | null) =>
   id && id.length > 8 ? `${id.slice(0, 8)}…` : (id ?? 'embedded');
 
 /**
- * Badge nhỏ ở góc cho QA verify đang chạy đúng runtime / update nào.
- * Chỉ hiển thị ở `__DEV__`, `development`, hoặc `preview` channel.
- * Tap vào để toggle expand chi tiết.
+ * Corner badge that lets QA verify which runtime / update is currently running.
+ * Visible only in `__DEV__` or when the channel is `development` / `preview`.
+ * Tap to toggle extra diagnostic fields.
  */
 export const RuntimeBadge = () => {
   const { runtimeVersion, channel, updateId, isUpdateAvailable, isUpdatePending } =

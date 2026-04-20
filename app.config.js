@@ -91,18 +91,21 @@ module.exports = () => ({
       },
     },
     /**
-     * EAS Update config — best practice
+     * EAS Update configuration.
      * Docs: https://docs.expo.dev/eas-update/getting-started/
      *
-     * - `runtimeVersion.policy: 'appVersion'` => mỗi version trong package.json
-     *   (0.0.1, 0.0.2, ...) là 1 runtime riêng. Update chỉ gửi tới đúng runtime
-     *   của native binary => tránh OTA gửi JS bundle không tương thích native.
-     * - `checkAutomatically: 'ON_ERROR_RECOVERY'` => không tự động pop-up khi
-     *   khởi động; chúng ta chủ động check qua `Updates.useUpdates()` để có UX
-     *   non-blocking (xem `src/hooks/useOTAUpdate.ts`).
-     * - `fallbackToCacheTimeout: 0` => không block splash chờ update; user vào
-     *   app ngay, update được apply ở lần restart sau.
-     * - `requestHeaders` => gắn metadata để filter rule trên dashboard nếu cần.
+     * - `runtimeVersion.policy: 'appVersion'` — each `package.json#version`
+     *   (0.0.1, 0.0.2, …) becomes its own runtime. The server only serves
+     *   updates whose runtime matches the native binary, preventing
+     *   incompatible JS bundles from reaching users.
+     * - `checkAutomatically: 'ON_ERROR_RECOVERY'` — the SDK does not auto-prompt
+     *   on launch. We drive checks explicitly via `Updates.useUpdates()` inside
+     *   `src/hooks/useOTAUpdate.ts` for a non-blocking UX.
+     * - `fallbackToCacheTimeout: 0` — never block the splash screen waiting for
+     *   an update; the user reaches the app immediately and any update is
+     *   applied on the next restart.
+     * - `requestHeaders['expo-channel-name']` — lets the dashboard filter by
+     *   channel and matches the binary to the right branch.
      */
     updates: {
       url: `https://u.expo.dev/${EAS_PROJECT_ID}`,

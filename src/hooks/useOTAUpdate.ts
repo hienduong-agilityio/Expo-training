@@ -3,47 +3,36 @@ import { AppState, type AppStateStatus, Platform } from 'react-native';
 import * as Updates from 'expo-updates';
 
 /**
- * Một lần duy nhất / process: log runtime info ra console.
- * Trong prod nên route vào Sentry/Analytics thay cho `console.log`.
- */
-let runtimeInfoLogged = false;
-const logRuntimeInfoOnce = () => {
-  if (runtimeInfoLogged) {
-    return;
-  }
-  runtimeInfoLogged = true;
-  const info = {
-    runtimeVersion: Updates.runtimeVersion,
-    channel: Updates.channel,
-    updateId: Updates.updateId,
-    createdAt: Updates.createdAt?.toISOString?.(),
-    isEmbeddedLaunch: Updates.isEmbeddedLaunch,
-    isEmergencyLaunch: Updates.isEmergencyLaunch,
-  };
-  console.log('[OTA] runtime info', info);
-};
-
-/**
- * Best-practice OTA update hook for EAS Update.
- *
- * Tham khảo:
- *  - https://docs.expo.dev/eas-update/getting-started/
- *  - https://docs.expo.dev/versions/latest/sdk/updates/#useupdates
- *
- * Behaviour:
- *  1. Bỏ qua hoàn toàn ở dev / Expo Go (Updates module disabled).
- *  2. Tự động check khi app cold-start và mỗi lần app từ background trở lại
- *     foreground (>= MIN_CHECK_INTERVAL_MS để tránh spam).
- *  3. Nếu có update => tự fetch ngầm. Sau khi fetch xong:
- *       - Update có flag `isCritical` (đọc từ manifest extra) => reload ngay.
- *       - Ngược lại => set `isUpdateReady = true` để UI prompt user "Restart now / Later".
- *  4. Expose error riêng cho check/download để log telemetry.
+ * Minimum interval between consecutive update checks triggered by app-resume.
+ * Prevents spam when users quickly background/foreground the app.
  */
 const MIN_CHECK_INTERVAL_MS = 60_000;
 
 type CriticalManifestExtra = {
   isCritical?: boolean;
   releaseNotes?: string;
+};
+
+let runtimeInfoLogged = false;
+
+/**
+ * Log runtime info once per process so QA and crash reports can correlate
+ * behaviour with the actual update running on-device. In production this
+ * should be forwarded to Sentry/Datadog instead of `console.log`.
+ */
+const logRuntimeInfoOnce = () => {
+  if (runtimeInfoLogged) {
+    return;
+  }
+  runtimeInfoLogged = true;
+  console.log('[OTA] runtime info', {
+    runtimeVersion: Updates.runtimeVersion,
+    channel: Updates.channel,
+    updateId: Updates.updateId,
+    createdAt: Updates.createdAt?.toISOString?.(),
+    isEmbeddedLaunch: Updates.isEmbeddedLaunch,
+    isEmergencyLaunch: Updates.isEmergencyLaunch,
+  });
 };
 
 const readCriticalFlag = (
@@ -59,6 +48,22 @@ const readCriticalFlag = (
   };
 };
 
+/**
+ * Best-practice OTA hook built on top of `expo-updates`.
+ *
+ * Behaviour:
+ *   1. No-op in dev / Expo Go (`Updates.isEnabled` is false there).
+ *   2. Checks on cold start and on each background → foreground transition,
+ *      throttled by `MIN_CHECK_INTERVAL_MS`.
+ *   3. If an update is available it is fetched silently. On completion:
+ *        - Critical updates (`manifest.extra.isCritical`) reload immediately.
+ *        - Otherwise `isUpdateReady` becomes true so the UI can prompt the user.
+ *   4. Check/download errors are surfaced so callers can forward them to telemetry.
+ *
+ * Docs:
+ *   - https://docs.expo.dev/eas-update/getting-started/
+ *   - https://docs.expo.dev/versions/latest/sdk/updates/#useupdates
+ */
 export const useOTAUpdate = () => {
   const {
     currentlyRunning,
