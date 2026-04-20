@@ -3,36 +3,74 @@
 # Publish a single EAS Update to the given branch with first-time-setup guard rails.
 #
 # Usage:
-#   scripts/eas-update-publish.sh <branch> [--allow-dirty] [extra eas-update args...]
+#   scripts/eas-update-publish.sh <branch> [--allow-dirty] [--environment <env>] [extra eas-update args...]
 #
 # Examples:
 #   scripts/eas-update-publish.sh preview
 #   scripts/eas-update-publish.sh production --extra-metadata '{"isCritical":true}'
+#   scripts/eas-update-publish.sh hotfix-0.0.1 --allow-dirty --environment preview
 #
 # Guards:
 #   1. Working tree must be clean (unless --allow-dirty) so the update is reproducible.
 #   2. HEAD must be pushed to a remote (warn when local-only) so the commit is traceable.
 #   3. Ask for explicit confirmation when publishing directly to `production`.
 #   4. Print the runtime version derived from package.json so the user can verify.
+#   5. Auto-pass `--environment` derived from the branch (required by `--non-interactive`),
+#      unless the caller already provided one in the extra args.
 
 set -euo pipefail
 
 BRANCH="${1:-}"
 if [[ -z "$BRANCH" ]]; then
-  echo "Usage: $0 <branch> [--allow-dirty] [extra eas-update args...]" >&2
+  echo "Usage: $0 <branch> [--allow-dirty] [--environment <env>] [extra eas-update args...]" >&2
   exit 1
 fi
 shift
 
 ALLOW_DIRTY=false
+ENV_OVERRIDDEN=false
 EXTRA_ARGS=()
-for arg in "$@"; do
-  if [[ "$arg" == "--allow-dirty" ]]; then
-    ALLOW_DIRTY=true
-  else
-    EXTRA_ARGS+=("$arg")
-  fi
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --allow-dirty)
+      ALLOW_DIRTY=true
+      shift
+      ;;
+    --environment)
+      ENV_OVERRIDDEN=true
+      EXTRA_ARGS+=("$1")
+      shift
+      if [[ $# -gt 0 ]]; then
+        EXTRA_ARGS+=("$1")
+        shift
+      fi
+      ;;
+    --environment=*)
+      ENV_OVERRIDDEN=true
+      EXTRA_ARGS+=("$1")
+      shift
+      ;;
+    *)
+      EXTRA_ARGS+=("$1")
+      shift
+      ;;
+  esac
 done
+
+# Map branch → EAS environment. Custom branches default to `preview` (safe sandbox).
+if [[ "$ENV_OVERRIDDEN" != true ]]; then
+  case "$BRANCH" in
+    development|preview|production)
+      ENVIRONMENT="$BRANCH"
+      ;;
+    *)
+      ENVIRONMENT="preview"
+      echo "ℹ  Branch '$BRANCH' is not a default environment; using --environment preview."
+      ;;
+  esac
+  EXTRA_ARGS+=(--environment "$ENVIRONMENT")
+fi
 
 if [[ -n "$(git status --porcelain)" ]] && [[ "$ALLOW_DIRTY" != true ]]; then
   echo "✘ Working tree has uncommitted changes:" >&2
