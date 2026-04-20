@@ -1,19 +1,69 @@
-# You can override the included template(s) by including variable overrides
-# SAST customization: https://docs.gitlab.com/ee/user/application_security/sast/#customizing-the-sast-settings
-# Secret Detection customization: https://docs.gitlab.com/user/application_security/secret_detection/pipeline/configure
-# Dependency Scanning customization: https://docs.gitlab.com/ee/user/application_security/dependency_scanning/#customizing-the-dependency-scanning-settings
-# Container Scanning customization: https://docs.gitlab.com/ee/user/application_security/container_scanning/#customizing-the-container-scanning-settings
-# Note that environment variables can be set in several places
-# See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
 stages:
-- test
-- secret-detection
-sast:
-  stage: test
+  - test
+  - secret-detection
+  - eas-update
+
 include:
-- template: Security/SAST.gitlab-ci.yml
-- template: Security/Secret-Detection.gitlab-ci.yml
+  - template: Security/SAST.gitlab-ci.yml
+  - template: Security/Secret-Detection.gitlab-ci.yml
+
 variables:
   SECRET_DETECTION_ENABLED: 'true'
+
+sast:
+  stage: test
+
 secret_detection:
   stage: secret-detection
+
+# ─────────────────────────────────────────────────────────────────────────────
+# EAS Update — manual gates
+# ─────────────────────────────────────────────────────────────────────────────
+# Required CI/CD variables (Settings → CI/CD → Variables, type "Variable",
+# masked + protected):
+#   EXPO_TOKEN — robot token from https://expo.dev/accounts/<owner>/settings/access-tokens
+#
+# Both jobs are `when: manual`, so they never run automatically — a developer
+# or PM must trigger them from the GitLab UI. `only.refs` limits the jobs to
+# the long-lived branches where publishing is allowed.
+
+.eas-base: &eas-base
+  stage: eas-update
+  image: node:20
+  before_script:
+    - corepack enable
+    - yarn install --frozen-lockfile
+    - npm i -g eas-cli@latest
+    - echo "Publishing as $(eas whoami)"
+  cache:
+    key:
+      files:
+        - yarn.lock
+    paths:
+      - node_modules
+
+eas:update:preview:
+  <<: *eas-base
+  script:
+    - yarn eas:update:preview
+  when: manual
+  only:
+    refs:
+      - main
+      - feat/practice-one
+  environment:
+    name: preview
+    url: https://expo.dev/accounts/hienduongs-organization/projects/expo-training/branches/preview
+
+eas:update:promote:
+  <<: *eas-base
+  script:
+    - yarn eas:update:promote
+  when: manual
+  only:
+    refs:
+      - main
+      - feat/practice-one
+  environment:
+    name: production
+    url: https://expo.dev/accounts/hienduongs-organization/projects/expo-training/branches/production
