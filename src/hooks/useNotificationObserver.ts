@@ -1,51 +1,73 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import * as Notifications from 'expo-notifications';
-import { type Href, router } from 'expo-router';
+import { router, useRootNavigationState } from 'expo-router';
 
-function redirectFromNotification(notification: Notifications.Notification): void {
-  const data = notification.request.content.data;
-  const url = data && typeof data === 'object' && 'url' in data ? data.url : undefined;
-  if (typeof url !== 'string' || url.length === 0) {
+import { getHrefFromNotificationData } from '@app/hooks/notificationNavigation';
+
+function redirectFromNotification(
+  notification: Notifications.Notification,
+): void {
+  const raw = notification.request.content.data;
+  const data =
+    raw && typeof raw === 'object' && !Array.isArray(raw)
+      ? (raw as Record<string, unknown>)
+      : undefined;
+
+  const href = getHrefFromNotificationData(data);
+
+  if (!href) {
     return;
   }
+
   try {
-    router.push(url as Href);
+    router.push(href);
     Notifications.clearLastNotificationResponse();
   } catch {
     if (__DEV__) {
-      console.warn('[useNotificationObserver] navigation failed for url:', url);
+      console.warn(
+        '[useNotificationObserver] navigation failed for href:',
+        href,
+      );
     }
   }
 }
 
-/**
- * Opens in-app routes from notification `data.url` (cold start + tap).
- * Payload example: `{ "url": "/(tabs)/home" }` — must be a valid expo-router href.
- */
 export function useNotificationObserver(): void {
+  const navigationState = useRootNavigationState();
+  const consumedInitialRef = useRef(false);
+
   useEffect(() => {
-    let initial: Notifications.NotificationResponse | null = null;
-    try {
-      initial = Notifications.getLastNotificationResponse();
-    } catch {
-      // Unavailable in some environments (e.g. limited Expo Go support).
+    if (!navigationState?.key) {
+      return;
     }
 
-    if (
-      initial?.notification &&
-      initial.actionIdentifier === Notifications.DEFAULT_ACTION_IDENTIFIER
-    ) {
-      redirectFromNotification(initial.notification);
-    }
+    if (!consumedInitialRef.current) {
+      consumedInitialRef.current = true;
+      let initial: Notifications.NotificationResponse | null = null;
+      try {
+        initial = Notifications.getLastNotificationResponse();
+      } catch {}
 
-    const subscription = Notifications.addNotificationResponseReceivedListener(response => {
-      if (response.actionIdentifier === Notifications.DEFAULT_ACTION_IDENTIFIER) {
-        redirectFromNotification(response.notification);
+      if (
+        initial?.notification &&
+        initial.actionIdentifier === Notifications.DEFAULT_ACTION_IDENTIFIER
+      ) {
+        redirectFromNotification(initial.notification);
       }
-    });
+    }
+
+    const subscription = Notifications.addNotificationResponseReceivedListener(
+      response => {
+        if (
+          response.actionIdentifier === Notifications.DEFAULT_ACTION_IDENTIFIER
+        ) {
+          redirectFromNotification(response.notification);
+        }
+      },
+    );
 
     return () => {
       subscription.remove();
     };
-  }, []);
+  }, [navigationState?.key]);
 }
