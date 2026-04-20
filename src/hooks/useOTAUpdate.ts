@@ -2,79 +2,39 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { AppState, type AppStateStatus, Platform } from 'react-native';
 import * as Updates from 'expo-updates';
 
-/**
- * Minimum interval between consecutive update checks triggered by app-resume.
- * Prevents spam when users quickly background/foreground the app.
- */
 const MIN_CHECK_INTERVAL_MS = 60_000;
 
-type CriticalManifestExtra = {
-  isCritical?: boolean;
-  releaseNotes?: string;
-};
+const OTA_ENABLED = Updates.isEnabled && !__DEV__;
 
-let runtimeInfoLogged = false;
-
-/**
- * Log runtime info once per process so QA and crash reports can correlate
- * behaviour with the actual update running on-device. In production this
- * should be forwarded to Sentry/Datadog instead of `console.log`.
- */
-const logRuntimeInfoOnce = () => {
-  if (runtimeInfoLogged) {
-    return;
+const logWarn = (ctx: string, error: unknown) => {
+  if (__DEV__) {
+    console.warn(`[OTA] ${ctx}`, error);
   }
-  runtimeInfoLogged = true;
-  console.log('[OTA] runtime info', {
-    runtimeVersion: Updates.runtimeVersion,
-    channel: Updates.channel,
-    updateId: Updates.updateId,
-    createdAt: Updates.createdAt?.toISOString?.(),
-    isEmbeddedLaunch: Updates.isEmbeddedLaunch,
-    isEmergencyLaunch: Updates.isEmergencyLaunch,
-  });
 };
 
-const readCriticalFlag = (
-  manifest: Updates.Manifest | null | undefined,
-): { isCritical: boolean; releaseNotes?: string } => {
-  if (!manifest || typeof manifest !== 'object') {
-    return { isCritical: false };
+const getReleaseNotes = (
+  info: Updates.UpdateInfo | undefined,
+): string | undefined => {
+  if (info?.type !== 'new') {
+    return undefined;
   }
-  const extra = (manifest as { extra?: CriticalManifestExtra }).extra;
-  return {
-    isCritical: Boolean(extra?.isCritical),
-    releaseNotes: extra?.releaseNotes,
-  };
+  const extra = (
+    info.manifest as { extra?: { releaseNotes?: string } } | undefined
+  )?.extra;
+  return extra?.releaseNotes;
 };
 
 /**
- * Fire-and-forget async work without `void` + explicit rejection handling
- * (covers cases where a promise rejects outside an inner try/catch).
- */
-const runUpdatePromise = (promise: Promise<unknown>, context: string) => {
-  promise.catch((error: unknown) => {
-    if (__DEV__) {
-      console.warn(`[OTA] ${context}`, error);
-    }
-  });
-};
-
-/**
- * Best-practice OTA hook built on top of `expo-updates`.
+ * Drives the EAS Update lifecycle:
+ * - Cold-start + foreground checks via `Updates.checkForUpdateAsync()`.
+ * - Auto `Updates.fetchUpdateAsync()` when the server reports an update for the current runtime.
+ * - `isUpdateReady` flips true when a new `updateId` finishes downloading so the UI can prompt.
  *
- * Behaviour:
- *   1. No-op in dev / Expo Go (`Updates.isEnabled` is false there).
- *   2. Checks on cold start and on each background → foreground transition,
- *      throttled by `MIN_CHECK_INTERVAL_MS`.
- *   3. If an update is available it is fetched silently. On completion:
- *        - Critical updates (`manifest.extra.isCritical`) reload immediately.
- *        - Otherwise `isUpdateReady` becomes true so the UI can prompt the user.
- *   4. Check/download errors are surfaced so callers can forward them to telemetry.
+ * Runtime is bound to `package.json#version` (`runtimeVersion.policy: 'appVersion'`), so only
+ * updates published for the same binary ever reach the device.
  *
- * Docs:
- *   - https://docs.expo.dev/eas-update/getting-started/
- *   - https://docs.expo.dev/versions/latest/sdk/updates/#useupdates
+ * Must be mounted **once** (see `<OTAUpdateGate />`). Mounting this hook from multiple
+ * components would duplicate the cold-start / foreground check effects.
  */
 export const useOTAUpdate = () => {
   const {
@@ -83,7 +43,6 @@ export const useOTAUpdate = () => {
     isUpdatePending,
     isChecking,
     isDownloading,
-    availableUpdate,
     downloadedUpdate,
     checkError,
     downloadError,
@@ -91,44 +50,44 @@ export const useOTAUpdate = () => {
 
   const [isUpdateReady, setIsUpdateReady] = useState(false);
   const [isApplying, setIsApplying] = useState(false);
-  const lastCheckRef = useRef<number>(0);
+  const lastCheckAtRef = useRef(0);
+  const lastPromptedUpdateIdRef = useRef<string | null>(null);
 
-  const checkForUpdates = useCallback(
-    async (force = false) => {
-      if (!Updates.isEnabled || __DEV__) {
-        return;
+  const checkForUpdate = useCallback(async (force = false) => {
+    if (!OTA_ENABLED) {
+      return;
+    }
+
+    const now = Date.now();
+
+    if (!force && now - lastCheckAtRef.current < MIN_CHECK_INTERVAL_MS) {
+      return;
+    }
+
+    lastCheckAtRef.current = now;
+
+    try {
+      const result = await Updates.checkForUpdateAsync();
+      if (result.isAvailable) {
+        await Updates.fetchUpdateAsync();
       }
-      const now = Date.now();
-      if (!force && now - lastCheckRef.current < MIN_CHECK_INTERVAL_MS) {
-        return;
-      }
-      lastCheckRef.current = now;
-      try {
-        const result = await Updates.checkForUpdateAsync();
-        if (result.isAvailable) {
-          await Updates.fetchUpdateAsync();
-        }
-      } catch (error) {
-        if (__DEV__) {
-          console.warn('[OTA] checkForUpdates failed', error);
-        }
-      }
-    },
-    [],
-  );
+    } catch (error) {
+      logWarn('checkForUpdate failed', error);
+    }
+  }, []);
 
   const applyUpdate = useCallback(async () => {
     if (isApplying) {
       return;
     }
+
     setIsApplying(true);
+
     try {
       await Updates.reloadAsync();
     } catch (error) {
       setIsApplying(false);
-      if (__DEV__) {
-        console.warn('[OTA] reloadAsync failed', error);
-      }
+      logWarn('reloadAsync failed', error);
     }
   }, [isApplying]);
 
@@ -137,37 +96,32 @@ export const useOTAUpdate = () => {
   }, []);
 
   useEffect(() => {
-    logRuntimeInfoOnce();
-    runUpdatePromise(checkForUpdates(true), 'checkForUpdates (cold start)');
-
-    const sub = AppState.addEventListener(
-      'change',
-      (next: AppStateStatus) => {
-        if (next === 'active') {
-          runUpdatePromise(checkForUpdates(), 'checkForUpdates (foreground)');
-        }
-      },
-    );
+    checkForUpdate(true);
+    const sub = AppState.addEventListener('change', (next: AppStateStatus) => {
+      if (next === 'active') {
+        checkForUpdate();
+      }
+    });
     return () => sub.remove();
-  }, [checkForUpdates]);
+  }, [checkForUpdate]);
 
   useEffect(() => {
-    if (!isUpdatePending || !downloadedUpdate) {
+    if (!isUpdatePending || downloadedUpdate?.type !== 'new') {
       return;
     }
-    const { isCritical } = readCriticalFlag(downloadedUpdate.manifest);
-    if (isCritical) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      runUpdatePromise(applyUpdate(), 'applyUpdate (critical)');
+    const { updateId } = downloadedUpdate;
+    if (!updateId || updateId === lastPromptedUpdateIdRef.current) {
       return;
     }
+    lastPromptedUpdateIdRef.current = updateId;
     setIsUpdateReady(true);
-  }, [isUpdatePending, downloadedUpdate, applyUpdate]);
+  }, [isUpdatePending, downloadedUpdate]);
 
   return {
     runtimeVersion: currentlyRunning.runtimeVersion,
     channel: currentlyRunning.channel,
     updateId: currentlyRunning.updateId,
+    isEmbeddedLaunch: currentlyRunning.isEmbeddedLaunch,
     isUpdateAvailable,
     isUpdatePending,
     isUpdateReady,
@@ -176,14 +130,12 @@ export const useOTAUpdate = () => {
     isApplying,
     checkError,
     downloadError,
-    availableUpdate,
-    downloadedUpdate,
-    releaseNotes: downloadedUpdate
-      ? readCriticalFlag(downloadedUpdate.manifest).releaseNotes
-      : undefined,
+    releaseNotes: getReleaseNotes(downloadedUpdate),
     isNativePlatform: Platform.OS !== 'web',
-    checkForUpdates,
+    checkForUpdate,
     applyUpdate,
     dismissUpdate,
   };
 };
+
+export type UseOTAUpdateReturn = ReturnType<typeof useOTAUpdate>;
