@@ -74,7 +74,7 @@ eas update \
   --branch "$BRANCH" \
   --message "$COMMIT_SHA_SHORT $COMMIT_SUBJECT" \
   --non-interactive \
-  "${EXTRA_ARGS[@]}"
+  ${EXTRA_ARGS[@]+"${EXTRA_ARGS[@]}"}
 
 cat <<EOF
 
