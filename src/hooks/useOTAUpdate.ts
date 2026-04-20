@@ -49,6 +49,18 @@ const readCriticalFlag = (
 };
 
 /**
+ * Fire-and-forget async work without `void` + explicit rejection handling
+ * (covers cases where a promise rejects outside an inner try/catch).
+ */
+const runUpdatePromise = (promise: Promise<unknown>, context: string) => {
+  promise.catch((error: unknown) => {
+    if (__DEV__) {
+      console.warn(`[OTA] ${context}`, error);
+    }
+  });
+};
+
+/**
  * Best-practice OTA hook built on top of `expo-updates`.
  *
  * Behaviour:
@@ -126,13 +138,13 @@ export const useOTAUpdate = () => {
 
   useEffect(() => {
     logRuntimeInfoOnce();
-    void checkForUpdates(true);
+    runUpdatePromise(checkForUpdates(true), 'checkForUpdates (cold start)');
 
     const sub = AppState.addEventListener(
       'change',
       (next: AppStateStatus) => {
         if (next === 'active') {
-          void checkForUpdates();
+          runUpdatePromise(checkForUpdates(), 'checkForUpdates (foreground)');
         }
       },
     );
@@ -145,7 +157,7 @@ export const useOTAUpdate = () => {
     }
     const { isCritical } = readCriticalFlag(downloadedUpdate.manifest);
     if (isCritical) {
-      void applyUpdate();
+      runUpdatePromise(applyUpdate(), 'applyUpdate (critical)');
       return;
     }
     setIsUpdateReady(true);
