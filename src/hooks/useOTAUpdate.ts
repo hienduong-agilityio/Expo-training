@@ -157,6 +157,7 @@ export const useOTAUpdate = () => {
     }
     const { isCritical } = readCriticalFlag(downloadedUpdate.manifest);
     if (isCritical) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       runUpdatePromise(applyUpdate(), 'applyUpdate (critical)');
       return;
     }

@@ -44,7 +44,7 @@ export const setupNotificationHandlers = (
 };
 
 /**
- * Reserved for Expo task-based background delivery; foreground FCM is handled in `push.ts`.
+ * Reserved for Expo task-based background delivery; add listeners here if you need them.
  */
 export const setupBackgroundNotificationHandler = () => {
   return undefined;

@@ -9,14 +9,6 @@ export {
   setupBackgroundNotificationHandler,
 } from './handlers';
 export {
-  deliverPendingQuitStateNotification,
-  getFcmToken,
-  registerListenerWithFCM,
-  subscribeToDefaultTopics,
-  subscribeToNotificationTopic,
-  unsubscribeFromNotificationTopic,
-} from './firebase';
-export {
   mapExpoNotificationToRemotePayload,
   parseRemotePayloadToNotificationData,
 } from './notificationPayload';
