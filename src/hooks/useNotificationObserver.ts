@@ -2,9 +2,12 @@ import { useEffect, useRef } from 'react';
 import * as Notifications from 'expo-notifications';
 import { router, useRootNavigationState } from 'expo-router';
 
-import { getHrefFromNotificationData } from '@app/hooks/notificationNavigation';
+import { resolveNotificationHref } from '@app/hooks/notificationNavigation';
+import { useStoreHydration } from '@app/hooks/useStoreHydration';
+import { authStore } from '@app/stores/authStore';
+import { deferredNavigationStore } from '@app/stores/deferredNavigationStore';
 
-function redirectFromNotification(
+function handleNotificationOpen(
   notification: Notifications.Notification,
 ): void {
   const raw = notification.request.content.data;
@@ -13,20 +16,26 @@ function redirectFromNotification(
       ? (raw as Record<string, unknown>)
       : undefined;
 
-  const href = getHrefFromNotificationData(data);
-
-  if (!href) {
+  const targetRoute = resolveNotificationHref(data);
+  if (!targetRoute) {
     return;
   }
 
+  const isSignedIn = Boolean(authStore.getState().accessToken);
+
   try {
-    router.push(href);
+    if (!isSignedIn) {
+      deferredNavigationStore.getState().enqueueDeferredRoute(targetRoute);
+      router.replace('/login');
+    } else {
+      router.push(targetRoute);
+    }
     Notifications.clearLastNotificationResponse();
   } catch {
     if (__DEV__) {
       console.warn(
-        '[useNotificationObserver] navigation failed for href:',
-        href,
+        '[useNotificationObserver] navigation failed for route:',
+        targetRoute,
       );
     }
   }
@@ -34,26 +43,12 @@ function redirectFromNotification(
 
 export function useNotificationObserver(): void {
   const navigationState = useRootNavigationState();
-  const consumedInitialRef = useRef(false);
+  const authHydrated = useStoreHydration(authStore);
+  const coldStartHandledRef = useRef(false);
 
   useEffect(() => {
-    if (!navigationState?.key) {
+    if (!navigationState?.key || !authHydrated) {
       return;
-    }
-
-    if (!consumedInitialRef.current) {
-      consumedInitialRef.current = true;
-      let initial: Notifications.NotificationResponse | null = null;
-      try {
-        initial = Notifications.getLastNotificationResponse();
-      } catch {}
-
-      if (
-        initial?.notification &&
-        initial.actionIdentifier === Notifications.DEFAULT_ACTION_IDENTIFIER
-      ) {
-        redirectFromNotification(initial.notification);
-      }
     }
 
     const subscription = Notifications.addNotificationResponseReceivedListener(
@@ -61,13 +56,30 @@ export function useNotificationObserver(): void {
         if (
           response.actionIdentifier === Notifications.DEFAULT_ACTION_IDENTIFIER
         ) {
-          redirectFromNotification(response.notification);
+          handleNotificationOpen(response.notification);
         }
       },
     );
 
+    if (!coldStartHandledRef.current) {
+      coldStartHandledRef.current = true;
+      let initial: Notifications.NotificationResponse | null = null;
+      try {
+        initial = Notifications.getLastNotificationResponse();
+      } catch {
+        // Unavailable in some environments (e.g. limited Expo Go support).
+      }
+
+      if (
+        initial?.notification &&
+        initial.actionIdentifier === Notifications.DEFAULT_ACTION_IDENTIFIER
+      ) {
+        handleNotificationOpen(initial.notification);
+      }
+    }
+
     return () => {
       subscription.remove();
     };
-  }, [navigationState?.key]);
+  }, [navigationState?.key, authHydrated]);
 }

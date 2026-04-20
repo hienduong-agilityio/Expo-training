@@ -39,9 +39,9 @@ function readString(
 }
 
 /**
- * Resolves an in-app route from notification `data` (Expo / FCM flatten values to strings).
+ * Maps notification payload `data` to an Expo Router `Href` (Expo / FCM often stringify values).
  */
-export function getHrefFromNotificationData(
+export function resolveNotificationHref(
   data: Record<string, unknown> | undefined,
 ): Href | null {
   if (!data || typeof data !== 'object') {
