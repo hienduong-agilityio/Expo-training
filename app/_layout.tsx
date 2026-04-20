@@ -23,6 +23,8 @@ import { queryClient } from '@app/contexts/query';
 import { ToastContainer } from '@app/components/ToastContainer';
 import { ConfirmModal } from '@app/components/ui/ConfirmModal';
 import { NoInternetModal } from '@app/components/NoInternetModal/index';
+import { UpdatePrompt } from '@app/components/UpdatePrompt';
+import { RuntimeBadge } from '@app/components/RuntimeBadge';
 import { useNetworkStatus } from '@app/hooks/useNetworkStatus';
 import { useNotificationObserver } from '@app/hooks/useNotificationObserver';
 import { useExpoPushTokenStartupNotification } from '@app/hooks/useExpoPushTokenStartupNotification';
@@ -82,6 +84,8 @@ export default function RootLayout() {
         />
         <ToastContainer />
         <ConfirmModal />
+        <UpdatePrompt />
+        <RuntimeBadge />
       </SafeAreaProvider>
     </QueryClientProvider>
   );

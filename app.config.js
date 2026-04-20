@@ -90,8 +90,28 @@ module.exports = () => ({
         projectId: EAS_PROJECT_ID,
       },
     },
+    /**
+     * EAS Update config — best practice
+     * Docs: https://docs.expo.dev/eas-update/getting-started/
+     *
+     * - `runtimeVersion.policy: 'appVersion'` => mỗi version trong package.json
+     *   (0.0.1, 0.0.2, ...) là 1 runtime riêng. Update chỉ gửi tới đúng runtime
+     *   của native binary => tránh OTA gửi JS bundle không tương thích native.
+     * - `checkAutomatically: 'ON_ERROR_RECOVERY'` => không tự động pop-up khi
+     *   khởi động; chúng ta chủ động check qua `Updates.useUpdates()` để có UX
+     *   non-blocking (xem `src/hooks/useOTAUpdate.ts`).
+     * - `fallbackToCacheTimeout: 0` => không block splash chờ update; user vào
+     *   app ngay, update được apply ở lần restart sau.
+     * - `requestHeaders` => gắn metadata để filter rule trên dashboard nếu cần.
+     */
     updates: {
       url: `https://u.expo.dev/${EAS_PROJECT_ID}`,
+      enabled: true,
+      checkAutomatically: 'ON_ERROR_RECOVERY',
+      fallbackToCacheTimeout: 0,
+      requestHeaders: {
+        'expo-channel-name': process.env.EAS_UPDATE_CHANNEL ?? 'production',
+      },
     },
   },
 });
