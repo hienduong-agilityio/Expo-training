@@ -1,43 +1,3 @@
-const { withAndroidManifest, AndroidConfig } = require('expo/config-plugins');
-
-const { ensureToolsAvailable, getMainApplicationOrThrow } =
-  AndroidConfig.Manifest;
-
-const FCM_META_TOOLS_REPLACE = [
-  {
-    name: 'com.google.firebase.messaging.default_notification_channel_id',
-    replace: 'android:value',
-  },
-  {
-    name: 'com.google.firebase.messaging.default_notification_color',
-    replace: 'android:resource',
-  },
-];
-
-function withFirebaseMessagingToolsReplace(config) {
-  return withAndroidManifest(config, cfg => {
-    const manifest = cfg.modResults;
-
-    ensureToolsAvailable(manifest);
-
-    const mainApplication = getMainApplicationOrThrow(manifest);
-    const items = mainApplication['meta-data'];
-
-    if (!Array.isArray(items)) {
-      return cfg;
-    }
-
-    for (const item of items) {
-      const metaName = item?.$?.['android:name'];
-      const rule = FCM_META_TOOLS_REPLACE.find(r => r.name === metaName);
-      if (rule) {
-        item.$['tools:replace'] = rule.replace;
-      }
-    }
-    return cfg;
-  });
-}
-
 const pkg = require('./package.json');
 
 const EXPO_OWNER = 'hienduongs-organization';
@@ -71,8 +31,7 @@ module.exports = () => ({
         foregroundImage: './assets/images/adaptive-icon-foreground.png',
         backgroundColor: '#dbe7f0',
       },
-      googleServicesFile:
-        process.env.GOOGLE_SERVICES_JSON ?? GOOGLE_SERVICES_JSON_LOCAL,
+      "googleServicesFile": "./config/google-services.json"
     },
     ios: {
       bundleIdentifier: 'org.reactjs.native.example.StylishEcommerce',
@@ -84,7 +43,6 @@ module.exports = () => ({
         GOOGLE_SERVICE_INFO_PLIST_LOCAL,
     },
     plugins: [
-      withFirebaseMessagingToolsReplace,
       'expo-router',
       [
         'expo-notifications',
@@ -132,8 +90,31 @@ module.exports = () => ({
         projectId: EAS_PROJECT_ID,
       },
     },
+    /**
+     * EAS Update configuration.
+     * Docs: https://docs.expo.dev/eas-update/getting-started/
+     *
+     * - `runtimeVersion.policy: 'appVersion'` — each `package.json#version`
+     *   (0.0.1, 0.0.2, …) becomes its own runtime. The server only serves
+     *   updates whose runtime matches the native binary, preventing
+     *   incompatible JS bundles from reaching users.
+     * - `checkAutomatically: 'ON_ERROR_RECOVERY'` — the SDK does not auto-prompt
+     *   on launch. We drive checks explicitly via `Updates.useUpdates()` inside
+     *   `src/hooks/useOTAUpdate.ts` for a non-blocking UX.
+     * - `fallbackToCacheTimeout: 0` — never block the splash screen waiting for
+     *   an update; the user reaches the app immediately and any update is
+     *   applied on the next restart.
+     * - `requestHeaders['expo-channel-name']` — lets the dashboard filter by
+     *   channel and matches the binary to the right branch.
+     */
     updates: {
       url: `https://u.expo.dev/${EAS_PROJECT_ID}`,
+      enabled: true,
+      checkAutomatically: 'ON_ERROR_RECOVERY',
+      fallbackToCacheTimeout: 0,
+      requestHeaders: {
+        'expo-channel-name': process.env.EAS_UPDATE_CHANNEL ?? 'production',
+      },
     },
   },
 });

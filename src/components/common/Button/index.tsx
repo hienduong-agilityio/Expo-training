@@ -26,6 +26,7 @@ export const Button = memo<IButtonProps>(function Button({
   disabled,
   fullWidth,
   onPress,
+  style: styleOverride,
   ...pressableProps
 }) {
   const sizeMetrics = getSizeMetrics(size);
@@ -42,18 +43,21 @@ export const Button = memo<IButtonProps>(function Button({
       onPress={onPress}
       disabled={disabled}
       accessibilityRole="button"
-      style={({ pressed }) => [
+      style={state => [
         styles.base,
         {
           paddingHorizontal: sizeMetrics.paddingHorizontal,
         },
         containerStyle,
-        pressed &&
+        state.pressed &&
           (isSolid
             ? { backgroundColor: colors.primaryDark }
             : { backgroundColor: colors.overlayWeak }),
         fullWidth && styles.fullWidth,
         disabled && styles.inactive,
+        typeof styleOverride === 'function'
+          ? styleOverride(state)
+          : styleOverride,
       ]}
       {...pressableProps}>
       {content}

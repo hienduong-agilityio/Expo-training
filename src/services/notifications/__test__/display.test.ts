@@ -1,6 +1,7 @@
 import { Platform } from 'react-native';
 import * as Notifications from 'expo-notifications';
 
+import { EXPO_NOTIFICATION_ANDROID_ACCENT } from '@app/constants/notification';
 import { displayNotification } from '../display';
 import { NotificationType } from '@app/enums/notification';
 import type { NotificationData } from '@app/interfaces/notification';
@@ -32,7 +33,7 @@ describe('display', () => {
               body: 'Test Body',
             }),
             ...(Platform.OS === 'android' && {
-              android: { channelId: 'general' },
+              color: EXPO_NOTIFICATION_ANDROID_ACCENT,
             }),
           }),
           trigger: Platform.OS === 'android' ? { channelId: 'general' } : null,
