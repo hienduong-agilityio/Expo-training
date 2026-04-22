@@ -1,10 +1,10 @@
 name: WorksFlows, Jobs, and Steps
 
 on:
-  workflow_dispatch:
   push:
     branches:
-      - main
+      - example/expo-ci-cd-github-action
+  workflow_dispatch:
 jobs:
   job-1:
     runs-on: ubuntu-latest
