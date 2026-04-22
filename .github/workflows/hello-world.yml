@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: console.log("Hello worlds!")
-        shell: javascript
+        shell: node
 
   say-hello-action:
     runs-on: ubuntu-latest
