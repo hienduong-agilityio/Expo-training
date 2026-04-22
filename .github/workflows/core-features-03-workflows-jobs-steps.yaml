@@ -34,7 +34,7 @@ jobs:
   job-5:
     runs-on: ubuntu-latest
     needs:
-      - job-2
+      - job-1
       - job-4
     steps:
       - run: echo "finish workflows, jobs and steps"
