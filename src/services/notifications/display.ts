@@ -4,6 +4,9 @@ import * as Notifications from 'expo-notifications';
 // Types
 import type { NotificationData } from '@app/interfaces/notification';
 
+// Constants
+import { EXPO_NOTIFICATION_ANDROID_ACCENT } from '@app/constants/notification';
+
 // Helpers
 import {
   buildNotificationDeepLink,
@@ -11,15 +14,11 @@ import {
   getChannelId,
 } from '@app/helpers/notifications';
 
-/**
- * Show a local notification (used when FCM delivers a foreground message).
- * Uses an Android notification channel id (Expo SDK 55 — avoid `trigger: null` on Android 8+ without a channel).
- *
- * @see https://docs.expo.dev/versions/v55.0.0/sdk/notifications/
- */
 export type DisplayNotificationOptions = {
-  /** Same id → Expo replaces instead of stacking many locals (foreground FCM path). */
   notificationIdentifier?: string;
+  delaySeconds?: number;
+  subtitle?: string;
+  androidAccentColor?: string;
 };
 
 export const displayNotification = async (
@@ -30,8 +29,24 @@ export const displayNotification = async (
   const payload = convertNotificationDataToStrings(data, deepLink);
   const channelId = getChannelId(data.type);
 
+  const delay =
+    typeof options?.delaySeconds === 'number' && options.delaySeconds > 0
+      ? options.delaySeconds
+      : 0;
+
   const trigger: Notifications.NotificationTriggerInput =
-    Platform.OS === 'android' ? { channelId } : null;
+    delay > 0
+      ? {
+          type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
+          seconds: delay,
+          ...(Platform.OS === 'android' ? { channelId } : {}),
+        }
+      : Platform.OS === 'android'
+        ? { channelId }
+        : null;
+
+  const androidColor =
+    options?.androidAccentColor ?? EXPO_NOTIFICATION_ANDROID_ACCENT;
 
   await Notifications.scheduleNotificationAsync({
     ...(options?.notificationIdentifier && {
@@ -39,13 +54,10 @@ export const displayNotification = async (
     }),
     content: {
       title: data.title,
+      ...(options?.subtitle ? { subtitle: options.subtitle } : {}),
       body: data.body,
       data: payload,
-      ...(Platform.OS === 'android' && {
-        android: {
-          channelId,
-        },
-      }),
+      ...(Platform.OS === 'android' && { color: androidColor }),
     },
     trigger,
   });

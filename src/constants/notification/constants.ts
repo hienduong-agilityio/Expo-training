@@ -70,3 +70,14 @@ export const NOTIFICATION_DEFAULTS = {
   TITLE: 'New Notification',
   BODY: '',
 } as const;
+
+/**
+ * Android notification accent (tints the small icon). Must match
+ * `plugins[expo-notifications].color` in `app.config.js`.
+ * @see https://docs.expo.dev/versions/latest/sdk/notifications/#configurable-properties
+ */
+export const EXPO_NOTIFICATION_ANDROID_ACCENT = '#dbe7f0' as const;
+
+/** DocumentId for the local “spotlight” notification on app startup (dev). */
+export const STARTUP_SPOTLIGHT_PRODUCT_DOCUMENT_ID =
+  'prg190x5787rtqoerdc89c2n' as const;

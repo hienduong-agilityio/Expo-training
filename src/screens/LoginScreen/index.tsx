@@ -3,6 +3,8 @@ import { Alert, Text, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 
+import { styles } from './index.style';
+
 // Components
 import { AuthTextField } from '@app/components/ui/AuthTextField';
 import { AuthFooter } from '@app/components/ui/AuthFooter';
@@ -111,6 +113,7 @@ export const LoginScreen = () => {
           loading={isSubmitting}
           disabled={isSubmitting}
           onPress={handleSubmit}
+          style={styles.loginButton}
         />
 
         <AuthFooter
