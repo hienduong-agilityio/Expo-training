@@ -8,7 +8,10 @@ jobs:
 
   say-hello-action:
     runs-on: ubuntu-latest
+
+    # Use the actions/hello-world-javascript-action action
     steps:
+      # uses is a step type that allows you to use an action in your workflow
       - uses: actions/hello-world-javascript-action@v1
         with:
           who-to-greet: "work"
