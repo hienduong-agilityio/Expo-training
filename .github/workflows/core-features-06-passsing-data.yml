@@ -1,5 +1,8 @@
 name: Passing Variables Between jobs
 on:
+  push:
+    branches:
+      - feat/handle-enviroment-variables-ci-cd
   workflow_dispatch:
 
 jobs:

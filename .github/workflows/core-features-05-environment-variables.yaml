@@ -1,6 +1,10 @@
 name: Environment Variables
 
 on:
+  push:
+    branches:
+      - feat/handle-enviroment-variables-ci-cd
+
   workflow_dispatch:
 
 env:
