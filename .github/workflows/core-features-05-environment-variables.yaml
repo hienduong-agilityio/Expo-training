@@ -7,7 +7,7 @@ name: Core features 05 — environment variables
 on:
   push:
     branches:
-      - example/expo-ci-cd-github-action
+      - feat/handle-enviroment-variables-ci-cd
   workflow_dispatch:
     inputs:
       run_profile:
