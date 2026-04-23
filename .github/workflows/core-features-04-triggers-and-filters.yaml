@@ -17,7 +17,7 @@ on:
 
     # Trigger the workflow when a file in the path is changed
     paths:
-      - "core-features-04-triggers-and-filters.yaml"
+      - ".github/workflows/core-features-04-triggers-and-filters.yaml"
 
   # Trigger the workflow every day at midnight
   schedule:
