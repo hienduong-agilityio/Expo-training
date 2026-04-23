@@ -1,102 +1,36 @@
-# Environment variables & CI/CD — aligned with .env.template and eas.json environments.
-# GitHub Actions does not auto-load .env: use this workflow env + Repository variables / Secrets.
-# See: https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/store-information-in-variables
-
-name: Core features 05 — environment variables
+name: Environment Variables
 
 on:
-  push:
-    branches:
-      - feat/handle-enviroment-variables-ci-cd
   workflow_dispatch:
-    inputs:
-      run_profile:
-        description: Matches eas.json build profiles (values used to pick env defaults)
-        type: choice
-        options:
-          - ci
-          - development
-          - preview
-          - production
-        default: ci
 
-# Workflow-scoped: every job sees these unless ovesrridden
 env:
   WORKFLOW_VAR: I_AM_WORKFLOW_SCOPED
-  # Mirror names from .env.template — set Repository Variables / Secrets in GitHub (Settings → Secrets and variables → Actions)
-  EXPO_PUBLIC_API_BASE_URL: ${{ vars.EXPO_PUBLIC_API_BASE_URL || 'http://127.0.0.1:1337/api' }}
-  EXPO_PUBLIC_STRAPI_BASE_URL: ${{ vars.EXPO_PUBLIC_STRAPI_BASE_URL || 'http://127.0.0.1:1337' }}
-  API_BASE_URL: ${{ vars.API_BASE_URL || 'http://127.0.0.1:1337/api' }}
-  STRAPI_BASE_URL: ${{ vars.STRAPI_BASE_URL || 'http://127.0.0.1:1337' }}
-  REQUIRE_HTTPS: ${{ vars.REQUIRE_HTTPS || 'false' }}
-  LOAD_STORYBOOK: ${{ vars.LOAD_STORYBOOK || 'false' }}
 
 jobs:
-  validate-env-template:
-    name: Check .env.template documents expected keys
+  job-1:
     runs-on: ubuntu-24.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-      - name: Verify required keys exist in .env.template
-        run: |
-          set -euo pipefail
-          f=".env.template"
-          test -f "$f" || { echo "Missing $f"; exit 1; }
-          for key in EXPO_PUBLIC_API_BASE_URL EXPO_PUBLIC_STRAPI_BASE_URL API_BASE_URL STRAPI_BASE_URL; do
-            if ! grep -E "^#?[[:space:]]*${key}=" "$f" >/dev/null; then
-              echo "::error::.env.template should document $key= (used by app & CI mapping)"
-              exit 1
-            fi
-            echo "ok: $key"
-          done
-          echo "All required keys are present in .env.template"
-
-  scoped-env-demo:
-    name: Demo workflow / job / step env (educational)
-    runs-on: ubuntu-24.04
-    needs: validate-env-template
     env:
-      JOB_VAR: I_AM_JOB_SCOPED
+      JOB_VAR: I_AM_JOB_1_SCOPED
     steps:
-      - name: Step 1 — step-level env
+      - name: Inspect scopes job 1 step 1
         env:
           STEP_VAR: I_AM_STEP_SCOPED
         run: |
-          echo "WORKFLOW_VAR=$WORKFLOW_VAR (visible)"
-          echo "JOB_VAR=$JOB_VAR (visible)"
-          echo "STEP_VAR=$STEP_VAR (only this step)"
-      - name: Step 2 — STEP_VAR unset outside step 1
-        run: |
-          echo "WORKFLOW_VAR=$WORKFLOW_VAR"
-          echo "JOB_VAR=$JOB_VAR"
-          echo "STEP_VAR=${STEP_VAR:-<UNSET>} (expected <UNSET>)"
+          echo "WORKFLOW_VAR: $WORKFLOW_VAR"   # visible
+          echo "JOB_VAR:      $JOB_VAR"        # visible
+          echo "STEP_VAR:     $STEP_VAR"       # visible only here
 
-  ci:
-    name: Install & lint (uses workflow env for EXPO_* / API URLs)
-    runs-on: ubuntu-24.04
-    needs: validate-env-template
-    env:
-      JOB_VAR: I_AM_JOB_CI
-      # Job-level override example — CI keeps Storybook off unless var says otherwise
-      LOAD_STORYBOOK: 'false'
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-      - name: Use Node from package.json engines
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: yarn
-      - name: Show effective env (no secrets printed)
-        env:
-          RUN_PROFILE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.run_profile || 'ci' }}
+      - name: Inspect scopes job 1 step 2
         run: |
-          echo "RUN_PROFILE=$RUN_PROFILE"
-          echo "EXPO_PUBLIC_API_BASE_URL=$EXPO_PUBLIC_API_BASE_URL"
-          echo "EXPO_PUBLIC_STRAPI_BASE_URL=$EXPO_PUBLIC_STRAPI_BASE_URL"
-          echo "LOAD_STORYBOOK=$LOAD_STORYBOOK"
-      - name: Install
-        run: yarn install --frozen-lockfile
-      - name: Lint
-        run: yarn lint
+          echo "WORKFLOW_VAR: $WORKFLOW_VAR"         # visible
+          echo "JOB_VAR:      $JOB_VAR"              # visible
+          echo "STEP_VAR:     ${STEP_VAR:-<UNSET>}"  # not set here
+
+  job-2:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Inspect scopes job 2 step 1
+        run: |
+          echo "WORKFLOW_VAR: $WORKFLOW_VAR"                 # still visible
+          echo "JOB_VAR:      ${JOB_VAR:-<UNSET>}"          # not set here (scoped to job-1)
+          echo "STEP_VAR:     ${STEP_VAR:-<UNSET>}"          # not set here
