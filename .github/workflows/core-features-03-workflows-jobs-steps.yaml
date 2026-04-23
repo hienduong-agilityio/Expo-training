@@ -1,0 +1,52 @@
+name: WorksFlows, Jobs, and Steps
+
+# Events that trigger the workflows
+on:
+  # Trigger the workflow when a push is made to the branch
+  push:
+    branches:
+      - example/expo-ci-cd-github-action
+
+  # Trigger the workflow when a workflow_dispatch event is triggered
+  workflow_dispatch:
+
+jobs:
+  # Job 1 to run the workflow
+  job-1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "A job consists of"
+      - run: echo "one or more steps"
+      - run: echo "which run sequentially"
+      - run: echo "within the same compute environment"
+  # Job 2 to run the workflow
+  job-2:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Multiple jobs can run in parallel"
+
+  # Job 3 to run the workflow
+  job-3:
+    runs-on: ubuntu-latest
+    # Job 3 depends on Job 1 and Job 2
+    needs:
+      - job-1
+      - job-2
+    steps:
+      - run: echo "They can also depend on another ..."
+  job-4:
+    runs-on: ubuntu-latest
+    # Job 4 depends on Job 2 and Job 3
+    needs:
+      - job-2
+      - job-3
+    steps:
+      - run: echo "... to from directed acrylic graph"
+  job-5:
+    runs-on: ubuntu-latest
+    # Job 5 depends on Job 1 and Job 4
+    needs:
+      - job-1
+      - job-4
+    steps:
+      - run: echo "finish workflows, jobs and steps"
