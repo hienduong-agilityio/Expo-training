@@ -37,7 +37,8 @@ async function getExpoPushTokenResultAsync(): Promise<ExpoPushTokenResult> {
   if (!granted) {
     return {
       ok: false,
-      message: 'Permission not granted to get push token for push notification!',
+      message:
+        'Permission not granted to get push token for push notification!',
     };
   }
 
@@ -49,7 +50,8 @@ async function getExpoPushTokenResultAsync(): Promise<ExpoPushTokenResult> {
   }
 
   const projectId =
-    Constants?.expoConfig?.extra?.eas?.projectId ?? Constants?.easConfig?.projectId;
+    Constants?.expoConfig?.extra?.eas?.projectId ??
+    Constants?.easConfig?.projectId;
   if (!projectId) {
     return { ok: false, message: 'Project ID not found' };
   }
@@ -83,7 +85,9 @@ function handleRegistrationError(errorMessage: string): never {
 }
 
 /** Strict registration (throws on failure). Prefer {@link tryGetExpoPushTokenAsync} for silent flows. */
-export async function registerForPushNotificationsAsync(): Promise<string | undefined> {
+export async function registerForPushNotificationsAsync(): Promise<
+  string | undefined
+> {
   const r = await getExpoPushTokenResultAsync();
   if (r.ok) {
     console.log(r.token);

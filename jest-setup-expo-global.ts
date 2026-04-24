@@ -11,9 +11,15 @@ type ExpoNativeEventEmitterCtor = new () => {
   emit(): void;
 };
 
+type ExpoJestGlobals = {
+  EventEmitter: ExpoNativeEventEmitterCtor;
+  /** Populated so `requireNativeModule('…')` succeeds in Jest (no native binary). */
+  modules: Record<string, Record<string, unknown>>;
+};
+
 /** Do not intersect with `typeof globalThis`: Expo’s typings merge `expo.EventEmitter` with a different constructor. */
 const globalForJest = globalThis as unknown as {
-  expo?: { EventEmitter: ExpoNativeEventEmitterCtor };
+  expo?: ExpoJestGlobals;
 };
 
 if (globalForJest.expo === undefined) {
@@ -31,5 +37,27 @@ if (globalForJest.expo === undefined) {
   globalForJest.expo = {
     EventEmitter:
       MockExpoNativeEventEmitter as unknown as ExpoNativeEventEmitterCtor,
+    modules: {
+      ExpoAsset: {
+        downloadAsync: async () => 'file://mock-asset',
+      },
+      ExpoGlassEffect: {
+        isLiquidGlassAvailable: false,
+      },
+    },
+  };
+} else {
+  const expo = globalForJest.expo;
+  expo.modules = {
+    ...(expo.modules ?? {}),
+    ExpoAsset: {
+      downloadAsync:
+        expo.modules?.ExpoAsset?.downloadAsync ??
+        (async () => 'file://mock-asset'),
+    },
+    ExpoGlassEffect: {
+      isLiquidGlassAvailable:
+        expo.modules?.ExpoGlassEffect?.isLiquidGlassAvailable ?? false,
+    },
   };
 }

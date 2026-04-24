@@ -6,13 +6,21 @@
     ".storybook/**/*.ts",
     ".storybook/**/*.tsx"
   ],
-  "exclude": ["**/node_modules", "**/Pods"],
+  "exclude": [
+    "**/node_modules",
+    "**/Pods",
+    "**/__test__/**",
+    "**/__tests__/**",
+    "jest-setup.ts",
+    "jest-setup-expo-global.ts",
+    "test-utils.tsx"
+  ],
   "compilerOptions": {
     "baseUrl": ".",
     "jsx": "react-jsx",
     "paths": {
       "@app/*": ["src/*"]
     },
-    "types": ["react-native"]
+    "types": ["react-native", "jest"]
   }
 }

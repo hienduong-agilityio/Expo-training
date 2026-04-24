@@ -2,7 +2,9 @@ name: CD - Android + Firebase App Distribution
 
 on:
   push:
-    branches: [ feat/practice-one ]
+    branches:
+      - feat/practice-one
+      - feat/handle-expo-github-action
   workflow_dispatch:
     inputs:
       profile:
@@ -15,7 +17,6 @@ permissions:
   contents: read
 
 concurrency:
-  # Never cancel an in-flight release; queue instead.
   group: cd-android-${{ github.ref }}
   cancel-in-progress: false
 
@@ -32,13 +33,14 @@ jobs:
       - id: pick
         env:
           DISPATCH_PROFILE: ${{ inputs.profile }}
+          PROD_BRANCH_REF: refs/heads/feat/practice-one
         run: |
           if [[ -n "$DISPATCH_PROFILE" ]]; then
             PROFILE="$DISPATCH_PROFILE"
-          elif [[ "${{ github.ref }}" == "refs/heads/dev" ]]; then
-            PROFILE="preview"
-          else
+          elif [[ "${{ github.ref }}" == "$PROD_BRANCH_REF" ]]; then
             PROFILE="production"
+          else
+            PROFILE="preview"
           fi
 
           if [[ "$PROFILE" == "production" ]]; then

@@ -1,7 +1,9 @@
 /**
  * Send a push via Expo’s HTTP API (dev/demo only — use your server in production).
  */
-export async function sendPushNotification(expoPushToken: string): Promise<void> {
+export async function sendPushNotification(
+  expoPushToken: string,
+): Promise<void> {
   const message = {
     to: expoPushToken,
     sound: 'default',

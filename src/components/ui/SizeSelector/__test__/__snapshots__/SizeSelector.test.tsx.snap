@@ -69,16 +69,35 @@ exports[`SizeSelector disables unavailable sizes 1`] = `
         [
           {
             "alignItems": "center",
-            "backgroundColor": "#FFFFFF",
-            "borderColor": "#F83758",
-            "borderRadius": 8,
+            "borderRadius": 6,
+            "height": 66,
+            "justifyContent": "center",
+          },
+          {
+            "paddingHorizontal": 16,
+          },
+          {
+            "backgroundColor": "#F83758",
+            "borderColor": "#E0E0E0",
             "borderWidth": 1,
-            "minWidth": 60,
-            "paddingHorizontal": 8,
-            "paddingVertical": 2,
           },
           false,
+          undefined,
           false,
+          [
+            {
+              "alignItems": "center",
+              "backgroundColor": "#FFFFFF",
+              "borderColor": "#F83758",
+              "borderRadius": 8,
+              "borderWidth": 1,
+              "minWidth": 60,
+              "paddingHorizontal": 8,
+              "paddingVertical": 2,
+            },
+            false,
+            false,
+          ],
         ]
       }
       testID="size-btn-XS"
@@ -135,16 +154,35 @@ exports[`SizeSelector disables unavailable sizes 1`] = `
         [
           {
             "alignItems": "center",
-            "backgroundColor": "#FFFFFF",
-            "borderColor": "#F83758",
-            "borderRadius": 8,
+            "borderRadius": 6,
+            "height": 66,
+            "justifyContent": "center",
+          },
+          {
+            "paddingHorizontal": 16,
+          },
+          {
+            "backgroundColor": "#F83758",
+            "borderColor": "#E0E0E0",
             "borderWidth": 1,
-            "minWidth": 60,
-            "paddingHorizontal": 8,
-            "paddingVertical": 2,
           },
           false,
+          undefined,
           false,
+          [
+            {
+              "alignItems": "center",
+              "backgroundColor": "#FFFFFF",
+              "borderColor": "#F83758",
+              "borderRadius": 8,
+              "borderWidth": 1,
+              "minWidth": 60,
+              "paddingHorizontal": 8,
+              "paddingVertical": 2,
+            },
+            false,
+            false,
+          ],
         ]
       }
       testID="size-btn-S"
@@ -201,16 +239,35 @@ exports[`SizeSelector disables unavailable sizes 1`] = `
         [
           {
             "alignItems": "center",
-            "backgroundColor": "#FFFFFF",
-            "borderColor": "#F83758",
-            "borderRadius": 8,
+            "borderRadius": 6,
+            "height": 66,
+            "justifyContent": "center",
+          },
+          {
+            "paddingHorizontal": 16,
+          },
+          {
+            "backgroundColor": "#F83758",
+            "borderColor": "#E0E0E0",
             "borderWidth": 1,
-            "minWidth": 60,
-            "paddingHorizontal": 8,
-            "paddingVertical": 2,
           },
           false,
+          undefined,
           false,
+          [
+            {
+              "alignItems": "center",
+              "backgroundColor": "#FFFFFF",
+              "borderColor": "#F83758",
+              "borderRadius": 8,
+              "borderWidth": 1,
+              "minWidth": 60,
+              "paddingHorizontal": 8,
+              "paddingVertical": 2,
+            },
+            false,
+            false,
+          ],
         ]
       }
       testID="size-btn-M"
@@ -267,16 +324,35 @@ exports[`SizeSelector disables unavailable sizes 1`] = `
         [
           {
             "alignItems": "center",
-            "backgroundColor": "#FFFFFF",
-            "borderColor": "#F83758",
-            "borderRadius": 8,
+            "borderRadius": 6,
+            "height": 66,
+            "justifyContent": "center",
+          },
+          {
+            "paddingHorizontal": 16,
+          },
+          {
+            "backgroundColor": "#F83758",
+            "borderColor": "#E0E0E0",
             "borderWidth": 1,
-            "minWidth": 60,
-            "paddingHorizontal": 8,
-            "paddingVertical": 2,
           },
           false,
+          undefined,
           false,
+          [
+            {
+              "alignItems": "center",
+              "backgroundColor": "#FFFFFF",
+              "borderColor": "#F83758",
+              "borderRadius": 8,
+              "borderWidth": 1,
+              "minWidth": 60,
+              "paddingHorizontal": 8,
+              "paddingVertical": 2,
+            },
+            false,
+            false,
+          ],
         ]
       }
       testID="size-btn-L"
@@ -333,16 +409,35 @@ exports[`SizeSelector disables unavailable sizes 1`] = `
         [
           {
             "alignItems": "center",
-            "backgroundColor": "#FFFFFF",
-            "borderColor": "#F83758",
-            "borderRadius": 8,
+            "borderRadius": 6,
+            "height": 66,
+            "justifyContent": "center",
+          },
+          {
+            "paddingHorizontal": 16,
+          },
+          {
+            "backgroundColor": "#F83758",
+            "borderColor": "#E0E0E0",
             "borderWidth": 1,
-            "minWidth": 60,
-            "paddingHorizontal": 8,
-            "paddingVertical": 2,
           },
           false,
+          undefined,
           false,
+          [
+            {
+              "alignItems": "center",
+              "backgroundColor": "#FFFFFF",
+              "borderColor": "#F83758",
+              "borderRadius": 8,
+              "borderWidth": 1,
+              "minWidth": 60,
+              "paddingHorizontal": 8,
+              "paddingVertical": 2,
+            },
+            false,
+            false,
+          ],
         ]
       }
       testID="size-btn-XL"
@@ -399,19 +494,40 @@ exports[`SizeSelector disables unavailable sizes 1`] = `
         [
           {
             "alignItems": "center",
-            "backgroundColor": "#FFFFFF",
-            "borderColor": "#F83758",
-            "borderRadius": 8,
+            "borderRadius": 6,
+            "height": 66,
+            "justifyContent": "center",
+          },
+          {
+            "paddingHorizontal": 16,
+          },
+          {
+            "backgroundColor": "#F83758",
+            "borderColor": "#E0E0E0",
             "borderWidth": 1,
-            "minWidth": 60,
-            "paddingHorizontal": 8,
-            "paddingVertical": 2,
           },
           false,
+          undefined,
           {
-            "backgroundColor": "#FAFAFA",
-            "borderColor": "#F0F0F0",
+            "opacity": 0.7,
           },
+          [
+            {
+              "alignItems": "center",
+              "backgroundColor": "#FFFFFF",
+              "borderColor": "#F83758",
+              "borderRadius": 8,
+              "borderWidth": 1,
+              "minWidth": 60,
+              "paddingHorizontal": 8,
+              "paddingVertical": 2,
+            },
+            false,
+            {
+              "backgroundColor": "#FAFAFA",
+              "borderColor": "#F0F0F0",
+            },
+          ],
         ]
       }
       testID="size-btn-XXL"
@@ -507,16 +623,35 @@ exports[`SizeSelector highlights selected size 1`] = `
         [
           {
             "alignItems": "center",
-            "backgroundColor": "#FFFFFF",
-            "borderColor": "#F83758",
-            "borderRadius": 8,
+            "borderRadius": 6,
+            "height": 66,
+            "justifyContent": "center",
+          },
+          {
+            "paddingHorizontal": 16,
+          },
+          {
+            "backgroundColor": "#F83758",
+            "borderColor": "#E0E0E0",
             "borderWidth": 1,
-            "minWidth": 60,
-            "paddingHorizontal": 8,
-            "paddingVertical": 2,
           },
           false,
+          undefined,
           false,
+          [
+            {
+              "alignItems": "center",
+              "backgroundColor": "#FFFFFF",
+              "borderColor": "#F83758",
+              "borderRadius": 8,
+              "borderWidth": 1,
+              "minWidth": 60,
+              "paddingHorizontal": 8,
+              "paddingVertical": 2,
+            },
+            false,
+            false,
+          ],
         ]
       }
       testID="size-btn-XS"
@@ -573,16 +708,35 @@ exports[`SizeSelector highlights selected size 1`] = `
         [
           {
             "alignItems": "center",
-            "backgroundColor": "#FFFFFF",
-            "borderColor": "#F83758",
-            "borderRadius": 8,
+            "borderRadius": 6,
+            "height": 66,
+            "justifyContent": "center",
+          },
+          {
+            "paddingHorizontal": 16,
+          },
+          {
+            "backgroundColor": "#F83758",
+            "borderColor": "#E0E0E0",
             "borderWidth": 1,
-            "minWidth": 60,
-            "paddingHorizontal": 8,
-            "paddingVertical": 2,
           },
           false,
+          undefined,
           false,
+          [
+            {
+              "alignItems": "center",
+              "backgroundColor": "#FFFFFF",
+              "borderColor": "#F83758",
+              "borderRadius": 8,
+              "borderWidth": 1,
+              "minWidth": 60,
+              "paddingHorizontal": 8,
+              "paddingVertical": 2,
+            },
+            false,
+            false,
+          ],
         ]
       }
       testID="size-btn-S"
@@ -639,16 +793,35 @@ exports[`SizeSelector highlights selected size 1`] = `
         [
           {
             "alignItems": "center",
-            "backgroundColor": "#FFFFFF",
-            "borderColor": "#F83758",
-            "borderRadius": 8,
+            "borderRadius": 6,
+            "height": 66,
+            "justifyContent": "center",
+          },
+          {
+            "paddingHorizontal": 16,
+          },
+          {
+            "backgroundColor": "#F83758",
+            "borderColor": "#E0E0E0",
             "borderWidth": 1,
-            "minWidth": 60,
-            "paddingHorizontal": 8,
-            "paddingVertical": 2,
           },
           false,
+          undefined,
           false,
+          [
+            {
+              "alignItems": "center",
+              "backgroundColor": "#FFFFFF",
+              "borderColor": "#F83758",
+              "borderRadius": 8,
+              "borderWidth": 1,
+              "minWidth": 60,
+              "paddingHorizontal": 8,
+              "paddingVertical": 2,
+            },
+            false,
+            false,
+          ],
         ]
       }
       testID="size-btn-M"
@@ -705,18 +878,37 @@ exports[`SizeSelector highlights selected size 1`] = `
         [
           {
             "alignItems": "center",
-            "backgroundColor": "#FFFFFF",
-            "borderColor": "#F83758",
-            "borderRadius": 8,
-            "borderWidth": 1,
-            "minWidth": 60,
-            "paddingHorizontal": 8,
-            "paddingVertical": 2,
+            "borderRadius": 6,
+            "height": 66,
+            "justifyContent": "center",
+          },
+          {
+            "paddingHorizontal": 16,
           },
           {
             "backgroundColor": "#F83758",
+            "borderColor": "#E0E0E0",
+            "borderWidth": 1,
           },
           false,
+          undefined,
+          false,
+          [
+            {
+              "alignItems": "center",
+              "backgroundColor": "#FFFFFF",
+              "borderColor": "#F83758",
+              "borderRadius": 8,
+              "borderWidth": 1,
+              "minWidth": 60,
+              "paddingHorizontal": 8,
+              "paddingVertical": 2,
+            },
+            {
+              "backgroundColor": "#F83758",
+            },
+            false,
+          ],
         ]
       }
       testID="size-btn-L"
@@ -775,16 +967,35 @@ exports[`SizeSelector highlights selected size 1`] = `
         [
           {
             "alignItems": "center",
-            "backgroundColor": "#FFFFFF",
-            "borderColor": "#F83758",
-            "borderRadius": 8,
+            "borderRadius": 6,
+            "height": 66,
+            "justifyContent": "center",
+          },
+          {
+            "paddingHorizontal": 16,
+          },
+          {
+            "backgroundColor": "#F83758",
+            "borderColor": "#E0E0E0",
             "borderWidth": 1,
-            "minWidth": 60,
-            "paddingHorizontal": 8,
-            "paddingVertical": 2,
           },
           false,
+          undefined,
           false,
+          [
+            {
+              "alignItems": "center",
+              "backgroundColor": "#FFFFFF",
+              "borderColor": "#F83758",
+              "borderRadius": 8,
+              "borderWidth": 1,
+              "minWidth": 60,
+              "paddingHorizontal": 8,
+              "paddingVertical": 2,
+            },
+            false,
+            false,
+          ],
         ]
       }
       testID="size-btn-XL"
@@ -841,19 +1052,40 @@ exports[`SizeSelector highlights selected size 1`] = `
         [
           {
             "alignItems": "center",
-            "backgroundColor": "#FFFFFF",
-            "borderColor": "#F83758",
-            "borderRadius": 8,
+            "borderRadius": 6,
+            "height": 66,
+            "justifyContent": "center",
+          },
+          {
+            "paddingHorizontal": 16,
+          },
+          {
+            "backgroundColor": "#F83758",
+            "borderColor": "#E0E0E0",
             "borderWidth": 1,
-            "minWidth": 60,
-            "paddingHorizontal": 8,
-            "paddingVertical": 2,
           },
           false,
+          undefined,
           {
-            "backgroundColor": "#FAFAFA",
-            "borderColor": "#F0F0F0",
+            "opacity": 0.7,
           },
+          [
+            {
+              "alignItems": "center",
+              "backgroundColor": "#FFFFFF",
+              "borderColor": "#F83758",
+              "borderRadius": 8,
+              "borderWidth": 1,
+              "minWidth": 60,
+              "paddingHorizontal": 8,
+              "paddingVertical": 2,
+            },
+            false,
+            {
+              "backgroundColor": "#FAFAFA",
+              "borderColor": "#F0F0F0",
+            },
+          ],
         ]
       }
       testID="size-btn-XXL"
@@ -949,16 +1181,35 @@ exports[`SizeSelector renders all sizes 1`] = `
         [
           {
             "alignItems": "center",
-            "backgroundColor": "#FFFFFF",
-            "borderColor": "#F83758",
-            "borderRadius": 8,
+            "borderRadius": 6,
+            "height": 66,
+            "justifyContent": "center",
+          },
+          {
+            "paddingHorizontal": 16,
+          },
+          {
+            "backgroundColor": "#F83758",
+            "borderColor": "#E0E0E0",
             "borderWidth": 1,
-            "minWidth": 60,
-            "paddingHorizontal": 8,
-            "paddingVertical": 2,
           },
           false,
+          undefined,
           false,
+          [
+            {
+              "alignItems": "center",
+              "backgroundColor": "#FFFFFF",
+              "borderColor": "#F83758",
+              "borderRadius": 8,
+              "borderWidth": 1,
+              "minWidth": 60,
+              "paddingHorizontal": 8,
+              "paddingVertical": 2,
+            },
+            false,
+            false,
+          ],
         ]
       }
       testID="size-btn-XS"
@@ -1015,16 +1266,35 @@ exports[`SizeSelector renders all sizes 1`] = `
         [
           {
             "alignItems": "center",
-            "backgroundColor": "#FFFFFF",
-            "borderColor": "#F83758",
-            "borderRadius": 8,
+            "borderRadius": 6,
+            "height": 66,
+            "justifyContent": "center",
+          },
+          {
+            "paddingHorizontal": 16,
+          },
+          {
+            "backgroundColor": "#F83758",
+            "borderColor": "#E0E0E0",
             "borderWidth": 1,
-            "minWidth": 60,
-            "paddingHorizontal": 8,
-            "paddingVertical": 2,
           },
           false,
+          undefined,
           false,
+          [
+            {
+              "alignItems": "center",
+              "backgroundColor": "#FFFFFF",
+              "borderColor": "#F83758",
+              "borderRadius": 8,
+              "borderWidth": 1,
+              "minWidth": 60,
+              "paddingHorizontal": 8,
+              "paddingVertical": 2,
+            },
+            false,
+            false,
+          ],
         ]
       }
       testID="size-btn-S"
@@ -1081,16 +1351,35 @@ exports[`SizeSelector renders all sizes 1`] = `
         [
           {
             "alignItems": "center",
-            "backgroundColor": "#FFFFFF",
-            "borderColor": "#F83758",
-            "borderRadius": 8,
+            "borderRadius": 6,
+            "height": 66,
+            "justifyContent": "center",
+          },
+          {
+            "paddingHorizontal": 16,
+          },
+          {
+            "backgroundColor": "#F83758",
+            "borderColor": "#E0E0E0",
             "borderWidth": 1,
-            "minWidth": 60,
-            "paddingHorizontal": 8,
-            "paddingVertical": 2,
           },
           false,
+          undefined,
           false,
+          [
+            {
+              "alignItems": "center",
+              "backgroundColor": "#FFFFFF",
+              "borderColor": "#F83758",
+              "borderRadius": 8,
+              "borderWidth": 1,
+              "minWidth": 60,
+              "paddingHorizontal": 8,
+              "paddingVertical": 2,
+            },
+            false,
+            false,
+          ],
         ]
       }
       testID="size-btn-M"
@@ -1147,16 +1436,35 @@ exports[`SizeSelector renders all sizes 1`] = `
         [
           {
             "alignItems": "center",
-            "backgroundColor": "#FFFFFF",
-            "borderColor": "#F83758",
-            "borderRadius": 8,
+            "borderRadius": 6,
+            "height": 66,
+            "justifyContent": "center",
+          },
+          {
+            "paddingHorizontal": 16,
+          },
+          {
+            "backgroundColor": "#F83758",
+            "borderColor": "#E0E0E0",
             "borderWidth": 1,
-            "minWidth": 60,
-            "paddingHorizontal": 8,
-            "paddingVertical": 2,
           },
           false,
+          undefined,
           false,
+          [
+            {
+              "alignItems": "center",
+              "backgroundColor": "#FFFFFF",
+              "borderColor": "#F83758",
+              "borderRadius": 8,
+              "borderWidth": 1,
+              "minWidth": 60,
+              "paddingHorizontal": 8,
+              "paddingVertical": 2,
+            },
+            false,
+            false,
+          ],
         ]
       }
       testID="size-btn-L"
@@ -1213,16 +1521,35 @@ exports[`SizeSelector renders all sizes 1`] = `
         [
           {
             "alignItems": "center",
-            "backgroundColor": "#FFFFFF",
-            "borderColor": "#F83758",
-            "borderRadius": 8,
+            "borderRadius": 6,
+            "height": 66,
+            "justifyContent": "center",
+          },
+          {
+            "paddingHorizontal": 16,
+          },
+          {
+            "backgroundColor": "#F83758",
+            "borderColor": "#E0E0E0",
             "borderWidth": 1,
-            "minWidth": 60,
-            "paddingHorizontal": 8,
-            "paddingVertical": 2,
           },
           false,
+          undefined,
           false,
+          [
+            {
+              "alignItems": "center",
+              "backgroundColor": "#FFFFFF",
+              "borderColor": "#F83758",
+              "borderRadius": 8,
+              "borderWidth": 1,
+              "minWidth": 60,
+              "paddingHorizontal": 8,
+              "paddingVertical": 2,
+            },
+            false,
+            false,
+          ],
         ]
       }
       testID="size-btn-XL"
@@ -1279,19 +1606,40 @@ exports[`SizeSelector renders all sizes 1`] = `
         [
           {
             "alignItems": "center",
-            "backgroundColor": "#FFFFFF",
-            "borderColor": "#F83758",
-            "borderRadius": 8,
+            "borderRadius": 6,
+            "height": 66,
+            "justifyContent": "center",
+          },
+          {
+            "paddingHorizontal": 16,
+          },
+          {
+            "backgroundColor": "#F83758",
+            "borderColor": "#E0E0E0",
             "borderWidth": 1,
-            "minWidth": 60,
-            "paddingHorizontal": 8,
-            "paddingVertical": 2,
           },
           false,
+          undefined,
           {
-            "backgroundColor": "#FAFAFA",
-            "borderColor": "#F0F0F0",
+            "opacity": 0.7,
           },
+          [
+            {
+              "alignItems": "center",
+              "backgroundColor": "#FFFFFF",
+              "borderColor": "#F83758",
+              "borderRadius": 8,
+              "borderWidth": 1,
+              "minWidth": 60,
+              "paddingHorizontal": 8,
+              "paddingVertical": 2,
+            },
+            false,
+            {
+              "backgroundColor": "#FAFAFA",
+              "borderColor": "#F0F0F0",
+            },
+          ],
         ]
       }
       testID="size-btn-XXL"

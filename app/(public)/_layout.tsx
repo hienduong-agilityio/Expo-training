@@ -19,8 +19,7 @@ export default function PublicLayout() {
       return;
     }
 
-    const targetRoute =
-      deferredNavigationStore.getState().takeDeferredRoute();
+    const targetRoute = deferredNavigationStore.getState().takeDeferredRoute();
     router.replace(targetRoute ?? '/home');
   }, [isSignedIn, router]);
 

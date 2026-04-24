@@ -16,11 +16,7 @@ import { NotFound } from '@app/components/ui/NotFound';
 import { Button } from '@app/components/common/Button';
 
 // Constants
-import {
-  LOADING_MESSAGES,
-  CART_MESSAGES,
-  BUTTON_LABELS,
-} from '@app/constants';
+import { LOADING_MESSAGES, CART_MESSAGES, BUTTON_LABELS } from '@app/constants';
 
 // Types
 import type { ICartItem } from '@app/interfaces/cart';

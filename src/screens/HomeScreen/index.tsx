@@ -15,11 +15,7 @@ import { SearchBar } from '@app/components/common/SearchBar';
 import { ClockIcon, CalendarIcon } from '@app/icons';
 
 // Constants
-import {
-  PRODUCT_LIST_TYPES,
-  MESSAGES,
-  SEARCH_MESSAGES,
-} from '@app/constants';
+import { PRODUCT_LIST_TYPES, MESSAGES, SEARCH_MESSAGES } from '@app/constants';
 
 import type { ProductListType } from '@app/constants';
 

@@ -15,10 +15,7 @@ import { NotFound } from '@app/components/ui/NotFound';
 import { GridProductList } from '@app/components/ui/ProductList';
 
 // Constants
-import {
-  WISHLIST_MESSAGES,
-  BUTTON_LABELS,
-} from '@app/constants';
+import { WISHLIST_MESSAGES, BUTTON_LABELS } from '@app/constants';
 
 // Types
 import type { IProduct } from '@app/interfaces/product';
