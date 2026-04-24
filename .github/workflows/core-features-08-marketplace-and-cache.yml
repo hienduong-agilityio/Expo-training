@@ -1,0 +1,67 @@
+# Teaching workflow: shows the five most common Marketplace actions together.
+# Safe to run anytime (workflow_dispatch). Read comments as you step through the UI log.
+
+name: Core 08 - Marketplace actions + cache + artifact
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  demo:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+
+    steps:
+      # 1) Clone the repo into the runner workspace.
+      - name: actions/checkout
+        uses: actions/checkout@v4
+
+      # 2) Install Node and cache the Yarn store automatically.
+      #    (setup-node reads yarn.lock to decide when to invalidate the cache.)
+      - name: actions/setup-node with built-in yarn cache
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
+
+      # 3) Manually cache something setup-node does not handle (example: a fake tools dir).
+      - name: actions/cache (manual example)
+        uses: actions/cache@v4
+        with:
+          path: .cache-demo
+          key: demo-cache-${{ runner.os }}-${{ hashFiles('package.json') }}
+          restore-keys: demo-cache-${{ runner.os }}-
+
+      - name: Create a fake artifact to upload
+        run: |
+          mkdir -p out
+          echo "run: ${{ github.run_number }}" > out/info.txt
+          echo "sha:  ${{ github.sha }}"       >> out/info.txt
+          date                                  >> out/info.txt
+
+      # 4) Publish files from the runner as a downloadable artifact of this run.
+      - name: actions/upload-artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: demo-output
+          path: out/
+          retention-days: 3
+
+  download-in-another-job:
+    needs: demo
+    runs-on: ubuntu-24.04
+    steps:
+      # 5) Pull artifacts from the previous job into this job's workspace.
+      - name: actions/download-artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: demo-output
+          path: incoming/
+
+      - name: Show what we received
+        run: |
+          ls -la incoming/
+          cat incoming/info.txt
