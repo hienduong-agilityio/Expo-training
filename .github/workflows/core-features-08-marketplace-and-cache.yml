@@ -4,7 +4,8 @@
 name: Core 08 - Marketplace actions + cache + artifact
 
 on:
-  workflow_dispatch:
+  push:
+    branches: [ feat/practice-one ]
 
 permissions:
   contents: read

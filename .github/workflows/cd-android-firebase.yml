@@ -2,7 +2,7 @@ name: CD - Android + Firebase App Distribution
 
 on:
   push:
-    branches: [ main, dev ]
+    branches: [ feat/practice-one ]
   workflow_dispatch:
     inputs:
       profile:
