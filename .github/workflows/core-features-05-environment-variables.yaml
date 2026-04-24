@@ -1,0 +1,42 @@
+name: Environment Variables
+
+on:
+  push:
+    branches:
+      - feat/handle-enviroment-variables-ci-cd
+
+  workflow_dispatch:
+
+env:
+  EXPO_PUBLIC_API_BASE_URL: http://127.0.0.1:1337/api
+  EXPO_PUBLIC_STRAPI_BASE_URL: http://127.0.0.1:1337
+
+jobs:
+  job-1:
+    runs-on: ubuntu-24.04
+    env:
+      LOAD_STORYBOOK: "true"
+    steps:
+      - name: Job 1 step 1 (step env)
+        env:
+          NODE_ENV: test
+        run: |
+          echo "EXPO_PUBLIC_API_BASE_URL=$EXPO_PUBLIC_API_BASE_URL"
+          echo "EXPO_PUBLIC_STRAPI_BASE_URL=$EXPO_PUBLIC_STRAPI_BASE_URL"
+          echo "LOAD_STORYBOOK=$LOAD_STORYBOOK"
+          echo "NODE_ENV=$NODE_ENV"
+
+      - name: Job 1 step 2
+        run: |
+          echo "EXPO_PUBLIC_API_BASE_URL=$EXPO_PUBLIC_API_BASE_URL"
+          echo "LOAD_STORYBOOK=$LOAD_STORYBOOK"
+          echo "NODE_ENV=${NODE_ENV:-<UNSET>}"
+
+  job-2:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Job 2 (other job)
+        run: |
+          echo "EXPO_PUBLIC_API_BASE_URL=$EXPO_PUBLIC_API_BASE_URL"
+          echo "LOAD_STORYBOOK=${LOAD_STORYBOOK:-<UNSET>}"
+          echo "NODE_ENV=${NODE_ENV:-<UNSET>}"
