@@ -27,6 +27,7 @@
     "analyze:bundle:tsv": "node scripts/analyze-bundle.js tsv",
     "storybook-generate": "sb-rn-get-stories",
     "doctor": "npx expo-doctor --verbose",
+    "eas-build-pre-install": "bash scripts/eas-write-google-services.sh",
     "install:check": "expo install --check",
     "eas:build:android:preview": "eas build --platform android --profile preview",
     "eas:build:android:production": "eas build --platform android --profile production",
