@@ -1,0 +1,187 @@
+name: CI - PR checks
+
+on:
+  pull_request:
+    branches: [ feat/practice-one ]
+    paths:
+      - "src/**"
+      - "app.config.*"
+      - "babel.config.*"
+      - "jest.config.*"
+      - "tsconfig*.json"
+      - "package.json"
+      - "yarn.lock"
+      - ".github/actions/setup/**"
+      - ".github/workflows/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-pr-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint (ESLint + Prettier)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+
+      - name: ESLint
+        id: eslint
+        run: yarn lint
+
+      - name: Prettier (check only)
+        id: prettier
+        if: always()
+        run: yarn prettier:fix && yarn prettier:check
+
+      - name: Write job summary
+        if: always()
+        run: |
+          {
+            echo "## Lint results"
+            echo ""
+            echo "| Check | Outcome |"
+            echo "| --- | --- |"
+            echo "| ESLint   | ${{ steps.eslint.outcome }} |"
+            echo "| Prettier | ${{ steps.prettier.outcome }} |"
+            echo ""
+            echo "_Branch: \`${{ github.head_ref }}\` → \`${{ github.base_ref }}\`_"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  typecheck:
+    name: Typecheck (tsc --noEmit)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+
+      - name: TypeScript (no emit)
+        id: tsc
+        run: npx tsc --noEmit
+
+      - name: Write job summary
+        if: always()
+        run: |
+          {
+            echo "## Typecheck"
+            echo ""
+            echo "- Result: **${{ steps.tsc.outcome }}**"
+            echo "- TS config: \`tsconfig.json\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  unit-tests:
+    name: Unit tests (Jest + coverage)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+
+      - name: Jest with coverage
+        id: jest
+        run: yarn jest --ci --coverage --maxWorkers=2 --forceExit
+
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jest-coverage-${{ github.run_number }}
+          path: coverage/
+          retention-days: 7
+          if-no-files-found: warn
+
+      - name: Write job summary
+        if: always()
+        run: |
+          {
+            echo "## Unit tests"
+            echo ""
+            echo "- Result: **${{ steps.jest.outcome }}**"
+            if [[ -f coverage/coverage-summary.json ]]; then
+              LINES=$(node -p "require('./coverage/coverage-summary.json').total.lines.pct")
+              STMT=$(node  -p "require('./coverage/coverage-summary.json').total.statements.pct")
+              BR=$(node    -p "require('./coverage/coverage-summary.json').total.branches.pct")
+              FN=$(node    -p "require('./coverage/coverage-summary.json').total.functions.pct")
+              echo ""
+              echo "| Metric | Coverage |"
+              echo "| --- | --- |"
+              echo "| Lines      | ${LINES}% |"
+              echo "| Statements | ${STMT}% |"
+              echo "| Branches   | ${BR}% |"
+              echo "| Functions  | ${FN}% |"
+            fi
+            echo ""
+            echo "_Full LCOV report attached as \`jest-coverage-${{ github.run_number }}\` artifact._"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  expo-doctor:
+    name: Expo doctor
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+
+      - name: expo-doctor
+        id: doctor
+        run: yarn doctor
+
+      - name: Write job summary
+        if: always()
+        run: |
+          {
+            echo "## Expo doctor"
+            echo ""
+            echo "- Result: **${{ steps.doctor.outcome }}**"
+            echo "- Command: \`yarn doctor\` (npx expo-doctor --verbose)"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  ci-summary:
+    name: CI summary (required check)
+    needs: [ lint, typecheck, unit-tests, expo-doctor ]
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 2
+    steps:
+      - name: Evaluate previous jobs
+        id: gate
+        env:
+          LINT_RESULT: ${{ needs.lint.result }}
+          TSC_RESULT: ${{ needs.typecheck.result }}
+          TEST_RESULT: ${{ needs.unit-tests.result }}
+          DOCT_RESULT: ${{ needs.expo-doctor.result }}
+        run: |
+          FAILED=false
+          if [[ "${{ contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled') }}" == "true" ]]; then
+            FAILED=true
+          fi
+          echo "failed=$FAILED" >> "$GITHUB_OUTPUT"
+
+          {
+            echo "## CI summary"
+            echo ""
+            echo "| Gate | Result |"
+            echo "| --- | --- |"
+            echo "| Lint         | \`${LINT_RESULT}\` |"
+            echo "| Typecheck    | \`${TSC_RESULT}\` |"
+            echo "| Unit tests   | \`${TEST_RESULT}\` |"
+            echo "| Expo doctor  | \`${DOCT_RESULT}\` |"
+            echo ""
+            if [[ "$FAILED" == "true" ]]; then
+              echo "**Overall: FAILED** — one or more required gates did not pass."
+            else
+              echo "**Overall: PASSED** — all required gates succeeded."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          if [[ "$FAILED" == "true" ]]; then
+            echo "::error::One or more required jobs failed."
+            exit 1
+          fi

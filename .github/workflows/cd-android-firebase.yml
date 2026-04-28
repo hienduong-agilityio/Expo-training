@@ -1,0 +1,287 @@
+name: CD - Android + Firebase App Distribution
+
+on:
+  push:
+    branches:
+      - main
+      - feat/practice-one
+      - feat/handle-expo-github-action
+  workflow_dispatch:
+    inputs:
+      profile:
+        description: "EAS build profile (overrides branch default)"
+        required: false
+        type: choice
+        options: [ preview, production ]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cd-android-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+
+  resolve-config:
+    name: Resolve build profile + target environment
+    runs-on: ubuntu-24.04
+    timeout-minutes: 2
+    outputs:
+      profile: ${{ steps.pick.outputs.profile }}
+      environment: ${{ steps.pick.outputs.environment }}
+    steps:
+      - id: pick
+        env:
+          DISPATCH_PROFILE: ${{ inputs.profile }}
+          PROD_BRANCH_REF: refs/heads/main
+        run: |
+          if [[ -n "$DISPATCH_PROFILE" ]]; then
+            PROFILE="$DISPATCH_PROFILE"
+          elif [[ "${{ github.ref }}" == "$PROD_BRANCH_REF" ]]; then
+            PROFILE="production"
+          else
+            PROFILE="preview"
+          fi
+
+          if [[ "$PROFILE" == "production" ]]; then
+            ENVIRONMENT="production"
+          else
+            ENVIRONMENT="development"
+          fi
+
+          echo "profile=$PROFILE"         >> "$GITHUB_OUTPUT"
+          echo "environment=$ENVIRONMENT" >> "$GITHUB_OUTPUT"
+
+      - name: Write job summary
+        run: |
+          {
+            echo "## Resolved configuration"
+            echo ""
+            echo "| Key | Value |"
+            echo "| --- | --- |"
+            echo "| Git ref          | \`${{ github.ref_name }}\` |"
+            echo "| Commit           | \`${{ github.sha }}\` |"
+            echo "| Actor            | \`${{ github.actor }}\` |"
+            echo "| Dispatch profile | \`${{ inputs.profile }}\` |"
+            echo "| EAS profile      | **\`${{ steps.pick.outputs.profile }}\`** |"
+            echo "| GitHub env       | **\`${{ steps.pick.outputs.environment }}\`** |"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  build-apk:
+    name: Build Android APK (EAS local)
+    needs: resolve-config
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    environment: ${{ needs.resolve-config.outputs.environment }}
+    env:
+      EAS_BUILD_PROFILE: ${{ needs.resolve-config.outputs.profile }}
+      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+      EXPO_PUBLIC_API_BASE_URL: ${{ vars.EXPO_PUBLIC_API_BASE_URL }}
+      EXPO_PUBLIC_STRAPI_BASE_URL: ${{ vars.EXPO_PUBLIC_STRAPI_BASE_URL }}
+      LOAD_STORYBOOK: ${{ vars.LOAD_STORYBOOK }}
+      # KSP/Kotlin + lint on ubuntu-latest can hit Metaspace OOM with Gradle defaults
+      GRADLE_OPTS: "-Xmx4096m -XX:MaxMetaspaceSize=1024m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+
+      - name: Setup Java (JDK 17 for Gradle)
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Cache Gradle
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+            android/.gradle
+          key: gradle-${{ runner.os }}-${{ hashFiles('android/**/*.gradle*',
+            'android/gradle/wrapper/gradle-wrapper.properties') }}
+          restore-keys: |
+            gradle-${{ runner.os }}-
+
+      # EAS local worker does not receive GitHub secrets. Write the file here and commit on the runner only
+      # (no push) so the project archive contains config/google-services.json. --clear-cache avoids stale tarballs.
+      - name: Decode google-services.json and stage for EAS local archive
+        env:
+          B64_MAIN: ${{ secrets.GOOGLE_SERVICES_BASE64 }}
+          B64_LEGACY: ${{ secrets.GOOGLE_SERVICES_JSON_BASE64 }}
+        run: |
+          set -euo pipefail
+
+          echo "::group::1) Resolve secret"
+          B64="${B64_MAIN:-${B64_LEGACY:-}}"
+          if [[ -z "$B64" ]]; then
+            echo "::error::Add secret GOOGLE_SERVICES_BASE64 (base64 of google-services.json). Legacy: GOOGLE_SERVICES_JSON_BASE64."
+            exit 1
+          fi
+          echo "::endgroup::"
+
+          echo "::group::2) Decode Base64 → config/google-services.json"
+          mkdir -p config
+          CLEAN=$(printf '%s' "$B64" | tr -d '\n\r\t ')
+          PAD=$(( (4 - ${#CLEAN} % 4) % 4 ))
+          case $PAD in 1) CLEAN="${CLEAN}=" ;; 2) CLEAN="${CLEAN}==" ;; 3) CLEAN="${CLEAN}===" ;; esac
+          printf '%s' "$CLEAN" | base64 -d > config/google-services.json
+          echo "::endgroup::"
+
+          echo "::group::3) Validate JSON"
+          python3 -m json.tool config/google-services.json >/dev/null
+          echo "::endgroup::"
+
+          echo "::group::4) Un-ignore path for local EAS pack (EAS may skip paths that match .gitignore)"
+          sed -i '/^config\/google-services\.json$/d' .gitignore
+          echo "::endgroup::"
+
+          echo "::group::5) Git snapshot for EAS tarball (ephemeral commit, not pushed)"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add .gitignore config/google-services.json
+          if ! git diff --staged --quiet; then
+            git commit --no-verify -m "ci: google-services + .gitignore for EAS local snapshot"
+          fi
+          echo "::endgroup::"
+
+          echo "::group::Verify tracked before eas build"
+          git ls-files --error-unmatch config/google-services.json
+          test -s config/google-services.json
+          echo "::endgroup::"
+
+      - name: Setup Expo + EAS CLI
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          expo-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Ensure EXPO_TOKEN is available for EAS
+        run: |
+          if [[ -z "${EXPO_TOKEN:-}" ]]; then
+            echo "::error::EXPO_TOKEN is not set. Create an Expo access token at https://expo.dev/accounts/[your-account]/settings/access-tokens and add it as repository secret EXPO_TOKEN (or Environment secret if you scope tokens per env)."
+            exit 1
+          fi
+
+      # eas local runs Gradle under ~/.gradle; daemon jvmargs fix Metaspace OOM (expo-updates kspReleaseKotlin, lintVital)
+      - name: Gradle JVM limits for CI (Metaspace / heap)
+        run: |
+          mkdir -p ~/.gradle
+          : > ~/.gradle/gradle.properties
+          echo 'org.gradle.jvmargs=-Xmx4096m -XX:MaxMetaspaceSize=1024m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8' >> ~/.gradle/gradle.properties
+          echo 'org.gradle.parallel=true' >> ~/.gradle/gradle.properties
+          echo 'org.gradle.workers.max=2' >> ~/.gradle/gradle.properties
+          echo 'kotlin.daemon.jvmargs=-Xmx2048m -XX:MaxMetaspaceSize=512m' >> ~/.gradle/gradle.properties
+
+      - name: EAS build (local, APK)
+        id: build
+        run: |
+          eas build \
+            --platform android \
+            --profile "$EAS_BUILD_PROFILE" \
+            --local \
+            --clear-cache \
+            --non-interactive \
+            --output "build.apk"
+
+      - name: Capture APK metadata
+        id: meta
+        run: |
+          SIZE_BYTES=$(stat -c%s build.apk)
+          SIZE_MB=$(awk "BEGIN {printf \"%.2f\", ${SIZE_BYTES}/1024/1024}")
+          SHA256=$(sha256sum build.apk | awk '{print $1}')
+          echo "size_mb=$SIZE_MB"   >> "$GITHUB_OUTPUT"
+          echo "size_bytes=$SIZE_BYTES" >> "$GITHUB_OUTPUT"
+          echo "sha256=$SHA256"     >> "$GITHUB_OUTPUT"
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-apk-${{ env.EAS_BUILD_PROFILE }}-${{ github.run_number }}
+          path: build.apk
+          retention-days: 14
+          if-no-files-found: error
+
+      - name: Write job summary
+        if: always()
+        run: |
+          {
+            echo "## Android build"
+            echo ""
+            echo "| Key | Value |"
+            echo "| --- | --- |"
+            echo "| Result       | **${{ steps.build.outcome }}** |"
+            echo "| EAS profile  | \`${{ env.EAS_BUILD_PROFILE }}\` |"
+            echo "| APK size     | ${{ steps.meta.outputs.size_mb }} MB (${{ steps.meta.outputs.size_bytes }} bytes) |"
+            echo "| APK sha256   | \`${{ steps.meta.outputs.sha256 }}\` |"
+            echo "| Artifact     | \`android-apk-${{ env.EAS_BUILD_PROFILE }}-${{ github.run_number }}\` |"
+            echo "| API base     | \`${{ env.EXPO_PUBLIC_API_BASE_URL }}\` |"
+            echo "| Strapi base  | \`${{ env.EXPO_PUBLIC_STRAPI_BASE_URL }}\` |"
+            echo "| Storybook    | \`${{ env.LOAD_STORYBOOK }}\` |"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  distribute-firebase:
+    name: Distribute to Firebase App Distribution
+    needs: [ resolve-config, build-apk ]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    environment: ${{ needs.resolve-config.outputs.environment }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download APK artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: android-apk-${{ needs.resolve-config.outputs.profile }}-${{
+            github.run_number }}
+
+      - name: Generate release notes from recent commits
+        id: notes
+        run: |
+          {
+            echo "notes<<NOTES_EOF"
+            echo "Profile: ${{ needs.resolve-config.outputs.profile }}"
+            echo "Env:     ${{ needs.resolve-config.outputs.environment }}"
+            echo "Branch:  ${{ github.ref_name }}"
+            echo "Actor:   ${{ github.actor }}"
+            echo "Commit:  ${{ github.sha }}"
+            echo ""
+            echo "Recent changes:"
+            git log -n 10 --pretty=format:"- %h %s (%an)" | head -c 900
+            echo ""
+            echo "NOTES_EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Firebase App Distribution
+        id: firebase
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID_ANDROID }}
+          serviceCredentialsFileContent: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}
+          groups: ${{ vars.FIREBASE_TESTERS_GROUP }}
+          file: build.apk
+          releaseNotes: ${{ steps.notes.outputs.notes }}
+
+      - name: Write job summary
+        if: always()
+        run: |
+          {
+            echo "## Firebase App Distribution"
+            echo ""
+            echo "| Key | Value |"
+            echo "| --- | --- |"
+            echo "| Result         | **${{ steps.firebase.outcome }}** |"
+            echo "| Target env     | \`${{ needs.resolve-config.outputs.environment }}\` |"
+            echo "| Testers group  | \`${{ vars.FIREBASE_TESTERS_GROUP }}\` |"
+            echo "| APK artifact   | \`android-apk-${{ needs.resolve-config.outputs.profile }}-${{ github.run_number }}\` |"
+            echo ""
+            echo "### Release notes sent"
+            echo ""
+            echo '```'
+            echo "${{ steps.notes.outputs.notes }}"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

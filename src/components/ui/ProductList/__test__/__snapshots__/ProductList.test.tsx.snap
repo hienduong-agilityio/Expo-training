@@ -1,0 +1,442 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GridProductList Rendering matches snapshot 1`] = `
+<RCTScrollView
+  ListFooterComponent={[Function]}
+  accessibilityLabel="Grid product list"
+  accessibilityRole="list"
+  contentContainerStyle={
+    [
+      {
+        "paddingHorizontal": 16,
+        "paddingVertical": 16,
+      },
+      {},
+    ]
+  }
+  data={
+    [
+      {
+        "brand": "Winter Co.",
+        "currency": "INR",
+        "description": "Autumn And Winter Casual cotton-padded jacket",
+        "id": "1",
+        "imageSource": {
+          "uri": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop",
+        },
+        "name": "Black Winter Jacket",
+        "price": 499,
+        "rating": 5,
+        "reviewCount": 6890,
+        "sizes": [
+          {
+            "available": true,
+            "id": "1",
+            "size": "XS",
+          },
+          {
+            "available": true,
+            "id": "2",
+            "size": "S",
+          },
+          {
+            "available": true,
+            "id": "3",
+            "size": "M",
+          },
+          {
+            "available": true,
+            "id": "4",
+            "size": "L",
+          },
+          {
+            "available": true,
+            "id": "5",
+            "size": "XL",
+          },
+          {
+            "available": false,
+            "id": "6",
+            "size": "XXL",
+          },
+        ],
+      },
+      {
+        "brand": "Cotton Co.",
+        "currency": "INR",
+        "description": "Mens Starry Sky Printed Shirt 100% Cotton Fabric",
+        "id": "2",
+        "imageSource": {
+          "uri": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=300&h=400&fit=crop",
+        },
+        "name": "Mens Starry Sky Printed Shirt",
+        "price": 399,
+        "rating": 5,
+        "reviewCount": 152344,
+        "sizes": [
+          {
+            "available": true,
+            "id": "1",
+            "size": "XS",
+          },
+          {
+            "available": true,
+            "id": "2",
+            "size": "S",
+          },
+          {
+            "available": true,
+            "id": "3",
+            "size": "M",
+          },
+          {
+            "available": true,
+            "id": "4",
+            "size": "L",
+          },
+          {
+            "available": true,
+            "id": "5",
+            "size": "XL",
+          },
+          {
+            "available": false,
+            "id": "6",
+            "size": "XXL",
+          },
+        ],
+      },
+      {
+        "brand": "Fashion Co.",
+        "currency": "INR",
+        "description": "Solid Black Dress for Women, Sexy Chain Shorts",
+        "id": "3",
+        "imageSource": {
+          "uri": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300&h=400&fit=crop",
+        },
+        "name": "Black Dress",
+        "price": 2000,
+        "rating": 5,
+        "reviewCount": 523456,
+        "sizes": [
+          {
+            "available": true,
+            "id": "1",
+            "size": "XS",
+          },
+          {
+            "available": true,
+            "id": "2",
+            "size": "S",
+          },
+          {
+            "available": true,
+            "id": "3",
+            "size": "M",
+          },
+          {
+            "available": true,
+            "id": "4",
+            "size": "L",
+          },
+          {
+            "available": true,
+            "id": "5",
+            "size": "XL",
+          },
+          {
+            "available": false,
+            "id": "6",
+            "size": "XXL",
+          },
+        ],
+      },
+    ]
+  }
+  getItem={[Function]}
+  getItemCount={[Function]}
+  initialNumToRender={12}
+  keyExtractor={[Function]}
+  maxToRenderPerBatch={8}
+  onContentSizeChange={[Function]}
+  onEndReached={[Function]}
+  onEndReachedThreshold={0.5}
+  onLayout={[Function]}
+  onMomentumScrollBegin={[Function]}
+  onMomentumScrollEnd={[Function]}
+  onScroll={[Function]}
+  onScrollBeginDrag={[Function]}
+  onScrollEndDrag={[Function]}
+  removeClippedSubviews={true}
+  renderItem={[Function]}
+  scrollEventThrottle={0.0001}
+  showsVerticalScrollIndicator={false}
+  stickyHeaderIndices={[]}
+  updateCellsBatchingPeriod={50}
+  viewabilityConfigCallbackPairs={[]}
+  windowSize={5}
+>
+  <View>
+    <View
+      onFocusCapture={[Function]}
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        style={
+          [
+            {
+              "flexDirection": "row",
+            },
+            {
+              "marginRight": -16,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            [
+              {},
+              undefined,
+              {
+                "marginBottom": 16,
+                "marginRight": 16,
+                "width": 351,
+              },
+            ]
+          }
+        >
+          <View
+            brand="Winter Co."
+            currency="INR"
+            description="Autumn And Winter Casual cotton-padded jacket"
+            id="1"
+            imageSource={
+              {
+                "uri": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop",
+              }
+            }
+            onPress={[Function]}
+            price={499}
+            rating={5}
+            reviewCount={6890}
+            sizes={
+              [
+                {
+                  "available": true,
+                  "id": "1",
+                  "size": "XS",
+                },
+                {
+                  "available": true,
+                  "id": "2",
+                  "size": "S",
+                },
+                {
+                  "available": true,
+                  "id": "3",
+                  "size": "M",
+                },
+                {
+                  "available": true,
+                  "id": "4",
+                  "size": "L",
+                },
+                {
+                  "available": true,
+                  "id": "5",
+                  "size": "XL",
+                },
+                {
+                  "available": false,
+                  "id": "6",
+                  "size": "XXL",
+                },
+              ]
+            }
+            style={
+              {
+                "marginVertical": 0,
+                "width": "100%",
+              }
+            }
+          >
+            <Text>
+              Black Winter Jacket
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            [
+              {},
+              undefined,
+              {
+                "marginBottom": 16,
+                "marginRight": 16,
+                "width": 351,
+              },
+            ]
+          }
+        >
+          <View
+            brand="Cotton Co."
+            currency="INR"
+            description="Mens Starry Sky Printed Shirt 100% Cotton Fabric"
+            id="2"
+            imageSource={
+              {
+                "uri": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=300&h=400&fit=crop",
+              }
+            }
+            onPress={[Function]}
+            price={399}
+            rating={5}
+            reviewCount={152344}
+            sizes={
+              [
+                {
+                  "available": true,
+                  "id": "1",
+                  "size": "XS",
+                },
+                {
+                  "available": true,
+                  "id": "2",
+                  "size": "S",
+                },
+                {
+                  "available": true,
+                  "id": "3",
+                  "size": "M",
+                },
+                {
+                  "available": true,
+                  "id": "4",
+                  "size": "L",
+                },
+                {
+                  "available": true,
+                  "id": "5",
+                  "size": "XL",
+                },
+                {
+                  "available": false,
+                  "id": "6",
+                  "size": "XXL",
+                },
+              ]
+            }
+            style={
+              {
+                "marginVertical": 0,
+                "width": "100%",
+              }
+            }
+          >
+            <Text>
+              Mens Starry Sky Printed Shirt
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      onFocusCapture={[Function]}
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        style={
+          [
+            {
+              "flexDirection": "row",
+            },
+            {
+              "marginRight": -16,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            [
+              {},
+              undefined,
+              {
+                "marginBottom": 16,
+                "marginRight": 16,
+                "width": 351,
+              },
+            ]
+          }
+        >
+          <View
+            brand="Fashion Co."
+            currency="INR"
+            description="Solid Black Dress for Women, Sexy Chain Shorts"
+            id="3"
+            imageSource={
+              {
+                "uri": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300&h=400&fit=crop",
+              }
+            }
+            onPress={[Function]}
+            price={2000}
+            rating={5}
+            reviewCount={523456}
+            sizes={
+              [
+                {
+                  "available": true,
+                  "id": "1",
+                  "size": "XS",
+                },
+                {
+                  "available": true,
+                  "id": "2",
+                  "size": "S",
+                },
+                {
+                  "available": true,
+                  "id": "3",
+                  "size": "M",
+                },
+                {
+                  "available": true,
+                  "id": "4",
+                  "size": "L",
+                },
+                {
+                  "available": true,
+                  "id": "5",
+                  "size": "XL",
+                },
+                {
+                  "available": false,
+                  "id": "6",
+                  "size": "XXL",
+                },
+              ]
+            }
+            style={
+              {
+                "marginVertical": 0,
+                "width": "100%",
+              }
+            }
+          >
+            <Text>
+              Black Dress
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+    />
+  </View>
+</RCTScrollView>
+`;

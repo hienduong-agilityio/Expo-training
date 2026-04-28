@@ -1,0 +1,1370 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextField handles secureTextEntry when isSecureText is false 1`] = `
+<View
+  style={
+    {
+      "marginBottom": 10,
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderColor": "#000000",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "gap": 1,
+          "height": 64,
+        },
+        {
+          "borderColor": "#E0E0E0",
+        },
+        false,
+        false,
+        undefined,
+      ]
+    }
+  >
+    <TextInput
+      onBlur={[Function]}
+      onFocus={[Function]}
+      placeholder="Text"
+      placeholderTextColor="#676767"
+      secureTextEntry={false}
+      style={
+        [
+          {
+            "flex": 1,
+            "fontWeight": "500",
+            "includeFontPadding": false,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
+            "textAlignVertical": "center",
+          },
+          {
+            "fontSize": 14,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`TextField handles secureTextEntry with showPassword state 1`] = `
+<View
+  style={
+    {
+      "marginBottom": 10,
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderColor": "#000000",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "gap": 1,
+          "height": 64,
+        },
+        {
+          "borderColor": "#E0E0E0",
+        },
+        false,
+        false,
+        undefined,
+      ]
+    }
+  >
+    <TextInput
+      onBlur={[Function]}
+      onFocus={[Function]}
+      placeholder="Password"
+      placeholderTextColor="#676767"
+      secureTextEntry={true}
+      style={
+        [
+          {
+            "flex": 1,
+            "fontWeight": "500",
+            "includeFontPadding": false,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
+            "textAlignVertical": "center",
+          },
+          {
+            "fontSize": 14,
+          },
+          undefined,
+        ]
+      }
+    />
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "opacity": 1,
+          "paddingLeft": 8,
+          "paddingRight": 12,
+        }
+      }
+    >
+      <Text>
+        👁️
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`TextField matches snapshot for basic field 1`] = `
+<View
+  style={
+    {
+      "marginBottom": 10,
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderColor": "#000000",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "gap": 1,
+          "height": 64,
+        },
+        {
+          "borderColor": "#E0E0E0",
+        },
+        false,
+        false,
+        undefined,
+      ]
+    }
+  >
+    <TextInput
+      onBlur={[Function]}
+      onFocus={[Function]}
+      placeholder="Enter text"
+      placeholderTextColor="#676767"
+      secureTextEntry={false}
+      style={
+        [
+          {
+            "flex": 1,
+            "fontWeight": "500",
+            "includeFontPadding": false,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
+            "textAlignVertical": "center",
+          },
+          {
+            "fontSize": 14,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`TextField matches snapshot with icons and password field 1`] = `
+<View
+  style={
+    {
+      "marginBottom": 10,
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderColor": "#000000",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "gap": 1,
+          "height": 64,
+        },
+        {
+          "borderColor": "#E0E0E0",
+        },
+        false,
+        false,
+        undefined,
+      ]
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "paddingLeft": 12,
+          "paddingRight": 4,
+        }
+      }
+    >
+      <Text>
+        🔒
+      </Text>
+    </View>
+    <TextInput
+      onBlur={[Function]}
+      onFocus={[Function]}
+      placeholder="Password"
+      placeholderTextColor="#676767"
+      secureTextEntry={true}
+      style={
+        [
+          {
+            "flex": 1,
+            "fontWeight": "500",
+            "includeFontPadding": false,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
+            "textAlignVertical": "center",
+          },
+          {
+            "fontSize": 14,
+          },
+          undefined,
+        ]
+      }
+    />
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "opacity": 1,
+          "paddingLeft": 8,
+          "paddingRight": 12,
+        }
+      }
+    >
+      <Text>
+        👁️
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`TextField matches snapshot with label and error 1`] = `
+<View
+  style={
+    {
+      "marginBottom": 10,
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": "#FFFFFF",
+        "fontSize": 14,
+        "fontWeight": "500",
+        "marginBottom": 5,
+      }
+    }
+  >
+    Email
+  </Text>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderColor": "#000000",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "gap": 1,
+          "height": 64,
+        },
+        {
+          "borderColor": "#EB3030",
+        },
+        false,
+        false,
+        {
+          "borderColor": "#EB3030",
+        },
+      ]
+    }
+  >
+    <TextInput
+      onBlur={[Function]}
+      onFocus={[Function]}
+      placeholder="Enter email"
+      placeholderTextColor="#676767"
+      secureTextEntry={false}
+      style={
+        [
+          {
+            "flex": 1,
+            "fontWeight": "500",
+            "includeFontPadding": false,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
+            "textAlignVertical": "center",
+          },
+          {
+            "fontSize": 14,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+  <Text
+    style={
+      {
+        "color": "#EB3030",
+        "fontSize": 13,
+        "fontWeight": "400",
+        "marginTop": 5,
+      }
+    }
+  >
+    Invalid email
+  </Text>
+</View>
+`;
+
+exports[`TextField renders password field with right icon 1`] = `
+<View
+  style={
+    {
+      "marginBottom": 10,
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderColor": "#000000",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "gap": 1,
+          "height": 64,
+        },
+        {
+          "borderColor": "#E0E0E0",
+        },
+        false,
+        false,
+        undefined,
+      ]
+    }
+  >
+    <TextInput
+      onBlur={[Function]}
+      onFocus={[Function]}
+      placeholder="Password"
+      placeholderTextColor="#676767"
+      secureTextEntry={true}
+      style={
+        [
+          {
+            "flex": 1,
+            "fontWeight": "500",
+            "includeFontPadding": false,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
+            "textAlignVertical": "center",
+          },
+          {
+            "fontSize": 14,
+          },
+          undefined,
+        ]
+      }
+    />
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "opacity": 1,
+          "paddingLeft": 8,
+          "paddingRight": 12,
+        }
+      }
+    >
+      <Text>
+        👁️
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`TextField renders with FILLED variant 1`] = `
+<View
+  style={
+    {
+      "marginBottom": 10,
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderColor": "#000000",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "gap": 1,
+          "height": 64,
+        },
+        {
+          "borderColor": "#E0E0E0",
+        },
+        {
+          "backgroundColor": "#F5F5F5",
+        },
+        false,
+        undefined,
+      ]
+    }
+  >
+    <TextInput
+      onBlur={[Function]}
+      onFocus={[Function]}
+      placeholder="Filled variant"
+      placeholderTextColor="#676767"
+      secureTextEntry={false}
+      style={
+        [
+          {
+            "flex": 1,
+            "fontWeight": "500",
+            "includeFontPadding": false,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
+            "textAlignVertical": "center",
+          },
+          {
+            "fontSize": 14,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`TextField renders with OUTLINED variant by default 1`] = `
+<View
+  style={
+    {
+      "marginBottom": 10,
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderColor": "#000000",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "gap": 1,
+          "height": 64,
+        },
+        {
+          "borderColor": "#E0E0E0",
+        },
+        false,
+        false,
+        undefined,
+      ]
+    }
+  >
+    <TextInput
+      onBlur={[Function]}
+      onFocus={[Function]}
+      placeholder="Test"
+      placeholderTextColor="#676767"
+      secureTextEntry={false}
+      style={
+        [
+          {
+            "flex": 1,
+            "fontWeight": "500",
+            "includeFontPadding": false,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
+            "textAlignVertical": "center",
+          },
+          {
+            "fontSize": 14,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`TextField renders with different sizes: size-lg 1`] = `
+<View
+  style={
+    {
+      "marginBottom": 10,
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderColor": "#000000",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "gap": 1,
+          "height": 64,
+        },
+        {
+          "borderColor": "#E0E0E0",
+        },
+        false,
+        false,
+        undefined,
+      ]
+    }
+  >
+    <TextInput
+      onBlur={[Function]}
+      onFocus={[Function]}
+      placeholder="Size lg"
+      placeholderTextColor="#676767"
+      secureTextEntry={false}
+      style={
+        [
+          {
+            "flex": 1,
+            "fontWeight": "500",
+            "includeFontPadding": false,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
+            "textAlignVertical": "center",
+          },
+          {
+            "fontSize": 15,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`TextField renders with different sizes: size-md 1`] = `
+<View
+  style={
+    {
+      "marginBottom": 10,
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderColor": "#000000",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "gap": 1,
+          "height": 64,
+        },
+        {
+          "borderColor": "#E0E0E0",
+        },
+        false,
+        false,
+        undefined,
+      ]
+    }
+  >
+    <TextInput
+      onBlur={[Function]}
+      onFocus={[Function]}
+      placeholder="Size md"
+      placeholderTextColor="#676767"
+      secureTextEntry={false}
+      style={
+        [
+          {
+            "flex": 1,
+            "fontWeight": "500",
+            "includeFontPadding": false,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
+            "textAlignVertical": "center",
+          },
+          {
+            "fontSize": 14,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`TextField renders with different sizes: size-sm 1`] = `
+<View
+  style={
+    {
+      "marginBottom": 10,
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderColor": "#000000",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "gap": 1,
+          "height": 64,
+        },
+        {
+          "borderColor": "#E0E0E0",
+        },
+        false,
+        false,
+        undefined,
+      ]
+    }
+  >
+    <TextInput
+      onBlur={[Function]}
+      onFocus={[Function]}
+      placeholder="Size sm"
+      placeholderTextColor="#676767"
+      secureTextEntry={false}
+      style={
+        [
+          {
+            "flex": 1,
+            "fontWeight": "500",
+            "includeFontPadding": false,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
+            "textAlignVertical": "center",
+          },
+          {
+            "fontSize": 12,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`TextField renders with right icon and onRightPress 1`] = `
+<View
+  style={
+    {
+      "marginBottom": 10,
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderColor": "#000000",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "gap": 1,
+          "height": 64,
+        },
+        {
+          "borderColor": "#E0E0E0",
+        },
+        false,
+        false,
+        undefined,
+      ]
+    }
+  >
+    <TextInput
+      onBlur={[Function]}
+      onFocus={[Function]}
+      placeholder="Test"
+      placeholderTextColor="#676767"
+      secureTextEntry={false}
+      style={
+        [
+          {
+            "flex": 1,
+            "fontWeight": "500",
+            "includeFontPadding": false,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
+            "textAlignVertical": "center",
+          },
+          {
+            "fontSize": 14,
+          },
+          undefined,
+        ]
+      }
+    />
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "opacity": 1,
+          "paddingLeft": 8,
+          "paddingRight": 12,
+        }
+      }
+    >
+      <Text>
+        👁️
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`TextField renders without label 1`] = `
+<View
+  style={
+    {
+      "marginBottom": 10,
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderColor": "#000000",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "gap": 1,
+          "height": 64,
+        },
+        {
+          "borderColor": "#E0E0E0",
+        },
+        false,
+        false,
+        undefined,
+      ]
+    }
+  >
+    <TextInput
+      onBlur={[Function]}
+      onFocus={[Function]}
+      placeholder="No label"
+      placeholderTextColor="#676767"
+      secureTextEntry={false}
+      style={
+        [
+          {
+            "flex": 1,
+            "fontWeight": "500",
+            "includeFontPadding": false,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
+            "textAlignVertical": "center",
+          },
+          {
+            "fontSize": 14,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`TextField renders without left icon 1`] = `
+<View
+  style={
+    {
+      "marginBottom": 10,
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderColor": "#000000",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "gap": 1,
+          "height": 64,
+        },
+        {
+          "borderColor": "#E0E0E0",
+        },
+        false,
+        false,
+        undefined,
+      ]
+    }
+  >
+    <TextInput
+      onBlur={[Function]}
+      onFocus={[Function]}
+      placeholder="No left icon"
+      placeholderTextColor="#676767"
+      secureTextEntry={false}
+      style={
+        [
+          {
+            "flex": 1,
+            "fontWeight": "500",
+            "includeFontPadding": false,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
+            "textAlignVertical": "center",
+          },
+          {
+            "fontSize": 14,
+          },
+          undefined,
+        ]
+      }
+    />
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "opacity": 1,
+          "paddingLeft": 8,
+          "paddingRight": 12,
+        }
+      }
+    >
+      <Text>
+        👁️
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`TextField renders without right icon 1`] = `
+<View
+  style={
+    {
+      "marginBottom": 10,
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderColor": "#000000",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "gap": 1,
+          "height": 64,
+        },
+        {
+          "borderColor": "#E0E0E0",
+        },
+        false,
+        false,
+        undefined,
+      ]
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "paddingLeft": 12,
+          "paddingRight": 4,
+        }
+      }
+    >
+      <Text>
+        🔒
+      </Text>
+    </View>
+    <TextInput
+      onBlur={[Function]}
+      onFocus={[Function]}
+      placeholder="No right icon"
+      placeholderTextColor="#676767"
+      secureTextEntry={false}
+      style={
+        [
+          {
+            "flex": 1,
+            "fontWeight": "500",
+            "includeFontPadding": false,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
+            "textAlignVertical": "center",
+          },
+          {
+            "fontSize": 14,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`TextField shows border color changes on focus 1`] = `
+<View
+  style={
+    {
+      "marginBottom": 10,
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderColor": "#000000",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "gap": 1,
+          "height": 64,
+        },
+        {
+          "borderColor": "#F83758",
+        },
+        false,
+        {
+          "borderWidth": 2,
+          "padding": 0,
+        },
+        undefined,
+      ]
+    }
+  >
+    <TextInput
+      onBlur={[Function]}
+      onFocus={[Function]}
+      placeholder="Focus test"
+      placeholderTextColor="#676767"
+      secureTextEntry={false}
+      style={
+        [
+          {
+            "flex": 1,
+            "fontWeight": "500",
+            "includeFontPadding": false,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
+            "textAlignVertical": "center",
+          },
+          {
+            "fontSize": 14,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`TextField shows default border color when not focused and no error 1`] = `
+<View
+  style={
+    {
+      "marginBottom": 10,
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderColor": "#000000",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "gap": 1,
+          "height": 64,
+        },
+        {
+          "borderColor": "#E0E0E0",
+        },
+        false,
+        false,
+        undefined,
+      ]
+    }
+  >
+    <TextInput
+      onBlur={[Function]}
+      onFocus={[Function]}
+      placeholder="Default test"
+      placeholderTextColor="#676767"
+      secureTextEntry={false}
+      style={
+        [
+          {
+            "flex": 1,
+            "fontWeight": "500",
+            "includeFontPadding": false,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
+            "textAlignVertical": "center",
+          },
+          {
+            "fontSize": 14,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`TextField shows error border color 1`] = `
+<View
+  style={
+    {
+      "marginBottom": 10,
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderColor": "#000000",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "gap": 1,
+          "height": 64,
+        },
+        {
+          "borderColor": "#EB3030",
+        },
+        false,
+        false,
+        {
+          "borderColor": "#EB3030",
+        },
+      ]
+    }
+  >
+    <TextInput
+      onBlur={[Function]}
+      onFocus={[Function]}
+      placeholder="Error test"
+      placeholderTextColor="#676767"
+      secureTextEntry={false}
+      style={
+        [
+          {
+            "flex": 1,
+            "fontWeight": "500",
+            "includeFontPadding": false,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
+            "textAlignVertical": "center",
+          },
+          {
+            "fontSize": 14,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+  <Text
+    style={
+      {
+        "color": "#EB3030",
+        "fontSize": 13,
+        "fontWeight": "400",
+        "marginTop": 5,
+      }
+    }
+  >
+    Error message
+  </Text>
+</View>
+`;
+
+exports[`TextField shows primary border color on focus when no error 1`] = `
+<View
+  style={
+    {
+      "marginBottom": 10,
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderColor": "#000000",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "gap": 1,
+          "height": 64,
+        },
+        {
+          "borderColor": "#F83758",
+        },
+        false,
+        {
+          "borderWidth": 2,
+          "padding": 0,
+        },
+        undefined,
+      ]
+    }
+  >
+    <TextInput
+      onBlur={[Function]}
+      onFocus={[Function]}
+      placeholder="Focus test"
+      placeholderTextColor="#676767"
+      secureTextEntry={false}
+      style={
+        [
+          {
+            "flex": 1,
+            "fontWeight": "500",
+            "includeFontPadding": false,
+            "letterSpacing": 0.2,
+            "lineHeight": 20,
+            "paddingVertical": 8,
+            "textAlignVertical": "center",
+          },
+          {
+            "fontSize": 14,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+</View>
+`;

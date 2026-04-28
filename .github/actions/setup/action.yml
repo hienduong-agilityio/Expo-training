@@ -1,0 +1,32 @@
+name: 'Setup Node + Yarn (Expo)'
+description: 'Checkout-agnostic setup: installs Node, primes yarn cache, optionally installs deps, and disables Expo telemetry.'
+
+inputs:
+  node-version:
+    description: 'Node.js version to install.'
+    required: false
+    default: '20'
+  install:
+    description: 'If "true", run `yarn install --frozen-lockfile`.'
+    required: false
+    default: 'true'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Node ${{ inputs.node-version }} with yarn cache
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: yarn
+
+    - name: Disable Expo telemetry in CI
+      shell: bash
+      run: |
+        echo "EXPO_NO_TELEMETRY=1"  >> "$GITHUB_ENV"
+        echo "CI=true"              >> "$GITHUB_ENV"
+
+    - name: Install dependencies (yarn, frozen lockfile)
+      if: inputs.install == 'true'
+      shell: bash
+      run: yarn install --frozen-lockfile

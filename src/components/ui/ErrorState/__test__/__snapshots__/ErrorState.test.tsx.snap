@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorState renders correctly with default props 1`] = `
+<View>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "flex": 1,
+          "justifyContent": "center",
+          "minHeight": 200,
+          "padding": 24,
+        },
+        undefined,
+      ]
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "justifyContent": "center",
+            "marginBottom": 8,
+          },
+          undefined,
+        ]
+      }
+    >
+      <RNSVGSvgView
+        align="xMidYMid"
+        bbHeight={48}
+        bbWidth={48}
+        fill="none"
+        focusable={false}
+        height={48}
+        meetOrSlice={0}
+        minX={0}
+        minY={0}
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            {
+              "flex": 0,
+              "height": 48,
+              "width": 48,
+            },
+          ]
+        }
+        vbHeight={24}
+        vbWidth={24}
+        width={48}
+      >
+        <RNSVGGroup
+          fill={null}
+          propList={
+            [
+              "fill",
+            ]
+          }
+        >
+          <RNSVGPath
+            d="M12 3 22 21 2 21z"
+            fill={null}
+            propList={
+              [
+                "fill",
+                "stroke",
+                "strokeWidth",
+                "strokeLinejoin",
+              ]
+            }
+            stroke={
+              {
+                "payload": 4294423301,
+                "type": 0,
+              }
+            }
+            strokeLinejoin={1}
+            strokeWidth={2}
+          />
+          <RNSVGPath
+            d="M12 9V13"
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+            propList={
+              [
+                "stroke",
+                "strokeWidth",
+                "strokeLinecap",
+              ]
+            }
+            stroke={
+              {
+                "payload": 4294423301,
+                "type": 0,
+              }
+            }
+            strokeLinecap={1}
+            strokeWidth={2}
+          />
+          <RNSVGPath
+            d="M12 17.01L12.01 17"
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+            propList={
+              [
+                "stroke",
+                "strokeWidth",
+                "strokeLinecap",
+              ]
+            }
+            stroke={
+              {
+                "payload": 4294423301,
+                "type": 0,
+              }
+            }
+            strokeLinecap={1}
+            strokeWidth={2}
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
+    <Text
+      style={
+        [
+          {
+            "color": "#1C1B1F",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "marginBottom": 8,
+            "textAlign": "center",
+          },
+          undefined,
+        ]
+      }
+    >
+      Error
+    </Text>
+  </View>
+</View>
+`;
