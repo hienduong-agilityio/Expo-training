@@ -13,7 +13,6 @@ on:
       - "yarn.lock"
       - ".github/actions/setup/**"
       - ".github/workflows/**"
-      - "scripts/eas-write-google-services.sh"
   workflow_dispatch:
 
 permissions:
