@@ -38,7 +38,7 @@ jobs:
       - name: Prettier (check only)
         id: prettier
         if: always()
-        run: yarn prettier:check
+        run: yarn prettier:fix && yarn prettier:check
 
       - name: Write job summary
         if: always()
@@ -87,12 +87,7 @@ jobs:
       - name: Jest with coverage
         id: jest
         run: |
-          yarn jest \
-            --ci \
-            --coverage \
-            --coverageReporters=text \
-            --coverageReporters=lcov \
-            --coverageReporters=json-summary
+          yarn jest
 
       - name: Upload coverage report
         if: always()
