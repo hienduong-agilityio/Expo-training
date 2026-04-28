@@ -1,3 +1,40 @@
+/**
+ * Node.js 20 Jest (e.g. GitHub Actions ubuntu) has no global `WebSocket`.
+ * In __DEV__, `expo/src/async-require/messageSocket.native.ts` does `new WebSocket(...)` at load time.
+ */
+if (typeof globalThis.WebSocket === 'undefined') {
+  globalThis.WebSocket = class JestWebSocketPolyfill {
+    static CONNECTING = 0;
+    static OPEN = 1;
+    static CLOSING = 2;
+    static CLOSED = 3;
+    readonly CONNECTING = JestWebSocketPolyfill.CONNECTING;
+    readonly OPEN = JestWebSocketPolyfill.OPEN;
+    readonly CLOSING = JestWebSocketPolyfill.CLOSING;
+    readonly CLOSED = JestWebSocketPolyfill.CLOSED;
+    url: string;
+    protocol = '';
+    extensions = '';
+    binaryType: BinaryType = 'blob';
+    bufferedAmount = 0;
+    readyState = JestWebSocketPolyfill.CLOSED;
+    onopen: ((event: Event) => void) | null = null;
+    onclose: ((event: CloseEvent) => void) | null = null;
+    onerror: ((event: Event) => void) | null = null;
+    onmessage: ((event: MessageEvent) => void) | null = null;
+    constructor(url: string | URL, _protocols?: string | string[]) {
+      this.url = typeof url === 'string' ? url : url.href;
+    }
+    close(_code?: number, _reason?: string): void {}
+    send(_data: string | ArrayBufferLike | Blob | ArrayBufferView): void {}
+    addEventListener(): void {}
+    removeEventListener(): void {}
+    dispatchEvent(): boolean {
+      return false;
+    }
+  } as unknown as typeof WebSocket;
+}
+
 /** Minimal shape expo-modules-core reads from `globalThis.expo` in Jest. */
 type ExpoNativeEventEmitterCtor = new () => {
   addListener(): { remove: () => void };
