@@ -53,6 +53,7 @@ exports[`LoadingButton Rendering renders loading button with custom loading labe
       {
         "opacity": 0.7,
       },
+      undefined,
     ]
   }
 >
@@ -147,6 +148,7 @@ exports[`LoadingButton Rendering renders loading button with default label 1`] =
       false,
       undefined,
       false,
+      undefined,
     ]
   }
 >
@@ -220,6 +222,7 @@ exports[`LoadingButton States renders different sizes 1`] = `
       false,
       undefined,
       false,
+      undefined,
     ]
   }
 >
@@ -293,6 +296,7 @@ exports[`LoadingButton States renders different sizes 2`] = `
       false,
       undefined,
       false,
+      undefined,
     ]
   }
 >
@@ -366,6 +370,7 @@ exports[`LoadingButton States renders different sizes 3`] = `
       false,
       undefined,
       false,
+      undefined,
     ]
   }
 >
@@ -441,6 +446,7 @@ exports[`LoadingButton States renders disabled state 1`] = `
       {
         "opacity": 0.7,
       },
+      undefined,
     ]
   }
 >
@@ -516,6 +522,7 @@ exports[`LoadingButton States renders full width button 1`] = `
         "alignSelf": "stretch",
       },
       false,
+      undefined,
     ]
   }
 >

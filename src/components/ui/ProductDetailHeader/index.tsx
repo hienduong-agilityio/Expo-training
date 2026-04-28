@@ -17,10 +17,7 @@ import { useWishlist, useWishlistActions } from '@app/hooks/useWishlist';
 import { modalStore } from '@app/stores/modalStore';
 
 // Constants
-import {
-  WISHLIST_MESSAGES,
-  BUTTON_LABELS,
-} from '@app/constants';
+import { WISHLIST_MESSAGES, BUTTON_LABELS } from '@app/constants';
 
 export const ProductDetailHeaderRight = ({
   productId,

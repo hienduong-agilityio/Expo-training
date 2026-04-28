@@ -13,7 +13,11 @@ import { borderRadius, colors, typography } from '@app/themes';
 
 type UpdatePromptProps = Pick<
   UseOTAUpdateReturn,
-  'isUpdateReady' | 'isApplying' | 'releaseNotes' | 'applyUpdate' | 'dismissUpdate'
+  | 'isUpdateReady'
+  | 'isApplying'
+  | 'releaseNotes'
+  | 'applyUpdate'
+  | 'dismissUpdate'
 >;
 
 export const UpdatePrompt = ({

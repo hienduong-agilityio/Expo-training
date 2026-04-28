@@ -86,7 +86,13 @@ export const ProductListScreen = () => {
       : infiniteData?.pages.flatMap(
           (page: { data: IProduct[] }) => page.data,
         ) ?? [];
-  }, [isCategorized, productListType, categorizedData, infiniteData, validType]);
+  }, [
+    isCategorized,
+    productListType,
+    categorizedData,
+    infiniteData,
+    validType,
+  ]);
 
   const onEndReached = isCategorized ? undefined : fetchNextPage;
   const isLoadingMore = isCategorized ? false : isFetchingNextPage;

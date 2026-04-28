@@ -301,14 +301,32 @@ exports[`CartItem renders product info and quantity 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "#EB303010",
-            "borderRadius": 8,
-            "height": 36,
-            "justifyContent": "center",
-            "paddingHorizontal": 16,
-          }
+          [
+            {
+              "alignItems": "center",
+              "borderRadius": 6,
+              "height": 66,
+              "justifyContent": "center",
+            },
+            {
+              "paddingHorizontal": 16,
+            },
+            {
+              "borderColor": "transparent",
+              "borderWidth": 1,
+            },
+            false,
+            undefined,
+            undefined,
+            {
+              "alignItems": "center",
+              "backgroundColor": "#EB303010",
+              "borderRadius": 8,
+              "height": 36,
+              "justifyContent": "center",
+              "paddingHorizontal": 16,
+            },
+          ]
         }
       >
         <Text

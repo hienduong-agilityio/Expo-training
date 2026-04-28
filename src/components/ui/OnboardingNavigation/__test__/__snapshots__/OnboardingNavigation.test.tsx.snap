@@ -69,6 +69,7 @@ exports[`OnboardingNavigation Edge Cases handles large page counts 1`] = `
         false,
         undefined,
         false,
+        undefined,
       ]
     }
   >
@@ -146,6 +147,7 @@ exports[`OnboardingNavigation Edge Cases handles large page counts 1`] = `
           "borderWidth": 1,
         },
         false,
+        undefined,
         undefined,
         undefined,
       ]
@@ -241,6 +243,7 @@ exports[`OnboardingNavigation Edge Cases handles single page correctly 1`] = `
         {
           "opacity": 0.7,
         },
+        undefined,
       ]
     }
   >
@@ -320,6 +323,7 @@ exports[`OnboardingNavigation Edge Cases handles single page correctly 1`] = `
           "borderWidth": 1,
         },
         false,
+        undefined,
         undefined,
         undefined,
       ]
@@ -415,6 +419,7 @@ exports[`OnboardingNavigation Rendering renders navigation buttons 1`] = `
         {
           "opacity": 0.7,
         },
+        undefined,
       ]
     }
   >
@@ -494,6 +499,7 @@ exports[`OnboardingNavigation Rendering renders navigation buttons 1`] = `
           "borderWidth": 1,
         },
         false,
+        undefined,
         undefined,
         undefined,
       ]
@@ -587,6 +593,7 @@ exports[`OnboardingNavigation Rendering shows "Get Started" on last page 1`] = `
         false,
         undefined,
         false,
+        undefined,
       ]
     }
   >
@@ -664,6 +671,7 @@ exports[`OnboardingNavigation Rendering shows "Get Started" on last page 1`] = `
           "borderWidth": 1,
         },
         false,
+        undefined,
         undefined,
         undefined,
       ]

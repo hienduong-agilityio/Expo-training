@@ -44,9 +44,7 @@ export const ProductDetailScreen = () => {
     navigation.setOptions({
       title: defaultNavOptions.title,
       headerRight: () =>
-        productId ? (
-          <ProductDetailHeaderRight productId={productId} />
-        ) : null,
+        productId ? <ProductDetailHeaderRight productId={productId} /> : null,
       headerShown: true,
       headerStyle: defaultNavOptions.headerStyle,
     });

@@ -88,7 +88,8 @@ async function scheduleProductSpotlightNotificationAsync(): Promise<void> {
   const data = buildStartupNotificationData({
     id: product.id ?? STARTUP_SPOTLIGHT_PRODUCT_DOCUMENT_ID,
     name: product.name,
-    shortDescription: (product as { shortDescription?: string }).shortDescription,
+    shortDescription: (product as { shortDescription?: string })
+      .shortDescription,
     description: product.description,
     imageSource: (product as IProduct).imageSource,
   });

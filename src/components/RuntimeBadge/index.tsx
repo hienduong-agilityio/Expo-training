@@ -8,7 +8,7 @@ import { colors } from '@app/themes';
 const VISIBLE_CHANNELS = new Set(['development', 'preview']);
 
 const shortId = (id?: string | null) =>
-  id && id.length > 8 ? `${id.slice(0, 8)}…` : (id ?? 'embedded');
+  id && id.length > 8 ? `${id.slice(0, 8)}…` : id ?? 'embedded';
 
 type RuntimeBadgeProps = Pick<
   UseOTAUpdateReturn,

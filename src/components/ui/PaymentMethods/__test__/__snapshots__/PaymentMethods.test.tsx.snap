@@ -368,6 +368,7 @@ exports[`<PaymentMethods /> handles undefined onContinue gracefully 1`] = `
           "alignSelf": "stretch",
         },
         undefined,
+        undefined,
       ]
     }
   >
@@ -758,6 +759,7 @@ exports[`<PaymentMethods /> handles undefined onSelect gracefully 1`] = `
         {
           "alignSelf": "stretch",
         },
+        undefined,
         undefined,
       ]
     }
@@ -1150,6 +1152,7 @@ exports[`<PaymentMethods /> renders title, options and continue button 1`] = `
           "alignSelf": "stretch",
         },
         undefined,
+        undefined,
       ]
     }
   >
@@ -1540,6 +1543,7 @@ exports[`<PaymentMethods /> renders with no selected option 1`] = `
         {
           "alignSelf": "stretch",
         },
+        undefined,
         undefined,
       ]
     }

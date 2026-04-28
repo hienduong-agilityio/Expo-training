@@ -51,6 +51,7 @@ exports[`Button Basic Rendering renders button with default props: default 1`] =
       false,
       undefined,
       undefined,
+      undefined,
     ]
   }
 >
@@ -122,6 +123,7 @@ exports[`Button Basic Rendering renders different button sizes: lg-size 1`] = `
         "borderWidth": 1,
       },
       false,
+      undefined,
       undefined,
       undefined,
     ]
@@ -197,6 +199,7 @@ exports[`Button Basic Rendering renders different button sizes: md-size 1`] = `
       false,
       undefined,
       undefined,
+      undefined,
     ]
   }
 >
@@ -268,6 +271,7 @@ exports[`Button Basic Rendering renders different button sizes: sm-size 1`] = `
         "borderWidth": 1,
       },
       false,
+      undefined,
       undefined,
       undefined,
     ]
@@ -343,6 +347,7 @@ exports[`Button Button Content renders children when provided 1`] = `
       false,
       undefined,
       undefined,
+      undefined,
     ]
   }
 >
@@ -400,6 +405,7 @@ exports[`Button Button Interactions calls onPress for outline button: outline-in
         "borderWidth": 1,
       },
       false,
+      undefined,
       undefined,
       undefined,
     ]
@@ -475,6 +481,7 @@ exports[`Button Button Interactions calls onPress for solid button: solid-intera
       false,
       undefined,
       undefined,
+      undefined,
     ]
   }
 >
@@ -546,6 +553,7 @@ exports[`Button Button Press States applies pressed style for solid button 1`] =
         "borderWidth": 1,
       },
       false,
+      undefined,
       undefined,
       undefined,
     ]
@@ -623,6 +631,7 @@ exports[`Button Button States renders disabled button button correctly: disabled
       {
         "opacity": 0.7,
       },
+      undefined,
     ]
   }
 >
@@ -698,6 +707,7 @@ exports[`Button Button States renders full width button button correctly: full w
         "alignSelf": "stretch",
       },
       undefined,
+      undefined,
     ]
   }
 >
@@ -770,6 +780,7 @@ exports[`Button Button States renders selected outline button (renders as solid)
         "borderWidth": 1,
       },
       false,
+      undefined,
       undefined,
       undefined,
     ]
@@ -845,6 +856,7 @@ exports[`Button Button Variants renders outline neutral button correctly: outlin
       false,
       undefined,
       undefined,
+      undefined,
     ]
   }
 >
@@ -916,6 +928,7 @@ exports[`Button Button Variants renders outline primary button correctly: outlin
         "borderWidth": 1,
       },
       false,
+      undefined,
       undefined,
       undefined,
     ]
@@ -992,6 +1005,7 @@ exports[`Button Button Variants renders solid neutral button correctly: solid ne
       false,
       undefined,
       undefined,
+      undefined,
     ]
   }
 >
@@ -1064,6 +1078,7 @@ exports[`Button Button Variants renders solid primary button correctly: solid pr
         "borderWidth": 1,
       },
       false,
+      undefined,
       undefined,
       undefined,
     ]
