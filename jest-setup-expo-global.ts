@@ -1,8 +1,3 @@
-/**
- * expo-modules-core reads globalThis.expo.EventEmitter at load time.
- * Native runtimes install this; Jest does not, so we polyfill before any Expo package loads.
- */
-
 /** Minimal shape expo-modules-core reads from `globalThis.expo` in Jest. */
 type ExpoNativeEventEmitterCtor = new () => {
   addListener(): { remove: () => void };
@@ -44,6 +39,11 @@ if (globalForJest.expo === undefined) {
       ExpoGlassEffect: {
         isLiquidGlassAvailable: false,
       },
+      ExponentConstants: {
+        name: 'StylishEcommerce',
+        appOwnership: null,
+        manifest: null,
+      },
     },
   };
 } else {
@@ -58,6 +58,12 @@ if (globalForJest.expo === undefined) {
     ExpoGlassEffect: {
       isLiquidGlassAvailable:
         expo.modules?.ExpoGlassEffect?.isLiquidGlassAvailable ?? false,
+    },
+    ExponentConstants: {
+      name: 'StylishEcommerce',
+      appOwnership: null,
+      manifest: null,
+      ...(expo.modules?.ExponentConstants ?? {}),
     },
   };
 }

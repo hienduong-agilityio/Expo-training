@@ -42,6 +42,13 @@ module.exports = {
   },
   overrides: [
     {
+      files: ['jest.config.js'],
+      env: { node: true },
+      globals: {
+        globalThis: 'readonly',
+      },
+    },
+    {
       files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
       extends: ['plugin:testing-library/react'],
     },

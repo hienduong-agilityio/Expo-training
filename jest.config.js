@@ -1,8 +1,20 @@
-// Must run before any test file imports expo-modules-core (Platform.ts warns if unset).
-process.env.EXPO_OS = process.env.EXPO_OS || 'ios';
-
 module.exports = {
   preset: 'react-native',
+  transform: {
+    '^.+\\.(js|ts|tsx)$': [
+      'babel-jest',
+      {
+        caller: {
+          name: 'metro',
+          bundler: 'metro',
+          platform: 'ios',
+        },
+      },
+    ],
+    '^.+\\.(bmp|gif|jpg|jpeg|mp4|png|psd|svg|webp)$': require.resolve(
+      'react-native/jest/assetFileTransformer.js',
+    ),
+  },
   moduleNameMapper: {
     '\\.(ttf|otf)$': '<rootDir>/__mocks__/fileMock.js',
     '^test-utils$': '<rootDir>/test-utils.tsx',
