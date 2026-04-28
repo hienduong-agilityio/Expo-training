@@ -86,8 +86,7 @@ jobs:
 
       - name: Jest with coverage
         id: jest
-        run: |
-          yarn jest
+        run: yarn jest --ci --coverage --maxWorkers=2 --forceExit
 
       - name: Upload coverage report
         if: always()
