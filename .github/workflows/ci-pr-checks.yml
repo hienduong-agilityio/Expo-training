@@ -12,7 +12,8 @@ on:
       - "package.json"
       - "yarn.lock"
       - ".github/actions/setup/**"
-      - ".github/workflows/ci-pr-checks.yml"
+      - ".github/workflows/**"
+      - "scripts/eas-write-google-services.sh"
   workflow_dispatch:
 
 permissions:

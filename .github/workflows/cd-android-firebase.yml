@@ -1,8 +1,10 @@
 name: CD - Android + Firebase App Distribution
 
+# production profile when ref is `main` (see resolve-config); other branches → preview.
 on:
   push:
     branches:
+      - main
       - feat/practice-one
       - feat/handle-expo-github-action
   workflow_dispatch:
@@ -33,7 +35,7 @@ jobs:
       - id: pick
         env:
           DISPATCH_PROFILE: ${{ inputs.profile }}
-          PROD_BRANCH_REF: refs/heads/feat/practice-one
+          PROD_BRANCH_REF: refs/heads/main
         run: |
           if [[ -n "$DISPATCH_PROFILE" ]]; then
             PROFILE="$DISPATCH_PROFILE"
@@ -101,36 +103,17 @@ jobs:
           restore-keys: |
             gradle-${{ runner.os }}-
 
-      - name: Materialise google-services.json for EAS Android
+      - name: Export GOOGLE_SERVICES_BASE64 for EAS pre-install hook
         env:
-          GOOGLE_SERVICES_BASE64: ${{ secrets.GOOGLE_SERVICES_BASE64 }}
-          GOOGLE_SERVICES_JSON_BASE64: ${{ secrets.GOOGLE_SERVICES_JSON_BASE64 }}
-          GOOGLE_SERVICES_GPG_PASSPHRASE: ${{ secrets.GOOGLE_SERVICES_GPG_PASSPHRASE }}
+          GOOGLE_SERVICES_BASE64_PRIMARY: ${{ secrets.GOOGLE_SERVICES_BASE64 }}
+          GOOGLE_SERVICES_JSON_BASE64_LEGACY: ${{ secrets.GOOGLE_SERVICES_JSON_BASE64 }}
         run: |
-          mkdir -p config
-          B64="${GOOGLE_SERVICES_BASE64:-${GOOGLE_SERVICES_JSON_BASE64:-}}"
-
-          if [[ -n "$B64" ]]; then
-            CLEAN=$(printf '%s' "$B64" | tr -d '\n\r\t ')
-            PAD=$(( (4 - ${#CLEAN} % 4) % 4 ))
-            case $PAD in 1) CLEAN="${CLEAN}=" ;; 2) CLEAN="${CLEAN}==" ;; 3) CLEAN="${CLEAN}===" ;; esac
-            printf '%s' "$CLEAN" | base64 -d > config/google-services.json
-          elif [[ -f config/google-services.json.gpg && -n "${GOOGLE_SERVICES_GPG_PASSPHRASE:-}" ]]; then
-            gpg --quiet --batch --yes --decrypt \
-              --passphrase="$GOOGLE_SERVICES_GPG_PASSPHRASE" \
-              --output config/google-services.json \
-              config/google-services.json.gpg
-          else
-            echo "::error::Set Environment or repository secret GOOGLE_SERVICES_BASE64 (base64 of google-services.json), or add config/google-services.json.gpg + GOOGLE_SERVICES_GPG_PASSPHRASE."
+          VAL="${GOOGLE_SERVICES_BASE64_PRIMARY:-${GOOGLE_SERVICES_JSON_BASE64_LEGACY}}"
+          if [[ -z "$VAL" ]]; then
+            echo "::error::Add repository or Environment secret GOOGLE_SERVICES_BASE64 (base64 of google-services.json). Legacy name GOOGLE_SERVICES_JSON_BASE64 is still accepted."
             exit 1
           fi
-
-          if ! python3 -m json.tool config/google-services.json >/dev/null 2>&1; then
-            echo "::error::Decoded google-services.json is not valid JSON."
-            exit 1
-          fi
-
-          echo "GOOGLE_SERVICES_JSON=$PWD/config/google-services.json" >> "$GITHUB_ENV"
+          echo "GOOGLE_SERVICES_BASE64=$VAL" >> "$GITHUB_ENV"
 
       - name: Setup Expo + EAS CLI
         uses: expo/expo-github-action@v8
@@ -148,6 +131,8 @@ jobs:
 
       - name: EAS build (local, APK)
         id: build
+        env:
+          GOOGLE_SERVICES_BASE64: ${{ env.GOOGLE_SERVICES_BASE64 }}
         run: |
           eas build \
             --platform android \
