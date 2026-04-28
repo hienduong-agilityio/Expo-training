@@ -102,32 +102,25 @@ jobs:
 
       - name: Materialise google-services.json for EAS Android
         env:
-          EAS_PROFILE: ${{ needs.resolve-config.outputs.profile }}
-          TARGET_ENV: ${{ needs.resolve-config.outputs.environment }}
+          GOOGLE_SERVICES_BASE64: ${{ secrets.GOOGLE_SERVICES_BASE64 }}
           GOOGLE_SERVICES_JSON_BASE64: ${{ secrets.GOOGLE_SERVICES_JSON_BASE64 }}
-          GOOGLE_SERVICES_JSON_BASE64_PREVIEW: ${{ secrets.GOOGLE_SERVICES_JSON_BASE64_PREVIEW }}
-          GOOGLE_SERVICES_JSON_BASE64_PRODUCTION: ${{ secrets.GOOGLE_SERVICES_JSON_BASE64_PRODUCTION }}
           GOOGLE_SERVICES_GPG_PASSPHRASE: ${{ secrets.GOOGLE_SERVICES_GPG_PASSPHRASE }}
         run: |
           mkdir -p config
-          B64=""
-          if [[ "$EAS_PROFILE" == "production" && -n "${GOOGLE_SERVICES_JSON_BASE64_PRODUCTION:-}" ]]; then
-            B64="$GOOGLE_SERVICES_JSON_BASE64_PRODUCTION"
-          elif [[ "$EAS_PROFILE" != "production" && -n "${GOOGLE_SERVICES_JSON_BASE64_PREVIEW:-}" ]]; then
-            B64="$GOOGLE_SERVICES_JSON_BASE64_PREVIEW"
-          elif [[ -n "${GOOGLE_SERVICES_JSON_BASE64:-}" ]]; then
-            B64="$GOOGLE_SERVICES_JSON_BASE64"
-          fi
+          B64="${GOOGLE_SERVICES_BASE64:-${GOOGLE_SERVICES_JSON_BASE64:-}}"
 
           if [[ -n "$B64" ]]; then
-            printf '%s' "$B64" | base64 -d > config/google-services.json
+            CLEAN=$(printf '%s' "$B64" | tr -d '\n\r\t ')
+            PAD=$(( (4 - ${#CLEAN} % 4) % 4 ))
+            case $PAD in 1) CLEAN="${CLEAN}=" ;; 2) CLEAN="${CLEAN}==" ;; 3) CLEAN="${CLEAN}===" ;; esac
+            printf '%s' "$CLEAN" | base64 -d > config/google-services.json
           elif [[ -f config/google-services.json.gpg && -n "${GOOGLE_SERVICES_GPG_PASSPHRASE:-}" ]]; then
             gpg --quiet --batch --yes --decrypt \
               --passphrase="$GOOGLE_SERVICES_GPG_PASSPHRASE" \
               --output config/google-services.json \
               config/google-services.json.gpg
           else
-            echo "::error::Missing google-services.json source for profile '$EAS_PROFILE' (GitHub env: $TARGET_ENV). Add any ONE of: repository secret GOOGLE_SERVICES_JSON_BASE64; or GOOGLE_SERVICES_JSON_BASE64_PREVIEW / GOOGLE_SERVICES_JSON_BASE64_PRODUCTION; or commit config/google-services.json.gpg + secret GOOGLE_SERVICES_GPG_PASSPHRASE (large files). Use Settings → Secrets and variables → Actions → Repository secrets so the secret applies to both development and production environments."
+            echo "::error::Set Environment or repository secret GOOGLE_SERVICES_BASE64 (base64 of google-services.json), or add config/google-services.json.gpg + GOOGLE_SERVICES_GPG_PASSPHRASE."
             exit 1
           fi
 
