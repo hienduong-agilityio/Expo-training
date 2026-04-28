@@ -131,13 +131,22 @@ jobs:
           python3 -m json.tool config/google-services.json >/dev/null
           echo "::endgroup::"
 
-          echo "::group::4) Git snapshot for EAS tarball (ephemeral commit, not pushed)"
+          echo "::group::4) Un-ignore path for local EAS pack (EAS may skip paths that match .gitignore)"
+          sed -i '/^config\/google-services\.json$/d' .gitignore
+          echo "::endgroup::"
+
+          echo "::group::5) Git snapshot for EAS tarball (ephemeral commit, not pushed)"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
-          git add -f config/google-services.json
+          git add .gitignore config/google-services.json
           if ! git diff --staged --quiet; then
-            git commit --no-verify -m "ci: include google-services.json for EAS local snapshot"
+            git commit --no-verify -m "ci: google-services + .gitignore for EAS local snapshot"
           fi
+          echo "::endgroup::"
+
+          echo "::group::Verify tracked before eas build"
+          git ls-files --error-unmatch config/google-services.json
+          test -s config/google-services.json
           echo "::endgroup::"
 
       - name: Setup Expo + EAS CLI

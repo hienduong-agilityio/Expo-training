@@ -84,8 +84,7 @@ tmp/
 .env.production
 .env.local
 
-# Firebase (never commit plaintext; CI restores via GOOGLE_SERVICES_BASE64 + eas-build-pre-install)
-config/google-services.json
+
 
 # Expo
 .expo
