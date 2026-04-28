@@ -80,6 +80,8 @@ jobs:
       EXPO_PUBLIC_API_BASE_URL: ${{ vars.EXPO_PUBLIC_API_BASE_URL }}
       EXPO_PUBLIC_STRAPI_BASE_URL: ${{ vars.EXPO_PUBLIC_STRAPI_BASE_URL }}
       LOAD_STORYBOOK: ${{ vars.LOAD_STORYBOOK }}
+      # KSP/Kotlin + lint on ubuntu-latest can hit Metaspace OOM with Gradle defaults
+      GRADLE_OPTS: "-Xmx4096m -XX:MaxMetaspaceSize=1024m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8"
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
@@ -162,6 +164,16 @@ jobs:
             echo "::error::EXPO_TOKEN is not set. Create an Expo access token at https://expo.dev/accounts/[your-account]/settings/access-tokens and add it as repository secret EXPO_TOKEN (or Environment secret if you scope tokens per env)."
             exit 1
           fi
+
+      # eas local runs Gradle under ~/.gradle; daemon jvmargs fix Metaspace OOM (expo-updates kspReleaseKotlin, lintVital)
+      - name: Gradle JVM limits for CI (Metaspace / heap)
+        run: |
+          mkdir -p ~/.gradle
+          : > ~/.gradle/gradle.properties
+          echo 'org.gradle.jvmargs=-Xmx4096m -XX:MaxMetaspaceSize=1024m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8' >> ~/.gradle/gradle.properties
+          echo 'org.gradle.parallel=true' >> ~/.gradle/gradle.properties
+          echo 'org.gradle.workers.max=2' >> ~/.gradle/gradle.properties
+          echo 'kotlin.daemon.jvmargs=-Xmx2048m -XX:MaxMetaspaceSize=512m' >> ~/.gradle/gradle.properties
 
       - name: EAS build (local, APK)
         id: build
